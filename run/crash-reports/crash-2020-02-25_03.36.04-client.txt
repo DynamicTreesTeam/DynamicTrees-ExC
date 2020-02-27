@@ -1,0 +1,130 @@
+---- Minecraft Crash Report ----
+// Daisy, daisy...
+
+Time: 2/25/20 3:36 AM
+Description: Initializing game
+
+java.lang.NullPointerException: Initializing game
+	at net.minecraftforge.fml.common.versioning.ComparableVersion.parseVersion(ComparableVersion.java:371)
+	at net.minecraftforge.fml.common.versioning.ComparableVersion.<init>(ComparableVersion.java:362)
+	at net.minecraftforge.fml.common.versioning.DefaultArtifactVersion.<init>(DefaultArtifactVersion.java:31)
+	at net.minecraftforge.fml.common.versioning.DefaultArtifactVersion.<init>(DefaultArtifactVersion.java:42)
+	at net.minecraftforge.fml.common.FMLModContainer.getProcessedVersion(FMLModContainer.java:653)
+	at net.minecraftforge.fml.common.Loader.sortModList(Loader.java:241)
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:570)
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232)
+	at net.minecraft.client.Minecraft.init(Minecraft.java:514)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:422)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at net.minecraftforge.fml.common.versioning.ComparableVersion.parseVersion(ComparableVersion.java:371)
+	at net.minecraftforge.fml.common.versioning.ComparableVersion.<init>(ComparableVersion.java:362)
+	at net.minecraftforge.fml.common.versioning.DefaultArtifactVersion.<init>(DefaultArtifactVersion.java:31)
+	at net.minecraftforge.fml.common.versioning.DefaultArtifactVersion.<init>(DefaultArtifactVersion.java:42)
+	at net.minecraftforge.fml.common.FMLModContainer.getProcessedVersion(FMLModContainer.java:653)
+	at net.minecraftforge.fml.common.Loader.sortModList(Loader.java:241)
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:570)
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232)
+	at net.minecraft.client.Minecraft.init(Minecraft.java:514)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:422)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_241, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 519177400 bytes (495 MB) / 802684928 bytes (765 MB) up to 3803185152 bytes (3627 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 28 mods loaded, 28 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State | ID                       | Version           | Source                                          | Signature |
+	|:----- |:------------------------ |:----------------- |:----------------------------------------------- |:--------- |
+	| L     | minecraft                | 1.12.2            | minecraft.jar                                   | None      |
+	| L     | mcp                      | 9.42              | minecraft.jar                                   | None      |
+	| L     | FML                      | 8.0.99.99         | forgeSrc-1.12.2-14.23.5.2838.jar                | None      |
+	| L     | forge                    | 14.23.5.2838      | forgeSrc-1.12.2-14.23.5.2838.jar                | None      |
+	| L     | autoreglib               | 1.3-32            | AutoRegLib-1.3-32.jar                           | None      |
+	| L     | baubles                  | 1.5.2             | Baubles-1.12-1.5.2.jar                          | None      |
+	| L     | commoncapabilities       | 2.4.4             | CommonCapabilities-1.12.2-2.4.4.jar             | None      |
+	| L     | cyclopscore              | 1.5.0             | CyclopsCore-1.12.2-1.5.0.jar                    | None      |
+	| L     | dummycore                | 2.4.112.5.        | DummyCoreUnofficial-2.4.112.5.jar               | None      |
+	| L     | dynamictrees             | 1.12.2-0.9.6      | DynamicTrees-1.12.2-0.9.6.jar                   | None      |
+	| L     | dynamictreestc           | 1.12.2-1.4.1e     | DynamicTreesTC-1.12.2-1.4.1e.jar                | None      |
+	| L     | extrautils2              | 1.0               | extrautils2-1.12-1.9.9.jar                      | None      |
+	| L     | integrateddynamics       | 1.0.18            | IntegratedDynamics-1.12.2-1.0.18.jar            | None      |
+	| L     | integrateddynamicscompat | 1.0.0             | IntegratedDynamics-1.12.2-1.0.18.jar            | None      |
+	| L     | jei                      | 4.15.0.287        | jei_1.12.2-4.15.0.287.jar                       | None      |
+	| L     | mantle                   | 1.12-1.3.3.55     | Mantle-1.12-1.3.3.55.jar                        | None      |
+	| L     | techreborn_compat        | 1.0.0             | TechReborn-ModCompatibility-1.12.2-1.2.0.52.jar | None      |
+	| L     | natura                   | 1.12.2-4.3.2.69   | natura-1.12.2-4.3.2.69.jar                      | None      |
+	| L     | quark                    | r1.6-176          | Quark-r1.6-176.jar                              | None      |
+	| L     | reborncore               | 3.15.5.467        | RebornCore-1.12.2-3.15.5.467-universal.jar      | None      |
+	| L     | tconstruct               | 1.12.2-2.12.0.157 | TConstruct-1.12.2-2.12.0.157.jar                | None      |
+	| L     | techreborn               | 2.24.1.1017       | TechReborn-1.12.2-2.24.1.1017-universal.jar     | None      |
+	| L     | thaumcraft               | 6.1.BETA26        | Thaumcraft-1.12.2-6.1.BETA26.jar                | None      |
+	| L     | thaumicbases             | 3.3.400.6r        | thaumicbases-3.3.352.6r.jar                     | None      |
+	| L     | twilightforest           | 3.10.1013         | twilightforest-1.12.2-3.10.1013-universal.jar   | None      |
+	| L     | dynamictreesexc          | 1.0               | dynamictreesExC-0.8.jar                         | None      |
+	| L     | dynamictreesnatura       | 1.0               | dynamictreesExC-0.8.jar                         | None      |
+	| L     | dynamictreestf           | null              | dynamictreesExC-0.8.jar                         | None      |
+
+	Loaded coremods (and transformers): 
+DCLoadingPlugin (DummyCoreUnofficial-2.4.112.5.jar)
+  DummyCore.ASM.DCASMManager
+Quark Plugin (Quark-r1.6-176.jar)
+  vazkii.quark.base.asm.ClassTransformer
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 6x Intel(R) Core(TM) i5-8600K CPU @ 3.60GHz

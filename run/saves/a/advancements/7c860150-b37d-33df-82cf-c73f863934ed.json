@@ -1,0 +1,266 @@
+{
+  "minecraft:recipes/combat/wooden_sword": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_time": {
+    "criteria": {
+      "sapling": "2020-02-21 02:05:14 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_axe": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_blue_carpet": {
+    "criteria": {
+      "has_light_blue_wool": "2020-02-21 02:15:47 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lime_carpet": {
+    "criteria": {
+      "has_lime_wool": "2020-02-21 02:03:58 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/yellow_carpet": {
+    "criteria": {
+      "has_yellow_wool": "2020-02-21 02:03:59 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_sorting": {
+    "criteria": {
+      "sapling": "2020-02-21 02:05:16 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/yellow_banner": {
+    "criteria": {
+      "has_yellow_wool": "2020-02-21 02:03:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lime_banner": {
+    "criteria": {
+      "has_lime_wool": "2020-02-21 02:03:58 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_hoe": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/red_banner": {
+    "criteria": {
+      "has_red_wool": "2020-02-21 02:15:48 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_transformation": {
+    "criteria": {
+      "sapling": "2020-02-21 02:05:15 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-02-21 02:01:04 -0300",
+      "river": "2020-02-21 02:03:28 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-02-21 02:05:32 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/painting": {
+    "criteria": {
+      "has_wool": "2020-02-21 02:03:58 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/yellow_bed": {
+    "criteria": {
+      "has_yellow_wool": "2020-02-21 02:03:59 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:arborist": {
+    "criteria": {
+      "trans_sapling": "2020-02-21 02:05:15 -0300",
+      "time_sapling": "2020-02-21 02:05:14 -0300",
+      "trans_log": "2020-02-21 02:15:33 -0300",
+      "rainbow_oak_sapling": "2020-02-21 02:07:35 -0300",
+      "rainbow_oak_leaves": "2020-02-21 02:08:02 -0300",
+      "trans_leaves": "2020-02-21 02:08:58 -0300",
+      "twilight_oak_log": "2020-02-21 02:08:11 -0300",
+      "mine_sapling": "2020-02-21 02:05:15 -0300",
+      "dark_sapling": "2020-02-21 02:05:11 -0300",
+      "twilight_oak_leaves": "2020-02-21 02:08:18 -0300",
+      "sort_sapling": "2020-02-21 02:05:16 -0300",
+      "canopy_leaves": "2020-02-21 02:08:28 -0300",
+      "dark_leaves": "2020-02-21 02:08:38 -0300",
+      "mine_leaves": "2020-02-21 02:09:01 -0300",
+      "twilight_oak_sapling": "2020-02-21 02:05:02 -0300",
+      "canopy_sapling": "2020-02-21 02:05:03 -0300",
+      "robust_oak_sapling": "2020-02-21 02:05:13 -0300",
+      "mangrove_sapling": "2020-02-21 02:05:03 -0300",
+      "sort_leaves": "2020-02-21 02:09:04 -0300",
+      "time_log": "2020-02-21 02:15:08 -0300",
+      "mangrove_leaves": "2020-02-21 02:08:37 -0300",
+      "mine_log": "2020-02-21 02:15:36 -0300",
+      "mangrove_log": "2020-02-21 02:20:35 -0300",
+      "time_leaves": "2020-02-21 02:06:46 -0300"
+    },
+    "done": false
+  },
+  "twilightforest:alt/treasures/tree_of_mining": {
+    "criteria": {
+      "sapling": "2020-02-21 02:05:15 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/red_carpet": {
+    "criteria": {
+      "has_red_wool": "2020-02-21 02:15:48 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_blue_banner": {
+    "criteria": {
+      "has_light_blue_wool": "2020-02-21 02:15:47 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/red_bed": {
+    "criteria": {
+      "has_red_wool": "2020-02-21 02:15:48 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_blue_bed": {
+    "criteria": {
+      "has_light_blue_wool": "2020-02-21 02:15:47 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-02-21 02:01:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2020-02-21 02:07:20 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/magic_trees": {
+    "criteria": {
+      "0": "2020-02-21 02:05:14 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lime_bed": {
+    "criteria": {
+      "has_lime_wool": "2020-02-21 02:03:58 -0300"
+    },
+    "done": true
+  }
+}

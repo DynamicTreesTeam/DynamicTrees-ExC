@@ -1,0 +1,219 @@
+{
+  "thebetweenlands:survivalist/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_pickaxe": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_hoe": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_shovel": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_blue_orchid": {
+    "criteria": {
+      "has_red_flower": "2020-02-26 00:54:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:craftsman/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:farmer/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_chestplate": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/general_biomes": {
+    "criteria": {
+      "5": "2020-02-26 00:54:39 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:adventurer/give_me_that": {
+    "criteria": {
+      "talisman": "2020-02-26 00:53:06 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/diamond_axe": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:miner/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2020-02-26 00:54:03 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-02-26 00:52:44 -0300",
+      "river": "2020-02-26 00:53:13 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/combat/diamond_leggings": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:root": {
+    "criteria": {
+      "make_portal": "2020-02-26 00:54:24 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:adventurer/root": {
+    "criteria": {
+      "talisman": "2020-02-26 00:53:06 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:adventurer/dank_world": {
+    "criteria": {
+      "in_bl": "2020-02-26 00:55:43 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:craftsman/getting_harder_wood": {
+    "criteria": {
+      "weedwood": "2020-02-26 00:53:43 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_boots": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:herbalist/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_diamond": {
+    "criteria": {
+      "diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:arborist": {
+    "criteria": {
+      "root": "2020-02-26 00:52:44 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_helmet": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/mushroom_forest": {
+    "criteria": {
+      "discover": "2020-02-26 00:54:39 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/diamond_sword": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-02-26 00:52:44 -0300"
+    },
+    "done": true
+  },
+  "thebetweenlands:fighter/root": {
+    "criteria": {
+      "has_dank_world": "2020-02-26 00:55:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/jukebox": {
+    "criteria": {
+      "has_diamond": "2020-02-26 00:54:01 -0300"
+    },
+    "done": true
+  }
+}

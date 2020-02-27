@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/overworld/hopseed_log",
+        "rings": "natura:blocks/logs/overworld/hopseed_log_top"
+    }
+}

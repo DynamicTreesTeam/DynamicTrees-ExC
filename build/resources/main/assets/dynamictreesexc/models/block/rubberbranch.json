@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "techreborn:blocks/rubber_log_side",
+		"rings": "techreborn:blocks/rubber_log_top"
+	}
+}

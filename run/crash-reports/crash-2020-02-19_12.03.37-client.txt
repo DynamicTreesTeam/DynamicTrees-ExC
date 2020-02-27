@@ -1,0 +1,168 @@
+---- Minecraft Crash Report ----
+// My bad.
+
+Time: 2/19/20 12:03 PM
+Description: Initializing game
+
+java.lang.NullPointerException: Can't use a null-name for the registry, object net.minecraft.item.ItemBlock@53512f4.
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:864)
+	at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:294)
+	at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:288)
+	at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:120)
+	at maxhyper.dynamictreesexc.ModContent.registerItems(ModContent.java:250)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_175_ModContent_registerItems_Register.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus$1.invoke(EventBus.java:144)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.registries.GameData.fireRegistryEvents(GameData.java:852)
+	at net.minecraftforge.fml.common.Loader.preinitializeMods(Loader.java:628)
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:252)
+	at net.minecraft.client.Minecraft.init(Minecraft.java:514)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:422)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:864)
+	at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:294)
+	at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:288)
+	at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:120)
+	at maxhyper.dynamictreesexc.ModContent.registerItems(ModContent.java:250)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_175_ModContent_registerItems_Register.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus$1.invoke(EventBus.java:144)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.registries.GameData.fireRegistryEvents(GameData.java:852)
+	at net.minecraftforge.fml.common.Loader.preinitializeMods(Loader.java:628)
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:252)
+	at net.minecraft.client.Minecraft.init(Minecraft.java:514)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.Minecraft.run(Minecraft.java:422)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_241, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1123569488 bytes (1071 MB) / 1641545728 bytes (1565 MB) up to 3803185152 bytes (3627 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 25 mods loaded, 25 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State | ID                       | Version           | Source                                          | Signature                                |
+	|:----- |:------------------------ |:----------------- |:----------------------------------------------- |:---------------------------------------- |
+	| LCH   | minecraft                | 1.12.2            | minecraft.jar                                   | None                                     |
+	| LCH   | mcp                      | 9.42              | minecraft.jar                                   | None                                     |
+	| LCH   | FML                      | 8.0.99.99         | forgeSrc-1.12.2-14.23.5.2838.jar                | None                                     |
+	| LCH   | forge                    | 14.23.5.2838      | forgeSrc-1.12.2-14.23.5.2838.jar                | None                                     |
+	| LCH   | jei                      | 4.15.0.287        | jei_1.12.2-4.15.0.287.jar                       | None                                     |
+	| LCH   | quark                    | r1.6-176          | Quark-r1.6-176.jar                              | None                                     |
+	| LCH   | autoreglib               | 1.3-32            | AutoRegLib-1.3-32.jar                           | None                                     |
+	| LCH   | baubles                  | 1.5.2             | Baubles-1.12-1.5.2.jar                          | None                                     |
+	| LCH   | cyclopscore              | 1.5.0             | CyclopsCore-1.12.2-1.5.0.jar                    | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCH   | commoncapabilities       | 2.4.4             | CommonCapabilities-1.12.2-2.4.4.jar             | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCH   | dummycore                | 2.4.112.5.        | DummyCoreUnofficial-2.4.112.5.jar               | None                                     |
+	| LCH   | dynamictrees             | 1.12.2-0.9.6      | DynamicTrees-1.12.2-0.9.6.jar                   | None                                     |
+	| LCH   | thaumcraft               | 6.1.BETA26        | Thaumcraft-1.12.2-6.1.BETA26.jar                | None                                     |
+	| LCH   | dynamictreestc           | 1.12.2-1.4.1e     | DynamicTreesTC-1.12.2-1.4.1e.jar                | None                                     |
+	| LCH   | mantle                   | 1.12-1.3.3.55     | Mantle-1.12-1.3.3.55.jar                        | None                                     |
+	| LCH   | tconstruct               | 1.12.2-2.12.0.157 | TConstruct-1.12.2-2.12.0.157.jar                | None                                     |
+	| LCH   | extrautils2              | 1.0               | extrautils2-1.12-1.9.9.jar                      | None                                     |
+	| LCH   | integrateddynamics       | 1.0.18            | IntegratedDynamics-1.12.2-1.0.18.jar            | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCH   | integrateddynamicscompat | 1.0.0             | IntegratedDynamics-1.12.2-1.0.18.jar            | None                                     |
+	| LCH   | reborncore               | 3.15.5.467        | RebornCore-1.12.2-3.15.5.467-universal.jar      | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCH   | techreborn               | 2.24.1.1017       | TechReborn-1.12.2-2.24.1.1017-universal.jar     | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCH   | techreborn_compat        | 1.0.0             | TechReborn-ModCompatibility-1.12.2-1.2.0.52.jar | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCH   | natura                   | 1.12.2-4.3.2.69   | natura-1.12.2-4.3.2.69.jar                      | None                                     |
+	| LCH   | thaumicbases             | 3.3.400.6r        | thaumicbases-3.3.352.6r.jar                     | None                                     |
+	| LCH   | dynamictreesexc          | 0.6               | dynamictreesExC-0.6.jar                         | None                                     |
+
+	Loaded coremods (and transformers): 
+DCLoadingPlugin (DummyCoreUnofficial-2.4.112.5.jar)
+  DummyCore.ASM.DCASMManager
+Quark Plugin (Quark-r1.6-176.jar)
+  vazkii.quark.base.asm.ClassTransformer
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 432.00' Renderer: 'GeForce GTX 1070/PCIe/SSE2'
+	Pulsar/tconstruct loaded Pulses: 
+		- TinkerCommons (Enabled/Forced)
+		- TinkerWorld (Enabled/Not Forced)
+		- TinkerTools (Enabled/Not Forced)
+		- TinkerHarvestTools (Enabled/Forced)
+		- TinkerMeleeWeapons (Enabled/Forced)
+		- TinkerRangedWeapons (Enabled/Forced)
+		- TinkerModifiers (Enabled/Forced)
+		- TinkerSmeltery (Enabled/Not Forced)
+		- TinkerGadgets (Enabled/Not Forced)
+		- TinkerOredict (Enabled/Forced)
+		- TinkerIntegration (Enabled/Forced)
+		- TinkerFluids (Enabled/Forced)
+		- TinkerMaterials (Enabled/Forced)
+		- TinkerModelRegister (Enabled/Forced)
+
+	Pulsar/natura loaded Pulses: 
+		- NaturaCommons (Enabled/Forced)
+		- NaturaOverworld (Enabled/Not Forced)
+		- NaturaNether (Enabled/Not Forced)
+		- NaturaDecorative (Enabled/Not Forced)
+		- NaturaTools (Enabled/Not Forced)
+		- NaturaEntities (Enabled/Not Forced)
+		- NaturaOredict (Enabled/Forced)
+		- NaturaWorld (Enabled/Not Forced)
+
+	[DummyCore]: 'Special case ASM modification mods: ''Note, that these mods might not be involved in the crash in ANY WAY!''DummyCore just prints some known mods for a lot of ASM modifications''dummycore'
+	RebornCore: 
+		Plugin Engine: 0
+		RebornCore Version: 3.15.5.467
+		Runtime Debofucsation 0
+		RenderEngine: 0
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 6x Intel(R) Core(TM) i5-8600K CPU @ 3.60GHz

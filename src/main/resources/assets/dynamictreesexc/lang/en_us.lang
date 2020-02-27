@@ -1,0 +1,36 @@
+item.dynamictreesexc:menrilseed.name=Menril Seed
+item.dynamictreesexc:rubberseed.name=Rubber Tree Pod
+item.dynamictreesexc:blossomingseed.name=Blossoming Tree Stone
+item.dynamictreesexc:swampoakseed.name=Swamp Oak Acorn
+item.dynamictreesexc:slimeblueseed.name=Blue Slime Tree Seed
+item.dynamictreesexc:slimepurpleseed.name=Purple Slime Tree Seed
+item.dynamictreesexc:slimemagmaseed.name=Magma Slime Tree Seed
+item.dynamictreesexc:goldenoakseed.name=Golden Oak Acorn
+item.dynamictreesexc:enderoakseed.name=Ender Oak Acorn
+item.dynamictreesexc:hellishoakseed.name=Hellish Oak Acorn
+item.dynamictreesexc:ferrousjuniperseed.name=Ferrous-Juniper Cone
+item.dynamictreesexc:ferrousjuniperburntseed.name=Dead Ferrous-Juniper Cone
+
+tile.dynamictreesexc:leaves_menril.name=Dynamic Leaves
+tile.dynamictreesexc:leaves_ferrous_juniper.name=Dynamic Leaves
+tile.dynamictreesexc:leaves0.name=Dynamic Leaves
+tile.dynamictreesexc:leaves1.name=Dynamic Leaves
+tile.dynamictreesexc:leaves2.name=Dynamic Leaves
+
+tile.dynamictreesexc:menrilbranch.name=Dynamic Menril Tree
+tile.dynamictreesexc:menrilbranchfilled.name=Dynamic Menril Tree
+tile.dynamictreesexc:menrilroot.name=Dynamic Menril Root
+tile.dynamictreesexc:rubberbranch.name=Dynamic Rubber Tree
+tile.dynamictreesexc:rubberbranchfilled.name=Dynamic Rubber Tree
+tile.dynamictreesexc:swampoakbranch.name=Dynamic Swamp Oak Tree
+tile.dynamictreesexc:blossomingbranch.name=Dynamic Blossoming Tree
+tile.dynamictreesexc:slimebluebranch.name=Dynamic Blue Slime Tree
+tile.dynamictreesexc:slimepurplebranch.name=Dynamic Purple Slime Tree
+tile.dynamictreesexc:slimemagmabranch.name=Dynamic Magma Slime Tree
+tile.dynamictreesexc:goldenoakbranch.name=Dynamic Golden Oak Tree
+tile.dynamictreesexc:enderoakbranch.name=Dynamic Ender Oak Tree
+tile.dynamictreesexc:hellishoakbranch.name=Dynamic Hellish Oak Tree
+tile.dynamictreesexc:ferrousjuniperbranch.name=Dynamic Ferrous-Juniper Tree
+tile.dynamictreesexc:ferrousjuniperbranchburnt.name=Dynamic Ferrous-Juniper Tree
+
+tile.dynamictreesexc:rootyslimydirt.name=Rooty Slimy Dirt

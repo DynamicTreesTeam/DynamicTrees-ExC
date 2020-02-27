@@ -1,0 +1,186 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 2/26/20 5:04 PM
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at maxhyper.dynamictreesexc.blocks.BlockDynamicSaplingBurntFeJuniper.canSaplingStay(BlockDynamicSaplingBurntFeJuniper.java:33)
+	at maxhyper.dynamictreesexc.items.ItemDynamicSeedBurntFeJuniper.doPlanting(ItemDynamicSeedBurntFeJuniper.java:30)
+	at com.ferreusveritas.dynamictrees.items.Seed.onItemUsePlantSeed(Seed.java:192)
+	at com.ferreusveritas.dynamictrees.items.Seed.onItemUse(Seed.java:212)
+	at net.minecraft.item.ItemStack.onItemUse(ItemStack.java:201)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:499)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1694)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2381)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1935)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1188)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:442)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at maxhyper.dynamictreesexc.blocks.BlockDynamicSaplingBurntFeJuniper.canSaplingStay(BlockDynamicSaplingBurntFeJuniper.java:33)
+	at maxhyper.dynamictreesexc.items.ItemDynamicSeedBurntFeJuniper.doPlanting(ItemDynamicSeedBurntFeJuniper.java:30)
+	at com.ferreusveritas.dynamictrees.items.Seed.onItemUsePlantSeed(Seed.java:192)
+	at com.ferreusveritas.dynamictrees.items.Seed.onItemUse(Seed.java:212)
+	at net.minecraft.item.ItemStack.onItemUse(ItemStack.java:201)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:499)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1694)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2381)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player204'/73, l='MpServer', x=580.50, y=4.00, z=-295.42]]
+	Chunk stats: MultiplayerChunkCache: 289, 289
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (596,4,-293), Chunk: (at 4,0,11 in 37,-19; contains blocks 592,0,-304 to 607,255,-289), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+	Level time: 22162 game time, 1000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 42 total; [EntityHorse['Horse'/66, l='MpServer', x=633.45, y=4.00, z=-244.80], EntityHorse['Horse'/67, l='MpServer', x=635.58, y=4.00, z=-236.62], EntityHorse['Horse'/68, l='MpServer', x=633.36, y=4.00, z=-243.31], EntitySheep['Sheep'/72, l='MpServer', x=645.22, y=4.00, z=-242.67], EntityVillager['Villager'/13, l='MpServer', x=509.45, y=3.94, z=-288.49], EntityVillager['Villager'/14, l='MpServer', x=511.64, y=5.00, z=-271.50], EntityHorse['Horse'/15, l='MpServer', x=519.38, y=4.00, z=-312.51], EntityHorse['Horse'/16, l='MpServer', x=508.04, y=4.00, z=-328.92], EntityChicken['Chicken'/17, l='MpServer', x=512.59, y=4.00, z=-306.80], EntityVillager['Villager'/18, l='MpServer', x=513.65, y=5.51, z=-275.49], EntityVillager['Villager'/19, l='MpServer', x=513.34, y=5.00, z=-272.06], EntityVillager['Villager'/20, l='MpServer', x=528.00, y=5.00, z=-249.76], EntityVillager['Villager'/21, l='MpServer', x=533.52, y=3.94, z=-254.43], EntityCow['Cow'/22, l='MpServer', x=537.86, y=4.00, z=-316.27], EntityCow['Cow'/23, l='MpServer', x=531.66, y=4.00, z=-311.79], EntityCow['Cow'/24, l='MpServer', x=534.71, y=4.00, z=-307.33], EntityVillager['Villager'/25, l='MpServer', x=542.48, y=4.00, z=-306.61], EntityHorse['Horse'/26, l='MpServer', x=535.72, y=4.00, z=-311.66], EntityCow['Cow'/27, l='MpServer', x=531.74, y=4.00, z=-298.22], EntityVillager['Villager'/28, l='MpServer', x=537.42, y=3.94, z=-290.60], EntityVillager['Villager'/29, l='MpServer', x=529.01, y=5.00, z=-284.52], EntityVillager['Villager'/30, l='MpServer', x=542.19, y=3.94, z=-268.58], EntityVillager['Villager'/31, l='MpServer', x=534.27, y=4.00, z=-277.48], EntityVillager['Villager'/32, l='MpServer', x=528.50, y=5.00, z=-259.43], EntityVillager['Villager'/33, l='MpServer', x=537.30, y=7.00, z=-258.30], EntityPlayerSP['Player204'/73, l='MpServer', x=580.50, y=4.00, z=-295.42], EntityVillager['Villager'/34, l='MpServer', x=540.30, y=5.00, z=-271.31], EntityVillager['Villager'/35, l='MpServer', x=539.63, y=3.94, z=-267.50], EntityVillager['Villager'/36, l='MpServer', x=540.30, y=5.00, z=-272.10], EntityVillager['Villager'/37, l='MpServer', x=535.16, y=5.00, z=-245.43], EntityVillager['Villager'/38, l='MpServer', x=535.41, y=5.00, z=-251.52], EntityVillager['Villager'/39, l='MpServer', x=546.84, y=4.00, z=-311.70], EntityVillager['Villager'/40, l='MpServer', x=554.51, y=4.00, z=-258.49], EntityVillager['Villager'/44, l='MpServer', x=560.37, y=4.00, z=-221.68], EntityPig['Pig'/46, l='MpServer', x=588.60, y=4.00, z=-352.79], EntityChicken['Chicken'/47, l='MpServer', x=587.19, y=4.00, z=-344.91], EntityHorse['Horse'/48, l='MpServer', x=588.87, y=4.00, z=-351.25], EntityItem['item.item.egg'/49, l='MpServer', x=587.82, y=4.00, z=-345.49], EntityItem['item.item.feather'/50, l='MpServer', x=586.57, y=4.00, z=-344.07], EntityVillager['Villager'/51, l='MpServer', x=578.43, y=4.00, z=-242.21], EntityVillager['Villager'/52, l='MpServer', x=586.57, y=5.00, z=-243.42], EntitySheep['Sheep'/63, l='MpServer', x=607.79, y=4.00, z=-371.32]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:471)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_241, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 999634664 bytes (953 MB) / 2688024576 bytes (2563 MB) up to 3803185152 bytes (3627 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 30 mods loaded, 30 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                       | Version           | Source                                          | Signature                                |
+	|:------ |:------------------------ |:----------------- |:----------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft                | 1.12.2            | minecraft.jar                                   | None                                     |
+	| LCHIJA | mcp                      | 9.42              | minecraft.jar                                   | None                                     |
+	| LCHIJA | FML                      | 8.0.99.99         | forgeSrc-1.12.2-14.23.5.2838.jar                | None                                     |
+	| LCHIJA | forge                    | 14.23.5.2838      | forgeSrc-1.12.2-14.23.5.2838.jar                | None                                     |
+	| LCHIJA | jei                      | 4.15.0.287        | jei_1.12.2-4.15.0.287.jar                       | None                                     |
+	| LCHIJA | quark                    | r1.6-176          | Quark-r1.6-176.jar                              | None                                     |
+	| LCHIJA | autoreglib               | 1.3-32            | AutoRegLib-1.3-32.jar                           | None                                     |
+	| LCHIJA | baubles                  | 1.5.2             | Baubles-1.12-1.5.2.jar                          | None                                     |
+	| LCHIJA | cyclopscore              | 1.5.0             | CyclopsCore-1.12.2-1.5.0.jar                    | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCHIJA | commoncapabilities       | 2.4.4             | CommonCapabilities-1.12.2-2.4.4.jar             | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCHIJA | dummycore                | 2.4.112.5.        | DummyCoreUnofficial-2.4.112.5.jar               | None                                     |
+	| LCHIJA | dynamictrees             | 1.12.2-0.9.6      | DynamicTrees-1.12.2-0.9.6.jar                   | None                                     |
+	| LCHIJA | thaumcraft               | 6.1.BETA26        | Thaumcraft-1.12.2-6.1.BETA26.jar                | None                                     |
+	| LCHIJA | dynamictreestc           | 1.12.2-1.4.1e     | DynamicTreesTC-1.12.2-1.4.1e.jar                | None                                     |
+	| LCHIJA | mantle                   | 1.12-1.3.3.55     | Mantle-1.12-1.3.3.55.jar                        | None                                     |
+	| LCHIJA | twilightforest           | 3.10.1013         | twilightforest-1.12.2-3.10.1013-universal.jar   | None                                     |
+	| LCHIJA | tconstruct               | 1.12.2-2.12.0.157 | TConstruct-1.12.2-2.12.0.157.jar                | None                                     |
+	| LCHIJA | extrautils2              | 1.0               | extrautils2-1.12-1.9.9.jar                      | None                                     |
+	| LCHIJA | integrateddynamics       | 1.0.18            | IntegratedDynamics-1.12.2-1.0.18.jar            | bd0353b3e8a2810d60dd584e256e364bc3bedd44 |
+	| LCHIJA | integrateddynamicscompat | 1.0.0             | IntegratedDynamics-1.12.2-1.0.18.jar            | None                                     |
+	| LCHIJA | reborncore               | 3.15.5.467        | RebornCore-1.12.2-3.15.5.467-universal.jar      | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCHIJA | techreborn               | 2.24.1.1017       | TechReborn-1.12.2-2.24.1.1017-universal.jar     | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCHIJA | techreborn_compat        | 1.0.0             | TechReborn-ModCompatibility-1.12.2-1.2.0.52.jar | 8727a3141c8ec7f173b87aa78b9b9807867c4e6b |
+	| LCHIJA | natura                   | 1.12.2-4.3.2.69   | natura-1.12.2-4.3.2.69.jar                      | None                                     |
+	| LCHIJA | thaumicbases             | 3.3.400.6r        | thaumicbases-3.3.352.6r.jar                     | None                                     |
+	| LCHIJA | thebetweenlands          | 3.5.7             | TheBetweenlands-3.5.7-universal.jar             | 38067d6878811efb38b6a045521cfd80b9b60b38 |
+	| LCHIJA | dynamictreesbl           | 0.9               | dynamictreesExC-0.9.jar                         | None                                     |
+	| LCHIJA | dynamictreesexc          | 0.9               | dynamictreesExC-0.9.jar                         | None                                     |
+	| LCHIJA | dynamictreesnatura       | 0.9               | dynamictreesExC-0.9.jar                         | None                                     |
+	| LCHIJA | dynamictreestf           | 0.9               | dynamictreesExC-0.9.jar                         | None                                     |
+
+	Loaded coremods (and transformers): 
+TheBetweenlandsLoadingPlugin (TheBetweenlands-3.5.7-core.jar)
+  thebetweenlands.core.TheBetweenlandsClassTransformer
+DCLoadingPlugin (DummyCoreUnofficial-2.4.112.5.jar)
+  DummyCore.ASM.DCASMManager
+Quark Plugin (Quark-r1.6-176.jar)
+  vazkii.quark.base.asm.ClassTransformer
+	Pulsar/tconstruct loaded Pulses: 
+		- TinkerCommons (Enabled/Forced)
+		- TinkerWorld (Enabled/Not Forced)
+		- TinkerTools (Enabled/Not Forced)
+		- TinkerHarvestTools (Enabled/Forced)
+		- TinkerMeleeWeapons (Enabled/Forced)
+		- TinkerRangedWeapons (Enabled/Forced)
+		- TinkerModifiers (Enabled/Forced)
+		- TinkerSmeltery (Enabled/Not Forced)
+		- TinkerGadgets (Enabled/Not Forced)
+		- TinkerOredict (Enabled/Forced)
+		- TinkerIntegration (Enabled/Forced)
+		- TinkerFluids (Enabled/Forced)
+		- TinkerMaterials (Enabled/Forced)
+		- TinkerModelRegister (Enabled/Forced)
+
+	Pulsar/natura loaded Pulses: 
+		- NaturaCommons (Enabled/Forced)
+		- NaturaOverworld (Enabled/Not Forced)
+		- NaturaNether (Enabled/Not Forced)
+		- NaturaDecorative (Enabled/Not Forced)
+		- NaturaTools (Enabled/Not Forced)
+		- NaturaEntities (Enabled/Not Forced)
+		- NaturaOredict (Enabled/Forced)
+		- NaturaWorld (Enabled/Not Forced)
+
+	[DummyCore]: 'Special case ASM modification mods: ''Note, that these mods might not be involved in the crash in ANY WAY!''DummyCore just prints some known mods for a lot of ASM modifications''dummycore'
+	RebornCore: 
+		Plugin Engine: 0
+		RebornCore Version: 3.15.5.467
+		Runtime Debofucsation 0
+		RenderEngine: 0
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 6x Intel(R) Core(TM) i5-8600K CPU @ 3.60GHz
