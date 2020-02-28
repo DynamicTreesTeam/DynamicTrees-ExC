@@ -65,16 +65,16 @@ public class ModContent {
 		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, TreeMagicSorting.leavesMeta, "deciduous");
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 0, stickyTwilightOakLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 0, robustTwilightOakLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 1, canopyLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 2, mangroveLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 3, darkwoodLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 4, timeLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 5, transformationLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 6, minersLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 7, sortingLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 1, robustTwilightOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 2, rainbowOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 4, canopyLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 5, mangroveLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 6, darkwoodLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 8, timeLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 9, transformationLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 10, minersLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 11, sortingLeavesProperties);
 
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 8, rainbowOakLeavesProperties);
 
 		TreeFamily stickyTwilightOakTree = new TreeStickyTwilightOak();
 		TreeFamily canopyTree = new TreeCanopy();

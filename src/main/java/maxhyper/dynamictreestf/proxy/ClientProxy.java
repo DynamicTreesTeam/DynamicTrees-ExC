@@ -26,7 +26,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init() {
 		super.init();
-		//registerColorHandlers();
+		registerColorHandlers();
 	}
 	
 	@Override public void postInit() {

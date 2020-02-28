@@ -2,6 +2,6 @@
 	"parent": "dynamictrees:item/branch",
 	"textures": {
 		"bark": "twilightforest:blocks/mine_side",
-		"rings": "twilightforest:blocks/canopy_section"
+		"rings": "twilightforest:blocks/mine_section"
 	}
 }

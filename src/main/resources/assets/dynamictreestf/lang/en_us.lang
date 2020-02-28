@@ -1,8 +1,8 @@
-item.dynamictreestf:stickytwilightoakseed.name=Sticky Twilight Acorn
+item.dynamictreestf:stickytwilightoakseed.name=Sticky Twilight Oak Acorn
 item.dynamictreestf:canopyseed.name=Canopy Seed
 item.dynamictreestf:mangroveseed.name=Mangrove Seed
 item.dynamictreestf:darkwoodseed.name=Darkwood Seed
-item.dynamictreestf:robustTwilightoakseed.name=Robust Twilight Acorn
+item.dynamictreestf:robusttwilightoakseed.name=Robust Twilight Oak Acorn
 item.dynamictreestf:treeoftimeseed.name=Seed of Time
 item.dynamictreestf:treeoftransformationseed.name=Seed of Transformation
 item.dynamictreestf:minerstreeseed.name=Miner's Seed
@@ -10,13 +10,14 @@ item.dynamictreestf:sortingtreeseed.name=Sorting Seed
 item.dynamictreestf:rainbowoakseed.name=Rainbow Acorn
 
 tile.dynamictreestf:leaves0.name=Dynamic Leaves
+tile.dynamictreestf:leaves1.name=Dynamic Leaves
 tile.dynamictreestf:leaves2.name=Dynamic Leaves
 
-tile.dynamictreestf:stickytwilightbranch.name=Dynamic Sticky Twilight Oak Tree
+tile.dynamictreestf:stickytwilightoakbranch.name=Dynamic Sticky Twilight Oak Tree
 tile.dynamictreestf:canopybranch.name=Dynamic Canopy Tree
 tile.dynamictreestf:mangrovebranch.name=Dynamic Mangrove Tree
 tile.dynamictreestf:darkwoodbranch.name=Dynamic Darkwood Tree
-tile.dynamictreestf:robustTwilightoakbranch.name=Dynamic Robust Twilight Oak Tree
+tile.dynamictreestf:robusttwilightoakbranch.name=Dynamic Robust Twilight Oak Tree
 tile.dynamictreestf:treeoftimebranch.name=Dynamic Tree of Time
 tile.dynamictreestf:treeoftransformationbranch.name=Dynamic Tree of Transformation
 tile.dynamictreestf:minerstreebranch.name=Dynamic Miner's Tree
