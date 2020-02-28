@@ -256,11 +256,10 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
+		LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
 		ModelLoader.setCustomStateMapper(rootyUpsidedownDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(rootyNetherDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
-
-		LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 		ModelLoader.setCustomStateMapper(darkwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		ModelLoader.setCustomStateMapper(bloodwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 	}

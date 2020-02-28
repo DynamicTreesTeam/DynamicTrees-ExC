@@ -48,7 +48,7 @@ public class TreeWillow extends TreeFamily {
 	public TreeWillow() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "willow"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 3));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
 		ModContent.willowLeavesProperties.setTree(this);
 
@@ -57,7 +57,7 @@ public class TreeWillow extends TreeFamily {
 
 	@Override
 	public ItemStack getPrimitiveLogItemStack(int qty) {
-		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 3);
+		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);
 		stack.setCount(MathHelper.clamp(qty, 0, 64));
 		return stack;
 	}
