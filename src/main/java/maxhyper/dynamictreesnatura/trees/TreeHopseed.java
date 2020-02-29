@@ -32,8 +32,8 @@ public class TreeHopseed extends TreeFamily {
 		SpeciesHopseed(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.hopseedLeavesProperties);
 
-			setBasicGrowingParameters(0.3f, 6.0f, 0, 2, 0.8f);
-			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("darkoak"));
+			setBasicGrowingParameters(1.8f, 7.0f, 0, 2, 0.8f);
+			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("hopseed"));
 			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.HOT, 0.50f);
 			envFactor(Type.DRY, 0.50f);
@@ -41,7 +41,12 @@ public class TreeHopseed extends TreeFamily {
 
 			generateSeed();
 			setupStandardSeedDropping();
-			addGenFeature(new FeatureGenGrowCoreToMax());//Flare the bottom
+
+		}
+
+		@Override
+		public boolean isThick() {
+			return true;
 		}
 	}
 
@@ -69,6 +74,11 @@ public class TreeHopseed extends TreeFamily {
 	}
 
 	@Override
+	public boolean isThick() {
+		return true;
+	}
+
+	@Override
 	public void createSpecies() {
 		setCommonSpecies(new SpeciesHopseed(this));
 	}
@@ -88,7 +98,7 @@ public class TreeHopseed extends TreeFamily {
         return new BlockBranchThick(branchName){
 			@Override
 			public int getMaxRadius() {
-				return 15;
+				return 16;
 			}
 		};
     }

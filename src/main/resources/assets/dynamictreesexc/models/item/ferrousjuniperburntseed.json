@@ -1,5 +1,5 @@
 {
-	"parent":"item/generated",
+	"parent":"dynamictrees:item/standardseed",
 	"textures": {
 		"layer0":"dynamictreesExC:items/fejuniperburntseed"
 	}

@@ -96,7 +96,7 @@ public class ModContent {
 		tigerwoodLeavesProperties = setUpLeaves(TreeTigerwood.leavesBlock, 3, "deciduous");
 		willowLeavesProperties = setUpLeaves(TreeWillow.leavesBlock, 0, "deciduous", 3, 13);
 		eucalyptusLeavesProperties = setUpLeaves(TreeEucalyptus.leavesBlock, 1, "acacia");
-		hopseedLeavesProperties = setUpLeaves(TreeHopseed.leavesBlock, 2, "acacia");
+		hopseedLeavesProperties = setUpLeaves(TreeHopseed.leavesBlock, 2, "deciduous");
 		sakuraLeavesProperties = setUpLeaves(TreeSakura.leavesBlock, 3, "deciduous");
 
 		ghostwoodLeavesProperties = setUpLeavesNether(TreeGhostwood.leavesBlock, 0, "deciduous");
@@ -158,7 +158,6 @@ public class ModContent {
 
 		Collections.addAll(trees, mapleTree, silverbellTree, amaranthTree, tigerwoodTree, willowTree, eucalyptusTree, hopseedTree, sakuraTree, ghostwoodTree, bloodwoodTree, fusewoodTree, darkwoodTree);
 
-		//-=-=-=-=-=-=-Registers Stuff-=-=-=-=-=-=-=-=-
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
@@ -222,7 +221,6 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
 		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
 	}
-	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {

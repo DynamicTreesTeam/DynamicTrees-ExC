@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.cells.CellMetadata;
@@ -17,6 +18,7 @@ import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import maxhyper.dynamictreesnatura.blocks.BlockDynamicBranchBloodwood;
 import maxhyper.dynamictreesnatura.blocks.BlockDynamicSaplingBloodwood;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.shared.NaturaCommons;
@@ -189,32 +191,6 @@ public class TreeBloodwood extends TreeFamily {
 			return newDirectionSelected(EnumFacing.getFront(choice != -1 ? choice : 0), signal);//Default to down if things are screwy
 		}
 
-//		public boolean grow(World world, BlockRooty rootyDirt, BlockPos rootPos, int soilLife, ITreePart treeBase, BlockPos treePos, Random random, boolean natural) {
-//
-//			float growthRate = getGrowthRate(world, rootPos) * ModConfigs.treeGrowthMultiplier * ModConfigs.treeGrowthFolding;
-//			do {
-//				if(soilLife > 0){
-//					if(growthRate > random.nextFloat()) {
-//						GrowSignal signal = new GrowSignal(this, rootPos, getEnergy(world, rootPos));
-//						boolean success = treeBase.growSignal(world, treePos, signal).success;
-//
-//						int soilLongevity = getSoilLongevity(world, rootPos) * (success ? 1 : 16);//Don't deplete the soil as much if the grow operation failed
-//
-//						if(soilLongevity <= 0 || random.nextInt(soilLongevity) == 0) {//1 in X(soilLongevity) chance to draw nutrients from soil
-//							rootyDirt.setSoilLife(world, rootPos, soilLife - 1);//decrement soil life
-//						}
-//
-//						if(signal.choked) {
-//							soilLife = 0;
-//							rootyDirt.setSoilLife(world, rootPos, soilLife);
-//							TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(new NodeShrinker(signal.getSpecies())));
-//						}
-//					}
-//				}
-//			} while(--growthRate > 0.0f);
-//
-//			return postGrow(world, rootPos, treePos, soilLife, natural);
-//		}
 	}
 
 	public TreeBloodwood() {
@@ -268,4 +244,5 @@ public class TreeBloodwood extends TreeFamily {
 
 		return CellMetadata.radiusAndMeta(radius, meta);
 	}
+
 }

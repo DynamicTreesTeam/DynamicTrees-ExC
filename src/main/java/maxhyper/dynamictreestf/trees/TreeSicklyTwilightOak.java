@@ -12,12 +12,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
-import twilightforest.block.TFBlocks;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TreeStickyTwilightOak extends TreeFamily {
+public class TreeSicklyTwilightOak extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("twilightforest:twilight_leaves");
 	public static Block logBlock = Block.getBlockFromName("twilightforest:twilight_log");
@@ -26,10 +25,10 @@ public class TreeStickyTwilightOak extends TreeFamily {
 	public static int logsMeta = 0;
 	public static int saplingMeta = 0;
 
-	public class SpeciesStickyTwilightOak extends Species {
+	public class SpeciesSicklyTwilightOak extends Species {
 
-		SpeciesStickyTwilightOak(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.stickyTwilightOakLeavesProperties);
+		SpeciesSicklyTwilightOak(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.sicklyTwilightOakLeavesProperties);
 
 			setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
 
@@ -38,12 +37,12 @@ public class TreeStickyTwilightOak extends TreeFamily {
 		}
 	}
 
-	public TreeStickyTwilightOak() {
-		super(new ResourceLocation(DynamicTreesTF.MODID, "stickyTwilightOak"));
+	public TreeSicklyTwilightOak() {
+		super(new ResourceLocation(DynamicTreesTF.MODID, "sicklyTwilightOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, logsMeta));
 
-		ModContent.stickyTwilightOakLeavesProperties.setTree(this);
+		ModContent.sicklyTwilightOakLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -57,7 +56,7 @@ public class TreeStickyTwilightOak extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesStickyTwilightOak(this));
+		setCommonSpecies(new SpeciesSicklyTwilightOak(this));
 	}
 
 	@Override

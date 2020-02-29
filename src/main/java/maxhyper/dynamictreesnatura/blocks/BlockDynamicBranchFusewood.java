@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class BlockDynamicBranchFusewood extends BlockBranchBasic {
 
     public BlockDynamicBranchFusewood() {
-        super(Material.WOOD, new ResourceLocation(DynamicTreesNatura.MODID,"fusewoodbranch").toString());
+        super(new ResourceLocation(DynamicTreesNatura.MODID,"fusewoodbranch").toString());
     }
 
     @Override

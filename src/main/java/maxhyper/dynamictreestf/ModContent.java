@@ -10,8 +10,6 @@ import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreesnatura.DynamicTreesNatura;
-import maxhyper.dynamictreesnatura.trees.TreeMaple;
 import maxhyper.dynamictreestf.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -38,7 +36,7 @@ import java.util.Collections;
 @ObjectHolder(DynamicTreesTF.MODID)
 public class ModContent {
 
-	public static ILeavesProperties stickyTwilightOakLeavesProperties, canopyLeavesProperties, mangroveLeavesProperties,
+	public static ILeavesProperties sicklyTwilightOakLeavesProperties, canopyLeavesProperties, mangroveLeavesProperties,
 			darkwoodLeavesProperties, robustTwilightOakLeavesProperties, rainbowOakLeavesProperties,
 	timeLeavesProperties,transformationLeavesProperties, minersLeavesProperties, sortingLeavesProperties;
 
@@ -52,7 +50,7 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		stickyTwilightOakLeavesProperties = setUpLeaves(TreeStickyTwilightOak.leavesBlock, TreeStickyTwilightOak.leavesMeta, "deciduous");
+		sicklyTwilightOakLeavesProperties = setUpLeaves(TreeSicklyTwilightOak.leavesBlock, TreeSicklyTwilightOak.leavesMeta, "deciduous");
 		canopyLeavesProperties = setUpLeaves(TreeCanopy.leavesBlock, TreeCanopy.leavesMeta, "deciduous");
 		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesBlock, TreeMangrove.leavesMeta, "deciduous");
 		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesMeta, "deciduous");
@@ -64,7 +62,7 @@ public class ModContent {
 		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, TreeMagicMiners.leavesMeta, "deciduous");
 		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, TreeMagicSorting.leavesMeta, "deciduous");
 
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 0, stickyTwilightOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 0, sicklyTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 1, robustTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 2, rainbowOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 4, canopyLeavesProperties);
@@ -76,7 +74,7 @@ public class ModContent {
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 11, sortingLeavesProperties);
 
 
-		TreeFamily stickyTwilightOakTree = new TreeStickyTwilightOak();
+		TreeFamily sicklytwilightOakTree = new TreeSicklyTwilightOak();
 		TreeFamily canopyTree = new TreeCanopy();
 		TreeFamily mangroveTree = new TreeMangrove();
 		TreeFamily darkwoodTree = new TreeDarkwood();
@@ -87,7 +85,7 @@ public class ModContent {
 		TreeFamily sortingTree = new TreeMagicSorting();
 		TreeFamily rainbowOakTree = new TreeRainbowOak();
 
-		Collections.addAll(trees, stickyTwilightOakTree, canopyTree, mangroveTree, darkwoodTree, robustTwilightOakTree, timeTree, transformationTree, minersTree, sortingTree, rainbowOakTree);
+		Collections.addAll(trees, sicklytwilightOakTree, canopyTree, mangroveTree, darkwoodTree, robustTwilightOakTree, timeTree, transformationTree, minersTree, sortingTree, rainbowOakTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
@@ -120,7 +118,7 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		setUpSeedRecipes("stickyTwilightOak", new ItemStack(TreeStickyTwilightOak.saplingBlock, 1, TreeStickyTwilightOak.saplingMeta));
+		setUpSeedRecipes("sicklyTwilightOak", new ItemStack(TreeSicklyTwilightOak.saplingBlock, 1, TreeSicklyTwilightOak.saplingMeta));
 		setUpSeedRecipes("canopy", new ItemStack(TreeCanopy.saplingBlock, 1, TreeCanopy.saplingMeta));
 		setUpSeedRecipes("mangrove", new ItemStack(TreeMangrove.saplingBlock, 1, TreeMangrove.saplingMeta));
 		setUpSeedRecipes("darkwood", new ItemStack(TreeDarkwood.saplingBlock, 1, TreeDarkwood.saplingMeta));

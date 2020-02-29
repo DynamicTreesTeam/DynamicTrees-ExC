@@ -1,6 +1,6 @@
 {
 	"parent":"dynamictrees:item/standardseed",
 	"textures": {
-		"layer0":"dynamictreesExC:items/hopseedseed"
+		"layer0":"dynamictreesnatura:items/hopseedseed"
 	}
 }

@@ -38,9 +38,7 @@ import java.util.stream.Collectors;
 public class BlockDynamicBranchBloodwood extends BlockBranchThick {
 
     public BlockDynamicBranchBloodwood() {
-        super(Material.WOOD, new ResourceLocation(DynamicTreesNatura.MODID,"bloodwoodbranch").toString());
-        this.blockHardness = 2F;
-        cacheBranchThickStates();
+        super(new ResourceLocation(DynamicTreesNatura.MODID,"bloodwoodbranch").toString());
     }
 
     @Override
@@ -57,7 +55,7 @@ public class BlockDynamicBranchBloodwood extends BlockBranchThick {
     }
 
     @Override public int getMaxRadius() {
-        return 15;
+        return 16;
     }
 
     @Override public BranchDestructionData destroyBranchFromNode(World world, BlockPos cutPos, EnumFacing toolDir, boolean wholeTree) {

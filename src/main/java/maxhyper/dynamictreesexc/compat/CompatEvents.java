@@ -290,6 +290,7 @@ public class CompatEvents {
     public static void RegisterItemsExtraUtils2(IForgeRegistry<Item> registry){
         fejuniperSeedBurnt = new ItemDynamicSeedBurntFeJuniper();
         registry.register(fejuniperSeedBurnt);
+
         registry.register(new ItemBlock(fejuniperBranchBurnt).setRegistryName(Objects.requireNonNull(fejuniperBranchBurnt.getRegistryName())));
     }
     @Optional.Method(modid = "integrateddynamics") //MENRIL
@@ -340,6 +341,7 @@ public class CompatEvents {
     //
     @Optional.Method(modid = "extrautils2") //FERROUS JUNIPER
     public static void RegisterModelsExtraUtils2(){
+        ModelHelper.regModel(fejuniperSeedBurnt);
         ModelHelper.regModel(fejuniperBranchBurnt);
         ModelLoader.setCustomStateMapper(fejuniperLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
    }

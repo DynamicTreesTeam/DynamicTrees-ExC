@@ -24,9 +24,9 @@ public class BlockDynamicSaplingBurntFeJuniper extends BlockDynamicSapling {
         setTickRandomly(false);
     }
 
-//    @Override public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-//        return false;
-//    }
+    @Override public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+        return false;
+    }
 
     public static boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
         Block soilBlock = soilBlockState.getBlock();
