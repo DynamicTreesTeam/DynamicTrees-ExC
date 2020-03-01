@@ -1,8 +1,10 @@
 package maxhyper.dynamictreesexc.blocks;
 
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
+import maxhyper.dynamictreesexc.trees.TreeFeJuniper;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -10,13 +12,19 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BlockDynamicLeavesFeJuniper extends BlockDynamicLeaves {
@@ -37,6 +45,18 @@ public class BlockDynamicLeavesFeJuniper extends BlockDynamicLeaves {
 	}
 	@Override public boolean isFireSource(@Nonnull World world, BlockPos pos, EnumFacing side) {
 		return true;
+	}
+
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess access, BlockPos pos, IBlockState state, int fortune) {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		if (access.getBlockState(pos).getValue(BlockDynamicLeaves.TREE) == 0){
+			ret.add(TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExC.MODID, "ferrousJuniper")).getSeedStack(1));
+		} else if (access.getBlockState(pos).getValue(BlockDynamicLeaves.TREE) == 1){
+			ret.add(new ItemStack(ModContent.fejuniperSeedBurnt));
+			ret.add(new ItemStack(Items.BLAZE_POWDER));
+		}
+		return ret;
 	}
 
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {

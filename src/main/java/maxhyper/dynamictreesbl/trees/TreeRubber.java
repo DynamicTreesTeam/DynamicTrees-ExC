@@ -1,13 +1,14 @@
-package maxhyper.dynamictreesexc.trees;
+package maxhyper.dynamictreesbl.trees;
 
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreesexc.DynamicTreesExC;
-import maxhyper.dynamictreesexc.ModContent;
+import maxhyper.dynamictreesbl.DynamicTreesBL;
+import maxhyper.dynamictreesbl.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -18,23 +19,25 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import thebetweenlands.common.TheBetweenlands;
+import thebetweenlands.common.registries.BlockRegistry;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TreeRubberIC extends TreeFamily {
+public class TreeRubber extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("ic2:leaves");
-	public static Block logBlock = Block.getBlockFromName("ic2:rubber_wood");
-	public static Block saplingBlock = Block.getBlockFromName("ic2:sapling");
+	public static Block leavesBlock = BlockRegistry.LEAVES_RUBBER_TREE;
+	public static Block logBlock = BlockRegistry.LOG_RUBBER;
+	public static Block saplingBlock = BlockRegistry.SAPLING_RUBBER;
 
-	public class SpeciesRubberIC extends Species {
+	public class SpeciesRubber extends Species {
 
-		SpeciesRubberIC(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.rubberICLeavesProperties);
+		SpeciesRubber(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.rubberLeavesProperties);
 
-			setBasicGrowingParameters(0.2f, 14.0f, 10, 8, 1.25f);
-
+			setBasicGrowingParameters(0f, 18.0f, 10, 12, 1.25f);
+			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("darkoak"));
 			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.WET, 1.5f);
 			envFactor(Type.DRY, 0.5f);
@@ -61,13 +64,12 @@ public class TreeRubberIC extends TreeFamily {
 //		}
 	}
 
-	public TreeRubberIC() {
-		super(new ResourceLocation(DynamicTreesExC.MODID, "rubberIC"));
+	public TreeRubber() {
+		super(new ResourceLocation(DynamicTreesBL.MODID, "rubber"));
 
-		setDynamicBranch(ModContent.rubberICBranch);
-		ModContent.rubberICBranchFilled.setFamily(this);
+		setDynamicBranch(ModContent.rubberBranch);
 		
-		ModContent.rubberICLeavesProperties.setTree(this);
+		ModContent.rubberLeavesProperties.setTree(this);
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -81,7 +83,7 @@ public class TreeRubberIC extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesRubberIC(this));
+		setCommonSpecies(new SpeciesRubber(this));
 	}
 
 	@Override

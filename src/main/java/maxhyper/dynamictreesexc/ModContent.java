@@ -46,9 +46,9 @@ public class ModContent {
 
 	public static BlockDynamicLeaves menrilLeaves, fejuniperLeaves;
 	public static BlockBranch fejuniperBranchRaw, fejuniperBranchBurnt,
-			menrilBranch, menrilBranchFilled,
-			rubberBranch, rubberBranchFilled,
-			rubberICBranch, rubberICBranchFilled,
+			menrilBranch, menrilBranchFilled, menrilBranchEmpty,
+			rubberBranch, rubberBranchFilled, rubberBranchEmpty,
+			rubberICBranch, rubberICBranchFilled, rubberICBranchEmpty,
 			slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
 	public static Seed fejuniperSeedBurnt;
 	public static BlockDynamicSapling fejuniperSaplingBurnt;

@@ -33,7 +33,7 @@ public class TreeRubber extends TreeFamily {
 		SpeciesRubber(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.rubberLeavesProperties);
 
-			setBasicGrowingParameters(0.2f, 16.0f, 10, 10, 1.25f);
+			setBasicGrowingParameters(0.2f, 15.0f, 10, 10, 1.25f);
 
 			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.WET, 1.5f);

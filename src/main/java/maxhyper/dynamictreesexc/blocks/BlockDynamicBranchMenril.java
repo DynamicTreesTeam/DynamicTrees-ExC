@@ -45,26 +45,26 @@ public class BlockDynamicBranchMenril extends BlockBranchBasic {
         return 2f * (radius * radius) / 64.0f * 8.0f;
     };
 
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (RANDOM.nextInt(4) == 0){
-            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-        }
-        super.onBlockAdded(worldIn, pos, state);
-    }
-
-    //    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-//        super.updateTick(worldIn, pos, state, rand);
-//        performUpdate(worldIn, pos, state, rand);
-//    }
-//    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
-//        if (worldIn.getBlockState(pos).getValue(RADIUS) > 5 &&
-//                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
-//                worldIn.getBlockState(pos.up()).getBlock() != ModContent.menrilBranchFilled &&
-//                worldIn.getBlockState(pos.down()).getBlock() != ModContent.menrilBranchFilled){
+    //    @Override
+//    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+//        if (RANDOM.nextInt(4) == 0){
 //            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
 //        }
+//        super.onBlockAdded(worldIn, pos, state);
 //    }
+
+    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(worldIn, pos, state, rand);
+        performUpdate(worldIn, pos, state, rand);
+    }
+    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
+        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
+                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
+                worldIn.getBlockState(pos.up()).getBlock() != ModContent.menrilBranchFilled &&
+                worldIn.getBlockState(pos.down()).getBlock() != ModContent.menrilBranchFilled){
+            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
+        }
+    }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {

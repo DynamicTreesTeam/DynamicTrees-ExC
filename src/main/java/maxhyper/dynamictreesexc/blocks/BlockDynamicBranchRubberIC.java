@@ -44,12 +44,17 @@ public class BlockDynamicBranchRubberIC extends BlockBranchBasic {
         return 2f * (radius * radius) / 64.0f * 8.0f;
     };
 
+    @Override
+    public int getMaxRadius() {
+        return 7;
+    }
+
     @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
         performUpdate(worldIn, pos, state, rand);
     }
     private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
-        if (worldIn.getBlockState(pos).getValue(RADIUS) > 5 &&
+        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
                 RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
                 worldIn.getBlockState(pos.up()).getBlock() != ModContent.rubberICBranchFilled &&
                 worldIn.getBlockState(pos.down()).getBlock() != ModContent.rubberICBranchFilled){

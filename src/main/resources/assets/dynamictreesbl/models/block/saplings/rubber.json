@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "thebetweenlands:blocks/leaves_rubber_tree",
+        "log": "thebetweenlands:blocks/log_rubber_stump",
+        "leaves": "thebetweenlands:blocks/leaves_rubber_tree"
+    }
+}
