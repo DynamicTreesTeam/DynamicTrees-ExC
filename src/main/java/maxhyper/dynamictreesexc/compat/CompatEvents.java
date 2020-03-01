@@ -260,6 +260,20 @@ public class CompatEvents {
         TreeFamily rubberTree = new TreeRubber();
         Collections.addAll(trees, rubberTree);
     }
+    @Optional.Method(modid = "ic2") //RUBBER TREE
+    public static void RegisterBlocksIC2(IForgeRegistry<Block> registry){
+        rubberICBranch = new BlockDynamicBranchRubberIC();
+        registry.register(rubberICBranch);
+        rubberICBranchFilled = new BlockDynamicBranchRubberIC(true);
+        registry.register(rubberICBranchFilled);
+
+        rubberICLeavesProperties = setUpLeaves(TreeRubberIC.leavesBlock, 0, "deciduous", 2, 13);
+
+        LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 6, rubberICLeavesProperties);
+
+        TreeFamily rubberICTree = new TreeRubberIC();
+        Collections.addAll(trees, rubberICTree);
+    }
     @Optional.Method(modid = "thaumicbases") //GOLDEN, ENDER, AND HELLISH OAK
     public static void RegisterBlocksThaumicBases(IForgeRegistry<Block> registry){
         blockGoldenApple = (new BlockFruit("fruitgolden")).setDroppedItem(new ItemStack(Items.GOLDEN_APPLE));
@@ -301,6 +315,10 @@ public class CompatEvents {
     public static void RegisterItemsTechReborn(IForgeRegistry<Item> registry){
         registry.register(new ItemBlock(rubberBranchFilled).setRegistryName(Objects.requireNonNull(rubberBranchFilled.getRegistryName())));
     }
+    @Optional.Method(modid = "ic2") //RUBBER TREE
+    public static void RegisterItemsIC2(IForgeRegistry<Item> registry){
+        registry.register(new ItemBlock(rubberICBranchFilled).setRegistryName(Objects.requireNonNull(rubberICBranchFilled.getRegistryName())));
+    }
 
     //
     // REGISTER RECIPES
@@ -334,6 +352,10 @@ public class CompatEvents {
         setUpSeedRecipes("goldenOak", new ItemStack(TreeGoldenOak.saplingBlock));
         setUpSeedRecipes("enderOak", new ItemStack(TreeEnderOak.saplingBlock));
         setUpSeedRecipes("hellishOak", new ItemStack(TreeHellishOak.saplingBlock));
+    }
+    @Optional.Method(modid = "ic2") //RUBBER TREE
+    public static void RegisterRecipesIC2(){
+        setUpSeedRecipes("rubberIC", new ItemStack(TreeRubberIC.saplingBlock));
     }
 
     //

@@ -1,22 +1,41 @@
 package maxhyper.dynamictreesexc.blocks;
 
+import com.ferreusveritas.dynamictrees.ModConfigs;
+import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeDestroyer;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeExtState;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeNetVolume;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeSpecies;
+import com.ferreusveritas.dynamictrees.trees.Species;
 import ic2.core.IC2;
 import ic2.core.audio.PositionSpec;
-import ic2.core.item.type.MiscResourceType;
 import ic2.core.ref.ItemName;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
+import maxhyper.dynamictreesexc.nodes.BranchDestructionDataExtra;
+import maxhyper.dynamictreesexc.nodes.NodeNetSpecialBranchVolume;
+import maxhyper.dynamictreesexc.trees.TreeFeJuniper;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import org.cyclops.integrateddynamics.item.ItemCrystalizedMenrilChunkConfig;
@@ -26,52 +45,38 @@ import reborncore.common.util.WorldUtils;
 import techreborn.init.ModItems;
 import techreborn.init.ModSounds;
 
-import java.util.Random;
+import javax.annotation.Nonnull;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class BlockDynamicBranchMenril extends BlockBranchBasic {
+public class BlockBranchResin extends BlockBranchBasic {
+    static Block branch;
+    static Block filledBranch;
+    static ItemStack resin;
 
-    public BlockDynamicBranchMenril() {
-        super(new ResourceLocation(DynamicTreesExC.MODID,"menrilbranch").toString());
-        setTickRandomly(true);
+    public BlockBranchResin(String name, Block branch, Block filledBranch, ItemStack resin) {
+        super(name);
+        BlockBranchResin.branch = branch;
+        BlockBranchResin.filledBranch = filledBranch;
+        BlockBranchResin.resin = resin;
     }
-    public BlockDynamicBranchMenril(boolean filled) {
-        super(new ResourceLocation(DynamicTreesExC.MODID,"menrilbranchfilled").toString());
-        setTickRandomly(false);
+
+    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        super.updateTick(worldIn, pos, state, rand);
+        performUpdate(worldIn, pos, state, rand);
     }
-
-    @Override
-    public float getBlockHardness(IBlockState blockState, World world, BlockPos pos) {
-        int radius = getRadius(blockState);
-        return 2f * (radius * radius) / 64.0f * 8.0f;
-    };
-
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (RANDOM.nextInt(4) == 0){
-            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
+    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
+        if (worldIn.getBlockState(pos).getValue(RADIUS) > 5 &&
+                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
+                worldIn.getBlockState(pos.up()).getBlock() != filledBranch &&
+                worldIn.getBlockState(pos.down()).getBlock() != filledBranch){
+            worldIn.setBlockState(pos, filledBranch.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
         }
-        super.onBlockAdded(worldIn, pos, state);
     }
-
-    //    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-//        super.updateTick(worldIn, pos, state, rand);
-//        performUpdate(worldIn, pos, state, rand);
-//    }
-//    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
-//        if (worldIn.getBlockState(pos).getValue(RADIUS) > 5 &&
-//                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
-//                worldIn.getBlockState(pos.up()).getBlock() != ModContent.menrilBranchFilled &&
-//                worldIn.getBlockState(pos.down()).getBlock() != ModContent.menrilBranchFilled){
-//            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-//        }
-//    }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack handStack = playerIn.getHeldItemMainhand();
-        Block branch = ModContent.menrilBranch;
-        Block filledBranch = ModContent.menrilBranchFilled;
-        ItemStack resin = new ItemStack(ItemCrystalizedMenrilChunkConfig._instance.getItemInstance());
 
         if (Loader.isModLoaded("techreborn")) {
             if (state.getBlock() == filledBranch) {

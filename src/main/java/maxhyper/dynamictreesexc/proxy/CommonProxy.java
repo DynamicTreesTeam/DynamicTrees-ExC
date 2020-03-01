@@ -6,7 +6,6 @@ import net.minecraftforge.fml.common.Loader;
 public class CommonProxy {
 	
 	public void preInit() {
-
 		if (Loader.isModLoaded("tconstruct")) {
 			CompatInit.preInitTinkersConstruct();
 		}
@@ -48,6 +47,9 @@ public class CommonProxy {
 		}
 		if (Loader.isModLoaded("techreborn")) {
 			CompatInit.initTechReborn();
+		}
+		if (Loader.isModLoaded("ic2")) {
+			CompatInit.initIC2();
 		}
 
 	}

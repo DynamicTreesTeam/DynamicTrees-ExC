@@ -40,11 +40,11 @@ import java.util.stream.Collectors;
 public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
 
     public BlockDynamicBranchFeJuniper() {
-        super(Material.WOOD, new ResourceLocation(DynamicTreesExC.MODID,"ferrousjuniperbranch").toString());
+        super(new ResourceLocation(DynamicTreesExC.MODID,"ferrousjuniperbranch").toString());
         setTickRandomly(true);
     }
     public BlockDynamicBranchFeJuniper(boolean burnt) {
-        super(Material.WOOD, new ResourceLocation(DynamicTreesExC.MODID,"ferrousjuniperbranchburnt").toString());
+        super(new ResourceLocation(DynamicTreesExC.MODID,"ferrousjuniperbranchburnt").toString());
         setTickRandomly(false);
     }
 

@@ -47,13 +47,15 @@ public class ModContent {
 	public static BlockDynamicLeaves menrilLeaves, fejuniperLeaves;
 	public static BlockBranch fejuniperBranchRaw, fejuniperBranchBurnt,
 			menrilBranch, menrilBranchFilled,
-			rubberBranch, rubberBranchFilled, slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
+			rubberBranch, rubberBranchFilled,
+			rubberICBranch, rubberICBranchFilled,
+			slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
 	public static Seed fejuniperSeedBurnt;
 	public static BlockDynamicSapling fejuniperSaplingBurnt;
 	public static BlockSurfaceRoot menrilRoot;
 	public static BlockRooty rootySlimyDirt;
 	public static BlockFruit blockGoldenApple, blockEnderPearl, blockMagmaCream;
-	public static ILeavesProperties menrilLeavesProperties, rubberLeavesProperties,
+	public static ILeavesProperties menrilLeavesProperties, rubberLeavesProperties, rubberICLeavesProperties,
 			blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties,
 			blossomingLeavesProperties, swampOakLeavesProperties,
 			goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties,
@@ -86,6 +88,9 @@ public class ModContent {
 		}
 		if (Loader.isModLoaded("quark")) {
 			CompatEvents.RegisterBlocksQuark(registry);
+		}
+		if (Loader.isModLoaded("ic2")) {
+			CompatEvents.RegisterBlocksIC2(registry);
 		}
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -136,6 +141,9 @@ public class ModContent {
 		if (Loader.isModLoaded("techreborn")) {
 			CompatEvents.RegisterItemsTechReborn(registry);
 		}
+		if (Loader.isModLoaded("ic2")) {
+			CompatEvents.RegisterItemsIC2(registry);
+		}
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
@@ -162,6 +170,9 @@ public class ModContent {
 		}
 		if (Loader.isModLoaded("quark")) {
 			CompatEvents.RegisterRecipesQuark();
+		}
+		if (Loader.isModLoaded("ic2")) {
+			CompatEvents.RegisterRecipesIC2();
 		}
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){

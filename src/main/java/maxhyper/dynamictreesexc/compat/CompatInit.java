@@ -3,6 +3,9 @@ package maxhyper.dynamictreesexc.compat;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import ic2.api.item.IC2Items;
+import ic2.core.item.type.MiscResourceType;
+import ic2.core.ref.ItemName;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreesexc.dropcreators.DropCreatorResin;
@@ -53,6 +56,11 @@ public class CompatInit {
     public static void initTechReborn (){
         TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExC.MODID, "rubber")).
                 addDropCreator(new DropCreatorResin(new ItemStack(ModItems.PARTS, 1, 31)));
+    }
+    @Optional.Method(modid = "ic2")
+    public static void initIC2 (){
+        TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExC.MODID, "rubberIC")).
+                addDropCreator(new DropCreatorResin(ItemName.misc_resource.getItemStack(MiscResourceType.resin)));
     }
     @Optional.Method(modid = "thaumicbases")
     public static void initThaumicBases(){
