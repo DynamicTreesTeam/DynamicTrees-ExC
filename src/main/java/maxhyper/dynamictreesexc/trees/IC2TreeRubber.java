@@ -22,7 +22,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import java.util.List;
 import java.util.Objects;
 
-public class TreeRubberIC extends TreeFamily {
+public class IC2TreeRubber extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("ic2:leaves");
 	public static Block logBlock = Block.getBlockFromName("ic2:rubber_wood");
@@ -61,7 +61,7 @@ public class TreeRubberIC extends TreeFamily {
 //		}
 	}
 
-	public TreeRubberIC() {
+	public IC2TreeRubber() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "rubberIC"));
 
 		setDynamicBranch(ModContent.rubberICBranch);

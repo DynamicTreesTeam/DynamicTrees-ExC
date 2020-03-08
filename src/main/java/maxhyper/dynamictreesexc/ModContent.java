@@ -17,15 +17,21 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
 import maxhyper.dynamictreesexc.blocks.*;
-import maxhyper.dynamictreesexc.compat.CompatEvents;
+import maxhyper.dynamictreesexc.items.ItemDynamicSeedBurntFeJuniper;
+import maxhyper.dynamictreesexc.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -72,25 +78,200 @@ public class ModContent {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		if (Loader.isModLoaded("integrateddynamics")) {
-			CompatEvents.RegisterBlocksIntegratedDynamics(registry);
+			//Branches
+			menrilBranch = new BlockDynamicBranchMenril();
+			registry.register(menrilBranch);
+			menrilBranchFilled = new BlockDynamicBranchMenril(true);
+			registry.register(menrilBranchFilled);
+
+			//Leaves
+			menrilLeaves = new BlockDynamicLeavesMenril();
+			registry.register(menrilLeaves);
+
+			menrilLeavesProperties = new LeavesProperties(
+					IDTreeMenril.leavesBlock.getDefaultState(),
+					new ItemStack(IDTreeMenril.leavesBlock),
+					TreeRegistry.findCellKit("deciduous"))
+			{
+				@Override public int getSmotherLeavesMax() {
+					return 8;
+				}
+				@Override public ItemStack getPrimitiveLeavesItemStack() {
+					return new ItemStack(IDTreeMenril.leavesBlock);
+				}
+				@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
+					return 0xffffff;
+				}
+			};
+
+			menrilLeavesProperties.setDynamicLeavesState(menrilLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+			menrilLeaves.setProperties(0, menrilLeavesProperties);
+
+			TreeFamily menrilTree = new IDTreeMenril();
+			Collections.addAll(trees, menrilTree);
 		}
 		if (Loader.isModLoaded("tconstruct")) {
-			CompatEvents.RegisterBlocksTinkersConstruct(registry);
+			slimeBlueBranch = new BlockDynamicBranchSlime("slimebluebranch");
+			registry.register(slimeBlueBranch);
+			slimePurpleBranch = new BlockDynamicBranchSlime("slimepurplebranch");
+			registry.register(slimePurpleBranch);
+			slimeMagmaBranch = new BlockDynamicBranchSlime("slimemagmabranch");
+			registry.register(slimeMagmaBranch);
+
+			rootySlimyDirt = new BlockRootySlimyDirt(false);
+			registry.register(rootySlimyDirt);
+
+			blueSlimeLeavesProperties = new LeavesProperties(
+					TCTreeSlimeBlue.leavesBlock.getDefaultState(),
+					new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0),
+					TreeRegistry.findCellKit("conifer"))
+			{
+				@Override public int getSmotherLeavesMax() {
+					return 8;
+				}
+				@Override public ItemStack getPrimitiveLeavesItemStack() {
+					return new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0);
+				}
+				@Override public int getFlammability() {
+					return 0;
+				}
+				@Override public int getFireSpreadSpeed() { return 0; }
+			};
+			purpleSlimeLeavesProperties = new LeavesProperties(
+					TCTreeSlimeBlue.leavesBlock.getDefaultState(),
+					new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 1),
+					TreeRegistry.findCellKit("conifer"))
+			{
+				@Override public int getSmotherLeavesMax() {
+					return 8;
+				}
+				@Override public ItemStack getPrimitiveLeavesItemStack() {
+					return new ItemStack(TCTreeSlimePurple.leavesBlock, 1, 1);
+				}
+				@Override public int getFlammability() {
+					return 0;
+				}
+				@Override public int getFireSpreadSpeed() { return 0; }
+			};
+			magmaSlimeLeavesProperties = new LeavesProperties(
+					TCTreeSlimeMagma.leavesBlock.getDefaultState(),
+					new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2),
+					TreeRegistry.findCellKit("conifer"))
+			{
+				@Override public int getSmotherLeavesMax() {
+					return 8;
+				}
+				@Override public ItemStack getPrimitiveLeavesItemStack() {
+					return new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2);
+				}
+				@Override public int getFlammability() {
+					return 0;
+				}
+				@Override public int getFireSpreadSpeed() { return 0; }
+			};
+
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 1, blueSlimeLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 2, purpleSlimeLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 3, magmaSlimeLeavesProperties);
+
+			TreeFamily blueSlimeTree = new TCTreeSlimeBlue();
+			TreeFamily purpleSlimeTree = new TCTreeSlimePurple();
+			TreeFamily magmaSlimeTree = new TCTreeSlimeMagma();
+			Collections.addAll(trees, blueSlimeTree, purpleSlimeTree, magmaSlimeTree);
 		}
 		if (Loader.isModLoaded("thaumicbases")) {
-			CompatEvents.RegisterBlocksThaumicBases(registry);
+			blockGoldenApple = (new BlockFruit("fruitgolden")).setDroppedItem(new ItemStack(Items.GOLDEN_APPLE));
+			registry.register(blockGoldenApple);
+			blockEnderPearl = (new BlockFruit("fruitender")).setDroppedItem(new ItemStack(Items.ENDER_PEARL));
+			registry.register(blockEnderPearl);
+			blockMagmaCream = (new BlockFruit("fruitmagma")).setDroppedItem(new ItemStack(Items.MAGMA_CREAM));
+			registry.register(blockMagmaCream);
+
+			goldenOakLeavesProperties = setUpLeaves(TBTreeGoldenOak.leavesBlock, 0, "deciduous");
+			enderOakLeavesProperties = setUpLeaves(TBTreeEnderOak.leavesBlock, 0, "deciduous");
+			hellishOakLeavesProperties = setUpLeaves(TBTreeHellishOak.leavesBlock, 0, "deciduous");
+
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 8, goldenOakLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 9, enderOakLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 10, hellishOakLeavesProperties);
+
+			TreeFamily goldenOakTree = new TBTreeGoldenOak();
+			TreeFamily enderOakTree = new TBTreeEnderOak();
+			TreeFamily hellishOakTree = new TBTreeHellishOak();
+			Collections.addAll(trees, goldenOakTree, enderOakTree, hellishOakTree);
 		}
 		if (Loader.isModLoaded("extrautils2")) {
-			CompatEvents.RegisterBlocksExtraUtils2(registry);
+
+			fejuniperBranchRaw = new BlockDynamicBranchFeJuniper();
+			registry.register(fejuniperBranchRaw);
+			fejuniperBranchBurnt = new BlockDynamicBranchFeJuniper(true);
+			registry.register(fejuniperBranchBurnt);
+
+			fejuniperLeaves = new BlockDynamicLeavesFeJuniper();
+			registry.register(fejuniperLeaves);
+
+			fejuniperSaplingBurnt = new BlockDynamicSaplingBurntFeJuniper();
+			registry.register(fejuniperSaplingBurnt);
+
+			fejuniperLeavesRawProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, 0, "conifer");
+			fejuniperLeavesBurntProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, 1, "conifer");
+
+			fejuniperLeavesRawProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+			fejuniperLeavesBurntProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
+			fejuniperLeaves.setProperties(0, fejuniperLeavesRawProperties);
+			fejuniperLeaves.setProperties(1, fejuniperLeavesBurntProperties);
+
+			TreeFamily feJuniperTree = new EU2TreeFeJuniper();
+			Collections.addAll(trees, feJuniperTree);
 		}
 		if (Loader.isModLoaded("techreborn")) {
-			CompatEvents.RegisterBlocksTechReborn(registry);
+			rubberBranch = new BlockDynamicBranchRubber();
+			registry.register(rubberBranch);
+			rubberBranchFilled = new BlockDynamicBranchRubber(true);
+			registry.register(rubberBranchFilled);
+
+			rubberLeavesProperties = setUpLeaves(TRTreeRubber.leavesBlock, 0, "deciduous", 2, 13);
+
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 0, rubberLeavesProperties);
+
+			TreeFamily rubberTree = new TRTreeRubber();
+			Collections.addAll(trees, rubberTree);
 		}
 		if (Loader.isModLoaded("quark")) {
-			CompatEvents.RegisterBlocksQuark(registry);
+			//Leaves properties
+			swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, 0, "deciduous", 3, 13);
+			blossomingLeavesProperties = new LeavesProperties(
+					QTreeBlossoming.leavesBlock.getDefaultState(),
+					new ItemStack(QTreeBlossoming.leavesBlock, 1, 1),
+					TreeRegistry.findCellKit("deciduous"))
+			{
+				@Override public ItemStack getPrimitiveLeavesItemStack() {
+					return new ItemStack(QTreeBlossoming.leavesBlock, 1, 1);
+				}
+				@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
+					return 0xffffff;
+				}
+			};
+
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 4, blossomingLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 5, swampOakLeavesProperties);
+
+			TreeFamily blossomingTree = new QTreeBlossoming();
+			TreeFamily swampOakTree = new QTreeSwampOak();
+			Collections.addAll(trees, blossomingTree, swampOakTree);
 		}
 		if (Loader.isModLoaded("ic2")) {
-			CompatEvents.RegisterBlocksIC2(registry);
+			rubberICBranch = new BlockDynamicBranchRubberIC();
+			registry.register(rubberICBranch);
+			rubberICBranchFilled = new BlockDynamicBranchRubberIC(true);
+			registry.register(rubberICBranchFilled);
+
+			rubberICLeavesProperties = setUpLeaves(IC2TreeRubber.leavesBlock, 0, "deciduous", 2, 13);
+
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 6, rubberICLeavesProperties);
+
+			TreeFamily rubberICTree = new IC2TreeRubber();
+			Collections.addAll(trees, rubberICTree);
 		}
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -103,7 +284,7 @@ public class ModContent {
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
+				leavesBlock.getDefaultState(),
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{
@@ -116,7 +297,7 @@ public class ModContent {
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
+				leavesBlock.getDefaultState(),
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{
@@ -129,20 +310,55 @@ public class ModContent {
 		return leavesProperties;
 	}
 
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
+		ILeavesProperties leavesProperties;
+		leavesProperties = new LeavesProperties(
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
+				TreeRegistry.findCellKit(cellKit))
+		{
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
+			}
+		};
+		return leavesProperties;
+	}
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
+		ILeavesProperties leavesProperties;
+		leavesProperties = new LeavesProperties(
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
+				TreeRegistry.findCellKit(cellKit))
+		{
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
+			}
+		};
+		return leavesProperties;
+	}
+
+
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		if (Loader.isModLoaded("extrautils2")) {
-			CompatEvents.RegisterItemsExtraUtils2(registry);
+			fejuniperSeedBurnt = new ItemDynamicSeedBurntFeJuniper();
+			registry.register(fejuniperSeedBurnt);
+
+			registry.register(new ItemBlock(fejuniperBranchBurnt).setRegistryName(Objects.requireNonNull(fejuniperBranchBurnt.getRegistryName())));
+
 		}
 		if (Loader.isModLoaded("integrateddynamics")) {
-			CompatEvents.RegisterItemsIntegratedDynamics(registry);
+			registry.register(new ItemBlock(menrilBranchFilled).setRegistryName(Objects.requireNonNull(menrilBranchFilled.getRegistryName())));
+
 		}
 		if (Loader.isModLoaded("techreborn")) {
-			CompatEvents.RegisterItemsTechReborn(registry);
+			registry.register(new ItemBlock(rubberBranchFilled).setRegistryName(Objects.requireNonNull(rubberBranchFilled.getRegistryName())));
+
 		}
 		if (Loader.isModLoaded("ic2")) {
-			CompatEvents.RegisterItemsIC2(registry);
+			registry.register(new ItemBlock(rubberICBranchFilled).setRegistryName(Objects.requireNonNull(rubberICBranchFilled.getRegistryName())));
+
 		}
 
 		ArrayList<Item> treeItems = new ArrayList<>();
@@ -154,25 +370,31 @@ public class ModContent {
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
 		if (Loader.isModLoaded("integrateddynamics")) {
-			CompatEvents.RegisterRecipesIntegratedDynamics();
+			setUpSeedRecipes("menril", new ItemStack(IDTreeMenril.saplingBlock));
 		}
 		if (Loader.isModLoaded("tconstruct")) {
-			CompatEvents.RegisterRecipesTinkersConstruct();
+			setUpSeedRecipes("slimeBlue", new ItemStack(TCTreeSlimeBlue.saplingBlock, 1, 0));
+			setUpSeedRecipes("slimePurple", new ItemStack(TCTreeSlimePurple.saplingBlock, 1, 1));
+			setUpSeedRecipes("slimeMagma", new ItemStack(TCTreeSlimeMagma.saplingBlock, 1, 2));
 		}
 		if (Loader.isModLoaded("thaumicbases")) {
-			CompatEvents.RegisterRecipesThaumicBases();
+			setUpSeedRecipes("goldenOak", new ItemStack(TBTreeGoldenOak.saplingBlock));
+			setUpSeedRecipes("enderOak", new ItemStack(TBTreeEnderOak.saplingBlock));
+			setUpSeedRecipes("hellishOak", new ItemStack(TBTreeHellishOak.saplingBlock));
 		}
 		if (Loader.isModLoaded("extrautils2")) {
-			CompatEvents.RegisterRecipesExtraUtils2();
+			setUpSeedRecipes("ferrousJuniper", new ItemStack(EU2TreeFeJuniper.saplingBlock));
+			setUpSeedRecipes("ferrousJuniperBurnt", new ItemStack(EU2TreeFeJuniper.saplingBlock, 1, 1), new ItemStack(fejuniperSeedBurnt));
 		}
 		if (Loader.isModLoaded("techreborn")) {
-			CompatEvents.RegisterRecipesTechReborn();
+			setUpSeedRecipes("rubber", new ItemStack(TRTreeRubber.saplingBlock));
 		}
 		if (Loader.isModLoaded("quark")) {
-			CompatEvents.RegisterRecipesQuark();
+			setUpSeedRecipes("blossoming", new ItemStack(QTreeBlossoming.saplingBlock, 1, 1));
+			setUpSeedRecipes("swampOak", new ItemStack(QTreeSwampOak.saplingBlock, 1, 0));
 		}
 		if (Loader.isModLoaded("ic2")) {
-			CompatEvents.RegisterRecipesIC2();
+			setUpSeedRecipes("rubberIC", new ItemStack(IC2TreeRubber.saplingBlock));
 		}
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
@@ -198,16 +420,19 @@ public class ModContent {
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesExC.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 		if (Loader.isModLoaded("integrateddynamics")) {
-			CompatEvents.RegisterModelsIntegratedDynamics();
+			ModelHelper.regModel(menrilBranchFilled);
+			ModelLoader.setCustomStateMapper(menrilLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		}
 		if (Loader.isModLoaded("tconstruct")) {
-			CompatEvents.RegisterModelsTinkersConstruct();
+			ModelLoader.setCustomStateMapper(rootySlimyDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		}
 		if (Loader.isModLoaded("extrautils2")) {
-			CompatEvents.RegisterModelsExtraUtils2();
+			ModelHelper.regModel(fejuniperSeedBurnt);
+			ModelHelper.regModel(fejuniperBranchBurnt);
+			ModelLoader.setCustomStateMapper(fejuniperLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		}
 		if (Loader.isModLoaded("techreborn")) {
-			CompatEvents.RegisterModelsTechReborn();
+			ModelHelper.regModel(rubberBranchFilled);
 		}
 
 	}

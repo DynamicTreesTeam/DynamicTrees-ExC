@@ -5,12 +5,15 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestf.DynamicTreesTF;
 import maxhyper.dynamictreestf.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.registries.IForgeRegistry;
+import twilightforest.block.BlockTFMagicLog;
 import twilightforest.block.TFBlocks;
+import twilightforest.enums.MagicWoodVariant;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +23,7 @@ public class TreeMagicSorting extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("twilightforest:magic_leaves");
 	public static Block logBlock = Block.getBlockFromName("twilightforest:magic_log");
 	public static Block saplingBlock = Block.getBlockFromName("twilightforest:twilight_sapling");
-    public static int leavesMeta = 3;
+	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockTFMagicLog.VARIANT, MagicWoodVariant.SORT);
 	public static int logsMeta = 3;
 	public static int saplingMeta = 8;
 

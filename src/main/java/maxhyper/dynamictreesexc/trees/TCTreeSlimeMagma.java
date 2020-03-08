@@ -14,7 +14,7 @@ import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.Objects;
 
-public class TreeSlimeMagma extends TreeSlimeBlue {
+public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
 
 	public class SpeciesMagmaSlime extends Species {
 		SpeciesMagmaSlime(TreeFamily treeFamily) {
@@ -45,10 +45,10 @@ public class TreeSlimeMagma extends TreeSlimeBlue {
 		}
 	}
 
-	public TreeSlimeMagma() {
+	public TCTreeSlimeMagma() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "slimeMagma"));
 
-		setPrimitiveLog(logBlock.getStateFromMeta(4), new ItemStack(logBlock, 1, 4));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 4));
 		setDynamicBranch(ModContent.slimeMagmaBranch);
 
 		ModContent.magmaSlimeLeavesProperties.setTree(this);

@@ -2,11 +2,13 @@ package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import com.progwml6.natura.shared.NaturaCommons;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -22,6 +24,7 @@ public class TreeMaple extends TreeFamily {
 	public static Block leavesBlock = NaturaOverworld.overworldLeaves;
     public static Block logBlock = NaturaOverworld.overworldLog;
     public static Block saplingBlock = NaturaOverworld.overworldSapling;
+	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockOverworldLog.TYPE, BlockOverworldLog.LogType.MAPLE);
 
 	public class SpeciesMaple extends Species {
 
@@ -43,7 +46,7 @@ public class TreeMaple extends TreeFamily {
 	public TreeMaple() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "maple"));
 
-		setPrimitiveLog(logBlock.getStateFromMeta(3), new ItemStack(logBlock, 1, 3));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 3));
 
 		ModContent.mapleLeavesProperties.setTree(this);
 

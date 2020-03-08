@@ -13,6 +13,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestf.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,6 +29,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import twilightforest.block.BlockTFMagicLog;
+import twilightforest.enums.MagicWoodVariant;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,17 +53,17 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		sicklyTwilightOakLeavesProperties = setUpLeaves(TreeSicklyTwilightOak.leavesBlock, TreeSicklyTwilightOak.leavesMeta, "deciduous");
-		canopyLeavesProperties = setUpLeaves(TreeCanopy.leavesBlock, TreeCanopy.leavesMeta, "deciduous");
-		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesBlock, TreeMangrove.leavesMeta, "deciduous");
-		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesMeta, "deciduous");
-		robustTwilightOakLeavesProperties = setUpLeaves(TreeRobustTwilightOak.leavesBlock, TreeRobustTwilightOak.leavesMeta, "deciduous");
-		rainbowOakLeavesProperties = setUpLeaves(TreeRainbowOak.leavesBlock, TreeRainbowOak.leavesMeta, "deciduous");
+		sicklyTwilightOakLeavesProperties = setUpLeaves(TreeSicklyTwilightOak.leavesBlock, TreeSicklyTwilightOak.leavesState, "deciduous");
+		canopyLeavesProperties = setUpLeaves(TreeCanopy.leavesBlock, TreeCanopy.leavesState, "deciduous");
+		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesBlock, TreeMangrove.leavesState, "deciduous");
+		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
+		robustTwilightOakLeavesProperties = setUpLeaves(TreeRobustTwilightOak.leavesBlock, TreeRobustTwilightOak.leavesState, "deciduous");
+		rainbowOakLeavesProperties = setUpLeaves(TreeRainbowOak.leavesBlock, TreeRainbowOak.leavesState, "deciduous");
 
-		timeLeavesProperties = setUpLeaves(TreeMagicTime.leavesBlock, TreeMagicTime.leavesMeta, "deciduous");
-		transformationLeavesProperties = setUpLeaves(TreeMagicTransformation.leavesBlock, TreeMagicTransformation.leavesMeta, "deciduous");
-		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, TreeMagicMiners.leavesMeta, "deciduous");
-		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, TreeMagicSorting.leavesMeta, "deciduous");
+		timeLeavesProperties = setUpLeaves(TreeMagicTime.leavesBlock, TreeMagicTime.leavesState, 0, "deciduous");
+		transformationLeavesProperties = setUpLeaves(TreeMagicTransformation.leavesBlock, TreeMagicTransformation.leavesState, 1, "deciduous");
+		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, TreeMagicMiners.leavesState, 2,"deciduous");
+		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, TreeMagicSorting.leavesState, 3, "deciduous");
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 0, sicklyTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTF.MODID, 1, robustTwilightOakLeavesProperties);
@@ -94,10 +97,23 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
+				TreeRegistry.findCellKit(cellKit))
+		{
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
+			}
+		};
+		return leavesProperties;
+	}
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit){
+		ILeavesProperties leavesProperties;
+		leavesProperties = new LeavesProperties(
+				leavesState,
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{

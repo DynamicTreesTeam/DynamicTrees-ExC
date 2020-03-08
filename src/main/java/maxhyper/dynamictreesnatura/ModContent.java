@@ -17,6 +17,7 @@ import maxhyper.dynamictreesnatura.trees.*;
 import com.progwml6.natura.shared.NaturaCommons;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -90,34 +91,21 @@ public class ModContent {
 
 		bloodwoodSeed = new ItemDynamicSeedBloodwood();
 
-		mapleLeavesProperties = setUpLeaves(TreeMaple.leavesBlock, 0, "deciduous");
-		silverbellLeavesProperties = setUpLeaves(TreeSilverbell.leavesBlock, 1, "deciduous");
-		amaranthLeavesProperties = setUpLeaves(TreeAmaranth.leavesBlock, 2, "deciduous");
-		tigerwoodLeavesProperties = setUpLeaves(TreeTigerwood.leavesBlock, 3, "deciduous");
-		willowLeavesProperties = setUpLeaves(TreeWillow.leavesBlock, 0, "deciduous", 3, 13);
-		eucalyptusLeavesProperties = setUpLeaves(TreeEucalyptus.leavesBlock, 1, "acacia");
-		hopseedLeavesProperties = setUpLeaves(TreeHopseed.leavesBlock, 2, "deciduous");
-		sakuraLeavesProperties = setUpLeaves(TreeSakura.leavesBlock, 3, "deciduous");
+		mapleLeavesProperties = setUpLeaves(TreeMaple.leavesBlock, TreeMaple.leavesState, "deciduous");
+		silverbellLeavesProperties = setUpLeaves(TreeSilverbell.leavesBlock, TreeSilverbell.leavesState, "deciduous");
+		amaranthLeavesProperties = setUpLeaves(TreeAmaranth.leavesBlock, TreeAmaranth.leavesState, "deciduous");
+		tigerwoodLeavesProperties = setUpLeaves(TreeTigerwood.leavesBlock, TreeTigerwood.leavesState, "deciduous");
+		willowLeavesProperties = setUpLeaves(TreeWillow.leavesBlock, TreeWillow.leavesState, "deciduous", 3, 13);
+		eucalyptusLeavesProperties = setUpLeaves(TreeEucalyptus.leavesBlock, TreeEucalyptus.leavesState, "acacia");
+		hopseedLeavesProperties = setUpLeaves(TreeHopseed.leavesBlock, TreeHopseed.leavesState, "deciduous");
+		sakuraLeavesProperties = setUpLeaves(TreeSakura.leavesBlock, TreeSakura.leavesState, "deciduous");
 
-		ghostwoodLeavesProperties = setUpLeavesNether(TreeGhostwood.leavesBlock, 0, "deciduous");
-		bloodwoodLeavesProperties = setUpLeavesNether(TreeBloodwood.leavesBlock, 1, "bloodwood");
-		fusewoodLeavesProperties = setUpLeavesNether(TreeFusewood.leavesBlock, 2, "deciduous");
-		darkwoodLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, 0, "deciduous");
-		darkwoodFloweringLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, 1, "deciduous");
-		darkwoodFruitLeavesProperties = new LeavesProperties(
-				TreeDarkwood.leavesBlock.getStateFromMeta(2),
-				new ItemStack(TreeDarkwood.leavesBlock, 1, 2),
-				TreeRegistry.findCellKit("deciduous"))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(TreeDarkwood.leavesBlock, 1, 2);
-			}
-			@Override public int getLightRequirement() {
-				return 0;
-			}
-			@Override public int getFlammability() { return 0; }
-			@Override public int getFireSpreadSpeed() { return 0; }
-		};
+		ghostwoodLeavesProperties = setUpLeavesNether(TreeGhostwood.leavesBlock, TreeGhostwood.leavesState, "deciduous");
+		bloodwoodLeavesProperties = setUpLeavesNether(TreeBloodwood.leavesBlock, TreeBloodwood.leavesState, "bloodwood");
+		fusewoodLeavesProperties = setUpLeavesNether(TreeFusewood.leavesBlock, TreeFusewood.leavesState, "deciduous");
+		darkwoodLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
+		darkwoodFloweringLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
+		darkwoodFruitLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 0, mapleLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 1, silverbellLeavesProperties);
@@ -165,43 +153,41 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
-				new ItemStack(leavesBlock, 1, leavesMeta),
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
 				TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
 			}
 		};
 		return leavesProperties;
 	}
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
-				new ItemStack(leavesBlock, 1, leavesMeta),
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
 				TreeRegistry.findCellKit(cellKit))
 		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
 			}
 		};
 		return leavesProperties;
 	}
-	private static ILeavesProperties setUpLeavesNether (Block leavesBlock, int leavesMeta, String cellKit){
+	private static ILeavesProperties setUpLeavesNether (Block leavesBlock, IBlockState leavesState, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
-				new ItemStack(leavesBlock, 1, leavesMeta),
+				leavesState,
+				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
 				TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
 			}
 			@Override public int getLightRequirement() {
 				return 0;
@@ -211,6 +197,7 @@ public class ModContent {
 		};
 		return leavesProperties;
 	}
+
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();

@@ -13,7 +13,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 
-public class TreeFeJuniper extends TreeFamily {
+public class EU2TreeFeJuniper extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("extrautils2:ironwood_leaves");
 	public static Block logBlock = Block.getBlockFromName("extrautils2:ironwood_log");
@@ -35,7 +35,7 @@ public class TreeFeJuniper extends TreeFamily {
 
 	}
 
-	public TreeFeJuniper() {
+	public EU2TreeFeJuniper() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "ferrousJuniper"));
 
 		setDynamicBranch(ModContent.fejuniperBranchRaw);

@@ -6,11 +6,14 @@ import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
+import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves2;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.shared.NaturaCommons;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,6 +33,7 @@ public class TreeDarkwood extends TreeFamily {
 	public static Block leavesBlock = NaturaNether.netherLeaves2;
     public static Block logBlock = NaturaNether.netherLog;
     public static Block saplingBlock = NaturaNether.netherSapling2;
+	public static IBlockState leavesState = leavesBlock.getDefaultState();
 
 	public class SpeciesDarkwood extends Species {
 

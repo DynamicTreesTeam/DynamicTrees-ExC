@@ -16,6 +16,9 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
+import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
+import com.progwml6.natura.nether.block.logs.BlockNetherLog;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.blocks.BlockDynamicBranchBloodwood;
@@ -49,6 +52,7 @@ public class TreeBloodwood extends TreeFamily {
 	public static Block leavesBlock = NaturaNether.netherLeaves;
     public static Block logBlock = NaturaNether.netherLog2;
     public static Block saplingBlock = NaturaNether.netherSapling;
+	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockNetherLeaves.TYPE, BlockNetherLeaves.LeavesType.BLOODWOOD);
 
 	public class SpeciesBloodwood extends Species {
 

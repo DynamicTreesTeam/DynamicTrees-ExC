@@ -14,7 +14,7 @@ import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.Objects;
 
-public class TreeSlimePurple extends TreeSlimeBlue {
+public class TCTreeSlimePurple extends TCTreeSlimeBlue {
 
 	public class SpeciesPurpleSlime extends Species {
 		SpeciesPurpleSlime(TreeFamily treeFamily) {
@@ -46,10 +46,10 @@ public class TreeSlimePurple extends TreeSlimeBlue {
 		}
 	}
 
-	public TreeSlimePurple() {
+	public TCTreeSlimePurple() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "slimePurple"));
 
-		setPrimitiveLog(logBlock.getStateFromMeta(0), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 		setDynamicBranch(ModContent.slimePurpleBranch);
 
 		ModContent.purpleSlimeLeavesProperties.setTree(this);

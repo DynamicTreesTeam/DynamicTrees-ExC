@@ -13,7 +13,7 @@ import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
 import maxhyper.dynamictreesexc.nodes.BranchDestructionDataExtra;
 import maxhyper.dynamictreesexc.nodes.NodeNetSpecialBranchVolume;
-import maxhyper.dynamictreesexc.trees.TreeFeJuniper;
+import maxhyper.dynamictreesexc.trees.EU2TreeFeJuniper;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -178,11 +178,11 @@ public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
         List<ItemStack> ret = new java.util.ArrayList<ItemStack>();//A list for storing all the dead tree guts
         float rawVolume = volume - burntVolume;
         if (silkTouch){
-            ret.add(new ItemStack(TreeFeJuniper.logBlock, (int) rawVolume, 0)); //drops logs with silktouch
+            ret.add(new ItemStack(EU2TreeFeJuniper.logBlock, (int) rawVolume, 0)); //drops logs with silktouch
         } else {
-            ret.add(new ItemStack(TreeFeJuniper.planksBlock, (int) rawVolume, 1)); //drops planks without silktouch
+            ret.add(new ItemStack(EU2TreeFeJuniper.planksBlock, (int) rawVolume, 1)); //drops planks without silktouch
         }
-        ret.add(new ItemStack(TreeFeJuniper.logBlock, (int) burntVolume, 1)); //drops burnt logs if there some parts of the tree are burnt
+        ret.add(new ItemStack(EU2TreeFeJuniper.logBlock, (int) burntVolume, 1)); //drops burnt logs if there some parts of the tree are burnt
 
         ret.add(new ItemStack(Items.STICK, (int) ((volume - ((int) rawVolume + (int) burntVolume)) * 8)));
         volume *= ModConfigs.treeHarvestMultiplier;// For cheaters.. you know who you are.

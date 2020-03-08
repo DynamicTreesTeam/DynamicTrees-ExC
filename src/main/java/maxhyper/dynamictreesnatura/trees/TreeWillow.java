@@ -2,11 +2,14 @@ package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog2;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import com.progwml6.natura.shared.NaturaCommons;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +27,8 @@ public class TreeWillow extends TreeFamily {
 	public static Block leavesBlock = NaturaOverworld.overworldLeaves2;
     public static Block logBlock = NaturaOverworld.overworldLog2;
     public static Block saplingBlock = NaturaOverworld.overworldSapling2;
+	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockOverworldLog2.TYPE, BlockOverworldLog2.LogType.WILLOW);
+
 
 	public class SpeciesWillow extends Species {
 

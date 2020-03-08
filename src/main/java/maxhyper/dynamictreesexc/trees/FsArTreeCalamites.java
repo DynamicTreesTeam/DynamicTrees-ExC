@@ -14,15 +14,16 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 
-public class TreeBlossoming extends TreeFamily {
+public class FsArTreeCalamites extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
 	public static Block logBlock = Blocks.LOG;
 	public static Block saplingBlock = Block.getBlockFromName("quark:variant_sapling");
 
-	public class SpeciesBlossoming extends Species {
 
-		SpeciesBlossoming(TreeFamily treeFamily) {
+	public class SpeciesSakura extends Species {
+
+		SpeciesSakura(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.blossomingLeavesProperties);
 
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.8f);
@@ -38,10 +39,10 @@ public class TreeBlossoming extends TreeFamily {
 		}
 	}
 
-	public TreeBlossoming() {
+	public FsArTreeCalamites() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "blossoming"));
 
-		setPrimitiveLog(logBlock.getStateFromMeta(1), new ItemStack(logBlock, 1, 1));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));
 
 		ModContent.blossomingLeavesProperties.setTree(this);
 
@@ -50,7 +51,7 @@ public class TreeBlossoming extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesBlossoming(this));
+		setCommonSpecies(new SpeciesSakura(this));
 	}
 
 	@Override

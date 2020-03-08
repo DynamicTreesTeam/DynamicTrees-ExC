@@ -18,7 +18,7 @@ import slimeknights.tconstruct.world.TinkerWorld;
 import java.util.List;
 import java.util.Objects;
 
-public class TreeSlimeBlue extends TreeFamily {
+public class TCTreeSlimeBlue extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("tconstruct:slime_leaves");
 	public static Block logBlock = Block.getBlockFromName("tconstruct:slime_congealed");
@@ -60,10 +60,10 @@ public class TreeSlimeBlue extends TreeFamily {
 		}
 	}
 
-	public TreeSlimeBlue() {
+	public TCTreeSlimeBlue() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "slimeBlue"));
 
-		setPrimitiveLog(logBlock.getStateFromMeta(0), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 		setDynamicBranch(ModContent.slimeBlueBranch);
 
 		ModContent.blueSlimeLeavesProperties.setTree(this);
@@ -71,7 +71,7 @@ public class TreeSlimeBlue extends TreeFamily {
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 
 	}
-	public TreeSlimeBlue(ResourceLocation resourceLocation) {
+	public TCTreeSlimeBlue(ResourceLocation resourceLocation) {
 		super(resourceLocation);
 	}
 

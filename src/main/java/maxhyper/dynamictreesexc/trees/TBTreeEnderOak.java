@@ -14,38 +14,38 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 
-public class TreeHellishOak extends TreeFamily {
+public class TBTreeEnderOak extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:netherleaves");
-	public static Block logBlock = Block.getBlockFromName("thaumicbases:netherlogs");
-	public static Block saplingBlock = Block.getBlockFromName("thaumicbases:nethersapling");
+	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:enderleaves");
+	public static Block logBlock = Block.getBlockFromName("thaumicbases:enderlogs");
+	public static Block saplingBlock = Block.getBlockFromName("thaumicbases:endersapling");
 
-	public class SpeciesHellishOak extends Species {
+	public class SpeciesEnderOak extends Species {
 
-		SpeciesHellishOak(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.hellishOakLeavesProperties);
+		SpeciesEnderOak(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.enderOakLeavesProperties);
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.8f);
 
 			generateSeed();
 			addDropCreator(new DropCreatorSeed(0.5f));
 
-			this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaCream)).setRayDistance(4.0F));
+			this.addGenFeature((new FeatureGenFruit(ModContent.blockEnderPearl)).setRayDistance(4.0F));
 		}
 	}
 
-	public TreeHellishOak() {
-		super(new ResourceLocation(DynamicTreesExC.MODID, "hellishOak"));
+	public TBTreeEnderOak() {
+		super(new ResourceLocation(DynamicTreesExC.MODID, "enderOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock));
 
-		ModContent.hellishOakLeavesProperties.setTree(this);
+		ModContent.enderOakLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesHellishOak(this));
+		setCommonSpecies(new SpeciesEnderOak(this));
 	}
 
 	@Override

@@ -100,7 +100,7 @@ public class ModContent {
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
+				leavesBlock.getDefaultState(),
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{
@@ -113,7 +113,7 @@ public class ModContent {
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
-				leavesBlock.getStateFromMeta(leavesMeta),
+				leavesBlock.getDefaultState(),
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{
@@ -125,6 +125,8 @@ public class ModContent {
 		};
 		return leavesProperties;
 	}
+
+
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();

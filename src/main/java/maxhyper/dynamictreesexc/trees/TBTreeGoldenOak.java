@@ -14,7 +14,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 
-public class TreeGoldenOak extends TreeFamily {
+public class TBTreeGoldenOak extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:goldenleaves");
 	public static Block logBlock = Block.getBlockFromName("thaumicbases:goldenlogs");
@@ -33,7 +33,7 @@ public class TreeGoldenOak extends TreeFamily {
 		}
 	}
 
-	public TreeGoldenOak() {
+	public TBTreeGoldenOak() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "goldenOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock));

@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
-public class TreeMenril extends TreeFamily {
+public class IDTreeMenril extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("integrateddynamics:menril_leaves");
 	public static Block logBlock = Block.getBlockFromName("integrateddynamics:menril_log");
@@ -81,7 +81,7 @@ public class TreeMenril extends TreeFamily {
 		}
 	}
 
-	public TreeMenril() {
+	public IDTreeMenril() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "menril"));
 
 		setDynamicBranch(ModContent.menrilBranch);

@@ -22,7 +22,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import java.util.List;
 import java.util.Objects;
 
-public class TreeRubber extends TreeFamily {
+public class TRTreeRubber extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("techreborn:rubber_leaves");
 	public static Block logBlock = Block.getBlockFromName("techreborn:rubber_log");
@@ -61,7 +61,7 @@ public class TreeRubber extends TreeFamily {
 //		}
 	}
 
-	public TreeRubber() {
+	public TRTreeRubber() {
 		super(new ResourceLocation(DynamicTreesExC.MODID, "rubber"));
 
 		setDynamicBranch(ModContent.rubberBranch);

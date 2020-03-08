@@ -5,8 +5,6 @@ import com.ferreusveritas.dynamictrees.blocks.BlockDynamicSapling;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
-import maxhyper.dynamictreesexc.trees.TreeFeJuniper;
-import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
