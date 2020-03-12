@@ -7,10 +7,10 @@
 	},
 	"variants": {
 		"tree": {
-			"0": {"textures": { "all": "quark:blocks/sakura_leaves"}},
-			"1": {"textures": { "all": "quark:blocks/swamp_leaves"}},
-			"2": {"textures": { "all": "blocks/leaves_oak"}},
-			"3": {"textures": { "all": "blocks/dirt"}}
+			"0": {"textures": { "all": "blocks/dirt"}},
+			"1": {"textures": { "all": "blocks/dirt"}},
+			"2": {"textures": { "all": "blocks/dirt"}},
+			"3": {}
 		},
 		"hydro": {
 			"1": {},

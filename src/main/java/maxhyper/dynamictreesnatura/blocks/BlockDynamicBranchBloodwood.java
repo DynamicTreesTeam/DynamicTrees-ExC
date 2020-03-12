@@ -1,8 +1,12 @@
 package maxhyper.dynamictreesnatura.blocks;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.cells.CellNull;
+import com.ferreusveritas.dynamictrees.api.cells.ICell;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
+import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
+import com.ferreusveritas.dynamictrees.cells.CellMetadata;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeDestroyer;
@@ -10,6 +14,7 @@ import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeExtState;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeNetVolume;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeSpecies;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import net.minecraft.block.material.Material;
@@ -57,6 +62,20 @@ public class BlockDynamicBranchBloodwood extends BlockBranchThick {
     @Override public int getMaxRadius() {
         return 16;
     }
+
+//    @Override
+//    public ICell getHydrationCell(IBlockAccess blockAccess, BlockPos pos, IBlockState blockState, EnumFacing dir, ILeavesProperties leavesProperties) {
+//        TreeFamily thisTree = getFamily();
+//
+//        if(leavesProperties.getTree() == thisTree) {// The requesting leaves must match the tree for hydration to occur
+//            int radiusAndMeta = thisTree.getRadiusForCellKit(blockAccess, pos, blockState, dir, this);
+//            int radius = CellMetadata.getRadius(radiusAndMeta);
+//            int metadata = CellMetadata.getMeta(radiusAndMeta);
+//            return leavesProperties.getCellKit().getCellForBranch(radius, metadata);
+//        } else {
+//            return CellNull.NULLCELL;
+//        }
+//    }
 
     @Override public BranchDestructionData destroyBranchFromNode(World world, BlockPos cutPos, EnumFacing toolDir, boolean wholeTree) {
 

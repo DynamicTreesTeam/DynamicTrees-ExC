@@ -3,9 +3,11 @@ package maxhyper.dynamictreesexc.trees;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.rwtema.extrautils2.blocks.TreeIronWoods;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,6 +16,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.quark.world.block.BlockVariantLeaves;
+import vazkii.quark.world.feature.TreeVariants;
 
 import java.util.List;
 
@@ -22,6 +26,7 @@ public class QTreeSwampOak extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
 	public static Block logBlock = Blocks.LOG;
 	public static Block saplingBlock = Block.getBlockFromName("quark:variant_sapling");
+	public static IBlockState leavesState = TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES);
 
 	public class SpeciesSwampOak extends Species {
 

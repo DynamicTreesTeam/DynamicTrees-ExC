@@ -5,26 +5,26 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
+import java.util.Objects;
 
 public class FsArTreeCordaites extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
-	public static Block logBlock = Blocks.LOG;
-	public static Block saplingBlock = Block.getBlockFromName("quark:variant_sapling");
+	public static Block leavesBlock = Block.getBlockFromName("fossil:cordaites_leaves");
+	public static Block logBlock = Block.getBlockFromName("fossil:cordaites_log");
+	public static Block saplingBlock = Block.getBlockFromName("fossil:cordaites_sapling");
 
+	public class SpeciesCordaites extends Species {
 
-	public class SpeciesSakura extends Species {
-
-		SpeciesSakura(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.blossomingLeavesProperties);
+		SpeciesCordaites(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.cordaitesLeavesProperties);
 
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.8f);
 
@@ -40,18 +40,24 @@ public class FsArTreeCordaites extends TreeFamily {
 	}
 
 	public FsArTreeCordaites() {
-		super(new ResourceLocation(DynamicTreesExC.MODID, "blossoming"));
+		super(new ResourceLocation(DynamicTreesExC.MODID, "cordaites"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
-		ModContent.blossomingLeavesProperties.setTree(this);
+		ModContent.cordaitesLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
+	}
+	@Override
+	public ItemStack getPrimitiveLogItemStack(int qty) {
+		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock));
+		stack.setCount(MathHelper.clamp(qty, 0, 64));
+		return stack;
 	}
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesSakura(this));
+		setCommonSpecies(new SpeciesCordaites(this));
 	}
 
 	@Override

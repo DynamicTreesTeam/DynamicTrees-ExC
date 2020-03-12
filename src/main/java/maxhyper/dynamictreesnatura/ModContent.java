@@ -173,6 +173,8 @@ public class ModContent {
 				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
 				TreeRegistry.findCellKit(cellKit))
 		{
+			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
+			@Override public int getLightRequirement() { return light; } //Default: 13
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
 				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
 			}

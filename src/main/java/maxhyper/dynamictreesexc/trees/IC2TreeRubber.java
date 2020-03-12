@@ -71,7 +71,6 @@ public class IC2TreeRubber extends TreeFamily {
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
-
 	@Override
 	public ItemStack getPrimitiveLogItemStack(int qty) {
 		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);

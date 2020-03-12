@@ -1,4 +1,4 @@
-package maxhyper.dynamictreesexc.featuregen;
+package maxhyper.dynamictreesexc.growth;
 
 import com.ferreusveritas.dynamictrees.growthlogic.IGrowthLogicKit;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
@@ -15,7 +15,7 @@ public class SlimeGrowthLogic implements IGrowthLogicKit {
     private int heightVariation = 5;
 
     public SlimeGrowthLogic() {
-        this(2.0f);//Default for normal spruce
+        this(1.5f);
     }
 
     /**

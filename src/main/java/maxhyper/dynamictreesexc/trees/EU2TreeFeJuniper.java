@@ -2,9 +2,11 @@ package maxhyper.dynamictreesexc.trees;
 
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.rwtema.extrautils2.blocks.TreeIronWoods;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +21,9 @@ public class EU2TreeFeJuniper extends TreeFamily {
 	public static Block logBlock = Block.getBlockFromName("extrautils2:ironwood_log");
 	public static Block saplingBlock = Block.getBlockFromName("extrautils2:ironwood_sapling");
 	public static Block planksBlock = Block.getBlockFromName("extrautils2:ironwood_planks");
+
+	public static IBlockState leavesStateRaw = leavesBlock.getDefaultState().withProperty(TreeIronWoods.TREE_TYPE, TreeIronWoods.TreeType.RAW);
+	public static IBlockState leavesStateBurnt = leavesBlock.getDefaultState().withProperty(TreeIronWoods.TREE_TYPE, TreeIronWoods.TreeType.BURNT);
 
 	public class SpeciesFeJuniper extends Species {
 

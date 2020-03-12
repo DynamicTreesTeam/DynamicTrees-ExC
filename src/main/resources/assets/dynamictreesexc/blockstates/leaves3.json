@@ -7,9 +7,9 @@
 	},
 	"variants": {
 		"tree": {
-			"0": {"textures": { "all": "thaumicbases:blocks/goldenleaves"}},
-			"1": {"textures": { "all": "thaumicbases:blocks/enderleaves"}},
-			"2": {"textures": { "all": "thaumicbases:blocks/netherleaves"}},
+			"0": {"textures": { "all": "blocks/dirt"}},
+			"1": {"textures": { "all": "blocks/dirt"}},
+			"2": {"textures": { "all": "blocks/dirt"}},
 			"3": {"textures": { "all": "blocks/dirt"}}
 		},
 		"hydro": {

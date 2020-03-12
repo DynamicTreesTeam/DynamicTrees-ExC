@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenRoots;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.ModContent;
 import net.minecraft.block.Block;
@@ -77,7 +78,7 @@ public class IDTreeMenril extends TreeFamily {
 			long day = world.getWorldTime() / 24000L;
 			int month = (int) day / 30; // Change the hashs every in-game month
 
-			return super.getEnergy(world, pos) * biomeSuitability(world, pos) + (coordHashCode(pos.up(month)) % 16); // Vary the height energy by a psuedorandom hash function
+			return super.getEnergy(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3); // Vary the height energy by a psuedorandom hash function
 		}
 	}
 

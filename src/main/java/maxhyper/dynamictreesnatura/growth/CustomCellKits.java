@@ -1,4 +1,4 @@
-package maxhyper.dynamictreesnatura.feautregen;
+package maxhyper.dynamictreesnatura.growth;
 
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.cells.CellAcaciaLeaf;
 import com.ferreusveritas.dynamictrees.cells.CellKits;
 import com.ferreusveritas.dynamictrees.cells.LeafClusters;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
+import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 

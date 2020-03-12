@@ -8,7 +8,6 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog2;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
-import maxhyper.dynamictreesnatura.feautregen.FeatureGenGrowCoreToMax;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import com.progwml6.natura.shared.NaturaCommons;
 import net.minecraft.block.Block;

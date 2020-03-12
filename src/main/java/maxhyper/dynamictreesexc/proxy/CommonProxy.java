@@ -9,7 +9,7 @@ import maxhyper.dynamictreesexc.DynamicTreesExC;
 import maxhyper.dynamictreesexc.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreesexc.dropcreators.DropCreatorResin;
 import maxhyper.dynamictreesexc.event.RecipeHandler;
-import maxhyper.dynamictreesexc.featuregen.SlimeGrowthLogic;
+import maxhyper.dynamictreesexc.growth.SlimeGrowthLogic;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

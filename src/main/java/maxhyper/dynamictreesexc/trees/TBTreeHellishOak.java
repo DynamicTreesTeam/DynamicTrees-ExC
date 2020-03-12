@@ -10,9 +10,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TBTreeHellishOak extends TreeFamily {
 
@@ -41,6 +43,12 @@ public class TBTreeHellishOak extends TreeFamily {
 		ModContent.hellishOakLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
+	}
+	@Override
+	public ItemStack getPrimitiveLogItemStack(int qty) {
+		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock));
+		stack.setCount(MathHelper.clamp(qty, 0, 64));
+		return stack;
 	}
 
 	@Override

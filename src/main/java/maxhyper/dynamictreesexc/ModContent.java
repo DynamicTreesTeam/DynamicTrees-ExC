@@ -65,7 +65,11 @@ public class ModContent {
 			blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties,
 			blossomingLeavesProperties, swampOakLeavesProperties,
 			goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties,
-			fejuniperLeavesRawProperties, fejuniperLeavesBurntProperties;
+			fejuniperLeavesRawProperties, fejuniperLeavesBurntProperties,
+			palmLeavesProperties, sugiLeavesProperties, teaLeavesProperties,
+			alicioLeavesProperties, mulberryLeavesProperties, sakuraLeavesProperties, bloodwoodLeavesProperties,
+			cherrywoodLeavesProperties, mysterywoodLeavesProperties,
+			calamitesLeavesProperties, cordaitesLeavesProperties, palaeorapheLeavesProperties, sigillariaLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent
@@ -187,9 +191,9 @@ public class ModContent {
 			blockMagmaCream = (new BlockFruit("fruitmagma")).setDroppedItem(new ItemStack(Items.MAGMA_CREAM));
 			registry.register(blockMagmaCream);
 
-			goldenOakLeavesProperties = setUpLeaves(TBTreeGoldenOak.leavesBlock, 0, "deciduous");
-			enderOakLeavesProperties = setUpLeaves(TBTreeEnderOak.leavesBlock, 0, "deciduous");
-			hellishOakLeavesProperties = setUpLeaves(TBTreeHellishOak.leavesBlock, 0, "deciduous");
+			goldenOakLeavesProperties = setUpLeaves(TBTreeGoldenOak.leavesBlock,  "deciduous");
+			enderOakLeavesProperties = setUpLeaves(TBTreeEnderOak.leavesBlock,  "deciduous");
+			hellishOakLeavesProperties = setUpLeaves(TBTreeHellishOak.leavesBlock,  "deciduous");
 
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 8, goldenOakLeavesProperties);
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 9, enderOakLeavesProperties);
@@ -213,8 +217,8 @@ public class ModContent {
 			fejuniperSaplingBurnt = new BlockDynamicSaplingBurntFeJuniper();
 			registry.register(fejuniperSaplingBurnt);
 
-			fejuniperLeavesRawProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, 0, "conifer");
-			fejuniperLeavesBurntProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, 1, "conifer");
+			fejuniperLeavesRawProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, EU2TreeFeJuniper.leavesStateRaw, 0, "conifer", 4, 13);
+			fejuniperLeavesBurntProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, EU2TreeFeJuniper.leavesStateBurnt, 1,"conifer", 4, 13);
 
 			fejuniperLeavesRawProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
 			fejuniperLeavesBurntProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
@@ -230,7 +234,7 @@ public class ModContent {
 			rubberBranchFilled = new BlockDynamicBranchRubber(true);
 			registry.register(rubberBranchFilled);
 
-			rubberLeavesProperties = setUpLeaves(TRTreeRubber.leavesBlock, 0, "deciduous", 2, 13);
+			rubberLeavesProperties = setUpLeaves(TRTreeRubber.leavesBlock, "deciduous", 2, 13);
 
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 0, rubberLeavesProperties);
 
@@ -238,20 +242,8 @@ public class ModContent {
 			Collections.addAll(trees, rubberTree);
 		}
 		if (Loader.isModLoaded("quark")) {
-			//Leaves properties
-			swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, 0, "deciduous", 3, 13);
-			blossomingLeavesProperties = new LeavesProperties(
-					QTreeBlossoming.leavesBlock.getDefaultState(),
-					new ItemStack(QTreeBlossoming.leavesBlock, 1, 1),
-					TreeRegistry.findCellKit("deciduous"))
-			{
-				@Override public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(QTreeBlossoming.leavesBlock, 1, 1);
-				}
-				@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
-					return 0xffffff;
-				}
-			};
+			swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, QTreeSwampOak.leavesState, 0, "deciduous", 3, 13);
+			blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, QTreeBlossoming.leavesState, 1, "deciduous", 4, 13);
 
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 4, blossomingLeavesProperties);
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 5, swampOakLeavesProperties);
@@ -266,12 +258,92 @@ public class ModContent {
 			rubberICBranchFilled = new BlockDynamicBranchRubberIC(true);
 			registry.register(rubberICBranchFilled);
 
-			rubberICLeavesProperties = setUpLeaves(IC2TreeRubber.leavesBlock, 0, "deciduous", 2, 13);
+			rubberICLeavesProperties = setUpLeaves(IC2TreeRubber.leavesBlock, "deciduous", 2, 13);
 
 			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 6, rubberICLeavesProperties);
 
 			TreeFamily rubberICTree = new IC2TreeRubber();
 			Collections.addAll(trees, rubberICTree);
+		}
+		if (Loader.isModLoaded("atum")) {
+			palmLeavesProperties = new LeavesProperties(
+					A2TreePalm.leavesBlock.getDefaultState(),
+					new ItemStack(A2TreePalm.leavesBlock),
+					TreeRegistry.findCellKit("palm") ) {
+				@Override
+				public boolean appearanceChangesWithHydro() {
+					return true;
+				}
+			};
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 7, palmLeavesProperties); //leaves1 - 3
+
+			TreeFamily palmTree = new A2TreePalm();
+			Collections.addAll(trees, palmTree);
+		}
+		if (Loader.isModLoaded("forbidden_arcanus")) {
+			cherrywoodLeavesProperties = setUpLeaves(FnATreeCherrywood.leavesBlock, "deciduous");
+			mysterywoodLeavesProperties = setUpLeaves(FnATreeMysterywood.leavesBlock, "deciduous");
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 20, cherrywoodLeavesProperties); //leaves5 - 0
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 21, mysterywoodLeavesProperties); //leaves5 - 1
+
+			TreeFamily cherrywoodTree = new FnATreeCherrywood();
+			TreeFamily mysterywoodTree = new FnATreeMysterywood();
+			Collections.addAll(trees, cherrywoodTree, mysterywoodTree);
+		}
+		if (Loader.isModLoaded("simplytea")) {
+			teaLeavesProperties = new LeavesProperties(
+					null,
+					null,
+					TreeRegistry.findCellKit("deciduous"))
+			{
+			};
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 22, teaLeavesProperties); //leaves5 - 2
+
+			TreeFamily teaTree = new STTreeTea();
+			Collections.addAll(trees, teaTree);
+		}
+		if (Loader.isModLoaded("sugiforest")) {
+			sugiLeavesProperties = setUpLeaves(SFTreeSugi.leavesBlock, "deciduous");
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 11, sugiLeavesProperties); //leaves2 - 3
+
+			TreeFamily sugiTree = new SFTreeSugi();
+			Collections.addAll(trees, sugiTree);
+		}
+		if (Loader.isModLoaded("betterwithmods")) {
+			bloodwoodLeavesProperties = setUpLeaves(BWMTreeBloodwood.leavesBlock, "deciduous");
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 12, bloodwoodLeavesProperties); //leaves3 - 0
+
+			TreeFamily bloodTree = new BWMTreeBloodwood();
+			Collections.addAll(trees, bloodTree);
+		}
+		if (Loader.isModLoaded("betterwithaddons")) {
+			alicioLeavesProperties = setUpLeaves(BWATreeAlicio.leavesBlock, "deciduous");
+			mulberryLeavesProperties = setUpLeaves(BWATreeMulberry.leavesBlock, "deciduous");
+			sakuraLeavesProperties = setUpLeaves(BWATreeSakura.leavesBlock, "deciduous");
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 13, alicioLeavesProperties); //leaves3 - 1
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 14, mulberryLeavesProperties); //leaves3 - 2
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 15, sakuraLeavesProperties); //leaves3 - 3
+
+			TreeFamily alicioTree = new BWATreeAlicio();
+			TreeFamily mulberryTree = new BWATreeMulberry();
+			TreeFamily sakuraTree = new BWATreeSakura();
+			Collections.addAll(trees, alicioTree, mulberryTree, sakuraTree);
+		}
+		if (Loader.isModLoaded("fossil")) {
+			calamitesLeavesProperties = setUpLeaves(FsArTreeCalamites.leavesBlock, "deciduous");
+			cordaitesLeavesProperties = setUpLeaves(FsArTreeCordaites.leavesBlock, "deciduous");
+			palaeorapheLeavesProperties = setUpLeaves(FsArTreePalaeoraphe.leavesBlock, "deciduous");
+			sigillariaLeavesProperties = setUpLeaves(FsArTreeSigillaria.leavesBlock, "deciduous");
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 16, calamitesLeavesProperties); //leaves4 - 0
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 17, cordaitesLeavesProperties); //leaves4 - 1
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 18, palaeorapheLeavesProperties); //leaves4 - 2
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesExC.MODID, 19, sigillariaLeavesProperties); //leaves4 - 3
+
+			TreeFamily calaTree = new FsArTreeCalamites();
+			TreeFamily cordTree = new FsArTreeCordaites();
+			TreeFamily palaTree = new FsArTreePalaeoraphe();
+			TreeFamily sigiTree = new FsArTreeSigillaria();
+			Collections.addAll(trees, calaTree, cordTree, palaTree, sigiTree);
 		}
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -281,23 +353,38 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
+	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
 				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, leavesMeta),
+				new ItemStack(leavesBlock, 1, 0),
 				TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock, 1, 0);
 			}
 		};
 		return leavesProperties;
 	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
+	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(
 				leavesBlock.getDefaultState(),
+				new ItemStack(leavesBlock, 1, 0),
+				TreeRegistry.findCellKit(cellKit))
+		{
+			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
+			@Override public int getLightRequirement() { return light; } //Default: 13
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(leavesBlock, 1, 0);
+			}
+		};
+		return leavesProperties;
+	}
+	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
+		ILeavesProperties leavesProperties;
+		leavesProperties = new LeavesProperties(
+				leavesState,
 				new ItemStack(leavesBlock, 1, leavesMeta),
 				TreeRegistry.findCellKit(cellKit))
 		{
@@ -309,34 +396,6 @@ public class ModContent {
 		};
 		return leavesProperties;
 	}
-
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
-			}
-		};
-		return leavesProperties;
-	}
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
-			}
-		};
-		return leavesProperties;
-	}
-
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
@@ -396,6 +455,34 @@ public class ModContent {
 		if (Loader.isModLoaded("ic2")) {
 			setUpSeedRecipes("rubberIC", new ItemStack(IC2TreeRubber.saplingBlock));
 		}
+		if (Loader.isModLoaded("atum")) {
+			setUpSeedRecipes("palm", new ItemStack(A2TreePalm.saplingBlock));
+		}
+		if (Loader.isModLoaded("forbidden_arcanus")) {
+			setUpSeedRecipes("cherrywood", new ItemStack(FnATreeCherrywood.saplingBlock));
+			setUpSeedRecipes("mysterywood", new ItemStack(FnATreeMysterywood.saplingBlock));
+		}
+		if (Loader.isModLoaded("simplytea")) {
+			setUpSeedRecipes("tea", new ItemStack(STTreeTea.saplingBlock));
+		}
+		if (Loader.isModLoaded("sugiforest")) {
+			setUpSeedRecipes("sugi", new ItemStack(SFTreeSugi.saplingBlock));
+		}
+		if (Loader.isModLoaded("betterwithmods")) {
+			setUpSeedRecipes("bloodwood", new ItemStack(BWMTreeBloodwood.saplingBlock));
+		}
+		if (Loader.isModLoaded("betterwithaddons")) {
+			setUpSeedRecipes("alicio", new ItemStack(BWATreeAlicio.saplingBlock));
+			setUpSeedRecipes("mulberry", new ItemStack(BWATreeMulberry.saplingBlock));
+			setUpSeedRecipes("sakura", new ItemStack(BWATreeSakura.saplingBlock));
+		}
+		if (Loader.isModLoaded("fossil")) {
+			setUpSeedRecipes("calamites", new ItemStack(FsArTreeCalamites.saplingBlock));
+			setUpSeedRecipes("cordaites", new ItemStack(FsArTreeCordaites.saplingBlock));
+			setUpSeedRecipes("palaeoraphe", new ItemStack(FsArTreePalaeoraphe.saplingBlock));
+			setUpSeedRecipes("sigillaria", new ItemStack(FsArTreeSigillaria.saplingBlock));
+		}
+
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExC.MODID, name));

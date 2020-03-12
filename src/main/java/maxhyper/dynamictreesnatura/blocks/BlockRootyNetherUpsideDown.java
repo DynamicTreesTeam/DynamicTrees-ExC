@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -34,7 +35,7 @@ public class BlockRootyNetherUpsideDown extends BlockRooty {
 	}
 
 	public BlockRootyNetherUpsideDown(String name, boolean isTileEntity) {
-		super(name, Material.GROUND, isTileEntity);
+		super(name, new Material(MapColor.DIRT), isTileEntity);
 	}
 
 	///////////////////////////////////////////
