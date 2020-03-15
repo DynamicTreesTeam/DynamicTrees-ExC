@@ -55,7 +55,7 @@ public class TreeAmaranth extends TreeFamily {
 
 	@Override
 	public ItemStack getPrimitiveLogItemStack(int qty) {
-		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);
+		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 2);
 		stack.setCount(MathHelper.clamp(qty, 0, 64));
 		return stack;
 	}

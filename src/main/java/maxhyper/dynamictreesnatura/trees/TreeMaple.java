@@ -46,7 +46,7 @@ public class TreeMaple extends TreeFamily {
 	public TreeMaple() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "maple"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 3));
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
 		ModContent.mapleLeavesProperties.setTree(this);
 

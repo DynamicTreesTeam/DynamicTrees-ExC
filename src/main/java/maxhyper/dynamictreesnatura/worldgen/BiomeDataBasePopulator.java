@@ -1,7 +1,6 @@
 package maxhyper.dynamictreesnatura.worldgen;
 
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
-import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors.EnumChance;
 import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors.RandomSpeciesSelector;
 import com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator;
 import com.ferreusveritas.dynamictrees.trees.Species;
