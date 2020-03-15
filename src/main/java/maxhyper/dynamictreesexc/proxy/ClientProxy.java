@@ -1,6 +1,7 @@
 package maxhyper.dynamictreesexc.proxy;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
@@ -11,10 +12,13 @@ import maxhyper.dynamictreesexc.event.EventListenerExC;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 
@@ -27,6 +31,11 @@ public class ClientProxy extends CommonProxy {
 	public void preInit() {
 		super.preInit();
 		MinecraftForge.EVENT_BUS.register(new EventListenerExC());
+//		if (Loader.isModLoaded("simplytea")) {
+//			ModelLoader.setCustomModelResourceLocation(TreeRegistry.findSpecies(
+//					new ResourceLocation(DynamicTreesExC.MODID, "tea")).getSeedStack(1).getItem(),
+//					0, new ModelResourceLocation(DynamicTreesExC.MODID, "tea_bark"));
+//		}
 	}
 	
 	@Override

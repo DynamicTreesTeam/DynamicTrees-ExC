@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
+import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
@@ -22,7 +23,10 @@ import maxhyper.dynamictreesexc.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -521,6 +525,7 @@ public class ModContent {
 		if (Loader.isModLoaded("techreborn")) {
 			ModelHelper.regModel(rubberBranchFilled);
 		}
+
 
 	}
 }

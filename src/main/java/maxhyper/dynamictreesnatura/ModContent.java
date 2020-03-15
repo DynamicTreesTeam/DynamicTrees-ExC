@@ -15,6 +15,7 @@ import maxhyper.dynamictreesnatura.blocks.*;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedBloodwood;
 import maxhyper.dynamictreesnatura.trees.*;
 import com.progwml6.natura.shared.NaturaCommons;
+import maxhyper.dynamictreesnatura.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
@@ -56,7 +57,7 @@ public class ModContent {
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
-
+		event.register(new BiomeDataBasePopulator());
 	}
 
 	@SubscribeEvent
