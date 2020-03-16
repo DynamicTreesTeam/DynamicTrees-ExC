@@ -20,6 +20,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesexc.blocks.*;
 import maxhyper.dynamictreesexc.items.ItemDynamicSeedBurntFeJuniper;
 import maxhyper.dynamictreesexc.trees.*;
+import maxhyper.dynamictreesexc.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
@@ -78,7 +79,7 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
-
+		event.register(new BiomeDataBasePopulator());
 	}
 
 	@SubscribeEvent
