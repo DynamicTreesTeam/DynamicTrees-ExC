@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "natura:blocks/leaves/overworld/sakura_leaves",
+        "log": "natura:blocks/logs/overworld/sakura_log",
+        "leaves": "natura:blocks/leaves/overworld/sakura_leaves"
+    }
+}

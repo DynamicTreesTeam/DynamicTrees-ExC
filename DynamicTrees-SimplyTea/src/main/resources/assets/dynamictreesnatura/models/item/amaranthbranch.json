@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/overworld/amaranth_log",
+        "rings": "natura:blocks/logs/overworld/amaranth_log_top"
+    }
+}

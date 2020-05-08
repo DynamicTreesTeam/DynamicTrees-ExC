@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesextrautils2",
+  "name": "Dynamic Trees for Extra Utilities 2",
+  "description": "Adds compatibilities between dynamic trees and Extra Utilities 2",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "eu2-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

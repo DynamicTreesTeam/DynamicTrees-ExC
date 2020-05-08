@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "extrautils2:tree/iron_wood_burnt_log",
+		"rings": "extrautils2:tree/iron_wood_burnt_log_top"
+	}
+}

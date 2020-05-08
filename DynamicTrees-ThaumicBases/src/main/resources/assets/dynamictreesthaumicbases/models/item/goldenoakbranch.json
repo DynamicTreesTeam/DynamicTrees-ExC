@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "thaumicbases:blocks/goldenlog_side",
+        "rings": "thaumicbases:blocks/goldenlog_top"
+    }
+}

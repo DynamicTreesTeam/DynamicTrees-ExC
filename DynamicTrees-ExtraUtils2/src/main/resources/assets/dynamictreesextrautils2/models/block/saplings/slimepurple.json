@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "tconstruct:blocks/slime/slimeleaves",
+        "log": "tconstruct:blocks/slime/slimeblock_green",
+        "leaves": "tconstruct:blocks/slime/slimeleaves"
+    }
+}

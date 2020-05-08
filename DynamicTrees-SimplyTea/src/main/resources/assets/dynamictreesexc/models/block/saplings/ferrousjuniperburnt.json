@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "extrautils2:tree/iron_wood_burnt_leaves",
+        "log": "extrautils2:tree/iron_wood_burnt_log",
+        "leaves": "extrautils2:tree/iron_wood_burnt_leaves"
+    }
+}

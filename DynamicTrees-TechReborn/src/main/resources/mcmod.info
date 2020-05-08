@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreestechreborn",
+  "name": "Dynamic Trees for Tech Reborn",
+  "description": "Adds compatibilities between dynamic trees and Tech Reborn",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "tr-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

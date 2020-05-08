@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "techreborn:blocks/rubber_leaves",
+        "log": "techreborn:blocks/rubber_log_side",
+        "leaves": "techreborn:blocks/rubber_leaves"
+    }
+}

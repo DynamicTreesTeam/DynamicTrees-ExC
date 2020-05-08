@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "tconstruct:blocks/slime/slimeblock_green",
+		"rings": "tconstruct:blocks/slime/slimeblock_green"
+	}
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/nether/ghostwood_log",
+        "rings": "natura:blocks/logs/nether/ghostwood_log_top"
+    }
+}

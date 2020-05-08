@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "thaumicbases:blocks/netherlog",
+        "rings": "thaumicbases:blocks/netherlog_top"
+    }
+}

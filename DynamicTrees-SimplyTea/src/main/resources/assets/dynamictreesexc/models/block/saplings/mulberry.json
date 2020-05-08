@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "betterwithaddons:blocks/leaves_mulberry",
+        "log": "betterwithaddons:blocks/log_mulberry",
+        "leaves": "betterwithaddons:blocks/leaves_mulberry"
+    }
+}

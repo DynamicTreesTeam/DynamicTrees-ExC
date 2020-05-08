@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dynamictreesexc:fruit/magmacream_age0" },
+        "age=1": { "model": "dynamictreesexc:fruit/magmacream_age1" },
+        "age=2": { "model": "dynamictreesexc:fruit/magmacream_age2" },
+        "age=3": { "model": "dynamictreesexc:fruit/magmacream_age3" }
+    }
+}

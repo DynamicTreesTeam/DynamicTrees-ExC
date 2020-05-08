@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "twilightforest:blocks/time_leaves",
+        "log": "twilightforest:blocks/time_side",
+        "leaves": "twilightforest:blocks/time_leaves"
+    }
+}

@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "blocks/leaves_spruce",
+        "log": "twilightforest:blocks/canopy_side",
+        "leaves": "blocks/leaves_spruce"
+    }
+}

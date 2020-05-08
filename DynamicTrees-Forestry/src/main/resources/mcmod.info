@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesforestry",
+  "name": "Dynamic Trees for Forestry",
+  "description": "Adds compatibilities between dynamic trees and Forestry",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "f-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

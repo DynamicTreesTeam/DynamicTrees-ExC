@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "fossil:blocks/sigillaria_leaves",
+        "log": "fossil:blocks/sigillaria_log",
+        "leaves": "fossil:blocks/sigillaria_leaves"
+    }
+}

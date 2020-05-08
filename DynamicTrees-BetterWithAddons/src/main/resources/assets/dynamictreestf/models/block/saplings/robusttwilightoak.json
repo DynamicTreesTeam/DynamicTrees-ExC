@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "blocks/leaves_oak",
+        "log": "twilightforest:blocks/oak_side",
+        "leaves": "blocks/leaves_oak"
+    }
+}

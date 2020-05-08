@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/overworld/tiger_log",
+        "rings": "natura:blocks/logs/overworld/tiger_log_top"
+    }
+}

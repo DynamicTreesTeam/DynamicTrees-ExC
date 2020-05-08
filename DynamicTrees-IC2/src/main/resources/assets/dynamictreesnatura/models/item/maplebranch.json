@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/overworld/maple_log",
+        "rings": "natura:blocks/logs/overworld/maple_log_top"
+    }
+}

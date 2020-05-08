@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "blocks/leaves_oak",
+        "log": "ic2:blocks/resource/rubber_wood_sides",
+        "leaves": "blocks/leaves_oak"
+    }
+}

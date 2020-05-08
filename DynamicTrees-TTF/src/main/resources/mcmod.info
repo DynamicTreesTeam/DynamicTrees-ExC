@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesttf",
+  "name": "Dynamic Trees for The Twilight Forest",
+  "description": "Adds compatibilities between dynamic trees and The Twilight Forest",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees and Team Twilight for The Twilight Forest",
+  "logoFile": "ttf-icon.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "thaumicbases:blocks/enderleaves",
+        "log": "thaumicbases:blocks/enderlog",
+        "leaves": "thaumicbases:blocks/enderleaves"
+    }
+}

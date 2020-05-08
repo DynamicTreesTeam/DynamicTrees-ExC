@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesthaumicbases",
+  "name": "Dynamic Trees for Thaumic Bases",
+  "description": "Adds compatibilities between dynamic trees and Thaumic Bases",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "tb-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

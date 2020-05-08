@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "techreborn:blocks/rubber_log_sap",
+        "rings": "techreborn:blocks/rubber_log_top"
+    }
+}

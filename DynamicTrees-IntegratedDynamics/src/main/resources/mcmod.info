@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesintegrateddynamics",
+  "name": "Dynamic Trees for Integrated Dynamics",
+  "description": "Adds compatibilities between dynamic trees and Integrated Dynamics",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "id-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

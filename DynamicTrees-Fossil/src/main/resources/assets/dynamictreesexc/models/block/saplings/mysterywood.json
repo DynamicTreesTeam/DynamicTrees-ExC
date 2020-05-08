@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "forbidden_arcanus:blocks/leaves_mysteriwood",
+        "log": "forbidden_arcanus:blocks/log_mysteriwood",
+        "leaves": "forbidden_arcanus:blocks/leaves_mysteriwood"
+    }
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesnatura",
+  "name": "Dynamic Trees for Natura",
+  "description": "Adds compatibilities between dynamic trees and Natura",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees and progwml6 for Natura",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
