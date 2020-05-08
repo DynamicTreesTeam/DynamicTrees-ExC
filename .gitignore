@@ -23,6 +23,7 @@
 hs_err_pid*
 .gradle*
 .idea*
-build*
-libs*
-run*
+*/build*
+*/libs*
+*/run*
+Art*
