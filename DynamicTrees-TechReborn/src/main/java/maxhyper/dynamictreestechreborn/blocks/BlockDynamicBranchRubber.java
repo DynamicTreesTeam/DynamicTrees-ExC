@@ -5,6 +5,7 @@ import maxhyper.dynamictreestechreborn.DynamicTreesTechReborn;
 import maxhyper.dynamictreestechreborn.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -72,8 +73,8 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
                 worldIn.setBlockState(pos, branch.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
                 worldIn.playSound(playerIn, pos, ModSounds.SAP_EXTRACT, SoundCategory.BLOCKS, 0.6F, 1F);
                 resin.setCount( 1 + RANDOM.nextInt(3));
-                WorldUtils.dropItem(resin, worldIn, pos);
                 if (!worldIn.isRemote) {
+                    worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, resin));
                     if (capEnergy != null) {
                         capEnergy.extractEnergy(20, false);
                         ExternalPowerSystems.requestEnergyFromArmor(capEnergy, playerIn);

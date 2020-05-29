@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "integrateddynamics:blocks/menril_log",
-		"rings": "integrateddynamics:blocks/menril_log_top"
-	}
-}

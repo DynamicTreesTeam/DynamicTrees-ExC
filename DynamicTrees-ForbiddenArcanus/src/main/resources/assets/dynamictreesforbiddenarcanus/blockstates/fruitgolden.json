@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dynamictreesforbiddenarcanus:fruit/applegolden_age0" },
+        "age=1": { "model": "dynamictreesforbiddenarcanus:fruit/applegolden_age1" },
+        "age=2": { "model": "dynamictreesforbiddenarcanus:fruit/applegolden_age2" },
+        "age=3": { "model": "dynamictreesforbiddenarcanus:fruit/applegolden_age3" }
+    }
+}

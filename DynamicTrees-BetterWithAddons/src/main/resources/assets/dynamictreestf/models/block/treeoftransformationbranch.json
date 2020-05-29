@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "twilightforest:blocks/trans_side",
-		"rings": "twilightforest:blocks/trans_section"
-	}
-}

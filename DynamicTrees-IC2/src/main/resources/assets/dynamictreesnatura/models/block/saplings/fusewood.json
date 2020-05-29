@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "natura:blocks/leaves/nether/fusewood_leaves",
-        "log": "natura:blocks/logs/nether/fusewood_log",
-        "leaves": "natura:blocks/leaves/nether/fusewood_leaves"
-    }
-}

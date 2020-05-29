@@ -45,6 +45,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.world.block.BlockSlimeGrass;
 import slimeknights.tconstruct.world.block.BlockSlimeLeaves;
 
@@ -52,26 +53,11 @@ import slimeknights.tconstruct.world.block.BlockSlimeLeaves;
 @ObjectHolder(DynamicTreesTConstruct.MODID)
 public class ModContent {
 
-	public static BlockDynamicLeaves menrilLeaves, fejuniperLeaves;
-	public static BlockBranch fejuniperBranchRaw, fejuniperBranchBurnt,
-			menrilBranch, menrilBranchFilled, menrilBranchEmpty,
-			rubberBranch, rubberBranchFilled, rubberBranchEmpty,
-			rubberICBranch, rubberICBranchFilled, rubberICBranchEmpty,
-			slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
+	public static BlockBranch slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
 	public static Seed fejuniperSeedBurnt;
-	public static BlockDynamicSapling fejuniperSaplingBurnt;
-	public static BlockSurfaceRoot menrilRoot;
 	public static BlockRooty rootySlimyDirt;
-	public static BlockFruit blockGoldenApple, blockEnderPearl, blockMagmaCream;
-	public static ILeavesProperties menrilLeavesProperties, rubberLeavesProperties, rubberICLeavesProperties,
-			blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties,
-			blossomingLeavesProperties, swampOakLeavesProperties,
-			goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties,
-			fejuniperLeavesRawProperties, fejuniperLeavesBurntProperties,
-			palmLeavesProperties, sugiLeavesProperties, teaLeavesProperties,
-			alicioLeavesProperties, mulberryLeavesProperties, sakuraLeavesProperties, bloodwoodLeavesProperties,
-			cherrywoodLeavesProperties, mysterywoodLeavesProperties,
-			calamitesLeavesProperties, cordaitesLeavesProperties, palaeorapheLeavesProperties, sigillariaLeavesProperties;
+	public static BlockFruit blockGreenSlime, blockBlueSlime, blockPurpleSlime, blockMagmaSlime;
+	public static ILeavesProperties blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent
@@ -83,73 +69,82 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-			slimeBlueBranch = new BlockDynamicBranchSlime("slimebluebranch");
-			registry.register(slimeBlueBranch);
-			slimePurpleBranch = new BlockDynamicBranchSlime("slimepurplebranch");
-			registry.register(slimePurpleBranch);
-			slimeMagmaBranch = new BlockDynamicBranchSlime("slimemagmabranch");
-			registry.register(slimeMagmaBranch);
+		blockGreenSlime = (new BlockFruit("fruitgreenslime"));
+		registry.register(blockGreenSlime);
+		blockBlueSlime = (new BlockFruit("fruitblueslime"));
+		registry.register(blockBlueSlime);
+		blockPurpleSlime = (new BlockFruit("fruitpurpleslime"));
+		registry.register(blockPurpleSlime);
+		blockMagmaSlime = (new BlockFruit("fruitmagmaslime"));
+		registry.register(blockMagmaSlime);
 
-			rootySlimyDirt = new BlockRootySlimyDirt(false);
-			registry.register(rootySlimyDirt);
+		slimeBlueBranch = new BlockDynamicBranchSlime("slimebluebranch");
+		registry.register(slimeBlueBranch);
+		slimePurpleBranch = new BlockDynamicBranchSlime("slimepurplebranch");
+		registry.register(slimePurpleBranch);
+		slimeMagmaBranch = new BlockDynamicBranchSlime("slimemagmabranch");
+		registry.register(slimeMagmaBranch);
 
-			blueSlimeLeavesProperties = new LeavesProperties(
-					TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.BLUE),
-					new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0),
-					TreeRegistry.findCellKit("conifer"))
-			{
-				@Override public int getSmotherLeavesMax() {
-					return 8;
-				}
-				@Override public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0);
-				}
-				@Override public int getFlammability() {
-					return 0;
-				}
-				@Override public int getFireSpreadSpeed() { return 0; }
-			};
-			purpleSlimeLeavesProperties = new LeavesProperties(
-					TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.PURPLE),
-					new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 1),
-					TreeRegistry.findCellKit("conifer"))
-			{
-				@Override public int getSmotherLeavesMax() {
-					return 8;
-				}
-				@Override public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(TCTreeSlimePurple.leavesBlock, 1, 1);
-				}
-				@Override public int getFlammability() {
-					return 0;
-				}
-				@Override public int getFireSpreadSpeed() { return 0; }
-			};
-			magmaSlimeLeavesProperties = new LeavesProperties(
-					TCTreeSlimeMagma.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.ORANGE),
-					new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2),
-					TreeRegistry.findCellKit("conifer"))
-			{
-				@Override public int getSmotherLeavesMax() {
-					return 8;
-				}
-				@Override public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2);
-				}
-				@Override public int getFlammability() {
-					return 0;
-				}
-				@Override public int getFireSpreadSpeed() { return 0; }
-			};
+		rootySlimyDirt = new BlockRootySlimyDirt(false);
+		registry.register(rootySlimyDirt);
 
-			LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 0, blueSlimeLeavesProperties);
-			LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 1, purpleSlimeLeavesProperties);
-			LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 2, magmaSlimeLeavesProperties);
+		blueSlimeLeavesProperties = new LeavesProperties(
+				TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.BLUE),
+				new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0),
+				TreeRegistry.findCellKit("conifer"))
+		{
+			@Override public int getSmotherLeavesMax() {
+				return 8;
+			}
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0);
+			}
+			@Override public int getFlammability() {
+				return 0;
+			}
+			@Override public int getFireSpreadSpeed() { return 0; }
+		};
+		purpleSlimeLeavesProperties = new LeavesProperties(
+				TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.PURPLE),
+				new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 1),
+				TreeRegistry.findCellKit("conifer"))
+		{
+			@Override public int getSmotherLeavesMax() {
+				return 8;
+			}
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(TCTreeSlimePurple.leavesBlock, 1, 1);
+			}
+			@Override public int getFlammability() {
+				return 0;
+			}
+			@Override public int getFireSpreadSpeed() { return 0; }
+		};
+		magmaSlimeLeavesProperties = new LeavesProperties(
+				TCTreeSlimeMagma.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.ORANGE),
+				new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2),
+				TreeRegistry.findCellKit("conifer"))
+		{
+			@Override public int getSmotherLeavesMax() {
+				return 8;
+			}
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2);
+			}
+			@Override public int getFlammability() {
+				return 0;
+			}
+			@Override public int getFireSpreadSpeed() { return 0; }
+		};
 
-			TreeFamily blueSlimeTree = new TCTreeSlimeBlue();
-			TreeFamily purpleSlimeTree = new TCTreeSlimePurple();
-			TreeFamily magmaSlimeTree = new TCTreeSlimeMagma();
-			Collections.addAll(trees, blueSlimeTree, purpleSlimeTree, magmaSlimeTree);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 0, blueSlimeLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 1, purpleSlimeLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 2, magmaSlimeLeavesProperties);
+
+		TreeFamily blueSlimeTree = new TCTreeSlimeBlue();
+		TreeFamily purpleSlimeTree = new TCTreeSlimePurple();
+		TreeFamily magmaSlimeTree = new TCTreeSlimeMagma();
+		Collections.addAll(trees, blueSlimeTree, purpleSlimeTree, magmaSlimeTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();

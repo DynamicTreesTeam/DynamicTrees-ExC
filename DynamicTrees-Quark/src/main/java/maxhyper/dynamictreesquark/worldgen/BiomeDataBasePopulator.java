@@ -13,16 +13,15 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.Loader;
 import maxhyper.dynamictreesquark.DynamicTreesQuark;
+import sun.reflect.generics.tree.Tree;
+import vazkii.quark.world.feature.TreeVariants;
 
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
-    private static Species oak;
-    private static Species menril, rubber1, rubber2, swampOak, blossoming;
+    private static Species swampOak, blossoming;
 
     public void populate(BiomeDataBase dbase) {
-        oak = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "oak"));
 
-        if (Loader.isModLoaded("quark")){
             blossoming = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesQuark.MODID, "blossoming"));
             swampOak = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesQuark.MODID, "swampOak"));
 
@@ -40,8 +39,6 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
                 }
             });
-
-        }
     }
 }
 

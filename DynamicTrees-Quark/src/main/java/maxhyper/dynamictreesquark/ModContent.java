@@ -21,20 +21,25 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.quark.world.feature.TreeVariants;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesQuark.MODID)
 @ObjectHolder(DynamicTreesQuark.MODID)
@@ -42,6 +47,20 @@ public class ModContent {
 
 	public static ILeavesProperties blossomingLeavesProperties, swampOakLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
+	static boolean messageSent = false;
+
+	@SubscribeEvent
+	public static void onEvent(EntityJoinWorldEvent event)
+	{
+		if (!messageSent && (event.getEntity() instanceof EntityPlayer))
+		{
+			if (TreeVariants.enableSakura || TreeVariants.enableSwamp){
+				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Quark: To prevent non-dynamic trees from spawning please disable Quark's Blossoming and Swamp trees in Quark world settings."));
+				messageSent = true;
+			}
+		}
+
+	}
 
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {

@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "dynamictreessimplytea:teabranch#dynamictree" }
+    }
+}

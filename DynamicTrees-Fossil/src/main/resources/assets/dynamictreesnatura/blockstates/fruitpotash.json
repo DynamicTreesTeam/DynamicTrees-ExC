@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "age=0": { "model": "dynamictreesnatura:fruit/applepotash_age0" },
-        "age=1": { "model": "dynamictreesnatura:fruit/applepotash_age1" },
-        "age=2": { "model": "dynamictreesnatura:fruit/applepotash_age2" },
-        "age=3": { "model": "dynamictreesnatura:fruit/applepotash_age3" }
-    }
-}

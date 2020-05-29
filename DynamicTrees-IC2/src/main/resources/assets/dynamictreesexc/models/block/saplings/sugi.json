@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "sugiforest:blocks/leaves_sugi",
-        "log": "sugiforest:blocks/log_sugi",
-        "leaves": "sugiforest:blocks/leaves_sugi"
-    }
-}

@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "simplyTea:blocks/bark_tea",
+		"rings": "simplyTea:blocks/bark_tea"
+	}
+}

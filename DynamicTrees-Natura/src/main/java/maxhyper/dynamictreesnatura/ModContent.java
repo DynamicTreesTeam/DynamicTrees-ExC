@@ -60,6 +60,21 @@ public class ModContent {
 		event.register(new BiomeDataBasePopulator());
 	}
 
+	public static boolean generateRedwood = false;
+	public static boolean generateMaple;
+	public static boolean generateSilverbell;
+	public static boolean generateAmaranth;
+	public static boolean generateTiger;
+	public static boolean generateWillow;
+	public static boolean generateEucalyptus;
+	public static boolean generateHopseed;
+	public static boolean generateSakura;
+	public static boolean generateBloodwood;
+	public static boolean generateDarkwood;
+	public static boolean generateFusewood;
+	public static boolean generateGhostwood;
+	public static boolean generateSaguaro;
+
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();

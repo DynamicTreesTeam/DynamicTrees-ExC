@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "forbidden_arcanus:blocks/log_mysteriwood",
+		"rings": "forbidden_arcanus:blocks/log_mysteriwood_top_on"
+	}
+}

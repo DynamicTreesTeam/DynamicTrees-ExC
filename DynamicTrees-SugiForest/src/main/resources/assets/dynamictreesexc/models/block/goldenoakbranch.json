@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "thaumicbases:blocks/goldenlog_side",
-		"rings": "thaumicbases:blocks/goldenlog_top"
-	}
-}

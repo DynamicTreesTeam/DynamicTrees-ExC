@@ -2,6 +2,7 @@ package maxhyper.dynamictreestconstruct.trees;
 
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
@@ -31,6 +32,7 @@ public class TCTreeSlimePurple extends TCTreeSlimeBlue {
 
 			setStick(ItemStack.EMPTY);
 
+			//this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
 			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);
 		}

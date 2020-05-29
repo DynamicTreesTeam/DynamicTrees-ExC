@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "sugiforest:blocks/log_sugi",
+        "rings": "sugiforest:blocks/log_sugi_top"
+    }
+}

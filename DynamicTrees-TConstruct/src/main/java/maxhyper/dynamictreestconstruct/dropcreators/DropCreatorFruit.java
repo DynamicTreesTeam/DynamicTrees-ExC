@@ -16,14 +16,21 @@ import net.minecraft.world.World;
 
 public class DropCreatorFruit extends DropCreator {
 	
-	private final Item fruit;
-	private final int fruitMeta;
+	private final Item fruit1, fruit2;
+	private final int fruitMeta1, fruitMeta2;
 	private float rarity = 1f;
 	
-	public DropCreatorFruit(ItemStack fruitStack) {
-		super(new ResourceLocation(DynamicTreesTConstruct.MODID, fruitStack.getItem().getRegistryName().getResourcePath()));
-		this.fruit = fruitStack.getItem();
-		this.fruitMeta = fruitStack.getMetadata();
+	public DropCreatorFruit(ItemStack fruitStack1, ItemStack fruitStack2) {
+		super(new ResourceLocation(DynamicTreesTConstruct.MODID, fruitStack1.getItem().getRegistryName().getResourcePath()));
+		this.fruit1 = fruitStack1.getItem();
+		this.fruit2 = fruitStack2.getItem();
+		this.fruitMeta1 = fruitStack1.getMetadata();
+		this.fruitMeta2 = fruitStack2.getMetadata();
+	}
+	public DropCreatorFruit(ItemStack fruitStack1) {
+		super(new ResourceLocation(DynamicTreesTConstruct.MODID, fruitStack1.getItem().getRegistryName().getResourcePath()));
+		this.fruit1 = this.fruit2 = fruitStack1.getItem();
+		this.fruitMeta1 = this.fruitMeta2 = fruitStack1.getMetadata();
 	}
 	
 	public DropCreatorFruit setRarity(float rarity) {
@@ -51,7 +58,12 @@ public class DropCreatorFruit extends DropCreator {
 		}
 		
 		if (random.nextInt(chance) == 0) {
-			dropList.add(new ItemStack(fruit, 1, fruitMeta));
+			if (random.nextInt(3) == 0){
+				dropList.add(new ItemStack(fruit1, 1, fruitMeta1));
+			} else {
+				dropList.add(new ItemStack(fruit2, 1, fruitMeta2));
+			}
+
 		}
 		return dropList;
 	}

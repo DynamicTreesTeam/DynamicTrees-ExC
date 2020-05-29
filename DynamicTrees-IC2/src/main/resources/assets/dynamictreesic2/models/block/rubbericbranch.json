@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "ic2:blocks/resource/rubber_wood_sides",
+        "rings": "ic2:blocks/resource/rubber_wood_bottomtop"
+    }
+}

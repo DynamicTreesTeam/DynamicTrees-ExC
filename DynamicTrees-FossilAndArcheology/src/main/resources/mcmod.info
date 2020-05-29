@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesfossil",
+  "name": "Dynamic Trees for Fossils and Archeology",
+  "description": "Adds compatibilities between dynamic trees and Fossils and Archeology",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "f-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

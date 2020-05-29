@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static maxhyper.dynamictreestconstruct.ModContent.fejuniperLeaves;
 import static maxhyper.dynamictreestconstruct.ModContent.rootySlimyDirt;
 
 @SideOnly(Side.CLIENT)

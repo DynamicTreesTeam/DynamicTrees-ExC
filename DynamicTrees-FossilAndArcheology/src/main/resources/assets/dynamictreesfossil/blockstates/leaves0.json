@@ -1,0 +1,22 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"transform": "forge:default-block",
+    	"model": "leaves",
+		"textures": { "all": "blocks/leaves" }
+	},
+	"variants": {
+		"tree": {
+			"0": {"textures": { "all": "fossil:blocks/calamites_leaves" }},
+			"1": {"textures": { "all": "fossil:blocks/cordaites_leaves" }},
+			"2": {"textures": { "all": "fossil:blocks/palm_leaves" }},
+			"3": {"textures": { "all": "fossil:blocks/sigillaria_leaves" }}
+		},
+		"hydro": {
+			"1": {},
+			"2": {},
+			"3": {},
+			"4": {}
+		}
+	}
+}
