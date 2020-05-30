@@ -32,7 +32,7 @@ public class TCTreeSlimePurple extends TCTreeSlimeBlue {
 
 			setStick(ItemStack.EMPTY);
 
-			//this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
+			this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
 			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);
 		}

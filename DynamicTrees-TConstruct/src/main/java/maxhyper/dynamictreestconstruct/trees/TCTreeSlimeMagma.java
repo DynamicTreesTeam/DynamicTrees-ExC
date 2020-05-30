@@ -32,10 +32,11 @@ public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
 
 			setStick(ItemStack.EMPTY);
 
-			//this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
+			this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
 			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);
 		}
+
 		@Override
 		public BlockRooty getRootyBlock() {
 			return ModContent.rootySlimyDirt;
