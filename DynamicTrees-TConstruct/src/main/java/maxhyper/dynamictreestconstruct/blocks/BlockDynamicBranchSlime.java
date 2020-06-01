@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 public class BlockDynamicBranchSlime extends BlockBranchBasic {
 
     public BlockDynamicBranchSlime(String name) {
-        super(Material.CLAY, new ResourceLocation(DynamicTreesTConstruct.MODID,name).toString());
+        super(Material.GROUND, new ResourceLocation(DynamicTreesTConstruct.MODID,name).toString());
         setSoundType(SoundType.SLIME);
     }
 

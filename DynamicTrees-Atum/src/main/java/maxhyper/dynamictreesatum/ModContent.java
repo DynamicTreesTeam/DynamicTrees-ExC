@@ -2,7 +2,6 @@ package maxhyper.dynamictreesatum;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
@@ -12,44 +11,38 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
-import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import maxhyper.dynamictreesatum.blocks.BlockDynamicLeavesPalm;
 import maxhyper.dynamictreesatum.trees.*;
 import maxhyper.dynamictreesatum.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
-import net.minecraft.init.Items;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesAtum.MODID)
 @ObjectHolder(DynamicTreesAtum.MODID)
 public class ModContent {
 
-	public static ILeavesProperties palmLeavesProperties;
+	public static BlockDynamicLeaves palmLeaves;
+	public static ILeavesProperties palmLeavesProperties, deadPalmLeavesProperties, nullLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent
@@ -61,69 +54,40 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
+		palmLeaves = new BlockDynamicLeavesPalm();
+		registry.register(palmLeaves);
+
 		palmLeavesProperties = new LeavesProperties(
 				A2TreePalm.leavesBlock.getDefaultState(),
 				new ItemStack(A2TreePalm.leavesBlock),
-				TreeRegistry.findCellKit("palm") ) {
-			@Override
-			public boolean appearanceChangesWithHydro() {
-				return true;
-			}
+				TreeRegistry.findCellKit("deciduous") ) {
 		};
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesAtum.MODID, 0, palmLeavesProperties);
+		deadPalmLeavesProperties = new LeavesProperties(
+				A2TreeDeadPalm.leavesBlock.getDefaultState(),
+				new ItemStack(A2TreeDeadPalm.leavesBlock),
+				TreeRegistry.findCellKit("deciduous") ) {
+		};
+		nullLeavesProperties = new LeavesProperties(
+				A2TreeDeadPalm.leavesBlock.getDefaultState(),
+				ItemStack.EMPTY,
+				TreeRegistry.findCellKit("bare") ) {
+		};
+		palmLeavesProperties.setDynamicLeavesState(palmLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+		palmLeaves.setProperties(0, palmLeavesProperties);
+		//LeavesPaging.getLeavesBlockForSequence(DynamicTreesAtum.MODID, 0, palmLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesAtum.MODID, 0, deadPalmLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesAtum.MODID, 1, nullLeavesProperties);
 
 		TreeFamily palmTree = new A2TreePalm();
-		Collections.addAll(trees, palmTree);
+		TreeFamily palmDeadTree = new A2TreeDeadPalm();
+		TreeFamily deadTree = new A2TreeDeadTree();
+		Collections.addAll(trees, palmTree, palmDeadTree, deadTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesAtum.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
-	}
-
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-		};
-		return leavesProperties;
-	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-		};
-		return leavesProperties;
-	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
-			}
-		};
-		return leavesProperties;
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -157,6 +121,8 @@ public class ModContent {
 			ModelHelper.regModel(tree);
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesAtum.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
+
+		ModelLoader.setCustomStateMapper(palmLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 
 	}
 }

@@ -28,16 +28,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-public class A2TreePalm extends TreeFamily {
+public class A2TreeDeadPalm extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("atum:palm_leaves");
-	public static Block logBlock = Block.getBlockFromName("atum:palm_log");
-	public static Block saplingBlock = Block.getBlockFromName("atum:palm_sapling");
+	public static Block leavesBlock = Block.getBlockFromName("atum:deadwood_leaves");
+	public static Block logBlock = Block.getBlockFromName("atum:deadwood_log");
 
-	public class SpeciesPalm extends Species {
+	public class SpeciesDeadPalm extends Species {
 
-		SpeciesPalm(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.palmLeavesProperties);
+		SpeciesDeadPalm(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.deadPalmLeavesProperties);
 
 			setBasicGrowingParameters(0.4f, 9.0f, 4, 3, 0.9f);
 
@@ -108,14 +107,16 @@ public class A2TreePalm extends TreeFamily {
 				TreeHelper.ageVolume(world, endPoint, 1, 2, 3, safeBounds);
 			}
 		}
+
+
 	}
 
-	public A2TreePalm() {
-		super(new ResourceLocation(DynamicTreesAtum.MODID, "palm"));
+	public A2TreeDeadPalm() {
+		super(new ResourceLocation(DynamicTreesAtum.MODID, "deadPalm"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
-		ModContent.palmLeavesProperties.setTree(this);
+		ModContent.deadPalmLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -129,22 +130,12 @@ public class A2TreePalm extends TreeFamily {
 
 	@Override
 	public ItemStack getStick(int qty) {
-		return new ItemStack(Objects.requireNonNull(Item.getByNameOrId("atum:palm_stick")));
-	}
-
-	@Override
-	public float getPrimaryThickness() {
-		return 3f;
-	}
-
-	@Override
-	public float getSecondaryThickness() {
-		return 2f;
+		return new ItemStack(Objects.requireNonNull(Item.getByNameOrId("atum:deadwood_stick")));
 	}
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesPalm(this));
+		setCommonSpecies(new SpeciesDeadPalm(this));
 	}
 
 	@Override
@@ -156,5 +147,7 @@ public class A2TreePalm extends TreeFamily {
 	public List<Item> getRegisterableItems(List<Item> itemList) {
 		return super.getRegisterableItems(itemList);
 	}
+
+
 
 }
