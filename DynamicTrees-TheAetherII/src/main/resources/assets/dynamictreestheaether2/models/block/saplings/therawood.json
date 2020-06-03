@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "aether:blocks/leaves/therawood_leaves",
+        "log": "aether:blocks/logs/therawood_log_side",
+        "leaves": "aether:blocks/leaves/therawood_leaves"
+    }
+}

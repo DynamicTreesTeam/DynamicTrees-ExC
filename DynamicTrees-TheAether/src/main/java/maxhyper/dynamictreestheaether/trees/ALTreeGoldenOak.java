@@ -3,14 +3,11 @@ package maxhyper.dynamictreestheaether.trees;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAetherLeaves;
 import com.legacy.aether.blocks.natural.BlockAetherLog;
-import com.legacy.aether.blocks.util.EnumLeafType;
 import com.legacy.aether.blocks.util.EnumLogType;
 import com.legacy.aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -27,9 +24,9 @@ public class ALTreeGoldenOak extends TreeFamily {
 	public static Block logBlock = BlocksAether.aether_log;
 	public static Block saplingBlock = BlocksAether.golden_oak_sapling;
 
-	public class SpeciesSkyroot extends Species {
+	public class SpeciesGoldenOak extends Species {
 
-		SpeciesSkyroot(TreeFamily treeFamily) {
+		SpeciesGoldenOak(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.goldenOakLeavesProperties);
 
 			setBasicGrowingParameters(0.6f, 20f, upProbability + 2, lowestBranchHeight + 5, growthRate /2);
@@ -41,7 +38,7 @@ public class ALTreeGoldenOak extends TreeFamily {
 
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass);
+			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
 		}
 
 	}
@@ -69,7 +66,7 @@ public class ALTreeGoldenOak extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesSkyroot(this));
+		setCommonSpecies(new SpeciesGoldenOak(this));
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class BlockDynamicLeavesAether extends BlockDynamicLeaves {
     public BlockDynamicLeavesAether() {
         super();
         setRegistryName(DynamicTreesTheAether.MODID, "leaves0");
-        setUnlocalizedName("leaves0");
+        //setUnlocalizedName("leaves0");
         setTickRandomly(true);
     }
     @Override

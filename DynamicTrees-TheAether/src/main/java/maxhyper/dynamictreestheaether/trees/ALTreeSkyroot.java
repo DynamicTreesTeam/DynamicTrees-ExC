@@ -45,7 +45,7 @@ public class ALTreeSkyroot extends TreeFamily {
 			generateSeed();
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass);
+			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
 		}
 
 	}

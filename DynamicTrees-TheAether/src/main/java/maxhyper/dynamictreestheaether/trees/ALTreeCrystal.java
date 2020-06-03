@@ -10,7 +10,6 @@ import com.legacy.aether.blocks.natural.BlockAetherLog;
 import com.legacy.aether.blocks.util.EnumLogType;
 import com.legacy.aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.ModContent;
-import maxhyper.dynamictreestheaether.genfeatures.FeatureGenRandomLeaves;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,9 +26,9 @@ public class ALTreeCrystal extends TreeFamily {
 	public static Block leavesBlock = BlocksAether.crystal_leaves;
 	public static Block logBlock = BlocksAether.aether_log;
 
-	public class SpeciesSkyroot extends Species {
+	public class SpeciesCrystal extends Species {
 
-		SpeciesSkyroot(TreeFamily treeFamily) {
+		SpeciesCrystal(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.crystalLeavesProperties);
 
 			setBasicGrowingParameters(0.2f, 6.0f, 3, 3, 0.6f);
@@ -41,7 +40,7 @@ public class ALTreeCrystal extends TreeFamily {
 			addGenFeature(new FeatureGenFruit(ModContent.blockWhiteApple));
 			generateSeed();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass);
+			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
 		}
 
 	}
@@ -70,7 +69,7 @@ public class ALTreeCrystal extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesSkyroot(this));
+		setCommonSpecies(new SpeciesCrystal(this));
 	}
 
 	@Override

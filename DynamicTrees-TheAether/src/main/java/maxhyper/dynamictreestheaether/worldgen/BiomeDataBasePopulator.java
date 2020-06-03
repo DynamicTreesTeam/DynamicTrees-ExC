@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase;
 
 import com.legacy.aether.Aether;
 import com.legacy.aether.AetherConfig;
+import com.legacy.aether.world.AetherWorld;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 
@@ -16,7 +17,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
     private static Species skyroot, goldenOak, crystal, holiday;
 
     public void populate(BiomeDataBase dbase) {
-        Biome HighlandsBiome = Biome.REGISTRY.getObject(Aether.locate("aether_highlands"));
+        Biome HighlandsBiome = AetherWorld.aether_biome;
 
         skyroot = TreeRegistry.findSpecies(new ResourceLocation(maxhyper.dynamictreestheaether.DynamicTreesTheAether.MODID, "skyroot"));
         goldenOak = TreeRegistry.findSpecies(new ResourceLocation(maxhyper.dynamictreestheaether.DynamicTreesTheAether.MODID, "goldenoak"));

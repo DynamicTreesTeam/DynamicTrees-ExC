@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "aether:blocks/logs/therawood_log_side",
+        "rings": "aether:blocks/logs/therawood_log_top"
+    }
+}

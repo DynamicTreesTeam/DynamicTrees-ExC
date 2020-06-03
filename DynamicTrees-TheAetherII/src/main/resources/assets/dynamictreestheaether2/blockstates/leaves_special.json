@@ -1,0 +1,22 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"transform": "forge:default-block",
+    	"model": "leaves",
+		"textures": { "all": "blocks/leaves" }
+	},
+	"variants": {
+		"tree": {
+			"0": {"textures": { "all": "aether:blocks/leaves/amberoot_leaves" }},
+			"1": {"textures": { "all": "aether:blocks/leaves/holiday_leaves" }},
+			"2": {"textures": { "all": "aether:blocks/leaves/holiday_bauble_leaves" }},
+			"3": {"textures": { "all": "aether:blocks/leaves/therawood_leaves" }}
+		},
+		"hydro": {
+			"1": {},
+			"2": {},
+			"3": {},
+			"4": {}
+		}
+	}
+}
