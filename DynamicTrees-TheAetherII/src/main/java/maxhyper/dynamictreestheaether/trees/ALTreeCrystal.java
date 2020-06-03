@@ -2,6 +2,7 @@ package maxhyper.dynamictreestheaether.trees;
 
 import com.ferreusveritas.dynamictrees.ModTrees;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.legacy.aether.blocks.BlocksAether;
@@ -37,6 +38,7 @@ public class ALTreeCrystal extends TreeFamily {
 			envFactor(Type.COLD, 1.4f);
 			envFactor(Type.HOT, 1.2f);
 
+			addGenFeature(new FeatureGenFruit(ModContent.blockWhiteApple));
 			generateSeed();
 			clearAcceptableSoils();
 			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass);

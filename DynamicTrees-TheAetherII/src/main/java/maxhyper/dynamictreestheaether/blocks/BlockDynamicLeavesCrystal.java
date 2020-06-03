@@ -68,7 +68,7 @@ public class BlockDynamicLeavesCrystal extends BlockDynamicLeaves {
 
     @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
-        if (rand.nextInt(50) == 0){
+        if (rand.nextInt(100) == 0){
             boolean isNextToFlower = false;
             for(EnumFacing dir: EnumFacing.VALUES) {
                 if (worldIn.getBlockState(pos.offset(dir)).getBlock() == ModContent.crystalLeavesProperties.getDynamicLeavesState().getBlock() && worldIn.getBlockState(pos.offset(dir)).getValue(BlockDynamicLeaves.TREE) != 0){
@@ -79,10 +79,10 @@ public class BlockDynamicLeavesCrystal extends BlockDynamicLeaves {
                 worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE,1));
             }
         }
-        if (rand.nextInt(100) == 0){
+        if (rand.nextInt(50) == 0){
             if (!worldIn.isRemote && state.getValue(BlockDynamicLeaves.TREE) == 1){
                 worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE,0));
-                worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemsAether.white_apple)));
+                //worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemsAether.white_apple)));
             }
         }
     }

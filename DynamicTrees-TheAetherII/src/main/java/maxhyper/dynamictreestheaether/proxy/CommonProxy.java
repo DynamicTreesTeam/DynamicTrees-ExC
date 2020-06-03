@@ -1,19 +1,22 @@
 package maxhyper.dynamictreestheaether.proxy;
 
 
+import com.legacy.aether.items.ItemsAether;
+import maxhyper.dynamictreestheaether.ModContent;
 import maxhyper.dynamictreestheaether.growth.CustomCellKits;
 import maxhyper.dynamictreestheaether.worldgen.WorldGen;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 	
 	public void preInit() {
 		CustomCellKits.preInit();
-		//MinecraftForge.EVENT_BUS.register(new DecorateBiomeEventHandler());
+		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
 	}
 	
 	public void init() {
-		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
+		ModContent.blockWhiteApple.setDroppedItem(new ItemStack(ItemsAether.white_apple));
 	}
 	
 	public void postInit() {

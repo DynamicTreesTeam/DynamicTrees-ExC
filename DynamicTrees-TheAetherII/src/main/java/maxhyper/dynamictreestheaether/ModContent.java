@@ -20,6 +20,7 @@ import com.legacy.aether.blocks.natural.BlockHolidayLeaves;
 import com.legacy.aether.blocks.util.EnumCrystalType;
 import com.legacy.aether.blocks.util.EnumHolidayType;
 import com.legacy.aether.blocks.util.EnumLeafType;
+import com.legacy.aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.blocks.BlockDynamicLeavesAether;
 import maxhyper.dynamictreestheaether.blocks.BlockDynamicLeavesCrystal;
 import maxhyper.dynamictreestheaether.trees.ALTreeCrystal;
@@ -31,6 +32,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -53,6 +55,7 @@ public class ModContent {
 	public static BlockDynamicLeaves crystalLeaves, aetherLeaves;
 	public static ILeavesProperties skyrootLeavesProperties, goldenOakLeavesProperties, crystalLeavesProperties, holidayLeavesProperties,
 			crystalFruitLeavesProperties, holidayDecorLeavesProperties;
+	public static BlockFruit blockWhiteApple;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent
@@ -64,6 +67,8 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
+		blockWhiteApple = (new BlockFruit("fruitwhiteapple"));
+		registry.register(blockWhiteApple);
 		crystalLeaves = new BlockDynamicLeavesCrystal();
 		registry.register(crystalLeaves);
 		aetherLeaves = new BlockDynamicLeavesAether();

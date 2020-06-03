@@ -34,6 +34,9 @@ public class BlockDynamicLeavesAether extends BlockDynamicLeaves {
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random)
     {
+        if (state.getValue(BlockDynamicLeaves.TREE) == 0){
+            setTickRandomly(false);
+        }
         super.randomDisplayTick(state, world, pos, random);
 
         if (!world.isRemote)
