@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreestheaether",
+  "name": "Dynamic Trees for The Aether Legacy",
+  "description": "Adds compatibilities between dynamic trees and The Aether Legacy",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "a1-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

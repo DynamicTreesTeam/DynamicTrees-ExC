@@ -61,7 +61,7 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		sugiLeavesProperties = setUpLeaves(SFTreeSugi.leavesBlock, "deciduous");
+		sugiLeavesProperties = setUpLeaves(SFTreeSugi.leavesBlock, "dynamictreessugiforest:sugi");
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesSugiForest.MODID, 0, sugiLeavesProperties);
 
 		TreeFamily sugiTree = new SFTreeSugi();
@@ -83,6 +83,11 @@ public class ModContent {
 		{
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
 				return new ItemStack(leavesBlock, 1, 0);
+			}
+
+			@Override
+			public int getLightRequirement() {
+				return 1;
 			}
 		};
 		return leavesProperties;

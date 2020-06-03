@@ -49,26 +49,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 @ObjectHolder(DynamicTreesFossil.MODID)
 public class ModContent {
 
-	public static BlockDynamicLeaves menrilLeaves, fejuniperLeaves;
-	public static BlockBranch fejuniperBranchRaw, fejuniperBranchBurnt,
-			menrilBranch, menrilBranchFilled, menrilBranchEmpty,
-			rubberBranch, rubberBranchFilled, rubberBranchEmpty,
-			rubberICBranch, rubberICBranchFilled, rubberICBranchEmpty,
-			slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
+	public static BlockDynamicLeaves fejuniperLeaves;
 	public static Seed fejuniperSeedBurnt;
-	public static BlockDynamicSapling fejuniperSaplingBurnt;
-	public static BlockSurfaceRoot menrilRoot;
 	public static BlockRooty rootySlimyDirt;
-	public static BlockFruit blockGoldenApple, blockEnderPearl, blockMagmaCream;
-	public static ILeavesProperties menrilLeavesProperties, rubberLeavesProperties, rubberICLeavesProperties,
-			blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties,
-			blossomingLeavesProperties, swampOakLeavesProperties,
-			goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties,
-			fejuniperLeavesRawProperties, fejuniperLeavesBurntProperties,
-			palmLeavesProperties, sugiLeavesProperties, teaLeavesProperties,
-			alicioLeavesProperties, mulberryLeavesProperties, sakuraLeavesProperties, bloodwoodLeavesProperties,
-			cherrywoodLeavesProperties, mysterywoodLeavesProperties,
-			calamitesLeavesProperties, cordaitesLeavesProperties, palaeorapheLeavesProperties, sigillariaLeavesProperties;
+	public static ILeavesProperties calamitesLeavesProperties, cordaitesLeavesProperties,
+			palaeorapheLeavesProperties, sigillariaLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent

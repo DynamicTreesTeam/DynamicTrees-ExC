@@ -1,19 +1,27 @@
 package maxhyper.dynamictreessugiforest.trees;
 
+import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreessugiforest.DynamicTreesSugiForest;
 import maxhyper.dynamictreessugiforest.ModContent;
+import maxhyper.dynamictreessugiforest.genfeatures.FeatureGenFallenLeaves;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
+import sugiforest.block.SugiBlocks;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class SFTreeSugi extends TreeFamily {
 
@@ -27,7 +35,7 @@ public class SFTreeSugi extends TreeFamily {
 		SpeciesSugi(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.sugiLeavesProperties);
 
-			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.8f);
+			setBasicGrowingParameters(0.5f, 25.0f, 10, 8, 0.8f);
 
 			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.HOT, 0.50f);
@@ -36,8 +44,37 @@ public class SFTreeSugi extends TreeFamily {
 
 			generateSeed();
 
+			addGenFeature(new FeatureGenFallenLeaves(SugiBlocks.SUGI_FALLEN_LEAVES));
 			setupStandardSeedDropping();
 		}
+
+		@Override
+		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
+			probMap[EnumFacing.DOWN.ordinal()] = 0;
+
+			if (!signal.isInTrunk()){
+				probMap[signal.dir.ordinal()] /= 2f;
+			}
+
+			return probMap;
+		}
+
+		@Override
+		public int getLowestBranchHeight(World world, BlockPos pos) {
+			long day = world.getWorldTime() / 24000L;
+			int month = (int) day / 30; // Change the hashs every in-game month
+
+			return (int)(super.getLowestBranchHeight(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3)); // Vary the height energy by a psuedorandom hash function
+		}
+
+		@Override
+		public float getEnergy(World world, BlockPos pos) {
+			long day = world.getWorldTime() / 24000L;
+			int month = (int) day / 30; // Change the hashs every in-game month
+
+			return super.getEnergy(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3); // Vary the height energy by a psuedorandom hash function
+		}
+
 	}
 
 	public SFTreeSugi() {
