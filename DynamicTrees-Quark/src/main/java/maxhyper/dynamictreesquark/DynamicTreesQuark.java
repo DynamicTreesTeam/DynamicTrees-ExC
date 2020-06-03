@@ -16,7 +16,7 @@ public class DynamicTreesQuark {
 	public static final String MODID = "dynamictreesquark";
 	public static final String NAME = "Dynamic Trees for Quark";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
-			+ ";required-before:quark";
+			+ ";required-after:quark";
 	
 	@Mod.Instance
 	public static DynamicTreesQuark instance;

@@ -39,6 +39,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.quark.world.block.BlockVariantLeaves;
 import vazkii.quark.world.feature.TreeVariants;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesQuark.MODID)
@@ -71,8 +72,8 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, QTreeSwampOak.leavesState, 0, "deciduous", 3, 13);
-		blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, QTreeBlossoming.leavesState, 1, "deciduous", 4, 13);
+		swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES), 0, "deciduous", 3, 13);
+		blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES), 1, "deciduous", 4, 13);
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);

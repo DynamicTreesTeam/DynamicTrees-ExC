@@ -22,7 +22,6 @@ public class QTreeBlossoming extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
 	public static Block logBlock = Blocks.LOG;
 	public static Block saplingBlock = Block.getBlockFromName("quark:variant_sapling");
-	public static IBlockState leavesState = TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES);
 
 	public class SpeciesBlossoming extends Species {
 
