@@ -1,9 +1,11 @@
 package maxhyper.dynamictreesttf.trees;
 
+import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -69,5 +71,11 @@ public class TreeRainbowOak extends TreeFamily {
 	public List<Item> getRegisterableItems(List<Item> itemList) {
 		return super.getRegisterableItems(itemList);
 	}
-	
+
+	@Override
+	public BlockBranch createBranch() {
+		String branchName = "rainbowOakbranch";
+		return new BlockBranchTwilight(branchName);
+	}
+
 }

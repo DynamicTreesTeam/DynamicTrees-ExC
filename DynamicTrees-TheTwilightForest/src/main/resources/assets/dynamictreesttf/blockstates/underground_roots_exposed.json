@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "grassy=true": {
+            "model": "dynamictreesttf:undergroundrootlive#undergroundroot"
+        },
+        "grassy=false": {
+            "model": "dynamictreesttf:undergroundroot#undergroundroot"
+        }
+    }
+}

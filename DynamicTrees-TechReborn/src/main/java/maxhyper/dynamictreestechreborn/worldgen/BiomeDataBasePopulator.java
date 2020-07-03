@@ -17,7 +17,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     public void populate(BiomeDataBase dbase) {
 
-        Core.worldGen.config.rubberTreeConfig.shouldSpawn = false;
+        //Core.worldGen.config.rubberTreeConfig.shouldSpawn = false;
     }
 }
 

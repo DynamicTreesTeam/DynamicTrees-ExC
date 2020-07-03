@@ -23,7 +23,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     public void populate(BiomeDataBase dbase) {
 
-        MainConfig.get().set("worldgen/rubberTree", false);
+        //MainConfig.get().set("worldgen/rubberTree", false);
 
     }
 }

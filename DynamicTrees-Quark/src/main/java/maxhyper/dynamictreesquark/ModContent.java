@@ -2,7 +2,6 @@ package maxhyper.dynamictreesquark;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
@@ -34,11 +33,11 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.quark.base.module.ConfigHelper;
 import vazkii.quark.world.block.BlockVariantLeaves;
 import vazkii.quark.world.feature.TreeVariants;
 
@@ -49,14 +48,19 @@ public class ModContent {
 	public static ILeavesProperties blossomingLeavesProperties, swampOakLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 	static boolean messageSent = false;
+	static boolean failedToLoad = false;
 
 	@SubscribeEvent
 	public static void onEvent(EntityJoinWorldEvent event)
 	{
 		if (!messageSent && (event.getEntity() instanceof EntityPlayer))
 		{
-			if (TreeVariants.enableSakura || TreeVariants.enableSwamp){
-				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Quark: To prevent non-dynamic trees from spawning please disable Quark's Blossoming and Swamp trees in Quark world settings."));
+			if (failedToLoad){
+				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Quark: Failed to load. Maybe Tree Variants are disabled in Quark config?"));
+				messageSent = true;
+			} else if (TreeVariants.enableSakura || TreeVariants.enableSwamp){
+				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Quark: To prevent non-dynamic trees from spawning please disable Quark's Blossoming and Swamp trees (INDIVIDUALLY) in Quark world settings."));
+				event.getEntity().sendMessage(new TextComponentString("Disabling Tree Variants as a whole will disable the Dynamic Trees for Quark as well."));
 				messageSent = true;
 			}
 		}
@@ -71,22 +75,25 @@ public class ModContent {
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
+		try {
+				swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, QTreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES), 0, "deciduous", 3, 13);
+				blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, QTreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES), 1, "deciduous", 4, 13);
 
-		swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES), 0, "deciduous", 3, 13);
-		blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, TreeVariants.variant_leaves.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES), 1, "deciduous", 4, 13);
+				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
+				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);
 
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);
+				TreeFamily blossomingTree = new QTreeBlossoming();
+				TreeFamily swampOakTree = new QTreeSwampOak();
+				Collections.addAll(trees, blossomingTree, swampOakTree);
 
-		TreeFamily blossomingTree = new QTreeBlossoming();
-		TreeFamily swampOakTree = new QTreeSwampOak();
-		Collections.addAll(trees, blossomingTree, swampOakTree);
-
-		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
-		ArrayList<Block> treeBlocks = new ArrayList<>();
-		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
-		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesQuark.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+				trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
+				ArrayList<Block> treeBlocks = new ArrayList<>();
+				trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
+				treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesQuark.MODID).values());
+				registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+			}catch (Exception e){
+			failedToLoad = true;
+		}
 	}
 
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
@@ -144,8 +151,10 @@ public class ModContent {
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
+		if (!failedToLoad) {
 			setUpSeedRecipes("blossoming", new ItemStack(QTreeBlossoming.saplingBlock, 1, 1));
 			setUpSeedRecipes("swampOak", new ItemStack(QTreeSwampOak.saplingBlock, 1, 0));
+		}
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesQuark.MODID, name));

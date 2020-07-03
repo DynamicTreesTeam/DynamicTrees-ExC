@@ -1,9 +1,11 @@
 package maxhyper.dynamictreesttf.trees;
 
+import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -31,7 +33,7 @@ public class TreeSicklyTwilightOak extends TreeFamily {
 		SpeciesSicklyTwilightOak(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.sicklyTwilightOakLeavesProperties);
 
-			setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
+			setBasicGrowingParameters(tapering, 9, upProbability, lowestBranchHeight, growthRate);
 
 			generateSeed();
 			setupStandardSeedDropping();
@@ -69,5 +71,11 @@ public class TreeSicklyTwilightOak extends TreeFamily {
 	public List<Item> getRegisterableItems(List<Item> itemList) {
 		return super.getRegisterableItems(itemList);
 	}
-	
+
+	@Override
+	public BlockBranch createBranch() {
+		String branchName = "sicklyTwilightOakbranch";
+		return new BlockBranchTwilight(branchName);
+	}
+
 }

@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "grassy=true": {
+            "model": "grass_normal",
+            "textures": { "particle": "blocks/dirt" }
+        },
+        "grassy=false": {
+            "model": "minecraft:dirt",
+            "textures": { "particle": "blocks/dirt" }
+        }
+    }
+}
