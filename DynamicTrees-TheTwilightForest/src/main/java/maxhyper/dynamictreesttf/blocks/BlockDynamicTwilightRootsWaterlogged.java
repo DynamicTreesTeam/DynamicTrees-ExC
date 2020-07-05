@@ -1,21 +1,15 @@
 package maxhyper.dynamictreesttf.blocks;
 
-import com.ferreusveritas.dynamictrees.api.cells.CellNull;
 import com.ferreusveritas.dynamictrees.api.cells.ICell;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.MimicProperty;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -23,25 +17,18 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.property.ExtendedBlockState;
-import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -49,13 +36,13 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,MimicProperty.IMimic {
+public class BlockDynamicTwilightRootsWaterlogged extends Block implements ITreePart {// ,MimicProperty.IMimic {
 
     public static final PropertyInteger RADIUS = PropertyInteger.create("radius", 1, 8);
     public static final PropertyBool GRASSY = PropertyBool.create("grassy");
     public static final PropertyInteger RADIUSNYBBLE = PropertyInteger.create("radius", 0, 15);
 
-    public BlockDynamicTwilightRoots() {
+    public BlockDynamicTwilightRootsWaterlogged() {
         super(Material.GROUND);
         setDefaultState(this.getDefaultState().withProperty(RADIUS, 1).withProperty(GRASSY, false));
         setHardness(0.8f);
@@ -178,12 +165,12 @@ public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,M
 
     @Override
     public ICell getHydrationCell(IBlockAccess iBlockAccess, BlockPos blockPos, IBlockState iBlockState, EnumFacing enumFacing, ILeavesProperties iLeavesProperties) {
-        return CellNull.NULLCELL;
+        return null;
     }
 
     @Override
     public GrowSignal growSignal(World world, BlockPos blockPos, GrowSignal growSignal) {
-        return growSignal;
+        return null;
     }
 
     @Override
@@ -208,12 +195,12 @@ public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,M
 
     @Override
     public MapSignal analyse(IBlockState iBlockState, World world, BlockPos blockPos, EnumFacing enumFacing, MapSignal mapSignal) {
-        return mapSignal;
+        return null;
     }
 
     @Override
     public TreeFamily getFamily(IBlockState iBlockState, IBlockAccess iBlockAccess, BlockPos blockPos) {
-        return TreeFamily.NULLFAMILY;
+        return null;
     }
 
     @Override

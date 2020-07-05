@@ -27,25 +27,13 @@ public class FeatureGenLogCritter implements IPostGenFeature, IPostGrowFeature {
     public BlockTFCritter critterBlock;
     public int chanceRand;
     public int separationHeight;
-    public int worldgenAttempts = 50;
+    public int worldgenAttempts = 100;
 
     public FeatureGenLogCritter(int heightLim, BlockTFCritter critter, int chance, int separation){
         heightLimit = heightLim;
         critterBlock = critter;
         chanceRand = chance;
         separationHeight = separation;
-    }
-
-    @Override
-    public boolean postGeneration(World world, BlockPos blockPos, Species species, Biome biome, int i, List<BlockPos> list, SafeChunkBounds safeChunkBounds, IBlockState iBlockState) {
-        for (int j=0;j<worldgenAttempts;j++){
-            Random rand = new Random();
-            if (rand.nextInt(chanceRand) == 0){
-                int chosenHeight = 1 + rand.nextInt(heightLimit);
-                attemptCritterPlacing(world, new BlockPos(blockPos.getX(), blockPos.getY() + chosenHeight, blockPos.getZ()), rand);
-            }
-        }
-        return true;
     }
 
     EnumFacing[] horizontalsDir = {EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.SOUTH, EnumFacing.WEST};
@@ -73,10 +61,22 @@ public class FeatureGenLogCritter implements IPostGenFeature, IPostGrowFeature {
     }
 
     @Override
+    public boolean postGeneration(World world, BlockPos blockPos, Species species, Biome biome, int i, List<BlockPos> list, SafeChunkBounds safeChunkBounds, IBlockState iBlockState) {
+        for (int j=0;j<worldgenAttempts;j++){
+            Random rand = new Random();
+            if (rand.nextInt(chanceRand) == 0){
+                int chosenHeight = 3 + rand.nextInt(heightLimit-2);
+                attemptCritterPlacing(world, new BlockPos(blockPos.getX(), blockPos.getY() + chosenHeight, blockPos.getZ()), rand);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public boolean postGrow(World world, BlockPos blockPos, BlockPos blockPos1, Species species, int i, boolean b) {
         Random rand = new Random();
         if (rand.nextInt(chanceRand) == 0){
-            int chosenHeight = 1 + rand.nextInt(heightLimit);
+            int chosenHeight = 3 + rand.nextInt(heightLimit-2);
             attemptCritterPlacing(world, new BlockPos(blockPos.getX(), blockPos.getY() + chosenHeight, blockPos.getZ()), rand);
         }
         return true;

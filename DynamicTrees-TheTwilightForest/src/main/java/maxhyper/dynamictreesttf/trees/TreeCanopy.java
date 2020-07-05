@@ -1,7 +1,16 @@
 package maxhyper.dynamictreesttf.trees;
 
+import com.ferreusveritas.dynamictrees.ModBlocks;
+import com.ferreusveritas.dynamictrees.ModConfigs;
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.network.MapSignal;
+import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
+import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
+import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeShrinker;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
@@ -9,7 +18,9 @@ import maxhyper.dynamictreesttf.ModContent;
 import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenLogCritter;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenUndergroundRoots;
+import maxhyper.dynamictreesttf.genfeatures.FeatureGenWeb;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,11 +30,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import twilightforest.biomes.TFBiomes;
 import twilightforest.block.BlockTFLeaves;
 import twilightforest.enums.LeavesVariant;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class TreeCanopy extends TreeFamily {
 
@@ -38,8 +51,8 @@ public class TreeCanopy extends TreeFamily {
 
 	public class SpeciesCanopy extends Species {
 
-		SpeciesCanopy(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.canopyLeavesProperties);
+		SpeciesCanopy(ResourceLocation name, TreeFamily treeFamily, ILeavesProperties leavesProperties) {
+			super(name, treeFamily, leavesProperties);
 
 			setBasicGrowingParameters(0.9f, 80, 10, 12, growthRate);
 
@@ -47,7 +60,7 @@ public class TreeCanopy extends TreeFamily {
 			setupStandardSeedDropping();
 
 			addGenFeature(new FeatureGenLogCritter(getLowestBranchHeight() + heightLimitOverLowestBranch, ModContent.dynamicFirefly, 100, 5));
-			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundRootExposed,  8, 5, 3));
+			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundRootExposed,  8, 10, 1));
 		}
 
 		@Override
@@ -59,14 +72,59 @@ public class TreeCanopy extends TreeFamily {
 		}
 	}
 
+	public class SpeciesSpookyCanopy extends SpeciesCanopy {
+
+		SpeciesSpookyCanopy(TreeFamily treeFamily) {
+			super(new ResourceLocation(DynamicTreesTTF.MODID, "canopyspooky"), treeFamily, ModContent.spookyCanopyLeavesProperties);
+
+			addGenFeature(new FeatureGenWeb(this, 4));
+		}
+
+		@Override
+		public boolean canGrowWithBoneMeal(World world, BlockPos pos) {
+			return false;
+		}
+
+		@Override
+		public boolean grow(World world, BlockRooty rootyDirt, BlockPos rootPos, int soilLife, ITreePart treeBase, BlockPos treePos, Random random, boolean natural) {
+			return false;
+		}
+
+		@Override
+		public boolean transitionToTree(World world, BlockPos pos) {
+			//Ensure planting conditions are right
+			TreeFamily tree = getFamily();
+			if(world.isAirBlock(pos.up()) && isAcceptableSoil(world, pos.down(), world.getBlockState(pos.down()))) {
+				world.setBlockState(pos, tree.getDynamicBranch().getDefaultState());//set to a single branch
+				placeRootyDirtBlock(world, pos.down(), 15);//Set to fully fertilized rooty sand underneath
+				return true;
+			}
+
+			return false;
+		}
+	}
+
+	Species spookySpecies;
+
 	public TreeCanopy() {
 		super(new ResourceLocation(DynamicTreesTTF.MODID, "canopy"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, logsMeta));
 
 		ModContent.canopyLeavesProperties.setTree(this);
+		ModContent.spookyCanopyLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
+
+		addSpeciesLocationOverride(new ISpeciesLocationOverride() {
+			@Override
+			public Species getSpeciesForLocation(World access, BlockPos trunkPos) {
+				if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.spookyForest)) {
+					return spookySpecies;
+				}
+				return Species.NULLSPECIES;
+			}
+		});
 	}
 
 	@Override
@@ -78,12 +136,14 @@ public class TreeCanopy extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesCanopy(this));
+		spookySpecies = new SpeciesSpookyCanopy(this);
+		setCommonSpecies(new SpeciesCanopy(getName(),this, ModContent.canopyLeavesProperties));
 	}
 
 	@Override
 	public void registerSpecies(IForgeRegistry<Species> speciesRegistry) {
 		super.registerSpecies(speciesRegistry);
+		speciesRegistry.register(spookySpecies);
 	}
 
 	@Override
