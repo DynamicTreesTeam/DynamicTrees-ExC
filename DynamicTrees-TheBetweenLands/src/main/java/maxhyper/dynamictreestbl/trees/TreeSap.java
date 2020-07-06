@@ -1,54 +1,40 @@
 package maxhyper.dynamictreestbl.trees;
 
-import com.ferreusveritas.dynamictrees.ModConfigs;
-import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
-import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestbl.DynamicTreesTBL;
 import maxhyper.dynamictreestbl.ModContent;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockGrass;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import thebetweenlands.common.block.terrain.*;
 import thebetweenlands.common.registries.BlockRegistry;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TreeRubber extends TreeFamily {
+public class TreeSap extends TreeFamily {
 
-	public static Block leavesBlock = BlockRegistry.LEAVES_RUBBER_TREE;
-	public static Block logBlock = BlockRegistry.LOG_RUBBER;
-	public static Block saplingBlock = BlockRegistry.SAPLING_RUBBER;
+	public static Block leavesBlock = BlockRegistry.LEAVES_SAP_TREE;
+	public static Block logBlock = BlockRegistry.LOG_SAP;
+	public static Block saplingBlock = BlockRegistry.SAPLING_SAP;
 
-	public class SpeciesRubber extends Species {
+	public class SpeciesSap extends Species {
 
-		SpeciesRubber(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.rubberLeavesProperties);
+		SpeciesSap(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.sapLeavesProperties);
 
-			setBasicGrowingParameters(0f, 18.0f, 10, 12, 1.25f);
-			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("darkoak"));
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.WET, 1.5f);
-			envFactor(Type.DRY, 0.5f);
-			envFactor(Type.FOREST, 1.1f);
+			setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
 
 			generateSeed();
-			addDropCreator(new DropCreatorSeed(2f));
 
-			this.addGenFeature(new FeatureGenClearVolume(12));
 		}
 
 		@Override
@@ -66,12 +52,10 @@ public class TreeRubber extends TreeFamily {
 		}
 	}
 
-	public TreeRubber() {
-		super(new ResourceLocation(DynamicTreesTBL.MODID, "rubber"));
+	public TreeSap() {
+		super(new ResourceLocation(DynamicTreesTBL.MODID, "sap"));
 
-		setDynamicBranch(ModContent.rubberBranch);
-		
-		ModContent.rubberLeavesProperties.setTree(this);
+		ModContent.sapLeavesProperties.setTree(this);
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -85,17 +69,12 @@ public class TreeRubber extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesRubber(this));
+		setCommonSpecies(new SpeciesSap(this));
 	}
 
 	@Override
 	public List<Block> getRegisterableBlocks(List<Block> blockList) {
-		blockList.add(ModContent.rubberBranch);
 		return super.getRegisterableBlocks(blockList);
 	}
 
-	@Override
-	public BlockBranch createBranch() {
-		return ModContent.rubberBranch;
-	}
 }

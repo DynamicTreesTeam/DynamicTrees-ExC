@@ -1,27 +1,5 @@
 package maxhyper.dynamictreesttf.blocks;
 
-//import com.ferreusveritas.dynamictrees.ModBlocks;
-//import com.ferreusveritas.dynamictrees.api.TreeHelper;
-//import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
-//import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
-//import com.ferreusveritas.dynamictrees.blocks.BlockTrunkShell;
-//import com.ferreusveritas.dynamictrees.util.CoordUtils;
-//import maxhyper.dynamictreesttf.ModContent;
-//import net.minecraft.block.Block;
-//import net.minecraft.block.BlockBush;
-//import net.minecraft.block.state.IBlockState;
-//import net.minecraft.util.EnumFacing;
-//import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.World;
-//import com.ferreusveritas.dynamictrees.util.CoordUtils.Surround;
-//import net.minecraft.world.IBlockAccess;
-//
-//import java.lang.reflect.Method;
-//import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
-//import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-//import com.ferreusveritas.dynamictrees.trees.Species;
-//import net.minecraft.util.math.MathHelper;
-
 import com.ferreusveritas.dynamictrees.trees.Species;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -34,6 +12,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import twilightforest.util.WorldUtil;
@@ -49,7 +28,6 @@ public class BlockBranchMagicCoreThick extends BlockBranchTwilightThick {
     protected BlockBranchMagicCoreThick(Material material, String name, boolean extended, BlockBranchMagicCore.Types type) {
         super(material, name, extended);
         coreType = type;
-        lightValue = 15;
     }
 
     public BlockBranchMagicCoreThick(String name, BlockBranchMagicCore.Types type) {
@@ -58,7 +36,11 @@ public class BlockBranchMagicCoreThick extends BlockBranchTwilightThick {
         otherBlock.otherBlock = this;
         cacheBranchThickStates();
         coreType = type;
-        lightValue = 15;
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return 15;
     }
 
     @Override

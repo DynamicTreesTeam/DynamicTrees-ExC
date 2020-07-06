@@ -8,9 +8,9 @@
 	"variants": {
 		"tree": {
 			"0": {"textures": { "all": "thebetweenlands:blocks/leaves_rubber_tree" }},
-			"1": {},
+			"1": {"textures": { "all": "thebetweenlands:blocks/leaves_sap_tree" }},
 			"2": {},
-			"3": {}
+			"3": {"textures": { "all": "thebetweenlands:blocks/leaves_nibbletwig_tree" }}
 		},
 		"hydro": {
 			"1": {},

@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "thebetweenlands:blocks/log_hearthgrove",
+		"rings": "thebetweenlands:blocks/log_hearthgrove_top"
+	}
+}

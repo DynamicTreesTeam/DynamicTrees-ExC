@@ -49,7 +49,6 @@ public class BlockBranchMagicCore extends BlockBranchTwilight {
     public BlockBranchMagicCore(String name, Types type) {
         super(name);
         coreType = type;
-        lightValue = 15;
     }
 
     public BlockBranchMagicCore setOffBlock (BlockBranchMagicCore switchBlock){
@@ -59,6 +58,11 @@ public class BlockBranchMagicCore extends BlockBranchTwilight {
         switchBlock.isOn = false;
         setTickRandomly(true);
         return this;
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return 15;
     }
 
     @Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {

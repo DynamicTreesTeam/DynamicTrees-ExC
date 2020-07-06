@@ -7,7 +7,7 @@
 	},
 	"variants": {
 		"tree": {
-			"0": {},
+			"0": {"textures": { "all": "thebetweenlands:blocks/leaves_hearthgrove_tree" }},
 			"1": {},
 			"2": {},
 			"3": {}

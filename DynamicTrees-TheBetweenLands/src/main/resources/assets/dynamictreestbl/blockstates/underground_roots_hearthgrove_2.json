@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "grassy=true": {
+            "model": "thebetweenlands:swamp_grass"
+        },
+        "grassy=false": {
+            "model": "thebetweenlands:swamp_dirt"
+        }
+    }
+}

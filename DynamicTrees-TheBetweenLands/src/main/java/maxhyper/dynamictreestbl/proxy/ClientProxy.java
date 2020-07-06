@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 
 import maxhyper.dynamictreestbl.DynamicTreesTBL;
+import maxhyper.dynamictreestbl.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -30,20 +31,32 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	public void registerColorHandlers() {
-		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesTBL.MODID).values()) {
-			ModelHelper.regColorHandler(leaves, new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					//boolean inWorld = worldIn != null && pos != null;
 
-					Block block = state.getBlock();
-
-					if (TreeHelper.isLeaves(block)) {
-						return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-					}
-					return 0x00FF00FF; //Magenta
+		Block[] grassyBlocks = {ModContent.undergroundHearthgroveRoot, ModContent.undergroundHearthgroveRootSwamp};
+		for (Block block: grassyBlocks) {
+			ModelHelper.regColorHandler(block, new IBlockColor() {
+				@Override public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+					return worldIn.getBiome(pos).getGrassColorAtPos(pos);
 				}
 			});
+		}
+
+		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesTBL.MODID).values()) {
+			if (leaves != ModContent.hearthgroveLeavesProperties.getDynamicLeavesState().getBlock()){
+				ModelHelper.regColorHandler(leaves, new IBlockColor() {
+					@Override
+					public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
+						//boolean inWorld = worldIn != null && pos != null;
+
+						Block block = state.getBlock();
+
+						if (TreeHelper.isLeaves(block)) {
+							return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
+						}
+						return 0x00FF00FF; //Magenta
+					}
+				});
+			}
 		}
 	}
 }

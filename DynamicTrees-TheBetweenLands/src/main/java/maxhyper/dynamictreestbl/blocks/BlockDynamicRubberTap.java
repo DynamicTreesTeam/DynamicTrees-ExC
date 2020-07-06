@@ -1,6 +1,7 @@
 package maxhyper.dynamictreestbl.blocks;
 
 import maxhyper.dynamictreestbl.ModContent;
+import maxhyper.dynamictreestbl.trees.TreeRubber;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;

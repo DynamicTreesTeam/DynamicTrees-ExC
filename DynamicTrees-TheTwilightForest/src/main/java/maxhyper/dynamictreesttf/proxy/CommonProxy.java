@@ -53,7 +53,7 @@ public class CommonProxy {
 					Field decor = TFBiomeDecorator.class.getDeclaredField("canopyTreeGen");
 					decor.setAccessible(true);
 					decor.set(TFBiomes.spookyForest.decorator, nullGen);
-				} catch (Exception e){}
+				} catch (Exception ignored){}
 			}
 		}
 	}
