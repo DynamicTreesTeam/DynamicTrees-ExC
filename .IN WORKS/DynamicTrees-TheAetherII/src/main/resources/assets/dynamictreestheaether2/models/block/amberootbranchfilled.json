@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "aether:blocks/logs/amberoot_log_side",
+		"rings": "aether:blocks/logs/amberoot_log_top"
+	}
+}

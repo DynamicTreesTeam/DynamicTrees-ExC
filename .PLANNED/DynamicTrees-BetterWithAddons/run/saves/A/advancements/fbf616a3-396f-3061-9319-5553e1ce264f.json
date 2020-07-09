@@ -1,0 +1,20 @@
+{
+  "forbidden_arcanus:root": {
+    "criteria": {
+      "crafting_table": "2020-03-13 13:49:42 -0300"
+    },
+    "done": true
+  },
+  "fossil:fossil/root": {
+    "criteria": {
+      "tick": "2020-03-13 13:49:43 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-03-13 13:49:43 -0300"
+    },
+    "done": false
+  }
+}

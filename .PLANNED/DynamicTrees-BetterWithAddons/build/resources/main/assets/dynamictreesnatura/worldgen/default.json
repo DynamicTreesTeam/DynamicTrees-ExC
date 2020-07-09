@@ -1,0 +1,15 @@
+[
+  {
+    "select": { "type" : [ "forest" ] },
+    "apply": {
+      "species" : {
+        "random" : {
+          "dynamictreesnatura:sakura" : 1,
+          "dynamictreesnatura:eucalyptus" : 5
+        }
+      },
+      "density" : [ 0.25, 0.75 ],
+      "chance": 0.02
+    }
+  }
+]

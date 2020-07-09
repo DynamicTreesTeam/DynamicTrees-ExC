@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesXX",
+  "name": "Dynamic Trees for XX",
+  "description": "Adds compatibilities between dynamic trees and XX",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "XX-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

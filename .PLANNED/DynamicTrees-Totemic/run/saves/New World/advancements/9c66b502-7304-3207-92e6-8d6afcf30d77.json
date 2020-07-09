@@ -1,0 +1,174 @@
+{
+  "totemic:recipes/totemic_staff": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/jingle_dress": {
+    "criteria": {
+      "performed_fertility": "2020-07-09 01:17:11 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/totem_whittling_knife": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/bark_stripper": {
+    "criteria": {
+      "has_log": "2020-07-09 01:09:22 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/cedar_planks_from_log": {
+    "criteria": {
+      "has_log": "2020-07-09 01:09:22 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/iron_bells": {
+    "criteria": {
+      "has_jingle_dress_recipe": "2020-07-09 01:17:11 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "beaches": "2020-07-09 01:07:42 -0300",
+      "plains": "2020-07-09 01:07:24 -0300",
+      "ocean": "2020-07-09 01:20:22 -0300",
+      "roofed_forest": "2020-07-09 01:20:54 -0300",
+      "river": "2020-07-09 01:20:21 -0300"
+    },
+    "done": false
+  },
+  "totemic:recipes/totem_torch": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/tipi_from_wool": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-07-09 01:14:51 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/wind_chime": {
+    "criteria": {
+      "has_cedar_wood": "2020-07-09 01:09:22 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/cedar_planks_from_stripped_log": {
+    "criteria": {
+      "has_log": "2020-07-09 01:09:22 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/drum": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/flute": {
+    "criteria": {
+      "has_totempedia": "2020-07-09 01:08:40 -0300"
+    },
+    "done": true
+  },
+  "totemic:recipes/wooden_pillar": {
+    "criteria": {
+      "has_knife": "2020-07-09 01:11:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-07-09 01:08:21 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2020-07-09 01:10:08 -0300"
+    },
+    "done": true
+  }
+}

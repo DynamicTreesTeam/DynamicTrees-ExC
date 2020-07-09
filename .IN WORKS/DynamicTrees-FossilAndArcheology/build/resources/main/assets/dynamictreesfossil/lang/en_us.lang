@@ -1,0 +1,11 @@
+item.dynamictreesfossil:calamitesseed.name=Calamites Seed
+item.dynamictreesfossil:cordiatesseed.name=Cordiates Seed
+item.dynamictreesfossil:palaeorapheseed.name=Palaeoraphe Seed
+item.dynamictreesfossil:sigillariaseed.name=Sigillaria Seed
+
+tile.dynamictreesfossil:leaves0.name=Dynamic Leaves
+
+tile.dynamictreesfossil:calamitesbranch.name=Dynamic Calamites Tree
+tile.dynamictreesfossil:cordiatesbranch.name=Dynamic Cordiates Tree
+tile.dynamictreesfossil:palaeoraphebranch.name=Dynamic Palaeoraphe Tree
+tile.dynamictreesfossil:sigillariabranch.name=Dynamic Sigillaria Tree

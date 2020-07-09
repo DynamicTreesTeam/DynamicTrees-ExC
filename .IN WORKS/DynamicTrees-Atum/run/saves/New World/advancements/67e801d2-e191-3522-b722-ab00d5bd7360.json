@@ -1,0 +1,220 @@
+{
+  "minecraft:recipes/combat/wooden_sword": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/sandstone_slab": {
+    "criteria": {
+      "has_sandstone": "2020-05-30 18:47:14 -0300"
+    },
+    "done": true
+  },
+  "atum:core/amirage": {
+    "criteria": {
+      "entered_atum": "2020-05-30 18:53:27 -0300"
+    },
+    "done": true
+  },
+  "atum:core/journeyintothesands": {
+    "criteria": {
+      "entered_atum": "2020-05-30 18:47:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_axe": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/smooth_sandstone": {
+    "criteria": {
+      "has_sandstone": "2020-05-30 18:47:14 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/sandstone_stairs": {
+    "criteria": {
+      "has_sandstone": "2020-05-30 18:47:14 -0300"
+    },
+    "done": true
+  },
+  "atum:core/ajourney": {
+    "criteria": {
+      "sand_dunes": "2020-05-30 18:50:25 -0300",
+      "oasis": "2020-05-30 18:58:28 -0300",
+      "dried_river": "2020-05-30 18:50:11 -0300",
+      "deadwood_forest": "2020-05-30 18:48:33 -0300",
+      "sand_hills": "2020-05-30 18:47:56 -0300",
+      "deadoasis": "2020-05-30 18:53:27 -0300",
+      "limestone_crags": "2020-05-30 18:55:40 -0300",
+      "limestone_mountains": "2020-05-30 18:48:52 -0300",
+      "sand_plains": "2020-05-30 18:50:12 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_hoe": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2020-05-30 18:46:29 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-05-30 18:37:35 -0300",
+      "swampland": "2020-05-30 18:34:44 -0300",
+      "deep_ocean": "2020-05-30 18:33:14 -0300",
+      "beaches": "2020-05-30 18:33:26 -0300",
+      "extreme_hills_with_trees": "2020-05-30 18:33:57 -0300",
+      "desert_hills": "2020-05-30 18:36:42 -0300",
+      "savanna": "2020-05-30 18:39:09 -0300",
+      "plains": "2020-05-30 18:32:59 -0300",
+      "ocean": "2020-05-30 18:33:19 -0300",
+      "extreme_hills": "2020-05-30 18:33:35 -0300",
+      "roofed_forest": "2020-05-30 18:33:30 -0300",
+      "river": "2020-05-30 18:38:42 -0300",
+      "desert": "2020-05-30 18:36:00 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2020-05-30 19:03:09 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-05-30 18:48:19 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "atum:core/ahope": {
+    "criteria": {
+      "entered_atum": "2020-05-30 18:58:28 -0300"
+    },
+    "done": true
+  },
+  "atum:core/root": {
+    "criteria": {
+      "scarab": "2020-05-30 18:46:25 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-05-30 18:32:59 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "atum:core/pyramidscheme": {
+    "criteria": {
+      "in_pyramid": "2020-05-30 18:54:13 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2020-05-30 18:34:44 -0300"
+    },
+    "done": true
+  },
+  "atum:core/ruinedit": {
+    "criteria": {
+      "in_ruin": "2020-05-30 18:48:37 -0300"
+    },
+    "done": true
+  }
+}

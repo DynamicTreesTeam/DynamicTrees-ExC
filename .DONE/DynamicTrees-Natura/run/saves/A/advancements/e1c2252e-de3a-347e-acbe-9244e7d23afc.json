@@ -1,0 +1,47 @@
+{
+  "minecraft:recipes/tools/flint_and_steel": {
+    "criteria": {
+      "has_obsidian": "2020-06-01 07:51:55 -0300"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2020-06-01 07:52:11 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2020-06-01 07:51:55 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2020-06-01 07:51:55 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2020-06-01 07:52:11 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-06-01 07:48:44 -0300",
+      "beaches": "2020-06-01 07:50:21 -0300",
+      "extreme_hills_with_trees": "2020-06-01 07:51:03 -0300",
+      "forest_hills": "2020-06-01 07:49:51 -0300",
+      "plains": "2020-06-01 07:50:30 -0300",
+      "taiga": "2020-06-01 07:50:01 -0300",
+      "ocean": "2020-06-01 07:50:16 -0300",
+      "extreme_hills": "2020-06-01 07:50:13 -0300",
+      "river": "2020-06-01 07:50:28 -0300",
+      "stone_beach": "2020-06-01 07:50:20 -0300"
+    },
+    "done": false
+  }
+}

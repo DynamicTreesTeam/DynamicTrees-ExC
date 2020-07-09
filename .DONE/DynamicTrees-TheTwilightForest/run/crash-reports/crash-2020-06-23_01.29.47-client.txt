@@ -1,0 +1,122 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 6/23/20 1:29 AM
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots.onBlockDestroyedByPlayer(BlockDynamicTwilightRoots.java:78)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerDestroyBlock(PlayerControllerMP.java:200)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.clickBlockCreative(PlayerControllerMP.java:82)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.clickBlock(PlayerControllerMP.java:246)
+	at net.minecraft.client.Minecraft.clickMouse(Minecraft.java:1630)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2376)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1935)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1188)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:442)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots.onBlockDestroyedByPlayer(BlockDynamicTwilightRoots.java:78)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.onPlayerDestroyBlock(PlayerControllerMP.java:200)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.clickBlockCreative(PlayerControllerMP.java:82)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.clickBlock(PlayerControllerMP.java:246)
+	at net.minecraft.client.Minecraft.clickMouse(Minecraft.java:1630)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2376)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player202'/238, l='MpServer', x=427.85, y=46.23, z=554.77]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-301,64,214), Chunk: (at 3,4,6 in -19,13; contains blocks -304,0,208 to -289,255,223), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 394379 game time, 1000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 108 total; [EntityCreeper['Creeper'/776, l='MpServer', x=468.50, y=19.00, z=491.50], EntityTFPinchBeetle['Pinch Beetle'/778, l='MpServer', x=487.94, y=9.00, z=476.75], EntityChicken['Chicken'/297, l='MpServer', x=361.07, y=32.00, z=517.89], EntityChicken['Chicken'/298, l='MpServer', x=358.45, y=32.00, z=519.31], EntityChicken['Chicken'/299, l='MpServer', x=356.86, y=32.00, z=523.20], EntityTFBoar['Wild Boar'/302, l='MpServer', x=355.50, y=31.00, z=510.50], EntityBat['Bat'/1077, l='MpServer', x=469.63, y=11.00, z=522.19], EntityBat['Bat'/1079, l='MpServer', x=468.41, y=9.08, z=515.00], EntityTFTinyBird['Tiny Bird'/318, l='MpServer', x=378.50, y=31.00, z=534.50], EntityTFTinyBird['Tiny Bird'/319, l='MpServer', x=383.58, y=31.00, z=530.01], EntityTFTinyBird['Tiny Bird'/320, l='MpServer', x=379.46, y=33.00, z=536.17], EntityBat['Bat'/1104, l='MpServer', x=480.02, y=19.18, z=555.79], EntityBat['Bat'/1105, l='MpServer', x=468.16, y=19.98, z=554.56], EntityBat['Bat'/1107, l='MpServer', x=495.75, y=21.06, z=546.51], EntityBat['Bat'/1109, l='MpServer', x=469.54, y=19.86, z=552.83], EntityTFBoar['Wild Boar'/353, l='MpServer', x=428.42, y=15.00, z=612.53], EntityTFBoar['Wild Boar'/354, l='MpServer', x=424.75, y=39.00, z=610.50], EntityTFBoar['Wild Boar'/355, l='MpServer', x=428.45, y=37.00, z=608.71], EntityWolf['Wolf'/356, l='MpServer', x=418.74, y=39.00, z=608.38], EntityTFBunny['Dwarf Rabbit'/357, l='MpServer', x=427.54, y=38.00, z=614.13], EntityTFBunny['Dwarf Rabbit'/358, l='MpServer', x=433.72, y=34.00, z=607.53], EntityTFBunny['Dwarf Rabbit'/364, l='MpServer', x=413.90, y=40.00, z=608.22], EntityTFBunny['Dwarf Rabbit'/365, l='MpServer', x=423.31, y=32.00, z=595.50], EntityTFBoar['Wild Boar'/366, l='MpServer', x=423.67, y=38.00, z=606.50], EntityWolf['Wolf'/367, l='MpServer', x=428.65, y=37.00, z=612.33], EntityTFKobold['Kobold'/1136, l='MpServer', x=434.50, y=15.00, z=480.50], EntityWolf['Wolf'/369, l='MpServer', x=410.41, y=35.00, z=603.60], EntityTFKobold['Kobold'/1137, l='MpServer', x=433.50, y=15.00, z=478.50], EntityTFMinotaur['Minotaur'/1138, l='MpServer', x=467.50, y=19.00, z=512.50], EntityTFMinotaur['Minotaur'/1139, l='MpServer', x=468.50, y=19.00, z=507.72], EntityTFMinotaur['Minotaur'/1140, l='MpServer', x=477.50, y=19.00, z=519.33], EntityTFMazeSlime['Maze Slime'/1141, l='MpServer', x=474.31, y=19.00, z=505.33], EntityTFMinotaur['Minotaur'/630, l='MpServer', x=490.30, y=9.00, z=548.80], EntityTFMazeSlime['Maze Slime'/631, l='MpServer', x=479.44, y=19.14, z=553.83], EntityCreeper['Creeper'/632, l='MpServer', x=482.12, y=19.00, z=551.30], EntityCaveSpider['Cave Spider'/633, l='MpServer', x=488.48, y=19.00, z=550.68], EntityTFTinyBird['Tiny Bird'/378, l='MpServer', x=425.94, y=31.00, z=559.74], EntityTFMazeSlime['Maze Slime'/634, l='MpServer', x=480.20, y=19.42, z=549.56], EntityTFSlimeBeetle['Slime Beetle'/636, l='MpServer', x=501.50, y=9.00, z=531.50], EntityTFBoar['Wild Boar'/380, l='MpServer', x=368.76, y=33.00, z=623.79], EntityTFTinyBird['Tiny Bird'/639, l='MpServer', x=455.01, y=34.00, z=575.37], EntityTFTinyBird['Tiny Bird'/640, l='MpServer', x=475.07, y=32.00, z=569.48], EntityCreeper['Creeper'/648, l='MpServer', x=503.50, y=19.00, z=502.50], EntityTFBoar['Wild Boar'/649, l='MpServer', x=504.09, y=32.00, z=499.39], EntityTFBoar['Wild Boar'/650, l='MpServer', x=501.67, y=32.00, z=505.27], EntityTFSlimeBeetle['Slime Beetle'/654, l='MpServer', x=480.50, y=9.00, z=516.50], EntityCreeper['Creeper'/655, l='MpServer', x=480.50, y=9.00, z=514.50], EntityTFMinotaur['Minotaur'/657, l='MpServer', x=495.46, y=19.00, z=525.74], EntityTFPinchBeetle['Pinch Beetle'/658, l='MpServer', x=483.50, y=19.00, z=516.50], EntityTFKobold['Kobold'/1170, l='MpServer', x=367.57, y=15.00, z=480.51], EntityTFMinotaur['Minotaur'/663, l='MpServer', x=494.50, y=19.00, z=514.50], EntityBat['Bat'/664, l='MpServer', x=497.40, y=12.10, z=529.75], EntityBat['Bat'/665, l='MpServer', x=483.33, y=22.10, z=541.25], EntityTFDeer['Wild Deer'/410, l='MpServer', x=454.27, y=32.00, z=603.77], EntityTFDeer['Wild Deer'/411, l='MpServer', x=427.70, y=34.00, z=626.76], EntityTFDeer['Wild Deer'/412, l='MpServer', x=429.35, y=31.00, z=633.12], EntityTFKobold['Kobold'/1181, l='MpServer', x=456.50, y=25.00, z=474.50], EntityTFDeer['Wild Deer'/413, l='MpServer', x=430.09, y=31.00, z=633.64], EntityItem['item.tile.twilightforest.Log.2'/670, l='MpServer', x=459.13, y=34.00, z=567.88], EntityTFDeer['Wild Deer'/414, l='MpServer', x=426.77, y=32.00, z=632.31], EntityWolf['Wolf'/415, l='MpServer', x=435.50, y=33.00, z=609.45], EntityItem['item.item.stick'/671, l='MpServer', x=457.95, y=32.00, z=566.66], EntityTFMosquitoSwarm['Mosquito Swarm'/1183, l='MpServer', x=485.50, y=32.00, z=609.50], EntityTFSquirrel['Forest Squirrel'/418, l='MpServer', x=391.20, y=32.00, z=491.53], EntityTFBighorn['Bighorn Sheep'/419, l='MpServer', x=372.55, y=31.00, z=499.55], EntityCreeper['Creeper'/676, l='MpServer', x=482.68, y=9.00, z=511.80], EntityTFBighorn['Bighorn Sheep'/420, l='MpServer', x=365.78, y=32.00, z=493.59], EntityTFMinotaur['Minotaur'/678, l='MpServer', x=502.76, y=19.00, z=494.57], EntityTFBighorn['Bighorn Sheep'/422, l='MpServer', x=369.73, y=32.00, z=476.52], EntityItem['item.item.sulphur'/679, l='MpServer', x=474.84, y=9.00, z=512.06], EntityTFBighorn['Bighorn Sheep'/423, l='MpServer', x=385.18, y=32.00, z=495.50], EntityCreeper['Creeper'/680, l='MpServer', x=485.15, y=9.00, z=524.70], EntitySkeleton['Skeleton'/432, l='MpServer', x=437.14, y=24.00, z=522.38], EntitySkeleton['Skeleton'/433, l='MpServer', x=435.49, y=24.00, z=523.34], EntityTFSquirrel['Forest Squirrel'/689, l='MpServer', x=495.50, y=31.00, z=477.48], EntityTFBoar['Wild Boar'/434, l='MpServer', x=439.50, y=35.00, z=509.67], EntityTFMinotaur['Minotaur'/690, l='MpServer', x=479.74, y=19.00, z=502.63], EntityTFBoar['Wild Boar'/435, l='MpServer', x=433.73, y=34.00, z=511.63], EntityTFMinotaur['Minotaur'/691, l='MpServer', x=476.50, y=19.00, z=501.50], EntityTFBoar['Wild Boar'/436, l='MpServer', x=449.54, y=35.00, z=496.76], EntityTFBoar['Wild Boar'/437, l='MpServer', x=422.72, y=32.23, z=526.54], EntityTFBoar['Wild Boar'/438, l='MpServer', x=411.56, y=35.00, z=520.26], EntitySkeleton['Skeleton'/1206, l='MpServer', x=357.50, y=14.00, z=493.50], EntityTFBoar['Wild Boar'/439, l='MpServer', x=431.50, y=35.00, z=508.75], EntityZombie['Zombie'/1207, l='MpServer', x=358.50, y=14.00, z=492.50], EntityItem['item.tile.sapling.oak'/440, l='MpServer', x=378.13, y=46.00, z=574.78], EntityItem['item.tile.mushroom'/441, l='MpServer', x=399.56, y=28.00, z=547.88], EntityPlayerSP['Player202'/238, l='MpServer', x=427.85, y=46.23, z=554.77], EntityTFTinyBird['Tiny Bird'/443, l='MpServer', x=384.00, y=33.00, z=537.08], EntityTFTinyBird['Tiny Bird'/444, l='MpServer', x=388.06, y=32.00, z=538.44], EntityTFTinyBird['Tiny Bird'/445, l='MpServer', x=386.20, y=32.00, z=536.00], EntityTFTinyBird['Tiny Bird'/446, l='MpServer', x=385.51, y=33.00, z=539.92], EntityTFBoar['Wild Boar'/447, l='MpServer', x=410.52, y=33.00, z=520.67], EntityTFBoar['Wild Boar'/448, l='MpServer', x=409.56, y=33.00, z=521.10], EntityTFSquirrel['Forest Squirrel'/449, l='MpServer', x=432.33, y=35.00, z=486.20], EntitySkeleton['Skeleton'/450, l='MpServer', x=434.50, y=15.00, z=474.50], EntityTFRaven['Forest Raven'/452, l='MpServer', x=452.04, y=35.00, z=474.59], EntityTFBunny['Dwarf Rabbit'/730, l='MpServer', x=501.59, y=31.00, z=570.91], EntitySkeleton['Skeleton'/986, l='MpServer', x=390.50, y=27.00, z=504.50], EntityTFDeer['Wild Deer'/732, l='MpServer', x=487.45, y=35.00, z=599.53], EntityTFBunny['Dwarf Rabbit'/744, l='MpServer', x=495.95, y=32.00, z=568.46], EntityTFDeer['Wild Deer'/746, l='MpServer', x=477.24, y=31.00, z=604.80], EntityTFRaven['Forest Raven'/747, l='MpServer', x=478.93, y=31.00, z=595.02], EntityTFBunny['Dwarf Rabbit'/748, l='MpServer', x=473.84, y=31.00, z=597.45], EntityTFTinyBird['Tiny Bird'/749, l='MpServer', x=483.04, y=31.00, z=596.43], EntityItem['item.item.slimeball'/240, l='MpServer', x=478.58, y=9.00, z=556.13], EntityTFMinotaur['Minotaur'/762, l='MpServer', x=505.50, y=9.00, z=552.50], EntityBat['Bat'/1019, l='MpServer', x=495.25, y=12.10, z=491.25]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:471)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1117741632 bytes (1065 MB) / 1714946048 bytes (1635 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 37
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID              | Version      | Source                                         | Signature |
+	|:------ |:--------------- |:------------ |:---------------------------------------------- |:--------- |
+	| LCHIJA | minecraft       | 1.12.2       | minecraft.jar                                  | None      |
+	| LCHIJA | mcp             | 9.42         | minecraft.jar                                  | None      |
+	| LCHIJA | FML             | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | forge           | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | dynamictrees    | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar                  | None      |
+	| LCHIJA | twilightforest  | 3.10.1013    | twilightforest-1.12.2-3.10.1013-universal.jar  | None      |
+	| LCHIJA | dynamictreesttf | 1.12.2-1.0.0 | dynamictreesTheTwilightForest-1.12.2-1.0.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 432.00' Renderer: 'GeForce GTX 1070 Ti/PCIe/SSE2'
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreessimplytea",
+  "name": "Dynamic Trees for Simply Tea",
+  "description": "Adds compatibilities between dynamic trees and Simply Tea",
+  "version": "1.12.2-1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "st-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,32 @@
+{
+  "twilightforest:root": {
+    "criteria": {
+      "in_tf": "2020-07-04 21:35:00 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_swamp": {
+    "criteria": {
+      "0": "2020-07-04 21:35:11 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/general_biomes": {
+    "criteria": {
+      "0": "2020-07-04 21:35:00 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_forest": {
+    "criteria": {
+      "discover": "2020-07-04 21:35:00 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-07-04 21:34:43 -0300"
+    },
+    "done": false
+  }
+}

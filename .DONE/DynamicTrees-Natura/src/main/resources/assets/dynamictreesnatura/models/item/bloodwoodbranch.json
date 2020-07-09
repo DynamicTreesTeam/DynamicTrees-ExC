@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "natura:blocks/logs/nether/bloodwood_bark",
+        "rings": "natura:blocks/logs/nether/bloodwood_heart_small"
+    }
+}

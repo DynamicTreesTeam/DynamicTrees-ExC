@@ -1,0 +1,26 @@
+{
+  "twilightforest:root": {
+    "criteria": {
+      "in_tf": "2020-07-04 14:24:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/general_biomes": {
+    "criteria": {
+      "0": "2020-07-04 14:24:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_forest": {
+    "criteria": {
+      "discover": "2020-07-04 14:24:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "roofed_forest": "2020-07-04 14:23:27 -0300"
+    },
+    "done": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "swampland": "2020-06-01 23:52:06 -0300",
+      "birch_forest": "2020-06-01 23:52:27 -0300",
+      "taiga": "2020-06-01 23:51:43 -0300",
+      "river": "2020-06-01 23:52:16 -0300"
+    },
+    "done": false
+  }
+}

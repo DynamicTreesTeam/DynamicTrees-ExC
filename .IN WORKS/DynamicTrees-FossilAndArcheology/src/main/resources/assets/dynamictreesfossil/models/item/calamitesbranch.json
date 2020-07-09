@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "fossil:blocks/calamites_log",
+        "rings": "fossil:blocks/calamites_log_top"
+    }
+}

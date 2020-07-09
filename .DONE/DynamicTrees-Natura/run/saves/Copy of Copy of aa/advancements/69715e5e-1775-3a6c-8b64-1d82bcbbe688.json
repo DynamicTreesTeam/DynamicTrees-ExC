@@ -1,0 +1,58 @@
+{
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-05-25 12:08:00 -0300",
+      "birch_forest": "2020-05-25 12:07:50 -0300",
+      "deep_ocean": "2020-05-25 12:08:22 -0300",
+      "beaches": "2020-05-25 12:08:21 -0300",
+      "extreme_hills_with_trees": "2020-05-25 12:08:10 -0300",
+      "plains": "2020-05-25 12:07:57 -0300",
+      "ocean": "2020-05-25 12:08:24 -0300",
+      "extreme_hills": "2020-05-25 12:08:07 -0300",
+      "river": "2020-05-25 12:08:13 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-05-25 12:07:50 -0300"
+    },
+    "done": true
+  }
+}

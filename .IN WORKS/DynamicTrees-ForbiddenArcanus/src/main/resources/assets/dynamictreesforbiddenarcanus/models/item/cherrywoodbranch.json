@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "forbidden_arcanus:blocks/log_cherrywood",
+        "rings": "forbidden_arcanus:blocks/log_cherrywood_top"
+    }
+}

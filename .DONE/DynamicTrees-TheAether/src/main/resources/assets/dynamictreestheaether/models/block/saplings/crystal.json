@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "aether_legacy:blocks/crystal_leaves",
+        "log": "aether_legacy:blocks/skyroot_log_side",
+        "leaves": "aether_legacy:blocks/crystal_leaves"
+    }
+}

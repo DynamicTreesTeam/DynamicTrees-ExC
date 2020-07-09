@@ -1,0 +1,127 @@
+---- Minecraft Crash Report ----
+// There are four lights!
+
+Time: 6/1/20 7:22 PM
+Description: Tesselating block in world
+
+java.util.ConcurrentModificationException
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
+	at com.ferreusveritas.dynamictrees.client.QuadManipulator.getSpriteUVFromBlockState(QuadManipulator.java:173)
+	at com.ferreusveritas.dynamictrees.client.QuadManipulator.getModelTexture(QuadManipulator.java:139)
+	at com.ferreusveritas.dynamictrees.models.loaders.ModelLoaderWrapped$1.createBakedModel(ModelLoaderWrapped.java:70)
+	at com.ferreusveritas.dynamictrees.models.blockmodels.ModelBlockWrapped$1.createModel(ModelBlockWrapped.java:34)
+	at com.ferreusveritas.dynamictrees.models.bakedmodels.BakedModelWrapped.getWrappedModel(BakedModelWrapped.java:19)
+	at com.ferreusveritas.dynamictrees.models.bakedmodels.BakedModelWrapped.isAmbientOcclusion(BakedModelWrapped.java:43)
+	at net.minecraft.client.renderer.block.model.IBakedModel.isAmbientOcclusion(IBakedModel.java:29)
+	at net.minecraft.client.renderer.BlockModelRenderer.renderModel(BlockModelRenderer.java:43)
+	at net.minecraft.client.renderer.BlockModelRenderer.renderModel(BlockModelRenderer.java:38)
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:80)
+	at net.minecraft.client.renderer.chunk.RenderChunk.rebuildChunk(RenderChunk.java:203)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.processTask(ChunkRenderWorker.java:122)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.run(ChunkRenderWorker.java:50)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
+	at com.ferreusveritas.dynamictrees.client.QuadManipulator.getSpriteUVFromBlockState(QuadManipulator.java:173)
+	at com.ferreusveritas.dynamictrees.client.QuadManipulator.getModelTexture(QuadManipulator.java:139)
+	at com.ferreusveritas.dynamictrees.models.loaders.ModelLoaderWrapped$1.createBakedModel(ModelLoaderWrapped.java:70)
+	at com.ferreusveritas.dynamictrees.models.blockmodels.ModelBlockWrapped$1.createModel(ModelBlockWrapped.java:34)
+	at com.ferreusveritas.dynamictrees.models.bakedmodels.BakedModelWrapped.getWrappedModel(BakedModelWrapped.java:19)
+	at com.ferreusveritas.dynamictrees.models.bakedmodels.BakedModelWrapped.isAmbientOcclusion(BakedModelWrapped.java:43)
+	at net.minecraft.client.renderer.block.model.IBakedModel.isAmbientOcclusion(IBakedModel.java:29)
+	at net.minecraft.client.renderer.BlockModelRenderer.renderModel(BlockModelRenderer.java:43)
+	at net.minecraft.client.renderer.BlockModelRenderer.renderModel(BlockModelRenderer.java:38)
+
+-- Block being tesselated --
+Details:
+	Block type: ID #263 (tile.dynamictrees:oakbranch // com.ferreusveritas.dynamictrees.blocks.BlockBranchThick // dynamictrees:oakbranch)
+	Block data value: 7 / 0x7 / 0b0111
+	Block location: World: (-4275,72,-2672), Chunk: (at 13,4,0 in -268,-167; contains blocks -4288,0,-2672 to -4273,255,-2657), Region: (-9,-6; contains chunks -288,-192 to -257,-161, blocks -4608,0,-3072 to -4097,255,-2561)
+Stacktrace:
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:80)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player80'/283, l='MpServer', x=-4343.48, y=81.00, z=-2591.73]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-236,64,208), Chunk: (at 4,4,0 in -15,13; contains blocks -240,0,208 to -225,255,223), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 26373 game time, 8908 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 114 total; [EntityZombie['Zombie'/512, l='MpServer', x=-4318.72, y=34.00, z=-2556.52], EntitySheep['Sheep'/513, l='MpServer', x=-4314.49, y=68.00, z=-2558.29], EntitySheep['Sheep'/514, l='MpServer', x=-4317.46, y=67.00, z=-2548.26], EntitySheep['Sheep'/515, l='MpServer', x=-4307.73, y=64.00, z=-2544.49], EntityBat['Bat'/516, l='MpServer', x=-4311.05, y=31.58, z=-2533.81], EntityItem['item.item.arrow'/517, l='MpServer', x=-4305.75, y=63.00, z=-2538.20], EntityItem['item.item.bone'/518, l='MpServer', x=-4306.09, y=63.00, z=-2537.13], EntityCreeper['Creeper'/519, l='MpServer', x=-4300.50, y=26.00, z=-2543.50], EntityMinecartChest['Minecart with Chest'/284, l='MpServer', x=-4343.50, y=31.06, z=-2578.50], EntitySkeleton['Skeleton'/285, l='MpServer', x=-4337.50, y=57.00, z=-2581.50], EntityBat['Bat'/543, l='MpServer', x=-4392.48, y=26.13, z=-2651.66], EntityBat['Bat'/545, l='MpServer', x=-4330.33, y=17.64, z=-2590.67], EntityPig['Pig'/561, l='MpServer', x=-4285.02, y=74.00, z=-2653.46], EntitySpider['Spider'/562, l='MpServer', x=-4281.50, y=34.00, z=-2625.50], EntityCreeper['Creeper'/563, l='MpServer', x=-4280.50, y=41.00, z=-2638.50], EntitySkeleton['Skeleton'/564, l='MpServer', x=-4265.50, y=35.00, z=-2629.50], EntitySkeleton['Skeleton'/565, l='MpServer', x=-4265.70, y=35.00, z=-2627.30], EntitySkeleton['Skeleton'/566, l='MpServer', x=-4268.50, y=35.00, z=-2632.50], EntitySkeleton['Skeleton'/567, l='MpServer', x=-4267.50, y=35.00, z=-2628.50], EntitySpider['Spider'/568, l='MpServer', x=-4285.11, y=34.00, z=-2615.44], EntitySpider['Spider'/569, l='MpServer', x=-4285.91, y=34.00, z=-2623.32], EntityBat['Bat'/570, l='MpServer', x=-4271.93, y=34.01, z=-2610.38], EntityBat['Bat'/572, l='MpServer', x=-4287.25, y=12.37, z=-2580.16], EntityEnderman['Enderman'/573, l='MpServer', x=-4279.49, y=30.00, z=-2587.62], EntityBat['Bat'/574, l='MpServer', x=-4275.27, y=36.10, z=-2585.78], EntityBat['Bat'/575, l='MpServer', x=-4278.91, y=39.41, z=-2581.26], EntityBat['Bat'/576, l='MpServer', x=-4279.36, y=36.20, z=-2581.71], EntityBat['Bat'/577, l='MpServer', x=-4274.74, y=34.12, z=-2586.75], EntityZombie['Zombie'/578, l='MpServer', x=-4279.47, y=34.00, z=-2578.74], EntitySkeleton['Skeleton'/584, l='MpServer', x=-4283.29, y=25.00, z=-2568.50], EntitySkeleton['Skeleton'/585, l='MpServer', x=-4270.50, y=25.00, z=-2569.50], EntitySkeleton['Skeleton'/586, l='MpServer', x=-4264.50, y=40.00, z=-2532.50], EntityPlayerSP['Player80'/283, l='MpServer', x=-4343.48, y=81.00, z=-2591.73], EntityEnderman['Enderman'/369, l='MpServer', x=-4415.59, y=48.00, z=-2662.70], EntityEnderman['Enderman'/370, l='MpServer', x=-4413.50, y=48.00, z=-2659.55], EntityBat['Bat'/371, l='MpServer', x=-4394.70, y=28.04, z=-2656.46], EntityPig['Pig'/372, l='MpServer', x=-4416.43, y=84.00, z=-2625.40], EntityPig['Pig'/377, l='MpServer', x=-4413.50, y=85.00, z=-2636.31], EntityPig['Pig'/378, l='MpServer', x=-4408.51, y=82.00, z=-2627.70], EntityPig['Pig'/379, l='MpServer', x=-4408.51, y=82.00, z=-2634.22], EntityZombie['Zombie'/380, l='MpServer', x=-4377.50, y=39.00, z=-2637.50], EntityItem['item.item.bone'/381, l='MpServer', x=-4356.60, y=62.00, z=-2613.13], EntitySquid['Squid'/382, l='MpServer', x=-4361.70, y=58.43, z=-2620.40], EntityCreeper['Creeper'/383, l='MpServer', x=-4390.50, y=19.00, z=-2588.50], EntityCreeper['Creeper'/384, l='MpServer', x=-4364.50, y=15.00, z=-2638.50], EntityCreeper['Creeper'/385, l='MpServer', x=-4364.67, y=16.00, z=-2595.50], EntitySkeleton['Skeleton'/386, l='MpServer', x=-4386.50, y=13.00, z=-2549.50], EntityCreeper['Creeper'/387, l='MpServer', x=-4398.85, y=40.00, z=-2547.59], EntityZombie['Zombie'/388, l='MpServer', x=-4368.57, y=43.00, z=-2544.80], EntityPig['Pig'/389, l='MpServer', x=-4415.50, y=63.00, z=-2519.50], EntitySkeleton['Skeleton'/390, l='MpServer', x=-4354.50, y=33.00, z=-2554.50], EntitySquid['Squid'/391, l='MpServer', x=-4362.65, y=57.23, z=-2546.06], EntitySkeleton['Skeleton'/392, l='MpServer', x=-4363.73, y=46.00, z=-2539.55], EntitySkeleton['Skeleton'/393, l='MpServer', x=-4363.51, y=48.00, z=-2533.27], EntitySkeleton['Skeleton'/394, l='MpServer', x=-4370.50, y=48.00, z=-2523.50], EntityPig['Pig'/435, l='MpServer', x=-4321.73, y=73.00, z=-2659.42], EntityWolf['Wolf'/436, l='MpServer', x=-4323.94, y=69.00, z=-2645.62], EntityWolf['Wolf'/437, l='MpServer', x=-4323.18, y=69.00, z=-2645.16], EntityPig['Pig'/438, l='MpServer', x=-4321.48, y=70.00, z=-2645.74], EntityPig['Pig'/439, l='MpServer', x=-4321.49, y=72.00, z=-2650.25], EntityWolf['Wolf'/440, l='MpServer', x=-4320.30, y=71.00, z=-2648.51], EntityWolf['Wolf'/441, l='MpServer', x=-4320.49, y=69.00, z=-2640.01], EntitySkeleton['Skeleton'/442, l='MpServer', x=-4328.50, y=19.00, z=-2595.50], EntityMinecartChest['Minecart with Chest'/443, l='MpServer', x=-4329.50, y=31.06, z=-2580.50], EntityCreeper['Creeper'/444, l='MpServer', x=-4325.50, y=31.00, z=-2582.50], EntityEnderman['Enderman'/445, l='MpServer', x=-4324.50, y=31.00, z=-2579.50], EntitySkeleton['Skeleton'/446, l='MpServer', x=-4322.71, y=20.00, z=-2590.50], EntitySkeleton['Skeleton'/447, l='MpServer', x=-4325.50, y=19.00, z=-2589.50], EntitySkeleton['Skeleton'/448, l='MpServer', x=-4326.50, y=20.00, z=-2587.71], EntityCreeper['Creeper'/449, l='MpServer', x=-4324.80, y=19.00, z=-2586.60], EntityCreeper['Creeper'/450, l='MpServer', x=-4331.50, y=35.00, z=-2587.50], EntityBat['Bat'/451, l='MpServer', x=-4331.25, y=33.10, z=-2576.55], EntityZombie['Zombie'/452, l='MpServer', x=-4336.46, y=31.00, z=-2565.72], EntityZombie['Zombie'/453, l='MpServer', x=-4336.50, y=22.00, z=-2567.50], EntityZombie['Zombie'/454, l='MpServer', x=-4343.30, y=30.25, z=-2560.70], EntityBat['Bat'/455, l='MpServer', x=-4337.51, y=25.37, z=-2570.64], EntitySkeleton['Skeleton'/456, l='MpServer', x=-4342.50, y=33.00, z=-2572.50], EntitySkeleton['Skeleton'/457, l='MpServer', x=-4351.26, y=61.00, z=-2568.54], EntityZombie['Zombie'/458, l='MpServer', x=-4324.50, y=12.00, z=-2565.50], EntitySkeleton['Skeleton'/459, l='MpServer', x=-4323.50, y=31.00, z=-2573.50], EntityZombie['Zombie'/460, l='MpServer', x=-4335.50, y=22.00, z=-2566.50], EntityZombie['Zombie'/461, l='MpServer', x=-4331.80, y=23.00, z=-2573.49], EntityEnderman['Enderman'/462, l='MpServer', x=-4334.50, y=22.00, z=-2571.26], EntityBat['Bat'/463, l='MpServer', x=-4321.25, y=32.10, z=-2570.50], EntityBat['Bat'/464, l='MpServer', x=-4321.25, y=32.10, z=-2570.25], EntityCreeper['Creeper'/465, l='MpServer', x=-4348.42, y=32.00, z=-2554.17], EntitySkeleton['Skeleton'/466, l='MpServer', x=-4349.50, y=33.00, z=-2554.50], EntityMinecartChest['Minecart with Chest'/467, l='MpServer', x=-4322.49, y=26.00, z=-2550.51], EntitySkeleton['Skeleton'/470, l='MpServer', x=-4368.50, y=39.00, z=-2549.50], EntityPig['Pig'/487, l='MpServer', x=-4290.28, y=75.00, z=-2644.88], EntityLlama['Llama'/488, l='MpServer', x=-4290.37, y=76.00, z=-2645.60], EntityPig['Pig'/489, l='MpServer', x=-4290.77, y=76.00, z=-2648.24], EntitySkeleton['Skeleton'/490, l='MpServer', x=-4312.50, y=34.00, z=-2638.50], EntityLlama['Llama'/491, l='MpServer', x=-4303.27, y=77.00, z=-2663.86], EntityLlama['Llama'/492, l='MpServer', x=-4295.48, y=77.00, z=-2657.74], EntityLlama['Llama'/493, l='MpServer', x=-4295.09, y=77.00, z=-2670.13], EntityPig['Pig'/494, l='MpServer', x=-4292.47, y=77.00, z=-2666.34], EntityPig['Pig'/495, l='MpServer', x=-4313.72, y=73.00, z=-2649.50], EntityPig['Pig'/496, l='MpServer', x=-4318.70, y=72.00, z=-2651.48], EntitySkeleton['Skeleton'/497, l='MpServer', x=-4301.25, y=34.00, z=-2615.46], EntitySkeleton['Skeleton'/498, l='MpServer', x=-4288.50, y=34.00, z=-2619.50], EntityBat['Bat'/499, l='MpServer', x=-4290.75, y=36.10, z=-2613.75], EntityBat['Bat'/500, l='MpServer', x=-4313.45, y=12.91, z=-2606.51], EntityMinecartChest['Minecart with Chest'/501, l='MpServer', x=-4288.50, y=34.06, z=-2596.50], EntityZombie['Zombie'/502, l='MpServer', x=-4288.50, y=34.00, z=-2604.50], EntityBat['Bat'/503, l='MpServer', x=-4312.75, y=18.10, z=-2582.59], EntitySkeleton['Skeleton'/504, l='MpServer', x=-4312.73, y=31.00, z=-2578.47], EntityBat['Bat'/505, l='MpServer', x=-4289.18, y=13.23, z=-2577.33], EntityMinecartChest['Minecart with Chest'/506, l='MpServer', x=-4289.50, y=35.06, z=-2584.50], EntityZombie['Zombie'/507, l='MpServer', x=-4317.50, y=41.00, z=-2574.50], EntityZombie['Zombie'/508, l='MpServer', x=-4318.50, y=34.00, z=-2566.50], EntitySkeleton['Skeleton'/509, l='MpServer', x=-4313.70, y=41.00, z=-2574.30], EntityBat['Bat'/510, l='MpServer', x=-4288.80, y=14.05, z=-2578.19], EntitySkeleton['Skeleton'/511, l='MpServer', x=-4319.50, y=34.00, z=-2558.50]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.renderer.chunk.ChunkRenderWorker.run(ChunkRenderWorker.java:60)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 702585704 bytes (670 MB) / 1496317952 bytes (1427 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                     | Version      | Source                                | Signature |
+	|:------ |:---------------------- |:------------ |:------------------------------------- |:--------- |
+	| LCHIJA | minecraft              | 1.12.2       | minecraft.jar                         | None      |
+	| LCHIJA | mcp                    | 9.42         | minecraft.jar                         | None      |
+	| LCHIJA | FML                    | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | forge                  | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | dynamictrees           | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar         | None      |
+	| LCHIJA | sugiforest             | 1.4.0        | SugiForest_1.12-v1.4.0.jar            | None      |
+	| LCHIJA | dynamictreessugiforest | 1.12.2-1.0   | dynamictreesSugiForest-1.12.2-1.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz

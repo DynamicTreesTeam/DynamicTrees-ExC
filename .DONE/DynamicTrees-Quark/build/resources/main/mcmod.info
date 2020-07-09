@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesquark",
+  "name": "Dynamic Trees for Quark",
+  "description": "Adds compatibilities between dynamic trees and Quark",
+  "version": "1.12.2-1.0.4",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees and Vaskii for Quark",
+  "logoFile": "q-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

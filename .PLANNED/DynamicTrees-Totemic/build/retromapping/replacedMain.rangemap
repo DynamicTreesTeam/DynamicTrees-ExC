@@ -1,0 +1,357 @@
+Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\.PLANNED\DynamicTrees-Totemic\build\classes\api
+Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\.PLANNED\DynamicTrees-Totemic\build\resources\api
+Symbol range map extraction starting
+Processing 5 files
+startProcessing "maxhyper/dynamictreestotemic/DynamicTreesTotemic.java" md5: 0bd435a36c025812fe63cd94fa8801ff
+@|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|8|36|maxhyper.dynamictreestotemic|package|maxhyper.dynamictreestotemic|(file)
+Class Start: maxhyper.dynamictreestotemic.DynamicTreesTotemic
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|516|519|Mod|class|net.minecraftforge.fml.common.Mod|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|520|525|modid|method|net.minecraftforge.fml.common.Mod|modid|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|527|546|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|547|552|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|554|558|name|method|net.minecraftforge.fml.common.Mod|name|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|560|579|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|580|584|NAME|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|NAME
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|586|598|dependencies|method|net.minecraftforge.fml.common.Mod|dependencies|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|601|620|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|621|633|DEPENDENCIES|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|DEPENDENCIES
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|649|668|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|696|702|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|696|702|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|703|708|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID|
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|756|762|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|756|762|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|763|767|NAME|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|NAME|
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|821|827|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|821|827|String|class|java.lang.String|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|828|840|DEPENDENCIES|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|DEPENDENCIES|
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|863|875|ModConstants|class|com.ferreusveritas.dynamictrees.ModConstants|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|876|895|DYNAMICTREES_LATEST|field|com.ferreusveritas.dynamictrees.ModConstants|DYNAMICTREES_LATEST
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|964|983|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|935|947|Mod.Instance|class|net.minecraftforge.fml.common.Mod.Instance|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|964|983|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|984|992|instance|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|instance|
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1160|1171|CommonProxy|class|maxhyper.dynamictreestotemic.proxy.CommonProxy|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1000|1010|SidedProxy|class|net.minecraftforge.fml.common.SidedProxy|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1011|1021|clientSide|method|net.minecraftforge.fml.common.SidedProxy|clientSide|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1074|1084|serverSide|method|net.minecraftforge.fml.common.SidedProxy|serverSide|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1160|1171|CommonProxy|class|maxhyper.dynamictreestotemic.proxy.CommonProxy|false
+   @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1172|1177|proxy|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|proxy|
+   Method Start: preInit(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1246|1251|event|param|maxhyper.dynamictreestotemic.DynamicTreesTotemic|preInit|(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1185|1197|EventHandler|class|net.minecraftforge.fml.common.Mod.EventHandler|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1212|1219|preInit|method|maxhyper.dynamictreestotemic.DynamicTreesTotemic|preInit|(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1220|1245|FMLPreInitializationEvent|class|net.minecraftforge.fml.common.event.FMLPreInitializationEvent|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1258|1263|proxy|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|proxy
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1264|1271|preInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|preInit|()V
+   Method End: preInit(Lnet/minecraftforge/fml/common/event/FMLPreInitializationEvent;)V
+   Method Start: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1340|1345|event|param|maxhyper.dynamictreestotemic.DynamicTreesTotemic|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1285|1297|EventHandler|class|net.minecraftforge.fml.common.Mod.EventHandler|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1312|1316|init|method|maxhyper.dynamictreestotemic.DynamicTreesTotemic|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1317|1339|FMLInitializationEvent|class|net.minecraftforge.fml.common.event.FMLInitializationEvent|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1352|1357|proxy|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|proxy
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1358|1362|init|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|init|()V
+   Method End: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+   Method Start: postInit(Lnet/minecraftforge/fml/common/event/FMLPostInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1439|1444|event|param|maxhyper.dynamictreestotemic.DynamicTreesTotemic|postInit|(Lnet/minecraftforge/fml/common/event/FMLPostInitializationEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1376|1388|EventHandler|class|net.minecraftforge.fml.common.Mod.EventHandler|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1403|1411|postInit|method|maxhyper.dynamictreestotemic.DynamicTreesTotemic|postInit|(Lnet/minecraftforge/fml/common/event/FMLPostInitializationEvent;)V
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1412|1438|FMLPostInitializationEvent|class|net.minecraftforge.fml.common.event.FMLPostInitializationEvent|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1453|1473|NoSuchFieldException|class|java.lang.NoSuchFieldException|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1475|1492|SecurityException|class|java.lang.SecurityException|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1494|1518|IllegalArgumentException|class|java.lang.IllegalArgumentException|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1520|1542|IllegalAccessException|class|java.lang.IllegalAccessException|false
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1548|1553|proxy|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|proxy
+      @|maxhyper/dynamictreestotemic/DynamicTreesTotemic.java|1554|1562|postInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|postInit|()V
+   Method End: postInit(Lnet/minecraftforge/fml/common/event/FMLPostInitializationEvent;)V
+Class End  : maxhyper.dynamictreestotemic.DynamicTreesTotemic
+endProcessing "maxhyper/dynamictreestotemic/DynamicTreesTotemic.java"
+
+startProcessing "maxhyper/dynamictreestotemic/ModContent.java" md5: bee8c8a9303fb424d928aa82f44726b3
+@|maxhyper/dynamictreestotemic/ModContent.java|8|36|maxhyper.dynamictreestotemic|package|maxhyper.dynamictreestotemic|(file)
+Class Start: maxhyper.dynamictreestotemic.ModContent
+   @|maxhyper/dynamictreestotemic/ModContent.java|1645|1667|Mod.EventBusSubscriber|class|net.minecraftforge.fml.common.Mod.EventBusSubscriber|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1668|1673|modid|method|net.minecraftforge.fml.common.Mod.EventBusSubscriber|modid|()Ljava/lang/String;
+   @|maxhyper/dynamictreestotemic/ModContent.java|1676|1695|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1696|1701|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+   @|maxhyper/dynamictreestotemic/ModContent.java|1705|1717|ObjectHolder|class|net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1718|1737|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1738|1743|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+   @|maxhyper/dynamictreestotemic/ModContent.java|1759|1769|ModContent|class|maxhyper.dynamictreestotemic.ModContent|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1800|1810|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1790|1799|ArrayList|class|java.util.ArrayList|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1790|1799|ArrayList|class|java.util.ArrayList|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1800|1810|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1812|1817|trees|field|maxhyper.dynamictreestotemic.ModContent|trees|
+   @|maxhyper/dynamictreestotemic/ModContent.java|1824|1833|ArrayList|class|java.util.ArrayList|false
+   @|maxhyper/dynamictreestotemic/ModContent.java|1834|1844|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+   Method Start: registerDataBasePopulators(Lcom/ferreusveritas/dynamictrees/api/WorldGenRegistry$BiomeDataBasePopulatorRegistryEvent;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|1959|1964|event|param|maxhyper.dynamictreestotemic.ModContent|registerDataBasePopulators|(Lcom/ferreusveritas/dynamictrees/api/WorldGenRegistry$BiomeDataBasePopulatorRegistryEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|1854|1868|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|1890|1916|registerDataBasePopulators|method|maxhyper.dynamictreestotemic.ModContent|registerDataBasePopulators|(Lcom/ferreusveritas/dynamictrees/api/WorldGenRegistry$BiomeDataBasePopulatorRegistryEvent;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|1923|1958|BiomeDataBasePopulatorRegistryEvent|class|com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|1971|1976|event|param|maxhyper.dynamictreestotemic.ModContent|registerDataBasePopulators|(Lcom/ferreusveritas/dynamictrees/api/WorldGenRegistry$BiomeDataBasePopulatorRegistryEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|1977|1985|register|method|com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent|register|(Lcom/ferreusveritas/dynamictrees/api/worldgen/IBiomeDataBasePopulator;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|1990|2012|BiomeDataBasePopulator|class|maxhyper.dynamictreestotemic.worldgen.BiomeDataBasePopulator|false
+   Method End: registerDataBasePopulators(Lcom/ferreusveritas/dynamictrees/api/WorldGenRegistry$BiomeDataBasePopulatorRegistryEvent;)V
+   Method Start: registerBlocks(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2113|2118|event|param|maxhyper.dynamictreestotemic.ModContent|registerBlocks|(Lnet/minecraftforge/event/RegistryEvent$Register;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|2026|2040|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2062|2076|registerBlocks|method|maxhyper.dynamictreestotemic.ModContent|registerBlocks|(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2083|2105|RegistryEvent.Register|class|net.minecraftforge.event.RegistryEvent.Register|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2106|2111|Block|class|net.minecraft.block.Block|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2125|2139|IForgeRegistry|class|net.minecraftforge.registries.IForgeRegistry|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2140|2145|Block|class|net.minecraft.block.Block|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2158|2163|event|param|maxhyper.dynamictreestotemic.ModContent|registerBlocks|(Lnet/minecraftforge/event/RegistryEvent$Register;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|2164|2175|getRegistry|method|net.minecraftforge.event.RegistryEvent.Register|getRegistry|()Lnet/minecraftforge/registries/IForgeRegistry;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2219|2224|trees|field|maxhyper.dynamictreestotemic.ModContent|trees
+      @|maxhyper/dynamictreestotemic/ModContent.java|2225|2232|forEach|method|java.lang.Iterable|forEach|(Ljava/util/function/Consumer;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2241|2245|tree|param|java.util.function.Consumer<com.ferreusveritas.dynamictrees.trees.TreeFamily>|accept|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|tree|-1
+      @|maxhyper/dynamictreestotemic/ModContent.java|2246|2261|registerSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2262|2269|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2270|2278|REGISTRY|field|com.ferreusveritas.dynamictrees.trees.Species|REGISTRY
+      @|maxhyper/dynamictreestotemic/ModContent.java|2285|2294|ArrayList|class|java.util.ArrayList|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2295|2300|Block|class|net.minecraft.block.Block|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2319|2328|ArrayList|class|java.util.ArrayList|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2337|2342|trees|field|maxhyper.dynamictreestotemic.ModContent|trees
+      @|maxhyper/dynamictreestotemic/ModContent.java|2343|2350|forEach|method|java.lang.Iterable|forEach|(Ljava/util/function/Consumer;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2359|2363|tree|param|java.util.function.Consumer<com.ferreusveritas.dynamictrees.trees.TreeFamily>|accept|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|tree|-1
+      @|maxhyper/dynamictreestotemic/ModContent.java|2364|2385|getRegisterableBlocks|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableBlocks|(Ljava/util/List;)Ljava/util/List;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2414|2420|addAll|method|java.util.Collection|addAll|(Ljava/util/Collection;)Z
+      @|maxhyper/dynamictreestotemic/ModContent.java|2421|2433|LeavesPaging|class|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2434|2454|getLeavesMapForModId|method|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|getLeavesMapForModId|(Ljava/lang/String;)Ljava/util/Map;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2455|2474|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2475|2480|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+      @|maxhyper/dynamictreestotemic/ModContent.java|2482|2488|values|method|java.util.Map|values|()Ljava/util/Collection;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2505|2516|registerAll|method|net.minecraftforge.registries.IForgeRegistry|registerAll|([Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|2528|2535|toArray|method|java.util.Collection|toArray|([Ljava/lang/Object;)[Ljava/lang/Object;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2540|2545|Block|class|net.minecraft.block.Block|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2557|2561|size|method|java.util.Collection|size|()I
+   Method End: registerBlocks(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+   Method Start: setUpLeaves(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2627|2638|leavesBlock|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|leavesBlock|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|2647|2654|cellKit|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|cellKit|1
+      @|maxhyper/dynamictreestotemic/ModContent.java|2590|2607|ILeavesProperties|class|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2608|2619|setUpLeaves|method|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2621|2626|Block|class|net.minecraft.block.Block|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2640|2646|String|class|java.lang.String|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2660|2677|ILeavesProperties|class|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2722|2738|LeavesProperties|class|com.ferreusveritas.dynamictrees.blocks.LeavesProperties|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2745|2756|leavesBlock|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|leavesBlock|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|2757|2772|getDefaultState|method|net.minecraft.block.Block|getDefaultState|()Lnet/minecraft/block/state/IBlockState;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2785|2794|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2795|2806|leavesBlock|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|leavesBlock|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|2820|2832|TreeRegistry|class|com.ferreusveritas.dynamictrees.api.TreeRegistry|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|2833|2844|findCellKit|method|com.ferreusveritas.dynamictrees.api.TreeRegistry|findCellKit|(Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/cells/ICellKit;
+      @|maxhyper/dynamictreestotemic/ModContent.java|2845|2852|cellKit|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|cellKit|1
+      Anon Class Start: maxhyper.dynamictreestotemic.ModContent$1
+         Method Start: getPrimitiveLeavesItemStack()Lnet/minecraft/item/ItemStack;
+            @|maxhyper/dynamictreestotemic/ModContent.java|2865|2873|Override|class|java.lang.Override|false
+            @|maxhyper/dynamictreestotemic/ModContent.java|2881|2890|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestotemic/ModContent.java|2891|2918|getPrimitiveLeavesItemStack|method|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|getPrimitiveLeavesItemStack|()Lnet/minecraft/item/ItemStack;
+            @|maxhyper/dynamictreestotemic/ModContent.java|2939|2948|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestotemic/ModContent.java|2949|2960|leavesBlock|param|maxhyper.dynamictreestotemic.ModContent|setUpLeaves|(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;|leavesBlock|0
+         Method End: getPrimitiveLeavesItemStack()Lnet/minecraft/item/ItemStack;
+         Method Start: getLightRequirement()I
+            @|maxhyper/dynamictreestotemic/ModContent.java|2982|2990|Override|class|java.lang.Override|false
+            @|maxhyper/dynamictreestotemic/ModContent.java|3006|3025|getLightRequirement|method|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|getLightRequirement|()I
+         Method End: getLightRequirement()I
+      Anon Class End: maxhyper.dynamictreestotemic.ModContent$1
+   Method End: setUpLeaves(Lnet/minecraft/block/Block;Ljava/lang/String;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
+   Method Start: registerItems(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3171|3176|event|param|maxhyper.dynamictreestotemic.ModContent|registerItems|(Lnet/minecraftforge/event/RegistryEvent$Register;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|3094|3108|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3128|3141|registerItems|method|maxhyper.dynamictreestotemic.ModContent|registerItems|(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3142|3164|RegistryEvent.Register|class|net.minecraftforge.event.RegistryEvent.Register|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3165|3169|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3183|3197|IForgeRegistry|class|net.minecraftforge.registries.IForgeRegistry|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3198|3202|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3215|3220|event|param|maxhyper.dynamictreestotemic.ModContent|registerItems|(Lnet/minecraftforge/event/RegistryEvent$Register;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|3221|3232|getRegistry|method|net.minecraftforge.event.RegistryEvent.Register|getRegistry|()Lnet/minecraftforge/registries/IForgeRegistry;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3241|3250|ArrayList|class|java.util.ArrayList|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3251|3255|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3273|3282|ArrayList|class|java.util.ArrayList|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3291|3296|trees|field|maxhyper.dynamictreestotemic.ModContent|trees
+      @|maxhyper/dynamictreestotemic/ModContent.java|3297|3304|forEach|method|java.lang.Iterable|forEach|(Ljava/util/function/Consumer;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3313|3317|tree|param|java.util.function.Consumer<com.ferreusveritas.dynamictrees.trees.TreeFamily>|accept|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|tree|-1
+      @|maxhyper/dynamictreestotemic/ModContent.java|3318|3338|getRegisterableItems|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3364|3375|registerAll|method|net.minecraftforge.registries.IForgeRegistry|registerAll|([Lnet/minecraftforge/registries/IForgeRegistryEntry;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3386|3393|toArray|method|java.util.Collection|toArray|([Ljava/lang/Object;)[Ljava/lang/Object;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3398|3402|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3413|3417|size|method|java.util.Collection|size|()I
+   Method End: registerItems(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+   Method Start: registerRecipes(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3517|3522|event|param|maxhyper.dynamictreestotemic.ModContent|registerRecipes|(Lnet/minecraftforge/event/RegistryEvent$Register;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|3433|3447|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3469|3484|registerRecipes|method|maxhyper.dynamictreestotemic.ModContent|registerRecipes|(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3485|3507|RegistryEvent.Register|class|net.minecraftforge.event.RegistryEvent.Register|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3508|3515|IRecipe|class|net.minecraft.item.crafting.IRecipe|false
+   Method End: registerRecipes(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+   Method Start: setUpSeedRecipes(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3578|3582|name|param|maxhyper.dynamictreestotemic.ModContent|setUpSeedRecipes|(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V|name|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|3594|3605|treeSapling|param|maxhyper.dynamictreestotemic.ModContent|setUpSeedRecipes|(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V|treeSapling|1
+      @|maxhyper/dynamictreestotemic/ModContent.java|3553|3569|setUpSeedRecipes|method|maxhyper.dynamictreestotemic.ModContent|setUpSeedRecipes|(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|3571|3577|String|class|java.lang.String|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3584|3593|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3611|3618|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3633|3645|TreeRegistry|class|com.ferreusveritas.dynamictrees.api.TreeRegistry|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3646|3657|findSpecies|method|com.ferreusveritas.dynamictrees.api.TreeRegistry|findSpecies|(Lnet/minecraft/util/ResourceLocation;)Lcom/ferreusveritas/dynamictrees/trees/Species;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3662|3678|ResourceLocation|class|net.minecraft.util.ResourceLocation|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3679|3698|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3699|3704|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+      @|maxhyper/dynamictreestotemic/ModContent.java|3706|3710|name|param|maxhyper.dynamictreestotemic.ModContent|setUpSeedRecipes|(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V|name|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|3717|3726|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3750|3762|getSeedStack|method|com.ferreusveritas.dynamictrees.trees.Species|getSeedStack|(I)Lnet/minecraft/item/ItemStack;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3770|3779|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3807|3815|ModItems|class|com.ferreusveritas.dynamictrees.ModItems|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3816|3828|dendroPotion|field|com.ferreusveritas.dynamictrees.ModItems|dendroPotion
+      @|maxhyper/dynamictreestotemic/ModContent.java|3829|3842|setTargetTree|method|com.ferreusveritas.dynamictrees.items.DendroPotion|setTargetTree|(Lnet/minecraft/item/ItemStack;Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)Lnet/minecraft/item/ItemStack;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3847|3856|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3857|3865|ModItems|class|com.ferreusveritas.dynamictrees.ModItems|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3866|3878|dendroPotion|field|com.ferreusveritas.dynamictrees.ModItems|dendroPotion
+      @|maxhyper/dynamictreestotemic/ModContent.java|3883|3899|DendroPotionType|class|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3900|3909|TRANSFORM|field|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|TRANSFORM
+      @|maxhyper/dynamictreestotemic/ModContent.java|3910|3918|getIndex|method|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|getIndex|()I
+      @|maxhyper/dynamictreestotemic/ModContent.java|3935|3944|getFamily|method|com.ferreusveritas.dynamictrees.trees.Species|getFamily|()Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;
+      @|maxhyper/dynamictreestotemic/ModContent.java|3952|3973|BrewingRecipeRegistry|class|net.minecraftforge.common.brewing.BrewingRecipeRegistry|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3974|3983|addRecipe|method|net.minecraftforge.common.brewing.BrewingRecipeRegistry|addRecipe|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Z
+      @|maxhyper/dynamictreestotemic/ModContent.java|3988|3997|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|3998|4006|ModItems|class|com.ferreusveritas.dynamictrees.ModItems|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4007|4019|dendroPotion|field|com.ferreusveritas.dynamictrees.ModItems|dendroPotion
+      @|maxhyper/dynamictreestotemic/ModContent.java|4024|4040|DendroPotionType|class|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4041|4050|TRANSFORM|field|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|TRANSFORM
+      @|maxhyper/dynamictreestotemic/ModContent.java|4051|4059|getIndex|method|com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType|getIndex|()I
+      @|maxhyper/dynamictreestotemic/ModContent.java|4104|4114|ModRecipes|class|com.ferreusveritas.dynamictrees.ModRecipes|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4115|4146|createDirtBucketExchangeRecipes|method|com.ferreusveritas.dynamictrees.ModRecipes|createDirtBucketExchangeRecipes|(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Z)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4147|4158|treeSapling|param|maxhyper.dynamictreestotemic.ModContent|setUpSeedRecipes|(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V|treeSapling|1
+   Method End: setUpSeedRecipes(Ljava/lang/String;Lnet/minecraft/item/ItemStack;)V
+   Method Start: registerModels(Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4281|4286|event|param|maxhyper.dynamictreestotemic.ModContent|registerModels|(Lnet/minecraftforge/client/event/ModelRegistryEvent;)V|event|0
+      @|maxhyper/dynamictreestotemic/ModContent.java|4186|4194|SideOnly|class|net.minecraftforge.fml.relauncher.SideOnly|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4195|4199|Side|class|net.minecraftforge.fml.relauncher.Side|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4200|4206|CLIENT|field|net.minecraftforge.fml.relauncher.Side|CLIENT
+      @|maxhyper/dynamictreestotemic/ModContent.java|4211|4225|SubscribeEvent|class|net.minecraftforge.fml.common.eventhandler.SubscribeEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4247|4261|registerModels|method|maxhyper.dynamictreestotemic.ModContent|registerModels|(Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4262|4280|ModelRegistryEvent|class|net.minecraftforge.client.event.ModelRegistryEvent|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4298|4308|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4316|4321|trees|field|maxhyper.dynamictreestotemic.ModContent|trees
+      @|maxhyper/dynamictreestotemic/ModContent.java|4329|4340|ModelHelper|class|com.ferreusveritas.dynamictrees.api.client.ModelHelper|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4341|4349|regModel|method|com.ferreusveritas.dynamictrees.api.client.ModelHelper|regModel|(Lnet/minecraft/block/Block;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4355|4371|getDynamicBranch|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getDynamicBranch|()Lcom/ferreusveritas/dynamictrees/blocks/BlockBranch;
+      @|maxhyper/dynamictreestotemic/ModContent.java|4380|4391|ModelHelper|class|com.ferreusveritas.dynamictrees.api.client.ModelHelper|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4392|4400|regModel|method|com.ferreusveritas.dynamictrees.api.client.ModelHelper|regModel|(Lnet/minecraft/item/Item;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4406|4422|getCommonSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getCommonSpecies|()Lcom/ferreusveritas/dynamictrees/trees/Species;
+      @|maxhyper/dynamictreestotemic/ModContent.java|4425|4432|getSeed|method|com.ferreusveritas.dynamictrees.trees.Species|getSeed|()Lcom/ferreusveritas/dynamictrees/items/Seed;
+      @|maxhyper/dynamictreestotemic/ModContent.java|4441|4452|ModelHelper|class|com.ferreusveritas.dynamictrees.api.client.ModelHelper|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4453|4461|regModel|method|com.ferreusveritas.dynamictrees.api.client.ModelHelper|regModel|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4477|4489|LeavesPaging|class|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4490|4510|getLeavesMapForModId|method|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|getLeavesMapForModId|(Ljava/lang/String;)Ljava/util/Map;
+      @|maxhyper/dynamictreestotemic/ModContent.java|4511|4530|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4531|4536|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+      @|maxhyper/dynamictreestotemic/ModContent.java|4538|4545|forEach|method|java.util.Map|forEach|(Ljava/util/function/BiConsumer;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4563|4574|ModelLoader|class|net.minecraftforge.client.model.ModelLoader|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4575|4595|setCustomStateMapper|method|net.minecraftforge.client.model.ModelLoader|setCustomStateMapper|(Lnet/minecraft/block/Block;Lnet/minecraft/client/renderer/block/statemap/IStateMapper;)V
+      @|maxhyper/dynamictreestotemic/ModContent.java|4596|4602|leaves|param|java.util.function.BiConsumer<java.lang.Integer,com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves>|accept|(Ljava/lang/Integer;Lcom/ferreusveritas/dynamictrees/blocks/BlockDynamicLeaves;)V|leaves|-1
+      @|maxhyper/dynamictreestotemic/ModContent.java|4608|4624|StateMap.Builder|class|net.minecraft.client.renderer.block.statemap.StateMap.Builder|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4627|4633|ignore|method|net.minecraft.client.renderer.block.statemap.StateMap.Builder|ignore|([Lnet/minecraft/block/properties/IProperty;)Lnet/minecraft/client/renderer/block/statemap/StateMap$Builder;
+      @|maxhyper/dynamictreestotemic/ModContent.java|4634|4645|BlockLeaves|class|net.minecraft.block.BlockLeaves|false
+      @|maxhyper/dynamictreestotemic/ModContent.java|4646|4655|DECAYABLE|field|net.minecraft.block.BlockLeaves|DECAYABLE
+      @|maxhyper/dynamictreestotemic/ModContent.java|4657|4662|build|method|net.minecraft.client.renderer.block.statemap.StateMap.Builder|build|()Lnet/minecraft/client/renderer/block/statemap/StateMap;
+   Method End: registerModels(Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
+Class End  : maxhyper.dynamictreestotemic.ModContent
+endProcessing "maxhyper/dynamictreestotemic/ModContent.java"
+
+startProcessing "maxhyper/dynamictreestotemic/proxy/ClientProxy.java" md5: 791df8b75bf206c912026d009eab7865
+@|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|8|42|maxhyper.dynamictreestotemic.proxy|package|maxhyper.dynamictreestotemic.proxy|(file)
+Class Start: maxhyper.dynamictreestotemic.proxy.ClientProxy
+   @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|681|689|SideOnly|class|net.minecraftforge.fml.relauncher.SideOnly|false
+   @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|690|694|Side|class|net.minecraftforge.fml.relauncher.Side|false
+   @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|695|701|CLIENT|field|net.minecraftforge.fml.relauncher.Side|CLIENT
+   @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|717|728|ClientProxy|class|maxhyper.dynamictreestotemic.proxy.ClientProxy|false
+   @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|737|748|CommonProxy|class|maxhyper.dynamictreestotemic.proxy.CommonProxy|false
+   Method Start: preInit()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|757|765|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|780|787|preInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|preInit|()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|801|808|preInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|preInit|()V
+   Method End: preInit()V
+   Method Start: init()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|822|830|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|845|849|init|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|init|()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|863|867|init|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|init|()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|874|895|registerColorHandlers|method|maxhyper.dynamictreestotemic.proxy.ClientProxy|registerColorHandlers|()V
+   Method End: init()V
+   Method Start: postInit()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|909|917|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|930|938|postInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|postInit|()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|952|960|postInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|postInit|()V
+   Method End: postInit()V
+   Method Start: registerColorHandlers()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|985|1006|registerColorHandlers|method|maxhyper.dynamictreestotemic.proxy.ClientProxy|registerColorHandlers|()V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1019|1037|BlockDynamicLeaves|class|com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1046|1058|LeavesPaging|class|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1059|1079|getLeavesMapForModId|method|com.ferreusveritas.dynamictrees.blocks.LeavesPaging|getLeavesMapForModId|(Ljava/lang/String;)Ljava/util/Map;
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1080|1099|DynamicTreesTotemic|class|maxhyper.dynamictreestotemic.DynamicTreesTotemic|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1100|1105|MODID|field|maxhyper.dynamictreestotemic.DynamicTreesTotemic|MODID
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1107|1113|values|method|java.util.Map|values|()Ljava/util/Collection;
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1123|1134|ModelHelper|class|com.ferreusveritas.dynamictrees.api.client.ModelHelper|false
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1135|1150|regColorHandler|method|com.ferreusveritas.dynamictrees.api.client.ModelHelper|regColorHandler|(Lnet/minecraft/block/Block;Lnet/minecraft/client/renderer/color/IBlockColor;)V
+      @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1163|1174|IBlockColor|class|net.minecraft.client.renderer.color.IBlockColor|false
+      Anon Class Start: maxhyper.dynamictreestotemic.proxy.ClientProxy$1
+         Method Start: colorMultiplier(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1238|1243|state|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|state|0
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1258|1265|worldIn|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|worldIn|1
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1276|1279|pos|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|pos|2
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1285|1294|tintIndex|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|tintIndex|3
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1185|1193|Override|class|java.lang.Override|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1210|1225|colorMultiplier|method|net.minecraft.client.renderer.color.IBlockColor|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1226|1237|IBlockState|class|net.minecraft.block.state.IBlockState|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1245|1257|IBlockAccess|class|net.minecraft.world.IBlockAccess|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1267|1275|BlockPos|class|net.minecraft.util.math.BlockPos|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1369|1374|Block|class|net.minecraft.block.Block|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1383|1388|state|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|state|0
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1389|1397|getBlock|method|net.minecraft.block.state.IBlockState|getBlock|()Lnet/minecraft/block/Block;
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1418|1428|TreeHelper|class|com.ferreusveritas.dynamictrees.api.TreeHelper|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1429|1437|isLeaves|method|com.ferreusveritas.dynamictrees.api.TreeHelper|isLeaves|(Lnet/minecraft/block/Block;)Z
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1464|1482|BlockDynamicLeaves|class|com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves|false
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1491|1504|getProperties|method|com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves|getProperties|(Lnet/minecraft/block/state/IBlockState;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1505|1510|state|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|state|0
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1512|1534|foliageColorMultiplier|method|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|foliageColorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;)I
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1535|1540|state|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|state|0
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1542|1549|worldIn|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|worldIn|1
+            @|maxhyper/dynamictreestotemic/proxy/ClientProxy.java|1551|1554|pos|param|maxhyper.dynamictreestotemic.proxy.ClientProxy$1|colorMultiplier|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I|pos|2
+         Method End: colorMultiplier(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;I)I
+      Anon Class End: maxhyper.dynamictreestotemic.proxy.ClientProxy$1
+   Method End: registerColorHandlers()V
+Class End  : maxhyper.dynamictreestotemic.proxy.ClientProxy
+endProcessing "maxhyper/dynamictreestotemic/proxy/ClientProxy.java"
+
+startProcessing "maxhyper/dynamictreestotemic/proxy/CommonProxy.java" md5: bd28e575e6fe9bb28755e9a6574b7902
+@|maxhyper/dynamictreestotemic/proxy/CommonProxy.java|8|42|maxhyper.dynamictreestotemic.proxy|package|maxhyper.dynamictreestotemic.proxy|(file)
+Class Start: maxhyper.dynamictreestotemic.proxy.CommonProxy
+   @|maxhyper/dynamictreestotemic/proxy/CommonProxy.java|62|73|CommonProxy|class|maxhyper.dynamictreestotemic.proxy.CommonProxy|false
+   Method Start: preInit()V
+      @|maxhyper/dynamictreestotemic/proxy/CommonProxy.java|93|100|preInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|preInit|()V
+   Method End: preInit()V
+   Method Start: init()V
+      @|maxhyper/dynamictreestotemic/proxy/CommonProxy.java|126|130|init|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|init|()V
+   Method End: init()V
+   Method Start: postInit()V
+      @|maxhyper/dynamictreestotemic/proxy/CommonProxy.java|158|166|postInit|method|maxhyper.dynamictreestotemic.proxy.CommonProxy|postInit|()V
+   Method End: postInit()V
+Class End  : maxhyper.dynamictreestotemic.proxy.CommonProxy
+endProcessing "maxhyper/dynamictreestotemic/proxy/CommonProxy.java"
+
+startProcessing "maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java" md5: b0fffc6005848f541330f4e21002cca0
+@|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|8|45|maxhyper.dynamictreestotemic.worldgen|package|maxhyper.dynamictreestotemic.worldgen|(file)
+Class Start: maxhyper.dynamictreestotemic.worldgen.BiomeDataBasePopulator
+   @|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|207|229|BiomeDataBasePopulator|class|maxhyper.dynamictreestotemic.worldgen.BiomeDataBasePopulator|false
+   @|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|241|264|IBiomeDataBasePopulator|class|com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator|false
+   Method Start: populate(Lcom/ferreusveritas/dynamictrees/worldgen/BiomeDataBase;)V
+      @|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|309|314|dbase|param|maxhyper.dynamictreestotemic.worldgen.BiomeDataBasePopulator|populate|(Lcom/ferreusveritas/dynamictrees/worldgen/BiomeDataBase;)V|dbase|0
+      @|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|286|294|populate|method|com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator|populate|(Lcom/ferreusveritas/dynamictrees/worldgen/BiomeDataBase;)V
+      @|maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java|295|308|BiomeDataBase|class|com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase|false
+   Method End: populate(Lcom/ferreusveritas/dynamictrees/worldgen/BiomeDataBase;)V
+Class End  : maxhyper.dynamictreestotemic.worldgen.BiomeDataBasePopulator
+endProcessing "maxhyper/dynamictreestotemic/worldgen/BiomeDataBasePopulator.java"
+

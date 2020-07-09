@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "thebetweenlands:blocks/leaves_hearthgrove_tree",
+        "log": "thebetweenlands:blocks/log_hearthgrove",
+        "leaves": "thebetweenlands:blocks/leaves_hearthgrove_tree"
+    }
+}

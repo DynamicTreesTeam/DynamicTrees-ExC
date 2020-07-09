@@ -1,0 +1,107 @@
+---- Minecraft Crash Report ----
+// Hi. I'm Minecraft, and I'm a crashaholic.
+
+Time: 5/25/20 10:21 PM
+Description: Exception ticking world
+
+java.lang.NullPointerException: Exception ticking world
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.getFruitDrop(BlockFruit.java:173)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.getDrops(BlockFruit.java:159)
+	at net.minecraft.block.Block.getDrops(Block.java:1543)
+	at net.minecraft.block.Block.dropBlockAsItemWithChance(Block.java:720)
+	at net.minecraft.block.Block.dropBlockAsItem(Block.java:710)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.dropBlock(BlockFruit.java:110)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.updateTick(BlockFruit.java:62)
+	at net.minecraft.block.Block.randomTick(Block.java:625)
+	at net.minecraft.world.WorldServer.updateBlocks(WorldServer.java:497)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:234)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:831)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.getFruitDrop(BlockFruit.java:173)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.getDrops(BlockFruit.java:159)
+	at net.minecraft.block.Block.getDrops(Block.java:1543)
+	at net.minecraft.block.Block.dropBlockAsItemWithChance(Block.java:720)
+	at net.minecraft.block.Block.dropBlockAsItem(Block.java:710)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.dropBlock(BlockFruit.java:110)
+	at com.ferreusveritas.dynamictrees.blocks.BlockFruit.updateTick(BlockFruit.java:62)
+	at net.minecraft.block.Block.randomTick(Block.java:625)
+	at net.minecraft.world.WorldServer.updateBlocks(WorldServer.java:497)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:234)
+
+-- Affected level --
+Details:
+	Level name: bb
+	All players: 1 total; [EntityPlayerMP['Player569'/0, l='bb', x=269.82, y=4.00, z=658.37]]
+	Chunk stats: ServerChunkCache: 625 Drop: 0
+	Level seed: -2909286662955626820
+	Level generator: ID 01 - flat, ver 0. Features enabled: true
+	Level generator options: 
+	Level spawn location: World: (253,4,609), Chunk: (at 13,0,1 in 15,38; contains blocks 240,0,608 to 255,255,623), Region: (0,1; contains chunks 0,32 to 31,63, blocks 0,0,512 to 511,255,1023)
+	Level time: 37982 game time, 3439 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 46522 (now: false), thunder time: 3165 (now: true)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:831)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 749978784 bytes (715 MB) / 1811939328 bytes (1728 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 8 mods loaded, 8 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                     | Version           | Source                                | Signature |
+	|:------ |:---------------------- |:----------------- |:------------------------------------- |:--------- |
+	| LCHIJA | minecraft              | 1.12.2            | minecraft.jar                         | None      |
+	| LCHIJA | mcp                    | 9.42              | minecraft.jar                         | None      |
+	| LCHIJA | FML                    | 8.0.99.99         | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | forge                  | 14.23.5.2838      | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | dynamictrees           | 1.12.2-0.9.6      | DynamicTrees-1.12.2-0.9.6.jar         | None      |
+	| LCHIJA | mantle                 | 1.12-1.3.3.55     | Mantle-1.12-1.3.3.55.jar              | None      |
+	| LCHIJA | tconstruct             | 1.12.2-2.12.0.157 | TConstruct-1.12.2-2.12.0.157.jar      | None      |
+	| LCHIJA | dynamictreestconstruct | 1.12.2-1.0        | dynamictreesTConstruct-1.12.2-1.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Pulsar/tconstruct loaded Pulses: 
+		- TinkerCommons (Enabled/Forced)
+		- TinkerWorld (Enabled/Not Forced)
+		- TinkerTools (Enabled/Not Forced)
+		- TinkerHarvestTools (Enabled/Forced)
+		- TinkerMeleeWeapons (Enabled/Forced)
+		- TinkerRangedWeapons (Enabled/Forced)
+		- TinkerModifiers (Enabled/Forced)
+		- TinkerSmeltery (Enabled/Not Forced)
+		- TinkerGadgets (Enabled/Not Forced)
+		- TinkerOredict (Enabled/Forced)
+		- TinkerIntegration (Enabled/Forced)
+		- TinkerFluids (Enabled/Forced)
+		- TinkerMaterials (Enabled/Forced)
+		- TinkerModelRegister (Enabled/Forced)
+
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player569'/0, l='bb', x=269.82, y=4.00, z=658.37]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "twilightforest:blocks/time_side",
+		"rings": "twilightforest:blocks/time_section"
+	}
+}

@@ -1,0 +1,26 @@
+{
+  "divinerpg:root": {
+    "criteria": {
+      "divinerpg": "2020-03-18 10:01:02 -0300"
+    },
+    "done": true
+  },
+  "forbidden_arcanus:root": {
+    "criteria": {
+      "crafting_table": "2020-03-18 10:01:50 -0300"
+    },
+    "done": true
+  },
+  "fossil:fossil/root": {
+    "criteria": {
+      "tick": "2020-03-18 10:01:06 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-03-18 10:01:02 -0300"
+    },
+    "done": false
+  }
+}

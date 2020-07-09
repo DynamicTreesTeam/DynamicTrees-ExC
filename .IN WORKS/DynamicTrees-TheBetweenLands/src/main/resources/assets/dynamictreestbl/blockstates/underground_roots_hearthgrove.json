@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "grassy=true": {
+            "model": "grass_normal"
+        },
+        "grassy=false": {
+            "model": "minecraft:dirt"
+        }
+    }
+}

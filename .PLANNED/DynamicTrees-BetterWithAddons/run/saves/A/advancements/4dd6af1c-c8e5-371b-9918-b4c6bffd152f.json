@@ -1,0 +1,116 @@
+{
+  "twilightforest:alt/treasures/tree_of_time": {
+    "criteria": {
+      "sapling": "2020-03-03 20:34:50 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-03-03 20:31:49 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:arborist": {
+    "criteria": {
+      "trans_sapling": "2020-03-03 20:35:30 -0300",
+      "time_sapling": "2020-03-03 20:34:50 -0300",
+      "trans_leaves": "2020-03-03 20:36:12 -0300",
+      "twilight_oak_log": "2020-03-03 20:27:01 -0300",
+      "mine_leaves": "2020-03-03 20:38:05 -0300",
+      "sort_leaves": "2020-03-03 20:37:52 -0300",
+      "time_leaves": "2020-03-03 20:36:06 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_mining": {
+    "criteria": {
+      "leaves": "2020-03-03 20:38:05 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_sorting": {
+    "criteria": {
+      "leaves": "2020-03-03 20:37:52 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/magic_trees": {
+    "criteria": {
+      "0": "2020-03-03 20:34:50 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/tree_of_transformation": {
+    "criteria": {
+      "sapling": "2020-03-03 20:35:30 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-03-03 20:27:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-03-03 20:27:01 -0300"
+    },
+    "done": false
+  }
+}

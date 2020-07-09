@@ -1,0 +1,152 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 7/4/20 12:49 PM
+Description: Ticking entity
+
+java.lang.NullPointerException: Ticking entity
+	at com.ferreusveritas.dynamictrees.cells.CellKits$BasicSolver.solve(CellKits.java:360)
+	at com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves.getHydrationLevelFromNeighbors(BlockDynamicLeaves.java:441)
+	at com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves.age(BlockDynamicLeaves.java:183)
+	at com.ferreusveritas.dynamictrees.api.TreeHelper.ageVolume(TreeHelper.java:85)
+	at com.ferreusveritas.dynamictrees.worldgen.JoCode.generate(JoCode.java:209)
+	at com.ferreusveritas.dynamictrees.trees.Species.generate(Species.java:1163)
+	at com.ferreusveritas.dynamictrees.worldgen.TreeGenerator.makeTree(TreeGenerator.java:160)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.lambda$generate$0(WorldGeneratorTrees.java:111)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.generate(WorldGeneratorTrees.java:111)
+	at net.minecraftforge.fml.common.registry.GameRegistry.generateWorld(GameRegistry.java:167)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1095)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1074)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:169)
+	at net.minecraft.world.World.getChunkFromChunkCoords(World.java:362)
+	at net.minecraft.world.ChunkCache.<init>(ChunkCache.java:39)
+	at net.minecraft.pathfinding.PathNavigate.getPathToPos(PathNavigate.java:128)
+	at net.minecraft.pathfinding.PathNavigateGround.getPathToPos(PathNavigateGround.java:82)
+	at net.minecraft.pathfinding.PathNavigate.getPathToXYZ(PathNavigate.java:104)
+	at net.minecraft.pathfinding.PathNavigate.tryMoveToXYZ(PathNavigate.java:173)
+	at net.minecraft.entity.ai.EntityAIWander.startExecuting(EntityAIWander.java:83)
+	at net.minecraft.entity.ai.EntityAITasks.onUpdateTasks(EntityAITasks.java:84)
+	at net.minecraft.entity.EntityLiving.updateEntityActionState(EntityLiving.java:843)
+	at net.minecraft.entity.EntityLivingBase.onLivingUpdate(EntityLivingBase.java:2589)
+	at net.minecraft.entity.EntityLiving.onLivingUpdate(EntityLiving.java:647)
+	at net.minecraft.entity.monster.EntityMob.onLivingUpdate(EntityMob.java:49)
+	at net.minecraft.entity.monster.EntityEnderman.onLivingUpdate(EntityEnderman.java:241)
+	at net.minecraft.entity.EntityLivingBase.onUpdate(EntityLivingBase.java:2405)
+	at net.minecraft.entity.EntityLiving.onUpdate(EntityLiving.java:346)
+	at net.minecraft.entity.monster.EntityMob.onUpdate(EntityMob.java:57)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2171)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:871)
+	at net.minecraft.world.World.updateEntity(World.java:2130)
+	at net.minecraft.world.World.updateEntities(World.java:1931)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:643)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:842)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at com.ferreusveritas.dynamictrees.cells.CellKits$BasicSolver.solve(CellKits.java:360)
+	at com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves.getHydrationLevelFromNeighbors(BlockDynamicLeaves.java:441)
+	at com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves.age(BlockDynamicLeaves.java:183)
+	at com.ferreusveritas.dynamictrees.api.TreeHelper.ageVolume(TreeHelper.java:85)
+	at com.ferreusveritas.dynamictrees.worldgen.JoCode.generate(JoCode.java:209)
+	at com.ferreusveritas.dynamictrees.trees.Species.generate(Species.java:1163)
+	at com.ferreusveritas.dynamictrees.worldgen.TreeGenerator.makeTree(TreeGenerator.java:160)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.lambda$generate$0(WorldGeneratorTrees.java:111)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.generate(WorldGeneratorTrees.java:111)
+	at net.minecraftforge.fml.common.registry.GameRegistry.generateWorld(GameRegistry.java:167)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1095)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1074)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:169)
+	at net.minecraft.world.World.getChunkFromChunkCoords(World.java:362)
+	at net.minecraft.world.ChunkCache.<init>(ChunkCache.java:39)
+	at net.minecraft.pathfinding.PathNavigate.getPathToPos(PathNavigate.java:128)
+	at net.minecraft.pathfinding.PathNavigateGround.getPathToPos(PathNavigateGround.java:82)
+	at net.minecraft.pathfinding.PathNavigate.getPathToXYZ(PathNavigate.java:104)
+	at net.minecraft.pathfinding.PathNavigate.tryMoveToXYZ(PathNavigate.java:173)
+	at net.minecraft.entity.ai.EntityAIWander.startExecuting(EntityAIWander.java:83)
+	at net.minecraft.entity.ai.EntityAITasks.onUpdateTasks(EntityAITasks.java:84)
+	at net.minecraft.entity.EntityLiving.updateEntityActionState(EntityLiving.java:843)
+	at net.minecraft.entity.EntityLivingBase.onLivingUpdate(EntityLivingBase.java:2589)
+	at net.minecraft.entity.EntityLiving.onLivingUpdate(EntityLiving.java:647)
+	at net.minecraft.entity.monster.EntityMob.onLivingUpdate(EntityMob.java:49)
+	at net.minecraft.entity.monster.EntityEnderman.onLivingUpdate(EntityEnderman.java:241)
+	at net.minecraft.entity.EntityLivingBase.onUpdate(EntityLivingBase.java:2405)
+	at net.minecraft.entity.EntityLiving.onUpdate(EntityLiving.java:346)
+	at net.minecraft.entity.monster.EntityMob.onUpdate(EntityMob.java:57)
+	at net.minecraft.world.World.updateEntityWithOptionalForce(World.java:2171)
+	at net.minecraft.world.WorldServer.updateEntityWithOptionalForce(WorldServer.java:871)
+	at net.minecraft.world.World.updateEntity(World.java:2130)
+
+-- Entity being ticked --
+Details:
+	Entity Type: minecraft:enderman (net.minecraft.entity.monster.EntityEnderman)
+	Entity ID: 4185
+	Entity Name: Enderman
+	Entity's Exact location: -145.50, 19.00, 68.50
+	Entity's Block location: World: (-146,19,68), Chunk: (at 14,1,4 in -10,4; contains blocks -160,0,64 to -145,255,79), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Entity's Momentum: 0.00, -0.08, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:1931)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:643)
+
+-- Affected level --
+Details:
+	Level name: Copy of New World
+	All players: 1 total; [EntityPlayerMP['Player625'/1327, l='Copy of New World', x=-160.41, y=32.10, z=80.87]]
+	Chunk stats: ServerChunkCache: 104 Drop: 0
+	Level seed: -7519411080649990657
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (0,0,0), Chunk: (at 0,0,0 in 0,0; contains blocks 0,0,0 to 15,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 0 game time, 0 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:842)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 533468808 bytes (508 MB) / 1775763456 bytes (1693 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 8, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID              | Version      | Source                                         | Signature |
+	|:------ |:--------------- |:------------ |:---------------------------------------------- |:--------- |
+	| LCHIJA | minecraft       | 1.12.2       | minecraft.jar                                  | None      |
+	| LCHIJA | mcp             | 9.42         | minecraft.jar                                  | None      |
+	| LCHIJA | FML             | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | forge           | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | dynamictrees    | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar                  | None      |
+	| LCHIJA | twilightforest  | 3.10.1013    | twilightforest-1.12.2-3.10.1013-universal.jar  | None      |
+	| LCHIJA | dynamictreesttf | 1.12.2-1.0.0 | dynamictreesTheTwilightForest-1.12.2-1.0.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player625'/1327, l='Copy of New World', x=-160.41, y=32.10, z=80.87]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

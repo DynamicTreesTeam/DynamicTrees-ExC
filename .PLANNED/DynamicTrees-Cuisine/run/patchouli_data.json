@@ -1,0 +1,16 @@
+{
+  "bookGuiScale": 0,
+  "clickedVisualize": false,
+  "bookData": {
+    "cuisine:culinary_101": {
+      "viewedEntries": [
+        "cuisine:misc/tofu_block"
+      ],
+      "bookmarks": [],
+      "history": [
+        "cuisine:misc/tofu_block"
+      ],
+      "completedManualQuests": []
+    }
+  }
+}

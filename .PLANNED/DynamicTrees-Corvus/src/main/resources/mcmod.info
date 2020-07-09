@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreescorvus",
+  "name": "Dynamic Trees for Corvus",
+  "description": "Adds compatibilities between dynamic trees and Corvus",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "cv-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

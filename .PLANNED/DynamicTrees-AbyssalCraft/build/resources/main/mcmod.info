@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesabyssalcraft",
+  "name": "Dynamic Trees for Abyssal Craft",
+  "description": "Adds compatibilities between dynamic trees and Abyssal Craft",
+  "version": "1.12.2-1.0.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "XX-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

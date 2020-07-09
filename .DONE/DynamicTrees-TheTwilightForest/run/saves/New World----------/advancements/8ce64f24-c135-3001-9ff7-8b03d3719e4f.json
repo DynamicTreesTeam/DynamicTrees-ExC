@@ -1,0 +1,44 @@
+{
+  "twilightforest:root": {
+    "criteria": {
+      "in_tf": "2020-07-04 16:15:22 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/oak_savannah": {
+    "criteria": {
+      "discover": "2020-07-04 16:15:22 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_swamp": {
+    "criteria": {
+      "0": "2020-07-04 16:16:23 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/general_biomes": {
+    "criteria": {
+      "3": "2020-07-04 16:15:22 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_forest": {
+    "criteria": {
+      "discover": "2020-07-04 16:15:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "taiga_hills": "2020-07-04 16:15:02 -0300"
+    },
+    "done": false
+  },
+  "twilightforest:alt/biomes/mushroom_forest": {
+    "criteria": {
+      "discover": "2020-07-04 16:15:51 -0300"
+    },
+    "done": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"parent": "dynamictreesttf:block/smartmodel/branch",
+	"textures": {
+		"bark": "twilightforest:blocks/time_side",
+		"bark_icon": "twilightforest:blocks/time_clock",
+		"rings": "twilightforest:blocks/time_section"
+	}
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreescuisine",
+  "name": "Dynamic Trees for Cuisine",
+  "description": "Adds compatibilities between dynamic trees and Cuisine",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "cs-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

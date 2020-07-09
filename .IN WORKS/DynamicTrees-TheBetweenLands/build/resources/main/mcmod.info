@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreestbl",
+  "name": "Dynamic Trees for The Between Lands",
+  "description": "Adds compatibilities between Dynamic Trees and The Between Lands",
+  "version": "1.12.2-1.0.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees and Angry Pixel for The Between Lands",
+  "logoFile": "tbl-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

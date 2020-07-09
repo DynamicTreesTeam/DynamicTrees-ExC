@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreestotemic",
+  "name": "Dynamic Trees for Totemic",
+  "description": "Adds compatibilities between dynamic trees and Totemic",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "tm-logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

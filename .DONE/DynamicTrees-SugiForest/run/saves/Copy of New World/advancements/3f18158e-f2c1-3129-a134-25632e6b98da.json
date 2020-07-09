@@ -1,0 +1,14 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-06-01 23:15:46 -0300",
+      "extreme_hills_with_trees": "2020-06-01 23:15:30 -0300",
+      "forest_hills": "2020-06-01 23:15:17 -0300",
+      "plains": "2020-06-01 23:15:14 -0300",
+      "taiga": "2020-06-01 23:15:08 -0300",
+      "taiga_hills": "2020-06-01 23:15:36 -0300",
+      "extreme_hills": "2020-06-01 23:15:28 -0300"
+    },
+    "done": false
+  }
+}

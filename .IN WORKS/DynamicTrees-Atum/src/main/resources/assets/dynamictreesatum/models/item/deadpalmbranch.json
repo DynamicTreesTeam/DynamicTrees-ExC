@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "atum:blocks/deadwood_log",
+        "rings": "atum:blocks/deadwood_log_top"
+    }
+}

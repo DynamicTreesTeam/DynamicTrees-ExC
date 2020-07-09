@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "twilightforest:blocks/sort_eye",
+		"rings": "twilightforest:blocks/sort_section"
+	}
+}

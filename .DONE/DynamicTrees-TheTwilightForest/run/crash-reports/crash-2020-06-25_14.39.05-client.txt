@@ -1,0 +1,118 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 6/25/20 2:39 PM
+Description: Unexpected error
+
+java.lang.NullPointerException: Unexpected error
+	at maxhyper.dynamictreesttf.blocks.BlockBranchMagicCore.onBlockActivated(BlockBranchMagicCore.java:44)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:455)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1694)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2381)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1935)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1188)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:442)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at maxhyper.dynamictreesttf.blocks.BlockBranchMagicCore.onBlockActivated(BlockBranchMagicCore.java:44)
+	at net.minecraft.client.multiplayer.PlayerControllerMP.processRightClickBlock(PlayerControllerMP.java:455)
+	at net.minecraft.client.Minecraft.rightClickMouse(Minecraft.java:1694)
+	at net.minecraft.client.Minecraft.processKeyBinds(Minecraft.java:2381)
+	at net.minecraft.client.Minecraft.runTickKeyboard(Minecraft.java:2147)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player176'/72, l='MpServer', x=1081.28, y=6.14, z=206.76]]
+	Chunk stats: MultiplayerChunkCache: 624, 624
+	Level seed: 0
+	Level generator: ID 01 - flat, ver 0. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (1053,4,301), Chunk: (at 13,0,13 in 65,18; contains blocks 1040,0,288 to 1055,255,303), Region: (2,0; contains chunks 64,0 to 95,31, blocks 1024,0,0 to 1535,255,511)
+	Level time: 343670 game time, 13000 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 35 total; [EntitySheep['Sheep'/64, l='MpServer', x=1157.81, y=4.00, z=280.57], EntityItem['item.tile.twilightforest.MagicLog.0'/131, l='MpServer', x=1118.05, y=4.00, z=235.13], EntityItem['item.item.stick'/132, l='MpServer', x=1119.15, y=4.00, z=235.28], EntityCow['Cow'/12, l='MpServer', x=1007.17, y=4.00, z=254.31], EntitySheep['Sheep'/17, l='MpServer', x=1019.27, y=4.00, z=152.53], EntityChicken['Chicken'/18, l='MpServer', x=1019.43, y=4.00, z=212.88], EntityChicken['Chicken'/20, l='MpServer', x=1018.20, y=4.00, z=232.44], EntityHorse['Horse'/21, l='MpServer', x=1018.84, y=4.00, z=242.01], EntityItem['item.item.egg'/151, l='MpServer', x=1041.79, y=4.00, z=162.92], EntityPlayerSP['Player176'/72, l='MpServer', x=1081.28, y=6.14, z=206.76], EntityChicken['Chicken'/27, l='MpServer', x=1033.80, y=4.00, z=195.38], EntityItem['item.item.egg'/28, l='MpServer', x=1034.46, y=4.00, z=197.83], EntityHorse['Horse'/31, l='MpServer', x=1041.15, y=4.00, z=172.97], EntityChicken['Chicken'/32, l='MpServer', x=1042.64, y=4.00, z=163.17], EntityItem['item.item.egg'/33, l='MpServer', x=1048.61, y=4.00, z=175.48], EntityPig['Pig'/34, l='MpServer', x=1045.26, y=4.00, z=194.60], EntityChicken['Chicken'/35, l='MpServer', x=1047.16, y=4.00, z=285.77], EntityChicken['Chicken'/39, l='MpServer', x=1068.09, y=4.00, z=163.09], EntityItem['item.item.egg'/40, l='MpServer', x=1067.58, y=4.00, z=163.00], EntityChicken['Chicken'/41, l='MpServer', x=1057.11, y=4.00, z=173.57], EntityPig['Pig'/46, l='MpServer', x=1075.22, y=4.00, z=162.32], EntityCow['Cow'/47, l='MpServer', x=1087.86, y=4.00, z=182.82], EntityChicken['Chicken'/48, l='MpServer', x=1087.83, y=4.00, z=282.44], EntitySheep['Sheep'/52, l='MpServer', x=1100.40, y=4.00, z=170.81], EntityPig['Pig'/53, l='MpServer', x=1113.74, y=4.00, z=185.21], EntityDonkey['Donkey'/54, l='MpServer', x=1104.05, y=4.00, z=245.15], EntityPig['Pig'/55, l='MpServer', x=1109.48, y=4.00, z=266.55], EntitySheep['Sheep'/56, l='MpServer', x=1135.25, y=4.00, z=253.33], EntitySheep['Sheep'/58, l='MpServer', x=1142.85, y=4.00, z=207.45], EntityHorse['Horse'/59, l='MpServer', x=1140.89, y=4.00, z=217.38], EntityChicken['Chicken'/60, l='MpServer', x=1149.67, y=4.00, z=234.80], EntityItem['item.tile.twilightforest.MagicLog.0'/124, l='MpServer', x=1123.68, y=4.00, z=232.30], EntityCow['Cow'/61, l='MpServer', x=1151.15, y=4.00, z=245.22], EntityItem['item.item.stick'/125, l='MpServer', x=1124.47, y=4.00, z=232.25], EntitySheep['Sheep'/62, l='MpServer', x=1147.17, y=4.00, z=256.74]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:471)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 905601904 bytes (863 MB) / 1712848896 bytes (1633 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID              | Version      | Source                                         | Signature |
+	|:------ |:--------------- |:------------ |:---------------------------------------------- |:--------- |
+	| LCHIJA | minecraft       | 1.12.2       | minecraft.jar                                  | None      |
+	| LCHIJA | mcp             | 9.42         | minecraft.jar                                  | None      |
+	| LCHIJA | FML             | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | forge           | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar               | None      |
+	| LCHIJA | dynamictrees    | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar                  | None      |
+	| LCHIJA | twilightforest  | 3.10.1013    | twilightforest-1.12.2-3.10.1013-universal.jar  | None      |
+	| LCHIJA | dynamictreesttf | 1.12.2-1.0.0 | dynamictreesTheTwilightForest-1.12.2-1.0.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 432.00' Renderer: 'GeForce GTX 1070 Ti/PCIe/SSE2'
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz

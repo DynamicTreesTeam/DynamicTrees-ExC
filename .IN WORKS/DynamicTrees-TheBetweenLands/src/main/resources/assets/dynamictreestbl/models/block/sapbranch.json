@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "thebetweenlands:blocks/log_sap",
+		"rings": "thebetweenlands:blocks/log_sap_top"
+	}
+}
