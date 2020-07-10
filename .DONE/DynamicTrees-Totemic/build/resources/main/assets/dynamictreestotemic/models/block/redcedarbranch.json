@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "totemic:blocks/cedar_log",
+		"rings": "totemic:blocks/cedar_log_top"
+	}
+}
