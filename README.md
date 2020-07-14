@@ -5,7 +5,11 @@ This mod is HEAVILY WORK IN PROGRESS. Do not expect world gen to work until the 
 
 Join the discord server: https://discord.gg/83qcpkY
 
+
 Mods That Won't Be Done:
-Wild Nature - Really buggy in 1.12
-Divine RPG - lags game too much
-OTG - World generation makes replacing trees unreliable
+
+  Wild Nature - Really buggy in 1.12
+  
+  Divine RPG - lags game too much
+  
+  OTG - World generation makes replacing trees unreliable
