@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "plants2:blocks/forgotten/crystal/c_log",
+		"rings": "plants2:blocks/forgotten/crystal/c_log_end"
+	}
+}

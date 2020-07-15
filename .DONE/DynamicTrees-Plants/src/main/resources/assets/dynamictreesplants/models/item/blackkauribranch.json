@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "plants2:blocks/cosmetic/tree/black_kauri_log",
+		"rings": "plants2:blocks/cosmetic/tree/black_kauri_log_end"
+	}
+}

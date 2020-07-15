@@ -61,7 +61,7 @@ public class CommonProxy {
 	public void postInit(){
 		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "robustTwilightOak")).
 				addDropCreator((new DropCreatorOtherSeed(TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "sicklyTwilightOak")).
-						getSeedStack(1))).setRarity(0.1f));
+						getSeedStack(1))).setRarity(0.5f));
 
 	}
 	

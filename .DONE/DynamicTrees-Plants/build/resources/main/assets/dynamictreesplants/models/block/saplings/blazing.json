@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "plants2:blocks/forgotten/nether/blaze_leaves",
+        "log": "plants2:blocks/forgotten/nether/blaze_log",
+        "leaves": "plants2:blocks/forgotten/nether/blaze_leaves"
+    }
+}

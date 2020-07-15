@@ -17,7 +17,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
-import pokefenn.totemic.init.ModBlocks;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,17 +27,15 @@ public class TreeRedCedar extends TreeFamily {
 	public static Block logBlock = Block.getBlockFromName("totemic:cedar_log");
 	public static Block saplingBlock = Block.getBlockFromName("totemic:cedar_sapling");
 
-	public class SpeciesSugi extends Species {
+	public class SpeciesRedCedar extends Species {
 
-		SpeciesSugi(TreeFamily treeFamily) {
+		SpeciesRedCedar(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.redCedarLeavesProperties);
 			setGrowthLogicKit(new ConiferLogic(3.0f));
 
 			setBasicGrowingParameters(0.5f, 10.0f, 20, 1, 0.8f);
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
+			envFactor(Type.COLD, 1.2f);
 			envFactor(Type.FOREST, 1.05f);
 
 			generateSeed();
@@ -55,22 +52,6 @@ public class TreeRedCedar extends TreeFamily {
 			}
 
 			return probMap;
-		}
-
-		@Override
-		public int getLowestBranchHeight(World world, BlockPos pos) {
-			long day = world.getWorldTime() / 24000L;
-			int month = (int) day / 30; // Change the hashs every in-game month
-
-			return (int)(super.getLowestBranchHeight(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3)); // Vary the height energy by a psuedorandom hash function
-		}
-
-		@Override
-		public float getEnergy(World world, BlockPos pos) {
-			long day = world.getWorldTime() / 24000L;
-			int month = (int) day / 30; // Change the hashs every in-game month
-
-			return super.getEnergy(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3); // Vary the height energy by a psuedorandom hash function
 		}
 
 	}
@@ -93,7 +74,7 @@ public class TreeRedCedar extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesSugi(this));
+		setCommonSpecies(new SpeciesRedCedar(this));
 	}
 
 	@Override

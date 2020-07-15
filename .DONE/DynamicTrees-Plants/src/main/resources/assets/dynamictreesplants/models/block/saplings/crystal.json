@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "plants2:blocks/forgotten/crystal/c_leaves",
+        "log": "plants2:blocks/forgotten/crystal/c_log",
+        "leaves": "plants2:blocks/forgotten/crystal/c_leaves"
+    }
+}

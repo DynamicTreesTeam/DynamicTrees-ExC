@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "plants2:blocks/forgotten/nether/blaze_log",
+		"rings": "plants2:blocks/forgotten/nether/blaze_log_end"
+	}
+}

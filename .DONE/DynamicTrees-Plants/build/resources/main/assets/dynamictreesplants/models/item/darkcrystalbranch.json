@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "plants2:blocks/forgotten/crystal/dc_log",
+		"rings": "plants2:blocks/forgotten/crystal/dc_log_end"
+	}
+}

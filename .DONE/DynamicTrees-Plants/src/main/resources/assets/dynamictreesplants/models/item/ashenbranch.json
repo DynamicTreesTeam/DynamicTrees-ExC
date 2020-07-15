@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "plants2:blocks/forgotten/nether/ash_log",
+		"rings": "plants2:blocks/forgotten/nether/ash_log_end"
+	}
+}

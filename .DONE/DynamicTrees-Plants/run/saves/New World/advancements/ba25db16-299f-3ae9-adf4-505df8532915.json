@@ -1,0 +1,88 @@
+{
+  "minecraft:recipes/tools/flint_and_steel": {
+    "criteria": {
+      "has_obsidian": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_blue_dye_from_lapis_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gray_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/enchanting_table": {
+    "criteria": {
+      "has_obsidian": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-07-11 22:38:35 -0300",
+      "swampland": "2020-07-11 22:39:31 -0300",
+      "birch_forest": "2020-07-11 22:39:03 -0300",
+      "deep_ocean": "2020-07-11 22:43:04 -0300",
+      "beaches": "2020-07-11 22:43:48 -0300",
+      "extreme_hills_with_trees": "2020-07-11 22:39:35 -0300",
+      "desert_hills": "2020-07-11 22:45:22 -0300",
+      "forest_hills": "2020-07-11 22:38:43 -0300",
+      "savanna": "2020-07-11 22:45:14 -0300",
+      "plains": "2020-07-11 22:38:20 -0300",
+      "redwood_taiga": "2020-07-11 22:40:34 -0300",
+      "taiga": "2020-07-11 22:38:01 -0300",
+      "redwood_taiga_hills": "2020-07-11 22:40:57 -0300",
+      "taiga_hills": "2020-07-11 22:44:25 -0300",
+      "birch_forest_hills": "2020-07-11 22:39:17 -0300",
+      "ocean": "2020-07-11 22:43:06 -0300",
+      "extreme_hills": "2020-07-11 22:39:33 -0300",
+      "roofed_forest": "2020-07-11 22:38:55 -0300",
+      "river": "2020-07-11 22:38:29 -0300",
+      "desert": "2020-07-11 22:45:20 -0300",
+      "stone_beach": "2020-07-11 22:43:05 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-07-11 22:38:01 -0300"
+    },
+    "done": true
+  }
+}
