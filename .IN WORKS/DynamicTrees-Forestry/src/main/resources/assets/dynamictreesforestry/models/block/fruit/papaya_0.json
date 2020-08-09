@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictreesforestry:block/fruit/cocoa_0",
+  "textures": {
+    "particle": "forestry:blocks/pods/papaya.0",
+    "cocoa": "forestry:blocks/pods/papaya.0"
+  }
+}

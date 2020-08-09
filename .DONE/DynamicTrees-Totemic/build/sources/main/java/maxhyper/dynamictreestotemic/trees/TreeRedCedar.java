@@ -16,6 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
@@ -23,9 +24,9 @@ import java.util.Objects;
 
 public class TreeRedCedar extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("totemic:cedar_leaves");
-	public static Block logBlock = Block.getBlockFromName("totemic:cedar_log");
-	public static Block saplingBlock = Block.getBlockFromName("totemic:cedar_sapling");
+	public static Block leavesBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("totemic","cedar_leaves"));
+	public static Block logBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("totemic","cedar_log"));
+	public static Block saplingBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("totemic","cedar_sapling"));
 
 	public class SpeciesRedCedar extends Species {
 

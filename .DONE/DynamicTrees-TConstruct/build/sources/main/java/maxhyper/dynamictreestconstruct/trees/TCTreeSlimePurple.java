@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
 import maxhyper.dynamictreestconstruct.ModContent;
+import maxhyper.dynamictreestconstruct.genfeatures.FeatureGenSlimeVines;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -32,6 +33,7 @@ public class TCTreeSlimePurple extends TCTreeSlimeBlue {
 
 			setStick(ItemStack.EMPTY);
 
+			this.addGenFeature(new FeatureGenSlimeVines(TinkerWorld.slimeVinePurple3));
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
 			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);

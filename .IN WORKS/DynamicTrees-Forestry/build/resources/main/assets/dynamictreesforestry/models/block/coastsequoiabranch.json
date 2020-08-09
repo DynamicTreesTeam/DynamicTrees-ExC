@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "forestry:blocks/wood/bark.sequoia",
+        "rings": "forestry:blocks/wood/heart.sequoia"
+    }
+}

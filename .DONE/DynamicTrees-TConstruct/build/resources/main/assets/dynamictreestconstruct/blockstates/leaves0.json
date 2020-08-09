@@ -3,7 +3,7 @@
 	"defaults": {
 		"transform": "forge:default-block",
     	"model": "leaves",
-		"textures": { "all": "blocks/leaves" }
+		"textures": { "all": "blocks/leaves_oak" }
 	},
 	"variants": {
 		"tree": {

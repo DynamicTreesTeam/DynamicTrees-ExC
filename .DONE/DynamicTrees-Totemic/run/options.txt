@@ -1,15 +1,15 @@
 version:1343
 invertYMouse:false
 mouseSensitivity:0.5
-fov:0.0
-gamma:1.0
+fov:1.0
+gamma:0.0
 saturation:0.0
 renderDistance:12
 guiScale:0
 particles:0
 bobView:true
 anaglyph3d:false
-maxFps:90
+maxFps:120
 fboEnable:true
 difficulty:2
 fancyGraphics:true
@@ -49,7 +49,7 @@ attackIndicator:1
 showSubtitles:false
 realmsNotifications:true
 enableWeakAttacks:false
-autoJump:false
+autoJump:true
 narrator:0
 tutorialStep:none
 key_key.attack:-100
@@ -86,7 +86,7 @@ key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
 soundCategory_master:1.0
-soundCategory_music:0.0
+soundCategory_music:1.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

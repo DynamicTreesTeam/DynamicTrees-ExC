@@ -48,13 +48,13 @@ public class TreeMangrove extends TreeFamily {
 			generateSeed();
 			setupStandardSeedDropping();
 			addGenFeature(new FeatureGenLogCritter(getLowestBranchHeight(), ModContent.dynamicFirefly, 60, 2));
-			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundMangroveRoot, ModContent.undergroundRootExposed, ModContent.mangroveBranch,6,   8, 80, 5));
+			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundMangroveRoot, ModContent.undergroundRootExposed, ModContent.mangroveBranch,6,   8, 40, 5));
 		}
 
-//		@Override
-//		public BlockRooty getRootyBlock() {
-//			return ModContent.rootyDirtMangrove;
-//		}
+		@Override
+		public BlockRooty getRootyBlock() {
+			return ModContent.rootyDirtMangrove;
+		}
 
 		private EnumFacing getRelativeFace (BlockPos signalPos, BlockPos rootPos){
 			if (signalPos.getZ() < rootPos.getZ()){

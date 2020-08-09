@@ -1,5 +1,5 @@
-Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\DynamicTrees-TheAether\build\classes\api
-Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\DynamicTrees-TheAether\build\resources\api
+Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\.DONE\DynamicTrees-TheAether\build\classes\api
+Unsupposrted library path: D:\Coding\Minecraft mods\DynamicTrees-ExC\.DONE\DynamicTrees-TheAether\build\resources\api
 Symbol range map extraction starting
 Processing 20 files
 startProcessing "maxhyper/dynamictreestheaether/DynamicTreesTheAether.java" md5: 9a334f328703d9671f6518f47c18f6fa
@@ -1628,135 +1628,301 @@ Class Start: maxhyper.dynamictreestheaether.trees.ALTreeCrystal
 Class End  : maxhyper.dynamictreestheaether.trees.ALTreeCrystal
 endProcessing "maxhyper/dynamictreestheaether/trees/ALTreeCrystal.java"
 
-startProcessing "maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java" md5: f81f8c402efdd571ad3497492555a371
+startProcessing "maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java" md5: 40989bde38666cbf3eba5a6353fa8140
 @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|8|44|maxhyper.dynamictreestheaether.trees|package|maxhyper.dynamictreestheaether.trees|(file)
 Class Start: maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|786|801|ALTreeGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|810|820|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|841|846|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|841|846|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|847|858|leavesBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|leavesBlock|
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|861|873|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|874|887|aether_leaves|field|com.legacy.aether.blocks.BlocksAether|aether_leaves
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|905|910|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|905|910|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|911|919|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock|
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|922|934|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|935|945|aether_log|field|com.legacy.aether.blocks.BlocksAether|aether_log
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|963|968|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|963|968|Block|class|net.minecraft.block.Block|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|969|981|saplingBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|saplingBlock|
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|984|996|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|997|1015|golden_oak_sapling|field|com.legacy.aether.blocks.BlocksAether|golden_oak_sapling
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1885|1900|ALTreeGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1909|1919|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1940|1945|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1940|1945|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1946|1957|leavesBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|leavesBlock|
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1960|1972|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1973|1986|aether_leaves|field|com.legacy.aether.blocks.BlocksAether|aether_leaves
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2004|2009|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2004|2009|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2010|2018|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock|
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2021|2033|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2034|2044|aether_log|field|com.legacy.aether.blocks.BlocksAether|aether_log
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2062|2067|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2062|2067|Block|class|net.minecraft.block.Block|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2068|2080|saplingBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|saplingBlock|
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2083|2095|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+   @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2096|2114|golden_oak_sapling|field|com.legacy.aether.blocks.BlocksAether|golden_oak_sapling
    Class Start: maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1034|1050|SpeciesGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1059|1066|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2133|2149|SpeciesGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2158|2165|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
       Method Start: SpeciesGoldenOak(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1102|1112|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1074|1090|SpeciesGoldenOak|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1091|1101|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1126|1136|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1137|1144|getName|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getName|()Lnet/minecraft/util/ResourceLocation;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1148|1158|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1160|1170|ModContent|class|maxhyper.dynamictreestheaether.ModContent|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1171|1196|goldenOakLeavesProperties|field|maxhyper.dynamictreestheaether.ModContent|goldenOakLeavesProperties
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1205|1230|setBasicGrowingParameters|method|com.ferreusveritas.dynamictrees.trees.Species|setBasicGrowingParameters|(FFIIF)Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1242|1255|upProbability|field|com.ferreusveritas.dynamictrees.trees.Species|upProbability
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1261|1279|lowestBranchHeight|field|com.ferreusveritas.dynamictrees.trees.Species|lowestBranchHeight
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1285|1295|growthRate|field|com.ferreusveritas.dynamictrees.trees.Species|growthRate
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1307|1316|envFactor|method|com.ferreusveritas.dynamictrees.trees.Species|envFactor|(Lnet/minecraftforge/common/BiomeDictionary$Type;F)Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1317|1321|Type|class|net.minecraftforge.common.BiomeDictionary.Type|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1322|1326|COLD|field|net.minecraftforge.common.BiomeDictionary.Type|COLD
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1339|1348|envFactor|method|com.ferreusveritas.dynamictrees.trees.Species|envFactor|(Lnet/minecraftforge/common/BiomeDictionary$Type;F)Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1349|1353|Type|class|net.minecraftforge.common.BiomeDictionary.Type|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1354|1357|HOT|field|net.minecraftforge.common.BiomeDictionary.Type|HOT
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1372|1384|generateSeed|method|com.ferreusveritas.dynamictrees.trees.Species|generateSeed|()Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1394|1419|setupStandardSeedDropping|method|com.ferreusveritas.dynamictrees.trees.Species|setupStandardSeedDropping|()Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1427|1447|clearAcceptableSoils|method|com.ferreusveritas.dynamictrees.trees.Species|clearAcceptableSoils|()Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1455|1472|addAcceptableSoil|method|com.ferreusveritas.dynamictrees.trees.Species|addAcceptableSoil|([Lnet/minecraft/block/Block;)Lcom/ferreusveritas/dynamictrees/trees/Species;
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1473|1485|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1486|1498|aether_grass|field|com.legacy.aether.blocks.BlocksAether|aether_grass
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1500|1512|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1513|1535|enchanted_aether_grass|field|com.legacy.aether.blocks.BlocksAether|enchanted_aether_grass
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1537|1549|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
-         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1550|1561|aether_dirt|field|com.legacy.aether.blocks.BlocksAether|aether_dirt
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2201|2211|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2173|2189|SpeciesGoldenOak|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2190|2200|TreeFamily|class|com.ferreusveritas.dynamictrees.trees.TreeFamily|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2225|2235|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2236|2243|getName|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getName|()Lnet/minecraft/util/ResourceLocation;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2247|2257|treeFamily|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|SpeciesGoldenOak|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V|treeFamily|0
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2259|2269|ModContent|class|maxhyper.dynamictreestheaether.ModContent|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2270|2295|goldenOakLeavesProperties|field|maxhyper.dynamictreestheaether.ModContent|goldenOakLeavesProperties
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2304|2329|setBasicGrowingParameters|method|com.ferreusveritas.dynamictrees.trees.Species|setBasicGrowingParameters|(FFIIF)Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2341|2354|upProbability|field|com.ferreusveritas.dynamictrees.trees.Species|upProbability
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2360|2378|lowestBranchHeight|field|com.ferreusveritas.dynamictrees.trees.Species|lowestBranchHeight
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2384|2394|growthRate|field|com.ferreusveritas.dynamictrees.trees.Species|growthRate
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2406|2415|envFactor|method|com.ferreusveritas.dynamictrees.trees.Species|envFactor|(Lnet/minecraftforge/common/BiomeDictionary$Type;F)Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2416|2420|Type|class|net.minecraftforge.common.BiomeDictionary.Type|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2421|2425|COLD|field|net.minecraftforge.common.BiomeDictionary.Type|COLD
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2438|2447|envFactor|method|com.ferreusveritas.dynamictrees.trees.Species|envFactor|(Lnet/minecraftforge/common/BiomeDictionary$Type;F)Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2448|2452|Type|class|net.minecraftforge.common.BiomeDictionary.Type|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2453|2456|HOT|field|net.minecraftforge.common.BiomeDictionary.Type|HOT
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2471|2483|generateSeed|method|com.ferreusveritas.dynamictrees.trees.Species|generateSeed|()Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2493|2518|setupStandardSeedDropping|method|com.ferreusveritas.dynamictrees.trees.Species|setupStandardSeedDropping|()Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2526|2546|clearAcceptableSoils|method|com.ferreusveritas.dynamictrees.trees.Species|clearAcceptableSoils|()Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2554|2571|addAcceptableSoil|method|com.ferreusveritas.dynamictrees.trees.Species|addAcceptableSoil|([Lnet/minecraft/block/Block;)Lcom/ferreusveritas/dynamictrees/trees/Species;
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2572|2584|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2585|2597|aether_grass|field|com.legacy.aether.blocks.BlocksAether|aether_grass
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2599|2611|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2612|2634|enchanted_aether_grass|field|com.legacy.aether.blocks.BlocksAether|enchanted_aether_grass
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2636|2648|BlocksAether|class|com.legacy.aether.blocks.BlocksAether|false
+         @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2649|2660|aether_dirt|field|com.legacy.aether.blocks.BlocksAether|aether_dirt
       Method End: SpeciesGoldenOak(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)V
    Class End  : maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak
    Method Start: ALTreeGoldenOak()V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1586|1601|ALTreeGoldenOak|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|ALTreeGoldenOak|()V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1619|1635|ResourceLocation|class|net.minecraft.util.ResourceLocation|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1636|1688|maxhyper.dynamictreestheaether.DynamicTreesTheAether|class|maxhyper.dynamictreestheaether.DynamicTreesTheAether|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1689|1694|MODID|field|maxhyper.dynamictreestheaether.DynamicTreesTheAether|MODID
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1716|1731|setPrimitiveLog|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|setPrimitiveLog|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/item/ItemStack;)Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1732|1740|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1741|1756|getDefaultState|method|net.minecraft.block.Block|getDefaultState|()Lnet/minecraft/block/state/IBlockState;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1759|1771|withProperty|method|net.minecraft.block.state.IBlockState|withProperty|(Lnet/minecraft/block/properties/IProperty;Ljava/lang/Comparable;)Lnet/minecraft/block/state/IBlockState;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1772|1786|BlockAetherLog|class|com.legacy.aether.blocks.natural.BlockAetherLog|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1787|1796|wood_type|field|com.legacy.aether.blocks.natural.BlockAetherLog|wood_type
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1798|1809|EnumLogType|class|com.legacy.aether.blocks.util.EnumLogType|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1810|1813|Oak|field|com.legacy.aether.blocks.util.EnumLogType|Oak
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1820|1829|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1830|1838|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1853|1863|ModContent|class|maxhyper.dynamictreestheaether.ModContent|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1864|1889|goldenOakLeavesProperties|field|maxhyper.dynamictreestheaether.ModContent|goldenOakLeavesProperties
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1890|1897|setTree|method|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|setTree|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1910|1937|addConnectableVanillaLeaves|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|addConnectableVanillaLeaves|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily$IConnectable;)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1949|1954|state|param|com.ferreusveritas.dynamictrees.trees.TreeFamily.IConnectable|isConnectable|(Lnet/minecraft/block/state/IBlockState;)Z|state|-1
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1955|1963|getBlock|method|net.minecraft.block.state.IBlockState|getBlock|()Lnet/minecraft/block/Block;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1969|1980|leavesBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|leavesBlock
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2685|2700|ALTreeGoldenOak|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|ALTreeGoldenOak|()V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2718|2734|ResourceLocation|class|net.minecraft.util.ResourceLocation|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2735|2787|maxhyper.dynamictreestheaether.DynamicTreesTheAether|class|maxhyper.dynamictreestheaether.DynamicTreesTheAether|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2788|2793|MODID|field|maxhyper.dynamictreestheaether.DynamicTreesTheAether|MODID
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2815|2830|setPrimitiveLog|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|setPrimitiveLog|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/item/ItemStack;)Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2831|2839|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2840|2855|getDefaultState|method|net.minecraft.block.Block|getDefaultState|()Lnet/minecraft/block/state/IBlockState;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2858|2870|withProperty|method|net.minecraft.block.state.IBlockState|withProperty|(Lnet/minecraft/block/properties/IProperty;Ljava/lang/Comparable;)Lnet/minecraft/block/state/IBlockState;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2871|2885|BlockAetherLog|class|com.legacy.aether.blocks.natural.BlockAetherLog|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2886|2895|wood_type|field|com.legacy.aether.blocks.natural.BlockAetherLog|wood_type
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2897|2908|EnumLogType|class|com.legacy.aether.blocks.util.EnumLogType|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2909|2912|Oak|field|com.legacy.aether.blocks.util.EnumLogType|Oak
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2919|2928|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2929|2937|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2952|2962|ModContent|class|maxhyper.dynamictreestheaether.ModContent|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2963|2988|goldenOakLeavesProperties|field|maxhyper.dynamictreestheaether.ModContent|goldenOakLeavesProperties
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2989|2996|setTree|method|com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties|setTree|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily;)Lcom/ferreusveritas/dynamictrees/api/treedata/ILeavesProperties;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3009|3036|addConnectableVanillaLeaves|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|addConnectableVanillaLeaves|(Lcom/ferreusveritas/dynamictrees/trees/TreeFamily$IConnectable;)V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3048|3053|state|param|com.ferreusveritas.dynamictrees.trees.TreeFamily.IConnectable|isConnectable|(Lnet/minecraft/block/state/IBlockState;)Z|state|-1
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3054|3062|getBlock|method|net.minecraft.block.state.IBlockState|getBlock|()Lnet/minecraft/block/Block;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3068|3079|leavesBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|leavesBlock
    Method End: ALTreeGoldenOak()V
-   Method Start: getPrimitiveLogItemStack(I)Lnet/minecraft/item/ItemStack;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2047|2050|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getPrimitiveLogItemStack|(I)Lnet/minecraft/item/ItemStack;|qty|0
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|1990|1998|Override|class|java.lang.Override|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2008|2017|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2018|2042|getPrimitiveLogItemStack|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getPrimitiveLogItemStack|(I)Lnet/minecraft/item/ItemStack;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2057|2066|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2079|2088|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2089|2096|Objects|class|java.util.Objects|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2097|2111|requireNonNull|method|java.util.Objects|requireNonNull|(Ljava/lang/Object;)Ljava/lang/Object;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2112|2120|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2123|2126|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getPrimitiveLogItemStack|(I)Lnet/minecraft/item/ItemStack;|qty|0
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2141|2149|setCount|method|net.minecraft.item.ItemStack|setCount|(I)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2150|2160|MathHelper|class|net.minecraft.util.math.MathHelper|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2161|2166|clamp|method|net.minecraft.util.math.MathHelper|clamp|(III)I
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2167|2170|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getPrimitiveLogItemStack|(I)Lnet/minecraft/item/ItemStack;|qty|0
-   Method End: getPrimitiveLogItemStack(I)Lnet/minecraft/item/ItemStack;
    Method Start: getStick(I)Lnet/minecraft/item/ItemStack;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2248|2251|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getStick|(I)Lnet/minecraft/item/ItemStack;|qty|0
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2207|2215|Override|class|java.lang.Override|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2225|2234|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2235|2243|getStick|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getStick|(I)Lnet/minecraft/item/ItemStack;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2269|2278|ItemStack|class|net.minecraft.item.ItemStack|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2279|2290|ItemsAether|class|com.legacy.aether.items.ItemsAether|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2291|2304|skyroot_stick|field|com.legacy.aether.items.ItemsAether|skyroot_stick
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2306|2309|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getStick|(I)Lnet/minecraft/item/ItemStack;|qty|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3361|3364|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getStick|(I)Lnet/minecraft/item/ItemStack;|qty|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3320|3328|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3338|3347|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3348|3356|getStick|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getStick|(I)Lnet/minecraft/item/ItemStack;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3382|3391|ItemStack|class|net.minecraft.item.ItemStack|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3392|3403|ItemsAether|class|com.legacy.aether.items.ItemsAether|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3404|3417|skyroot_stick|field|com.legacy.aether.items.ItemsAether|skyroot_stick
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3419|3422|qty|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getStick|(I)Lnet/minecraft/item/ItemStack;|qty|0
    Method End: getStick(I)Lnet/minecraft/item/ItemStack;
    Method Start: createSpecies()V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2321|2329|Override|class|java.lang.Override|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2344|2357|createSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|createSpecies|()V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2365|2381|setCommonSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|setCommonSpecies|(Lcom/ferreusveritas/dynamictrees/trees/Species;)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2386|2402|SpeciesGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3434|3442|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3457|3470|createSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|createSpecies|()V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3478|3494|setCommonSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|setCommonSpecies|(Lcom/ferreusveritas/dynamictrees/trees/Species;)V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3499|3515|SpeciesGoldenOak|class|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak.SpeciesGoldenOak|false
    Method End: createSpecies()V
    Method Start: registerSpecies(Lnet/minecraftforge/registries/IForgeRegistry;)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2483|2498|speciesRegistry|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V|speciesRegistry|0
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2420|2428|Override|class|java.lang.Override|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2443|2458|registerSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2459|2473|IForgeRegistry|class|net.minecraftforge.registries.IForgeRegistry|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2474|2481|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2511|2526|registerSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2527|2542|speciesRegistry|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V|speciesRegistry|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3596|3611|speciesRegistry|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V|speciesRegistry|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3533|3541|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3556|3571|registerSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3572|3586|IForgeRegistry|class|net.minecraftforge.registries.IForgeRegistry|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3587|3594|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3624|3639|registerSpecies|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3640|3655|speciesRegistry|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|registerSpecies|(Lnet/minecraftforge/registries/IForgeRegistry;)V|speciesRegistry|0
    Method End: registerSpecies(Lnet/minecraftforge/registries/IForgeRegistry;)V
    Method Start: getRegisterableItems(Ljava/util/List;)Ljava/util/List;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2615|2623|itemList|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;|itemList|0
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2554|2562|Override|class|java.lang.Override|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2572|2576|List|class|java.util.List|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2577|2581|Item|class|net.minecraft.item.Item|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2583|2603|getRegisterableItems|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2604|2608|List|class|java.util.List|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2609|2613|Item|class|net.minecraft.item.Item|false
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2643|2663|getRegisterableItems|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;
-      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|2664|2672|itemList|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;|itemList|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3728|3736|itemList|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;|itemList|0
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3667|3675|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3685|3689|List|class|java.util.List|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3690|3694|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3696|3716|getRegisterableItems|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3717|3721|List|class|java.util.List|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3722|3726|Item|class|net.minecraft.item.Item|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3756|3776|getRegisterableItems|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3777|3785|itemList|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|getRegisterableItems|(Ljava/util/List;)Ljava/util/List;|itemList|0
    Method End: getRegisterableItems(Ljava/util/List;)Ljava/util/List;
+   Method Start: createBranch()Lcom/ferreusveritas/dynamictrees/blocks/BlockBranch;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3797|3805|Override|class|java.lang.Override|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3815|3826|BlockBranch|class|com.ferreusveritas.dynamictrees.blocks.BlockBranch|false
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3827|3839|createBranch|method|com.ferreusveritas.dynamictrees.trees.TreeFamily|createBranch|()Lcom/ferreusveritas/dynamictrees/blocks/BlockBranch;
+      @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3858|3874|BlockBranchBasic|class|com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic|false
+      Anon Class Start: maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1
+         Method Start: futureBreak(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3945|3950|state|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|state|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3958|3963|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3974|3980|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|cutPos|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3999|4005|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3900|3908|Override|class|java.lang.Override|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3921|3932|futureBreak|method|com.ferreusveritas.dynamictrees.api.IFutureBreakable|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3933|3944|IBlockState|class|net.minecraft.block.state.IBlockState|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3952|3957|World|class|net.minecraft.world.World|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3965|3973|BlockPos|class|net.minecraft.util.math.BlockPos|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|3982|3998|EntityLivingBase|class|net.minecraft.entity.EntityLivingBase|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4089|4095|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4107|4121|EntityPlayerMP|class|net.minecraft.entity.player.EntityPlayerMP|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4124|4130|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4131|4149|getEntityAttribute|method|net.minecraft.entity.EntityLivingBase|getEntityAttribute|(Lnet/minecraft/entity/ai/attributes/IAttribute;)Lnet/minecraft/entity/ai/attributes/IAttributeInstance;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4150|4162|EntityPlayer|class|net.minecraft.entity.player.EntityPlayer|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4163|4177|REACH_DISTANCE|field|net.minecraft.entity.player.EntityPlayer|REACH_DISTANCE
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4179|4196|getAttributeValue|method|net.minecraft.entity.ai.attributes.IAttributeInstance|getAttributeValue|()D
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4212|4226|RayTraceResult|class|net.minecraft.util.math.RayTraceResult|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4238|4252|playerRayTrace|method|com.ferreusveritas.dynamictrees.blocks.BlockBranch|playerRayTrace|(Lnet/minecraft/entity/EntityLivingBase;DF)Lnet/minecraft/util/math/RayTraceResult;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4253|4259|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4288|4298|EnumFacing|class|net.minecraft.util.EnumFacing|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4329|4335|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4336|4346|isSneaking|method|net.minecraft.entity.Entity|isSneaking|()Z
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4360|4367|sideHit|field|net.minecraft.util.math.RayTraceResult|sideHit
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4368|4379|getOpposite|method|net.minecraft.util.EnumFacing|getOpposite|()Lnet/minecraft/util/EnumFacing;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4393|4400|sideHit|field|net.minecraft.util.math.RayTraceResult|sideHit
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4404|4414|EnumFacing|class|net.minecraft.util.EnumFacing|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4415|4419|DOWN|field|net.minecraft.util.EnumFacing|DOWN
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4461|4482|BranchDestructionData|class|com.ferreusveritas.dynamictrees.util.BranchDestructionData|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4497|4518|destroyBranchFromNode|method|com.ferreusveritas.dynamictrees.blocks.BlockBranch|destroyBranchFromNode|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumFacing;Z)Lcom/ferreusveritas/dynamictrees/util/BranchDestructionData;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4519|4524|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4526|4532|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|cutPos|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4591|4600|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4612|4618|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4619|4638|getHeldItemMainhand|method|net.minecraft.entity.EntityLivingBase|getHeldItemMainhand|()Lnet/minecraft/item/ItemStack;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4661|4678|EnchantmentHelper|class|net.minecraft.enchantment.EnchantmentHelper|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4679|4698|getEnchantmentLevel|method|net.minecraft.enchantment.EnchantmentHelper|getEnchantmentLevel|(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4699|4711|Enchantments|class|net.minecraft.init.Enchantments|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4712|4719|FORTUNE|field|net.minecraft.init.Enchantments|FORTUNE
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4757|4774|EnchantmentHelper|class|net.minecraft.enchantment.EnchantmentHelper|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4775|4794|getEnchantmentLevel|method|net.minecraft.enchantment.EnchantmentHelper|getEnchantmentLevel|(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4795|4807|Enchantments|class|net.minecraft.init.Enchantments|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4808|4818|SILK_TOUCH|field|net.minecraft.init.Enchantments|SILK_TOUCH
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|4923|4933|woodVolume|field|com.ferreusveritas.dynamictrees.util.BranchDestructionData|woodVolume
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5006|5010|List|class|java.util.List|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5011|5020|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5072|5083|getLogDrops|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5084|5089|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5091|5097|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|cutPos|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5111|5118|species|field|com.ferreusveritas.dynamictrees.util.BranchDestructionData|species
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5197|5208|getLogDrops|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5209|5214|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5216|5222|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|cutPos|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5236|5243|species|field|com.ferreusveritas.dynamictrees.util.BranchDestructionData|species
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5308|5314|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5315|5328|getActiveHand|method|net.minecraft.entity.EntityLivingBase|getActiveHand|()Lnet/minecraft/util/EnumHand;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5383|5389|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5390|5403|setActiveHand|method|net.minecraft.entity.EntityLivingBase|setActiveHand|(Lnet/minecraft/util/EnumHand;)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5404|5412|EnumHand|class|net.minecraft.util.EnumHand|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5413|5422|MAIN_HAND|field|net.minecraft.util.EnumHand|MAIN_HAND
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5572|5578|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5590|5602|EntityPlayer|class|net.minecraft.entity.player.EntityPlayer|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5626|5668|net.minecraftforge.event.ForgeEventFactory|class|net.minecraftforge.event.ForgeEventFactory|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5669|5688|fireBlockHarvesting|method|net.minecraftforge.event.ForgeEventFactory|fireBlockHarvesting|(Ljava/util/List;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;IFZLnet/minecraft/entity/player/EntityPlayer;)F
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5700|5705|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5707|5713|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|cutPos|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5715|5720|state|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|state|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5747|5759|EntityPlayer|class|net.minecraft.entity.player.EntityPlayer|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5761|5767|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5894|5898|List|class|java.util.List|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5899|5908|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5935|5941|stream|method|java.util.Collection|stream|()Ljava/util/stream/Stream;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5944|5950|filter|method|java.util.stream.Stream|filter|(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5956|5961|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5962|5966|rand|field|net.minecraft.world.World|rand
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5967|5976|nextFloat|method|java.util.Random|nextFloat|()F
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|5995|6002|collect|method|java.util.stream.Stream|collect|(Ljava/util/stream/Collector;)Ljava/lang/Object;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6003|6013|Collectors|class|java.util.stream.Collectors|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6014|6020|toList|method|java.util.stream.Collectors|toList|()Ljava/util/stream/Collector;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6091|6108|EntityFallingTree|class|com.ferreusveritas.dynamictrees.entities.EntityFallingTree|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6109|6117|dropTree|method|com.ferreusveritas.dynamictrees.entities.EntityFallingTree|dropTree|(Lnet/minecraft/world/World;Lcom/ferreusveritas/dynamictrees/util/BranchDestructionData;Ljava/util/List;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6118|6123|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|world|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6152|6181|EntityFallingTree.DestroyType|class|com.ferreusveritas.dynamictrees.entities.EntityFallingTree.DestroyType|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6182|6189|HARVEST|field|com.ferreusveritas.dynamictrees.entities.EntityFallingTree.DestroyType|HARVEST
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6244|6253|damageAxe|method|com.ferreusveritas.dynamictrees.blocks.BlockBranch|damageAxe|(Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/item/ItemStack;IF)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6254|6260|entity|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|entity|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6272|6281|getRadius|method|com.ferreusveritas.dynamictrees.api.treedata.ITreePart|getRadius|(Lnet/minecraft/block/state/IBlockState;)I
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6282|6287|state|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|futureBreak|(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V|state|0
+         Method End: futureBreak(Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityLivingBase;)V
+         Method Start: sloppyBreak(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6356|6361|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6372|6378|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|cutPos|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6410|6421|destroyType|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|destroyType|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6314|6322|Override|class|java.lang.Override|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6338|6349|sloppyBreak|method|com.ferreusveritas.dynamictrees.blocks.BlockBranch|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6350|6355|World|class|net.minecraft.world.World|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6363|6371|BlockPos|class|net.minecraft.util.math.BlockPos|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6380|6409|EntityFallingTree.DestroyType|class|com.ferreusveritas.dynamictrees.entities.EntityFallingTree.DestroyType|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6463|6484|BranchDestructionData|class|com.ferreusveritas.dynamictrees.util.BranchDestructionData|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6499|6520|destroyBranchFromNode|method|com.ferreusveritas.dynamictrees.blocks.BlockBranch|destroyBranchFromNode|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/EnumFacing;Z)Lcom/ferreusveritas/dynamictrees/util/BranchDestructionData;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6521|6526|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6528|6534|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|cutPos|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6536|6546|EnumFacing|class|net.minecraft.util.EnumFacing|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6547|6551|DOWN|field|net.minecraft.util.EnumFacing|DOWN
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6633|6637|List|class|java.util.List|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6638|6647|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6664|6675|getLogDrops|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6676|6681|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6683|6689|cutPos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|cutPos|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6703|6710|species|field|com.ferreusveritas.dynamictrees.util.BranchDestructionData|species
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6724|6734|woodVolume|field|com.ferreusveritas.dynamictrees.util.BranchDestructionData|woodVolume
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6743|6752|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6753|6758|EMPTY|field|net.minecraft.item.ItemStack|EMPTY
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6827|6844|EntityFallingTree|class|com.ferreusveritas.dynamictrees.entities.EntityFallingTree|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6845|6853|dropTree|method|com.ferreusveritas.dynamictrees.entities.EntityFallingTree|dropTree|(Lnet/minecraft/world/World;Lcom/ferreusveritas/dynamictrees/util/BranchDestructionData;Ljava/util/List;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6854|6859|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6888|6899|destroyType|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|sloppyBreak|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V|destroyType|2
+         Method End: sloppyBreak(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree$DestroyType;)V
+         Method Start: getLogDrops(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6953|6958|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6969|6972|pos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|pos|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6982|6989|species|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|species|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6997|7003|volume|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|volume|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7013|7022|silkTouch|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|silkTouch|4
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7034|7042|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6919|6923|List|class|java.util.List|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6924|6933|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6935|6946|getLogDrops|method|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6947|6952|World|class|net.minecraft.world.World|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6960|6968|BlockPos|class|net.minecraft.util.math.BlockPos|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|6974|6981|Species|class|com.ferreusveritas.dynamictrees.trees.Species|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7024|7033|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7051|7055|List|class|java.util.List|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7056|7065|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7077|7096|java.util.ArrayList|class|java.util.ArrayList|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7097|7106|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7163|7171|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7183|7191|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7192|7199|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7213|7227|ItemAetherTool|class|com.legacy.aether.items.tools.ItemAetherTool|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7233|7247|ItemAetherTool|class|com.legacy.aether.items.tools.ItemAetherTool|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7249|7257|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7258|7265|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7269|7277|toolType|field|com.legacy.aether.items.tools.ItemAetherTool|toolType
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7281|7299|EnumAetherToolType|class|com.legacy.aether.items.util.EnumAetherToolType|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7300|7303|AXE|field|com.legacy.aether.items.util.EnumAetherToolType|AXE
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7317|7325|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7326|7333|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7347|7364|ItemGravititeTool|class|com.legacy.aether.items.tools.ItemGravititeTool|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7368|7376|heldItem|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|heldItem|5
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7377|7384|getItem|method|net.minecraft.item.ItemStack|getItem|()Lnet/minecraft/item/Item;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7398|7414|ItemValkyrieTool|class|com.legacy.aether.items.tools.ItemValkyrieTool|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7429|7432|add|method|java.util.Collection|add|(Ljava/lang/Object;)Z
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7437|7446|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7447|7458|ItemsAether|class|com.legacy.aether.items.ItemsAether|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7459|7471|golden_amber|field|com.legacy.aether.items.ItemsAether|golden_amber
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7480|7486|volume|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|volume|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7494|7499|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7500|7504|rand|field|net.minecraft.world.World|rand
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7505|7514|nextFloat|method|java.util.Random|nextFloat|()F
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7549|7552|add|method|java.util.Collection|add|(Ljava/lang/Object;)Z
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7557|7566|ItemStack|class|net.minecraft.item.ItemStack|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7567|7575|logBlock|field|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak|logBlock
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7583|7589|volume|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|volume|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7727|7733|volume|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|volume|3
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7737|7747|ModConfigs|class|com.ferreusveritas.dynamictrees.ModConfigs|false
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7748|7769|treeHarvestMultiplier|field|com.ferreusveritas.dynamictrees.ModConfigs|treeHarvestMultiplier
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7822|7829|species|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|species|2
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7830|7842|getLogsDrops|method|com.ferreusveritas.dynamictrees.trees.Species|getLogsDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Ljava/util/List;F)Ljava/util/List;
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7843|7848|world|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|world|0
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7850|7853|pos|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|pos|1
+            @|maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java|7860|7866|volume|param|maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1|getLogDrops|(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;|volume|3
+         Method End: getLogDrops(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lcom/ferreusveritas/dynamictrees/trees/Species;FZLnet/minecraft/item/ItemStack;)Ljava/util/List;
+      Anon Class End: maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak$1
+   Method End: createBranch()Lcom/ferreusveritas/dynamictrees/blocks/BlockBranch;
 Class End  : maxhyper.dynamictreestheaether.trees.ALTreeGoldenOak
 endProcessing "maxhyper/dynamictreestheaether/trees/ALTreeGoldenOak.java"
 

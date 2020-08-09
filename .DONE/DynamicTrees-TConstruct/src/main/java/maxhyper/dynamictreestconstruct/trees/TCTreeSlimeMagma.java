@@ -23,8 +23,8 @@ public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
 			this.setBasicGrowingParameters(taperingDefaultSlime, energyDefaultSlime, upProbabilityDefaultSlime, lowestBranchHeightDefaultSlime, growthRateDefaultSlime);
 			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("slime"));
 
-			this.envFactor(Type.HOT, 0.5F);
-			this.envFactor(Type.DRY, 0.10F);
+			this.envFactor(Type.HOT, 1.5F);
+			//this.envFactor(Type.DRY, 0.20F);
 			this.envFactor(Type.WET, 1.75F);
 
 			generateSeed();

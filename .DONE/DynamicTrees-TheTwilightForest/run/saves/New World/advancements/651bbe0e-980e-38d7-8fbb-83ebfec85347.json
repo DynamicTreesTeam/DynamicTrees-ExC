@@ -11,18 +11,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/tools/wooden_pickaxe": {
-    "criteria": {
-      "has_stick": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
-    "criteria": {
-      "has_bonemeal": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/pink_dye_from_red_bonemeal": {
     "criteria": {
       "has_bonemeal": "2020-06-24 22:18:57 -0300"
@@ -35,15 +23,15 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/ladder": {
+  "twilightforest:alt/biomes/enchanted_forest": {
     "criteria": {
-      "has_stick": "2020-06-24 22:18:57 -0300"
+      "discover": "2020-07-16 14:16:52 -0300"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/chest": {
+  "minecraft:recipes/transportation/dark_oak_boat": {
     "criteria": {
-      "has_lots_of_items": "2020-06-24 22:18:57 -0300"
+      "entered_water": "2020-07-16 14:39:56 -0300"
     },
     "done": true
   },
@@ -53,28 +41,7 @@
     },
     "done": true
   },
-  "twilightforest:arborist": {
-    "criteria": {
-      "trans_sapling": "2020-06-24 22:18:57 -0300",
-      "trans_log": "2020-06-24 22:18:57 -0300",
-      "sort_leaves": "2020-06-24 22:18:57 -0300",
-      "time_log": "2020-06-24 22:18:57 -0300"
-    },
-    "done": false
-  },
   "minecraft:recipes/misc/magenta_dye_from_lapis_ink_bonemeal": {
-    "criteria": {
-      "has_bonemeal": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
-  "minecraft:recipes/tools/wooden_shovel": {
-    "criteria": {
-      "has_stick": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
     "criteria": {
       "has_bonemeal": "2020-06-24 22:18:57 -0300"
     },
@@ -98,18 +65,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/lime_dye": {
-    "criteria": {
-      "has_bonemeal": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
-  "twilightforest:alt/treasures/magic_trees": {
-    "criteria": {
-      "1": "2020-06-24 22:18:57 -0300"
-    },
-    "done": true
-  },
   "twilightforest:alt/treasures/tree_of_transformation": {
     "criteria": {
       "log": "2020-06-24 22:18:57 -0300",
@@ -128,5 +83,93 @@
       "plains": "2020-06-24 22:18:57 -0300"
     },
     "done": false
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_gray_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2020-07-16 14:39:56 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:arborist": {
+    "criteria": {
+      "trans_sapling": "2020-06-24 22:18:57 -0300",
+      "trans_log": "2020-06-24 22:18:57 -0300",
+      "sort_leaves": "2020-06-24 22:18:57 -0300",
+      "time_log": "2020-06-24 22:18:57 -0300",
+      "mangrove_log": "2020-07-16 14:16:23 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_ink_bonemeal": {
+    "criteria": {
+      "has_bonemeal": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2020-07-16 14:39:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lime_dye": {
+    "criteria": {
+      "has_bonemeal": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2020-07-16 14:39:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2020-07-16 14:39:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2020-07-16 14:39:56 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/magic_trees": {
+    "criteria": {
+      "1": "2020-06-24 22:18:57 -0300"
+    },
+    "done": true
   }
 }

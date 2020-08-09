@@ -82,30 +82,7 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		mangroveBranch = new BlockBranchTwilight("mangrovebranch"){
-			@Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
-				return false;
-			}
-			@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-				ItemStack handStack = playerIn.getHeldItemMainhand();
-				if (handStack.getItem() == Item.getItemFromBlock(Blocks.DIRT)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundMangroveRoot.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, thisRadius ));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRAVEL_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				} else if (handStack.getItem() == Item.getItemFromBlock(Blocks.GRASS)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundMangroveRoot.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, thisRadius ).withProperty(BlockDynamicTwilightRoots.GRASSY, true));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				}
-				return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-			}
-		};
+		mangroveBranch = new BlockBranchMangrove("mangrovebranch");
 		minerCoreBranch = new BlockBranchMagicCore("minersTreeCoreBranch", BlockBranchMagicCore.Types.MINE);
 		minerCoreBranchOff = new BlockBranchMagicCore("minersTreeCoreBranchOff", BlockBranchMagicCore.Types.MINE);
 		sortingCoreBranch = new BlockBranchMagicCore("sortingTreeCoreBranch", BlockBranchMagicCore.Types.SORT);

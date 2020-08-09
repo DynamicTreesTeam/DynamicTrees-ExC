@@ -1,5 +1,9 @@
 {
-	"variants": {
-		"normal": { "model": "dynamictrees:roots" }
-	}
+	"forge_marker": 1,
+	"defaults": {
+		"model": "twilightforest:util/dummy",
+		"textures": { "particle": "blocks/slime" },
+		"transform": "forge:default-item"
+	},
+	"variants": { "normal": [{}] }
 }

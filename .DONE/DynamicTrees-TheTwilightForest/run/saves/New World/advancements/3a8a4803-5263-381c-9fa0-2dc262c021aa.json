@@ -65,6 +65,12 @@
     },
     "done": true
   },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2020-07-16 15:20:20 -0300"
+    },
+    "done": false
+  },
   "twilightforest:root": {
     "criteria": {
       "in_tf": "2020-06-26 17:20:59 -0300"
@@ -110,7 +116,8 @@
   "twilightforest:arborist": {
     "criteria": {
       "time_log": "2020-06-26 17:20:59 -0300",
-      "mine_log": "2020-06-26 17:20:59 -0300"
+      "mine_log": "2020-06-26 17:20:59 -0300",
+      "mangrove_log": "2020-07-16 15:20:20 -0300"
     },
     "done": false
   },

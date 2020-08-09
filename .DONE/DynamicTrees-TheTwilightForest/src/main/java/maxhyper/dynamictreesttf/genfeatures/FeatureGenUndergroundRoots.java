@@ -4,7 +4,6 @@ import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots;
 import net.minecraft.block.Block;
@@ -23,7 +22,9 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
     public BlockDynamicTwilightRoots rootsDirt, rootsExposed, rootsDirt2;
     public BlockBranch rootsExposed2;
     public int rootBranchChance, maxRadius, rootGrowChance, rootTypeChangeHeight;
-    public boolean replaceWhenFinish;
+    public boolean isMangrove;
+
+    public int worldgenAttempts = 20;
 
     public FeatureGenUndergroundRoots(BlockDynamicTwilightRoots rootDirt, BlockDynamicTwilightRoots rootDirt2, BlockDynamicTwilightRoots root, BlockBranch root2, int heightToChangeRoot, int maxRootRadius, int branchChance, int growChance){
         rootsDirt = rootDirt;
@@ -31,7 +32,7 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         rootBranchChance = branchChance;
         maxRadius = Math.min(maxRootRadius, 8);
         rootGrowChance = growChance;
-        replaceWhenFinish = true;
+        isMangrove = true;
         rootsExposed2 = root2;
         rootsDirt2 = rootDirt2;
         rootTypeChangeHeight = heightToChangeRoot;
@@ -43,7 +44,7 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         rootBranchChance = branchChance;
         maxRadius = Math.min(maxRootRadius, 8);
         rootGrowChance = growChance;
-        replaceWhenFinish = false;
+        isMangrove = false;
     }
 
     EnumFacing[] dirsExceptUp = {EnumFacing.DOWN, EnumFacing.NORTH, EnumFacing.EAST, EnumFacing.SOUTH, EnumFacing.WEST};
@@ -82,7 +83,7 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         EnumFacing[] possibleDirections = new EnumFacing[5];
         int dirCount = 0;
         for (int i=0;i<5;i++){
-            if (dirsExceptUp[i] == cameFrom || (replaceWhenFinish && dirsExceptUp[i]==EnumFacing.DOWN && blockPos.up().getX() == rootPos.getX() &&  blockPos.up().getZ() == rootPos.getZ() )){
+            if (dirsExceptUp[i] == cameFrom || (isMangrove && dirsExceptUp[i]==EnumFacing.DOWN && blockPos.up().getX() == rootPos.getX() &&  blockPos.up().getZ() == rootPos.getZ() )){
                 continue;
             }
             IBlockState offsetState = world.getBlockState(blockPos.offset(dirsExceptUp[i]));
@@ -119,29 +120,40 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         return possibleDirections[rand.nextInt(dirCount)];
     }
 
+    private boolean isOverRootBlock(BlockPos pos, BlockPos rootPos){
+        return offsetSpawn(pos, !isMangrove) != rootPos;
+    }
+
+    private boolean cancelGrowChance(Random rand){
+        if (isMangrove){
+            return rand.nextInt(4) == 0;
+        } else {
+            return rand.nextInt(2) == 0;
+        }
+    }
+
     private boolean iterateRootGrow(World world, BlockPos blockPos, Random rand, int radius, EnumFacing cameFrom, BlockPos rootPos){
         IBlockState state = world.getBlockState(blockPos);
-
         if (isRootBlock(state.getBlock())){
             int currentRadius = state.getValue(BlockDynamicTwilightRoots.RADIUS);
-            boolean grow = currentRadius<radius && currentRadius<8;
+            boolean grow = isOverRootBlock(blockPos, rootPos) && currentRadius<radius && currentRadius<8;
             radius = currentRadius;
             world.setBlockState(blockPos, state.withProperty(BlockDynamicTwilightRoots.RADIUS, currentRadius + (grow?1:0) ));
         } else if (world.isAirBlock(blockPos) || state.getBlock() == Blocks.WATER  || state.getBlock() == Blocks.FLOWING_WATER){
-            if (blockPos.getY() > rootPos.getY() - rootTypeChangeHeight){
-                world.setBlockState(blockPos, rootsExposed2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius > 4 ? radius / 2 : 2));
-            } else {
-                if (!replaceWhenFinish || rand.nextInt(2) != 0) {
-                    world.setBlockState(blockPos, rootsExposed.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius>4?radius/2:2));
+            if (!cancelGrowChance(rand)) {
+                if (blockPos.getY() > rootPos.getY() - rootTypeChangeHeight) {
+                    world.setBlockState(blockPos, rootsExposed2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius > 4 ? radius / 2 : 2));
                 } else {
-                    return false;
+                    world.setBlockState(blockPos, rootsExposed.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius > 4 ? radius / 2 : 2));
                 }
+            } else {
+                return false;
             }
         } else if (isGroundBlock(state.getBlock())){
             if (blockPos.getY() > rootPos.getY() - rootTypeChangeHeight){
                 world.setBlockState(blockPos, rootsDirt2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius>4?radius/2:2).withProperty(BlockDynamicTwilightRoots.GRASSY, isGrassBlock(state.getBlock())));
             } else {
-                if (!replaceWhenFinish || rand.nextInt(2) != 0) {
+                if (!isMangrove || rand.nextInt(2) != 0) {
                     world.setBlockState(blockPos, rootsDirt.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, radius>4?radius/2:2).withProperty(BlockDynamicTwilightRoots.GRASSY, isGrassBlock(state.getBlock())));
                 } else {
                     return false;
@@ -150,13 +162,13 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         } else {
             return false;
         }
-        if (rand.nextFloat() <= 0.5)
+        if (rand.nextFloat() <= 0.2)
             radius--;
         if (radius > 0){
             EnumFacing chosenDir = findRandomRootDir(world,blockPos,rand, cameFrom, rootPos);
             if (chosenDir == null) return true;
             iterateRootGrow(world,blockPos.offset(chosenDir), rand, radius, chosenDir.getOpposite(), rootPos);
-            if (blockPos.up() == rootPos || rand.nextInt(rootBranchChance) == 0){
+            if (isOverRootBlock(blockPos, rootPos) || rand.nextInt(rootBranchChance) == 0){
                 chosenDir = findRandomFreeDir(world,blockPos, rand, cameFrom, rootPos);
                 if (chosenDir == null) return true;
                 iterateRootGrow(world,blockPos.offset(chosenDir), rand, radius, chosenDir.getOpposite(), rootPos);
@@ -165,18 +177,30 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
         return true;
     }
 
+    public BlockPos offsetSpawn(BlockPos root){
+        return offsetSpawn(root, isMangrove);
+    }
+    public BlockPos offsetSpawn(BlockPos root, boolean invert){
+        if (invert){
+            return root.up();
+        } else {
+            return root.down();
+        }
+    }
+
     @Override
     public boolean postGeneration(World world, BlockPos blockPos, Species species, Biome biome, int i, List<BlockPos> list, SafeChunkBounds safeChunkBounds, IBlockState iBlockState) {
         Random rand = new Random();
-        if (!world.getBlockState(blockPos.down()).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS)){
-            boolean placed = iterateRootGrow(world, blockPos.down(), rand, 2, EnumFacing.UP, blockPos);
+        if (!world.getBlockState(offsetSpawn(blockPos)).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS)){
+            boolean placed = iterateRootGrow(world, offsetSpawn(blockPos), rand, 2, EnumFacing.UP, blockPos);
             if (!placed) return false;
         }
-        while (world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS) < maxRadius){
-            int radius = world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS);
-            boolean grow = rand.nextInt((radius/2)*rootGrowChance) == 0;
-            iterateRootGrow(world, blockPos.down(), rand, world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS)+(grow?1:0), EnumFacing.UP, blockPos);
-            if (replaceWhenFinish && world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS) == maxRadius){
+        for (int a=worldgenAttempts; a>0; a--){
+            int radius = world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS);
+            int bound = (radius/2)*rootGrowChance;
+            boolean grow = !isMangrove && bound > 0 && rand.nextInt(bound) == 0;
+            iterateRootGrow(world, offsetSpawn(blockPos), rand, world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS)+(grow?1:0), EnumFacing.UP, blockPos);
+            if (isMangrove && world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS) == maxRadius){
                 world.setBlockState(blockPos, rootsExposed2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, 8));
             }
         }
@@ -185,16 +209,17 @@ public class FeatureGenUndergroundRoots implements IPostGenFeature, IPostGrowFea
     @Override
     public boolean postGrow(World world, BlockPos blockPos, BlockPos blockPos1, Species species, int i, boolean b) {
         Random rand = new Random();
-        if (!world.getBlockState(blockPos.down()).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS)){
-            boolean placed = iterateRootGrow(world, blockPos.down(), rand, 2, EnumFacing.UP, blockPos);
+        if (!world.getBlockState(offsetSpawn(blockPos)).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS)){
+            boolean placed = iterateRootGrow(world, offsetSpawn(blockPos), rand, 2, EnumFacing.UP, blockPos);
             if (!placed) return false;
-        } else if (world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS) < maxRadius){
-            int radius = world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS);
-            boolean grow = rand.nextInt((radius/2)*rootGrowChance) == 0;
-            iterateRootGrow(world, blockPos.down(), rand, world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS)+(grow?1:0), EnumFacing.UP, blockPos);
-        } else if (replaceWhenFinish && world.getBlockState(blockPos.down()).getValue(BlockDynamicTwilightRoots.RADIUS) == maxRadius){
-            world.setBlockState(blockPos, rootsDirt2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, 8));
-        }
+        } else if (world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS) < maxRadius){
+            int radius = world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS);
+            int bound = (radius/2)*rootGrowChance;
+            boolean grow = !isMangrove && bound > 0 && rand.nextInt(bound) == 0;
+            iterateRootGrow(world, offsetSpawn(blockPos), rand, world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS)+(grow?1:0), EnumFacing.UP, blockPos);
+        } //else if (isMangrove && world.getBlockState(offsetSpawn(blockPos)).getValue(BlockDynamicTwilightRoots.RADIUS) == maxRadius){
+          //  world.setBlockState(blockPos, rootsDirt2.getDefaultState().withProperty(BlockDynamicTwilightRoots.RADIUS, 8));
+          //}
         return true;
     }
 }

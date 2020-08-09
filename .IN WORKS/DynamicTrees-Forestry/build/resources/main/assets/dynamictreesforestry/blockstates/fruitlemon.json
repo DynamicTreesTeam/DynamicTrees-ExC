@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dynamictreesforestry:fruit/lemon_age0" },
+        "age=1": { "model": "dynamictreesforestry:fruit/lemon_age1" },
+        "age=2": { "model": "dynamictreesforestry:fruit/lemon_age2" },
+        "age=3": { "model": "dynamictreesforestry:fruit/lemon_age3" }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "dynamictreesforestry:blocks/lemon",
+        "apple": "dynamictreesforestry:blocks/lemon"
+    },
+    "elements": [
+        {   "from": [ 6.8, 12, 6.8 ],
+            "to": [ 9.2, 16, 9.2 ],
+            "faces": {
+                "down":  { "uv": [ 6, 8, 9, 11 ], "texture": "#apple" },
+                "up":    { "uv": [ 6, 0, 9, 3 ], "texture": "#apple" },
+                "north": { "uv": [ 6, 3, 9, 8 ], "texture": "#apple" },
+                "south": { "uv": [ 6, 3, 9, 8 ], "texture": "#apple" },
+                "west":  { "uv": [ 6, 3, 9, 8 ], "texture": "#apple" },
+                "east":  { "uv": [ 6, 3, 9, 8 ], "texture": "#apple" }
+            }
+        },
+        {   "from": [ 6.5, 12.8, 6.5 ],
+            "to": [ 9.5, 15.2, 9.5 ],
+            "faces": {
+                "down":    { "uv": [ 6, 4, 10, 8 ], "texture": "#apple" },
+                "up":    { "uv": [ 6, 3, 10, 7 ], "texture": "#apple" },
+                "north": { "uv": [ 6, 4, 10, 7 ], "texture": "#apple" },
+                "south": { "uv": [ 6, 4, 10, 7 ], "texture": "#apple" },
+                "west":  { "uv": [ 6, 4, 10, 7 ], "texture": "#apple" },
+                "east":  { "uv": [ 6, 4, 10, 7 ], "texture": "#apple" }
+            }
+        }
+    ]
+}

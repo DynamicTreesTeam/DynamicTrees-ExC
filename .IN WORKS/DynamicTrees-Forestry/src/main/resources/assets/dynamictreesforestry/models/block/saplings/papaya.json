@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "forestry:blocks/leaves/palm.fancy",
+        "log": "forestry:blocks/wood/bark.papaya",
+        "leaves": "forestry:blocks/leaves/palm.fancy"
+    }
+}

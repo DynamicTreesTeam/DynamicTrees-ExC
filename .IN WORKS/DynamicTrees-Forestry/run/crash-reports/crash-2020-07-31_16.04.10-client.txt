@@ -1,0 +1,126 @@
+---- Minecraft Crash Report ----
+// My bad.
+
+Time: 7/31/20 4:04 PM
+Description: Rendering screen
+
+java.lang.NullPointerException: Rendering screen
+	at net.minecraft.item.ItemStack.getTooltip(ItemStack.java:985)
+	at net.minecraft.client.gui.GuiScreen.getItemToolTip(GuiScreen.java:173)
+	at net.minecraft.client.gui.GuiScreen.renderToolTip(GuiScreen.java:167)
+	at net.minecraft.client.gui.inventory.GuiContainer.renderHoveredToolTip(GuiContainer.java:193)
+	at net.minecraft.client.gui.inventory.GuiCrafting.drawScreen(GuiCrafting.java:81)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:396)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1177)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1209)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:442)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at net.minecraft.item.ItemStack.getTooltip(ItemStack.java:985)
+	at net.minecraft.client.gui.GuiScreen.getItemToolTip(GuiScreen.java:173)
+	at net.minecraft.client.gui.GuiScreen.renderToolTip(GuiScreen.java:167)
+	at net.minecraft.client.gui.inventory.GuiContainer.renderHoveredToolTip(GuiContainer.java:193)
+	at net.minecraft.client.gui.inventory.GuiCrafting.drawScreen(GuiCrafting.java:81)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:396)
+
+-- Screen render details --
+Details:
+	Screen name: net.minecraft.client.gui.inventory.GuiCrafting
+	Mouse location: Scaled: (356, 95). Absolute: (1425, 636)
+	Screen size: Scaled: (480, 255). Absolute: (1920, 1017). Scale factor of 4
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player845'/171, l='MpServer', x=405.76, y=71.00, z=314.78]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (84,64,256), Chunk: (at 4,4,0 in 5,16; contains blocks 80,0,256 to 95,255,271), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 1756744 game time, 1110 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 161 total; [EntitySkeleton['Skeleton'/256, l='MpServer', x=391.50, y=32.00, z=310.50], EntityBat['Bat'/257, l='MpServer', x=394.40, y=69.10, z=306.58], EntityBat['Bat'/258, l='MpServer', x=394.45, y=69.10, z=304.92], EntityCreeper['Creeper'/259, l='MpServer', x=401.15, y=65.00, z=298.53], EntityCreeper['Creeper'/260, l='MpServer', x=400.39, y=65.00, z=299.92], EntityButterfly['Black Swallowtail'/261, l='MpServer', x=394.63, y=76.00, z=302.38], EntitySheep['Sheep'/262, l='MpServer', x=368.22, y=73.00, z=322.16], EntityZombie['Zombie'/263, l='MpServer', x=342.50, y=22.00, z=354.50], EntityBat['Bat'/264, l='MpServer', x=392.25, y=48.10, z=327.25], EntityZombie['Zombie'/265, l='MpServer', x=341.50, y=28.00, z=372.50], EntityEnderman['Enderman'/782, l='MpServer', x=355.50, y=43.00, z=332.50], EntityBat['Bat'/272, l='MpServer', x=378.46, y=37.32, z=373.73], EntityItem['item.item.dyePowder.black'/273, l='MpServer', x=399.16, y=48.00, z=372.61], EntitySheep['Sheep'/279, l='MpServer', x=386.55, y=73.00, z=393.12], EntityCreeper['Creeper'/284, l='MpServer', x=393.50, y=17.00, z=236.50], EntityCreeper['Creeper'/286, l='MpServer', x=393.50, y=17.00, z=235.50], EntitySheep['Sheep'/289, l='MpServer', x=424.02, y=74.00, z=246.10], EntityZombieVillager['Zombie Villager'/291, l='MpServer', x=428.50, y=15.00, z=261.50], EntityZombieVillager['Zombie Villager'/292, l='MpServer', x=424.50, y=15.00, z=260.50], EntityButterfly['Blue Duke'/294, l='MpServer', x=399.16, y=74.51, z=263.99], EntityButterfly['Black Swallowtail'/295, l='MpServer', x=404.53, y=75.60, z=283.86], EntityButterfly['Black Swallowtail'/296, l='MpServer', x=401.27, y=75.50, z=281.75], EntityBat['Bat'/297, l='MpServer', x=390.76, y=61.10, z=292.30], EntityBat['Bat'/298, l='MpServer', x=394.75, y=61.10, z=298.52], EntityBat['Bat'/299, l='MpServer', x=388.11, y=60.10, z=297.50], EntityBat['Bat'/300, l='MpServer', x=389.50, y=61.10, z=293.25], EntityBat['Bat'/301, l='MpServer', x=390.41, y=61.10, z=292.25], EntityBat['Bat'/302, l='MpServer', x=388.25, y=60.10, z=298.49], EntityCreeper['Creeper'/303, l='MpServer', x=393.17, y=62.00, z=288.53], EntitySkeleton['Skeleton'/304, l='MpServer', x=395.73, y=64.00, z=300.46], EntityCreeper['Creeper'/305, l='MpServer', x=397.53, y=62.00, z=291.85], EntityCreeper['Creeper'/306, l='MpServer', x=387.60, y=60.00, z=290.51], EntityCreeper['Creeper'/307, l='MpServer', x=395.37, y=60.00, z=294.88], EntitySkeleton['Skeleton'/308, l='MpServer', x=391.50, y=68.00, z=308.21], EntityCreeper['Creeper'/309, l='MpServer', x=395.46, y=61.00, z=297.31], EntitySkeleton['Skeleton'/310, l='MpServer', x=400.48, y=65.00, z=299.26], EntitySkeleton['Skeleton'/311, l='MpServer', x=401.49, y=65.00, z=297.79], EntityCow['Cow'/314, l='MpServer', x=408.20, y=73.00, z=240.52], EntityZombie['Zombie'/315, l='MpServer', x=412.25, y=35.00, z=302.44], EntityButterfly['Black Swallowtail'/316, l='MpServer', x=428.63, y=73.00, z=319.58], EntityButterfly['Black Swallowtail'/317, l='MpServer', x=430.48, y=87.46, z=335.88], EntityButterfly['Black Swallowtail'/318, l='MpServer', x=431.00, y=81.50, z=310.75], EntityButterfly['Black Swallowtail'/319, l='MpServer', x=430.88, y=83.50, z=311.00], EntityButterfly['Black Swallowtail'/320, l='MpServer', x=431.71, y=86.50, z=310.35], EntityButterfly['Black Swallowtail'/321, l='MpServer', x=410.73, y=88.27, z=325.63], EntityButterfly['Blue Duke'/322, l='MpServer', x=418.35, y=80.50, z=332.04], EntityButterfly['Black Swallowtail'/323, l='MpServer', x=428.63, y=73.00, z=320.02], EntityButterfly['Blue Duke'/324, l='MpServer', x=429.98, y=91.50, z=326.50], EntityButterfly['Blue Duke'/325, l='MpServer', x=437.87, y=87.60, z=327.40], EntityButterfly['Blue Duke'/326, l='MpServer', x=430.18, y=90.50, z=330.41], EntityButterfly['Black Swallowtail'/327, l='MpServer', x=428.24, y=93.59, z=328.70], EntityButterfly['Black Swallowtail'/328, l='MpServer', x=408.94, y=81.50, z=340.88], EntityButterfly['Blue Duke'/329, l='MpServer', x=413.16, y=86.91, z=343.82], EntitySheep['Sheep'/330, l='MpServer', x=389.23, y=74.00, z=352.55], EntityButterfly['Black Swallowtail'/331, l='MpServer', x=405.75, y=93.33, z=323.56], EntityButterfly['Black Swallowtail'/332, l='MpServer', x=401.65, y=79.56, z=289.94], EntityButterfly['Black Swallowtail'/333, l='MpServer', x=415.93, y=52.00, z=293.93], EntityButterfly['Black Swallowtail'/334, l='MpServer', x=431.29, y=74.57, z=293.14], EntityButterfly['Black Swallowtail'/335, l='MpServer', x=424.61, y=85.90, z=291.63], EntityPlayerSP['Player845'/171, l='MpServer', x=405.76, y=71.00, z=314.78], EntityCow['Cow'/594, l='MpServer', x=458.81, y=71.00, z=236.54], EntitySheep['Sheep'/595, l='MpServer', x=444.49, y=73.00, z=249.23], EntitySheep['Sheep'/596, l='MpServer', x=440.73, y=73.00, z=244.52], EntitySheep['Sheep'/599, l='MpServer', x=471.81, y=75.00, z=266.56], EntitySpider['Spider'/601, l='MpServer', x=452.99, y=22.00, z=271.70], EntityCow['Cow'/605, l='MpServer', x=471.29, y=75.00, z=264.85], EntityButterfly['Black Swallowtail'/606, l='MpServer', x=439.96, y=84.50, z=325.43], EntityButterfly['Black Swallowtail'/607, l='MpServer', x=411.32, y=72.03, z=321.89], EntityButterfly['Black Swallowtail'/608, l='MpServer', x=435.25, y=81.50, z=311.20], EntityButterfly['Black Swallowtail'/354, l='MpServer', x=442.63, y=75.00, z=355.50], EntityButterfly['Black Swallowtail'/355, l='MpServer', x=436.94, y=95.50, z=355.00], EntitySheep['Sheep'/611, l='MpServer', x=454.79, y=74.00, z=255.59], EntitySheep['Sheep'/612, l='MpServer', x=443.25, y=75.00, z=259.34], EntityZombie['Zombie'/614, l='MpServer', x=452.50, y=31.00, z=261.50], EntityButterfly['Black Swallowtail'/359, l='MpServer', x=440.15, y=94.50, z=353.12], EntityZombie['Zombie'/615, l='MpServer', x=451.50, y=31.00, z=262.50], EntityButterfly['Black Swallowtail'/360, l='MpServer', x=437.65, y=99.56, z=355.94], EntityBat['Bat'/616, l='MpServer', x=450.46, y=29.05, z=250.19], EntityButterfly['Black Swallowtail'/361, l='MpServer', x=438.75, y=102.04, z=356.00], EntityButterfly['Black Swallowtail'/362, l='MpServer', x=437.94, y=100.50, z=355.76], EntityButterfly['Black Swallowtail'/363, l='MpServer', x=438.70, y=101.69, z=355.95], EntityButterfly['Blue Duke'/364, l='MpServer', x=445.37, y=99.20, z=357.32], EntityButterfly['Black Swallowtail'/365, l='MpServer', x=438.01, y=101.50, z=358.93], EntitySheep['Sheep'/621, l='MpServer', x=474.73, y=72.00, z=326.49], EntityButterfly['Black Swallowtail'/366, l='MpServer', x=438.03, y=110.46, z=360.05], EntityButterfly['Black Swallowtail'/367, l='MpServer', x=436.32, y=103.50, z=358.22], EntityButterfly['Black Swallowtail'/368, l='MpServer', x=439.11, y=103.84, z=359.48], EntityButterfly['Black Swallowtail'/369, l='MpServer', x=439.98, y=100.60, z=360.45], EntityButterfly['Black Swallowtail'/370, l='MpServer', x=442.28, y=103.15, z=354.89], EntitySkeleton['Skeleton'/626, l='MpServer', x=451.50, y=45.00, z=352.50], EntityButterfly['Blue Duke'/371, l='MpServer', x=441.65, y=102.50, z=358.13], EntityButterfly['Black Swallowtail'/372, l='MpServer', x=439.10, y=106.34, z=357.40], EntityButterfly['Black Swallowtail'/373, l='MpServer', x=439.06, y=102.56, z=356.68], EntityButterfly['Blue Duke'/374, l='MpServer', x=442.65, y=97.50, z=353.22], EntityButterfly['Blue Duke'/375, l='MpServer', x=436.63, y=101.50, z=360.25], EntityButterfly['Black Swallowtail'/376, l='MpServer', x=436.69, y=108.72, z=355.34], EntityButterfly['Black Swallowtail'/377, l='MpServer', x=439.50, y=106.56, z=362.16], EntityButterfly['Black Swallowtail'/378, l='MpServer', x=436.17, y=104.50, z=357.82], EntityButterfly['Black Swallowtail'/380, l='MpServer', x=427.18, y=75.60, z=331.18], EntityButterfly['Black Swallowtail'/381, l='MpServer', x=442.90, y=81.85, z=318.96], EntityButterfly['Blue Duke'/382, l='MpServer', x=440.18, y=86.50, z=331.10], EntityButterfly['Blue Duke'/383, l='MpServer', x=439.40, y=85.56, z=332.25], EntityButterfly['Black Swallowtail'/384, l='MpServer', x=438.52, y=92.10, z=330.05], EntityButterfly['Black Swallowtail'/385, l='MpServer', x=438.03, y=84.50, z=334.62], EntityButterfly['Black Swallowtail'/386, l='MpServer', x=435.66, y=85.50, z=328.07], EntityButterfly['Blue Duke'/387, l='MpServer', x=436.54, y=86.50, z=327.59], EntityButterfly['Black Swallowtail'/388, l='MpServer', x=435.75, y=83.50, z=333.74], EntityButterfly['Blue Duke'/389, l='MpServer', x=437.41, y=88.50, z=327.71], EntityButterfly['Black Swallowtail'/390, l='MpServer', x=424.64, y=81.56, z=345.86], EntityButterfly['Black Swallowtail'/391, l='MpServer', x=418.64, y=75.51, z=339.43], EntityButterfly['Black Swallowtail'/392, l='MpServer', x=420.63, y=83.56, z=345.88], EntityButterfly['Black Swallowtail'/393, l='MpServer', x=420.77, y=83.56, z=345.69], EntityButterfly['Black Swallowtail'/394, l='MpServer', x=421.06, y=83.60, z=345.75], EntityButterfly['Black Swallowtail'/395, l='MpServer', x=427.52, y=92.50, z=330.25], EntityButterfly['Black Swallowtail'/396, l='MpServer', x=426.75, y=80.33, z=337.47], EntityButterfly['Blue Duke'/397, l='MpServer', x=410.25, y=75.00, z=358.88], EntityButterfly['Black Swallowtail'/398, l='MpServer', x=407.64, y=79.60, z=352.91], EntityButterfly['Black Swallowtail'/399, l='MpServer', x=427.49, y=76.00, z=360.63], EntityButterfly['Black Swallowtail'/400, l='MpServer', x=408.15, y=80.60, z=356.32], EntityBat['Bat'/401, l='MpServer', x=408.13, y=24.75, z=395.39], EntityButterfly['Black Swallowtail'/409, l='MpServer', x=435.62, y=77.00, z=356.24], EntityButterfly['Black Swallowtail'/410, l='MpServer', x=391.96, y=84.50, z=356.76], EntitySheep['Sheep'/418, l='MpServer', x=481.20, y=81.00, z=379.46], EntitySheep['Sheep'/420, l='MpServer', x=476.54, y=82.00, z=384.76], EntitySheep['Sheep'/421, l='MpServer', x=479.36, y=85.00, z=388.79], EntityZombie['Zombie'/172, l='MpServer', x=401.50, y=13.00, z=309.50], EntityBat['Bat'/449, l='MpServer', x=337.06, y=45.65, z=319.17], EntitySkeleton['Skeleton'/203, l='MpServer', x=369.50, y=16.00, z=236.50], EntitySheep['Sheep'/206, l='MpServer', x=354.79, y=72.00, z=247.17], EntitySheep['Sheep'/207, l='MpServer', x=331.73, y=73.00, z=275.50], EntitySheep['Sheep'/208, l='MpServer', x=343.59, y=73.00, z=248.76], EntityPig['Pig'/209, l='MpServer', x=350.44, y=72.00, z=263.67], EntityMinecartChest['Minecart with Chest'/211, l='MpServer', x=362.50, y=17.06, z=235.50], EntitySheep['Sheep'/217, l='MpServer', x=331.31, y=72.00, z=243.77], EntitySheep['Sheep'/220, l='MpServer', x=332.49, y=73.00, z=266.73], EntityCow['Cow'/221, l='MpServer', x=332.22, y=72.00, z=268.56], EntitySheep['Sheep'/228, l='MpServer', x=350.49, y=78.00, z=236.73], EntitySkeleton['Skeleton'/230, l='MpServer', x=372.43, y=53.00, z=303.70], EntityWitch['Witch'/231, l='MpServer', x=379.50, y=50.00, z=302.50], EntitySheep['Sheep'/232, l='MpServer', x=368.18, y=71.00, z=294.58], EntityButterfly['Blue Duke'/233, l='MpServer', x=374.25, y=84.50, z=287.67], EntitySkeleton['Skeleton'/745, l='MpServer', x=362.50, y=16.00, z=262.50], EntitySheep['Sheep'/234, l='MpServer', x=355.44, y=74.00, z=317.72], EntitySheep['Sheep'/235, l='MpServer', x=348.50, y=73.00, z=328.73], EntitySkeleton['Skeleton'/747, l='MpServer', x=368.50, y=16.00, z=263.50], EntityBat['Bat'/238, l='MpServer', x=381.40, y=23.03, z=311.66], EntitySkeleton['Skeleton'/239, l='MpServer', x=377.51, y=57.00, z=311.33], EntitySheep['Sheep'/240, l='MpServer', x=368.79, y=72.00, z=308.50], EntityCow['Cow'/241, l='MpServer', x=369.78, y=72.00, z=304.49], EntitySheep['Sheep'/242, l='MpServer', x=360.24, y=70.00, z=332.55], EntityZombie['Zombie'/243, l='MpServer', x=332.63, y=49.00, z=352.24], EntitySkeleton['Skeleton'/244, l='MpServer', x=329.50, y=48.00, z=352.50], EntityMinecartChest['Minecart with Chest'/245, l='MpServer', x=359.50, y=16.00, z=281.79], EntityCreeper['Creeper'/246, l='MpServer', x=348.50, y=12.00, z=296.50], EntityPig['Pig'/247, l='MpServer', x=347.30, y=73.00, z=294.53], EntityZombie['Zombie'/248, l='MpServer', x=329.50, y=53.00, z=317.50], EntityButterfly['Black Swallowtail'/249, l='MpServer', x=372.52, y=76.56, z=273.28], EntitySheep['Sheep'/250, l='MpServer', x=348.76, y=73.00, z=304.51], EntityCreeper['Creeper'/251, l='MpServer', x=367.81, y=21.00, z=358.52], EntitySkeleton['Skeleton'/252, l='MpServer', x=377.50, y=20.00, z=366.50], EntityCreeper['Creeper'/255, l='MpServer', x=377.50, y=21.00, z=369.50]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:463)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 792488752 bytes (755 MB) / 1765277696 bytes (1683 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                   | Version      | Source                                | Signature |
+	|:------ |:-------------------- |:------------ |:------------------------------------- |:--------- |
+	| LCHIJA | minecraft            | 1.12.2       | minecraft.jar                         | None      |
+	| LCHIJA | mcp                  | 9.42         | minecraft.jar                         | None      |
+	| LCHIJA | FML                  | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | forge                | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | dynamictrees         | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar         | None      |
+	| LCHIJA | forestry             | 5.8.2.387    | forestry_1.12.2-5.8.2.387.jar         | None      |
+	| LCHIJA | dynamictreesforestry | 1.12.2-1.0.0 | dynamictreesForestry-1.12.2-1.0.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 432.00' Renderer: 'GeForce GTX 1070 Ti/PCIe/SSE2'
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz

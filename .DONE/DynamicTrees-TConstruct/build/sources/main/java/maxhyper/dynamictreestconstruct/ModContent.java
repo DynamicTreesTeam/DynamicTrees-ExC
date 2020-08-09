@@ -2,7 +2,6 @@ package maxhyper.dynamictreestconstruct;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
@@ -18,25 +17,19 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
 import maxhyper.dynamictreestconstruct.blocks.*;
 import maxhyper.dynamictreestconstruct.trees.*;
-import maxhyper.dynamictreestconstruct.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -45,9 +38,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
-import slimeknights.tconstruct.shared.TinkerCommons;
 import slimeknights.tconstruct.world.block.BlockSlimeGrass;
-import slimeknights.tconstruct.world.block.BlockSlimeLeaves;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesTConstruct.MODID)
 @ObjectHolder(DynamicTreesTConstruct.MODID)
@@ -60,9 +51,11 @@ public class ModContent {
 	public static ILeavesProperties blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
+	public static boolean genSlimeIslands;
+
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
-		event.register(new BiomeDataBasePopulator());
+		//event.register(new BiomeDataBasePopulator());
 	}
 
 	@SubscribeEvent
@@ -79,11 +72,8 @@ public class ModContent {
 		registry.register(blockMagmaSlime);
 
 		slimeBlueBranch = new BlockDynamicBranchSlime("slimebluebranch");
-		registry.register(slimeBlueBranch);
 		slimePurpleBranch = new BlockDynamicBranchSlime("slimepurplebranch");
-		registry.register(slimePurpleBranch);
 		slimeMagmaBranch = new BlockDynamicBranchSlime("slimemagmabranch");
-		registry.register(slimeMagmaBranch);
 
 		rootySlimyDirt = new BlockRootySlimyDirt(false);
 		registry.register(rootySlimyDirt);
@@ -125,6 +115,7 @@ public class ModContent {
 				new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2),
 				TreeRegistry.findCellKit("conifer"))
 		{
+			@Override public int getLightRequirement() { return 0; }
 			@Override public int getSmotherLeavesMax() {
 				return 8;
 			}

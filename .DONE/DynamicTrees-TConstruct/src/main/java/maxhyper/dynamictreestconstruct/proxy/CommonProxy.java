@@ -6,19 +6,27 @@ import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
 import maxhyper.dynamictreestconstruct.ModContent;
 import maxhyper.dynamictreestconstruct.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreestconstruct.growth.SlimeGrowthLogic;
+import maxhyper.dynamictreestconstruct.worldgen.DynamicMagmaSlimeIslandGenerator;
+import maxhyper.dynamictreestconstruct.worldgen.DynamicSlimeIslandGenerator;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
 public class CommonProxy {
 
 	public void preInit() {
 		TreeRegistry.registerGrowthLogicKit(new ResourceLocation(ModConstants.MODID, "slime"), new SlimeGrowthLogic());
-		//slimeknights.tconstruct.common.config.Config.genSlimeIslands = false;
 	}
 
 	public void init() {
+
+		ModContent.genSlimeIslands = slimeknights.tconstruct.common.config.Config.genSlimeIslands;
+		slimeknights.tconstruct.common.config.Config.genSlimeIslands = false;
+		GameRegistry.registerWorldGenerator(new DynamicSlimeIslandGenerator(), 21);
+		GameRegistry.registerWorldGenerator(new DynamicMagmaSlimeIslandGenerator(), 21);
+
 		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeBlue"))
 				.addDropCreator(new DropCreatorFruit(TinkerCommons.matSlimeBallBlue, new ItemStack(Items.SLIME_BALL)).setRarity(0.005f));
 
