@@ -1,0 +1,9 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-08-10 17:36:09 -0300",
+      "swampland": "2020-08-10 17:36:21 -0300"
+    },
+    "done": false
+  }
+}

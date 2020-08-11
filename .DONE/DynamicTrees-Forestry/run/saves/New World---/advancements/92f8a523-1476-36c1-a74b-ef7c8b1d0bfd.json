@@ -1,0 +1,84 @@
+{
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/tnt": {
+    "criteria": {
+      "has_gunpowder": "2020-08-10 14:49:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2020-08-10 14:49:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:end/elytra": {
+    "criteria": {
+      "elytra": "2020-08-10 14:51:30 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "creeper": "2020-08-10 14:49:56 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "creeper": "2020-08-10 14:49:56 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2020-08-10 14:49:42 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2020-08-10 14:47:54 -0300",
+      "birch_forest": "2020-08-10 14:54:57 -0300",
+      "beaches": "2020-08-10 14:47:43 -0300",
+      "extreme_hills_with_trees": "2020-08-10 14:50:44 -0300",
+      "forest_hills": "2020-08-10 14:48:01 -0300",
+      "plains": "2020-08-10 14:48:07 -0300",
+      "taiga": "2020-08-10 14:51:40 -0300",
+      "birch_forest_hills": "2020-08-10 14:55:00 -0300",
+      "extreme_hills": "2020-08-10 14:48:49 -0300",
+      "roofed_forest": "2020-08-10 14:54:02 -0300",
+      "river": "2020-08-10 14:53:45 -0300"
+    },
+    "done": false
+  }
+}

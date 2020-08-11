@@ -1,0 +1,92 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 8/10/20 8:56 PM
+Description: Exception ticking world
+
+java.lang.NullPointerException: Exception ticking world
+	at com.ferreusveritas.dynamictrees.worldgen.TreeGenerator.makeTree(TreeGenerator.java:157)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.lambda$generate$0(WorldGeneratorTrees.java:111)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.generate(WorldGeneratorTrees.java:111)
+	at net.minecraftforge.fml.common.registry.GameRegistry.generateWorld(GameRegistry.java:167)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1095)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1060)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:169)
+	at net.minecraft.server.management.PlayerChunkMapEntry.providePlayerChunk(PlayerChunkMapEntry.java:130)
+	at net.minecraft.server.management.PlayerChunkMap.tick(PlayerChunkMap.java:183)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:236)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:831)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at com.ferreusveritas.dynamictrees.worldgen.TreeGenerator.makeTree(TreeGenerator.java:157)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.lambda$generate$0(WorldGeneratorTrees.java:111)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees.generate(WorldGeneratorTrees.java:111)
+	at net.minecraftforge.fml.common.registry.GameRegistry.generateWorld(GameRegistry.java:167)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1095)
+	at net.minecraft.world.chunk.Chunk.populate(Chunk.java:1060)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:169)
+	at net.minecraft.server.management.PlayerChunkMapEntry.providePlayerChunk(PlayerChunkMapEntry.java:130)
+	at net.minecraft.server.management.PlayerChunkMap.tick(PlayerChunkMap.java:183)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:236)
+
+-- Affected level --
+Details:
+	Level name: Copy of waweaweawe
+	All players: 1 total; [EntityPlayerMP['Player297'/1604, l='Copy of waweaweawe', x=-2438.80, y=78.74, z=1042.68]]
+	Chunk stats: ServerChunkCache: 661 Drop: 0
+	Level seed: -7095361713413206792
+	Level generator: ID 00 - default, ver 1. Features enabled: true
+	Level generator options: 
+	Level spawn location: World: (120,64,252), Chunk: (at 8,4,12 in 7,15; contains blocks 112,0,240 to 127,255,255), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 154 game time, 154 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 31610 (now: false), thunder time: 82976 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:831)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:743)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:192)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:592)
+	at java.lang.Thread.run(Thread.java:748)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 1167469640 bytes (1113 MB) / 1999634432 bytes (1907 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 7 mods loaded, 7 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                   | Version      | Source                                | Signature |
+	|:------ |:-------------------- |:------------ |:------------------------------------- |:--------- |
+	| LCHIJA | minecraft            | 1.12.2       | minecraft.jar                         | None      |
+	| LCHIJA | mcp                  | 9.42         | minecraft.jar                         | None      |
+	| LCHIJA | FML                  | 8.0.99.99    | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | forge                | 14.23.5.2838 | forgeSrc-1.12.2-14.23.5.2838.jar      | None      |
+	| LCHIJA | dynamictrees         | 1.12.2-0.9.6 | DynamicTrees-1.12.2-0.9.6.jar         | None      |
+	| LCHIJA | forestry             | 5.8.2.387    | forestry_1.12.2-5.8.2.387.jar         | None      |
+	| LCHIJA | dynamictreesforestry | 1.12.2-1.0.0 | dynamictreesForestry-1.12.2-1.0.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player297'/1604, l='Copy of waweaweawe', x=-2438.80, y=78.74, z=1042.68]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
