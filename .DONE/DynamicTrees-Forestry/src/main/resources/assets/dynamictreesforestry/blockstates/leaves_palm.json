@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "variants": {
     "hydro": {
-      "1": {"model": "dynamictreesforestry:palmfrond#dynamicpalmfrondsbig"},
-      "2": {"model": "dynamictreesforestry:palmfrond#dynamicpalmfrondsbig"},
+      "1": {"model": "dynamictreesforestry:palmfrond#dynamicpalmfrondsdate"},
+      "2": {"model": "dynamictreesforestry:palmfrond#dynamicpalmfrondsdate"},
       "3": {"model": "dynamictreesforestry:palmcoretop"},
       "4": {"model": "dynamictreesforestry:palmcorebottom"}
     }

@@ -16,7 +16,7 @@ import java.io.Reader;
 public class ModelLoaderBlockPalmFrondsBig extends ModelLoaderBlockPalmFronds {
 
     public ModelLoaderBlockPalmFrondsBig() {
-        super("dynamicpalmfrondsbig");
+        super("dynamicpalmfrondsdate");
     }
     @Override
     protected IModel loadModel(ResourceLocation resourceLocation, ModelBlock baseModelBlock) {

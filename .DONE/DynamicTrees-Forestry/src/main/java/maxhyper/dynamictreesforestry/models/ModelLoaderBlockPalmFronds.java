@@ -17,7 +17,7 @@ import java.io.Reader;
 public class ModelLoaderBlockPalmFronds extends ModelLoaderGeneric {
 
     public ModelLoaderBlockPalmFronds() {
-        this("dynamicpalmfronds");
+        this("dynamicpalmfrondspapaya");
     }
     public ModelLoaderBlockPalmFronds(String code) {
         super(code, new ResourceLocation("dynamictreesforestry", "block/smartmodel/dynamicpalmfronds"));

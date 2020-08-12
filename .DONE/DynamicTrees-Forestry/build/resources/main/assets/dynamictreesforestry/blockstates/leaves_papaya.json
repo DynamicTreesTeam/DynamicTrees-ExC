@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "variants": {
     "hydro": {
-      "1": {"model": "dynamictreesforestry:papayafrond#dynamicpalmfronds"},
-      "2": {"model": "dynamictreesforestry:papayafrond#dynamicpalmfronds"},
+      "1": {"model": "dynamictreesforestry:papayafrond#dynamicpalmfrondspapaya"},
+      "2": {"model": "dynamictreesforestry:papayafrond#dynamicpalmfrondspapaya"},
       "3": {"model": "dynamictreesforestry:papayacoretop"},
       "4": {"model": "dynamictreesforestry:papayacorebottom"}
     }
