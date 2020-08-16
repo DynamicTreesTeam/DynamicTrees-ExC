@@ -4,11 +4,16 @@ import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.progwml6.natura.common.config.Config;
+import com.progwml6.natura.shared.NaturaCommons;
+import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.ModContent;
+import maxhyper.dynamictreesnatura.dropcreators.DropCreatorOtherSeed;
 import maxhyper.dynamictreesnatura.growth.BloodwoodGrowthLogic;
 import maxhyper.dynamictreesnatura.growth.CustomCellKits;
 import maxhyper.dynamictreesnatura.growth.HopseedGrowthLogic;
 import maxhyper.dynamictreesnatura.worldgen.WorldGen;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -47,12 +52,14 @@ public class CommonProxy {
 			ModContent.generateGhostwood = Config.generateGhostwood;
 			Config.generateGhostwood = false;
 			ModContent.generateSaguaro = Config.generateSaguaro;
-			//Config.generateSaguaro = false;
-
+			Config.generateSaguaro = false;
 		}
+
 	}
 	
 	public void init() {
+		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"))
+				.addDropCreator(new DropCreatorOtherSeed(NaturaCommons.potashApple));
 	}
 	
 	public void postInit(){

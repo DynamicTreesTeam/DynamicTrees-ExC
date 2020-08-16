@@ -2,6 +2,7 @@ package maxhyper.dynamictreesthaumicbases.event;
 
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
+import com.rumaruka.tb.utils.TBConfig;
 import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
 import com.rumaruka.tb.init.TBBlocks;
 import net.minecraft.init.Blocks;
@@ -12,6 +13,7 @@ import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 
 public class RecipeHandler  {
@@ -21,6 +23,8 @@ public class RecipeHandler  {
         ItemStack goldenOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "goldenOak")).getSeedStack(1);
         ItemStack enderOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "enderOak")).getSeedStack(1);
         ItemStack hellishOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "hellishOak")).getSeedStack(1);
+        ItemStack cactusSeed = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "cactus")).getSeedStack(1);
+        ItemStack rainbowCactusSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "rainbowcactus")).getSeedStack(1);
 
         InfusionRecipe goldenSeed = new InfusionRecipe("TB.TREE", goldenOakSeed,4,new AspectList().add(Aspect.PLANT,48).add(Aspect.DESIRE,64), oakSeed, new ItemStack(Items.GOLDEN_APPLE),new ItemStack(Items.GOLDEN_APPLE),new ItemStack(Items.APPLE),new ItemStack(Items.APPLE));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("TB.goldenSapling"),goldenSeed);
@@ -36,5 +40,11 @@ public class RecipeHandler  {
         InfusionRecipe enderSapling = new InfusionRecipe("TB.TREE1", new ItemStack(TBBlocks.endersapling),4,new AspectList().add(Aspect.PLANT,48).add(Aspect.AURA,64), new ItemStack(Blocks.SAPLING,1,0),new ItemStack(Items.ENDER_PEARL),new ItemStack(Items.ENDER_PEARL),new ItemStack(Items.ENDER_EYE),new ItemStack(Items.ENDER_EYE));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("TB.enderSaplingOld"),enderSapling);
 
+        if(TBConfig.allowTobacco){
+            CrucibleRecipe catusSeedToRCSeed= new CrucibleRecipe("TB.CACTUS",rainbowCactusSeed,cactusSeed,new AspectList().add(Aspect.PLANT,35).add(Aspect.MAGIC,15));
+            ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("TB.catusToRC"),catusSeedToRCSeed);
+            CrucibleRecipe catusToRC= new CrucibleRecipe("TB.CACTUS",new ItemStack(TBBlocks.rainbowcactus),new ItemStack(Blocks.CACTUS),new AspectList().add(Aspect.PLANT,35).add(Aspect.MAGIC,15));
+            ThaumcraftApi.addCrucibleRecipe(new ResourceLocation("TB.catusToRCOld"),catusToRC);
+        }
     }
 }

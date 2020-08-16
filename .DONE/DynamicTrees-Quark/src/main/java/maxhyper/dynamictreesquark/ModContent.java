@@ -82,6 +82,7 @@ public class ModContent {
 				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
 				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);
 
+
 				TreeFamily blossomingTree = new QTreeBlossoming();
 				TreeFamily swampOakTree = new QTreeSwampOak();
 				Collections.addAll(trees, blossomingTree, swampOakTree);

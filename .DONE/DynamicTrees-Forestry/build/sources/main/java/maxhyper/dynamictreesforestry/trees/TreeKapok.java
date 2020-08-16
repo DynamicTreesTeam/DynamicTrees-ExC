@@ -16,6 +16,7 @@ import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
 import maxhyper.dynamictreesforestry.blocks.BlockBranchThickForestry;
+import maxhyper.dynamictreesforestry.items.ItemDynamicSeedKapok;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -48,7 +49,7 @@ public class TreeKapok extends TreeFamily {
 
             setBasicGrowingParameters(0.3f, 27.0f, 30, 16, 0.9f);
 
-            generateSeed();
+            setSeedStack(new ItemStack(new ItemDynamicSeedKapok()));
 
             setupStandardSeedDropping();
 

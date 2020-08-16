@@ -8,6 +8,7 @@ import forestry.api.arboriculture.EnumForestryWoodType;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
+import maxhyper.dynamictreesforestry.items.ItemDynamicSeedMaple;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -37,7 +38,8 @@ public class TreeMaple extends TreeFamily {
             //Dark Oak Trees are tall, slowly growing, thick trees
             setBasicGrowingParameters(0.4f, 12.0f, 2, 4, 0.7f);
 
-            generateSeed();
+            setSeedStack(new ItemStack(new ItemDynamicSeedMaple()));
+            //generateSeed();
             setupStandardSeedDropping();
 
         }

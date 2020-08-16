@@ -1,0 +1,16 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "desert_hills": "2020-08-14 17:17:26 -0300",
+      "savanna": "2020-08-14 17:17:57 -0300",
+      "desert": "2020-08-14 17:16:32 -0300"
+    },
+    "done": false
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2020-08-14 17:16:32 -0300"
+    },
+    "done": true
+  }
+}

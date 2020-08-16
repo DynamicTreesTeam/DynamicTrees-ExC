@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockFruit;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion;
+import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.google.common.collect.BiMap;
@@ -20,6 +21,7 @@ import maxhyper.dynamictreesforestry.blocks.BlockFruitDate;
 import maxhyper.dynamictreesforestry.crafting.RecipeFruitToSapling;
 import maxhyper.dynamictreesforestry.crafting.RecipeSaplingToSeed;
 import maxhyper.dynamictreesforestry.crafting.RecipeSeedToSapling;
+import maxhyper.dynamictreesforestry.items.ItemDynamicSeedMaple;
 import maxhyper.dynamictreesforestry.trees.*;
 import maxhyper.dynamictreesforestry.trees.vanilla.*;
 import maxhyper.dynamictreesforestry.worldgen.BiomeDataBasePopulator;
@@ -43,6 +45,8 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
@@ -366,7 +370,48 @@ public class ModContent {
 	}
 
 	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
+		int id = 0;
+		EntityRegistry.registerModEntity(new ResourceLocation(DynamicTreesForestry.MODID, "mapleseed"), ItemDynamicSeedMaple.EntityItemMapleSeed.class, "maple_seed", id++, DynamicTreesForestry.MODID, 32, 1, true);
+	}
+
+
+	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+
+		setUpSeedRecipes(ModConstants.ACACIA);
+		setUpSeedRecipes(ModConstants.BALSA);
+		setUpSeedRecipes(ModConstants.BAOBAB);
+		setUpSeedRecipes(ModConstants.BIRCH);
+		setUpSeedRecipes(ModConstants.BULLPINE);
+		setUpSeedRecipes(ModConstants.CHERRY);
+		setUpSeedRecipes(ModConstants.CHESTNUT);
+		setUpSeedRecipes(ModConstants.COASTSEQUOIA);
+		setUpSeedRecipes(ModConstants.COCOBOLO);
+		setUpSeedRecipes(ModConstants.DARKOAK);
+		setUpSeedRecipes(ModConstants.DATEPALM);
+		setUpSeedRecipes(ModConstants.DESERTACACIA);
+		setUpSeedRecipes(ModConstants.EBONY);
+		setUpSeedRecipes(ModConstants.GREENHEART);
+		setUpSeedRecipes(ModConstants.IPE);
+		setUpSeedRecipes(ModConstants.JUNGLE);
+		setUpSeedRecipes(ModConstants.KAPOK);
+		setUpSeedRecipes(ModConstants.LARCH);
+		setUpSeedRecipes(ModConstants.MAHOE);
+		setUpSeedRecipes(ModConstants.MAHOGANY);
+		setUpSeedRecipes(ModConstants.MAPLE);
+		setUpSeedRecipes(ModConstants.OAK);
+		setUpSeedRecipes(ModConstants.PADAUK);
+		setUpSeedRecipes(ModConstants.PAPAYA);
+		setUpSeedRecipes(ModConstants.PLUM);
+		setUpSeedRecipes(ModConstants.POPLAR);
+		setUpSeedRecipes(ModConstants.SILVERLIME);
+		setUpSeedRecipes(ModConstants.SPRUCE);
+		setUpSeedRecipes(ModConstants.TEAK);
+		setUpSeedRecipes(ModConstants.WALNUT);
+		setUpSeedRecipes(ModConstants.WENGE);
+		setUpSeedRecipes(ModConstants.WILLOW);
+		setUpSeedRecipes(ModConstants.ZEBRAWOOD);
 
 		IRecipe seedRecipe = new RecipeSaplingToSeed();
 		seedRecipe.setRegistryName(new ResourceLocation(DynamicTreesForestry.MODID, "saplingToSeed"));

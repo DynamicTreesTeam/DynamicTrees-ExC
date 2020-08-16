@@ -10,6 +10,7 @@ import forestry.api.arboriculture.EnumForestryWoodType;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
+import maxhyper.dynamictreesforestry.items.ItemDynamicSeedBalsa;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -40,7 +41,7 @@ public class TreeBalsa extends TreeFamily {
 
             setBasicGrowingParameters(0.2f, 18.0f, 30, 9, 1.3f);
 
-            generateSeed();
+            setSeedStack(new ItemStack(new ItemDynamicSeedBalsa()));
 
             setupStandardSeedDropping();
         }

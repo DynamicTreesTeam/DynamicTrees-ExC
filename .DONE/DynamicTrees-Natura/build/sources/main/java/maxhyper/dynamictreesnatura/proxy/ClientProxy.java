@@ -9,6 +9,12 @@ import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.event.EventListenerNatura;
+import maxhyper.dynamictreesnatura.items.ItemDynamicSeedBloodwood;
+import maxhyper.dynamictreesnatura.items.ItemDynamicSeedMaple;
+import maxhyper.dynamictreesnatura.model.ModelLoaderBlockBranchBloodwood;
+import maxhyper.dynamictreesnatura.model.ModelLoaderBlockBranchSaguaro;
+import maxhyper.dynamictreesnatura.renderer.RenderBloodwoodSeed;
+import maxhyper.dynamictreesnatura.renderer.RenderMapleSeed;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -17,13 +23,20 @@ import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void preInit() {
 		super.preInit();
+		registerEntityRenderers();
+
+		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockBranchBloodwood());
+		//ModelLoaderRegistry.registerLoader(new ModelLoaderBlockBranchSaguaro());
+
 		MinecraftForge.EVENT_BUS.register(new EventListenerNatura());
 	}
 	
@@ -64,5 +77,10 @@ public class ClientProxy extends CommonProxy {
 					}
 				},
 				ModContent.rootyNetherDirt, ModContent.rootyUpsidedownDirt);
+	}
+
+	public void registerEntityRenderers() {
+		RenderingRegistry.registerEntityRenderingHandler(ItemDynamicSeedBloodwood.EntityItemBloodwoodSeed.class, new RenderBloodwoodSeed.Factory());
+		RenderingRegistry.registerEntityRenderingHandler(ItemDynamicSeedMaple.EntityItemMapleSeed.class, new RenderMapleSeed.Factory());
 	}
 }

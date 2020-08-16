@@ -1,0 +1,162 @@
+---- Minecraft Crash Report ----
+// I bet Cylons wouldn't have this problem.
+
+Time: 8/14/20 12:09 PM
+Description: Rendering entity in world
+
+java.lang.NullPointerException: Rendering entity in world
+	at com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree.generateTreeQuads(ModelEntityFallingTree.java:75)
+	at com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree.<init>(ModelEntityFallingTree.java:41)
+	at com.ferreusveritas.dynamictrees.models.ModelTrackerCacheEntityFallingTree.lambda$getModel$0(ModelTrackerCacheEntityFallingTree.java:19)
+	at java.util.HashMap.computeIfAbsent(HashMap.java:1127)
+	at com.ferreusveritas.dynamictrees.models.ModelTrackerCacheEntityFallingTree.getModel(ModelTrackerCacheEntityFallingTree.java:19)
+	at com.ferreusveritas.dynamictrees.render.RenderFallingTree.doRender(RenderFallingTree.java:52)
+	at com.ferreusveritas.dynamictrees.render.RenderFallingTree.doRender(RenderFallingTree.java:30)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntity(RenderManager.java:390)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:374)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:655)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1400)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1312)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1115)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1209)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:442)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree.generateTreeQuads(ModelEntityFallingTree.java:75)
+	at com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree.<init>(ModelEntityFallingTree.java:41)
+	at com.ferreusveritas.dynamictrees.models.ModelTrackerCacheEntityFallingTree.lambda$getModel$0(ModelTrackerCacheEntityFallingTree.java:19)
+	at java.util.HashMap.computeIfAbsent(HashMap.java:1127)
+	at com.ferreusveritas.dynamictrees.models.ModelTrackerCacheEntityFallingTree.getModel(ModelTrackerCacheEntityFallingTree.java:19)
+	at com.ferreusveritas.dynamictrees.render.RenderFallingTree.doRender(RenderFallingTree.java:52)
+	at com.ferreusveritas.dynamictrees.render.RenderFallingTree.doRender(RenderFallingTree.java:30)
+
+-- Entity being rendered --
+Details:
+	Entity Type: dynamictrees:falling_tree (com.ferreusveritas.dynamictrees.entities.EntityFallingTree)
+	Entity ID: 472
+	Entity Name: entity.falling_tree.name
+	Entity's Exact location: -567.50, 104.00, -68.50
+	Entity's Block location: World: (-568,104,-69), Chunk: (at 8,6,11 in -36,-5; contains blocks -576,0,-80 to -561,255,-65), Region: (-2,-1; contains chunks -64,-32 to -33,-1, blocks -1024,0,-512 to -513,255,-1)
+	Entity's Momentum: 0.00, 0.00, 0.20
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+
+-- Renderer details --
+Details:
+	Assigned renderer: com.ferreusveritas.dynamictrees.render.RenderFallingTree@3ecaace2
+	Location: 0.70,0.35,-0.84 - World: (0,0,-1), Chunk: (at 0,0,15 in 0,-1; contains blocks 0,0,-16 to 15,255,-1), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Rotation: 0.0
+	Delta: 0.019997835
+Stacktrace:
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntity(RenderManager.java:390)
+	at net.minecraft.client.renderer.entity.RenderManager.renderEntityStatic(RenderManager.java:374)
+	at net.minecraft.client.renderer.RenderGlobal.renderEntities(RenderGlobal.java:655)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorldPass(EntityRenderer.java:1400)
+	at net.minecraft.client.renderer.EntityRenderer.renderWorld(EntityRenderer.java:1312)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player108'/248, l='MpServer', x=-568.21, y=103.65, z=-67.68]]
+	Chunk stats: MultiplayerChunkCache: 625, 625
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-220,64,252), Chunk: (at 4,4,12 in -14,15; contains blocks -224,0,240 to -209,255,255), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,0,0 to -1,255,511)
+	Level time: 41493 game time, 41493 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 58 total; [EntityPigZombie['Zombie Pigman'/258, l='MpServer', x=-647.50, y=61.00, z=-92.50], EntityPigZombie['Zombie Pigman'/260, l='MpServer', x=-642.50, y=82.00, z=-145.50], EntityPigZombie['Zombie Pigman'/262, l='MpServer', x=-641.75, y=71.00, z=-27.33], EntityPigZombie['Zombie Pigman'/263, l='MpServer', x=-647.26, y=71.00, z=-22.37], EntityPigZombie['Zombie Pigman'/264, l='MpServer', x=-616.51, y=89.00, z=-47.81], EntityPigZombie['Zombie Pigman'/265, l='MpServer', x=-637.81, y=80.00, z=-40.45], EntityPigZombie['Zombie Pigman'/266, l='MpServer', x=-600.34, y=6.00, z=-47.93], EntityPigZombie['Zombie Pigman'/267, l='MpServer', x=-608.22, y=7.00, z=-53.49], EntityPigZombie['Zombie Pigman'/268, l='MpServer', x=-597.78, y=7.00, z=-48.52], EntityPigZombie['Zombie Pigman'/269, l='MpServer', x=-607.50, y=6.00, z=-51.50], EntityPigZombie['Zombie Pigman'/270, l='MpServer', x=-598.78, y=7.00, z=-45.51], EntityPigZombie['Zombie Pigman'/271, l='MpServer', x=-607.50, y=6.00, z=-52.50], EntityPigZombie['Zombie Pigman'/280, l='MpServer', x=-594.50, y=9.00, z=-42.50], EntityPigZombie['Zombie Pigman'/281, l='MpServer', x=-595.50, y=11.00, z=-40.25], EntityPigZombie['Zombie Pigman'/282, l='MpServer', x=-594.50, y=11.00, z=-50.24], EntityPigZombie['Zombie Pigman'/283, l='MpServer', x=-599.28, y=7.00, z=-46.46], EntityPigZombie['Zombie Pigman'/284, l='MpServer', x=-605.50, y=6.00, z=-46.50], EntityPigZombie['Zombie Pigman'/285, l='MpServer', x=-603.66, y=6.00, z=-47.35], EntityItem['item.item.natura.edibles.potashapple'/286, l='MpServer', x=-609.88, y=72.00, z=-25.73], EntityItem['item.item.natura.edibles.potashapple'/287, l='MpServer', x=-610.81, y=76.00, z=-30.29], EntityPigZombie['Zombie Pigman'/288, l='MpServer', x=-611.50, y=66.00, z=-14.50], EntityPigZombie['Zombie Pigman'/292, l='MpServer', x=-577.50, y=15.00, z=-19.50], EntityPigZombie['Zombie Pigman'/293, l='MpServer', x=-576.50, y=15.00, z=-22.50], EntityPigZombie['Zombie Pigman'/294, l='MpServer', x=-577.50, y=15.00, z=-24.50], EntityPigZombie['Zombie Pigman'/295, l='MpServer', x=-577.50, y=15.00, z=-21.50], EntityPigZombie['Zombie Pigman'/296, l='MpServer', x=-582.54, y=13.00, z=-20.73], EntityPigZombie['Zombie Pigman'/297, l='MpServer', x=-618.50, y=41.00, z=-141.50], EntityPigZombie['Zombie Pigman'/298, l='MpServer', x=-616.50, y=41.00, z=-137.50], EntityPigZombie['Zombie Pigman'/299, l='MpServer', x=-611.50, y=41.00, z=-135.50], EntityPigZombie['Zombie Pigman'/301, l='MpServer', x=-612.50, y=41.00, z=-134.50], EntityPigZombie['Zombie Pigman'/305, l='MpServer', x=-564.20, y=37.00, z=-139.51], EntityPigZombie['Zombie Pigman'/306, l='MpServer', x=-552.51, y=34.00, z=-129.19], EntityPigZombie['Zombie Pigman'/310, l='MpServer', x=-555.19, y=81.00, z=-71.28], EntityPigZombie['Zombie Pigman'/311, l='MpServer', x=-554.76, y=48.00, z=-68.50], EntityPigZombie['Zombie Pigman'/312, l='MpServer', x=-550.50, y=52.88, z=-67.50], EntityNitroCreeper['Nitro Creeper'/313, l='MpServer', x=-553.71, y=81.00, z=-72.19], EntityPigZombie['Zombie Pigman'/314, l='MpServer', x=-542.79, y=81.00, z=-80.34], EntityPigZombie['Zombie Pigman'/315, l='MpServer', x=-563.28, y=68.00, z=-57.48], EntityItem['item.item.natura.sticks.bloodwood_stick'/443, l='MpServer', x=-559.38, y=81.00, z=-76.24], EntityItem['item.tile.natura.nether_logs2'/447, l='MpServer', x=-560.00, y=81.00, z=-73.95], EntityItem['item.item.natura.sticks.bloodwood_stick'/448, l='MpServer', x=-561.19, y=81.00, z=-72.45], EntityPigZombie['Zombie Pigman'/322, l='MpServer', x=-546.29, y=54.00, z=-37.50], EntityPigZombie['Zombie Pigman'/323, l='MpServer', x=-532.50, y=32.00, z=-16.50], EntityPigZombie['Zombie Pigman'/324, l='MpServer', x=-533.50, y=88.00, z=-11.50], EntityItem['item.item.natura.sticks.bloodwood_stick'/453, l='MpServer', x=-562.48, y=81.00, z=-74.80], EntityItem['item.tile.natura.nether_logs2'/455, l='MpServer', x=-561.52, y=81.00, z=-70.77], EntityItem['item.item.natura.sticks.bloodwood_stick'/456, l='MpServer', x=-562.81, y=81.00, z=-71.16], EntityPigZombie['Zombie Pigman'/331, l='MpServer', x=-611.50, y=76.00, z=-27.50], EntityItem['item.item.natura.sticks.bloodwood_stick'/461, l='MpServer', x=-565.14, y=81.00, z=-76.74], EntityPigZombie['Zombie Pigman'/334, l='MpServer', x=-525.50, y=51.00, z=-130.50], EntityPigZombie['Zombie Pigman'/337, l='MpServer', x=-499.50, y=43.00, z=-125.50], EntityPigZombie['Zombie Pigman'/339, l='MpServer', x=-510.63, y=49.00, z=-75.77], EntityPigZombie['Zombie Pigman'/340, l='MpServer', x=-517.22, y=49.00, z=-78.52], EntityItem['item.item.natura.sticks.bloodwood_stick'/468, l='MpServer', x=-568.46, y=81.00, z=-70.30], EntityPigZombie['Zombie Pigman'/341, l='MpServer', x=-514.50, y=49.00, z=-79.50], EntityPigZombie['Zombie Pigman'/342, l='MpServer', x=-522.50, y=81.00, z=-78.50], EntityFallingTree['entity.falling_tree.name'/472, l='MpServer', x=-567.50, y=104.00, z=-68.50], EntityPlayerSP['Player108'/248, l='MpServer', x=-568.21, y=103.65, z=-67.68]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:461)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2889)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:463)
+	at net.minecraft.client.main.Main.main(Main.java:118)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_231, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 352133712 bytes (335 MB) / 1751121920 bytes (1670 MB) up to 3804758016 bytes (3628 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2838 8 mods loaded, 8 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                 | Version         | Source                              | Signature |
+	|:------ |:------------------ |:--------------- |:----------------------------------- |:--------- |
+	| LCHIJA | minecraft          | 1.12.2          | minecraft.jar                       | None      |
+	| LCHIJA | mcp                | 9.42            | minecraft.jar                       | None      |
+	| LCHIJA | FML                | 8.0.99.99       | forgeSrc-1.12.2-14.23.5.2838.jar    | None      |
+	| LCHIJA | forge              | 14.23.5.2838    | forgeSrc-1.12.2-14.23.5.2838.jar    | None      |
+	| LCHIJA | dynamictrees       | 1.12.2-0.9.6    | DynamicTrees-1.12.2-0.9.6.jar       | None      |
+	| LCHIJA | mantle             | 1.12-1.3.3.55   | Mantle-1.12-1.3.3.55.jar            | None      |
+	| LCHIJA | natura             | 1.12.2-4.3.2.69 | natura-1.12.2-4.3.2.69.jar          | None      |
+	| LCHIJA | dynamictreesnatura | 1.12.2-1.1.0    | dynamictreesNatura-1.12.2-1.1.0.jar | None      |
+
+	Loaded coremods (and transformers): 
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 432.00' Renderer: 'GeForce GTX 1070 Ti/PCIe/SSE2'
+	Pulsar/natura loaded Pulses: 
+		- NaturaCommons (Enabled/Forced)
+		- NaturaOverworld (Enabled/Not Forced)
+		- NaturaNether (Enabled/Not Forced)
+		- NaturaDecorative (Enabled/Not Forced)
+		- NaturaTools (Enabled/Not Forced)
+		- NaturaEntities (Enabled/Not Forced)
+		- NaturaOredict (Enabled/Forced)
+		- NaturaWorld (Enabled/Not Forced)
+
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: GeForce GTX 1070 Ti/PCIe/SSE2 GL version 4.6.0 NVIDIA 432.00, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 8x Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz

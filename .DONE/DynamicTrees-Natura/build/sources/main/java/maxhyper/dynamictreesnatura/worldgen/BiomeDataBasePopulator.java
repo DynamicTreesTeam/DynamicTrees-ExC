@@ -17,7 +17,7 @@ import net.minecraftforge.common.BiomeDictionary;
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     private static Species maple, silverbell, amaranth, tigerwood, willow, eucalyptus, hopseed, sakura,
-        ghostwood, bloodwood, fusewood, darkwood;
+        ghostwood, bloodwood, fusewood, darkwood, saguaro;
 
     private static void createStaticAliases() {
         maple = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "maple"));
@@ -32,6 +32,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
         bloodwood = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "bloodwood"));
         fusewood = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "fusewood"));
         darkwood = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"));
+        saguaro = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro"));
     }
 
     public void populate(BiomeDataBase dbase) {
@@ -47,7 +48,8 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
                         add(tigerwood,  ModContent.generateTiger      ? 100/Config.tigerRarity                 : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
 
-            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS)) {
+            }
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS)) {
 
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
                         add(eucalyptus, ModContent.generateEucalyptus ? 1 + (int)((100/Config.eucalyptusSpawnRarity) / 1.5) : 0);
@@ -60,26 +62,30 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
                         add(eucalyptus, ModContent.generateEucalyptus ? 10 * (100/Config.eucalyptusSpawnRarity) : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
 
-            }else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.RIVER)) {
+            }
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.RIVER)) {
 
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(500).
                         add(sakura, ModContent.generateSakura ? 100/Config.hopseedSpawnRarity    : 0).
                         add(willow, ModContent.generateWillow ? 100/Config.eucalyptusSpawnRarity : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
 
-            }else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+            }
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
                         add(amaranth, ModContent.generateAmaranth ? 100/Config.amaranthRarity : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
 
-            }else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
+            }
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
 
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(500).
                         add(willow, ModContent.generateWillow ? 100/Config.willowRarity : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
 
-            }else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
+            }
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.NETHER)) {
 
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
                         add(ghostwood, ModContent.generateGhostwood ? 100/Config.ghostwoodSpawnRarity : 0).
@@ -88,13 +94,13 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
                 dbase.setDensitySelector(biome, (rand, noiseDensity) -> ((noiseDensity * 0.25) + 0.75) * 0.5, Operation.REPLACE);
             }
-//            else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
-//
-//                RandomSpeciesSelector selector = new RandomSpeciesSelector().add(640).
-//                        add(saguaro, ModContent.generateSaguaro ? (10/Config.saguaroSpawnRarity) : 0);
-//                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-//
-//            }
+            else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
+
+                RandomSpeciesSelector selector = new RandomSpeciesSelector().add(20).
+                        add(saguaro, ModContent.generateSaguaro ? (10/Config.saguaroSpawnRarity) : 0);
+                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
+
+            }
 
         });
     }

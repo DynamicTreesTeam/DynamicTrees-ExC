@@ -47,10 +47,10 @@ public class TreeCoastSequoia extends TreeFamily {
         SpeciesPadauk(TreeFamily treeFamily) {
             super(treeFamily.getName(), treeFamily, ModContent.coastSequoiaLeavesProperties);
 
-            setBasicGrowingParameters(0.3f, 60.0f, 5, 16, 0.8f);
+            setBasicGrowingParameters(0.3f, 60.0f, 5, 16, 1.1f);
             //setGrowthLogicKit(TreeRegistry.findGrowthLogicKit(ModTrees.DARKOAK));
 
-            setSoilLongevity(60);
+            setSoilLongevity(80);
 
             generateSeed();
 

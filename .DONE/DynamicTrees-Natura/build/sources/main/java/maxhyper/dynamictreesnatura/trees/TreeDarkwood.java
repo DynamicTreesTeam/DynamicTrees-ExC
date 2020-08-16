@@ -51,7 +51,7 @@ public class TreeDarkwood extends TreeFamily {
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockPotashApple)).setRayDistance(4.0F));
 
 			generateSeed();
-			setupStandardSeedDropping();
+			//setupStandardSeedDropping();
 			this.addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
 		}
 		@Override

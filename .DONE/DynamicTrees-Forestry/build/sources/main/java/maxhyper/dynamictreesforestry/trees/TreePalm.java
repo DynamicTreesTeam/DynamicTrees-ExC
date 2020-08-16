@@ -58,7 +58,7 @@ public class TreePalm extends TreeFamily {
             super(treeFamily.getName(), treeFamily, ModContent.palmLeavesProperties);
 
             //Dark Oak Trees are tall, slowly growing, thick trees
-            setBasicGrowingParameters(0.5f, 10.0f, 4, 3, 1.2f);
+            setBasicGrowingParameters(0.5f, 10.0f, 4, 3, 0.8f);
 
             generateSeed();
             //setupStandardSeedDropping();

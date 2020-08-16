@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "natura:blocks/saguaro/saguaro_side",
+    "rings": "natura:blocks/saguaro/saguaro_top"
+  }
+}

@@ -40,8 +40,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModContent {
 
 	public static BlockFruit blockGoldenApple, blockEnderPearl, blockMagmaCream;
-	public static ILeavesProperties goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties;
+	public static ILeavesProperties goldenOakLeavesProperties, enderOakLeavesProperties, hellishOakLeavesProperties, cactusLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
+
+	public static CactusRainbow rainbowCactus;
 
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
@@ -63,6 +65,8 @@ public class ModContent {
 		enderOakLeavesProperties = setUpLeaves(TBTreeEnderOak.leavesBlock,  "deciduous");
 		hellishOakLeavesProperties = setUpLeaves(TBTreeHellishOak.leavesBlock,  "deciduous");
 
+		cactusLeavesProperties = new LeavesProperties(null, ItemStack.EMPTY, TreeRegistry.findCellKit("bare"));
+
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 0, goldenOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 1, enderOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 2, hellishOakLeavesProperties);
@@ -72,9 +76,13 @@ public class ModContent {
 		TreeFamily hellishOakTree = new TBTreeHellishOak();
 		Collections.addAll(trees, goldenOakTree, enderOakTree, hellishOakTree);
 
+		rainbowCactus = new CactusRainbow();
+		rainbowCactus.registerSpecies(Species.REGISTRY);
+
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
+		rainbowCactus.getRegisterableBlocks(treeBlocks);
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesThaumicBases.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
@@ -128,6 +136,8 @@ public class ModContent {
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
+		rainbowCactus.getRegisterableItems(treeItems);
+
 		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
 	}
 
@@ -156,5 +166,10 @@ public class ModContent {
 			ModelHelper.regModel(tree);
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesThaumicBases.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
+
+		ModelLoader.setCustomStateMapper(rainbowCactus.getDynamicBranch(), new StateMap.Builder().ignore(BlockBranchCactus.TRUNK, BlockBranchCactus.ORIGIN).build());
+		ModelHelper.regModel(rainbowCactus.getDynamicBranch());
+		ModelHelper.regModel(rainbowCactus.getCommonSpecies().getSeed());
+
 	}
 }

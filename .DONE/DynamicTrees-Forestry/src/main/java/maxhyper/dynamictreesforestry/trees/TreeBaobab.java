@@ -44,7 +44,9 @@ public class TreeBaobab extends TreeFamily {
         SpeciesBaobab(TreeFamily treeFamily) {
             super(treeFamily.getName(), treeFamily, ModContent.baobabLeavesProperties);
 
-            setBasicGrowingParameters(1.5f, 30.0f, 20, 20, 0.6f);
+            setBasicGrowingParameters(1.5f, 30.0f, 20, 20, 0.4f);
+
+            setSoilLongevity(40);
 
             generateSeed();
 

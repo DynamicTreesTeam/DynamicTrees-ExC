@@ -11,8 +11,12 @@ import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.overworld.NaturaOverworld;
 import maxhyper.dynamictreesnatura.blocks.*;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedBloodwood;
+import maxhyper.dynamictreesnatura.items.ItemDynamicSeedFusewood;
+import maxhyper.dynamictreesnatura.items.ItemDynamicSeedHopseed;
+import maxhyper.dynamictreesnatura.items.ItemDynamicSeedMaple;
 import maxhyper.dynamictreesnatura.trees.*;
 import com.progwml6.natura.shared.NaturaCommons;
 import maxhyper.dynamictreesnatura.worldgen.BiomeDataBasePopulator;
@@ -23,6 +27,7 @@ import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -30,6 +35,9 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -45,13 +53,15 @@ public class ModContent {
 	public static BlockDynamicLeaves darkwoodLeaves, bloodwoodLeaves;
 	public static BlockBranch bloodwoodBranch, fusewoodBranch;
 	public static BlockDynamicSapling bloodwoodSapling;
-	public static Seed bloodwoodSeed;
+	public static Seed bloodwoodSeed, mapleSeed, hopseedSeed, fusewoodSeed;
 	public static BlockRooty rootyUpsidedownDirt, rootyNetherDirt;
 	public static BlockFruit blockPotashApple;
 	public static ILeavesProperties mapleLeavesProperties, silverbellLeavesProperties, amaranthLeavesProperties, tigerwoodLeavesProperties,
 			willowLeavesProperties, eucalyptusLeavesProperties, hopseedLeavesProperties, sakuraLeavesProperties,
 			ghostwoodLeavesProperties, bloodwoodLeavesProperties, fusewoodLeavesProperties,
-			darkwoodLeavesProperties, darkwoodFloweringLeavesProperties, darkwoodFruitLeavesProperties;
+			darkwoodLeavesProperties, darkwoodFloweringLeavesProperties, darkwoodFruitLeavesProperties, cactusLeavesProperties;
+
+	public static CactusSaguaro saguaroCactus;
 
 	// trees added by this mod
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
@@ -103,6 +113,9 @@ public class ModContent {
 		registry.register(blockPotashApple);
 
 		bloodwoodSeed = new ItemDynamicSeedBloodwood();
+		mapleSeed = new ItemDynamicSeedMaple();
+		hopseedSeed = new ItemDynamicSeedHopseed();
+		fusewoodSeed = new ItemDynamicSeedFusewood();
 
 		mapleLeavesProperties = setUpLeaves(TreeMaple.leavesBlock, TreeMaple.leavesState, "deciduous");
 		silverbellLeavesProperties = setUpLeaves(TreeSilverbell.leavesBlock, TreeSilverbell.leavesState, "deciduous");
@@ -119,6 +132,8 @@ public class ModContent {
 		darkwoodLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
 		darkwoodFloweringLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
 		darkwoodFruitLeavesProperties = setUpLeavesNether(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "deciduous");
+
+		cactusLeavesProperties = new LeavesProperties(null, ItemStack.EMPTY, TreeRegistry.findCellKit("bare"));
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 0, mapleLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 1, silverbellLeavesProperties);
@@ -157,11 +172,16 @@ public class ModContent {
 		TreeFamily fusewoodTree = new TreeFusewood();
 		TreeFamily darkwoodTree = new TreeDarkwood();
 
+		saguaroCactus = new CactusSaguaro();
+		saguaroCactus.registerSpecies(Species.REGISTRY);
+
 		Collections.addAll(trees, mapleTree, silverbellTree, amaranthTree, tigerwoodTree, willowTree, eucalyptusTree, hopseedTree, sakuraTree, ghostwoodTree, bloodwoodTree, fusewoodTree, darkwoodTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
+
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
+		saguaroCactus.getRegisterableBlocks(treeBlocks);
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
@@ -213,13 +233,21 @@ public class ModContent {
 		return leavesProperties;
 	}
 
-
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
+		saguaroCactus.getRegisterableItems(treeItems);
+
 		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+	}
+
+	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
+		int id = 0;
+		EntityRegistry.registerModEntity(new ResourceLocation(DynamicTreesNatura.MODID, "mapleseed"), ItemDynamicSeedMaple.EntityItemMapleSeed.class, "maple_seed", id++, DynamicTreesNatura.MODID, 32, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation(DynamicTreesNatura.MODID, "bloodwoodseed"), ItemDynamicSeedBloodwood.EntityItemBloodwoodSeed.class, "magic_seed", id++, DynamicTreesNatura.MODID, 32, 1, true);
 	}
 
 	@SubscribeEvent
@@ -237,6 +265,15 @@ public class ModContent {
 		setUpSeedRecipes("bloodwood", new ItemStack(TreeBloodwood.saplingBlock, 1, 1));
 		setUpSeedRecipes("fusewood", new ItemStack(TreeFusewood.saplingBlock, 1, 2));
 		setUpSeedRecipes("darkwood", new ItemStack(TreeDarkwood.saplingBlock, 1, 0));
+
+		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"));
+		ItemStack treeSeed = treeSpecies.getSeedStack(1);
+		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "potashAppleSeed"), null, treeSeed, Ingredient.fromStacks(NaturaCommons.potashApple));
+
+		Species cactusSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro"));
+		ItemStack cactusSeed = cactusSpecies.getSeedStack(1);
+		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "SaguaroFruitSeed"), null, cactusSeed, Ingredient.fromItem(NaturaOverworld.saguaroFruitItem));
+
 	}
 	private static void setUpSeedRecipes(String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, name));
@@ -260,5 +297,9 @@ public class ModContent {
 		ModelLoader.setCustomStateMapper(rootyNetherDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(darkwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		ModelLoader.setCustomStateMapper(bloodwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
+
+		ModelLoader.setCustomStateMapper(saguaroCactus.getDynamicBranch(), new StateMap.Builder().ignore(BlockBranchCactus.TRUNK, BlockBranchCactus.ORIGIN).build());
+		ModelHelper.regModel(saguaroCactus.getDynamicBranch());
+		ModelHelper.regModel(saguaroCactus.getCommonSpecies().getSeed());
 	}
 }

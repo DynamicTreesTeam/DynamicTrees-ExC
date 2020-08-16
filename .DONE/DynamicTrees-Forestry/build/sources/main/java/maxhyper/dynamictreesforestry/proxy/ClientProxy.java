@@ -10,8 +10,10 @@ import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModContent;
 import maxhyper.dynamictreesforestry.blocks.BlockDynamicLeavesFruit;
 import maxhyper.dynamictreesforestry.event.EventListenerForestry;
+import maxhyper.dynamictreesforestry.items.ItemDynamicSeedMaple;
 import maxhyper.dynamictreesforestry.models.ModelLoaderBlockPalmFronds;
 import maxhyper.dynamictreesforestry.models.ModelLoaderBlockPalmFrondsBig;
+import maxhyper.dynamictreesforestry.renderer.RenderMapleSeed;
 import maxhyper.dynamictreesforestry.trees.TreeWillow;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -23,12 +25,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void preInit() {
 		super.preInit();
+		registerEntityRenderers();
+
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockPalmFronds());
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockPalmFrondsBig());
 		MinecraftForge.EVENT_BUS.register(new EventListenerForestry());
@@ -96,5 +101,9 @@ public class ClientProxy extends CommonProxy {
 //					}
 //				},
 //				ModContent.rootyNetherDirt, ModContent.rootyUpsidedownDirt);
+	}
+
+	public void registerEntityRenderers() {
+		RenderingRegistry.registerEntityRenderingHandler(ItemDynamicSeedMaple.EntityItemMapleSeed.class, new RenderMapleSeed.Factory());
 	}
 }

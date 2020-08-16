@@ -1,15 +1,16 @@
-item.dynamictreesnatura:mapleseed.name=Maple Seed
+item.dynamictreesnatura:mapleseed.name=Maple Samara
 item.dynamictreesnatura:silverbellseed.name=Silverbell Pod
 item.dynamictreesnatura:amaranthseed.name=Amaranth Seed
 item.dynamictreesnatura:tigerwoodseed.name=Tigerwood Seed
-item.dynamictreesnatura:willowseed.name=Willow Seed
-item.dynamictreesnatura:eucalyptusseed.name=Eucalyptus Seed
+item.dynamictreesnatura:willowseed.name=Willow Catkin
+item.dynamictreesnatura:eucalyptusseed.name=Eucalyptus Capsule
 item.dynamictreesnatura:hopseedseed.name=Hopseed Bush Seed
 item.dynamictreesnatura:sakuraseed.name=Sakura Stone
 item.dynamictreesnatura:ghostwoodseed.name=Ghostwood Seed
 item.dynamictreesnatura:bloodwoodseed.name=Bloodwood Seed
-item.dynamictreesnatura:fusewoodseed.name=Fusewood Seed
-item.dynamictreesnatura:darkwoodseed.name=Darkwood Seed
+item.dynamictreesnatura:fusewoodseed.name=Fusewood Pod
+item.dynamictreesnatura:darkwoodseed.name=Potash Apple Pip
+item.dynamictreesnatura:saguaroseed.name=Saguaro Cactus Seed
 
 tile.dynamictreesnatura:leaves_darkwood.name=Dynamic Leaves
 tile.dynamictreesnatura:leaves0.name=Dynamic Leaves
@@ -30,3 +31,4 @@ tile.dynamictreesnatura:bloodwoodbranch.name=Dynamic Bloodwood Tree
 tile.dynamictreesnatura:bloodwoodbranchx.name=Dynamic Bloodwood Tree
 tile.dynamictreesnatura:fusewoodbranch.name=Dynamic Fusewood Tree
 tile.dynamictreesnatura:darkwoodbranch.name=Dynamic Darkwood Tree
+tile.dynamictreesnatura:saguarobranch.name=Dynamic Saguaro Cactus

@@ -41,7 +41,7 @@ public class TreeHopseed extends TreeFamily {
 			envFactor(Type.DRY, 0.50f);
 			envFactor(Type.FOREST, 1.05f);
 
-			generateSeed();
+			setSeedStack(new ItemStack(ModContent.hopseedSeed));
 			setupStandardSeedDropping();
 
 		}
