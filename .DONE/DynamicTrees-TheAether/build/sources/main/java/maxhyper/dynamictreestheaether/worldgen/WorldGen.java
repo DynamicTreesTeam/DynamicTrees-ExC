@@ -1,11 +1,11 @@
 package maxhyper.dynamictreestheaether.worldgen;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.world.AetherWorld;
-import com.legacy.aether.world.biome.AetherBiome;
-import com.legacy.aether.world.biome.AetherBiomeDecorator;
-import com.legacy.aether.world.biome.decoration.AetherGenFloatingIsland;
+import com.gildedgames.the_aether.Aether;
+import com.gildedgames.the_aether.AetherConfig;
+import com.gildedgames.the_aether.world.AetherWorld;
+import com.gildedgames.the_aether.world.biome.AetherBiome;
+import com.gildedgames.the_aether.world.biome.AetherBiomeDecorator;
+import com.gildedgames.the_aether.world.biome.decoration.AetherGenFloatingIsland;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;

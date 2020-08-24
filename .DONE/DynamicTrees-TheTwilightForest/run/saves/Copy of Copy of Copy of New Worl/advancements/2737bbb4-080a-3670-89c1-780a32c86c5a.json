@@ -1,0 +1,38 @@
+{
+  "twilightforest:root": {
+    "criteria": {
+      "in_tf": "2020-08-24 10:21:27 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_swamp": {
+    "criteria": {
+      "0": "2020-08-24 10:21:27 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/fire_jet": {
+    "criteria": {
+      "fire_swamp": "2020-08-24 10:21:47 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/fire_swamp": {
+    "criteria": {
+      "discover": "2020-08-24 10:21:47 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/treasures/smoking_block": {
+    "criteria": {
+      "fire_swamp": "2020-08-24 10:21:47 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/red_dye_from_poppy": {
+    "criteria": {
+      "has_red_flower": "2020-08-24 10:21:27 -0300"
+    },
+    "done": true
+  }
+}

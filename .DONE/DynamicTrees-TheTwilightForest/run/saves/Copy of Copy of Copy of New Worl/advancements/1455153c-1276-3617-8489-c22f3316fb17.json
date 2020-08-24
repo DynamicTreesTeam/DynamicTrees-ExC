@@ -1,0 +1,20 @@
+{
+  "twilightforest:root": {
+    "criteria": {
+      "in_tf": "2020-08-24 09:59:47 -0300"
+    },
+    "done": true
+  },
+  "twilightforest:alt/biomes/twilight_swamp": {
+    "criteria": {
+      "0": "2020-08-24 09:59:47 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/red_dye_from_poppy": {
+    "criteria": {
+      "has_red_flower": "2020-08-24 09:59:47 -0300"
+    },
+    "done": true
+  }
+}

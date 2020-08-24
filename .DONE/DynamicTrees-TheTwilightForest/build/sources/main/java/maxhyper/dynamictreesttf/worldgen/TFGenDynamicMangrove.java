@@ -23,7 +23,7 @@ public class TFGenDynamicMangrove extends WorldGenerator {
     public boolean generate(World worldIn, Random rand, BlockPos position) {
 
         mangrove = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "mangrove"));
-        int offset = 3;
+        int offset = 2;
 
         int rad = 3;
         int heightUp = 8;

@@ -3,18 +3,19 @@ package maxhyper.dynamictreestheaether.trees;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAetherLog;
-import com.legacy.aether.blocks.util.EnumLogType;
-import com.legacy.aether.items.ItemsAether;
-import com.legacy.aether.items.tools.ItemAetherTool;
-import com.legacy.aether.items.tools.ItemGravititeTool;
-import com.legacy.aether.items.tools.ItemValkyrieTool;
-import com.legacy.aether.items.util.EnumAetherToolType;
+import com.gildedgames.the_aether.blocks.BlocksAether;
+import com.gildedgames.the_aether.blocks.natural.BlockAetherLog;
+import com.gildedgames.the_aether.blocks.util.EnumLogType;
+import com.gildedgames.the_aether.items.ItemsAether;
+import com.gildedgames.the_aether.items.tools.ItemAetherTool;
+import com.gildedgames.the_aether.items.tools.ItemGravititeTool;
+import com.gildedgames.the_aether.items.tools.ItemValkyrieTool;
+import com.gildedgames.the_aether.items.util.EnumAetherToolType;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -61,6 +62,11 @@ public class ALTreeGoldenOak extends TreeFamily {
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
 			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+		}
+
+		@Override
+		public BlockRooty getRootyBlock() {
+			return ModContent.rootyDirtAether;
 		}
 
 	}

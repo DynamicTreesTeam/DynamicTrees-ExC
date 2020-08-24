@@ -14,13 +14,13 @@ import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
-import com.legacy.aether.blocks.natural.BlockAetherLeaves;
-import com.legacy.aether.blocks.natural.BlockCrystalLeaves;
-import com.legacy.aether.blocks.natural.BlockHolidayLeaves;
-import com.legacy.aether.blocks.util.EnumCrystalType;
-import com.legacy.aether.blocks.util.EnumHolidayType;
-import com.legacy.aether.blocks.util.EnumLeafType;
-import com.legacy.aether.items.ItemsAether;
+import com.gildedgames.the_aether.blocks.natural.BlockAetherLeaves;
+import com.gildedgames.the_aether.blocks.natural.BlockCrystalLeaves;
+import com.gildedgames.the_aether.blocks.natural.BlockHolidayLeaves;
+import com.gildedgames.the_aether.blocks.util.EnumCrystalType;
+import com.gildedgames.the_aether.blocks.util.EnumHolidayType;
+import com.gildedgames.the_aether.blocks.util.EnumLeafType;
+import com.gildedgames.the_aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.blocks.BlockDynamicLeavesAether;
 import maxhyper.dynamictreestheaether.blocks.BlockDynamicLeavesCrystal;
 import maxhyper.dynamictreestheaether.trees.ALTreeCrystal;
@@ -56,6 +56,8 @@ public class ModContent {
 	public static ILeavesProperties skyrootLeavesProperties, goldenOakLeavesProperties, crystalLeavesProperties, holidayLeavesProperties,
 			crystalFruitLeavesProperties, holidayDecorLeavesProperties;
 	public static BlockFruit blockWhiteApple;
+	public static BlockRootyDirt rootyDirtAether;
+
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
 	@SubscribeEvent
@@ -73,6 +75,8 @@ public class ModContent {
 		registry.register(crystalLeaves);
 		aetherLeaves = new BlockDynamicLeavesAether();
 		registry.register(aetherLeaves);
+		rootyDirtAether = new BlockRootyDirt("rootydirtaether",false);
+		registry.register(rootyDirtAether);
 
 		skyrootLeavesProperties = setUpLeaves(
 				ALTreeSkyroot.leavesBlock,
@@ -182,5 +186,6 @@ public class ModContent {
 
 		ModelLoader.setCustomStateMapper(crystalLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		ModelLoader.setCustomStateMapper(aetherLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
+		ModelLoader.setCustomStateMapper(rootyDirtAether, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 	}
 }

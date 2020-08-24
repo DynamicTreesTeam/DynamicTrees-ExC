@@ -1,0 +1,6 @@
+{
+  "parent": "dynamictreesatum:block/smartmodel/dynamicpalmfronds",
+  "textures": {
+    "frond": "dynamictreesatum:blocks/palmfrond"
+  }
+}

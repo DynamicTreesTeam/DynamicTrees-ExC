@@ -1,0 +1,26 @@
+{
+  "atum:core/ajourney": {
+    "criteria": {
+      "sand_plains": "2020-08-17 15:12:22 -0300"
+    },
+    "done": false
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-08-17 15:12:22 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2020-08-17 15:12:22 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2020-08-17 15:12:22 -0300"
+    },
+    "done": true
+  }
+}

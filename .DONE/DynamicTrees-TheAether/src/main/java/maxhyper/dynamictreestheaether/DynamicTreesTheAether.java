@@ -16,7 +16,7 @@ public class DynamicTreesTheAether {
 	public static final String MODID = "dynamictreestheaether";
 	public static final String NAME = "Dynamic Trees for The Aether Legacy";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
-			+ ";required-after:aether_legacy";
+			+ ";required-after:aether_legacy@[1.5.0,)";
 	
 	@Mod.Instance
 	public static maxhyper.dynamictreestheaether.DynamicTreesTheAether instance;

@@ -16,12 +16,15 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
+import com.teammetallurgy.atum.init.AtumBlocks;
 import com.teammetallurgy.atum.init.AtumItems;
 import maxhyper.dynamictreesatum.DynamicTreesAtum;
 import maxhyper.dynamictreesatum.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Biomes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -30,7 +33,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Iterator;
@@ -40,48 +45,65 @@ import java.util.Random;
 
 public class A2TreeDeadTree extends TreeFamily {
 
-	public static Block logBlock = Block.getBlockFromName("atum:deadwood_log");
+	public static Block logBlock =  AtumBlocks.DEADWOOD_LOG;
 
 	public class SpeciesDeadTree extends Species {
 
 		SpeciesDeadTree(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.nullLeavesProperties);
 
-			setBasicGrowingParameters(1f, 10.0f, upProbability, lowestBranchHeight, 100);
+			setBasicGrowingParameters(0f, 10.0f, upProbability, lowestBranchHeight, 100);
 
 			envFactor(Type.COLD, 0.25f);
 
-			generateSeed();
+//			generateSeed();
 
-			setupStandardSeedDropping();
+			addAcceptableSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "fertile_soil")),
+					ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "sand")));
+		}
+
+		@Override
+		public boolean isBiomePerfect(Biome biome) {
+			return isOneOfBiomes(biome, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.MUTATED_DESERT);
+		}
+
+		@Override
+		public boolean handleRot(World world, List<BlockPos> ends, BlockPos rootPos, BlockPos treePos, int soilLife, SafeChunkBounds safeBounds) {
+			return false;
+		}
+
+		@Override
+		public boolean canBoneMeal() {
+			return ModConfigs.worldGenDebug;
 		}
 
 		@Override
 		public boolean grow(World world, BlockRooty rootyDirt, BlockPos rootPos, int soilLife, ITreePart treeBase, BlockPos treePos, Random random, boolean natural) {
+			if (ModConfigs.worldGenDebug){
+				float growthRate = getGrowthRate(world, rootPos) * ModConfigs.treeGrowthMultiplier * ModConfigs.treeGrowthFolding;
+				do {
+					if(soilLife > 0){
+						if(growthRate > random.nextFloat()) {
+							GrowSignal signal = new GrowSignal(this, rootPos, getEnergy(world, rootPos));
+							boolean success = treeBase.growSignal(world, treePos, signal).success;
 
-			float growthRate = getGrowthRate(world, rootPos) * ModConfigs.treeGrowthMultiplier * ModConfigs.treeGrowthFolding;
-			do {
-				if(soilLife > 0){
-					if(growthRate > random.nextFloat()) {
-						GrowSignal signal = new GrowSignal(this, rootPos, getEnergy(world, rootPos));
-						boolean success = treeBase.growSignal(world, treePos, signal).success;
+							int soilLongevity = getSoilLongevity(world, rootPos) * (success ? 1 : 16);//Don't deplete the soil as much if the grow operation failed
 
-						int soilLongevity = getSoilLongevity(world, rootPos) * (success ? 1 : 16);//Don't deplete the soil as much if the grow operation failed
+							if(soilLongevity <= 0 || random.nextInt(soilLongevity) == 0) {//1 in X(soilLongevity) chance to draw nutrients from soil
+								rootyDirt.setSoilLife(world, rootPos, soilLife - 1);//decrement soil life
+							}
 
-						if(soilLongevity <= 0 || random.nextInt(soilLongevity) == 0) {//1 in X(soilLongevity) chance to draw nutrients from soil
-							rootyDirt.setSoilLife(world, rootPos, soilLife - 1);//decrement soil life
-						}
-
-						if(signal.choked) {
-							soilLife = 0;
-							rootyDirt.setSoilLife(world, rootPos, soilLife);
-							TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(new NodeShrinker(signal.getSpecies())));
+							if(signal.choked) {
+								soilLife = 0;
+								rootyDirt.setSoilLife(world, rootPos, soilLife);
+								TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(new NodeShrinker(signal.getSpecies())));
+							}
 						}
 					}
-				}
-			} while(--growthRate > 0.0f);
+				} while(--growthRate > 0.0f);
 
-			return postGrow(world, rootPos, treePos, soilLife, natural);
+				return postGrow(world, rootPos, treePos, soilLife, natural);
+			} else return false;
 		}
 
 		public SoundType getSaplingSound() {
@@ -93,7 +115,11 @@ public class A2TreeDeadTree extends TreeFamily {
 			//Ensure planting conditions are right
 			TreeFamily tree = getFamily();
 			if(world.isAirBlock(pos.up()) && isAcceptableSoil(world, pos.down(), world.getBlockState(pos.down()))) {
-				world.setBlockState(pos, tree.getDynamicBranch().getDefaultState());//set to a single branch
+				IBlockState branchState = tree.getDynamicBranch().getDefaultState();
+				BlockBranch branch = TreeHelper.getBranch(branchState);
+				world.setBlockState(pos, branchState);//set to a single branch
+				branch.setRadius(world, pos, 4, EnumFacing.DOWN);
+
 				placeRootyDirtBlock(world, pos.down(), 15);//Set to fully fertilized rooty sand underneath
 				return true;
 			}
@@ -127,7 +153,7 @@ public class A2TreeDeadTree extends TreeFamily {
 	}
 
 	public A2TreeDeadTree() {
-		super(new ResourceLocation(DynamicTreesAtum.MODID, "deadTree"));
+		super(new ResourceLocation(DynamicTreesAtum.MODID, "deadtree"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
@@ -162,19 +188,32 @@ public class A2TreeDeadTree extends TreeFamily {
 	}
 
 	@Override
+	public ILeavesProperties getCommonLeaves() {
+		return ModBlocks.leaves.get(getName().getResourcePath());
+	}
+
+	@Override
 	public float getPrimaryThickness() {
-		return 1f;
+		return 3f;
 	}
 
 	@Override
 	public float getSecondaryThickness() {
-		return 1f;
+		return 3f;
 	}
 
 	@Override
 	public BlockBranch createBranch() {
 		String branchName = this.getName() + "branch";
 		return new BlockBranchBasic(branchName){
+
+			@Override
+			public void rot(World world, BlockPos pos) {}
+
+			@Override
+			public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
+				return false;
+			}
 
 			@Override
 			public GrowSignal growIntoAir(World world, BlockPos pos, GrowSignal signal, int fromRadius) {
@@ -231,7 +270,7 @@ public class A2TreeDeadTree extends TreeFamily {
 					//Only continue to set radii if the tree growth isn't choked out
 					if(!signal.choked) {
 						// Ensure that side branches are not thicker than the size of a block.  Also enforce species max thickness
-						int maxRadius = inTrunk ? species.maxBranchRadius() : 4;
+						int maxRadius = inTrunk ? 8 : 4;
 
 						// The new branch should be the square root of all of the sums of the areas of the branches coming into it.
 						// But it shouldn't be smaller than it's current size(prevents the instant slimming effect when chopping off branches)

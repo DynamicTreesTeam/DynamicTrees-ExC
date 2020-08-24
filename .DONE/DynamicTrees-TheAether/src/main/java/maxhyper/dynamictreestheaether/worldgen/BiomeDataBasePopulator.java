@@ -6,9 +6,9 @@ import com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase;
 
-import com.legacy.aether.Aether;
-import com.legacy.aether.AetherConfig;
-import com.legacy.aether.world.AetherWorld;
+import com.gildedgames.the_aether.Aether;
+import com.gildedgames.the_aether.AetherConfig;
+import com.gildedgames.the_aether.world.AetherWorld;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 

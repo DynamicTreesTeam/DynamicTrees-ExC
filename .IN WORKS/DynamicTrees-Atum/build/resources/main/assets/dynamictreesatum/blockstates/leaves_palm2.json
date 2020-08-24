@@ -1,0 +1,25 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"tree": {
+			"0": {"textures": {
+				"fronds": "dynamictreesatum:blocks/palmfrond",
+				"particle": "dynamictreesatum:blocks/palmbase",
+				"texture": "dynamictreesatum:blocks/palmbase"
+			}},
+			"1": {"textures": {
+				"fronds": "dynamictreesatum:blocks/palmfronddead",
+				"particle": "dynamictreesatum:blocks/palmbasedead",
+				"texture": "dynamictreesatum:blocks/palmbasedead"
+			}},
+			"2": {},
+			"3": {}
+		},
+		"hydro": {
+			"1": {"model": "dynamictreesatum:palmfrond#dynamicpalmfrondsdate"},
+			"2": {"model": "dynamictreesatum:palmfrond#dynamicpalmfrondsdate"},
+			"3": {"model": "dynamictreesatum:palmcoretop"},
+			"4": {"model": "dynamictreesatum:palmcorebottom"}
+		}
+	}
+}

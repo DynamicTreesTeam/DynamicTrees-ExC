@@ -11,8 +11,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.world.biome.decoration.AetherGenFloatingIsland;
+import com.gildedgames.the_aether.blocks.BlocksAether;
+import com.gildedgames.the_aether.world.biome.decoration.AetherGenFloatingIsland;
 
 public class AetherGenDynamicFloatingIsland extends AetherGenFloatingIsland {
 

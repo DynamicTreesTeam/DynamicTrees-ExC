@@ -43,6 +43,7 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "desert_hills": "2020-08-17 10:59:24 -0300",
       "desert": "2020-05-30 23:50:42 -0300"
     },
     "done": false

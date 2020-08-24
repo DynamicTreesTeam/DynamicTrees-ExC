@@ -1,22 +1,11 @@
 {
 	"forge_marker": 1,
-	"defaults": {
-		"transform": "forge:default-block",
-    	"model": "leaves",
-		"textures": { "all": "atum:blocks/palm_leaves" }
-	},
 	"variants": {
-		"tree": {
-			"0": {},
-			"1": {},
-			"2": {},
-			"3": {}
-		},
 		"hydro": {
-			"1": {},
-			"2": {},
-			"3": {},
-			"4": {}
+			"1": {"model": "dynamictreesatum:palmfrond#dynamicpalmfrondsatum"},
+			"2": {"model": "dynamictreesatum:palmfrond#dynamicpalmfrondsatum"},
+			"3": {"model": "dynamictreesatum:palmcoretop"},
+			"4": {"model": "dynamictreesatum:palmcorebottom"}
 		}
 	}
 }

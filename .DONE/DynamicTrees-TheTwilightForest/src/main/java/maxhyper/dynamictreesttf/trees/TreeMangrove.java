@@ -45,7 +45,7 @@ public class TreeMangrove extends TreeFamily {
 
 			setBasicGrowingParameters(1f, 9, upProbability, 4, 0.2f);
 
-			generateSeed();
+			setSeedStack(new ItemStack(ModContent.mangroveSeed));
 			setupStandardSeedDropping();
 			addGenFeature(new FeatureGenLogCritter(getLowestBranchHeight(), ModContent.dynamicFirefly, 60, 2));
 			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundMangroveRoot, ModContent.undergroundRootExposed, ModContent.mangroveBranch,6,   8, 40, 5));

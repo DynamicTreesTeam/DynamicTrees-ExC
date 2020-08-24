@@ -1,10 +1,10 @@
 package maxhyper.dynamictreestheaether.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
-import com.legacy.aether.entities.particles.ParticleCrystalLeaves;
-import com.legacy.aether.entities.particles.ParticleGoldenOakLeaves;
-import com.legacy.aether.entities.particles.ParticleHolidayLeaves;
-import com.legacy.aether.items.ItemsAether;
+import com.gildedgames.the_aether.entities.particles.ParticleCrystalLeaves;
+import com.gildedgames.the_aether.entities.particles.ParticleGoldenOakLeaves;
+import com.gildedgames.the_aether.entities.particles.ParticleHolidayLeaves;
+import com.gildedgames.the_aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.DynamicTreesTheAether;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.state.IBlockState;

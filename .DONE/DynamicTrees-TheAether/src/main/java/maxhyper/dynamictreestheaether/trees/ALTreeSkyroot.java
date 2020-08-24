@@ -1,15 +1,16 @@
 package maxhyper.dynamictreestheaether.trees;
 
+import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import com.legacy.aether.blocks.BlocksAether;
-import com.legacy.aether.blocks.natural.BlockAetherLeaves;
-import com.legacy.aether.blocks.natural.BlockAetherLog;
-import com.legacy.aether.blocks.util.EnumLeafType;
-import com.legacy.aether.blocks.util.EnumLogType;
-import com.legacy.aether.items.ItemsAether;
+import com.gildedgames.the_aether.blocks.BlocksAether;
+import com.gildedgames.the_aether.blocks.natural.BlockAetherLeaves;
+import com.gildedgames.the_aether.blocks.natural.BlockAetherLog;
+import com.gildedgames.the_aether.blocks.util.EnumLeafType;
+import com.gildedgames.the_aether.blocks.util.EnumLogType;
+import com.gildedgames.the_aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -46,6 +47,11 @@ public class ALTreeSkyroot extends TreeFamily {
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
 			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+		}
+
+		@Override
+		public BlockRooty getRootyBlock() {
+			return ModContent.rootyDirtAether;
 		}
 
 	}

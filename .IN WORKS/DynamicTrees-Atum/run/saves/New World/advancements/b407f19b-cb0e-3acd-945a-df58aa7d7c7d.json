@@ -1,0 +1,44 @@
+{
+  "atum:core/amirage": {
+    "criteria": {
+      "entered_atum": "2020-08-17 12:50:01 -0300"
+    },
+    "done": true
+  },
+  "atum:core/ajourney": {
+    "criteria": {
+      "sand_dunes": "2020-08-17 12:50:02 -0300",
+      "oasis": "2020-08-17 12:51:30 -0300",
+      "deadwood_forest": "2020-08-17 12:50:34 -0300",
+      "sand_hills": "2020-08-17 12:50:28 -0300",
+      "deadoasis": "2020-08-17 12:50:01 -0300",
+      "limestone_mountains": "2020-08-17 12:50:06 -0300",
+      "sand_plains": "2020-08-17 12:49:54 -0300"
+    },
+    "done": false
+  },
+  "atum:core/ahope": {
+    "criteria": {
+      "entered_atum": "2020-08-17 12:51:30 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2020-08-17 12:51:43 -0300"
+    },
+    "done": true
+  },
+  "atum:core/pyramidscheme": {
+    "criteria": {
+      "in_pyramid": "2020-08-17 12:50:46 -0300"
+    },
+    "done": true
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2020-08-17 12:49:54 -0300"
+    },
+    "done": true
+  }
+}

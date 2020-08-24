@@ -9,10 +9,11 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import com.ferreusveritas.dynamictrees.trees.TreeSpruce;
 import maxhyper.dynamictreesttf.blocks.*;
+import maxhyper.dynamictreesttf.items.ItemDynamicSeedMangrove;
 import maxhyper.dynamictreesttf.trees.*;
 import maxhyper.dynamictreesttf.trees.species.SpeciesOakSpooky;
 import maxhyper.dynamictreesttf.trees.species.SpeciesSpruceHuge;
@@ -22,20 +23,12 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -70,6 +63,8 @@ public class ModContent {
 	public static BlockRooty rootyDirtMangrove;
 
 	public static Species hugeSpruce, spookyOak;
+
+	public static Seed mangroveSeed;
 
 	// trees added by this mod
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
@@ -150,6 +145,8 @@ public class ModContent {
 
 		TreeFamily oakTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "oak")).getFamily();
 		TreeFamily spruceTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "spruce")).getFamily();
+
+		mangroveSeed = new ItemDynamicSeedMangrove();
 
 		hugeSpruce = new SpeciesSpruceHuge(spruceTree);
 		spookyOak = new SpeciesOakSpooky(oakTree);

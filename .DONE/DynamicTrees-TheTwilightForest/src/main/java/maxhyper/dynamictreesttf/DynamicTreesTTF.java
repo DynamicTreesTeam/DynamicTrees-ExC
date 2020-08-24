@@ -14,7 +14,7 @@ public class DynamicTreesTTF {
 	
 	public static final String MODID = "dynamictreesttf";
 	public static final String NAME = "Dynamic Trees for The Twilight Forest";
-	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST + ";required-after:twilightforest@[3.10.1013, 3.11)";
+	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST + ";required-after:twilightforest@[3.10.1013, 4.0)";
 	
 	@Mod.Instance
 	public static DynamicTreesTTF instance;
