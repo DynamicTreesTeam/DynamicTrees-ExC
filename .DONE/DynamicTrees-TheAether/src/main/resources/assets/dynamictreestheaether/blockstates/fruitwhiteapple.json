@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "age=0": { "model": "dynamictreestheaether:fruit/applewhite_age0" },
-        "age=1": { "model": "dynamictreestheaether:fruit/applewhite_age1" },
-        "age=2": { "model": "dynamictreestheaether:fruit/applewhite_age2" },
-        "age=3": { "model": "dynamictreestheaether:fruit/applewhite_age3" }
-    }
-}

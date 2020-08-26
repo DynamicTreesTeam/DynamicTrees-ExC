@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "simplyTea:blocks/leaves_tea",
-        "log": "simplyTea:blocks/bark_tea",
-        "leaves": "simplyTea:blocks/leaves_tea"
-    }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "dynamictreesforestry:block/smartmodel/dynamicpalmfronds",
-  "textures": {
-    "frond": "dynamictreesforestry:blocks/palmfrond"
-  }
-}

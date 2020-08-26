@@ -1,7 +1,0 @@
-{
-    "parent": "dynamictrees:item/branch",
-    "textures": {
-        "bark": "aether:blocks/logs/wisproot_log_side",
-        "rings": "aether:blocks/logs/wisproot_log_top"
-    }
-}

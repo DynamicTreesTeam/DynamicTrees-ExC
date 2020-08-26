@@ -1,9 +1,0 @@
-{
-	"forge_marker": 1,
-	"defaults": {
-		"transform": "forge:default-block",
-		"model": "leaves",
-		"textures": { "all": "twilightforest:blocks/darkwood_leaves2" }
-	},
-	"variants": { "normal": [{}] }
-}

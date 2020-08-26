@@ -1,9 +1,0 @@
-{
-  "minecraft:adventure/adventuring_time": {
-    "criteria": {
-      "forest": "2020-06-01 23:38:21 -0300",
-      "taiga": "2020-06-01 23:38:15 -0300"
-    },
-    "done": false
-  }
-}

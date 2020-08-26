@@ -1,7 +1,0 @@
-{
-    "parent": "dynamictrees:item/branch",
-    "textures": {
-        "bark": "natura:blocks/logs/overworld/willow_log",
-        "rings": "natura:blocks/logs/overworld/willow_log_top"
-    }
-}

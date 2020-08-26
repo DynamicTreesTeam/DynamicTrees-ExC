@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "age=0": { "model": "dynamictreesthaumicbases:fruit/magmacream_age0" },
-        "age=1": { "model": "dynamictreesthaumicbases:fruit/magmacream_age1" },
-        "age=2": { "model": "dynamictreesthaumicbases:fruit/magmacream_age2" },
-        "age=3": { "model": "dynamictreesthaumicbases:fruit/magmacream_age3" }
-    }
-}
