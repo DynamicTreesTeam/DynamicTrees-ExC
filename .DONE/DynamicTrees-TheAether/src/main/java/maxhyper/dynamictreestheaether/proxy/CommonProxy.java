@@ -2,6 +2,7 @@ package maxhyper.dynamictreestheaether.proxy;
 
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
@@ -29,7 +30,9 @@ public class CommonProxy {
 	
 	public void preInit() {
 		CustomCellKits.preInit();
-		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
+		if(WorldGenRegistry.isWorldGenEnabled()) {
+			GameRegistry.registerWorldGenerator(new WorldGen(), 0);
+		}
 	}
 	
 	public void init() {
