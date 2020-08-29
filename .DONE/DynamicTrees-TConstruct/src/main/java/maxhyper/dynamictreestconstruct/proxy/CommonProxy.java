@@ -8,9 +8,11 @@ import maxhyper.dynamictreestconstruct.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreestconstruct.growth.SlimeGrowthLogic;
 import maxhyper.dynamictreestconstruct.worldgen.DynamicMagmaSlimeIslandGenerator;
 import maxhyper.dynamictreestconstruct.worldgen.DynamicSlimeIslandGenerator;
+import maxhyper.dynamictreestconstruct.worldgen.WorldEvents;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
@@ -43,6 +45,7 @@ public class CommonProxy {
 	}
 	
 	public void postInit() {
+		MinecraftForge.EVENT_BUS.register(new WorldEvents());
 	}
 	
 }
