@@ -10,8 +10,10 @@ Join the discord server: https://discord.gg/83qcpkY
 
 Mods That Won't Be Done:
 
-  Wild Nature - Really buggy in 1.12
+  Wild Nature - Adds a bjillion trees
   
+  Binnie's Trees - Adds a bjillion trees
+
   Divine RPG - lags game too much
   
-  OTG - World generation makes replacing trees unreliable
+  OTG (And any OTG based mod) - World generation makes replacing trees unreliable
