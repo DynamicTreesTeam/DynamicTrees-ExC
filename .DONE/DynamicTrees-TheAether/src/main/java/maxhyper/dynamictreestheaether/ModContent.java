@@ -80,32 +80,44 @@ public class ModContent {
 
 		skyrootLeavesProperties = setUpLeaves(
 				ALTreeSkyroot.leavesBlock,
-				ALTreeSkyroot.leavesBlock.getDefaultState().withProperty(BlockAetherLeaves.leaf_type, EnumLeafType.Green),
+				ALTreeSkyroot.leavesBlock.getDefaultState()
+						.withProperty(BlockAetherLeaves.leaf_type, EnumLeafType.Green)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"deciduous",
 				4, 13);
 		goldenOakLeavesProperties = setUpLeaves(
 				ALTreeGoldenOak.leavesBlock,
-				ALTreeGoldenOak.leavesBlock.getDefaultState().withProperty(BlockAetherLeaves.leaf_type, EnumLeafType.Golden),
+				ALTreeGoldenOak.leavesBlock.getDefaultState()
+						.withProperty(BlockAetherLeaves.leaf_type, EnumLeafType.Golden)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"deciduous",
 				4, 13);
 		crystalLeavesProperties = setUpLeaves(
 				ALTreeCrystal.leavesBlock,
-				ALTreeCrystal.leavesBlock.getDefaultState().withProperty(BlockCrystalLeaves.leaf_type, EnumCrystalType.Crystal),
+				ALTreeCrystal.leavesBlock.getDefaultState()
+						.withProperty(BlockCrystalLeaves.leaf_type, EnumCrystalType.Crystal)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"conifer",
 				4, 13);
 		crystalFruitLeavesProperties = setUpLeaves(
 				ALTreeCrystal.leavesBlock,
-				ALTreeCrystal.leavesBlock.getDefaultState().withProperty(BlockCrystalLeaves.leaf_type, EnumCrystalType.Crystal_Fruited),
+				ALTreeCrystal.leavesBlock.getDefaultState()
+						.withProperty(BlockCrystalLeaves.leaf_type, EnumCrystalType.Crystal_Fruited)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"conifer",
 				4, 13);
 		holidayLeavesProperties = setUpLeaves(
 				ALTreeHoliday.leavesBlock,
-				ALTreeHoliday.leavesBlock.getDefaultState().withProperty(BlockHolidayLeaves.leaf_type, EnumHolidayType.Holiday_Leaves),
+				ALTreeHoliday.leavesBlock.getDefaultState()
+						.withProperty(BlockHolidayLeaves.leaf_type, EnumHolidayType.Holiday_Leaves)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"conifer",
 				4, 4);
 		holidayDecorLeavesProperties = setUpLeaves(
 				ALTreeHoliday.leavesBlock,
-				ALTreeHoliday.leavesBlock.getDefaultState().withProperty(BlockHolidayLeaves.leaf_type, EnumHolidayType.Decorated_Leaves),
+				ALTreeHoliday.leavesBlock.getDefaultState()
+						.withProperty(BlockHolidayLeaves.leaf_type, EnumHolidayType.Decorated_Leaves)
+						.withProperty(BlockLeaves.CHECK_DECAY, false),
 				"conifer",
 				4, 4);
 
