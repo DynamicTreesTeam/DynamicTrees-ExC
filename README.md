@@ -13,7 +13,5 @@ Mods That Won't Be Done:
   Wild Nature - Adds a bjillion trees
   
   Binnie's Trees - Adds a bjillion trees
-
-  Divine RPG - lags game too much
   
   OTG (And any OTG based mod) - World generation makes replacing trees unreliable
