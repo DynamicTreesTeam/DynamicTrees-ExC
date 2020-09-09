@@ -29,3 +29,5 @@ hs_err_pid*
 Art/
 files/
 DynamicTrees-Thaumicraft*
+
+.DS_Store
