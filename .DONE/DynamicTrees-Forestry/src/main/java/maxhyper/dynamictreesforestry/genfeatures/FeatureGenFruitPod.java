@@ -53,7 +53,7 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
     public boolean postGeneration(World world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, IBlockState initialDirtState) {
         boolean placed = false;
         for (int i=0;i<8;i++){
-            if(world.rand.nextInt() % 8 == 0) {
+            if(world.rand.nextInt() % 4 == 0) {
                 addCocoa(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)),true);
                 placed = true;
             }

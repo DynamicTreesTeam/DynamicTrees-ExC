@@ -32,7 +32,7 @@ public class ALTreeCrystal extends TreeFamily {
 		SpeciesCrystal(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.crystalLeavesProperties);
 
-			setBasicGrowingParameters(0.2f, 6.0f, 3, 3, 0.6f);
+			setBasicGrowingParameters(0.2f, 8.0f, 3, 3, 0.6f);
 			setGrowthLogicKit(TreeRegistry.findGrowthLogicKit(ModTrees.CONIFER));
 
 			envFactor(Type.COLD, 1.4f);
