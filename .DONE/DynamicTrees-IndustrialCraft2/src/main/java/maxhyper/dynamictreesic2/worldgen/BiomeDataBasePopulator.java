@@ -23,16 +23,16 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
         Biome.REGISTRY.forEach(biome -> {
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(20).add(rubber, 4);
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(25).add(rubber, 4);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(40).add(rubber, 8);
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(50).add(rubber, 1);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(90).add(rubber, 15);
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(100).add(rubber, 1);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.CONIFEROUS)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(60).add(rubber, 10);
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(70).add(rubber, 1);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             } else return;
 

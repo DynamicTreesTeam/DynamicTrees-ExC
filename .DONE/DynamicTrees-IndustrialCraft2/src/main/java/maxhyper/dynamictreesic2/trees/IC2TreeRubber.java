@@ -28,7 +28,7 @@ public class IC2TreeRubber extends TreeFamily {
 	public static Block logBlock = Block.getBlockFromName("ic2:rubber_wood");
 	public static Block saplingBlock = Block.getBlockFromName("ic2:sapling");
 
-	public class SpeciesRubberIC extends Species {
+	public static class SpeciesRubberIC extends Species {
 
 		SpeciesRubberIC(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.rubberICLeavesProperties);

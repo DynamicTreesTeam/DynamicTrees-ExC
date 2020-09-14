@@ -26,11 +26,11 @@ import java.util.Random;
 public class BlockDynamicBranchRubberIC extends BlockBranchBasic {
 
     public BlockDynamicBranchRubberIC() {
-        super(new ResourceLocation(DynamicTreesIC2.MODID,"rubberICbranch").toString());
+        super(new ResourceLocation(DynamicTreesIC2.MODID,"rubbericbranch").toString());
         setTickRandomly(true);
     }
     public BlockDynamicBranchRubberIC(boolean filled) {
-        super(new ResourceLocation(DynamicTreesIC2.MODID,"rubberICbranchfilled").toString());
+        super(new ResourceLocation(DynamicTreesIC2.MODID,"rubbericbranchfilled").toString());
         setTickRandomly(false);
     }
 
@@ -47,37 +47,15 @@ public class BlockDynamicBranchRubberIC extends BlockBranchBasic {
 
     @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
-        performUpdate(worldIn, pos, state, rand);
+        performUpdate(worldIn, pos);
     }
-    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
+
+    private void performUpdate(World worldIn, BlockPos pos){
         if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
                 RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
                 worldIn.getBlockState(pos.up()).getBlock() != ModContent.rubberICBranchFilled &&
                 worldIn.getBlockState(pos.down()).getBlock() != ModContent.rubberICBranchFilled){
             worldIn.setBlockState(pos, ModContent.rubberICBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-        }
-    }
-
-    public static void dropItem(ItemStack itemStack, World world, BlockPos pos) {
-        Random rand = new Random();
-
-        float dX = rand.nextFloat() * 0.8F + 0.1F;
-        float dY = rand.nextFloat() * 0.8F + 0.1F;
-        float dZ = rand.nextFloat() * 0.8F + 0.1F;
-
-        EntityItem entityItem = new EntityItem(world, pos.getX() + dX, pos.getY() + dY, pos.getZ() + dZ,
-                itemStack.copy());
-
-        if (itemStack.hasTagCompound()) {
-            entityItem.getItem().setTagCompound(itemStack.getTagCompound().copy());
-        }
-
-        float factor = 0.05F;
-        entityItem.motionX = rand.nextGaussian() * factor;
-        entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-        entityItem.motionZ = rand.nextGaussian() * factor;
-        if (!world.isRemote) {
-            world.spawnEntity(entityItem);
         }
     }
 
@@ -106,28 +84,6 @@ public class BlockDynamicBranchRubberIC extends BlockBranchBasic {
                     }
                 }
             }
-//            if (Loader.isModLoaded("techreborn")) {
-//                if (state.getBlock() == filledBranch) {
-//                    ForgePowerItemManager capEnergy = null;
-//                    if (handStack.getItem() == ModItems.ELECTRIC_TREE_TAP) {
-//                        capEnergy = new ForgePowerItemManager(handStack);
-//                    }
-//                    if ((capEnergy != null && capEnergy.getEnergyStored() > 20) || handStack.getItem() == ModItems.TREE_TAP) {
-//                        worldIn.setBlockState(pos, branch.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-//                        worldIn.playSound(playerIn, pos, ModSounds.SAP_EXTRACT, SoundCategory.BLOCKS, 0.6F, 1F);
-//                        resin.setCount( 1 + RANDOM.nextInt(3));
-//                        WorldUtils.dropItem(resin, worldIn, pos);
-//                        if (!worldIn.isRemote) {
-//                            if (capEnergy != null) {
-//                                capEnergy.extractEnergy(20, false);
-//                                ExternalPowerSystems.requestEnergyFromArmor(capEnergy, playerIn);
-//                            } else {
-//                                handStack.damageItem(1, playerIn);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 }

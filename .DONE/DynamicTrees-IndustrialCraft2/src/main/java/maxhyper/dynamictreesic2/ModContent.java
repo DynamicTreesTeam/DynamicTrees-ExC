@@ -64,7 +64,6 @@ public class ModContent {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		rubberICBranch = new BlockDynamicBranchRubberIC();
-		registry.register(rubberICBranch);
 		rubberICBranchFilled = new BlockDynamicBranchRubberIC(true);
 		registry.register(rubberICBranchFilled);
 
@@ -95,7 +94,8 @@ public class ModContent {
 		};
 	}
 
-	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		registry.register(new ItemBlock(rubberICBranchFilled).setRegistryName(Objects.requireNonNull(rubberICBranchFilled.getRegistryName())));
@@ -127,6 +127,8 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
+		ModelHelper.regModel(rubberICBranchFilled);
+
 		LeavesPaging.getLeavesMapForModId(DynamicTreesIC2.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
 	}

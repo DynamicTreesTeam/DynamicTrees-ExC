@@ -1,7 +1,7 @@
 {
     "parent": "dynamictrees:item/branch",
     "textures": {
-        "bark": "ic2:blocks/resource/rubber_wood_front",
+        "bark": "ic2:blocks/resource/rubber_wood_sides",
         "rings": "ic2:blocks/resource/rubber_wood_bottomtop"
     }
 }
