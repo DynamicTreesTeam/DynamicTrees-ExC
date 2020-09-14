@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.12.2-1.0.2"
+version = "1.12.2-1.1.0"
 group = "maxhyper.dynamictreesic2" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "dynamictreesIC2"
 
@@ -38,6 +38,9 @@ dependencies {
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
+
+    compile files('libs/industrialcraft-2-2.8.170-ex112');
+    compile files('libs/DynamicTrees-1.12.2-0.9.12');
       
     // real examples
     //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env

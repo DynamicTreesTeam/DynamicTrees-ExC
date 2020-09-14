@@ -18,13 +18,27 @@ import ic2.core.init.MainConfig;
 
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
-    private static Species oak;
-    private static Species rubber;
-
     public void populate(BiomeDataBase dbase) {
+        Species rubber = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesIC2.MODID, "rubberIC"));
 
-        //MainConfig.get().set("worldgen/rubberTree", false);
+        Biome.REGISTRY.forEach(biome -> {
+            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(20).add(rubber, 4);
+                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
+            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)) {
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(40).add(rubber, 8);
+                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
+            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(90).add(rubber, 15);
+                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
+            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.CONIFEROUS)) {
+                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(60).add(rubber, 10);
+                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
+            } else return;
 
+            DynamicTreesIC2.logger.info("Added Rubber species to biome database for " + biome.getBiomeName() + ".");
+        });
     }
+
 }
 
