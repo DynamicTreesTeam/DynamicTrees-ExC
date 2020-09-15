@@ -1,7 +1,7 @@
 item.dynamictreesquark:blossomingseed.name=Семя сакуры
 item.dynamictreesquark:swampoakseed.name=Семя болотного дуба
 
-tile.dynamictreesquark:leaves0.name=Динамическая листва
+tile.dynamictreesquark:leaves0.name=листва
 
-tile.dynamictreesquark:swampoakbranch.name=Динамическая листва болотного дуба
-tile.dynamictreesquark:blossomingbranch.name=Динамическая листва сакуры
+tile.dynamictreesquark:swampoakbranch.name=листва болотного дуба
+tile.dynamictreesquark:blossomingbranch.name=листва сакуры

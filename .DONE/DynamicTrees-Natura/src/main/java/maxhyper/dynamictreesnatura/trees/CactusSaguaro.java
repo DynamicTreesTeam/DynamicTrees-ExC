@@ -13,6 +13,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchCactus;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.event.SpeciesPostGenerationEvent;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
@@ -208,7 +209,9 @@ public class CactusSaguaro extends TreeFamily {
         {
             if (worldIn.getWorldInfo().isRaining() && worldIn.isAirBlock(pos.up()))
             {
-                boolean canGrow = (rand.nextInt(20) == 0);
+                float fruitFactor = SeasonHelper.globalSeasonalFruitProductionFactor(worldIn, pos);
+                if (fruitFactor <= 0) return;
+                boolean canGrow = (rand.nextInt((int)(20 / fruitFactor)) == 0);
 
                 if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, canGrow))
                 {

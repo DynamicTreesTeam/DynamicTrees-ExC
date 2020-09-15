@@ -109,8 +109,4 @@ public class TreeOak extends TreeFamily {
         return super.getRegisterableItems(itemList);
     }
 
-    @Override
-    public boolean autoCreateBranch() {
-        return true;
-    }
 }

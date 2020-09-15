@@ -1,0 +1,10 @@
+item.dynamictreesquark:blossomingseed.name=Carozo de Árbol Floreciente
+item.dynamictreesquark:swampoakseed.name=Bellota de Roble de Pantano
+
+species.dynamictreesquark:swampoak.name=Roble de Pantano
+species.dynamictreesquark:blossoming.name=Floreciente
+
+tile.dynamictreesquark:leaves0.name=Hojas
+
+tile.dynamictreesquark:swampoakbranch.name=Roble de Pantano
+tile.dynamictreesquark:blossomingbranch.name=Árbol Floreciente

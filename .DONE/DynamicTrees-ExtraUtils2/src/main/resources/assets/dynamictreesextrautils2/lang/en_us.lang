@@ -1,6 +1,8 @@
 item.dynamictreesextrautils2:ferrousjuniperseed.name=Ferrous-Juniper Cone
 item.dynamictreesextrautils2:ferrousjuniperburntseed.name=Dead Ferrous-Juniper Cone
 
+species.dynamictreesextrautils2:ferrousjuniper.name=Ferrous-Juniper
+
 tile.dynamictreesextrautils2:leaves_ferrous_juniper.name=Leaves
 
 tile.dynamictreesextrautils2:ferrousjuniperbranch.name=Ferrous-Juniper Tree

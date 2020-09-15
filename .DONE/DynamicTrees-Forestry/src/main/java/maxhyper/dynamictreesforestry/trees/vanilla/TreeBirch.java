@@ -92,8 +92,4 @@ public class TreeBirch extends TreeFamily {
         setCommonSpecies(new SpeciesBirch(this));
     }
 
-    @Override
-    public boolean autoCreateBranch() {
-        return true;
-    }
 }

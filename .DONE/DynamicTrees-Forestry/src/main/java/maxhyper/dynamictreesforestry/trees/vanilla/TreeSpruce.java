@@ -116,8 +116,4 @@ public class TreeSpruce extends TreeFamily {
         return true;
     }
 
-    @Override
-    public boolean autoCreateBranch() {
-        return true;
-    }
 }

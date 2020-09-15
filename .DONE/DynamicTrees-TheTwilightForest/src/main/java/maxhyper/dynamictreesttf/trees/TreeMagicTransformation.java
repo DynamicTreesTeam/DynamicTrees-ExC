@@ -139,7 +139,7 @@ public class TreeMagicTransformation extends TreeFamily {
 				}
 
 				if (side == EnumFacing.UP && world.isAirBlock(pos.down())) {
-					ry = pos.getY() + 0 - offset;
+					ry = pos.getY() - offset;
 				}
 
 				if (side == EnumFacing.NORTH && world.isAirBlock(pos.south())) {
@@ -147,7 +147,7 @@ public class TreeMagicTransformation extends TreeFamily {
 				}
 
 				if (side == EnumFacing.SOUTH && world.isAirBlock(pos.north())) {
-					rz = pos.getZ() + 0 - offset;
+					rz = pos.getZ() - offset;
 				}
 
 				if (side == EnumFacing.WEST && world.isAirBlock(pos.east())) {
@@ -155,7 +155,7 @@ public class TreeMagicTransformation extends TreeFamily {
 				}
 
 				if (side == EnumFacing.EAST && world.isAirBlock(pos.west())) {
-					rx = pos.getX() + 0 - offset;
+					rx = pos.getX() - offset;
 				}
 
 				if (rx < pos.getX() || rx > pos.getX() + 1 || ry < pos.getY() || ry > pos.getY() + 1 || rz < pos.getZ() || rz > pos.getZ() + 1) {

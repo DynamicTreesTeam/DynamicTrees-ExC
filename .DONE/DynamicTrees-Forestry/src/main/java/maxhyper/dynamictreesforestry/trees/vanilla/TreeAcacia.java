@@ -71,8 +71,4 @@ public class TreeAcacia extends TreeFamily {
         setCommonSpecies(new SpeciesAcacia(this));
     }
 
-    @Override
-    public boolean autoCreateBranch() {
-        return true;
-    }
 }

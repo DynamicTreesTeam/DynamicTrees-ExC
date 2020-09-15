@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFruitCocoa;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
@@ -31,9 +32,17 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
         allowedSize = Math.max(size, 1);
     }
 
+    private int getFruitChance (World world, BlockPos pos, boolean worldgen){
+        if (!worldgen){
+            float factor = SeasonHelper.globalSeasonalFruitProductionFactor(world, pos);
+            if (factor <= 0) return -1;
+            return (int)(16 / factor);
+        } else return 4;
+    }
+
     @Override
     public boolean postGrow(World world, BlockPos rootPos, BlockPos treePos, Species species, int soilLife, boolean natural) {
-        if(world.rand.nextInt() % 16 == 0) {
+        if(world.rand.nextInt() % getFruitChance(world, rootPos, false) == 0) {
             addCocoa(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)), false);
         }
         return false;
@@ -53,7 +62,7 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
     public boolean postGeneration(World world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, IBlockState initialDirtState) {
         boolean placed = false;
         for (int i=0;i<8;i++){
-            if(world.rand.nextInt() % 4 == 0) {
+            if(world.rand.nextInt() % getFruitChance(world, rootPos,true) == 0) {
                 addCocoa(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)),true);
                 placed = true;
             }

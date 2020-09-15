@@ -1,7 +1,10 @@
-item.dynamictreesquark:blossomingseed.name=Blossoming Stone
+item.dynamictreesquark:blossomingseed.name=Blossoming Tree Stone
 item.dynamictreesquark:swampoakseed.name=Swamp Oak Acorn
 
-tile.dynamictreesquark:leaves0.name=Dynamic Leaves
+species.dynamictreesquark:swampoak.name=Swamp Oak
+species.dynamictreesquark:blossoming.name=Blossoming
 
-tile.dynamictreesquark:swampoakbranch.name=Dynamic Swamp Oak Tree
-tile.dynamictreesquark:blossomingbranch.name=Dynamic Blossoming Tree
+tile.dynamictreesquark:leaves0.name=Leaves
+
+tile.dynamictreesquark:swampoakbranch.name=Swamp Oak Tree
+tile.dynamictreesquark:blossomingbranch.name=Blossoming Tree

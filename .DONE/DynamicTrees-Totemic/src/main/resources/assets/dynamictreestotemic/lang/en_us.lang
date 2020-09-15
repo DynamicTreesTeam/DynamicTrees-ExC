@@ -1,5 +1,7 @@
 item.dynamictreestotemic:redcedarseed.name=Red Cedar Cone
 
-tile.dynamictreestotemic:leaves0.name=Dynamic Leaves
+species.dynamictreestotemic:redcedar.name=Red Cedar
 
-tile.dynamictreestotemic:redcedarbranch.name=Dynamic Red Cedar Tree
+tile.dynamictreestotemic:leaves0.name=Red Cedar Leaves
+
+tile.dynamictreestotemic:redcedarbranch.name=Red Cedar Tree

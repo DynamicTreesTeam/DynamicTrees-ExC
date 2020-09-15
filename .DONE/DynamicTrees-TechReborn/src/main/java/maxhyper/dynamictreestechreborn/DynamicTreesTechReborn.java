@@ -16,7 +16,6 @@ public class DynamicTreesTechReborn {
 	public static final String MODID = "dynamictreestechreborn";
 	public static final String NAME = "Dynamic Trees Extra Compat";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
-			//+ ";after:quark"
 			+ ";required-after:techreborn";
 	
 	@Mod.Instance

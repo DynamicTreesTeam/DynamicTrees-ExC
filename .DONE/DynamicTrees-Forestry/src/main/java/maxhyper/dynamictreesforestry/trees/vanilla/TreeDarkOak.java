@@ -162,11 +162,6 @@ public class TreeDarkOak extends TreeFamily {
     }
 
     @Override
-    public boolean autoCreateBranch() {
-        return true;
-    }
-
-    @Override
     public List<Block> getRegisterableBlocks(List<Block> blockList) {
         blockList = super.getRegisterableBlocks(blockList);
         blockList.add(surfaceRootBlock);

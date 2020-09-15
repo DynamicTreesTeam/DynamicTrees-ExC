@@ -66,7 +66,9 @@ public class TRTreeRubber extends TreeFamily {
 
 		setDynamicBranch(ModContent.rubberBranch);
 		ModContent.rubberBranchFilled.setFamily(this);
-		
+
+		setPrimitiveLog(logBlock.getDefaultState());
+
 		ModContent.rubberLeavesProperties.setTree(this);
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);

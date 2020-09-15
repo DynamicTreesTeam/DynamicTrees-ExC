@@ -103,10 +103,4 @@ public class TCTreeSlimeBlue extends TreeFamily {
 	public boolean isThick() {
 		return false;
 	}
-
-	@Override
-	public boolean autoCreateBranch() {
-		return false;
-	}
-
 }

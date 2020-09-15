@@ -1,6 +1,9 @@
 # Items
 item.dynamictreesic2:rubbericseed.name=Rubber Pod
 
+# Species
+species.dynamictreesic2:rubberic.name=Rubber
+
 # Blocks
 tile.dynamictreesic2:leaves0.name=Rubber Tree Leaves
 tile.dynamictreesic2:rubbericbranch.name=Rubber Tree

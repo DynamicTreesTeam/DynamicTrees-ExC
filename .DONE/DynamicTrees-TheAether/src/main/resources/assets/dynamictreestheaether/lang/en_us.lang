@@ -3,10 +3,15 @@ item.dynamictreestheaether:goldenoakseed.name=Golden Oak Acorn
 item.dynamictreestheaether:crystalseed.name=White Apple Pip
 item.dynamictreestheaether:holidayseed.name=Holiday Tree Cone
 
-tile.dynamictreestheaether:leaves0.name=Dynamic Leaves
-tile.dynamictreestheaether:leaves_crystal.name=Dynamic Leaves
+species.dynamictreestheaether:skyroot.name=Skyroot
+species.dynamictreestheaether:goldenoak.name=Golden Oak
+species.dynamictreestheaether:crystal.name=Crystal
+species.dynamictreestheaether:holiday.name=Holiday
 
-tile.dynamictreestheaether:skyrootbranch.name=Dynamic Skyroot Tree
-tile.dynamictreestheaether:goldenoakbranch.name=Dynamic Golden Oak Tree
-tile.dynamictreestheaether:crystalbranch.name=Dynamic Crystal Tree
-tile.dynamictreestheaether:holidaybranch.name=Dynamic Holiday Tree
+tile.dynamictreestheaether:leaves0.name=Leaves
+tile.dynamictreestheaether:leaves_crystal.name=Leaves
+
+tile.dynamictreestheaether:skyrootbranch.name=Skyroot Tree
+tile.dynamictreestheaether:goldenoakbranch.name=Golden Oak Tree
+tile.dynamictreestheaether:crystalbranch.name=Crystal Tree
+tile.dynamictreestheaether:holidaybranch.name=Holiday Tree

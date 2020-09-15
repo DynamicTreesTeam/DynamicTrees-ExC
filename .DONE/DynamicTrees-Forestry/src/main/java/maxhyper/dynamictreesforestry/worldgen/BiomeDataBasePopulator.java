@@ -20,8 +20,10 @@ import net.minecraftforge.common.BiomeDictionary;
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     private static Species balsa, baobab, bullPine, cherry, chestnut, coastSequoia, cocobolo, desertAcacia, ebony,
-            ipe, kapok, larch, lemon, mahoe, maple, meranti, padauk, palm, papaya, plum, poplar, silverLime, sipiri,
+            ipe, kapok, larch, lemon, mahoe, maple, mahogany, padauk, palm, papaya, plum, poplar, silverLime, greenheart,
             teak, walnut, wenge, willow, zebrawood;
+
+    private float globalRarity;
 
     private static void createStaticAliases() {
         balsa = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.BALSA));
@@ -33,13 +35,13 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
         ebony = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.EBONY));
         larch = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.LARCH));
         maple = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.MAPLE));
-        meranti = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.MAHOGANY));
+        mahogany = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.MAHOGANY));
         padauk = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.PADAUK));
         palm = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.DATEPALM));
         papaya = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.PAPAYA));
         plum = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.PLUM));
         silverLime = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.SILVERLIME));
-        sipiri = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.GREENHEART));
+        greenheart = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.GREENHEART));
         teak = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.TEAK));
         wenge = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.WENGE));
         willow = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.WILLOW));
@@ -49,66 +51,74 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
     public void populate(BiomeDataBase dbase) {
         createStaticAliases();
         TreeConfig.blacklistTreeDim(null, 0); //Disables forestry trees from spawning in the overworld
-        float globalRarity = TreeConfig.getSpawnRarity(null);
+        globalRarity = TreeConfig.getSpawnRarity(null);
         if (globalRarity <= 0.0F) {
             return;
         }
         Biome.REGISTRY.forEach(biome -> {
             if (biome == Biomes.RIVER){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().
-                        add(palm, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.DATEPALM)) * globalRarity));
+                        add(palm, getSpawnWeight(ModConstants.DATEPALM, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.REPLACE);
                 dbase.setChanceSelector(biome, (rand, species, radius) -> rand.nextFloat() < 0.2f ? BiomePropertySelectors.EnumChance.OK : BiomePropertySelectors.EnumChance.CANCEL, Operation.REPLACE);
                 dbase.setDensitySelector(biome, (rand, noiseDensity) -> noiseDensity * 0.01, Operation.REPLACE);
             }
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
-                        add(willow, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.WILLOW)) * globalRarity));
+                        add(willow, getSpawnWeight(ModConstants.WILLOW, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             }
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
-                        add(plum, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.PLUM)) * globalRarity)).
-                        add(palm, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.DATEPALM)) * globalRarity)).
-                        add(teak, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.TEAK)) * globalRarity)).
-                        add(balsa, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.BALSA)) * globalRarity)).
-                        add(meranti, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.MAHOGANY)) * globalRarity)).
-                        add(papaya, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.PAPAYA)) * globalRarity)).
-                        add(zebrawood, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.ZEBRAWOOD)) * globalRarity)).
-                        add(sipiri, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.GREENHEART)) * globalRarity)).
-                        add(ebony, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.EBONY)) * globalRarity)).
-                        add(cocobolo, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.COCOBOLO)) * globalRarity)).
-                        add(wenge, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.WENGE)) * globalRarity)).
-                        add(padauk, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.PADAUK)) * globalRarity));//.
-                        //add(mahoe, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.MAHOE)) * globalRarity));
+                        add(plum, getSpawnWeight(ModConstants.PLUM, biome)).
+                        add(palm, getSpawnWeight(ModConstants.DATEPALM, biome)).
+                        add(teak, getSpawnWeight(ModConstants.TEAK, biome)).
+                        add(balsa, getSpawnWeight(ModConstants.BALSA, biome)).
+                        add(mahogany, getSpawnWeight(ModConstants.MAHOGANY, biome)).
+                        add(papaya, getSpawnWeight(ModConstants.PAPAYA, biome)).
+                        add(zebrawood, getSpawnWeight(ModConstants.ZEBRAWOOD, biome)).
+                        add(greenheart, getSpawnWeight(ModConstants.GREENHEART, biome)).
+                        add(ebony, getSpawnWeight(ModConstants.EBONY, biome)).
+                        add(cocobolo, getSpawnWeight(ModConstants.COCOBOLO, biome)).
+                        add(wenge, getSpawnWeight(ModConstants.WENGE, biome)).
+                        add(padauk, getSpawnWeight(ModConstants.PADAUK, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD)){
+            }
+            else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD)){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
-                        add(bullPine, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.BULLPINE)) * globalRarity)).
-                        add(larch, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.LARCH)) * globalRarity));
+                        add(bullPine, getSpawnWeight(ModConstants.BULLPINE, biome)).
+                        add(larch, getSpawnWeight(ModConstants.LARCH, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)){
+            }
+            else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST)){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
-                        add(cherry, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.CHERRY)) * globalRarity)).
-                        add(maple, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.MAPLE)) * globalRarity)).
-                        add(silverLime, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.SILVERLIME)) * globalRarity));
+                        add(cherry, getSpawnWeight(ModConstants.CHERRY, biome)).
+                        add(maple, getSpawnWeight(ModConstants.MAPLE, biome)).
+                        add(silverLime, getSpawnWeight(ModConstants.SILVERLIME, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             }
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SAVANNA)){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).
-                        add(desertAcacia, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.DESERTACACIA)) * globalRarity)).
-                        add(padauk, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.PADAUK)) * globalRarity));
+                        add(desertAcacia, getSpawnWeight(ModConstants.DESERTACACIA, biome)).
+                        add(padauk, getSpawnWeight(ModConstants.PADAUK, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             }
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.PLAINS) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD)){
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(500). //We use 500 instead of 100 to make baobab extra rare
-                        add(baobab, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.BAOBAB)) * globalRarity)).
-                        add(ebony, (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(ModConstants.EBONY)) * globalRarity));
+                        add(baobab, getSpawnWeight(ModConstants.BAOBAB, biome)).
+                        add(ebony, getSpawnWeight(ModConstants.EBONY, biome));
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
             }
 
         });
 
+    }
+
+    protected int getSpawnWeight (String tree, Biome biome){
+        if (TreeConfig.isValidBiome(ModContent.getTreeUIDfromID(tree), biome)){
+            return (int)Math.ceil(10 * TreeConfig.getSpawnRarity(ModContent.getTreeUIDfromID(tree)) * globalRarity);
+        }
+        return 0;
     }
 
 }

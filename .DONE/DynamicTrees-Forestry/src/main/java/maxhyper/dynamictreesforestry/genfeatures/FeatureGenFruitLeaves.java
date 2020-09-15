@@ -3,6 +3,7 @@ package maxhyper.dynamictreesforestry.genfeatures;
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import net.minecraft.block.state.IBlockState;
@@ -49,8 +50,9 @@ public class FeatureGenFruitLeaves implements IPostGenFeature, IPostGrowFeature 
         if (world.getBlockState(pos).getBlock() == leaf1.getBlock() &&
                 world.getBlockState(pos).getValue(BlockDynamicLeaves.TREE).equals(leaf1.getValue(BlockDynamicLeaves.TREE)) &&
                 world.getBlockState(pos).getValue(BlockDynamicLeaves.HYDRO) == 1){
-
-            world.setBlockState(pos, leaf2.withProperty(BlockDynamicLeaves.TREE, growthStage));
+            if (world.rand.nextFloat() <= SeasonHelper.globalSeasonalFruitProductionFactor(world, pos)){
+                world.setBlockState(pos, leaf2.withProperty(BlockDynamicLeaves.TREE, growthStage));
+            }
         } else if (world.getBlockState(pos).getBlock() == leaf2.getBlock()){
             world.setBlockState(pos, leaf1);
         }

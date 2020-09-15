@@ -3,6 +3,11 @@ item.dynamictreesthaumicbases:enderoakseed.name=Ender Oak Acorn
 item.dynamictreesthaumicbases:hellishoakseed.name=Hellish Oak Acorn
 item.dynamictreesthaumicbases:rainbowcactusseed.name=Rainbow Cactus Seed
 
+species.dynamictreesthaumicbases:goldenoak.name=Golden Oak
+species.dynamictreesthaumicbases:enderoak.name=Ender Oak
+species.dynamictreesthaumicbases:hellishoak.name=Hellish Oak
+species.dynamictreesthaumicbases:rainbowcactus.name=Rainbow Cactus
+
 tile.dynamictreesthaumicbases:leaves0.name=Leaves
 
 tile.dynamictreesthaumicbases:goldenoakbranch.name=Golden Oak Tree
