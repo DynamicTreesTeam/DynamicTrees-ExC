@@ -4,6 +4,7 @@ import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import com.progwml6.natura.common.config.Config;
+import com.progwml6.natura.overworld.block.saplings.BlockOverworldSapling;
 import com.progwml6.natura.shared.NaturaCommons;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.ModContent;
@@ -12,6 +13,8 @@ import maxhyper.dynamictreesnatura.growth.BloodwoodGrowthLogic;
 import maxhyper.dynamictreesnatura.growth.CustomCellKits;
 import maxhyper.dynamictreesnatura.growth.HopseedGrowthLogic;
 import maxhyper.dynamictreesnatura.worldgen.WorldGen;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -60,8 +63,15 @@ public class CommonProxy {
 	public void init() {
 		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"))
 				.addDropCreator(new DropCreatorOtherSeed(NaturaCommons.potashApple));
+
+		// Register sapling replacements.
+		// registerSaplingReplacement();
 	}
-	
+
+	private static void registerSaplingReplacement(final String blockName, final String speciesName) {
+		// TreeRegistry.registerSaplingReplacer(Block.getBlockFromName("natura:" + blockName).getDefaultState().withProperty(BlockOverworldSapling.FOLIAGE, "d"), TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, speciesName)));
+	}
+
 	public void postInit(){
 	}
 	

@@ -64,11 +64,10 @@ public class ModContent {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		rubberICBranch = new BlockDynamicBranchRubberIC();
-		registry.register(rubberICBranch);
 		rubberICBranchFilled = new BlockDynamicBranchRubberIC(true);
 		registry.register(rubberICBranchFilled);
 
-		rubberICLeavesProperties = setUpLeaves(IC2TreeRubber.leavesBlock, "deciduous", 2, 13);
+		rubberICLeavesProperties = setUpLeaves(IC2TreeRubber.leavesBlock, "deciduous", 3, 13);
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesIC2.MODID, 0, rubberICLeavesProperties);
 
@@ -82,51 +81,21 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-		};
-		return leavesProperties;
-	}
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
+		return new LeavesProperties(
 				leavesBlock.getDefaultState(),
 				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
+				TreeRegistry.findCellKit(cellKit)) {
+			@Override public int getSmotherLeavesMax() { return smother; } // Default: 4
+			@Override public int getLightRequirement() { return light; } // Default: 13
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
 				return new ItemStack(leavesBlock, 1, 0);
 			}
 		};
-		return leavesProperties;
-	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
-			}
-		};
-		return leavesProperties;
 	}
 
-	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		registry.register(new ItemBlock(rubberICBranchFilled).setRegistryName(Objects.requireNonNull(rubberICBranchFilled.getRegistryName())));
@@ -158,6 +127,8 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
+		ModelHelper.regModel(rubberICBranchFilled);
+
 		LeavesPaging.getLeavesMapForModId(DynamicTreesIC2.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
 	}

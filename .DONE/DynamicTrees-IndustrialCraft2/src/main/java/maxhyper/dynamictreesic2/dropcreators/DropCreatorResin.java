@@ -16,7 +16,7 @@ public class DropCreatorResin extends DropCreator {
 
 	private final Item resin;
 	private final int resinMeta;
-	private int dropCount = 1;
+	private final int dropCount;
 
 	public DropCreatorResin(ItemStack resinStack) {
 		super(new ResourceLocation(DynamicTreesIC2.MODID, resinStack.getItem().getRegistryName().getResourcePath()));

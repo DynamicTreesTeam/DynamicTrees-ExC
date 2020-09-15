@@ -28,7 +28,7 @@ public class IC2TreeRubber extends TreeFamily {
 	public static Block logBlock = Block.getBlockFromName("ic2:rubber_wood");
 	public static Block saplingBlock = Block.getBlockFromName("ic2:sapling");
 
-	public class SpeciesRubberIC extends Species {
+	public static class SpeciesRubberIC extends Species {
 
 		SpeciesRubberIC(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.rubberICLeavesProperties);
@@ -50,15 +50,6 @@ public class IC2TreeRubber extends TreeFamily {
 		public boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
 			return super.isAcceptableSoil(world, pos, soilBlockState) || soilBlockState.getBlock() instanceof BlockDirt || soilBlockState.getBlock() instanceof BlockGrass;
 		}
-
-//		@Override
-//		protected EnumFacing newDirectionSelected(EnumFacing newDir, GrowSignal signal) {
-//			if (signal.isInTrunk() && newDir != EnumFacing.UP) { // Turned out of trunk
-//				signal.energy *= 0.3f;
-//				if (signal.energy > 3) signal.energy = 3;
-//			}
-//			return newDir;
-//		}
 	}
 
 	public IC2TreeRubber() {

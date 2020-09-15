@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid= DynamicTreesIC2.MODID, name= DynamicTreesIC2.NAME, dependencies = DynamicTreesIC2.DEPENDENCIES)
 public class DynamicTreesIC2 {
@@ -23,9 +24,12 @@ public class DynamicTreesIC2 {
 	
 	@SidedProxy(clientSide = "maxhyper.dynamictreesic2.proxy.ClientProxy", serverSide = "maxhyper.dynamictreesic2.proxy.CommonProxy") //com.
 	public static CommonProxy proxy;
-	
+
+	public static Logger logger;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		logger = event.getModLog();
 		proxy.preInit();
 	}
 	
