@@ -2,9 +2,9 @@ package maxhyper.dynamictreesthaumicbases.event;
 
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
-import com.rumaruka.tb.utils.TBConfig;
+import com.rumaruka.thaumicbases.utils.TBConfig;
 import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
-import com.rumaruka.tb.init.TBBlocks;
+import com.rumaruka.thaumicbases.init.TBBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

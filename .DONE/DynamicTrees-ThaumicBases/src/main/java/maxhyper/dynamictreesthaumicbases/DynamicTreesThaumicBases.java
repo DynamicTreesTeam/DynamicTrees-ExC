@@ -17,7 +17,7 @@ public class DynamicTreesThaumicBases {
 	public static final String NAME = "Dynamic Trees Extra Compat";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
 			+ ";after:thaumcraft"
-			+ ";required-after:thaumicbases";
+			+ ";required-after:thaumicbases@[3.3.500.6r,)";
 	
 	@Mod.Instance
 	public static DynamicTreesThaumicBases instance;
