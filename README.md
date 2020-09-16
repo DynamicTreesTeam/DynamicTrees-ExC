@@ -15,3 +15,5 @@ Mods That Won't Be Done:
   Binnie's Trees - Adds a bjillion trees
   
   OTG (And any OTG based mod) - World generation makes replacing trees unreliable
+
+  Mods without a public source (Reason why MCreator mods are unfortunately out of the question)
