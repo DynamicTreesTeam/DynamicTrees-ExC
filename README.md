@@ -8,12 +8,4 @@ Join the discord server: https://discord.gg/83qcpkY
 .
 
 
-Mods That Won't Be Done:
-
-  Wild Nature - Adds a bjillion trees
-  
-  Binnie's Trees - Adds a bjillion trees
-  
-  OTG (And any OTG based mod) - World generation makes replacing trees unreliable
-
-  Mods without a public source (Reason why MCreator mods are unfortunately out of the question)
+Mods Requests here: https://github.com/supermassimo/DynamicTrees-ExC/issues/41
