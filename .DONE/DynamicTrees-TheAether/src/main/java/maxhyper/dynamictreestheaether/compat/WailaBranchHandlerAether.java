@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockTrunkShell;
 import com.ferreusveritas.dynamictrees.compat.WailaBranchHandler;
+import com.ferreusveritas.dynamictrees.compat.WailaOther;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeNetVolume;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.gildedgames.the_aether.items.ItemsAether;
@@ -22,6 +23,7 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.SpecialChars;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,6 +31,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -44,6 +47,12 @@ public class WailaBranchHandlerAether extends WailaBranchHandler {
 
         tooltip.clear();
 
+        if(WailaOther.invalidate) {
+            lastPos = BlockPos.ORIGIN;
+            lastSpecies = Species.NULLSPECIES;
+            lastVolume = 0;
+        }
+
         NBTTagCompound nbtData = accessor.getNBTData();
         BlockPos pos = accessor.getPosition();
         Species species = Species.NULLSPECIES;
@@ -52,12 +61,10 @@ public class WailaBranchHandlerAether extends WailaBranchHandler {
         if(nbtData.hasKey("species")) {
             species = TreeRegistry.findSpecies(new ResourceLocation(nbtData.getString("species")));
         }
-
         //Attempt to get species by checking if we're still looking at the same block
         if(species == Species.NULLSPECIES && lastPos.equals(pos)) {
             species = lastSpecies;
         }
-
         //Attempt to get species from the world as a last resort as the operation can be rather expensive
         if(species == Species.NULLSPECIES) {
             species = getWailaSpecies(accessor.getWorld(), pos);
@@ -72,7 +79,14 @@ public class WailaBranchHandlerAether extends WailaBranchHandler {
         lastPos = pos;
 
         if(species != Species.NULLSPECIES) {
-            tooltip.add("Species: " + species.getRegistryName().getResourcePath());
+
+            if(species != species.getFamily().getCommonSpecies()) {
+                tooltip.add("Species: " + species.getLocalizedName());
+            }
+
+            if(Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                tooltip.add(TextFormatting.DARK_GRAY + species.getRegistryName().toString());
+            }
 
             String renderString = "";
 
@@ -140,29 +154,7 @@ public class WailaBranchHandlerAether extends WailaBranchHandler {
     }
 
     private Species getWailaSpecies(World world, BlockPos pos) {
-        IBlockState state = world.getBlockState(pos);
-        Block block = state.getBlock();
-
-        //Dereference proxy trunk shell block
-        if(block instanceof BlockTrunkShell) {
-            BlockTrunkShell.ShellMuse muse = ((BlockTrunkShell)block).getMuse(world, pos);
-            if(muse != null) {
-                state = muse.state;
-                block = state.getBlock();
-                pos = muse.pos;
-            }
-        }
-
-        if(block instanceof BlockBranch) {
-            BlockBranch branch = (BlockBranch) state.getBlock();
-            Species species = TreeHelper.getExactSpecies(state, world, pos);
-            if(species == Species.NULLSPECIES) {
-                species = branch.getFamily().getCommonSpecies();
-            }
-            return species;
-        }
-
-        return Species.NULLSPECIES;
+        return TreeHelper.getBestGuessSpecies(world, pos);
     }
 
 }

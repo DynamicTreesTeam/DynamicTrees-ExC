@@ -1,0 +1,14 @@
+item.dynamictreesatum:palmseed.name=Palm Tree Seed
+item.dynamictreesatum:deadpalmseed.name=Dead Palm Tree Seed
+item.dynamictreesatum:deadtreeseed.name=Dead Tree Seed
+
+species.dynamictreesatum:palm.name=Palm
+species.dynamictreesatum:deadpalm.name=Dead Palm
+species.dynamictreesatum:deadtree.name=Dead Tree
+
+tile.dynamictreesatum:leaves0.name=Leaves
+tile.dynamictreesatum:leaves_palm.name=Palm Leaves
+
+tile.dynamictreesatum:palmbranch.name=Palm Tree
+tile.dynamictreesatum:deadpalmbranch.name=Dead Palm Tree
+tile.dynamictreesatum:deadtreebranch.name=Dead Tree

@@ -60,6 +60,8 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
+		String[] a = new String[1];
+
 			//Branches
 			menrilBranch = new BlockDynamicBranchMenril();
 			registry.register(menrilBranch);

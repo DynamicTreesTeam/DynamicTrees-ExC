@@ -10,8 +10,8 @@ import com.ferreusveritas.dynamictrees.blocks.BlockFruit;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion;
-import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.TreeAcacia;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -54,7 +54,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-
 import java.util.*;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesForestry.MODID)
@@ -82,7 +81,11 @@ public class ModContent {
 	public static BlockFruit chestnutFruit, walnutFruit, cherryFruit, lemonFruit, plumFruit;
 
 	// trees added by this mod
-	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
+	public static ArrayList<TreeFamily> trees = new ArrayList<>();
+
+	// extra species added by this mod
+	public static ArrayList<Species> vanillaSpecies = new ArrayList<>();
+
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent event) {
 		event.register(new BiomeDataBasePopulator());
@@ -159,13 +162,13 @@ public class ModContent {
 		plumLeaves = new BlockDynamicLeavesFruit("leaves_plum", BlockDynamicLeavesFruit.fruitTypes.PLUM);
 		registry.register(plumLeaves);
 
-        oakLeavesProperties = setUpLeaves(TreeOak.leavesBlock, TreeOak.leavesMeta, "deciduous");
-			fruitAppleLeavesProperties = setUpLeaves(TreeOak.leavesBlock, TreeOak.leavesMeta, "deciduous");
-        spruceLeavesProperties = setUpLeaves(TreeSpruce.leavesBlock, TreeSpruce.leavesMeta, "conifer");
-		birchLeavesProperties = setUpLeaves(TreeBirch.leavesBlock, TreeBirch.leavesMeta, "deciduous");
-        jungleLeavesProperties = setUpLeaves(TreeJungle.leavesBlock, TreeJungle.leavesMeta, "acacia");
-        darkOakLeavesProperties = setUpLeaves(TreeDarkOak.leavesBlock, TreeDarkOak.leavesMeta, "darkOak");
-        acaciaLeavesProperties = setUpLeaves(TreeAcacia.leavesBlock, TreeAcacia.leavesMeta, "deciduous");
+        oakLeavesProperties = setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous");
+			fruitAppleLeavesProperties = setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous");
+        spruceLeavesProperties = setUpLeaves(SpeciesSpruce.leavesBlock, SpeciesSpruce.leavesMeta, "conifer");
+		birchLeavesProperties = setUpLeaves(SpeciesBirch.leavesBlock, SpeciesBirch.leavesMeta, "deciduous");
+        jungleLeavesProperties = setUpLeaves(SpeciesJungle.leavesBlock, SpeciesJungle.leavesMeta, "acacia");
+        darkOakLeavesProperties = setUpLeaves(SpeciesDarkOak.leavesBlock, SpeciesDarkOak.leavesMeta, "darkOak");
+        acaciaLeavesProperties = setUpLeaves(SpeciesAcacia.leavesBlock, SpeciesAcacia.leavesMeta, "deciduous");
 
 		silverLimeLeavesProperties = setUpLeaves(TreeSilverLime.leavesBlock, TreeSilverLime.leavesMeta, "deciduous");
 		walnutLeavesProperties = setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous");
@@ -281,12 +284,24 @@ public class ModContent {
 		fruitPlumLeavesProperties.setDynamicLeavesState(plumLeaves.getDefaultState());
 		plumLeaves.setProperties(fruitPlumLeavesProperties);
 
-		TreeFamily oak = new TreeOak();
-        TreeFamily birch = new TreeBirch();
-        TreeFamily spruce = new TreeSpruce();
-        TreeFamily jungle = new TreeJungle();
-        TreeFamily darkOak = new TreeDarkOak();
-        TreeFamily acacia = new TreeAcacia();
+		TreeFamily vanillaOak = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "oak")).getFamily();
+		TreeFamily vanillaBirch = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "birch")).getFamily();
+		TreeFamily vanillaSpruce = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "spruce")).getFamily();
+		TreeFamily vanillaJungle = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "jungle")).getFamily();
+		TreeFamily vanillaDarkOak = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "darkoak")).getFamily();
+		TreeFamily vanillaAcacia = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "acacia")).getFamily();
+		Species oak = new SpeciesOak(vanillaOak);
+		vanillaSpecies.add(oak);
+        Species birch = new SpeciesBirch(vanillaBirch);
+		vanillaSpecies.add(birch);
+		Species spruce = new SpeciesSpruce(vanillaSpruce);
+		vanillaSpecies.add(spruce);
+		Species jungle = new SpeciesJungle(vanillaJungle);
+		vanillaSpecies.add(jungle);
+		Species darkOak = new SpeciesDarkOak(vanillaDarkOak);
+		vanillaSpecies.add(darkOak);
+		Species acacia = new SpeciesAcacia(vanillaAcacia);
+		vanillaSpecies.add(acacia);
 
 		TreeFamily silverLime = new TreeSilverLime();
 		TreeFamily walnut = new TreeWalnut();
@@ -318,13 +333,14 @@ public class ModContent {
 		TreeFamily palm = new TreePalm();
 		TreeFamily poplar = new TreePoplar();
 
-		Collections.addAll(trees, oak, birch, spruce, jungle, darkOak, acacia,
+		Collections.addAll(trees,
 				silverLime, walnut, chestnut, cherry, lemon, plum, maple, larch, bullPine, coastSequoia
 				//, giantSequoia
 				, teak, ipe, kapok, ebony, zebrawood, meranti, desertAcacia, paduk, balsa, cocobolo, wenge
 				, baobab, mahoe, willow, sipiri, papaya, palm, poplar
 		);
 
+		Species.REGISTRY.registerAll(vanillaSpecies.toArray(new Species[0]));
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
@@ -365,6 +381,7 @@ public class ModContent {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		ArrayList<Item> treeItems = new ArrayList<>();
+		vanillaSpecies.forEach(species -> treeItems.add(species.getSeed()));
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
 		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
 	}
@@ -540,6 +557,8 @@ public class ModContent {
 			ModelHelper.regModel(tree);
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesForestry.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
+
+		vanillaSpecies.forEach(species -> ModelHelper.regModel(species.getSeed()));
 
 		ModelLoader.setCustomStateMapper(TreeWillow.willowLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).ignore(BlockDynamicLeaves.TREE).build());
 		ModelLoader.setCustomStateMapper(ModContent.palmLeavesProperties.getDynamicLeavesState().getBlock(), new StateMap.Builder().ignore(BlockDynamicLeaves.TREE).build());

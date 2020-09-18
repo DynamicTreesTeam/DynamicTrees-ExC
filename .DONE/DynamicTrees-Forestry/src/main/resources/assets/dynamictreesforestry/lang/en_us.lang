@@ -1,9 +1,9 @@
 item.dynamictreesforestry:oakseed.name=Apple Oak Pip
 item.dynamictreesforestry:spruceseed.name=Red Spruce Cone
 item.dynamictreesforestry:birchseed.name=Silver Birch Catkin
-item.dynamictreesforestry:jungleseed.name=Jungle Pod
-item.dynamictreesforestry:darkoakseed.name=Dark Oak Acorn
-item.dynamictreesforestry:acaciaseed.name=Acacia Seed
+item.dynamictreesforestry:jungleseed.name=Bright Jungle Pod
+item.dynamictreesforestry:darkoakseed.name=Stout Dark Oak Acorn
+item.dynamictreesforestry:acaciaseed.name=Savanna Acacia Seed
 item.dynamictreesforestry:silverlimeseed.name=Silver Lime Seed
 item.dynamictreesforestry:walnutseed.name=Germinated Walnut
 item.dynamictreesforestry:chestnutseed.name=Germinated Chestnut
@@ -34,17 +34,17 @@ item.dynamictreesforestry:papayaseed.name=Papaya Seeds
 item.dynamictreesforestry:palmseed.name=Date Seed
 item.dynamictreesforestry:poplarseed.name=White Poplar Catkin
 
-species.dynamictreesforestry:oak.name=Apple Oak
+species.dynamictreesforestry:oak.name=Apple-Oak
 species.dynamictreesforestry:spruce.name=Red Spruce
 species.dynamictreesforestry:birch.name=Silver Birch
-species.dynamictreesforestry:jungle.name=Jungle
-species.dynamictreesforestry:darkoak.name=Dark Oak
-species.dynamictreesforestry:acacia.name=Acacia
+species.dynamictreesforestry:jungle.name=Bright Jungle
+species.dynamictreesforestry:darkoak.name=Stout Dark Oak
+species.dynamictreesforestry:acacia.name=Savanna Acacia
 
 species.dynamictreesforestry:silverlime.name=Silver Lime
 species.dynamictreesforestry:walnut.name=Common Walnut
 species.dynamictreesforestry:chestnut.name=Sweet Chestnut
-species.dynamictreesforestry:cherry.name=Hill Cherry Stone
+species.dynamictreesforestry:cherry.name=Hill Cherry
 species.dynamictreesforestry:lemon.name=Lemon
 species.dynamictreesforestry:plum.name=Plum
 species.dynamictreesforestry:maple.name=Sugar Maple
@@ -80,17 +80,10 @@ tile.dynamictreesforestry:leaves5.name=Leaves
 tile.dynamictreesforestry:leaves6.name=Leaves
 tile.dynamictreesforestry:leaves7.name=Leaves
 
-tile.dynamictreesforestry:oakbranch.name=Apple Oak Tree
-tile.dynamictreesforestry:sprucebranch.name=Red Spruce Tree
-tile.dynamictreesforestry:birchbranch.name=Silver Birch Tree
-tile.dynamictreesforestry:junglebranch.name=Jungle Tree
-tile.dynamictreesforestry:darkoakbranch.name=Dark Oak Tree
-tile.dynamictreesforestry:acaciabranch.name=Acacia Tree
-
 tile.dynamictreesforestry:silverlimebranch.name=Silver Lime Tree
 tile.dynamictreesforestry:walnutbranch.name=Common Walnut Tree
 tile.dynamictreesforestry:chestnutbranch.name=Sweet Chestnut Tree
-tile.dynamictreesforestry:cherrybranch.name=Hill Cherry Stone Tree
+tile.dynamictreesforestry:cherrybranch.name=Hill Cherry Tree
 tile.dynamictreesforestry:lemonbranch.name=Lemon Tree
 tile.dynamictreesforestry:plumbranch.name=Plum Tree
 tile.dynamictreesforestry:maplebranch.name=Sugar Maple Tree

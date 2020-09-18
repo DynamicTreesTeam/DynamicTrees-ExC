@@ -57,11 +57,14 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
         }
         Biome.REGISTRY.forEach(biome -> {
             if (biome == Biomes.RIVER){
-                RandomSpeciesSelector selector = new RandomSpeciesSelector().
-                        add(palm, getSpawnWeight(ModConstants.DATEPALM, biome));
-                dbase.setSpeciesSelector(biome, selector, Operation.REPLACE);
-                dbase.setChanceSelector(biome, (rand, species, radius) -> rand.nextFloat() < 0.2f ? BiomePropertySelectors.EnumChance.OK : BiomePropertySelectors.EnumChance.CANCEL, Operation.REPLACE);
-                dbase.setDensitySelector(biome, (rand, noiseDensity) -> noiseDensity * 0.01, Operation.REPLACE);
+                //There has to be an extra check since PALM trees are the only ones that spawn in rivers
+                if (TreeConfig.isValidBiome(ModContent.getTreeUIDfromID(ModConstants.DATEPALM), biome)){
+                    RandomSpeciesSelector selector = new RandomSpeciesSelector().
+                            add(palm, getSpawnWeight(ModConstants.DATEPALM, biome));
+                    dbase.setSpeciesSelector(biome, selector, Operation.REPLACE);
+                    dbase.setChanceSelector(biome, (rand, species, radius) -> rand.nextFloat() < 0.1f ? BiomePropertySelectors.EnumChance.OK : BiomePropertySelectors.EnumChance.CANCEL, Operation.REPLACE);
+                    dbase.setDensitySelector(biome, (rand, noiseDensity) -> noiseDensity * 0.01, Operation.REPLACE);
+                }
             }
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
                 RandomSpeciesSelector selector = new RandomSpeciesSelector().add(100).

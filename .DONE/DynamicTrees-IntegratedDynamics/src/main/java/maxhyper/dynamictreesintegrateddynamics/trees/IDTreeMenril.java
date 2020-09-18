@@ -25,7 +25,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import org.cyclops.integrateddynamics.world.biome.BiomeMeneglin;
 
 public class IDTreeMenril extends TreeFamily {
 
@@ -36,10 +38,10 @@ public class IDTreeMenril extends TreeFamily {
 	public class SpeciesMenril extends Species {
 		SpeciesMenril(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.menrilLeavesProperties);
-			
-			setBasicGrowingParameters(1.2f, 9.0f, 0, 5, 0.75f);
+
+			setBasicGrowingParameters(1.2f, 9.0f, 0, 5, 0.6f);
 						
-			envFactor(Type.COLD, 0.75f);
+			envFactor(Type.COLD, 1.1f);
 			envFactor(Type.HOT, 0.75f);
 			envFactor(Type.DRY, 0.5f);
 			envFactor(Type.FOREST, 1.05f);
@@ -50,12 +52,17 @@ public class IDTreeMenril extends TreeFamily {
 
 			addGenFeature(new FeatureGenRoots(8).setScaler(getRootScaler()));//Finally Generate Roots
 		}
-		
+
 		@Override
 		public boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
 			return super.isAcceptableSoil(world, pos, soilBlockState) || soilBlockState.getBlock() instanceof BlockDirt || soilBlockState.getBlock() instanceof BlockGrass;
 		}
-		
+
+		@Override
+		public boolean isBiomePerfect(Biome biome) {
+			return biome.equals(BiomeMeneglin.getInstance());
+		}
+
 		@Override
 		protected EnumFacing newDirectionSelected(EnumFacing newDir, GrowSignal signal) {
 			if (signal.isInTrunk() && newDir != EnumFacing.UP) { // Turned out of trunk
@@ -83,6 +90,8 @@ public class IDTreeMenril extends TreeFamily {
 
 	public IDTreeMenril() {
 		super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID, "menril"));
+
+		setPrimitiveLog(logBlock.getDefaultState());
 
 		setDynamicBranch(ModContent.menrilBranch);
 		ModContent.menrilBranchFilled.setFamily(this);

@@ -67,10 +67,14 @@ public class ALTreeGoldenOak extends TreeFamily {
 		}
 
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootyDirtAether;
 		}
 
+		@Override
+		public boolean useDefaultWailaBody() {
+			return false;
+		}
 	}
 
 	public ALTreeGoldenOak() {
