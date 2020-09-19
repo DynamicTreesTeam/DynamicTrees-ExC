@@ -1,0 +1,8 @@
+item.dynamictreespamtrees:redbudseed.name=Redbud Pod
+item.dynamictreespamtrees:spookyseed.name=Spooky Capsule
+
+species.dynamictreespamtrees:redbud.name=Redbud
+species.dynamictreespamtrees:spooky.name=Spooky Tree
+species.dynamictreespamtrees:megaspooky.name=Large Spooky Tree
+
+tile.dynamictreespamtrees:spookybranch.name=Spooky Tree

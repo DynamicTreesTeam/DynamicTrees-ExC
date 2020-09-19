@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "spookytree:blocks/spookytree_log_side",
+        "rings": "spookytree:blocks/spookytree_log_top"
+    }
+}

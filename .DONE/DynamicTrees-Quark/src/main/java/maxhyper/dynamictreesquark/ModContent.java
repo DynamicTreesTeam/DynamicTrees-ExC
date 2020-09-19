@@ -96,35 +96,6 @@ public class ModContent {
 			failedToLoad = true;
 		}
 	}
-
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-		};
-		return leavesProperties;
-	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-		};
-		return leavesProperties;
-	}
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(

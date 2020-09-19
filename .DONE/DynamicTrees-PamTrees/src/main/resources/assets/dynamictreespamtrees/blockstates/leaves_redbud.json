@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "leaves",
+    "textures": { "all": "blocks/leaves_oak" }
+  },
+  "variants": {
+    "tree": {
+      "0": {"textures": { "all": "redbudtree:blocks/redbudtree_leaves"}},
+      "1": {"textures": { "all": "redbudtree:blocks/redbudtree_leaves_pink"}},
+      "2": {},
+      "3": {}
+    }
+  }
+}

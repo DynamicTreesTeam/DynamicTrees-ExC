@@ -1,0 +1,8 @@
+{
+	"parent": "dynamictrees:block/sapling",
+	"textures": {
+	    "particle": "redbudtree:blocks/redbudtree_leaves",
+		"log": "blocks/log_oak",
+		"leaves": "redbudtree:blocks/redbudtree_leaves"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"parent": "dynamictrees:block/sapling",
+	"textures": {
+	    "particle": "spookytree:blocks/spookytree_leaves",
+		"log": "spookytree:blocks/spookytree_log_side",
+		"leaves": "spookytree:blocks/spookytree_leaves"
+	}
+}
