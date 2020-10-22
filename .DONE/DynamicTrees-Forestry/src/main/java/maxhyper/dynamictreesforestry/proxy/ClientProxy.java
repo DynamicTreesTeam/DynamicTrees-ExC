@@ -91,16 +91,6 @@ public class ClientProxy extends CommonProxy {
 				}
 			});
 		} // All leaves
-
-//		final BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
-//		blockColors.registerBlockColorHandler((state, world, pos, tintIndex) -> { // Rooty Dirt
-//					switch(tintIndex) {
-//						case 0: return blockColors.colorMultiplier(Blocks.GRASS.getDefaultState(), world, pos, tintIndex);
-//						case 1: return state.getBlock() instanceof BlockRooty ? ((BlockRooty) state.getBlock()).rootColor(state, world, pos) : 0xFFFFFFFF;
-//						default: return 0xFFFFFFFF;
-//					}
-//				},
-//				ModContent.rootyNetherDirt, ModContent.rootyUpsidedownDirt);
 	}
 
 	public void registerEntityRenderers() {

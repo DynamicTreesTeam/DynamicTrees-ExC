@@ -48,10 +48,6 @@ public class CommonProxy {
 				.addDropCreator(new DropCreatorOtherSeed(plum));
 		ModContent.plumFruit.setDroppedItem(plum);
 
-//		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesForestry.MODID, "palm"))
-//				.addDropCreator(new DropCreatorOtherSeed(new ItemStack(Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(
-//						new ResourceLocation("forestry", "fruits"))), 1, 5)));
-
 	}
 	
 	public void postInit(){
