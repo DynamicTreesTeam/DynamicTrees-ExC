@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.teammetallurgy.atum.init.AtumItems;
@@ -32,6 +33,7 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
@@ -65,11 +67,13 @@ public class ModContent {
 				A2TreePalm.leavesBlock.getDefaultState(),
 				new ItemStack(A2TreePalm.leavesBlock),
 				TreeRegistry.findCellKit("palm") ) {
+			@Override public boolean appearanceChangesWithHydro() { return true; }
 		};
 		deadPalmLeavesProperties = new LeavesProperties(
 				A2TreeDeadPalm.leavesBlock.getDefaultState(),
 				new ItemStack(A2TreeDeadPalm.leavesBlock),
 				TreeRegistry.findCellKit("palm") ) {
+			@Override public boolean appearanceChangesWithHydro() { return true; }
 		};
 		nullLeavesProperties = new LeavesProperties(null, ItemStack.EMPTY, TreeRegistry.findCellKit("bare") ) {};
 
@@ -90,6 +94,10 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesAtum.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "fertile_soil")), DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "limestone_gravel")), DirtHelper.GRAVELLIKE);
+		DirtHelper.registerSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "sand")), DirtHelper.SANDLIKE);
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -132,78 +140,4 @@ public class ModContent {
 		ModelLoader.setCustomStateMapper(palmFrondLeaves, new StateMap.Builder().ignore(BlockDynamicLeaves.TREE).build());
 		ModelLoader.setCustomStateMapper(nullLeavesProperties.getDynamicLeavesState().getBlock(), new StateMap.Builder().ignore(BlockDynamicLeaves.TREE).ignore(BlockDynamicLeaves.HYDRO).ignore(BlockLeaves.DECAYABLE).build());
 	}
-
-//	/** TODO: THIS IS THE WRONG WAY OF DOING THINGS BUT ITS THE ONLY IDEA THAT WORKED */
-//	public static final AtumBiome OASIS = AtumRegistry.registerBiome(new BiomeOasis((new AtumBiome.AtumBiomeProperties("Dynamic Oasis", 0)).setHeightVariation(0.0F)){
-//		@Override
-//		public void decorate(@Nonnull World world, @Nonnull Random random, @Nonnull BlockPos pos) {
-//			int x = random.nextInt(16) + 8;
-//			int z = random.nextInt(16) + 8;
-//			BlockPos height = world.getHeight(pos.add(x, 0, z));
-//			ChunkPos chunkPos = new ChunkPos(pos);
-//
-//			new WorldGenOasisPond().generate(world, random, height);
-//
-////			if (random.nextFloat() <= 0.98F) {
-////				new WorldGenPalm(true, random.nextInt(4) + 5, true).generate(world, random, height);
-////			}
-//
-//			if (TerrainGen.decorate(world, random, chunkPos, DecorateBiomeEvent.Decorate.EventType.REED)) {
-//				int reedsPerChunk = 50;
-//				for (int reeds = 0; reeds < reedsPerChunk; ++reeds) {
-//					int y = height.getY() * 2;
-//
-//					if (y > 0) {
-//						int randomY = random.nextInt(y);
-//						new WorldGenPapyrus().generate(world, random, pos.add(x, randomY, z));
-//					}
-//				}
-//			}
-//			if (TerrainGen.decorate(world, random, chunkPos, DecorateBiomeEvent.Decorate.EventType.LILYPAD)) {
-//				for (int amount = 0; amount < 2; ++amount) {
-//					int y = world.getHeight(pos.add(x, 0, z)).getY() * 2;
-//					if (y > 0) {
-//						int randomY = random.nextInt(y);
-//						BlockPos lilyPos;
-//						BlockPos waterPos;
-//						for (lilyPos = pos.add(x, randomY, z); lilyPos.getY() > 0; lilyPos = waterPos) {
-//							waterPos = lilyPos.down();
-//							if (!world.isAirBlock(waterPos)) {
-//								break;
-//							}
-//						}
-//						new WorldGenWaterlily().generate(world, random, lilyPos);
-//					}
-//				}
-//			}
-//			super.decorate(world, random, pos);
-//		}
-//	}, "oasis");
-//	public static final AtumBiome DEAD_OASIS = AtumRegistry.registerBiome(new BiomeDeadOasis((new AtumBiome.AtumBiomeProperties("Dynamic Dead Oasis", 0)).setHeightVariation(0.0F)){
-//		@Override
-//		public void decorate(@Nonnull World world, @Nonnull Random random, @Nonnull BlockPos pos) {
-//			int x = random.nextInt(4) + 4;
-//			int z = random.nextInt(4) + 4;
-//
-//			int i1 = random.nextInt(16) + 8;
-//			int j1 = random.nextInt(256);
-//			int k1 = random.nextInt(16) + 8;
-//			(new WorldGenLakes(Blocks.AIR)).generate(world, random, pos.add(i1, j1, k1));
-//
-////			if (random.nextFloat() <= 0.70F) {
-////				new WorldGenPalm(true, 5, AtumBlocks.DEADWOOD_LOG.getDefaultState().withProperty(BlockDeadwood.HAS_SCARAB, true), BlockLeave.getLeave(BlockAtumPlank.WoodType.DEADWOOD).getDefaultState().withProperty(BlockLeave.CHECK_DECAY, false), false).generate(world, random, world.getHeight(pos.add(x, 0, z)));
-////			}
-//
-//			super.decorate(world, random, pos);
-//		}
-//
-//	}, "dead_oasis");
-//
-//	@SubscribeEvent
-//	public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-//		event.getRegistry().register(OASIS);
-//		event.getRegistry().register(DEAD_OASIS);
-//		BiomeDictionary.addTypes(OASIS, AtumBiomes.BiomeTags.OASIS, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.WET, BiomeDictionary.Type.RARE);
-//		BiomeDictionary.addTypes(DEAD_OASIS, AtumBiomes.BiomeTags.ATUM, BiomeDictionary.Type.HOT, BiomeDictionary.Type.SANDY, BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.DRY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.RARE);
-//	}
 }

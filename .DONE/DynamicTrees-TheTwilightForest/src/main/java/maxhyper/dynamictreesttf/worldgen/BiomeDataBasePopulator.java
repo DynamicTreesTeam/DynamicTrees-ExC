@@ -34,7 +34,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
             TFBiomes.mushrooms,             //done
             TFBiomes.oakSavanna,            //done
             TFBiomes.snowy_forest,          //done
-            TFBiomes.spookyForest,          //need to disable spooky canopy
+            TFBiomes.spookyForest,          //done
             TFBiomes.stream,                //no trees
             TFBiomes.tfLake,                //no trees
             TFBiomes.tfSwamp,               //done

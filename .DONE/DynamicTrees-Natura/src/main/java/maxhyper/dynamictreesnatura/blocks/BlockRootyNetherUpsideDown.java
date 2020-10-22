@@ -35,7 +35,7 @@ public class BlockRootyNetherUpsideDown extends BlockRooty {
 	}
 
 	public BlockRootyNetherUpsideDown(String name, boolean isTileEntity) {
-		super(name, new Material(MapColor.DIRT), isTileEntity);
+		super(name, Material.GROUND, isTileEntity);
 	}
 
 	///////////////////////////////////////////

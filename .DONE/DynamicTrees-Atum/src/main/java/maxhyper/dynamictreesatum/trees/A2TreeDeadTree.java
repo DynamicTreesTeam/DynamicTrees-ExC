@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.cells.CellMetadata;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeShrinker;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -22,6 +23,7 @@ import maxhyper.dynamictreesatum.DynamicTreesAtum;
 import maxhyper.dynamictreesatum.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Biomes;
@@ -56,10 +58,11 @@ public class A2TreeDeadTree extends TreeFamily {
 
 			envFactor(Type.COLD, 0.25f);
 
-//			generateSeed();
+		}
 
-			addAcceptableSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "fertile_soil")),
-					ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "sand")));
+		@Override
+		protected void setStandardSoils() {
+			addAcceptableSoils(DirtHelper.SANDLIKE, DirtHelper.GRAVELLIKE);
 		}
 
 		@Override
@@ -127,6 +130,16 @@ public class A2TreeDeadTree extends TreeFamily {
 			return false;
 		}
 
+		@Override
+		public boolean placeRootyDirtBlock(World world, BlockPos rootPos, int life) {
+			if (world.getBlockState(rootPos).getMaterial() == Material.SAND) {
+				world.setBlockState(rootPos, ModBlocks.blockRootySand.getDefaultState().withProperty(BlockRooty.LIFE, life));
+			} else {
+				world.setBlockState(rootPos, getRootyBlock().getDefaultState().withProperty(BlockRooty.LIFE, life));
+			}
+			return true;
+		}
+
 		//CODE FROM DYNAMICTREES-BOP
 		@Override
 		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
@@ -138,15 +151,6 @@ public class A2TreeDeadTree extends TreeFamily {
 			if (!signal.isInTrunk()){
 				probMap[originDir.getOpposite().ordinal()] = 0;
 			}
-
-			Random rand = new Random();
-//			if (world.getBlockState(pos.up()).getBlock() != world.getBlockState(pos).getBlock()){
-//				if (rand.nextInt(5) != 0){
-//					probMap[1] = 0;
-//					probMap[1 + rand.nextInt(5)] = 10;
-//					signal.numTurns = 0;
-//				}
-//			}
 
 			return probMap;
 		}

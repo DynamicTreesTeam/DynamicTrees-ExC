@@ -6,7 +6,9 @@ import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
@@ -17,6 +19,7 @@ import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.teammetallurgy.atum.blocks.vegetation.BlockDate;
+import com.teammetallurgy.atum.init.AtumBiomes;
 import com.teammetallurgy.atum.init.AtumBlocks;
 import com.teammetallurgy.atum.init.AtumItems;
 import maxhyper.dynamictreesatum.DynamicTreesAtum;
@@ -61,12 +64,9 @@ public class A2TreePalm extends TreeFamily {
 			setBasicGrowingParameters(0.5f, 8.0f, 4, 3, 0.8f);
 
 			generateSeed();
-			//setupStandardSeedDropping();
 
 			addGenFeature(new FeatureGenFruitPod((BlockDate)AtumBlocks.DATE_BLOCK));
 			addGenFeature(new FeatureGenOphidianTongue());
-
-			addAcceptableSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "fertile_soil")));
 
 			addDropCreator(new DropCreatorSeed(3.0f) {
 				@Override
@@ -96,6 +96,16 @@ public class A2TreePalm extends TreeFamily {
 					return dropList;
 				}
 			});
+		}
+
+		@Override
+		protected void setStandardSoils() {
+			addAcceptableSoils(DirtHelper.DIRTLIKE);
+		}
+
+		@Override
+		public boolean isBiomePerfect(Biome biome) {
+			return isOneOfBiomes(biome, AtumBiomes.OASIS);
 		}
 
 		@Override
@@ -146,6 +156,19 @@ public class A2TreePalm extends TreeFamily {
 			for (BlockPos endPoint : endPoints) {
 				TreeHelper.ageVolume(world, endPoint, 1, 2, 3, safeBounds);
 			}
+		}
+
+		public boolean transitionToTree(World world, BlockPos pos) {
+			//Ensure planting conditions are right
+			TreeFamily family = getFamily();
+			if(world.isAirBlock(pos.up()) && isAcceptableSoil(world, pos.down(), world.getBlockState(pos.down()))) {
+				family.getDynamicBranch().setRadius(world, pos, (int)family.getPrimaryThickness(), null);//set to a single branch with 1 radius
+				world.setBlockState(pos.up(), getLeavesProperties().getDynamicLeavesState());//Place 2 leaf blocks on top
+				world.setBlockState(pos.up(2), getLeavesProperties().getDynamicLeavesState().withProperty(BlockDynamicLeaves.HYDRO, 3));
+				placeRootyDirtBlock(world, pos.down(), 15);//Set to fully fertilized rooty dirt underneath
+				return true;
+			}
+			return false;
 		}
 
 		@Override

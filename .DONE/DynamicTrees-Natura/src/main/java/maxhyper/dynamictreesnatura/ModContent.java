@@ -17,6 +17,7 @@ import maxhyper.dynamictreesnatura.items.ItemDynamicSeedBloodwood;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedFusewood;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedHopseed;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedMaple;
+import maxhyper.dynamictreesnatura.proxy.ClientProxy;
 import maxhyper.dynamictreesnatura.trees.*;
 import com.progwml6.natura.shared.NaturaCommons;
 import maxhyper.dynamictreesnatura.worldgen.BiomeDataBasePopulator;
@@ -29,6 +30,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -43,6 +47,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -119,7 +124,15 @@ public class ModContent {
 
 		mapleLeavesProperties = setUpLeaves(TreeMaple.leavesBlock, TreeMaple.leavesState, "deciduous");
 		silverbellLeavesProperties = setUpLeaves(TreeSilverbell.leavesBlock, TreeSilverbell.leavesState, "deciduous");
-		amaranthLeavesProperties = setUpLeaves(TreeAmaranth.leavesBlock, TreeAmaranth.leavesState, "deciduous");
+		amaranthLeavesProperties = new LeavesProperties(TreeAmaranth.leavesState, TreeRegistry.findCellKit("deciduous")){
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(TreeAmaranth.leavesBlock, 1, TreeAmaranth.leavesBlock.getMetaFromState(TreeAmaranth.leavesState));
+			}
+			@Override
+			public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
+				return ClientProxy.addHexColor(new Color(BiomeColorHelper.getFoliageColorAtPos(world, pos)), 34);
+			}
+		};
 		tigerwoodLeavesProperties = setUpLeaves(TreeTigerwood.leavesBlock, TreeTigerwood.leavesState, "deciduous");
 		willowLeavesProperties = setUpLeaves(TreeWillow.leavesBlock, TreeWillow.leavesState, "deciduous", 3, 13);
 		eucalyptusLeavesProperties = setUpLeaves(TreeEucalyptus.leavesBlock, TreeEucalyptus.leavesState, "acacia");

@@ -41,6 +41,11 @@ public class TreeAmaranth extends TreeFamily {
 			generateSeed();
 			setupStandardSeedDropping();
 		}
+
+		@Override
+		public int maxBranchRadius() {
+			return 6;
+		}
 	}
 
 	public TreeAmaranth() {

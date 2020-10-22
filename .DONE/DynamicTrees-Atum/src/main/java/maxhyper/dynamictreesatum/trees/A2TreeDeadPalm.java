@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
@@ -17,6 +18,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import com.teammetallurgy.atum.init.AtumBiomes;
 import com.teammetallurgy.atum.init.AtumBlocks;
 import maxhyper.dynamictreesatum.DynamicTreesAtum;
 import maxhyper.dynamictreesatum.ModContent;
@@ -56,16 +58,17 @@ public class A2TreeDeadPalm extends TreeFamily {
 			setBasicGrowingParameters(0.5f, 8.0f, 4, 3, 0.8f);
 
 			generateSeed();
-			//setupStandardSeedDropping();
 
-			addAcceptableSoil(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "fertile_soil")),
-					ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum", "limestone_gravel")));
-			//	addGenFeature(new FeatureGenFruitPod(ModContent.dateFruit, 1));
+		}
+
+		@Override
+		protected void setStandardSoils() {
+			addAcceptableSoils(DirtHelper.DIRTLIKE, DirtHelper.SANDLIKE, DirtHelper.GRAVELLIKE);
 		}
 
 		@Override
 		public boolean isBiomePerfect(Biome biome) {
-			return isOneOfBiomes(biome, Biomes.DESERT, Biomes.DESERT_HILLS, Biomes.MUTATED_DESERT);
+			return isOneOfBiomes(biome, AtumBiomes.DEAD_OASIS);
 		}
 
 		@Override

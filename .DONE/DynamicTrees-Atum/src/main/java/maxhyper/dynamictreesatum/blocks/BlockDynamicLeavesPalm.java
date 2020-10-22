@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class BlockDynamicLeavesPalm extends BlockDynamicLeaves {
 
-    public static final Surround hydroSurroundMap[][]  = new Surround[][] {
+    public static final Surround[][] hydroSurroundMap = new Surround[][] {
             {}, //Hydro 0
             {Surround.NE, Surround.SE, Surround.SW, Surround.NW}, //Hydro 1
             {Surround.N, Surround.E, Surround.S, Surround.W}, //Hydro 2
@@ -33,7 +33,7 @@ public class BlockDynamicLeavesPalm extends BlockDynamicLeaves {
             {} //Hydro 4
     };
 
-    public static final IUnlistedProperty<Boolean> CONNECTIONS[];
+    public static final IUnlistedProperty<Boolean>[] CONNECTIONS;
 
     static {
         CONNECTIONS = new Properties.PropertyAdapter[Surround.values().length];

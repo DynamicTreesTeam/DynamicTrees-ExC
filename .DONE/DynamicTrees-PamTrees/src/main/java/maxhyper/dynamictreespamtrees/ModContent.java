@@ -1,6 +1,6 @@
 package maxhyper.dynamictreespamtrees;
 
-import com.ferreusveritas.dynamictrees.ModConstants;
+import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
@@ -28,7 +28,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -91,7 +90,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 
 		if (Loader.isModLoaded(REDBUDTREE_MOD)){
-			redbudLeavesProperties = new LeavesProperties(Blocks.AIR.getDefaultState()){
+			redbudLeavesProperties = new LeavesProperties(ModBlocks.blockStates.air){
 				@Override
 				public boolean updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 					if (!worldIn.isRemote){
@@ -177,7 +176,9 @@ public class ModContent {
 		IForgeRegistry<Item> registry = event.getRegistry();
 		ArrayList<Item> treeItems = new ArrayList<>();
 
-		treeItems.add(speciesRedbud.getSeed());
+		if (Loader.isModLoaded(REDBUDTREE_MOD)){
+			treeItems.add(speciesRedbud.getSeed());
+		}
 
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
 		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
@@ -210,10 +211,14 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
-		ModelHelper.regModel(speciesRedbud.getSeed());
-
+		
 		LeavesPaging.getLeavesMapForModId(DynamicTreesPamTrees.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
-		ModelLoader.setCustomStateMapper(leavesRedbud, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).build());
-		ModelLoader.setCustomStateMapper(leavesSpooky, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).ignore(BlockDynamicLeaves.TREE).build());
+		if (Loader.isModLoaded(REDBUDTREE_MOD)){
+			ModelHelper.regModel(speciesRedbud.getSeed());
+			ModelLoader.setCustomStateMapper(leavesRedbud, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).build());
+		}
+		if (Loader.isModLoaded(SPOOKYTREE_MOD)){
+			ModelLoader.setCustomStateMapper(leavesSpooky, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).ignore(BlockDynamicLeaves.TREE).build());
+		}
 	}
 }
