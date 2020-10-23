@@ -11,7 +11,7 @@
 		"1.12.2-1.0.0": "- Fixed Natura config not disabling tree generation"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.1.4",
-		"1.12.2-recommended": "1.12.2-1.1.4"
+		"1.12.2-latest": "1.12.2-1.1.5",
+		"1.12.2-recommended": "1.12.2-1.1.5"
 	}
 }
