@@ -17,6 +17,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
+import com.ferreusveritas.dynamictrees.worldgen.JoCode;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;

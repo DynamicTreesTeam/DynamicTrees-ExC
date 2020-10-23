@@ -49,7 +49,7 @@ public class TreeSilverbell extends TreeFamily {
 	public TreeSilverbell() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "silverbell"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog.TYPE, BlockOverworldLog.LogType.SILVERBELL));
 
 		ModContent.silverbellLeavesProperties.setTree(this);
 

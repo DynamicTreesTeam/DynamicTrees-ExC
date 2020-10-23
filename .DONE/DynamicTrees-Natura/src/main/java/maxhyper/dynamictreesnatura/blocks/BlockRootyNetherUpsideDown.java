@@ -1,10 +1,13 @@
 package maxhyper.dynamictreesnatura.blocks;
 
+import com.ferreusveritas.dynamictrees.api.IAgeable;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
+import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -41,6 +44,29 @@ public class BlockRootyNetherUpsideDown extends BlockRooty {
 	///////////////////////////////////////////
 	// BLOCKSTATES
 	///////////////////////////////////////////
+
+
+	@Override
+	public void updateTree(IBlockState rootyState, World world, BlockPos rootPos, Random random, boolean natural) {
+		super.updateTree(rootyState, world, rootPos, random, natural);
+
+		int halfWidth = 8;
+		int height = 31;
+		int iterations = 1;
+		SafeChunkBounds safeBounds = SafeChunkBounds.ANY;
+
+		//Slow and dirty iteration over a cuboid volume.  Try to avoid this by using a voxmap if you can
+		Iterable<BlockPos.MutableBlockPos> iterable = BlockPos.getAllInBoxMutable(rootPos.add(new BlockPos(-halfWidth, -height, -halfWidth)), rootPos.add(new BlockPos(halfWidth, 0, halfWidth)));
+		for(int i = 0; i < iterations; i++) {
+			for(BlockPos.MutableBlockPos iPos: iterable) {
+				IBlockState blockState = world.getBlockState(iPos);
+				Block block = blockState.getBlock();
+				if(block instanceof IAgeable) {
+					((IAgeable)block).age(world, iPos, blockState, world.rand, safeBounds);//Treat as just a regular ageable block
+				}
+			}
+		}
+	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {

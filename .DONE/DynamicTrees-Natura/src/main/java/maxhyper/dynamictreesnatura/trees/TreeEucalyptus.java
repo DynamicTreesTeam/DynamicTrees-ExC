@@ -41,7 +41,7 @@ public class TreeEucalyptus extends TreeFamily {
 	public TreeEucalyptus() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "eucalyptus"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog2.TYPE, BlockOverworldLog2.LogType.EUCALYPTUS));
 
 		ModContent.eucalyptusLeavesProperties.setTree(this);
 

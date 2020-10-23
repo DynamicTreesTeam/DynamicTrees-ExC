@@ -53,7 +53,7 @@ public class TreeWillow extends TreeFamily {
 	public TreeWillow() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "willow"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog2.TYPE, BlockOverworldLog2.LogType.WILLOW));
 
 		ModContent.willowLeavesProperties.setTree(this);
 

@@ -2,6 +2,7 @@ package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog2;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
@@ -46,7 +47,7 @@ public class TreeSakura extends TreeFamily {
 	public TreeSakura() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "sakura"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 3));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog2.TYPE, BlockOverworldLog2.LogType.SAKURA));
 
 		ModContent.sakuraLeavesProperties.setTree(this);
 

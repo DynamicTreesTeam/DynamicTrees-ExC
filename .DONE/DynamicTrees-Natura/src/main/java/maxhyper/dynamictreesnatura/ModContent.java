@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.items.Seed;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.overworld.NaturaOverworld;
@@ -197,6 +198,11 @@ public class ModContent {
 		saguaroCactus.getRegisterableBlocks(treeBlocks);
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(rootyUpsidedownDirt, DirtHelper.NETHERLIKE);
+		DirtHelper.registerSoil(rootyUpsidedownDirt, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(rootyNetherDirt, DirtHelper.NETHERLIKE);
+		DirtHelper.registerSoil(rootyNetherDirt, DirtHelper.DIRTLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){

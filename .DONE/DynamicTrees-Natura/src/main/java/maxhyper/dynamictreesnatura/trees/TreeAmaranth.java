@@ -51,7 +51,7 @@ public class TreeAmaranth extends TreeFamily {
 	public TreeAmaranth() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "amaranth"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 2));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog.TYPE, BlockOverworldLog.LogType.AMARANTH));
 
 		ModContent.amaranthLeavesProperties.setTree(this);
 

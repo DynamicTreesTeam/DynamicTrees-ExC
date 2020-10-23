@@ -63,19 +63,10 @@ public class BlockDynamicBranchBloodwood extends BlockBranchThick {
         return 16;
     }
 
-//    @Override
-//    public ICell getHydrationCell(IBlockAccess blockAccess, BlockPos pos, IBlockState blockState, EnumFacing dir, ILeavesProperties leavesProperties) {
-//        TreeFamily thisTree = getFamily();
-//
-//        if(leavesProperties.getTree() == thisTree) {// The requesting leaves must match the tree for hydration to occur
-//            int radiusAndMeta = thisTree.getRadiusForCellKit(blockAccess, pos, blockState, dir, this);
-//            int radius = CellMetadata.getRadius(radiusAndMeta);
-//            int metadata = CellMetadata.getMeta(radiusAndMeta);
-//            return leavesProperties.getCellKit().getCellForBranch(radius, metadata);
-//        } else {
-//            return CellNull.NULLCELL;
-//        }
-//    }
+    @Override
+    public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
+        return false;
+    }
 
     @Override public BranchDestructionData destroyBranchFromNode(World world, BlockPos cutPos, EnumFacing toolDir, boolean wholeTree) {
 

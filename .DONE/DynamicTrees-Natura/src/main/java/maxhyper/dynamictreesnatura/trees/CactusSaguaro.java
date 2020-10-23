@@ -179,6 +179,8 @@ public class CactusSaguaro extends TreeFamily {
     public CactusSaguaro() {
         super(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro"));
 
+        setPrimitiveLog(logBlock.getDefaultState());
+
         setStick(ItemStack.EMPTY);
     }
 

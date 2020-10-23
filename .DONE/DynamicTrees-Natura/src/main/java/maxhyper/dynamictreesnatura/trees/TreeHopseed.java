@@ -55,7 +55,7 @@ public class TreeHopseed extends TreeFamily {
 	public TreeHopseed() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "hopseed"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 2));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog2.TYPE, BlockOverworldLog2.LogType.HOPSEED));
 
 		ModContent.hopseedLeavesProperties.setTree(this);
 

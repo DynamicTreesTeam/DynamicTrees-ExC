@@ -47,7 +47,7 @@ public class TreeTigerwood extends TreeFamily {
 	public TreeTigerwood() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "tigerwood"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 3));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockOverworldLog.TYPE, BlockOverworldLog.LogType.TIGER));
 
 		ModContent.tigerwoodLeavesProperties.setTree(this);
 

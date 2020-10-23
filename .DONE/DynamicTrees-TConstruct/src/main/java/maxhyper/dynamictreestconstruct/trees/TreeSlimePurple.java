@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
 import maxhyper.dynamictreestconstruct.ModConfigs;
 import maxhyper.dynamictreestconstruct.ModContent;
+import maxhyper.dynamictreestconstruct.genfeatures.FeatureGenSlimeVines;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -19,24 +20,25 @@ import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.Objects;
 
-public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
+public class TreeSlimePurple extends TreeSlimeBlue {
 
-	public class SpeciesMagmaSlime extends Species {
-		SpeciesMagmaSlime(TreeFamily treeFamily) {
-			super(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeMagma"), treeFamily, ModContent.magmaSlimeLeavesProperties);
+	public class SpeciesPurpleSlime extends Species {
+		SpeciesPurpleSlime(TreeFamily treeFamily) {
+			super(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimePurple"), treeFamily, ModContent.purpleSlimeLeavesProperties);
 			this.setBasicGrowingParameters(taperingDefaultSlime, energyDefaultSlime, upProbabilityDefaultSlime, lowestBranchHeightDefaultSlime, growthRateDefaultSlime);
 			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("slime"));
 
-			this.envFactor(Type.HOT, 1.5F);
-			//this.envFactor(Type.DRY, 0.20F);
+			this.envFactor(Type.HOT, 0.5F);
+			this.envFactor(Type.DRY, 0.10F);
 			this.envFactor(Type.WET, 1.75F);
 
 			generateSeed();
 			this.setupStandardSeedDropping();
 			setStick(ItemStack.EMPTY);
 
-			if (ModConfigs.orangeSlimeBallsInMagmaTrees)
-				this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
+			this.addGenFeature(new FeatureGenSlimeVines(TinkerWorld.slimeVinePurple3));
+			if (ModConfigs.purpleSlimeBallsInPurpleTrees)
+				this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
 			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
 		}
@@ -47,25 +49,14 @@ public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
 		}
 	}
 
-	public TCTreeSlimeMagma() {
-		super(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeMagma"));
+	public TreeSlimePurple() {
+		super(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimePurple"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 4));
-		setDynamicBranch(ModContent.slimeMagmaBranch);
-
-		ModContent.magmaSlimeLeavesProperties.setTree(this);
-
-		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
-	}
-
-	@Override
-	public ItemStack getPrimitiveLogItemStack(int qty) {
-		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 4);
-		stack.setCount(MathHelper.clamp(qty, 0, 64));
-		return stack;
+		setDynamicBranch(ModContent.slimePurpleBranch);
+		ModContent.purpleSlimeLeavesProperties.setTree(this);
 	}
 
 	@Override public void createSpecies() {
-			setCommonSpecies(new SpeciesMagmaSlime(this));
+			setCommonSpecies(new SpeciesPurpleSlime(this));
 	}
 }

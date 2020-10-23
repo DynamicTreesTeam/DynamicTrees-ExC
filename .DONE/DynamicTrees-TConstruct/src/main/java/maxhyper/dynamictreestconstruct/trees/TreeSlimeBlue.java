@@ -4,7 +4,6 @@ import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
@@ -20,12 +19,14 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.shared.block.BlockSlime;
+import slimeknights.tconstruct.shared.block.BlockSlimeCongealed;
 import slimeknights.tconstruct.world.TinkerWorld;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TCTreeSlimeBlue extends TreeFamily {
+public class TreeSlimeBlue extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("tconstruct:slime_leaves");
 	public static Block logBlock = Block.getBlockFromName("tconstruct:slime_congealed");
@@ -67,16 +68,16 @@ public class TCTreeSlimeBlue extends TreeFamily {
 		}
 	}
 
-	public TCTreeSlimeBlue() {
+	public TreeSlimeBlue() {
 		this(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeBlue"));
 
 		setDynamicBranch(ModContent.slimeBlueBranch);
 		ModContent.blueSlimeLeavesProperties.setTree(this);
 	}
-	public TCTreeSlimeBlue(ResourceLocation resourceLocation) {
+	public TreeSlimeBlue(ResourceLocation resourceLocation) {
 		super(resourceLocation);
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockSlime.TYPE, BlockSlime.SlimeType.GREEN));
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
 

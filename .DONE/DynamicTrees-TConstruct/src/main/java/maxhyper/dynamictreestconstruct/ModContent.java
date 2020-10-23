@@ -11,7 +11,6 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
-import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -20,12 +19,10 @@ import maxhyper.dynamictreestconstruct.blocks.*;
 import maxhyper.dynamictreestconstruct.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -33,11 +30,9 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.world.TinkerWorld;
 import slimeknights.tconstruct.world.block.BlockSlimeGrass;
@@ -80,15 +75,15 @@ public class ModContent {
 		registry.register(rootySlimyDirt);
 
 		blueSlimeLeavesProperties = new LeavesProperties(
-				TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.BLUE),
-				new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0),
+				TreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.BLUE),
+				new ItemStack(TreeSlimeBlue.leavesBlock, 1, 0),
 				TreeRegistry.findCellKit("conifer"))
 		{
 			@Override public int getSmotherLeavesMax() {
 				return 8;
 			}
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 0);
+				return new ItemStack(TreeSlimeBlue.leavesBlock, 1, 0);
 			}
 			@Override public int getFlammability() {
 				return 0;
@@ -96,15 +91,15 @@ public class ModContent {
 			@Override public int getFireSpreadSpeed() { return 0; }
 		};
 		purpleSlimeLeavesProperties = new LeavesProperties(
-				TCTreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.PURPLE),
-				new ItemStack(TCTreeSlimeBlue.leavesBlock, 1, 1),
+				TreeSlimeBlue.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.PURPLE),
+				new ItemStack(TreeSlimeBlue.leavesBlock, 1, 1),
 				TreeRegistry.findCellKit("conifer"))
 		{
 			@Override public int getSmotherLeavesMax() {
 				return 8;
 			}
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(TCTreeSlimePurple.leavesBlock, 1, 1);
+				return new ItemStack(TreeSlimePurple.leavesBlock, 1, 1);
 			}
 			@Override public int getFlammability() {
 				return 0;
@@ -112,8 +107,8 @@ public class ModContent {
 			@Override public int getFireSpreadSpeed() { return 0; }
 		};
 		magmaSlimeLeavesProperties = new LeavesProperties(
-				TCTreeSlimeMagma.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.ORANGE),
-				new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2),
+				TreeSlimeMagma.leavesBlock.getDefaultState().withProperty(BlockSlimeGrass.FOLIAGE, BlockSlimeGrass.FoliageType.ORANGE),
+				new ItemStack(TreeSlimeMagma.leavesBlock, 1, 2),
 				TreeRegistry.findCellKit("conifer"))
 		{
 			@Override public int getLightRequirement() { return 0; }
@@ -121,7 +116,7 @@ public class ModContent {
 				return 8;
 			}
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(TCTreeSlimeMagma.leavesBlock, 1, 2);
+				return new ItemStack(TreeSlimeMagma.leavesBlock, 1, 2);
 			}
 			@Override public int getFlammability() {
 				return 0;
@@ -133,9 +128,9 @@ public class ModContent {
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 1, purpleSlimeLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTConstruct.MODID, 2, magmaSlimeLeavesProperties);
 
-		TreeFamily blueSlimeTree = new TCTreeSlimeBlue();
-		TreeFamily purpleSlimeTree = new TCTreeSlimePurple();
-		TreeFamily magmaSlimeTree = new TCTreeSlimeMagma();
+		TreeFamily blueSlimeTree = new TreeSlimeBlue();
+		TreeFamily purpleSlimeTree = new TreeSlimePurple();
+		TreeFamily magmaSlimeTree = new TreeSlimeMagma();
 		Collections.addAll(trees, blueSlimeTree, purpleSlimeTree, magmaSlimeTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -145,9 +140,11 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 
 		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.SLIMELIKE);
-		DirtHelper.registerSoil(TinkerWorld.slimeDirt, DirtHelper.SLIMELIKE);
 		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(TinkerWorld.slimeDirt, DirtHelper.SLIMELIKE);
 		DirtHelper.registerSoil(TinkerWorld.slimeDirt, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(rootySlimyDirt, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(rootySlimyDirt, DirtHelper.DIRTLIKE);
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -161,9 +158,9 @@ public class ModContent {
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
-		setUpSeedRecipes("slimeBlue", new ItemStack(TCTreeSlimeBlue.saplingBlock, 1, 0));
-		setUpSeedRecipes("slimePurple", new ItemStack(TCTreeSlimePurple.saplingBlock, 1, 1));
-		setUpSeedRecipes("slimeMagma", new ItemStack(TCTreeSlimeMagma.saplingBlock, 1, 2));
+		setUpSeedRecipes("slimeBlue", new ItemStack(TreeSlimeBlue.saplingBlock, 1, 0));
+		setUpSeedRecipes("slimePurple", new ItemStack(TreeSlimePurple.saplingBlock, 1, 1));
+		setUpSeedRecipes("slimeMagma", new ItemStack(TreeSlimeMagma.saplingBlock, 1, 2));
 
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
