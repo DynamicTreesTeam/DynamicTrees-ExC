@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
-  "updateUrl": "",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-atum-2/files",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees",
   "logoFile": "a-logo.png",
