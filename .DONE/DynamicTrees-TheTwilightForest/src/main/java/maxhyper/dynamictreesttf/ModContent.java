@@ -120,7 +120,7 @@ public class ModContent {
 				TreeRegistry.findCellKit("bare") ) {
 		};
 		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesBlock, TreeMangrove.leavesState, "acacia");
-		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "acacia", 0, 2);
+		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "acacia", 0, 0);
 		robustTwilightOakLeavesProperties = setUpLeaves(TreeRobustTwilightOak.leavesBlock, TreeRobustTwilightOak.leavesState, "deciduous",0, 13);
 		rainbowOakLeavesProperties = setUpLeaves(TreeRainbowOak.leavesBlock, TreeRainbowOak.leavesState, "deciduous");
 

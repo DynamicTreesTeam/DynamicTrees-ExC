@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.cells.CellMetadata;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeDisease;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -68,7 +69,8 @@ public class TreeBloodwood extends TreeFamily {
 
 			setSeedStack(new ItemStack(ModContent.bloodwoodSeed));
 			setupStandardSeedDropping();
-			this.addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
+
+			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
 
 		public boolean isBiomePerfect(Biome biome) {
@@ -80,7 +82,7 @@ public class TreeBloodwood extends TreeFamily {
 		}
 
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootyUpsidedownDirt;
 		}
 
@@ -108,7 +110,7 @@ public class TreeBloodwood extends TreeFamily {
 			return new AxisAlignedBB(0.25f, 0.25f, 0.25f, 0.75f, 1.0f, 0.75f);
 		}
 
-		private final EnumFacing downFirst[] = {EnumFacing.DOWN, EnumFacing.NORTH, EnumFacing.SOUTH, EnumFacing.EAST, EnumFacing.WEST};
+		private final EnumFacing[] downFirst = {EnumFacing.DOWN, EnumFacing.NORTH, EnumFacing.SOUTH, EnumFacing.EAST, EnumFacing.WEST};
 		@Override public boolean handleRot(World world, List<BlockPos> ends, BlockPos rootPos, BlockPos treePos, int soilLife, SafeChunkBounds safeBounds) {
 
 			Iterator<BlockPos> iter = ends.iterator();//We need an iterator since we may be removing elements.
@@ -201,6 +203,8 @@ public class TreeBloodwood extends TreeFamily {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "bloodwood"));
 
 		setDynamicBranch(ModContent.bloodwoodBranch);
+
+		setPrimitiveLog(logBlock.getDefaultState());
 
 		ModContent.bloodwoodLeavesProperties.setTree(this);
 

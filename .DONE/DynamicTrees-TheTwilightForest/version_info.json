@@ -1,0 +1,16 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-twilight-forest/files",
+	"1.12.2": {
+		"1.12.2-1.1.5": "+ Updated to latest Dynamic Trees version\n+ Added update checker",
+		"1.12.2-1.1.4": "- Fixed mangrove roots being ugly as shit\n- Fixed infinite recursion sometimes happening in worldgen",
+		"1.12.2-1.1.3": "Updated to work with Twilight Forest 3.11",
+		"1.12.2-1.1.2": "added version limit for twilight forest",
+		"1.12.2-1.1.1": "Fixed startup crash",
+		"1.12.2-1.1.0": "Added world generation!",
+		"1.12.2-1.0.0": "Initial Upload\nDoes NOT have worldgen enabled yet"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.1.5",
+		"1.12.2-recommended": "1.12.2-1.1.5"
+	}
+}

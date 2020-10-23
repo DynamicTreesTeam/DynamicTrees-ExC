@@ -33,11 +33,6 @@ public class TreeEucalyptus extends TreeFamily {
 
 			this.setBasicGrowingParameters(0.15F, 24.0F, 2, 3, 0.7F);
 
-//			envFactor(Type.COLD, 0.75f);
-//			envFactor(Type.HOT, 0.50f);
-//			envFactor(Type.DRY, 0.50f);
-//			envFactor(Type.FOREST, 1.05f);
-
 			generateSeed();
 			setupStandardSeedDropping();
 		}

@@ -5,11 +5,11 @@
   "description": "Adds compatibilities between dynamic trees and Forestry",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forestry",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forestry/files",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "f-logo.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

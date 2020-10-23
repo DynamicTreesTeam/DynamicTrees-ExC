@@ -51,10 +51,10 @@ public class TreeMangrove extends TreeFamily {
 			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundMangroveRoot, ModContent.undergroundRootExposed, ModContent.mangroveBranch,6,   8, 40, 5));
 		}
 
-		@Override
-		public BlockRooty getRootyBlock() {
-			return ModContent.rootyDirtMangrove;
-		}
+//		@Override
+//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+//			return ModContent.rootyDirtMangrove;
+//		}
 
 		private EnumFacing getRelativeFace (BlockPos signalPos, BlockPos rootPos){
 			if (signalPos.getZ() < rootPos.getZ()){

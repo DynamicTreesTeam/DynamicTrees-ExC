@@ -4,11 +4,13 @@ import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves2;
+import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.nether.NaturaNether;
@@ -23,6 +25,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -51,19 +54,21 @@ public class TreeDarkwood extends TreeFamily {
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockPotashApple)).setRayDistance(4.0F));
 
 			generateSeed();
-			//setupStandardSeedDropping();
-			this.addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
+
+			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
+
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootyNetherDirt;
 		}
+
 	}
 
 	public TreeDarkwood() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockNetherLog.TYPE, BlockNetherLog.LogType.DARKWOOD));
 
 		ModContent.darkwoodLeavesProperties.setTree(this);
 		ModContent.darkwoodFloweringLeavesProperties.setTree(this);

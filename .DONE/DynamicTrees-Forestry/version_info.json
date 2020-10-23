@@ -1,0 +1,17 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forestry/files",
+	"1.12.2": {
+		"1.12.2-1.0.7": "+ Added update checker\n- Minor fixes",
+		"1.12.2-1.0.6": "+ Fixed crash when modifying species biome blacklist\n+ Added custom species names to forestry's vanilla-like species to distinguish them from the vanilla trees\n     Jungle -> Bright Jungle\n     Dark Oak -> Stout Dark Oak\n     Acacia -> Savanna Acacia\n- Turned forestry's vanilla-like trees into species of the vanilla trees\n(Warning this may cause an issue if there are any of these planted in your world, make sure to remove them before updating and then planting them back)",
+		"1.12.2-1.0.5": "+ Added Season compatibility for fruit growth\n+ Updated to work with latest Dynamic Trees version\n- Forestry biome blacklist now taken into account for tree worldgen\n- Minor text and texture fixes",
+		"1.12.2-1.0.4": "+ Added special effects to some seeds\n+ Fixed seed names",
+		"1.12.2-1.0.3": "+ Added transformation potions for the forestry seeds\nFixed bugs:\n- Baobab grows too fast, now it should be slower and take more bonemeal\n- Coast sequoia not growing to full height, now it should get to a bigger size on its own",
+		"1.12.2-1.0.2": "- Fixed palms not rendering properly when DT-BoP is installed",
+		"1.12.2-1.0.1": "- Fixed crash in certain forge versions",
+		"1.12.2-1.0.0": "Initial release. Includes worldgen"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.0.7",
+		"1.12.2-recommended": "1.12.2-1.0.7"
+	}
+}

@@ -3,9 +3,11 @@ package maxhyper.dynamictreesnatura.trees;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
+import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.nether.NaturaNether;
@@ -20,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -47,10 +50,11 @@ public class TreeGhostwood extends TreeFamily {
 
 			generateSeed();
 			setupStandardSeedDropping();
-			this.addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
+			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
+
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootyNetherDirt;
 		}
 	}
@@ -58,7 +62,7 @@ public class TreeGhostwood extends TreeFamily {
 	public TreeGhostwood() {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "ghostwood"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockNetherLog.TYPE, BlockNetherLog.LogType.GHOSTWOOD));
 
 		ModContent.ghostwoodLeavesProperties.setTree(this);
 

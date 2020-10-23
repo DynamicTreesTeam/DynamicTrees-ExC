@@ -1,9 +1,11 @@
 package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
+import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import maxhyper.dynamictreesnatura.ModContent;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.nether.NaturaNether;
@@ -14,7 +16,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -42,10 +46,12 @@ public class TreeFusewood extends TreeFamily {
 
 			setSeedStack(new ItemStack(ModContent.fusewoodSeed));
 			setupStandardSeedDropping();
-			this.addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
+
+			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
+
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootyNetherDirt;
 		}
 	}
@@ -54,6 +60,8 @@ public class TreeFusewood extends TreeFamily {
 		super(new ResourceLocation(DynamicTreesNatura.MODID, "fusewood"));
 
 		setDynamicBranch(ModContent.fusewoodBranch);
+
+		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockNetherLog.TYPE, BlockNetherLog.LogType.FUSEWOOD));
 
 		ModContent.fusewoodLeavesProperties.setTree(this);
 

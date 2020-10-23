@@ -5,11 +5,11 @@
   "description": "Adds compatibilities between dynamic trees and The Twilight Forest",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-twilight-forest",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-twilight-forest/files",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees and Team Twilight for The Twilight Forest",
-  "logoFile": "tf-icon.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

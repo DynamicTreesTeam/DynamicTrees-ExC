@@ -1,0 +1,16 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-natura/files",
+	"1.12.2": {
+		"1.12.2-1.1.4": "+ Updated to latest Dynamic Trees version\n+ Added update checker",
+		"1.12.2-1.1.3": "- Updated seed textures\n- Fixed Amaranth leaves having wacky colors in some biomes",
+		"1.12.2-1.1.2": "+ Added season based growth for cactus fruit\n- Minor text fixes",
+		"1.12.2-1.1.1": "- Standardized some seed textures",
+		"1.12.2-1.1.0": "+ Added Saguaro Cactus\n+ Added special effects to some seeds\n- Fixed bloodwood trunk missing texture underneath.\n- Other minor fixes",
+		"1.12.2-1.0.1": "-Fixed registry warnings\n-Made bloodwood generate as saplings\n-Fixed non-dynamic saguaro cactus not spawning",
+		"1.12.2-1.0.0": "- Fixed Natura config not disabling tree generation"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.1.4",
+		"1.12.2-recommended": "1.12.2-1.1.4"
+	}
+}

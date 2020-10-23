@@ -21,7 +21,7 @@ public class DynamicTreesIntegratedDynamics {
 	@Mod.Instance
 	public static DynamicTreesIntegratedDynamics instance;
 	
-	@SidedProxy(clientSide = "maxhyper.dynamictreesintegrateddynamics.proxy.ClientProxy", serverSide = "maxhyper.dynamictreesintegrateddynamics.proxy.CommonProxy") //com.
+	@SidedProxy(clientSide = "maxhyper.dynamictreesintegrateddynamics.proxy.ClientProxy", serverSide = "maxhyper.dynamictreesintegrateddynamics.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler

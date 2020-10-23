@@ -14,6 +14,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchCactus;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.event.SpeciesPostGenerationEvent;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
@@ -83,7 +84,8 @@ public class CactusSaguaro extends TreeFamily {
             envFactor(Type.SANDY, 1.05f);
 
             clearAcceptableSoils();
-            addAcceptableSoil(Blocks.SAND);
+
+            addAcceptableSoils(DirtHelper.SANDLIKE);
         }
 
         @Override
@@ -100,7 +102,7 @@ public class CactusSaguaro extends TreeFamily {
         }
 
         @Override
-        public BlockRooty getRootyBlock() {
+        public BlockRooty getRootyBlock(World world, BlockPos pos) {
             return ModBlocks.blockRootySand;
         }
 
@@ -176,8 +178,6 @@ public class CactusSaguaro extends TreeFamily {
 
     public CactusSaguaro() {
         super(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro"));
-
-  //      setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 2));
 
         setStick(ItemStack.EMPTY);
     }

@@ -7,25 +7,23 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenMound;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.trees.SpeciesRare;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
-import net.minecraft.init.Biomes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 import twilightforest.biomes.TFBiomes;
 
-public class SpeciesSpruceHuge extends SpeciesRare {
+public class SpeciesSpruceHuge extends Species {
 
     public SpeciesSpruceHuge(TreeFamily treeFamily) {
         super(new ResourceLocation(DynamicTreesTTF.MODID, "hugemegaspruce"), treeFamily);
         setBasicGrowingParameters(0.3f, 30.0f, 6, 9, 1.2f);
         setGrowthLogicKit(new ConiferLogic(7.0f));
+
+        setRequiresTileEntity(true);
 
         setSoilLongevity(32);//Grows for a while so it can actually get tall
 
