@@ -6,10 +6,10 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-industrial-craft-2",
-  "updateUrl": "https://github.com/Harleyoc1/DynamicTreesVersionInfo/blob/master/Add-ons/IndustrialCraft.json?raw=true",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-industrial-craft-2/files",
   "authorList": ["Max Hyper, Harley O'Connor"],
   "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "ic2-logo.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

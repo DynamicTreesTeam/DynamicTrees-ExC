@@ -51,18 +51,6 @@ public class EU2TreeFeJuniper extends TreeFamily {
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
 
-//	@Override
-//	public ItemStack getPrimitiveLogItemStack(int qty) {
-//		ItemStack stack = new ItemStack(Objects.requireNonNull(planksBlock), 1, 0);
-//		stack.setCount(MathHelper.clamp(qty, 0, 64));
-//		return stack;
-//	}
-//	public ItemStack getSilkTouchLogItemStack(int qty) {
-//		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);
-//		stack.setCount(MathHelper.clamp(qty, 0, 64));
-//		return stack;
-//	}
-
 	@Override
 	public void createSpecies() {
 		setCommonSpecies(new SpeciesFeJuniper(this));

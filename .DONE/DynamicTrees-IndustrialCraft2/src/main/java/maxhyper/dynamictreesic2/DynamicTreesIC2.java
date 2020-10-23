@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid= DynamicTreesIC2.MODID, name= DynamicTreesIC2.NAME, dependencies = DynamicTreesIC2.DEPENDENCIES)
+@Mod(modid= DynamicTreesIC2.MODID, name= DynamicTreesIC2.NAME, dependencies = DynamicTreesIC2.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-IndustrialCraft2/version_info.json?raw=true")
 public class DynamicTreesIC2 {
 	
 	public static final String MODID = "dynamictreesic2";

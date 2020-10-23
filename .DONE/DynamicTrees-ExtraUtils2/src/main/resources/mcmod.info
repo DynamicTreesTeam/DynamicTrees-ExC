@@ -5,11 +5,11 @@
   "description": "Adds compatibilities between dynamic trees and Extra Utilities 2",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-extra-utilities-2",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-extra-utilities-2/files",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "eu2-logo.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }
