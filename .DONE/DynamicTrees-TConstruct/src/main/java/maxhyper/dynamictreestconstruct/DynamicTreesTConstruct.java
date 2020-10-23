@@ -10,11 +10,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesTConstruct.MODID, name= DynamicTreesTConstruct.NAME, dependencies = DynamicTreesTConstruct.DEPENDENCIES)
+@Mod(modid= DynamicTreesTConstruct.MODID, name= DynamicTreesTConstruct.NAME, dependencies = DynamicTreesTConstruct.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TConstruct/version_info.json?raw=true")
 public class DynamicTreesTConstruct {
 	
 	public static final String MODID = "dynamictreestconstruct";
-	public static final String NAME = "Dynamic Trees Extra Compat";
+	public static final String NAME = "Dynamic Trees for Tinkers' Construct";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
 			+ ";after:tconstruct";
 	
@@ -26,7 +26,7 @@ public class DynamicTreesTConstruct {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit();
+		proxy.preInit(event);
 	}
 	
 	@EventHandler

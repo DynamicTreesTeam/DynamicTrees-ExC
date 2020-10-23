@@ -2,18 +2,22 @@ package maxhyper.dynamictreestconstruct.trees;
 
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
+import maxhyper.dynamictreestconstruct.ModConfigs;
 import maxhyper.dynamictreestconstruct.ModContent;
 import maxhyper.dynamictreestconstruct.genfeatures.FeatureGenSlimeVines;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.world.TinkerWorld;
@@ -45,40 +49,35 @@ public class TCTreeSlimeBlue extends TreeFamily {
 
 			generateSeed();
 			this.setupStandardSeedDropping();
-
 			setStick(ItemStack.EMPTY);
 
 			this.addGenFeature(new FeatureGenSlimeVines(TinkerWorld.slimeVineBlue3));
-			this.addGenFeature((new FeatureGenFruit(ModContent.blockGreenSlime)).setRayDistance(4.0F));
-			this.addGenFeature((new FeatureGenFruit(ModContent.blockBlueSlime)).setRayDistance(4.0F));
+			if (ModConfigs.greenSlimeBallsInBlueTrees)
+				this.addGenFeature((new FeatureGenFruit(ModContent.blockGreenSlime)).setRayDistance(4.0F));
+			if (ModConfigs.blueSlimeBallsInBlueTrees)
+				this.addGenFeature((new FeatureGenFruit(ModContent.blockBlueSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
-			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);
+			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
 
 		}
+
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootySlimyDirt;
-		}
-
-		@Override
-		public boolean isThick() {
-			return false;
 		}
 	}
 
 	public TCTreeSlimeBlue() {
-		super(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeBlue"));
+		this(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeBlue"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 		setDynamicBranch(ModContent.slimeBlueBranch);
-
 		ModContent.blueSlimeLeavesProperties.setTree(this);
-
-		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
-
 	}
 	public TCTreeSlimeBlue(ResourceLocation resourceLocation) {
 		super(resourceLocation);
+
+		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
+		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
 
 	@Override
@@ -96,11 +95,5 @@ public class TCTreeSlimeBlue extends TreeFamily {
 	}
 	public List<Item> getRegisterableItems(List<Item> itemList) {
 		return super.getRegisterableItems(itemList);
-	}
-
-
-	@Override
-	public boolean isThick() {
-		return false;
 	}
 }

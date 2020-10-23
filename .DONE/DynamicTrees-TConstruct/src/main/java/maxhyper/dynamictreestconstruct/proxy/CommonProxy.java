@@ -3,6 +3,7 @@ package maxhyper.dynamictreestconstruct.proxy;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
+import maxhyper.dynamictreestconstruct.ModConfigs;
 import maxhyper.dynamictreestconstruct.ModContent;
 import maxhyper.dynamictreestconstruct.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreestconstruct.growth.SlimeGrowthLogic;
@@ -13,12 +14,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import slimeknights.tconstruct.shared.TinkerCommons;
 
 public class CommonProxy {
 
-	public void preInit() {
+	public void preInit(FMLPreInitializationEvent event) {
+		ModConfigs.preInit(event);
 		TreeRegistry.registerGrowthLogicKit(new ResourceLocation(ModConstants.MODID, "slime"), new SlimeGrowthLogic());
 	}
 
@@ -34,9 +37,6 @@ public class CommonProxy {
 
 		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimePurple")).
 				addDropCreator(new DropCreatorFruit(TinkerCommons.matSlimeBallPurple).setRarity(0.005f));
-
-		//TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTConstruct.MODID, "slimeMagma")).
-		//		addDropCreator(new DropCreatorFruit(TinkerCommons.matSlimeBallMagma, new ItemStack(Items.SLIME_BALL)).setRarity(0.05f));
 
 		ModContent.blockGreenSlime.setDroppedItem(new ItemStack(Items.SLIME_BALL));
 		ModContent.blockBlueSlime.setDroppedItem(TinkerCommons.matSlimeBallBlue);

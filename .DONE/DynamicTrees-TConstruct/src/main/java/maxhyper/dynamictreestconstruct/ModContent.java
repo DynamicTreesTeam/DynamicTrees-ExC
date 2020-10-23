@@ -12,6 +12,7 @@ import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.items.Seed;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
@@ -38,6 +39,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.world.TinkerWorld;
 import slimeknights.tconstruct.world.block.BlockSlimeGrass;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesTConstruct.MODID)
@@ -45,7 +47,6 @@ import slimeknights.tconstruct.world.block.BlockSlimeGrass;
 public class ModContent {
 
 	public static BlockBranch slimeBlueBranch, slimePurpleBranch, slimeMagmaBranch;
-	public static Seed fejuniperSeedBurnt;
 	public static BlockRooty rootySlimyDirt;
 	public static BlockFruit blockGreenSlime, blockBlueSlime, blockPurpleSlime, blockMagmaSlime;
 	public static ILeavesProperties blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties;
@@ -142,6 +143,11 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTConstruct.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(TinkerWorld.slimeDirt, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(TinkerWorld.slimeDirt, DirtHelper.DIRTLIKE);
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -167,11 +173,6 @@ public class ModContent {
 		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
 		ModRecipes.createDirtBucketExchangeRecipes(treeSapling, treeSeed, true);
 	}
-	public static void setUpSeedRecipes (String name, ItemStack sapling, ItemStack seed){
-		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesTConstruct.MODID, name+"seed"), (ResourceLocation)null, seed, Ingredient.fromStacks(sapling), Ingredient.fromItem(ModItems.dirtBucket));
-		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesTConstruct.MODID, name+"sapling"), (ResourceLocation)null, sapling, Ingredient.fromStacks(seed), Ingredient.fromItem(ModItems.dirtBucket));
-		OreDictionary.registerOre("treeSapling", new ItemStack(fejuniperSeedBurnt));
-	} //Fake Seed
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent

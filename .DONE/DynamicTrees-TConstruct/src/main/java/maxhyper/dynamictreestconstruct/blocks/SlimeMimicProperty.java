@@ -34,10 +34,10 @@ public class SlimeMimicProperty extends MimicProperty {
             return TinkerWorld.slimeGrass.getDefaultState();
         }
 
-        final int dMap[] = {0, -1, 1};//Y-Axis depth map
+        final int[] dMap = {0, -1, 1};//Y-Axis depth map
 
         IBlockState mimic = TinkerWorld.slimeDirt.getDefaultState();//Default to dirt in case no dirt or grass is found
-        IBlockState cache[] = new IBlockState[12];//A cache so we don't need to pull the blocks from the world twice
+        IBlockState[] cache = new IBlockState[12];//A cache so we don't need to pull the blocks from the world twice
         int i = 0;
 
         //Prioritize Grass by searching for grass first
@@ -62,7 +62,7 @@ public class SlimeMimicProperty extends MimicProperty {
         return mimic;
     }
 
-    public static interface IMimic {
+    public interface IMimic {
         IBlockState getMimic(IBlockAccess access, BlockPos pos);
     }
 }

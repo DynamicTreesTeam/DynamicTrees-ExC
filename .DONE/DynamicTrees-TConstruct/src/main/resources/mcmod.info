@@ -1,15 +1,15 @@
 [
 {
   "modid": "dynamictreestconstruct",
-  "name": "Dynamic Trees for Tinkers Construct",
+  "name": "Dynamic Trees for Tinkers' Construct",
   "description": "Adds compatibilities between dynamic trees and Tinkers Construct",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-tinkers-construct",
+  "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-tinkers-construct/files",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "tc-logo.png",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

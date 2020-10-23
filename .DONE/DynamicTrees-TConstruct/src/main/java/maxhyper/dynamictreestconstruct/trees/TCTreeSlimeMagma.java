@@ -2,14 +2,18 @@ package maxhyper.dynamictreestconstruct.trees;
 
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreestconstruct.DynamicTreesTConstruct;
+import maxhyper.dynamictreestconstruct.ModConfigs;
 import maxhyper.dynamictreestconstruct.ModContent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import slimeknights.tconstruct.world.TinkerWorld;
 
@@ -29,22 +33,17 @@ public class TCTreeSlimeMagma extends TCTreeSlimeBlue {
 
 			generateSeed();
 			this.setupStandardSeedDropping();
-
 			setStick(ItemStack.EMPTY);
 
-			this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
+			if (ModConfigs.orangeSlimeBallsInMagmaTrees)
+				this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
 			this.clearAcceptableSoils();
-			this.addAcceptableSoil(TinkerWorld.slimeGrass, TinkerWorld.slimeDirt);
+			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
 		}
 
 		@Override
-		public BlockRooty getRootyBlock() {
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
 			return ModContent.rootySlimyDirt;
-		}
-
-		@Override
-		public boolean isThick() {
-			return false;
 		}
 	}
 
