@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesIntegratedDynamics.MODID, name= DynamicTreesIntegratedDynamics.NAME, dependencies = DynamicTreesIntegratedDynamics.DEPENDENCIES)
+@Mod(modid= DynamicTreesIntegratedDynamics.MODID, name= DynamicTreesIntegratedDynamics.NAME, dependencies = DynamicTreesIntegratedDynamics.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-IntegratedDynamics/version_info.json?raw=true")
 public class DynamicTreesIntegratedDynamics {
 	
 	public static final String MODID = "dynamictreesintegrateddynamics";
@@ -26,7 +26,7 @@ public class DynamicTreesIntegratedDynamics {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit();
+		proxy.preInit(event);
 	}
 	
 	@EventHandler

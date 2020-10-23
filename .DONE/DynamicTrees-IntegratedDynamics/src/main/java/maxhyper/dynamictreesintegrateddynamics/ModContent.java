@@ -12,7 +12,6 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
-import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
@@ -73,15 +72,15 @@ public class ModContent {
 			registry.register(menrilLeaves);
 
 			menrilLeavesProperties = new LeavesProperties(
-					IDTreeMenril.leavesBlock.getDefaultState(),
-					new ItemStack(IDTreeMenril.leavesBlock),
+					TreeMenril.leavesBlock.getDefaultState(),
+					new ItemStack(TreeMenril.leavesBlock),
 					TreeRegistry.findCellKit("deciduous"))
 			{
 				@Override public int getSmotherLeavesMax() {
 					return 8;
 				}
 				@Override public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(IDTreeMenril.leavesBlock);
+					return new ItemStack(TreeMenril.leavesBlock);
 				}
 				@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
 					return 0xffffff;
@@ -91,7 +90,7 @@ public class ModContent {
 			menrilLeavesProperties.setDynamicLeavesState(menrilLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
 			menrilLeaves.setProperties(0, menrilLeavesProperties);
 
-			TreeFamily menrilTree = new IDTreeMenril();
+			TreeFamily menrilTree = new TreeMenril();
 			Collections.addAll(trees, menrilTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -158,7 +157,7 @@ public class ModContent {
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
-		setUpSeedRecipes("menril", new ItemStack(IDTreeMenril.saplingBlock));
+		setUpSeedRecipes("menril", new ItemStack(TreeMenril.saplingBlock));
 
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){

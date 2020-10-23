@@ -1,0 +1,17 @@
+[
+  {
+    "__comment" : "cancels all vanilla generation",
+    "select" : { "name": "integrateddynamics:biome_meneglin" },
+    "apply" : {
+      "cancelvanilla": true,
+      "species" : {
+        "random" : {
+          "dynamictreesintegrateddynamics:menril" : 1,
+          "dynamictrees:oak" : 4
+        }
+      },
+      "density" : [ 0.25 ],
+      "chance" : 0.7
+    }
+  }
+]

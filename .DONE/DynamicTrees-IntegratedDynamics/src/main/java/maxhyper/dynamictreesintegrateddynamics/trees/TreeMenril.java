@@ -7,6 +7,7 @@ import java.util.function.BiFunction;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenMound;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenRoots;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -27,19 +28,20 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.cyclops.integrateddynamics.world.biome.BiomeMeneglin;
 
-public class IDTreeMenril extends TreeFamily {
+public class TreeMenril extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("integrateddynamics:menril_leaves");
-	public static Block logBlock = Block.getBlockFromName("integrateddynamics:menril_log");
-	public static Block saplingBlock = Block.getBlockFromName("integrateddynamics:menril_sapling");
+	public static Block leavesBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("integrateddynamics","menril_leaves"));
+	public static Block logBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("integrateddynamics","menril_log"));
+	public static Block saplingBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("integrateddynamics","menril_sapling"));
 
 	public class SpeciesMenril extends Species {
 		SpeciesMenril(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.menrilLeavesProperties);
 
-			setBasicGrowingParameters(1.2f, 9.0f, 0, 5, 0.6f);
+			setBasicGrowingParameters(1.2f, 9.0f, 0, 5, 0.2f);
 						
 			envFactor(Type.COLD, 1.1f);
 			envFactor(Type.HOT, 0.75f);
@@ -51,11 +53,7 @@ public class IDTreeMenril extends TreeFamily {
 			addDropCreator(new DropCreatorSeed(1f));
 
 			addGenFeature(new FeatureGenRoots(8).setScaler(getRootScaler()));//Finally Generate Roots
-		}
-
-		@Override
-		public boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
-			return super.isAcceptableSoil(world, pos, soilBlockState) || soilBlockState.getBlock() instanceof BlockDirt || soilBlockState.getBlock() instanceof BlockGrass;
+			addGenFeature(new FeatureGenMound(7));
 		}
 
 		@Override
@@ -86,9 +84,14 @@ public class IDTreeMenril extends TreeFamily {
 
 			return super.getEnergy(world, pos) * biomeSuitability(world, pos) + (CoordUtils.coordHashCode(pos.up(month), 3) % 3); // Vary the height energy by a psuedorandom hash function
 		}
+
+		@Override
+		public boolean useDefaultWailaBody() {
+			return false;
+		}
 	}
 
-	public IDTreeMenril() {
+	public TreeMenril() {
 		super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID, "menril"));
 
 		setPrimitiveLog(logBlock.getDefaultState());
