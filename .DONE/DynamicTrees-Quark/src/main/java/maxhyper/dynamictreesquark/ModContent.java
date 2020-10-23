@@ -60,7 +60,7 @@ public class ModContent {
 				messageSent = true;
 			} else if (TreeVariants.enableSakura || TreeVariants.enableSwamp){
 				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Quark: To prevent non-dynamic trees from spawning please disable Quark's Blossoming and Swamp trees (INDIVIDUALLY) in Quark world settings."));
-				event.getEntity().sendMessage(new TextComponentString("Disabling Tree Variants as a whole will disable the Dynamic Trees for Quark as well."));
+				event.getEntity().sendMessage(new TextComponentString("Disabling Tree Variants as a whole will disable the Dynamic Trees for Quark Addon as well."));
 				messageSent = true;
 			}
 		}
