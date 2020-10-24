@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import maxhyper.dynamictreesttf.blocks.BlockBranchTwilightThick;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenTrunkCore;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenUndergroundRoots;
@@ -86,6 +87,7 @@ public class TreeMagicTime extends TreeFamily {
 		}
 	}
 
+	public static BlockBranchTwilightThick branch;
 	public BlockSurfaceRoot timeRoots;
 	public TreeMagicTime() {
 		super(new ResourceLocation(DynamicTreesTTF.MODID, "treeOfTime"));
@@ -145,10 +147,11 @@ public class TreeMagicTime extends TreeFamily {
 	@Override
 	public BlockBranch createBranch() {
 		String branchName = "treeOfTimeBranch";
-		return new BlockBranchTwilightThick(branchName){
+		branch = new BlockBranchTwilightThick(branchName){
 			@Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 				return false;
 			}
 		};
+		return branch;
 	}
 }

@@ -126,6 +126,7 @@ public class TreeMagicMiners extends TreeFamily {
 		}
 	}
 
+	public static BlockBranchTwilight branch;
 	public TreeMagicMiners() {
 		super(new ResourceLocation(DynamicTreesTTF.MODID, "minersTree"));
 
@@ -170,10 +171,11 @@ public class TreeMagicMiners extends TreeFamily {
 	@Override
 	public BlockBranch createBranch() {
 		String branchName = "minersTreebranch";
-		return new BlockBranchTwilight(branchName){
+		branch = new BlockBranchTwilight(branchName){
 			@Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 				return false;
 			}
 		};
+		return branch;
 	}
 }

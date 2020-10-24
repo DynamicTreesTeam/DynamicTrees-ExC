@@ -10,15 +10,20 @@ item.dynamictreesttf:sortingtreeseed.name=Sorting Seed
 item.dynamictreesttf:rainbowoakseed.name=Rainbow Oak Acorn
 
 species.dynamictreesttf:sicklytwilightoak.name=Sickly Twilight Oak
+species.dynamictreesttf:twilightoaksickly.name=Sickly Twilight Oak
 species.dynamictreesttf:canopy.name=Canopy
+species.dynamictreesttf:canopyspooky.name=Spooky Canopy
 species.dynamictreesttf:mangrove.name=Mangrove
 species.dynamictreesttf:darkwood.name=Darkwood
 species.dynamictreesttf:robusttwilightoak.name=Robust Twilight Oak
+species.dynamictreesttf:twilightoakrobust.name=Robust Twilight Oak
 species.dynamictreesttf:rainbowoak.name=Rainbow Oak
 species.dynamictreesttf:treeoftime.name=Tree of Time
 species.dynamictreesttf:treeoftransformation.name=Tree of Transformation
 species.dynamictreesttf:minerstree.name=Miner's Tree
 species.dynamictreesttf:sortingtree.name=Sorting Tree
+species.dynamictreesttf:hugemegaspruce.name=Huge Mega Spruce
+species.dynamictreesttf:oakspooky.name=Spooky Oak
 
 tile.dynamictreesttf:underground_roots=Roots
 tile.dynamictreesttf:underground_roots_exposed=Roots
@@ -31,6 +36,7 @@ tile.dynamictreesttf:leaves2.name=Leaves
 tile.dynamictreesttf:leaves_of_transformation.name=Leaves
 tile.dynamictreesttf:leaves_darkwood.name=Leaves
 
+tile.dynamictreesttf:twilightoakbranch.name=Twilight Oak Tree
 tile.dynamictreesttf:sicklytwilightoakbranch.name=Sickly Twilight Oak Tree
 tile.dynamictreesttf:canopybranch.name=Canopy Tree
 tile.dynamictreesttf:mangrovebranch.name=Mangrove Tree

@@ -43,7 +43,7 @@ public class TreeCanopy extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("twilightforest:twilight_leaves");
     public static Block logBlock = Block.getBlockFromName("twilightforest:twilight_log");
     public static Block saplingBlock = Block.getBlockFromName("twilightforest:twilight_sapling");
-	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockTFLeaves.VARIANT, LeavesVariant.CANOPY);
+	public static IBlockState leavesState = leavesBlock.getStateFromMeta(1);
 	public static int logsMeta = 1;
 	public static int saplingMeta = 1;
 

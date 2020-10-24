@@ -22,14 +22,14 @@ import java.util.Random;
 
 
 public class CommonProxy {
-	
+
 	public void preInit() {
 		if(WorldGenRegistry.isWorldGenEnabled()) {
 			GameRegistry.registerWorldGenerator(new WorldGenPostDT(), 21);
 			GameRegistry.registerWorldGenerator(new WorldGenPreDT(), 19);
 		}
 	}
-	
+
 	public void init() {
 		for (Biome biome : BiomeDataBasePopulator.TwilightBiomes){
 			if (biome == TFBiomes.darkForest || biome == TFBiomes.darkForestCenter){
@@ -59,8 +59,8 @@ public class CommonProxy {
 	}
 	
 	public void postInit(){
-		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "robustTwilightOak")).
-				addDropCreator((new DropCreatorOtherSeed(TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "sicklyTwilightOak")).
+		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "twilightOakRobust")).
+				addDropCreator((new DropCreatorOtherSeed(TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "twilightOakSickly")).
 						getSeedStack(1))).setRarity(0.5f));
 
 	}

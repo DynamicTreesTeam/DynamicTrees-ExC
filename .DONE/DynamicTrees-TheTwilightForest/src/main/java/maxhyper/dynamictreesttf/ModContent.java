@@ -23,12 +23,14 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -43,6 +45,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import twilightforest.block.BlockTFCritter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
@@ -78,14 +81,46 @@ public class ModContent {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		mangroveBranch = new BlockBranchMangrove("mangrovebranch");
-		minerCoreBranch = new BlockBranchMagicCore("minersTreeCoreBranch", BlockBranchMagicCore.Types.MINE);
-		minerCoreBranchOff = new BlockBranchMagicCore("minersTreeCoreBranchOff", BlockBranchMagicCore.Types.MINE);
-		sortingCoreBranch = new BlockBranchMagicCore("sortingTreeCoreBranch", BlockBranchMagicCore.Types.SORT);
-		sortingCoreBranchOff = new BlockBranchMagicCore("sortingTreeCoreBranchOff", BlockBranchMagicCore.Types.SORT);
-		timeCoreBranch = new BlockBranchMagicCoreThick("treeOfTimeCoreBranch", BlockBranchMagicCore.Types.TIME);
-		timeCoreBranchOff = new BlockBranchMagicCoreThick("treeOfTimeCoreBranchOff", BlockBranchMagicCore.Types.TIME);
-		transformCoreBranch = new BlockBranchMagicCore("treeOfTransformationCoreBranch", BlockBranchMagicCore.Types.TRANS);
-		transformCoreBranchOff = new BlockBranchMagicCore("treeOfTransformationCoreBranchOff", BlockBranchMagicCore.Types.TRANS);
+		minerCoreBranch = new BlockBranchMagicCore("minersTreeCoreBranch", BlockBranchMagicCore.Types.MINE){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicMiners.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		minerCoreBranchOff = new BlockBranchMagicCore("minersTreeCoreBranchOff", BlockBranchMagicCore.Types.MINE){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicMiners.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		sortingCoreBranch = new BlockBranchMagicCore("sortingTreeCoreBranch", BlockBranchMagicCore.Types.SORT){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicSorting.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		sortingCoreBranchOff = new BlockBranchMagicCore("sortingTreeCoreBranchOff", BlockBranchMagicCore.Types.SORT){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicSorting.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		timeCoreBranch = new BlockBranchMagicCoreThick("treeOfTimeCoreBranch", BlockBranchMagicCore.Types.TIME){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicTime.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		timeCoreBranchOff = new BlockBranchMagicCoreThick("treeOfTimeCoreBranchOff", BlockBranchMagicCore.Types.TIME){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicTime.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		transformCoreBranch = new BlockBranchMagicCore("treeOfTransformationCoreBranch", BlockBranchMagicCore.Types.TRANS){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicTransformation.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
+		transformCoreBranchOff = new BlockBranchMagicCore("treeOfTransformationCoreBranchOff", BlockBranchMagicCore.Types.TRANS){
+			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+				return TreeMagicTransformation.branch.getPickBlock(state, target, world, pos, player);
+			}
+		};
 
 		((BlockBranchMagicCore) minerCoreBranch).setOffBlock((BlockBranchMagicCore)minerCoreBranchOff);
 		((BlockBranchMagicCore) sortingCoreBranch).setOffBlock((BlockBranchMagicCore)sortingCoreBranchOff);
@@ -112,22 +147,22 @@ public class ModContent {
 		dynamicFirefly = new BlockDynamicTFFirefly();
 		registry.register(dynamicFirefly.setRegistryName(DynamicTreesTTF.MODID, "dynamic_firefly"));
 
-		sicklyTwilightOakLeavesProperties = setUpLeaves(TreeSicklyTwilightOak.leavesBlock, TreeSicklyTwilightOak.leavesState, "deciduous");
-		canopyLeavesProperties = setUpLeaves(TreeCanopy.leavesBlock, TreeCanopy.leavesState, "acacia");
+		sicklyTwilightOakLeavesProperties = setUpLeaves(TreeTwilightOak.leavesState, "deciduous");
+		canopyLeavesProperties = setUpLeaves(TreeCanopy.leavesState, "acacia");
 		spookyCanopyLeavesProperties  = new LeavesProperties(
 				TreeCanopy.leavesBlock.getDefaultState(),
 				ItemStack.EMPTY,
 				TreeRegistry.findCellKit("bare") ) {
 		};
-		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesBlock, TreeMangrove.leavesState, "acacia");
-		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesBlock, TreeDarkwood.leavesState, "acacia", 0, 0);
-		robustTwilightOakLeavesProperties = setUpLeaves(TreeRobustTwilightOak.leavesBlock, TreeRobustTwilightOak.leavesState, "deciduous",0, 13);
-		rainbowOakLeavesProperties = setUpLeaves(TreeRainbowOak.leavesBlock, TreeRainbowOak.leavesState, "deciduous");
+		mangroveLeavesProperties = setUpLeaves(TreeMangrove.leavesState, "acacia");
+		darkwoodLeavesProperties = setUpLeaves(TreeDarkwood.leavesState, "acacia", 0, 0);
+		robustTwilightOakLeavesProperties = setUpLeaves(TreeTwilightOak.leavesState, "deciduous",0, 13);
+		rainbowOakLeavesProperties = setUpLeaves(TreeRainbowOak.leavesState, "deciduous");
 
-		timeLeavesProperties = setUpLeaves(TreeMagicTime.leavesBlock, TreeMagicTime.leavesState, 0, "deciduous");
-		transformationLeavesProperties = setUpLeaves(TreeMagicTransformation.leavesBlock, TreeMagicTransformation.leavesState, 1, "acacia");
-		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, TreeMagicMiners.leavesState, 2,"deciduous", 4, 5);
-		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, TreeMagicSorting.leavesState, 3, "deciduous", 8, 13);
+		timeLeavesProperties = setUpLeaves(TreeMagicTime.leavesBlock, 0, "deciduous");
+		transformationLeavesProperties = setUpLeaves(TreeMagicTransformation.leavesBlock, 1, "acacia");
+		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, 2,"deciduous", 4, 5);
+		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, 3, "deciduous", 8, 13);
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 0, sicklyTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 1, robustTwilightOakLeavesProperties);
@@ -154,18 +189,24 @@ public class ModContent {
 		Species.REGISTRY.register(spookyOak);
 		Species.REGISTRY.register(hugeSpruce);
 
-		TreeFamily sicklytwilightOakTree = new TreeSicklyTwilightOak();
+		TreeFamily twilightOakTree = new TreeTwilightOak();
 		TreeFamily canopyTree = new TreeCanopy();
 		TreeFamily mangroveTree = new TreeMangrove();
 		TreeFamily darkwoodTree = new TreeDarkwood();
-		TreeFamily robustTwilightOakTree = new TreeRobustTwilightOak();
 		TreeFamily timeTree = new TreeMagicTime();
 		TreeFamily transformationTree = new TreeMagicTransformation();
 		TreeFamily minersTree = new TreeMagicMiners();
 		TreeFamily sortingTree = new TreeMagicSorting();
 		TreeFamily rainbowOakTree = new TreeRainbowOak();
 
-		Collections.addAll(trees, sicklytwilightOakTree, canopyTree, mangroveTree, darkwoodTree, robustTwilightOakTree, timeTree, transformationTree, minersTree, sortingTree, rainbowOakTree);
+		Collections.addAll(trees, twilightOakTree, canopyTree, mangroveTree, darkwoodTree, timeTree, transformationTree, minersTree, sortingTree, rainbowOakTree);
+
+		//Depricated code, will be removed in future version
+		{
+			TreeFamily robustTwilightOakTree = new TreeRobustTwilightOak();
+			TreeFamily sicklytwilightOakTree = new TreeSicklyTwilightOak();
+			Collections.addAll(trees, sicklytwilightOakTree, robustTwilightOakTree);
+		}
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
@@ -174,40 +215,9 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
-			@Override public int getLightRequirement() { return light; } //Default: 13
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
-			}
-		};
-		return leavesProperties;
-	}
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState)),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesBlock.getMetaFromState(leavesState));
-			}
-		};
-		return leavesProperties;
-	}
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
+		leavesProperties = new LeavesProperties(leavesBlock.getStateFromMeta(leavesMeta), TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
 			@Override public int getLightRequirement() { return light; } //Default: 13
@@ -217,18 +227,14 @@ public class ModContent {
 		};
 		return leavesProperties;
 	}
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesState,
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
-			}
-		};
-		return leavesProperties;
+	private static ILeavesProperties setUpLeaves (IBlockState leavesState, String cellKit, int smother, int light){
+		return setUpLeaves(leavesState.getBlock(), leavesState.getBlock().getMetaFromState(leavesState), cellKit, smother, light);
+	}
+	private static ILeavesProperties setUpLeaves (IBlockState leavesState, String cellKit){
+		return setUpLeaves(leavesState, cellKit, 4, 13);
+	}
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
+		return setUpLeaves(leavesBlock.getStateFromMeta(leavesMeta), cellKit);
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -246,11 +252,11 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		setUpSeedRecipes("sicklyTwilightOak", new ItemStack(TreeSicklyTwilightOak.saplingBlock, 1, TreeSicklyTwilightOak.saplingMeta));
+		setUpSeedRecipes("twilightOakSickly", new ItemStack(TreeTwilightOak.saplingBlock, 1, TreeTwilightOak.saplingMeta));
+		setUpSeedRecipes("twilightOakRobust", new ItemStack(TreeTwilightOak.saplingBlock, 1, TreeTwilightOak.saplingMetaRobust));
 		setUpSeedRecipes("canopy", new ItemStack(TreeCanopy.saplingBlock, 1, TreeCanopy.saplingMeta));
 		setUpSeedRecipes("mangrove", new ItemStack(TreeMangrove.saplingBlock, 1, TreeMangrove.saplingMeta));
 		setUpSeedRecipes("darkwood", new ItemStack(TreeDarkwood.saplingBlock, 1, TreeDarkwood.saplingMeta));
-		setUpSeedRecipes("robustTwilightOak", new ItemStack(TreeRobustTwilightOak.saplingBlock, 1, TreeRobustTwilightOak.saplingMeta));
 		setUpSeedRecipes("treeOfTime", new ItemStack(TreeMagicTime.saplingBlock, 1, TreeMagicTime.saplingMeta));
 		setUpSeedRecipes("treeOfTransformation", new ItemStack(TreeMagicTransformation.saplingBlock, 1, TreeMagicTransformation.saplingMeta));
 		setUpSeedRecipes("minersTree", new ItemStack(TreeMagicMiners.saplingBlock, 1, TreeMagicMiners.saplingMeta));
@@ -274,6 +280,7 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
+		ModelHelper.regModel(TreeTwilightOak.sicklySpecies.getSeed());
 		LeavesPaging.getLeavesMapForModId(DynamicTreesTTF.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
 		ModelLoader.setCustomStateMapper(TreeDarkwood.darkwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).ignore(BlockDynamicLeaves.TREE).build());

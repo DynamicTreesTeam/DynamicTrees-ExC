@@ -73,7 +73,8 @@ public class FeatureGenLogCritter implements IPostGenFeature, IPostGrowFeature {
     }
 
     @Override
-    public boolean postGrow(World world, BlockPos blockPos, BlockPos blockPos1, Species species, int i, boolean b) {
+    public boolean postGrow(World world, BlockPos blockPos, BlockPos blockPos1, Species species, int soilLife, boolean natural) {
+        if (!natural) return false;
         Random rand = new Random();
         if (rand.nextInt(chanceRand) == 0){
             int chosenHeight = 3 + rand.nextInt(heightLimit-2);

@@ -63,6 +63,7 @@ public class TreeMagicSorting extends TreeFamily {
 		}
 	}
 
+	public static BlockBranchTwilight branch;
 	public TreeMagicSorting() {
 		super(new ResourceLocation(DynamicTreesTTF.MODID, "sortingTree"));
 
@@ -107,10 +108,11 @@ public class TreeMagicSorting extends TreeFamily {
 	@Override
 	public BlockBranch createBranch() {
 		String branchName = "sortingTreebranch";
-		return new BlockBranchTwilight(branchName){
+		branch = new BlockBranchTwilight(branchName){
 			@Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
 				return false;
 			}
 		};
+		return branch;
 	}
 }

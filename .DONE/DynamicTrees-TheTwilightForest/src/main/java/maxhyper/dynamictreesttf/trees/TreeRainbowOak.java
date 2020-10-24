@@ -24,7 +24,7 @@ public class TreeRainbowOak extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("twilightforest:twilight_leaves");
 	public static Block logBlock = Block.getBlockFromName("twilightforest:twilight_log");
 	public static Block saplingBlock = Block.getBlockFromName("twilightforest:twilight_sapling");
-	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockTFLeaves.VARIANT, LeavesVariant.RAINBOAK);
+	public static IBlockState leavesState = leavesBlock.getStateFromMeta(3);
 	public static int logsMeta = 0;
 	public static int saplingMeta = 9;
 

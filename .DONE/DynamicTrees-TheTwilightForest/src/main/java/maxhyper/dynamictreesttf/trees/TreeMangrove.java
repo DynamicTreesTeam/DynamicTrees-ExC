@@ -34,7 +34,7 @@ public class TreeMangrove extends TreeFamily {
 	public static Block leavesBlock = Block.getBlockFromName("twilightforest:twilight_leaves");
 	public static Block logBlock = Block.getBlockFromName("twilightforest:twilight_log");
 	public static Block saplingBlock = Block.getBlockFromName("twilightforest:twilight_sapling");
-	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockTFLeaves.VARIANT, LeavesVariant.MANGROVE);
+	public static IBlockState leavesState = leavesBlock.getStateFromMeta(2);
 	public static int logsMeta = 2;
 	public static int saplingMeta = 2;
 
