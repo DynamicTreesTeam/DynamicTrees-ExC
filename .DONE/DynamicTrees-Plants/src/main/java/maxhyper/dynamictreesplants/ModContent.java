@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
@@ -37,6 +38,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.init.ModRegistry;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesPlants.MODID)
 @ObjectHolder(DynamicTreesPlants.MODID)
@@ -49,7 +51,7 @@ public class ModContent {
 
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
-
+	public static String CRYSTALLIKE = "crystallike";
 
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
@@ -58,6 +60,8 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		DirtHelper.createNewAdjective(CRYSTALLIKE);
+
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		rootyNetherDirt = new BlockRootyNether(false);
@@ -108,6 +112,10 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesPlants.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(rootyNetherDirt, DirtHelper.NETHERLIKE);
+		DirtHelper.registerSoil(rootyCrystalDirt, CRYSTALLIKE);
+		DirtHelper.registerSoil(ModRegistry.GROUNDCOVER, CRYSTALLIKE);
 	}
 
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int meta, int light){

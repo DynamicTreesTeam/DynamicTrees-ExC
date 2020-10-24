@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreesplants.DynamicTreesPlants;
 import maxhyper.dynamictreesplants.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -19,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import java.util.List;
@@ -113,7 +115,7 @@ public class TreeBrazilianPine extends TreeFamily {
     public TreeBrazilianPine() {
         super(new ResourceLocation(DynamicTreesPlants.MODID, "brazilianPine"));
 
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.Logs.class), TheBigBookOfEnums.Logs.BRAZILLIAN_PINE));
 
         ModContent.brazilianPineLeavesProperties.setTree(this);
 

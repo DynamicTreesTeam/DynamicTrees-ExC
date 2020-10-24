@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesplants.DynamicTreesPlants;
 import maxhyper.dynamictreesplants.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -15,6 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import java.util.List;
@@ -65,7 +67,7 @@ public class TreeIncenseCedar extends TreeFamily {
     public TreeIncenseCedar() {
         super(new ResourceLocation(DynamicTreesPlants.MODID, "incenseCedar"));
 
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.Logs.class), TheBigBookOfEnums.Logs.INCENSE_CEDAR));
 
         ModContent.incenseCedarLeavesProperties.setTree(this);
 

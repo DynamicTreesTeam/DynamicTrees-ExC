@@ -9,7 +9,7 @@ public class ModConfigs {
 
     public static File configDirectory;
 
-    public static float menrilTreeOccurance;
+    public static boolean menrilBerriesOnMenrilTrees;
     public static float menrilResinMultiplier;
     public static float menrilBerriesRarity;
 
@@ -20,10 +20,8 @@ public class ModConfigs {
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
         config.load();
 
-        //World
-        menrilTreeOccurance = config.getFloat("menrilTreeOccurance", "world", 0.003f, 0.0f, 1.0f, "The chance of a tree outside of the Meneglin Biome to be a Menril tree.");
-
         //Trees
+        menrilBerriesOnMenrilTrees = config.getBoolean("menrilBerriesOnMenrilTrees", "trees", true, "Enable green menril berries growing like fruit under menril trees.");
         menrilResinMultiplier = config.getFloat("menrilResinMultiplier", "trees", 1.8f, 0.0f, 128.0f, "The multiplier for Menril Chunks dropped when chopping a Menril tree down.");
         menrilBerriesRarity = config.getFloat("menrilBerriesRarity", "trees", 0.15f, 0.0f, 1.0f, "The chance for Menril leaves to drop Menril Berries.");
 

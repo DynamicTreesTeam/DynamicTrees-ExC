@@ -3,7 +3,6 @@ package maxhyper.dynamictreesintegrateddynamics.dropcreators;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import maxhyper.dynamictreesintegrateddynamics.DynamicTreesIntegratedDynamics;
-import maxhyper.dynamictreesintegrateddynamics.ModConfigs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

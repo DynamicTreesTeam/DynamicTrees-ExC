@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicSapling;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -13,6 +14,7 @@ import maxhyper.dynamictreesplants.DynamicTreesPlants;
 import maxhyper.dynamictreesplants.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,6 +28,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import javax.annotation.Nullable;
@@ -52,10 +55,11 @@ public class TreeBlazing extends TreeFamily {
             setupStandardSeedDropping();
 
             clearAcceptableSoils();
-            addAcceptableSoil(Blocks.NETHERRACK, Blocks.SOUL_SAND);
+            addAcceptableSoils(DirtHelper.NETHERLIKE);
         }
+
         @Override
-        public BlockRooty getRootyBlock() {
+        public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
             return ModContent.rootyNetherDirt;
         }
 
@@ -103,7 +107,7 @@ public class TreeBlazing extends TreeFamily {
     public TreeBlazing() {
         super(new ResourceLocation(DynamicTreesPlants.MODID, "blazing"));
 
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.NetherLogs.class), TheBigBookOfEnums.NetherLogs.BLAZE));
 
         ModContent.blazingLeavesProperties.setTree(this);
 

@@ -1,13 +1,13 @@
 [
   {
-    "__comment" : "Dynamic population of meneglin biome.",
+    "__comment" : "Dynamic population of crystal biome.",
     "select" : { "name": "integrateddynamics:biome_meneglin" },
     "apply" : {
       "cancelvanilla": true,
       "species" : {
         "random" : {
-          "dynamictreesintegrateddynamics:menril" : 1,
-          "dynamictrees:oak" : 4
+          "dynamictreesplants:crystal" : 4,
+          "dynamictreesplants:dark_crystal" : 1
         }
       },
       "density" : [ 0.25 ],

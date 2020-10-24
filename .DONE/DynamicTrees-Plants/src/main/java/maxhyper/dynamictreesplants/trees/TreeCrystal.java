@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicSapling;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesplants.DynamicTreesPlants;
@@ -14,6 +15,7 @@ import maxhyper.dynamictreesplants.ModContent;
 import maxhyper.dynamictreesplants.dropcreators.DropCreatorFruit;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -29,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import javax.annotation.Nullable;
@@ -49,7 +52,7 @@ public class TreeCrystal extends TreeFamily {
             super(treeFamily.getName(), treeFamily, leaves);
             setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, 0.5f);
 
-            addAcceptableSoil(ModRegistry.GROUNDCOVER);
+            addAcceptableSoils(ModContent.CRYSTALLIKE);
         }
 
         SpeciesCrystal(TreeFamily treeFamily) {
@@ -62,7 +65,7 @@ public class TreeCrystal extends TreeFamily {
         }
 
         @Override
-        public BlockRooty getRootyBlock() {
+        public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
             return ModContent.rootyCrystalDirt;
         }
 
@@ -96,7 +99,7 @@ public class TreeCrystal extends TreeFamily {
 
     public TreeCrystal() {
         this("crystal");
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.CrystalLogs.class), TheBigBookOfEnums.CrystalLogs.CRYSTAL));
         ModContent.crystalLeavesProperties.setTree(this);
         addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
     }

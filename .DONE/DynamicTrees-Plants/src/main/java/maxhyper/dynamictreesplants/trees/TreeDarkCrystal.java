@@ -8,11 +8,13 @@ import maxhyper.dynamictreesplants.DynamicTreesPlants;
 import maxhyper.dynamictreesplants.ModContent;
 import maxhyper.dynamictreesplants.dropcreators.DropCreatorFruit;
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import java.util.List;
@@ -42,7 +44,7 @@ public class TreeDarkCrystal extends TreeCrystal {
 
     public TreeDarkCrystal() {
         super("darkCrystal");
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.CrystalLogs.class), TheBigBookOfEnums.CrystalLogs.DARK_CRYSTAL));
         ModContent.darkCrystalLeavesProperties.setTree(this);
         addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
     }

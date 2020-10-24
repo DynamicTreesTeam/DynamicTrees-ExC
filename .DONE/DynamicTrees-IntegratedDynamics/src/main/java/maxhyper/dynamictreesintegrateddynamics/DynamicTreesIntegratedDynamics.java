@@ -1,7 +1,6 @@
 package maxhyper.dynamictreesintegrateddynamics;
 
 import com.ferreusveritas.dynamictrees.ModConstants;
-
 import maxhyper.dynamictreesintegrateddynamics.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;

@@ -9,10 +9,8 @@ public class CommonProxy {
 		CustomCellKits.preInit();
 	}
 	
-	public void init() {
-	}
+	public void init() { }
 	
-	public void postInit() {
-	}
+	public void postInit() { }
 	
 }

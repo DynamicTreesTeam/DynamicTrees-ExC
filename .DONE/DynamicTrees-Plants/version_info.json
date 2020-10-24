@@ -1,0 +1,11 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-plants/files",
+	"1.12.2": {
+		"1.12.2-1.0.1": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n- Moved worldgen to be JSON controlled (now fully customizable)\n- Minor fixes",
+		"1.12.2-1.0.0": "Initial release.\nIncludes all trees and worldgen"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.0.1",
+		"1.12.2-recommended": "1.12.2-1.0.1"
+	}
+}

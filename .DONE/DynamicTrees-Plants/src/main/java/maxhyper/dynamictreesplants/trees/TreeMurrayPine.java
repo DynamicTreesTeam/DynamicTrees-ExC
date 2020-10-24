@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreesplants.DynamicTreesPlants;
 import maxhyper.dynamictreesplants.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import shadows.plants2.data.enums.TheBigBookOfEnums;
 import shadows.plants2.init.ModRegistry;
 
 import java.util.List;
@@ -49,10 +51,10 @@ public class TreeMurrayPine extends TreeFamily {
                                     *                     *
                             _ * * *                         *
         */
-        int growthcurve[] = {0,1,1,1,2,3,4,5,6,6,6,5,5,4,3,2,1};
+        int[] growthcurve = {0,1,1,1,2,3,4,5,6,6,6,5,5,4,3,2,1};
 
         @Override
-        protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
+        protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
 
             int signalHeight = (pos.getY() - signal.rootPos.getY());
             for (EnumFacing dir : EnumFacing.HORIZONTALS){
@@ -83,7 +85,7 @@ public class TreeMurrayPine extends TreeFamily {
     public TreeMurrayPine() {
         super(new ResourceLocation(DynamicTreesPlants.MODID, "murrayPine"));
 
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, meta));
+        setPrimitiveLog(logBlock.getDefaultState().withProperty(PropertyEnum.create("type", TheBigBookOfEnums.Logs.class), TheBigBookOfEnums.Logs.MURRAY_PINE));
 
         ModContent.murrayPineLeavesProperties.setTree(this);
 

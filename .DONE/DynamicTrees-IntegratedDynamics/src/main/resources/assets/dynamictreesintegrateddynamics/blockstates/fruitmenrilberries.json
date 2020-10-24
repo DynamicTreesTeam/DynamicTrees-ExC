@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {   "when": { "age": 0 },
+      "apply": { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age0" }
+    },
+    {   "when": { "age": 1 },
+      "apply": [
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age1" },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age1", "y": 90 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age1", "y": 180 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age1", "y": 270 }
+      ]
+    },
+    {   "when": { "age": 2 },
+      "apply": [
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age2" },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age2", "y": 90 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age2", "y": 180 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age2", "y": 270 }
+      ]
+    },
+    {   "when": { "age": 3 },
+      "apply": [
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age3" },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age3", "y": 90 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age3", "y": 180 },
+        { "model": "dynamictreesintegrateddynamics:fruit/menrilberry_age3", "y": 270 }
+      ]
+    }
+  ]
+}
