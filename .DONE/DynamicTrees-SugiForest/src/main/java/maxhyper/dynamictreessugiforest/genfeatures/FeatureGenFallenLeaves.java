@@ -2,25 +2,17 @@ package maxhyper.dynamictreessugiforest.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
-import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFruitCocoa;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import sugiforest.block.BlockSugiFallenLeaves;
-import sugiforest.block.SugiBlocks;
-import sun.security.ssl.Debug;
 
 import java.util.List;
-import java.util.Random;
 
 public class FeatureGenFallenLeaves implements IPostGenFeature, IPostGrowFeature {
 
@@ -29,6 +21,8 @@ public class FeatureGenFallenLeaves implements IPostGenFeature, IPostGrowFeature
     public FeatureGenFallenLeaves(Block leafPile){
         leafPileBlock = leafPile;
     }
+
+    private static final int maxLayer = 6;
 
     @Override
     public boolean postGrow(World world, BlockPos rootPos, BlockPos treePos, Species species, int soilLife, boolean natural) {
@@ -67,7 +61,8 @@ public class FeatureGenFallenLeaves implements IPostGenFeature, IPostGrowFeature
             IBlockState state = world.getBlockState(blockpos);
             if (state.getBlock() instanceof BlockSugiFallenLeaves) {
                 int layers = state.getValue(BlockSugiFallenLeaves.LAYERS);
-                world.setBlockState(blockpos, leafPileBlock.getDefaultState().withProperty(BlockSugiFallenLeaves.LAYERS, (layers & 7) + 1).withProperty(BlockSugiFallenLeaves.CHANCE, Boolean.TRUE));
+                if (layers > maxLayer) return false;
+                world.setBlockState(blockpos, leafPileBlock.getDefaultState().withProperty(BlockSugiFallenLeaves.LAYERS, layers + 1).withProperty(BlockSugiFallenLeaves.CHANCE, Boolean.TRUE));
                 return true;
             }
         }
