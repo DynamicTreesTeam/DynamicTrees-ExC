@@ -27,7 +27,8 @@ public class BlockDynamicLeavesCrystal extends BlockDynamicLeaves {
         super();
         setRegistryName(DynamicTreesTheAether.MODID, "leaves_crystal");
         //setUnlocalizedName("leaves_crystal");
-        setTickRandomly(true);
+        //setTickRandomly(true);
+        needsRandomTick = true;
     }
 
     @Override

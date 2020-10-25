@@ -157,9 +157,11 @@ public class ModContent {
 		DirtHelper.registerSoil(BlocksAether.aether_grass, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlocksAether.enchanted_aether_grass, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlocksAether.aether_dirt, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(rootyDirtAether, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlocksAether.aether_grass, AETHERLIKE);
 		DirtHelper.registerSoil(BlocksAether.enchanted_aether_grass, AETHERLIKE);
 		DirtHelper.registerSoil(BlocksAether.aether_dirt, AETHERLIKE);
+		DirtHelper.registerSoil(rootyDirtAether, AETHERLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
