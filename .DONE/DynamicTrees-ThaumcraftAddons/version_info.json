@@ -1,13 +1,14 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-thaumcraft-addons/files",
 	"1.12.2": {
+		"1.12.2-1.1.2": "+ Updated to latest Dynamic Trees version\n+ Added update checker",
 		"1.12.2-1.1.1": "+ Updated to work with thaumic bases 3.3.500",
 		"1.12.2-1.1.0": "+ Added dynamic rainbow cactus",
 		"1.12.2-1.0.1": "+ Minor Fixes",
 		"1.12.2-1.0.0": "Initial release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.1.1",
-		"1.12.2-recommended": "1.12.2-1.1.1"
+		"1.12.2-latest": "1.12.2-1.1.2",
+		"1.12.2-recommended": "1.12.2-1.1.2"
 	}
 }

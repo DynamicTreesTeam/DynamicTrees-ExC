@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchCactus;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.event.SpeciesPostGenerationEvent;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
@@ -80,7 +81,7 @@ public class CactusRainbow extends TreeFamily {
             envFactor(Type.SANDY, 1.05f);
 
             clearAcceptableSoils();
-            addAcceptableSoil(Blocks.SAND);
+            addAcceptableSoils(DirtHelper.SANDLIKE);
         }
 
         @Override
@@ -97,7 +98,7 @@ public class CactusRainbow extends TreeFamily {
         }
 
         @Override
-        public BlockRooty getRootyBlock() {
+        public BlockRooty getRootyBlock(World world, BlockPos pos) {
             return ModBlocks.blockRootySand;
         }
 
