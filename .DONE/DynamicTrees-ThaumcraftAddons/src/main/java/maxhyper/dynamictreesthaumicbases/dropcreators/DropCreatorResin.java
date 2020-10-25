@@ -2,7 +2,7 @@ package maxhyper.dynamictreesthaumicbases.dropcreators;
 
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -19,7 +19,7 @@ public class DropCreatorResin extends DropCreator {
 	private int dropCount = 1;
 
 	public DropCreatorResin(ItemStack resinStack) {
-		super(new ResourceLocation(DynamicTreesThaumicBases.MODID, resinStack.getItem().getRegistryName().getResourcePath()));
+		super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, resinStack.getItem().getRegistryName().getResourcePath()));
 		this.resin = resinStack.getItem();
 		this.resinMeta = resinStack.getMetadata();
 		this.dropCount = resinStack.getCount();

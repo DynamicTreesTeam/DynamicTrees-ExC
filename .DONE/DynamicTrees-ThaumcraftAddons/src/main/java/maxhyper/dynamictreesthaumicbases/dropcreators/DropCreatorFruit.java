@@ -6,7 +6,7 @@ import java.util.Random;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreator;
 import com.ferreusveritas.dynamictrees.trees.Species;
 
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -21,7 +21,7 @@ public class DropCreatorFruit extends DropCreator {
 	private float rarity = 1f;
 	
 	public DropCreatorFruit(ItemStack fruitStack) {
-		super(new ResourceLocation(DynamicTreesThaumicBases.MODID, fruitStack.getItem().getRegistryName().getResourcePath()));
+		super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, fruitStack.getItem().getRegistryName().getResourcePath()));
 		this.fruit = fruitStack.getItem();
 		this.fruitMeta = fruitStack.getMetadata();
 	}

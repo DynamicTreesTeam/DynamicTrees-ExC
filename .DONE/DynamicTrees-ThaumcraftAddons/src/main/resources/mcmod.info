@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesthaumicbases",
+  "name": "Dynamic Trees for Thaumcraft Addons",
+  "description": "Adds compatibilities between dynamic trees and Thaumic Bases (unofficial)",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-thaumcraft-addons",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-ThaumcraftAddons/version_info.json?raw=true",
+  "authorList": ["Max Hyper"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

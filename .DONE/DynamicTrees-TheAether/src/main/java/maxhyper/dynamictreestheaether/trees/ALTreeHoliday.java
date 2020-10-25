@@ -17,7 +17,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -44,13 +46,13 @@ public class ALTreeHoliday extends TreeFamily {
 			addGenFeature(new FeatureGenSnowArea(15, BlocksAether.present.getDefaultState(), 80));
 			generateSeed();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
 
-		@Override
-		public BlockRooty getRootyBlock() {
-			return ModContent.rootyDirtAether;
-		}
+//		@Override
+//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+//			return ModContent.rootyDirtAether;
+//		}
 
 	}
 

@@ -12,6 +12,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.gildedgames.the_aether.blocks.BlocksAether;
 import com.gildedgames.the_aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.DynamicTreesTheAether;
+import maxhyper.dynamictreestheaether.ModConfigs;
 import maxhyper.dynamictreestheaether.ModContent;
 import maxhyper.dynamictreestheaether.event.EventListenerAether;
 import maxhyper.dynamictreestheaether.growth.CustomCellKits;
@@ -27,14 +28,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
-	
-	public void preInit() {
+
+	public void preInit(FMLPreInitializationEvent event) {
+		ModConfigs.preInit(event);
 		CustomCellKits.preInit();
 		if(WorldGenRegistry.isWorldGenEnabled()) {
-			GameRegistry.registerWorldGenerator(new WorldGen(), 0);
+			
+			GameRegistry.registerWorldGenerator(new WorldGen(), 21);
 		}
 	}
 	
@@ -50,14 +54,6 @@ public class CommonProxy {
 		TreeRegistry.registerSaplingReplacer(saplingBlock.getDefaultState(), TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID, speciesName)));
 	}
 
-	public void postInit() {
-		for (Species species : Species.REGISTRY){
-			if (species.isAcceptableSoil(null, null, Blocks.GRASS.getDefaultState())){ //if normal grass is allowed, then aether grass and dirt should be too
-				species.addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
-			}
-		}
-	}
-
-
+	public void postInit() { }
 
 }

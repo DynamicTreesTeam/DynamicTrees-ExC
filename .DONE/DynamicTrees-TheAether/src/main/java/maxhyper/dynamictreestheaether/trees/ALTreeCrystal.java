@@ -10,12 +10,15 @@ import com.gildedgames.the_aether.blocks.BlocksAether;
 import com.gildedgames.the_aether.blocks.natural.BlockAetherLog;
 import com.gildedgames.the_aether.blocks.util.EnumLogType;
 import com.gildedgames.the_aether.items.ItemsAether;
+import maxhyper.dynamictreestheaether.ModConfigs;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -38,17 +41,15 @@ public class ALTreeCrystal extends TreeFamily {
 			envFactor(Type.COLD, 1.4f);
 			envFactor(Type.HOT, 1.2f);
 
-			addGenFeature(new FeatureGenFruit(ModContent.blockWhiteApple));
+			addGenFeature(new FeatureGenFruit(ModContent.blockWhiteApple).setFruitingRadius(3));
 			generateSeed();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
-
-		@Override
-		public BlockRooty getRootyBlock() {
-			return ModContent.rootyDirtAether;
-		}
-
+//		@Override
+//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+//			return ModContent.rootyDirtAether;
+//		}
 	}
 
 	public ALTreeCrystal() {

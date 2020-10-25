@@ -5,11 +5,11 @@
   "description": "Adds compatibilities between dynamic trees and Pam's Spooky Tree and Pam's Redbud tree",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-pams-trees",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-PamTrees/version_info.json?raw=true",
   "authorList": ["Max Hyper"],
-  "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "XX-logo.png",
+  "credits": "",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

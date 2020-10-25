@@ -1,20 +1,9 @@
 package maxhyper.dynamictreesthaumicbases.event;
 
-import com.ferreusveritas.dynamictrees.ModConfigs;
-import com.ferreusveritas.dynamictrees.api.TreeRegistry;
-import com.ferreusveritas.dynamictrees.trees.Species;
-
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
-import maxhyper.dynamictreesthaumicbases.trees.*;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = DynamicTreesThaumicBases.MODID)
+@Mod.EventBusSubscriber(modid = DynamicTreesThaumcraftAddons.MODID)
 public class ReplaceSaplingEventHandler {
 	
 //	@SubscribeEvent

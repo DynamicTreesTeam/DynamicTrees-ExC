@@ -23,8 +23,6 @@ public class AetherGenDynamicFloatingIsland extends AetherGenFloatingIsland {
     {
         boolean cangen = true;
 
-        CrystalTree = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID, "crystal"));
-
         for(int x1 = pos.getX() - 6; x1 < pos.getX() + 12; x1++)
         {
             for(int y1 = pos.getY() - 6; y1 < pos.getY() + 17; y1++)
@@ -104,6 +102,7 @@ public class AetherGenDynamicFloatingIsland extends AetherGenFloatingIsland {
             world.setBlockState(grassPos.add(1, 0, 1), BlocksAether.aether_grass.getDefaultState());
             world.setBlockState(grassPos.add(-1, 0, -1), BlocksAether.aether_grass.getDefaultState());
 
+            CrystalTree = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID, "crystal"));
             CrystalTree.generate(world,grassPos,world.getBiome(pos),random,8, SafeChunkBounds.ANY);
 
             return true;

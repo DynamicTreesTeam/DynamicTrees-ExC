@@ -1,31 +1,32 @@
 package maxhyper.dynamictreestheaether.trees;
 
-import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
-import com.ferreusveritas.dynamictrees.systems.GrowSignal;
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
+import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.blocks.BlocksAether;
-import com.gildedgames.the_aether.blocks.natural.BlockAetherLeaves;
+import com.gildedgames.the_aether.blocks.natural.BlockAetherGrass;
 import com.gildedgames.the_aether.blocks.natural.BlockAetherLog;
-import com.gildedgames.the_aether.blocks.util.EnumLeafType;
 import com.gildedgames.the_aether.blocks.util.EnumLogType;
 import com.gildedgames.the_aether.items.ItemsAether;
+import maxhyper.dynamictreestheaether.DynamicTreesTheAether;
+import maxhyper.dynamictreestheaether.ModConfigs;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class ALTreeSkyroot extends TreeFamily {
 
@@ -46,14 +47,30 @@ public class ALTreeSkyroot extends TreeFamily {
 			generateSeed();
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
+
+//		@Override
+//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+//			return ModContent.rootyDirtAether;
+//		}
 
 		@Override
-		public BlockRooty getRootyBlock() {
-			return ModContent.rootyDirtAether;
+		public boolean generate(World world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+			//Chance for a skyroot tree to be a christmas tree when the config is enabled
+			if (AetherConfig.world_gen.christmas_time && world.rand.nextFloat() < ModConfigs.holidayTreeChance){
+				Species holiday = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID,"holiday"));
+				return holiday.generate(world, rootPos, biome, random, radius, safeBounds);
+			}
+			//When above 100, change trees to golden oak if the grass is dungeon, cancel otherwise.
+			if (rootPos.getY() >= 100){
+				if (world.getBlockState(rootPos).getValue(BlockAetherGrass.dungeon_block)){
+					Species goldenOak = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID,"goldenoak"));
+					return goldenOak.generate(world, rootPos, biome, random, radius, safeBounds);
+				} else return false;
+			}
+			return super.generate(world, rootPos, biome, random, radius, safeBounds);
 		}
-
 	}
 
 	public ALTreeSkyroot() {

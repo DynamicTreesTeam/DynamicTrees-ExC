@@ -5,13 +5,12 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,7 +33,7 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	public void registerColorHandlers() {
-		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesThaumicBases.MODID).values()) {
+		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesThaumcraftAddons.MODID).values()) {
 			ModelHelper.regColorHandler(leaves, new IBlockColor() {
 				@Override
 				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {

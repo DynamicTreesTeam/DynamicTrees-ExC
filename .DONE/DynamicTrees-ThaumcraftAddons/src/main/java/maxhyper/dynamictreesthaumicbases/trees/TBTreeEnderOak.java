@@ -4,7 +4,7 @@ import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -16,31 +16,31 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.List;
 import java.util.Objects;
 
-public class TBTreeGoldenOak extends TreeFamily {
+public class TBTreeEnderOak extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:goldenleaves");
-	public static Block logBlock = Block.getBlockFromName("thaumicbases:goldenlogs");
-	public static Block saplingBlock = Block.getBlockFromName("thaumicbases:goldensapling");
+	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:enderleaves");
+	public static Block logBlock = Block.getBlockFromName("thaumicbases:enderlogs");
+	public static Block saplingBlock = Block.getBlockFromName("thaumicbases:endersapling");
 
-	public class SpeciesGoldenOak extends Species {
+	public class SpeciesEnderOak extends Species {
 
-		SpeciesGoldenOak(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.goldenOakLeavesProperties);
+		SpeciesEnderOak(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.enderOakLeavesProperties);
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.8f);
 
 			generateSeed();
 			addDropCreator(new DropCreatorSeed(0.5f));
 
-			this.addGenFeature((new FeatureGenFruit(ModContent.blockGoldenApple)).setRayDistance(4.0F));
+			this.addGenFeature((new FeatureGenFruit(ModContent.blockEnderPearl)).setRayDistance(4.0F));
 		}
 	}
 
-	public TBTreeGoldenOak() {
-		super(new ResourceLocation(DynamicTreesThaumicBases.MODID, "goldenOak"));
+	public TBTreeEnderOak() {
+		super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "enderOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock));
 
-		ModContent.goldenOakLeavesProperties.setTree(this);
+		ModContent.enderOakLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -53,7 +53,7 @@ public class TBTreeGoldenOak extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesGoldenOak(this));
+		setCommonSpecies(new SpeciesEnderOak(this));
 	}
 
 	@Override

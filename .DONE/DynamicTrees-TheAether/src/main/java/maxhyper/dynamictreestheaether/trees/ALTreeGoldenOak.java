@@ -63,13 +63,13 @@ public class ALTreeGoldenOak extends TreeFamily {
 
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
-			addAcceptableSoil(BlocksAether.aether_grass, BlocksAether.enchanted_aether_grass, BlocksAether.aether_dirt);
+			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
 
-		@Override
-		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-			return ModContent.rootyDirtAether;
-		}
+//		@Override
+//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+//			return ModContent.rootyDirtAether;
+//		}
 
 		@Override
 		public boolean useDefaultWailaBody() {

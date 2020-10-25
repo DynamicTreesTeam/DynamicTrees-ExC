@@ -1,0 +1,12 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-totemic/files",
+	"1.12.2": {
+		"1.12.2-1.0.2": "+ Added update checker",
+		"1.12.2-1.0.1": "- Fixed crash with newer forge versions",
+		"1.12.2-1.0.0": "Initial release.\nIncludes red cedar tree"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.0.2",
+		"1.12.2-recommended": "1.12.2-1.0.2"
+	}
+}

@@ -18,7 +18,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.worldgen.JoCode;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -38,7 +38,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -173,7 +172,7 @@ public class CactusRainbow extends TreeFamily {
     }
 
     public CactusRainbow() {
-        super(new ResourceLocation(DynamicTreesThaumicBases.MODID, "rainbowcactus"));
+        super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "rainbowcactus"));
 
   //      setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 2));
 
@@ -194,7 +193,7 @@ public class CactusRainbow extends TreeFamily {
 
     @Override
     public BlockBranch createBranch() {
-        BlockBranchCactus branch = new BlockBranchCactus( DynamicTreesThaumicBases.MODID + ":rainbowcactusbranch"){
+        BlockBranchCactus branch = new BlockBranchCactus( DynamicTreesThaumcraftAddons.MODID + ":rainbowcactusbranch"){
             @Override
             public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) { }
         };

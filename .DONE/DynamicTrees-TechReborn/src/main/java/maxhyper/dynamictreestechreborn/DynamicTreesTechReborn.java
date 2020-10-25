@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesTechReborn.MODID, name= DynamicTreesTechReborn.NAME, dependencies = DynamicTreesTechReborn.DEPENDENCIES)
+@Mod(modid= DynamicTreesTechReborn.MODID, name= DynamicTreesTechReborn.NAME, dependencies = DynamicTreesTechReborn.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TechReborn/version_info.json?raw=true")
 public class DynamicTreesTechReborn {
 	
 	public static final String MODID = "dynamictreestechreborn";

@@ -3,7 +3,7 @@ package maxhyper.dynamictreesthaumicbases.event;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.rumaruka.thaumicbases.utils.TBConfig;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import com.rumaruka.thaumicbases.init.TBBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,11 +20,11 @@ public class RecipeHandler  {
     @Optional.Method(modid = "thaumicbases")
     public static void TCInfusion (){
         ItemStack oakSeed = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "oak")).getSeedStack(1);
-        ItemStack goldenOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "goldenOak")).getSeedStack(1);
-        ItemStack enderOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "enderOak")).getSeedStack(1);
-        ItemStack hellishOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "hellishOak")).getSeedStack(1);
+        ItemStack goldenOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "goldenOak")).getSeedStack(1);
+        ItemStack enderOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "enderOak")).getSeedStack(1);
+        ItemStack hellishOakSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "hellishOak")).getSeedStack(1);
         ItemStack cactusSeed = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "cactus")).getSeedStack(1);
-        ItemStack rainbowCactusSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "rainbowcactus")).getSeedStack(1);
+        ItemStack rainbowCactusSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "rainbowcactus")).getSeedStack(1);
 
         InfusionRecipe goldenSeed = new InfusionRecipe("TB.TREE", goldenOakSeed,4,new AspectList().add(Aspect.PLANT,48).add(Aspect.DESIRE,64), oakSeed, new ItemStack(Items.GOLDEN_APPLE),new ItemStack(Items.GOLDEN_APPLE),new ItemStack(Items.APPLE),new ItemStack(Items.APPLE));
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("TB.goldenSapling"),goldenSeed);

@@ -4,7 +4,7 @@ import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -36,7 +36,7 @@ public class TBTreeHellishOak extends TreeFamily {
 	}
 
 	public TBTreeHellishOak() {
-		super(new ResourceLocation(DynamicTreesThaumicBases.MODID, "hellishOak"));
+		super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "hellishOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock));
 

@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.12.2-1.1.0"
 group = "maxhyper.dynamictreestechreborn" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "dynamictreesTechReborn"
+archivesBaseName = "DynamicTreesTechReborn"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {

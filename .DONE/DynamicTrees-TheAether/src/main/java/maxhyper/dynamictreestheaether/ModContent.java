@@ -11,9 +11,11 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import com.gildedgames.the_aether.blocks.BlocksAether;
 import com.gildedgames.the_aether.blocks.natural.BlockAetherLeaves;
 import com.gildedgames.the_aether.blocks.natural.BlockCrystalLeaves;
 import com.gildedgames.the_aether.blocks.natural.BlockHolidayLeaves;
@@ -41,8 +43,10 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -60,6 +64,8 @@ public class ModContent {
 
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
+	public static String AETHERLIKE = "aetherlike";
+
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
 		event.register(new BiomeDataBasePopulator());
@@ -67,6 +73,8 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		DirtHelper.createNewAdjective(AETHERLIKE);
+
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		blockWhiteApple = (new BlockFruit("fruitwhiteapple"));
@@ -145,6 +153,13 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTheAether.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(BlocksAether.aether_grass, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlocksAether.enchanted_aether_grass, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlocksAether.aether_dirt, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlocksAether.aether_grass, AETHERLIKE);
+		DirtHelper.registerSoil(BlocksAether.enchanted_aether_grass, AETHERLIKE);
+		DirtHelper.registerSoil(BlocksAether.aether_dirt, AETHERLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit, int smother, int light){
@@ -174,9 +189,13 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-
 		setUpSeedRecipes("skyroot", new ItemStack(ALTreeSkyroot.saplingBlock));
 		setUpSeedRecipes("goldenoak", new ItemStack(ALTreeGoldenOak.saplingBlock));
+		if (Loader.isModLoaded("lost_aether")){
+			Block crystalSapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("lost_aether","crystal_sapling"));
+			assert crystalSapling != null;
+			setUpSeedRecipes("crystal", new ItemStack(crystalSapling), new ItemStack(ItemsAether.white_apple));
+		}
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID, name));
@@ -184,6 +203,13 @@ public class ModContent {
 		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
 		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
 		ModRecipes.createDirtBucketExchangeRecipes(treeSapling, treeSeed, true);
+	}
+	public static void setUpSeedRecipes (String name, ItemStack treeSapling, ItemStack fruit){
+		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID, name));
+		ItemStack treeSeed = treeSpecies.getSeedStack(1);
+		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
+		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
+		ModRecipes.createDirtBucketExchangeRecipesWithFruit(treeSapling, treeSeed, fruit, true, false);
 	}
 
 	@SideOnly(Side.CLIENT)

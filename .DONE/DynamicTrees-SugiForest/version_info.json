@@ -1,0 +1,11 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-sugi-forest/files",
+	"1.12.2": {
+		"1.12.2-1.0.1": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n- Minor fixes",
+		"1.12.2-1.0.0": "Initial release\n+ Includes Palm Tree, Dead Palm Tree and Dead Tree\n+ Includes worldgen"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.0.1",
+		"1.12.2-recommended": "1.12.2-1.0.1"
+	}
+}

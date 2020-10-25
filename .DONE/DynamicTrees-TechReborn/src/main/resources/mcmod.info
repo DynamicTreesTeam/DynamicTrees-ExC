@@ -5,11 +5,11 @@
   "description": "Adds compatibilities between dynamic trees and Tech Reborn",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-tech-reborn",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TechReborn/version_info.json?raw=true",
   "authorList": ["Max Hyper"],
-  "credits": "Ferreusveritas for Dynamic Trees",
-  "logoFile": "tr-logo.png",
+  "credits": "",
+  "logoFile": "",
   "screenshots": [],
   "dependencies": []
 }

@@ -1,7 +1,7 @@
 package maxhyper.dynamictreesthaumicbases.proxy;
 
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
-import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumicBases;
+import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.dropcreators.DropCreatorFruit;
 import maxhyper.dynamictreesthaumicbases.event.RecipeHandler;
 import net.minecraft.init.Items;
@@ -16,13 +16,13 @@ public class CommonProxy {
 
 	public void init() {
 
-		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "goldenoak")).
+		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "goldenoak")).
 				addDropCreator(new DropCreatorFruit(new ItemStack(Items.GOLDEN_APPLE)).setRarity(0.02f));
 
-		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "enderoak")).
+		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "enderoak")).
 				addDropCreator(new DropCreatorFruit(new ItemStack(Items.ENDER_PEARL)).setRarity(0.02f));
 
-		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, "hellishoak")).
+		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "hellishoak")).
 				addDropCreator(new DropCreatorFruit(new ItemStack(Items.MAGMA_CREAM)).setRarity(0.02f));
 
 	}

@@ -1,0 +1,20 @@
+{
+	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-aether-legacy/files",
+	"1.12.2": {
+		"1.12.2-1.0.10": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n+ Added sapling<->seed<->fruit recipes for Crystal tree when Aether Lost Content is installed\n- Fixed golden oak trees on golden dungeon islands.\n- Many other bug fixes",
+		"1.12.2-1.0.9": "+ Added species localizations\n- Updated Golden Oak waila display to latest Dynamic Trees version.\n- Minor fixes",
+		"1.12.2-1.0.8": "+ Fixed Zanite not harvesting amber from golden oak trees\n+ Fixed WAILA / HWAILA not displaying logs and amber properly",
+		"1.12.2-1.0.7": "- Fixed leaves metadata when sheared",
+		"1.12.2-1.0.6": "- Fixed Dynamic Crystal Trees spawning even if Dynamic Trees worldgen is set to false.",
+		"1.12.2-1.0.5": "+ Updated to work with Aether 1.5.0\n+ Fixed grass having wrong color when tree is planted in the aether\n+ Allowed overworld trees to be planted in aether grass",
+		"1.12.2-1.0.4": "- Fixed golden logs dropping themselves. Now they behave like normal golden oak logs, dropping amber when chopped with a Gravitate or Valkyre axe.",
+		"1.12.2-1.0.3": "- Fixed trees sometimes not generating",
+		"1.12.2-1.0.2": "+ Added dirt to possible soils",
+		"1.12.2-1.0.1": "- Fixed crash in some computers",
+		"1.12.2-1.0.0": "Initial Release\n+ Skyroot tree, Golden Oak Tree, Crystal Tree, Holiday Tree\n+ Includes full world gen"
+	},
+	"promos": {
+		"1.12.2-latest": "1.12.2-1.0.10",
+		"1.12.2-recommended": "1.12.2-1.0.10"
+	}
+}

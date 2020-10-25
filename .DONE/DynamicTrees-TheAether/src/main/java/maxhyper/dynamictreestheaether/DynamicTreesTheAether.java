@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= maxhyper.dynamictreestheaether.DynamicTreesTheAether.MODID, name= maxhyper.dynamictreestheaether.DynamicTreesTheAether.NAME, dependencies = maxhyper.dynamictreestheaether.DynamicTreesTheAether.DEPENDENCIES)
+@Mod(modid= maxhyper.dynamictreestheaether.DynamicTreesTheAether.MODID, name= maxhyper.dynamictreestheaether.DynamicTreesTheAether.NAME, dependencies = maxhyper.dynamictreestheaether.DynamicTreesTheAether.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TheAether/version_info.json?raw=true")
 public class DynamicTreesTheAether {
 	
 	public static final String MODID = "dynamictreestheaether";
 	public static final String NAME = "Dynamic Trees for The Aether Legacy";
 	public static final String DEPENDENCIES = "required-after:" + "dynamictrees@[1.12.2-0.9.8,)"
-			+ ";required-after:aether_legacy@[1.5.0,)";
+			+ ";required-after:aether_legacy@[1.5.0,)" +";after:lost_aether";
 	
 	@Mod.Instance
 	public static maxhyper.dynamictreestheaether.DynamicTreesTheAether instance;
@@ -26,7 +26,7 @@ public class DynamicTreesTheAether {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit();
+		proxy.preInit(event);
 	}
 	
 	@EventHandler

@@ -35,8 +35,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber(modid = DynamicTreesThaumicBases.MODID)
-@ObjectHolder(DynamicTreesThaumicBases.MODID)
+@Mod.EventBusSubscriber(modid = DynamicTreesThaumcraftAddons.MODID)
+@ObjectHolder(DynamicTreesThaumcraftAddons.MODID)
 public class ModContent {
 
 	public static BlockFruit blockGoldenApple, blockEnderPearl, blockMagmaCream;
@@ -67,9 +67,9 @@ public class ModContent {
 
 		cactusLeavesProperties = new LeavesProperties(null, ItemStack.EMPTY, TreeRegistry.findCellKit("bare"));
 
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 0, goldenOakLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 1, enderOakLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumicBases.MODID, 2, hellishOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumcraftAddons.MODID, 0, goldenOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumcraftAddons.MODID, 1, enderOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesThaumcraftAddons.MODID, 2, hellishOakLeavesProperties);
 
 		TreeFamily goldenOakTree = new TBTreeGoldenOak();
 		TreeFamily enderOakTree = new TBTreeEnderOak();
@@ -83,7 +83,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		rainbowCactus.getRegisterableBlocks(treeBlocks);
-		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesThaumicBases.MODID).values());
+		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesThaumcraftAddons.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 	}
 
@@ -150,7 +150,7 @@ public class ModContent {
 
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
-		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumicBases.MODID, name));
+		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, name));
 		ItemStack treeSeed = treeSpecies.getSeedStack(1);
 		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
 		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
@@ -165,7 +165,7 @@ public class ModContent {
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
-		LeavesPaging.getLeavesMapForModId(DynamicTreesThaumicBases.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
+		LeavesPaging.getLeavesMapForModId(DynamicTreesThaumcraftAddons.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
 		ModelLoader.setCustomStateMapper(rainbowCactus.getDynamicBranch(), new StateMap.Builder().ignore(BlockBranchCactus.TRUNK, BlockBranchCactus.ORIGIN).build());
 		ModelHelper.regModel(rainbowCactus.getDynamicBranch());
