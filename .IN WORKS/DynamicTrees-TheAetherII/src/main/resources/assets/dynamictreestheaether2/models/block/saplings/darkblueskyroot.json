@@ -2,6 +2,6 @@
     "textures": {
         "particle": "aether:blocks/leaves/dark_blue_skyroot_leaves",
         "log": "aether:blocks/logs/skyroot_log_side",
-        "leaves": "aether:blocks/leaves/dark_blue_skyoot_leaves"
+        "leaves": "aether:blocks/leaves/dark_blue_skyroot_leaves"
     }
 }

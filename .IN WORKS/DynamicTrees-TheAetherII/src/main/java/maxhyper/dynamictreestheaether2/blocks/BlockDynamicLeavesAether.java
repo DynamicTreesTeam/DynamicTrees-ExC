@@ -8,6 +8,7 @@ import maxhyper.dynamictreestheaether2.ModContent;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,18 +22,6 @@ public class BlockDynamicLeavesAether extends BlockDynamicLeaves {
         super();
         setRegistryName(DynamicTreesTheAether2.MODID, regName);
         setUnlocalizedName(regName);
-        setTickRandomly(true);
-       // if (regName.equals("leaves_holiday_decorated")){
-       //     lightValue = 15;
-       // }
-    }
-
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        super.onBlockAdded(worldIn, pos, state);
-        if (this == ModContent.specialLeaves && worldIn.getBlockState(pos).getValue(BlockDynamicLeaves.TREE) == 2){ //is lit tree leaves
-            lightValue = 15;
-        }
     }
 
     @Override

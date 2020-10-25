@@ -8,6 +8,7 @@ import com.gildedgames.aether.api.registrar.ItemsAether;
 import maxhyper.dynamictreestheaether2.DynamicTreesTheAether2;
 import maxhyper.dynamictreestheaether2.ModContent;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -18,7 +19,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.List;
 import java.util.Objects;
 
-public class A2TreeTherawood extends TreeFamily {
+public class TreeTherawood extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("aether:therawood_leaves");
 	public static Block logBlock = Block.getBlockFromName("aether:therawood_log");
@@ -34,15 +35,15 @@ public class A2TreeTherawood extends TreeFamily {
 			generateSeed();
 
 			clearAcceptableSoils();
-			addAcceptableSoil(Block.getBlockFromName("aether:thera_grass"), Block.getBlockFromName("aether:thera_dirt"));
+			addAcceptableSoils(ModContent.THERALIKE);
 		}
 
 	}
 
-	public A2TreeTherawood() {
+	public TreeTherawood() {
 		super(new ResourceLocation(DynamicTreesTheAether2.MODID, "therawood"));
 
-		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
+		setPrimitiveLog(logBlock.getDefaultState());
 
 		ModContent.therawoodLeavesProperties.setTree(this);
 
@@ -50,7 +51,7 @@ public class A2TreeTherawood extends TreeFamily {
 	}
 	@Override
 	public ItemStack getPrimitiveLogItemStack(int qty) {
-		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), qty, 0);
+		ItemStack stack = new ItemStack(logBlock, qty);
 		stack.setCount(MathHelper.clamp(qty, 0, 64));
 		return stack;
 	}
