@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "dynamictreesic2:rubbericcbranch#dynamictree" }
+    }
+}

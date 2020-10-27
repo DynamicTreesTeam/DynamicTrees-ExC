@@ -1,6 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-industrial-craft-2/files",
 	"1.12.2": {
+		"1.12.2-1.2.0": "+ Implemented compatibility with Industrial Craft 2 Classic (You can now either use IC2 or IC2Classic interchangeably)\n+ Added config setting to make trees look more like the non-dynamic versions (short and pointy)\n- Moved worldgen to be json controlled",
 		"1.12.2-1.1.2": "+ Added update checker",
 		"1.12.2-1.1.1": "- Fixed server crash",
 		"1.12.2-1.1.0": "+ Added worldgen.\n- Other minor fixes.",
@@ -9,7 +10,7 @@
 		"1.12.2-1.0.0": "Initial Release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.1.2",
-		"1.12.2-recommended": "1.12.2-1.1.2"
+		"1.12.2-latest": "1.12.2-1.2.0",
+		"1.12.2-recommended": "1.12.2-1.2.0"
 	}
 }
