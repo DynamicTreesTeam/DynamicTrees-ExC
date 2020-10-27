@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "dynamictreesttf:mangrovebranch#dynamictree" }
+        "normal": { "model": "dynamictreesttf:mangrovebranch#dynamicmangrove" }
     }
 }

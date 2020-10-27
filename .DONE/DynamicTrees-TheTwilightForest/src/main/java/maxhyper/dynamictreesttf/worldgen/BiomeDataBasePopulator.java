@@ -1,19 +1,13 @@
 package maxhyper.dynamictreesttf.worldgen;
 
 import com.ferreusveritas.dynamictrees.ModConfigs;
-import com.ferreusveritas.dynamictrees.ModConstants;
-import com.ferreusveritas.dynamictrees.api.TreeRegistry;
-import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase;
-
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBasePopulatorJson;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import twilightforest.TFConfig;
-import twilightforest.biomes.TFBiomeSpookyForest;
 import twilightforest.biomes.TFBiomes;
 
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {

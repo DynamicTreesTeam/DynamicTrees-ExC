@@ -140,11 +140,12 @@
     "apply" : {
       "species" : {
         "random" : {
-          "dynamictrees:oak" : 1
+          "dynamictreesttf:mangrove" : 6,
+          "dynamictrees:oakswamp" : 1
         }
       },
-      "density" : [ 0.5 ],
-      "chance" : 0.3
+      "density" : [ 1 ],
+      "chance" : 0.8
     }
   },
   {
@@ -152,11 +153,12 @@
     "apply" : {
       "species" : {
         "random" : {
-          "dynamictrees:oak" : 1
+          "dynamictreesttf:mangrove" : 6,
+          "dynamictrees:oakswamp" : 1
         }
       },
-      "density" : [ 0.5 ],
-      "chance" : 0.3
+      "density" : [ 1 ],
+      "chance" : 0.8
     }
   },
   {
@@ -197,6 +199,19 @@
       },
       "density" : [ 0.8 ],
       "chance" : 1
+    }
+  },
+  {
+    "select" : { "name": "twilightforest:spooky_forest" },
+    "apply" : {
+      "species" : {
+        "random" : {
+          "dynamictreesttf:canopyspooky" : 7,
+          "dynamictreesttf:oakspooky" : 3
+        }
+      },
+      "density" : [ 0.8 ],
+      "chance" : 0.8
     }
   }
 ]

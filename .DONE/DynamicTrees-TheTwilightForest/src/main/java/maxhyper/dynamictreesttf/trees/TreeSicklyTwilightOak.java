@@ -52,6 +52,11 @@ public class TreeSicklyTwilightOak extends TreeFamily {
 		}
 
 		@Override
+		public ResourceLocation getSaplingName() {
+			return new ResourceLocation(DynamicTreesTTF.MODID, "twilightoaksickly");
+		}
+
+		@Override
 		public boolean onTreeActivated(World world, BlockPos rootPos, BlockPos hitPos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 			Species realSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "twilightOakSickly"));
 			ISubstanceEffect effect = new SubstanceTransform(realSpecies);

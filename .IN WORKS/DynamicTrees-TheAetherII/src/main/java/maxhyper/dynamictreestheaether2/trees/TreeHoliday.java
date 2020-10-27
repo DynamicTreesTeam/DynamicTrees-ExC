@@ -43,6 +43,7 @@ public class TreeHoliday extends TreeFamily {
 
 			addGenFeature(new FeatureGenRandomLeaves(8, 16, ModContent.holidayLeavesProperties.getDynamicLeavesState(), ModContent.holidayDecorLeavesProperties.getDynamicLeavesState(), 0.1f));
 			//addGenFeature(new FeatureGenSnowArea(15, BlocksAether.present.getDefaultState(), 80));
+			addGenFeature(new FeatureGenConiferTopper(ModContent.holidayLeavesProperties));
 			generateSeed();
 			clearAcceptableSoils();
 			addAcceptableSoils(ModContent.AETHERLIKE);
@@ -51,6 +52,8 @@ public class TreeHoliday extends TreeFamily {
 
 	public TreeHoliday() {
 		super(new ResourceLocation(DynamicTreesTheAether2.MODID, "holiday"));
+
+		hasConiferVariants = true;
 
 		setPrimitiveLog(logBlock.getDefaultState());
 

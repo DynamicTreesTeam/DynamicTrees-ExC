@@ -3,11 +3,11 @@ package maxhyper.dynamictreesttf.proxy;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
-import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
-
+import com.ferreusveritas.dynamictrees.models.loaders.ModelLoaderDelegated;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.models.ModelBlockBranchMangrove;
 import maxhyper.dynamictreesttf.models.ModelLoaderBlockBranchThickCore;
 import maxhyper.dynamictreesttf.models.ModelLoaderBlockUndergroundRoot;
 import maxhyper.dynamictreesttf.trees.TreeDarkwood;
@@ -15,13 +15,12 @@ import maxhyper.dynamictreesttf.trees.TreeMagicTransformation;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
-
-import java.util.Collection;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -31,6 +30,13 @@ public class ClientProxy extends CommonProxy {
 		//ModelLoaderRegistry.registerLoader(new CustomModelLoaderWrapped());
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockUndergroundRoot());
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockBranchThickCore());
+
+		ModelLoaderRegistry.registerLoader(
+				new ModelLoaderDelegated(
+						"dynamicmangrove", new ResourceLocation("dynamictrees", "block/smartmodel/branch"),
+						(resloc, baseModelBlock) -> new ModelBlockBranchMangrove(baseModelBlock)
+				)
+		);
 	}
 	
 	@Override
@@ -81,14 +87,14 @@ public class ClientProxy extends CommonProxy {
 			});
 		} // All other leaves
 
-		final BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
-		blockColors.registerBlockColorHandler((state, world, pos, tintIndex) -> {
-					switch(tintIndex) {
-						case 0: return blockColors.colorMultiplier(ModContent.rootyDirtMangrove.getMimic(world, pos), world, pos, tintIndex);
-						case 1: return state.getBlock() instanceof BlockRooty ? ((BlockRooty) state.getBlock()).rootColor(state, world, pos) : 0xFFFFFFFF;
-						default: return 0xFFFFFFFF;
-					}
-				}, // Rooty Dirt
-				ModContent.rootyDirtMangrove);
+		ModelHelper.regColorHandler(ModContent.blockRootyWater, (state, world, pos, tintIndex) -> {
+			int color = 0xFFFFFF;
+
+			if(tintIndex != 2) {
+				color = Minecraft.getMinecraft().getBlockColors().colorMultiplier(Blocks.WATER.getDefaultState(), world, pos, tintIndex);
+			}
+
+			return color;
+		});
 	}
 }

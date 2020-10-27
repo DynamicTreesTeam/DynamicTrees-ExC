@@ -5,7 +5,6 @@ import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.dropcreators.DropCreatorOtherSeed;
 import maxhyper.dynamictreesttf.worldgen.BiomeDataBasePopulator;
-import maxhyper.dynamictreesttf.worldgen.WorldGenPostDT;
 import maxhyper.dynamictreesttf.worldgen.WorldGenPreDT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +24,6 @@ public class CommonProxy {
 
 	public void preInit() {
 		if(WorldGenRegistry.isWorldGenEnabled()) {
-			GameRegistry.registerWorldGenerator(new WorldGenPostDT(), 21);
 			GameRegistry.registerWorldGenerator(new WorldGenPreDT(), 19);
 		}
 	}

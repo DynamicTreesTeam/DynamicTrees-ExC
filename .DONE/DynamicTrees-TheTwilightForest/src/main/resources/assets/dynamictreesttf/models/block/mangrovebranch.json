@@ -2,6 +2,7 @@
 	"parent": "dynamictrees:block/smartmodel/branch",
 	"textures": {
 		"bark": "twilightforest:blocks/mangrove_side",
-		"rings": "twilightforest:blocks/mangrove_top"
+		"rings": "twilightforest:blocks/mangrove_top",
+		"roots": "dynamictreesttf:blocks/wateryroots_top"
 	}
 }

@@ -18,7 +18,6 @@ import twilightforest.block.TFBlocks;
 
 import java.util.Random;
 
-
 public class BlockDynamicTFCicada extends BlockTFCicada {
 
     @Override
@@ -38,4 +37,5 @@ public class BlockDynamicTFCicada extends BlockTFCicada {
                 && (!isExceptBlockForAttachWithPiston(state.getBlock())
                 || state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.CACTUS);
     }
+
 }

@@ -12,6 +12,19 @@ item.dynamictreestheaether2:amberootseed.name=Amberoot Seed
 item.dynamictreestheaether2:holidayseed.name=Crazy Mutant Tree Cone
 item.dynamictreestheaether2:therawoodseed.name=Therawood Cone
 
+species.dynamictreestheaether2:greenskyroot.name=Green Skyroot
+species.dynamictreestheaether2:greenwisproot.name=Green Wisproot
+species.dynamictreestheaether2:greengreatroot.name=Green Greatroot
+species.dynamictreestheaether2:blueskyroot.name=Blue Skyroot
+species.dynamictreestheaether2:bluewisproot.name=Blue Wisproot
+species.dynamictreestheaether2:bluegreatroot.name=Blue Greatroot
+species.dynamictreestheaether2:darkblueskyroot.name=Dark Blue Skyroot
+species.dynamictreestheaether2:darkbluewisproot.name=Dark Blue Wisproot
+species.dynamictreestheaether2:darkbluegreatroot.name=Dark Blue Greatroot
+species.dynamictreestheaether2:amberoot.name=Amberoot
+species.dynamictreestheaether2:holiday.name=Crazy Mutant Tree
+species.dynamictreestheaether2:therawood.name=Therawood
+
 tile.dynamictreestheaether2:leaves_special.name=Leaves
 tile.dynamictreestheaether2:leaves_skyroot.name=Leaves
 tile.dynamictreestheaether2:leaves_wisproot.name=Leaves

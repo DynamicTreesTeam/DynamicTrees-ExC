@@ -3,6 +3,7 @@ package maxhyper.dynamictreesttf;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
@@ -10,10 +11,11 @@ import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.items.Seed;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.blocks.*;
-import maxhyper.dynamictreesttf.items.ItemDynamicSeedMangrove;
+import maxhyper.dynamictreesttf.items.ItemMangroveSeed;
 import maxhyper.dynamictreesttf.trees.*;
 import maxhyper.dynamictreesttf.trees.species.SpeciesOakSpooky;
 import maxhyper.dynamictreesttf.trees.species.SpeciesSpruceHuge;
@@ -21,9 +23,11 @@ import maxhyper.dynamictreesttf.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -45,9 +49,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import twilightforest.block.BlockTFCritter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesTTF.MODID)
 @ObjectHolder(DynamicTreesTTF.MODID)
@@ -58,12 +62,14 @@ public class ModContent {
 	timeLeavesProperties,transformationLeavesProperties, minersLeavesProperties, sortingLeavesProperties;
 
 	public static BlockTFCritter dynamicCicada, dynamicFirefly;
-	public static BlockDynamicTwilightRoots undergroundRoot, undergroundRootExposed, undergroundMangroveRoot;
+	public static BlockDynamicTwilightRoots undergroundRoot, undergroundRootExposed;
+	@Deprecated
+	public static BlockDynamicTwilightRoots undergroundMangroveRoot;
 
 	public static BlockBranch mangroveBranch, minerCoreBranch, minerCoreBranchOff,
 			sortingCoreBranch, sortingCoreBranchOff, transformCoreBranch, transformCoreBranchOff, timeCoreBranch, timeCoreBranchOff;
 
-	public static BlockRooty rootyDirtMangrove;
+	public static BlockRootyWater blockRootyWater;
 
 	public static Species hugeSpruce, spookyOak;
 
@@ -80,7 +86,6 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		mangroveBranch = new BlockBranchMangrove("mangrovebranch");
 		minerCoreBranch = new BlockBranchMagicCore("minersTreeCoreBranch", BlockBranchMagicCore.Types.MINE){
 			@Override public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 				return TreeMagicMiners.branch.getPickBlock(state, target, world, pos, player);
@@ -127,18 +132,33 @@ public class ModContent {
 		((BlockBranchMagicCoreThick) timeCoreBranch).setOffBlock((BlockBranchMagicCoreThick)timeCoreBranchOff);
 		((BlockBranchMagicCore) transformCoreBranch).setOffBlock((BlockBranchMagicCore)transformCoreBranchOff);
 
-		rootyDirtMangrove = new BlockRootyDirtMangrove(false);
-		registry.register(rootyDirtMangrove);
+		blockRootyWater = new BlockRootyWater(false);
+		registry.register(blockRootyWater);
 
 		undergroundRoot = new BlockDynamicTwilightRoots();
 		registry.register(undergroundRoot.setRegistryName(DynamicTreesTTF.MODID,"underground_roots"));
-		undergroundMangroveRoot = new BlockDynamicTwilightRoots(){
-			@Override public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state) {
-				super.onBlockDestroyedByPlayer(world, pos, state);
-				world.setBlockState(pos, ModContent.mangroveBranch.getDefaultState().withProperty(RADIUS, state.getValue(RADIUS)));
-			}
-		};
-		registry.register(undergroundMangroveRoot.setRegistryName(DynamicTreesTTF.MODID,"underground_roots_mangrove"));
+
+		{ //Depricated
+			undergroundMangroveRoot = new BlockDynamicTwilightRoots(){
+				@Override
+				public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+					if (state.getValue(GRASSY)){
+						worldIn.setBlockState(pos, Blocks.GRASS.getDefaultState());
+						if (worldIn.isAirBlock(pos.up()) && worldIn.rand.nextFloat() < 0.5){
+							TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTTF.MODID, "mangrove")).plantSapling(worldIn, pos.up());
+						}
+					} else {
+						worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
+					}
+				}
+				@Override public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state) {
+					super.onBlockDestroyedByPlayer(world, pos, state);
+					world.setBlockState(pos, Blocks.AIR.getDefaultState());
+				}
+			};
+			registry.register(undergroundMangroveRoot.setRegistryName(DynamicTreesTTF.MODID,"underground_roots_mangrove"));
+		}
+
 		undergroundRootExposed = new BlockDynamicTwilightRootsExposed();
 		registry.register(undergroundRootExposed.setRegistryName(DynamicTreesTTF.MODID,"underground_roots_exposed"));
 
@@ -181,7 +201,7 @@ public class ModContent {
 		TreeFamily oakTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "oak")).getFamily();
 		TreeFamily spruceTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "spruce")).getFamily();
 
-		mangroveSeed = new ItemDynamicSeedMangrove();
+		mangroveSeed = new ItemMangroveSeed("mangroveseed");
 
 		hugeSpruce = new SpeciesSpruceHuge(spruceTree);
 		spookyOak = new SpeciesOakSpooky(oakTree);
@@ -213,6 +233,8 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTTF.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(undergroundRoot, DirtHelper.DIRTLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
@@ -304,6 +326,6 @@ public class ModContent {
 		ModelLoader.setCustomStateMapper(transformCoreBranch, new StateMap.Builder().ignore(BlockDynamicTwilightRoots.RADIUS).build());
 		ModelLoader.setCustomStateMapper(transformCoreBranchOff, new StateMap.Builder().ignore(BlockDynamicTwilightRoots.RADIUS).build());
 
-		ModelLoader.setCustomStateMapper(rootyDirtMangrove, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
+		ModelLoader.setCustomStateMapper(blockRootyWater, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
 	}
 }

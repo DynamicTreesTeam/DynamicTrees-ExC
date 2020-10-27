@@ -2,6 +2,8 @@ package maxhyper.dynamictreestheaether2.trees;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenRoots;
@@ -82,7 +84,7 @@ public class TreeWisproot extends TreeFamily {
 				}
 			}
 
-			probMap[signal.dir.ordinal()] = 0;
+			probMap[signal.dir.getOpposite().ordinal()] = 0;
 			probMap[EnumFacing.DOWN.ordinal()] = 0;
 
 			return probMap;
@@ -181,4 +183,13 @@ public class TreeWisproot extends TreeFamily {
 		return super.getRegisterableItems(itemList);
 	}
 
+	@Override
+	public BlockBranch createBranch() {
+		return new BlockBranchBasic("wisprootbranch"){
+			@Override
+			protected int getMaxSignalDepth() {
+				return 64;
+			}
+		};
+	}
 }

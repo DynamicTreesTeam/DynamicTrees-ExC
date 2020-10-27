@@ -44,6 +44,11 @@ public class SpeciesSpruceHuge extends Species {
     }
 
     @Override
+    public ResourceLocation getSaplingName() {
+        return new ResourceLocation(ModConstants.MODID, "spruce");
+    }
+
+    @Override
     public ItemStack getSeedStack(int qty) {
         return getFamily().getCommonSpecies().getSeedStack(qty);
     }

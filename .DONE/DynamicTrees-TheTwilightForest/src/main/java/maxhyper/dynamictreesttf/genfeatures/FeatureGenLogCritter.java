@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
@@ -54,7 +55,7 @@ public class FeatureGenLogCritter implements IPostGenFeature, IPostGrowFeature {
         EnumFacing chosenDir = horizontalsDir[rand.nextInt(4)];
         try{
             BlockBranchBasic branch = (BlockBranchBasic)(world.getBlockState(blockPos).getBlock());
-            if (checkForOtherCrittersHorizontally(world, blockPos, separationHeight) && world.isAirBlock(blockPos.offset(chosenDir)) && branch.getRadius(world.getBlockState(blockPos)) == 8) {
+            if (checkForOtherCrittersHorizontally(world, blockPos, separationHeight) && world.isAirBlock(blockPos.offset(chosenDir)) && branch.getRadius(world.getBlockState(blockPos)) >= BlockBranchTwilight.minCritterRadius) {
                 world.setBlockState(blockPos.offset(chosenDir), critterBlock.getDefaultState().withProperty(BlockDirectional.FACING, chosenDir));
             }
         }catch (Exception e){}

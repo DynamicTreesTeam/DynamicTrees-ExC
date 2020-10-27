@@ -1,6 +1,7 @@
 package maxhyper.dynamictreestheaether2.trees;
 
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenConiferTopper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.gildedgames.aether.api.registrar.BlocksAether;
@@ -41,6 +42,8 @@ public class TreeAmberoot extends TreeFamily {
 
 			generateSeed();
 
+			addGenFeature(new FeatureGenConiferTopper(ModContent.amberootLeavesProperties));
+
 			setupStandardSeedDropping();
 			clearAcceptableSoils();
 			addAcceptableSoils(ModContent.AETHERLIKE);
@@ -57,7 +60,7 @@ public class TreeAmberoot extends TreeFamily {
 
 	public TreeAmberoot() {
 		super(new ResourceLocation(DynamicTreesTheAether2.MODID, "amberoot"));
-
+		hasConiferVariants = true;
 		setPrimitiveLog(logBlock.getDefaultState());
 
 		ModContent.amberootLeavesProperties.setTree(this);

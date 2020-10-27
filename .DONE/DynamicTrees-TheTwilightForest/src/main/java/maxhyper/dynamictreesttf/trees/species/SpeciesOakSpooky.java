@@ -1,5 +1,6 @@
 package maxhyper.dynamictreesttf.trees.species;
 
+import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -41,6 +42,11 @@ public class SpeciesOakSpooky extends Species {
                 return Species.NULLSPECIES;
             }
         });
+    }
+
+    @Override
+    public ResourceLocation getSaplingName() {
+        return new ResourceLocation(ModConstants.MODID, "oak");
     }
 
     @Override

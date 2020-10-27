@@ -59,7 +59,7 @@ public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,M
         super(Material.GROUND);
         setDefaultState(this.getDefaultState().withProperty(RADIUS, 1).withProperty(GRASSY, false));
         setHardness(0.8f);
-        this.setTickRandomly(true);
+        needsRandomTick = true;
         setSoundType(SoundType.GROUND);
     }
 
@@ -110,13 +110,6 @@ public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,M
             }
         }
     }
-
-    // worldIn.setBlockState(pos, state.withProperty(GRASSY, false));
-
-//    if ((iblockstate1.getBlock() == Blocks.GRASS || (iblockstate1.getProperties().containsKey(GRASSY) && iblockstate1.getValue(GRASSY))) && worldIn.getLightFromNeighbors(blockpos.up()) >= 9 && iblockstate.getLightOpacity(worldIn, pos.up()) <= 2)
-//    {
-//        worldIn.setBlockState(pos, state.withProperty(GRASSY, true));
-//    }
 
     @Override
     protected ItemStack getSilkTouchDrop(IBlockState state) {
@@ -225,9 +218,4 @@ public class BlockDynamicTwilightRoots extends Block implements ITreePart {// ,M
     public TreePartType getTreePartType() {
         return TreePartType.ROOT;
     }
-
-//    @Override
-//    public IBlockState getMimic(IBlockAccess iBlockAccess, BlockPos blockPos) {
-//        return MimicProperty.getDirtMimic(iBlockAccess, blockPos);
-//    }
 }

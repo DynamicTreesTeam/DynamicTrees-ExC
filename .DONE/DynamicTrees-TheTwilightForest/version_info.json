@@ -1,6 +1,8 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-twilight-forest/files",
 	"1.12.2": {
+		"1.12.2-1.2.1": "+ Updated Mangrove root textures\n- Minor fixes",
+		"1.12.2-1.2.0": "+ Updated Mangrove Trees with a new and more realistic model.\n- Fixed empty spooky forests",
 		"1.12.2-1.1.6": "- Moved worldgen to be JSON controlled (now fully customizable)\n- Fixed minor issues\n- Made twilight oak trees be the same family (robust and sickly) ",
 		"1.12.2-1.1.5": "+ Updated to latest Dynamic Trees version\n+ Added update checker",
 		"1.12.2-1.1.4": "- Fixed mangrove roots being ugly as shit\n- Fixed infinite recursion sometimes happening in worldgen",
@@ -11,7 +13,7 @@
 		"1.12.2-1.0.0": "Initial Upload\nDoes NOT have worldgen enabled yet"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.1.6",
-		"1.12.2-recommended": "1.12.2-1.1.6"
+		"1.12.2-latest": "1.12.2-1.2.1",
+		"1.12.2-recommended": "1.12.2-1.2.1"
 	}
 }

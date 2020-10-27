@@ -60,7 +60,7 @@ public class TreeCanopy extends TreeFamily {
 			setupStandardSeedDropping();
 
 			addGenFeature(new FeatureGenLogCritter(getLowestBranchHeight() + heightLimitOverLowestBranch, ModContent.dynamicFirefly, 100, 5));
-			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundRootExposed,  8, 10, 1));
+			addGenFeature(new FeatureGenUndergroundRoots(ModContent.undergroundRoot, ModContent.undergroundRootExposed,  8, 5, 1));
 		}
 
 		@Override
@@ -78,6 +78,11 @@ public class TreeCanopy extends TreeFamily {
 			super(new ResourceLocation(DynamicTreesTTF.MODID, "canopyspooky"), treeFamily, ModContent.spookyCanopyLeavesProperties);
 
 			addGenFeature(new FeatureGenWeb(this, 4));
+		}
+
+		@Override
+		public ResourceLocation getSaplingName() {
+			return new ResourceLocation(DynamicTreesTTF.MODID, "canopy");
 		}
 
 		@Override
@@ -116,14 +121,11 @@ public class TreeCanopy extends TreeFamily {
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 
-		addSpeciesLocationOverride(new ISpeciesLocationOverride() {
-			@Override
-			public Species getSpeciesForLocation(World access, BlockPos trunkPos) {
-				if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.spookyForest)) {
-					return spookySpecies;
-				}
-				return Species.NULLSPECIES;
+		addSpeciesLocationOverride((access, trunkPos) -> {
+			if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.spookyForest)) {
+				return spookySpecies;
 			}
+			return Species.NULLSPECIES;
 		});
 	}
 
