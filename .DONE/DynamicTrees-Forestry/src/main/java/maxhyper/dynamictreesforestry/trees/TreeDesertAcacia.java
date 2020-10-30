@@ -2,7 +2,6 @@ package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import forestry.api.arboriculture.EnumForestryWoodType;
@@ -11,7 +10,6 @@ import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -59,7 +57,7 @@ public class TreeDesertAcacia extends TreeFamily {
     public TreeDesertAcacia() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.DESERTACACIA));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.desertAcaciaLeavesProperties.setTree(this);
 

@@ -46,7 +46,7 @@ public class TreeTeak extends TreeFamily {
     public TreeTeak() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.TEAK));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.teakLeavesProperties.setTree(this);
 

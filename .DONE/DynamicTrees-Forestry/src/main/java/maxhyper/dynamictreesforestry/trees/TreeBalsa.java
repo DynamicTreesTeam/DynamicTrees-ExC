@@ -5,7 +5,6 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import forestry.api.arboriculture.EnumForestryWoodType;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
@@ -13,7 +12,6 @@ import maxhyper.dynamictreesforestry.ModContent;
 import maxhyper.dynamictreesforestry.items.ItemDynamicSeedBalsa;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -64,7 +62,7 @@ public class TreeBalsa extends TreeFamily {
     public TreeBalsa() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.BALSA));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.balsaLeavesProperties.setTree(this);
 

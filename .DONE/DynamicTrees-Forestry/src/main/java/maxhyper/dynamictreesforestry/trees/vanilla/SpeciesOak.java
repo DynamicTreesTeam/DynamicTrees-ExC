@@ -2,6 +2,7 @@ package maxhyper.dynamictreesforestry.trees.vanilla;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -43,9 +44,15 @@ public class SpeciesOak extends Species {
         generateSeed();
         //setupStandardSeedDropping();
 
+        ModContent.appleLeaves.setSpecies(getFamily().getCommonSpecies());
         addGenFeature(new FeatureGenFruitLeaves(8, 10, ModContent.oakLeavesProperties.getDynamicLeavesState(), ModContent.fruitAppleLeavesProperties.getDynamicLeavesState(), 0.5f));
 
         addGenFeature(new FeatureGenFruit(ModBlocks.blockApple).setRayDistance(4));
+    }
+
+    @Override
+    public int getSeasonalTooltipFlags(int dimension) {
+        return 2;//summer
     }
 
     @Override

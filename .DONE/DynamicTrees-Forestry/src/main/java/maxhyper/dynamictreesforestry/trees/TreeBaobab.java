@@ -1,8 +1,6 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenMound;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
@@ -123,7 +121,7 @@ public class TreeBaobab extends TreeFamily {
     public TreeBaobab() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.BAOBAB));
 
-        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.baobabLeavesProperties.setTree(this);
 

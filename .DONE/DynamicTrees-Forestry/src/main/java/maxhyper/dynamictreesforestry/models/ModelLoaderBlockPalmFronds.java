@@ -37,8 +37,6 @@ public class ModelLoaderBlockPalmFronds extends ModelLoaderGeneric {
         Reader reader = null;
         IResource iresource = null;
 
-        System.out.println(getModelLocation(location));
-
         try {
             iresource = resourceManager.getResource(getModelLocation(location));
             reader = new InputStreamReader(iresource.getInputStream(), Charsets.UTF_8);

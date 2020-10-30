@@ -56,7 +56,7 @@ public class TreeSilverLime extends TreeFamily {
     public TreeSilverLime() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.SILVERLIME));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.silverLimeLeavesProperties.setTree(this);
 

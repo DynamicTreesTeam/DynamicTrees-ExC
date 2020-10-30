@@ -1,9 +1,9 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
-import com.ferreusveritas.dynamictrees.systems.featuregen.*;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFlareBottom;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import forestry.api.arboriculture.EnumForestryWoodType;
@@ -20,7 +20,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.Objects;
@@ -34,6 +33,8 @@ public class TreeWalnut extends TreeFamily {
             "logs.3"));
     public static int logMeta = 1;
 
+    public static float fruitingOffset = 0.5f; //summer-autumn
+
     public class SpeciesWalnut extends Species {
 
         SpeciesWalnut(TreeFamily treeFamily) {
@@ -45,10 +46,25 @@ public class TreeWalnut extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+            ModContent.walnutLeaves.setSpecies(this);
             addGenFeature(new FeatureGenFruitLeaves(10, 16, ModContent.walnutLeavesProperties.getDynamicLeavesState(), ModContent.fruitWalnutLeavesProperties.getDynamicLeavesState(), 0.5f));
             addGenFeature(new FeatureGenFlareBottom());
 
+            ModContent.walnutFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruit(ModContent.walnutFruit).setRayDistance(4));
+        }
+
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            float offset = fruitingOffset;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
         }
 
         @Override
@@ -66,7 +82,7 @@ public class TreeWalnut extends TreeFamily {
     public TreeWalnut() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.WALNUT));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.walnutLeavesProperties.setTree(this);
         ModContent.fruitWalnutLeavesProperties.setTree(this);

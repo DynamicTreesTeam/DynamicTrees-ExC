@@ -3,13 +3,10 @@ package maxhyper.dynamictreesforestry.blocks;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockFruitCocoa;
+import com.ferreusveritas.dynamictrees.trees.Species;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -23,10 +20,15 @@ import java.util.Objects;
 public class BlockFruitDate extends BlockFruitCocoa {
 
     private int fruitMeta;
+    private Species species;
 
     public BlockFruitDate (String name, int fruitMeta){
         super(name);
         this.fruitMeta = fruitMeta;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
     }
 
     private static final double offset = 0.31;

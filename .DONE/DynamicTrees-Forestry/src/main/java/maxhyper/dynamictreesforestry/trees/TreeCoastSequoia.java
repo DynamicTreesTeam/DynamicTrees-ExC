@@ -1,7 +1,6 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
@@ -21,7 +20,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -47,8 +45,7 @@ public class TreeCoastSequoia extends TreeFamily {
         SpeciesPadauk(TreeFamily treeFamily) {
             super(treeFamily.getName(), treeFamily, ModContent.coastSequoiaLeavesProperties);
 
-            setBasicGrowingParameters(0.3f, 60.0f, 5, 16, 1.1f);
-            //setGrowthLogicKit(TreeRegistry.findGrowthLogicKit(ModTrees.DARKOAK));
+            setBasicGrowingParameters(0.3f, 45.0f, 20, 25, 2.1f);
 
             setSoilLongevity(80);
 
@@ -59,12 +56,12 @@ public class TreeCoastSequoia extends TreeFamily {
             addGenFeature(new FeatureGenClearVolume(50));//Clear a spot for the thick tree trunk
             addGenFeature(new FeatureGenFlareBottom());//Flare the bottom
             addGenFeature(new FeatureGenMound(5));//Establish mounds
-            addGenFeature(new FeatureGenRoots(16).setScaler(getRootScaler()));//Finally Generate Roots
+            addGenFeature(new FeatureGenRoots(7).setScaler(getRootScaler()).setLevelLimit(8));//Finally Generate Roots
         }
 
         protected BiFunction<Integer, Integer, Integer> getRootScaler() {
             return (inRadius, trunkRadius) -> {
-                float scale = MathHelper.clamp(trunkRadius >= 7 ? (trunkRadius / 12f) : 0, 0, 1);
+                float scale = MathHelper.clamp(trunkRadius >= 7 ? (trunkRadius / 24f) : 0, 0, 1);
                 return (int) (inRadius * scale);
             };
         }
@@ -110,7 +107,7 @@ public class TreeCoastSequoia extends TreeFamily {
     public TreeCoastSequoia() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.COASTSEQUOIA));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, getName() + "root");
 

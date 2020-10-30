@@ -1,36 +1,26 @@
 package maxhyper.dynamictreesforestry.blocks;
 
-import com.ferreusveritas.dynamictrees.api.substances.ISubstanceEffect;
-import com.ferreusveritas.dynamictrees.api.substances.ISubstanceEffectProvider;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
-import com.ferreusveritas.dynamictrees.systems.substances.SubstanceFertilize;
+import com.ferreusveritas.dynamictrees.trees.Species;
+import forestry.core.network.packets.PacketFXSignal;
+import forestry.core.utils.NetworkUtil;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleManager;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
-
 import net.minecraftforge.items.ItemHandlerHelper;
-
-import forestry.api.arboriculture.IFruitProvider;
-import forestry.api.arboriculture.ITree;
-import forestry.arboriculture.ModuleArboriculture;
-import forestry.core.network.packets.PacketFXSignal;
-import forestry.core.utils.NetworkUtil;
-
 
 import java.util.*;
 
@@ -64,6 +54,13 @@ public class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
 
     private fruitTypes leafFruitType;
 
+    private Species species;
+
+    public BlockDynamicLeavesFruit setSpecies(Species species) {
+        this.species = species;
+        return this;
+    }
+
     public BlockDynamicLeavesFruit (String name, fruitTypes fruitType){
         setRegistryName(DynamicTreesForestry.MODID, name);
         setUnlocalizedName(name);
@@ -82,7 +79,7 @@ public class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
         super.updateTick(world, pos, state, rand);
         int age = state.getValue(TREE);
         // check leaves tile because they might have decayed
-        if (age < 3 && rand.nextFloat() <= 0.01) {
+        if (age < 3 && rand.nextFloat() <= 0.01 * species.seasonalFruitProductionFactor(world, pos)) {
             world.setBlockState(pos, state.withProperty(TREE, age+1));
         }
     }

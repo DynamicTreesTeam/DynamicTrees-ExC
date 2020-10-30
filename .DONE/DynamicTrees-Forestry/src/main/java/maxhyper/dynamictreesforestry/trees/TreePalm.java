@@ -8,10 +8,9 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenCocoa;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -25,7 +24,6 @@ import maxhyper.dynamictreesforestry.ModContent;
 import maxhyper.dynamictreesforestry.blocks.BlockDynamicLeavesPalm;
 import maxhyper.dynamictreesforestry.genfeatures.FeatureGenFruitPod;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -53,6 +51,8 @@ public class TreePalm extends TreeFamily {
             "logs.4"));
     public static int logMeta = 2;
 
+    public static float fruitingOffset = 1.5f; //autumn-winter
+
     public class SpeciesPalm extends Species {
 
         SpeciesPalm(TreeFamily treeFamily) {
@@ -64,6 +64,9 @@ public class TreePalm extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+            ModContent.dateFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruitPod(ModContent.dateFruit, 1));
 
             addDropCreator(new DropCreatorSeed(3.0f) {
@@ -95,6 +98,22 @@ public class TreePalm extends TreeFamily {
                     return dropList;
                 }
             });
+        }
+
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            float offset = fruitingOffset;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
+        }
+
+        @Override
+        public int getSeasonalTooltipFlags(int dimension) {
+            return 12;//autumn-winter
         }
 
         @Override
@@ -174,7 +193,7 @@ public class TreePalm extends TreeFamily {
     public TreePalm() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.DATEPALM));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.palmLeavesProperties.setTree(this);
 

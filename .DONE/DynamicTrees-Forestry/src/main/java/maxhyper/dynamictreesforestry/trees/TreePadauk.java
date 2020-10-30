@@ -62,7 +62,7 @@ public class TreePadauk extends TreeFamily {
     public TreePadauk() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.PADAUK));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, getName() + "root");
 

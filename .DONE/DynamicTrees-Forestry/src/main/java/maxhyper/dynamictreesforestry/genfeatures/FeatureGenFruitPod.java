@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFruitCocoa;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 
 import net.minecraft.block.BlockCocoa;
@@ -26,33 +27,29 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
 
     BlockCocoa fruitPod;
     int allowedSize;
+    protected int fruitingRadius = 6;
+    protected int frondHeight = 20;
 
     public FeatureGenFruitPod (BlockCocoa fruitPod, int size){
         this.fruitPod = fruitPod;
         allowedSize = Math.max(size, 1);
     }
 
-    private int getFruitChance (World world, BlockPos pos, boolean worldgen){
-        if (!worldgen){
-            float factor = SeasonHelper.globalSeasonalFruitProductionFactor(world, pos);
-            if (factor <= 0) return -1;
-            return (int)(16 / factor);
-        } else return 4;
-    }
-
     @Override
     public boolean postGrow(World world, BlockPos rootPos, BlockPos treePos, Species species, int soilLife, boolean natural) {
-        if(world.rand.nextInt() % getFruitChance(world, rootPos, false) == 0) {
-            addCocoa(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)), false);
+        if((TreeHelper.getRadius(world, rootPos.up()) >= fruitingRadius) && natural && world.rand.nextInt() % 16 == 0) {
+            if(species.seasonalFruitProductionFactor(world, rootPos) > world.rand.nextFloat()) {
+                addFruit(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)), false);
+            }
         }
         return false;
     }
 
     private BlockPos getLeavesHeight (BlockPos rootPos, World world){
-        for (int y= 1; y < 20; y++){
+        for (int y= 1; y < frondHeight; y++){
             BlockPos testPos = rootPos.up(y);
             if ((world.getBlockState(testPos).getBlock() instanceof BlockLeaves)){
-                return testPos.down();
+                return testPos;
             }
         }
         return rootPos;
@@ -61,20 +58,23 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
     @Override
     public boolean postGeneration(World world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, IBlockState initialDirtState) {
         boolean placed = false;
-        for (int i=0;i<8;i++){
-            if(world.rand.nextInt() % getFruitChance(world, rootPos,true) == 0) {
-                addCocoa(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)),true);
+        int qty = 8;
+        qty *= species.seasonalFruitProductionFactor(world, rootPos);
+        for (int i=0;i<qty;i++){
+            if(world.rand.nextInt() % 4 == 0) {
+                addFruit(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)),true);
                 placed = true;
             }
         }
         return placed;
     }
 
-    private void addCocoa(World world, BlockPos rootPos, BlockPos leavesPos, boolean worldGen) {
+    private void addFruit(World world, BlockPos rootPos, BlockPos leavesPos, boolean worldGen) {
         if (rootPos.getY() == leavesPos.getY()){
             return;
         }
         EnumFacing placeDir = EnumFacing.HORIZONTALS[world.rand.nextInt(4)];
+        leavesPos = leavesPos.down(); //we move the pos down so the fruit can stick to the trunk
         if (world.isAirBlock(leavesPos.offset(placeDir))){
             world.setBlockState(leavesPos.offset(placeDir), fruitPod.getDefaultState().withProperty(BlockCocoa.FACING, placeDir.getOpposite()).withProperty(BlockCocoa.AGE, worldGen?(world.rand.nextInt(3)):0));
         }

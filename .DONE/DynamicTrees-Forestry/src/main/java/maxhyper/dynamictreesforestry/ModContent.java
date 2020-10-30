@@ -11,7 +11,6 @@ import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.trees.TreeAcacia;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -91,6 +90,14 @@ public class ModContent {
 		event.register(new BiomeDataBasePopulator());
 	}
 
+	private static AxisAlignedBB createBox (float radius, float height, float stemLength, float fraction){
+		float topHeight = fraction - stemLength;
+		float bottomHeight = topHeight - height;
+		return new AxisAlignedBB(
+				((fraction/2) - radius)/fraction, topHeight/fraction, ((fraction/2) - radius)/fraction,
+				((fraction/2) + radius)/fraction, bottomHeight/fraction, ((fraction/2) + radius)/fraction);
+	}
+
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
@@ -115,10 +122,10 @@ public class ModContent {
 				return BlockRenderLayer.CUTOUT_MIPPED;
 			}
 			protected final AxisAlignedBB[] FRUIT_AABB = new AxisAlignedBB[] {
-					new AxisAlignedBB(7/16.0, 1f, 7/16.0, 9/16.0, 15/16.0, 9/16.0),
-					new AxisAlignedBB(6.4/16.0, 1f, 6.4/16.0, 9.6/16.0, 13.6/16.0, 9.6/16.0),
-					new AxisAlignedBB(6/16.0, 14.4/16.0, 6/16.0, 10/16.0, 11.2/16.0, 10/16.0),
-					new AxisAlignedBB(5.2/16.0, 13.6/16.0, 5.2/16.0, 10.8/16.0, 10.4/16.0, 10.8/16.0),
+					createBox(1,1,0, 16),
+					createBox(2,3,0, 20),
+					createBox(2.5f,4,2, 20),
+					createBox(3.5f,4,3, 20)
 			};
 			@Override public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 				return FRUIT_AABB[state.getValue(AGE)];
@@ -129,6 +136,16 @@ public class ModContent {
 			@Override @SideOnly(Side.CLIENT) public BlockRenderLayer getBlockLayer()
 			{
 				return BlockRenderLayer.CUTOUT_MIPPED;
+			}
+			public final AxisAlignedBB[] FRUIT_AABB = new AxisAlignedBB[] {
+					createBox(1,1,0, 16),
+					createBox(1,2,0, 16),
+					createBox(2f,5,0, 20),
+					createBox(2f,5,1.25f, 20)
+			};
+			@Override
+			public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+				return FRUIT_AABB[state.getValue(AGE)];
 			}
 		};
 		registry.register(lemonFruit);

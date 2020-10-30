@@ -75,7 +75,7 @@ public class TreeLarch extends TreeFamily {
     public TreeLarch() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.LARCH));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.larchLeavesProperties.setTree(this);
 

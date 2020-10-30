@@ -1,8 +1,8 @@
 package maxhyper.dynamictreesforestry.trees;
 
-import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -32,6 +32,8 @@ public class TreeCherry extends TreeFamily {
             "logs.3"));
     public static int logMeta = 3;
 
+    public static float fruitingOffset = 0f; //summer
+
     public class SpeciesCherry extends Species {
 
         SpeciesCherry(TreeFamily treeFamily) {
@@ -43,16 +45,31 @@ public class TreeCherry extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+            ModContent.cherryLeaves.setSpecies(this);
             addGenFeature(new FeatureGenFruitLeaves(8, 12, ModContent.cherryLeavesProperties.getDynamicLeavesState(), ModContent.fruitCherryLeavesProperties.getDynamicLeavesState(), 0.5f));
 
+            ModContent.cherryFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruit(ModContent.cherryFruit).setRayDistance(4));
+        }
+
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            float offset = fruitingOffset;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
         }
     }
 
     public TreeCherry() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.CHERRY));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.cherryLeavesProperties.setTree(this);
         ModContent.fruitCherryLeavesProperties.setTree(this);

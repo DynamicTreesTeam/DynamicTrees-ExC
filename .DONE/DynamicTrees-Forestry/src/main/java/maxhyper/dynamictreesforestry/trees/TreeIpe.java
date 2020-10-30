@@ -1,7 +1,6 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFlareBottom;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -69,7 +68,7 @@ public class TreeIpe extends TreeFamily {
     public TreeIpe() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.IPE));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.ipeLeavesProperties.setTree(this);
 

@@ -1,8 +1,6 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFlareBottom;
@@ -102,7 +100,7 @@ public class TreeSipiri extends TreeFamily {
     public TreeSipiri() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.GREENHEART));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         surfaceRootBlock = new BlockSurfaceRoot(Material.WOOD, getName() + "root");
 

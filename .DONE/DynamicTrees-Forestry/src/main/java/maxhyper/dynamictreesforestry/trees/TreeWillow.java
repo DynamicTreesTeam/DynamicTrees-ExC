@@ -59,7 +59,7 @@ public class TreeWillow extends TreeFamily {
     public TreeWillow() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.WILLOW));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         willowLeaves = new BlockDynamicLeaves(){
             @Override

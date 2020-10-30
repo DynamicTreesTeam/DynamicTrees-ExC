@@ -2,6 +2,7 @@ package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -31,6 +32,8 @@ public class TreeLemon extends TreeFamily {
             "logs.5"));
     public static int logMeta = 3;
 
+    public static float fruitingOffset = 2.5f; //winter-spring
+
     public class SpeciesLemon extends Species {
 
         SpeciesLemon(TreeFamily treeFamily) {
@@ -42,16 +45,31 @@ public class TreeLemon extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+            ModContent.lemonLeaves.setSpecies(this);
             addGenFeature(new FeatureGenFruitLeaves(6, 8, ModContent.lemonLeavesProperties.getDynamicLeavesState(), ModContent.fruitLemonLeavesProperties.getDynamicLeavesState(), 0.5f));
 
+            ModContent.lemonFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruit(ModContent.lemonFruit).setRayDistance(2).setFruitingRadius(3));
+        }
+
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            float offset = fruitingOffset;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
         }
     }
 
     public TreeLemon() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.LEMON));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.lemonLeavesProperties.setTree(this);
         ModContent.fruitLemonLeavesProperties.setTree(this);

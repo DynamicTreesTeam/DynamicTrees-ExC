@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
@@ -23,7 +24,6 @@ import maxhyper.dynamictreesforestry.ModContent;
 import maxhyper.dynamictreesforestry.blocks.BlockDynamicLeavesPalm;
 import maxhyper.dynamictreesforestry.genfeatures.FeatureGenFruitPod;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -62,6 +62,7 @@ public class TreePapaya extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            ModContent.papayaFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruitPod(ModContent.papayaFruit, 2));
 
             addDropCreator(new DropCreatorSeed(3.0f) {
@@ -93,6 +94,21 @@ public class TreePapaya extends TreeFamily {
                     return dropList;
                 }
             });
+        }
+
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            return 1; //all year round
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return false;
+        }
+
+        @Override
+        public int getSeasonalTooltipFlags(int dimension) {
+            return 15;//all year round
         }
 
         @Override
@@ -172,7 +188,7 @@ public class TreePapaya extends TreeFamily {
     public TreePapaya() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.PAPAYA));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.papayaLeavesProperties.setTree(this);
 

@@ -69,7 +69,7 @@ public class TreePoplar extends TreeFamily {
     public TreePoplar() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.POPLAR));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.poplarLeavesProperties.setTree(this);
 

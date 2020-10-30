@@ -3,7 +3,6 @@ package maxhyper.dynamictreesforestry.blocks;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.util.CoordUtils.Surround;
-
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;

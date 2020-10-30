@@ -46,7 +46,7 @@ public class TreeMahoe extends TreeFamily {
     public TreeMahoe() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.MAHOE));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.mahoeLeavesProperties.setTree(this);
 

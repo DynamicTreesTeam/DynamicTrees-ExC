@@ -1,8 +1,7 @@
 package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFlareBottom;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -34,6 +33,8 @@ public class TreeChestnut extends TreeFamily {
             "logs.1"));
     public static int logMeta = 0;
 
+    public static float fruitingOffset = 0.5f; //summer-autumn
+
     public class SpeciesChestnut extends Species {
 
         SpeciesChestnut(TreeFamily treeFamily) {
@@ -45,9 +46,13 @@ public class TreeChestnut extends TreeFamily {
             generateSeed();
             //setupStandardSeedDropping();
 
+            setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+            ModContent.chestnutLeaves.setSpecies(this);
             addGenFeature(new FeatureGenFruitLeaves(10, 16, ModContent.chestnutLeavesProperties.getDynamicLeavesState(), ModContent.fruitChestnutLeavesProperties.getDynamicLeavesState(), 0.5f));
             addGenFeature(new FeatureGenFlareBottom());
 
+            ModContent.chestnutFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruit(ModContent.chestnutFruit).setRayDistance(4));
         }
 
@@ -61,12 +66,22 @@ public class TreeChestnut extends TreeFamily {
             return true;
         }
 
+        @Override
+        public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+            float offset = fruitingOffset;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+        }
+
+        @Override
+        public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
+        }
     }
 
     public TreeChestnut() {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.CHESTNUT));
 
-        setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
+        //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.chestnutLeavesProperties.setTree(this);
         ModContent.fruitChestnutLeavesProperties.setTree(this);
