@@ -1,4 +1,4 @@
-package maxhyper.dynamictreesttf.models;
+package maxhyper.dynamictreestbl.models;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
@@ -24,20 +24,20 @@ import java.util.Map;
 import java.util.function.Function;
 
 @SideOnly(Side.CLIENT)
-public class BakedModelBlockBranchMangrove implements IBakedModel {
+public class BakedModelBlockBranchHearthgrove implements IBakedModel {
 	
 	protected ModelBlock modelBlock;
 	
 	TextureAtlasSprite barkParticles;
 
-	public static final int maxRad = 6;
+	public static final int maxRad = 5;
 
 	private IBakedModel[][] sleeves = new IBakedModel[6][maxRad];
 	private IBakedModel[][] cores = new IBakedModel[3][maxRad]; //[maxRad] Cores for 3 axis with the bark texture and all 6 sides rotated appropriately.
 	private IBakedModel[] rings = new IBakedModel[maxRad]; //[maxRad] Cores with the ring textures on all 6 sides
 	private IBakedModel roots;
 
-	public BakedModelBlockBranchMangrove(ResourceLocation barkRes, ResourceLocation ringsRes, ResourceLocation rootsRes, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+	public BakedModelBlockBranchHearthgrove(ResourceLocation barkRes, ResourceLocation ringsRes, ResourceLocation rootsRes, Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
 		this.modelBlock = new ModelBlock(null, null, null, false, false, ItemCameraTransforms.DEFAULT, null);
 		
 		TextureAtlasSprite barkIcon = bakedTextureGetter.apply(barkRes);

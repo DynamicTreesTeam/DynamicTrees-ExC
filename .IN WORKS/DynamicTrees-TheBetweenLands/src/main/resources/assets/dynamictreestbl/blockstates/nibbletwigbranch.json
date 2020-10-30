@@ -1,5 +1,10 @@
 {
-    "variants": {
-        "normal": { "model": "dynamictreestbl:nibbletwigbranch#dynamictree" }
-    }
+    "multipart": [
+        {"apply": [
+                { "model": "dynamictreestbl:nibbletwigbranch_1#dynamictree" },
+                { "model": "dynamictreestbl:nibbletwigbranch_2#dynamictree" },
+                { "model": "dynamictreestbl:nibbletwigbranch_3#dynamictree" },
+                { "model": "dynamictreestbl:nibbletwigbranch_4#dynamictree" }
+            ]}
+    ]
 }

@@ -1,11 +1,11 @@
 item.dynamictreestbl:rubberseed.name=Rubber Pod
 item.dynamictreestbl:sapseed.name=Sap Tree Seed
-item.dynamictreestbl:hearthgroveseed.name=Hearthgrove Seed
+item.dynamictreestbl:hearthgroveseed.name=Hearthgrove Propagule
 item.dynamictreestbl:nibbletwigseed.name=Nibbletwig Seed
 
-tile.dynamictreestbl:leaves0.name=Dynamic Leaves
+tile.dynamictreestbl:leaves0.name=Leaves
 
-tile.dynamictreestbl:rubberbranch.name=Dynamic Rubber Tree
-tile.dynamictreestbl:sapbranch.name=Dynamic Sap Tree
-tile.dynamictreestbl:hearthgrovebranch.name=Dynamic Hearthgrove Tree
-tile.dynamictreestbl:nibbletwigbranch.name=Dynamic Nibbletwig Tree
+tile.dynamictreestbl:rubberbranch.name=Rubber Tree
+tile.dynamictreestbl:sapbranch.name=Sap Tree
+tile.dynamictreestbl:hearthgrovebranch.name=Hearthgrove Tree
+tile.dynamictreestbl:nibbletwigbranch.name=Nibbletwig Tree

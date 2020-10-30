@@ -1,10 +1,13 @@
 package maxhyper.dynamictreestbl.trees;
 
+import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
+import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -49,28 +52,27 @@ public class TreeRubber extends TreeFamily {
 			addDropCreator(new DropCreatorSeed(2f));
 
 			this.addGenFeature(new FeatureGenClearVolume(12));
+			addAcceptableSoils(DirtHelper.MUDLIKE);
 		}
 
 		@Override
-		public boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
-			return super.isAcceptableSoil(world, pos, soilBlockState)
-					|| soilBlockState.getBlock() instanceof BlockSwampDirt
-					|| soilBlockState.getBlock() instanceof BlockDeadGrass
-					|| soilBlockState.getBlock() instanceof BlockSwampGrass
-					|| soilBlockState.getBlock() instanceof BlockSludgyDirt
-					|| soilBlockState.getBlock() instanceof BlockSpreadingSludgyDirt
-					|| soilBlockState.getBlock() instanceof BlockMud
-					|| soilBlockState.getBlock() instanceof BlockSilt
-					|| (soilBlockState.getBlock() instanceof BlockCragrock && soilBlockState.getValue(BlockCragrock.VARIANT) != BlockCragrock.EnumCragrockType.DEFAULT)
-					|| soilBlockState.getBlock() instanceof BlockPeat;
+		public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
+			if (DirtHelper.isSoilAcceptable(world.getBlockState(rootPos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.SANDLIKE))){
+				return ModBlocks.blockRootySand;
+			} else if (DirtHelper.isSoilAcceptable(world.getBlockState(rootPos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.MUDLIKE))){
+				return ModContent.blockRootyMud;
+			}else {
+				return ModBlocks.blockRootyDirt;
+			}
 		}
 	}
 
 	public TreeRubber() {
 		super(new ResourceLocation(DynamicTreesTBL.MODID, "rubber"));
 
+		setPrimitiveLog(logBlock.getDefaultState());
 		setDynamicBranch(ModContent.rubberBranch);
-		
+
 		ModContent.rubberLeavesProperties.setTree(this);
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
@@ -86,12 +88,6 @@ public class TreeRubber extends TreeFamily {
 	@Override
 	public void createSpecies() {
 		setCommonSpecies(new SpeciesRubber(this));
-	}
-
-	@Override
-	public List<Block> getRegisterableBlocks(List<Block> blockList) {
-		blockList.add(ModContent.rubberBranch);
-		return super.getRegisterableBlocks(blockList);
 	}
 
 	@Override

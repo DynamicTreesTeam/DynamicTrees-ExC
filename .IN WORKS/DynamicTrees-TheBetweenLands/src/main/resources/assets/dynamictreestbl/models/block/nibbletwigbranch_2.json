@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "thebetweenlands:blocks/log_nibbletwig_2",
+		"rings": "thebetweenlands:blocks/log_nibbletwig_top"
+	}
+}

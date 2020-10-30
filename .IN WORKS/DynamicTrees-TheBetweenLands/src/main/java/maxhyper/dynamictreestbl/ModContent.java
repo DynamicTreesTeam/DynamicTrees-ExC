@@ -2,64 +2,71 @@ package maxhyper.dynamictreestbl;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.*;
+import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.blocks.BlockRootyWater;
+import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
+import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.items.Seed;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import maxhyper.dynamictreestbl.blocks.BlockDynamicHearthgroveRoots;
-import maxhyper.dynamictreestbl.blocks.BlockDynamicBranchRubber;
-import maxhyper.dynamictreestbl.blocks.BlockDynamicRubberTap;
+import maxhyper.dynamictreestbl.blocks.*;
+import maxhyper.dynamictreestbl.items.ItemHearthgroveSeed;
 import maxhyper.dynamictreestbl.trees.TreeHearthgrove;
 import maxhyper.dynamictreestbl.trees.TreeNibbletwig;
 import maxhyper.dynamictreestbl.trees.TreeRubber;
 import maxhyper.dynamictreestbl.trees.TreeSap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockLiquid;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.*;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import thebetweenlands.common.registries.BlockRegistry;
+import thebetweenlands.common.registries.FluidRegistry;
 import thebetweenlands.common.registries.ItemRegistry;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesTBL.MODID)
 @ObjectHolder(DynamicTreesTBL.MODID)
 public class ModContent {
 
-	public static BlockBranch rubberBranch, hearthgroveBranch;
+	public static BlockBranch rubberBranch;
 	public static ILeavesProperties rubberLeavesProperties, sapLeavesProperties, hearthgroveLeavesProperties, nibbletwigLeavesProperties;
 
 	public static Block dynamicWeedwoodRubberTap, dynamicSyrmoriteRubberTap;
-	public static BlockDynamicHearthgroveRoots undergroundHearthgroveRoot, undergroundHearthgroveRootSwamp;
+
+	public static BlockRootyWater blockRootyWater, blockRootyWaterSwamp, blockRootyWaterStagnant;
+	public static BlockRootyMud blockRootyMud;
+
+	public static Seed hearthgroveSeed;
 
 	// trees added by this mod
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
@@ -72,75 +79,15 @@ public class ModContent {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		rubberBranch = new BlockDynamicBranchRubber();
-		hearthgroveBranch = new BlockBranchBasic("hearthgrovebranch"){
-			@Override public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
-				return false;
-			}
-			@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-				ItemStack handStack = playerIn.getHeldItemMainhand();
-				if (handStack.getItem() == Item.getItemFromBlock(Blocks.DIRT)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundHearthgroveRoot.getDefaultState().withProperty(BlockDynamicHearthgroveRoots.RADIUS, thisRadius ));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRAVEL_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				} else if (handStack.getItem() == Item.getItemFromBlock(Blocks.GRASS)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundHearthgroveRoot.getDefaultState().withProperty(BlockDynamicHearthgroveRoots.RADIUS, thisRadius ).withProperty(BlockDynamicHearthgroveRoots.GRASSY, true));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				} else if (handStack.getItem() == Item.getItemFromBlock(BlockRegistry.SWAMP_DIRT)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundHearthgroveRootSwamp.getDefaultState().withProperty(BlockDynamicHearthgroveRoots.RADIUS, thisRadius ).withProperty(BlockDynamicHearthgroveRoots.GRASSY, false));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRAVEL_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				} else if (handStack.getItem() == Item.getItemFromBlock(BlockRegistry.SWAMP_GRASS)){
-					int thisRadius = state.getValue(RADIUS);
-					worldIn.setBlockState(pos, ModContent.undergroundHearthgroveRootSwamp.getDefaultState().withProperty(BlockDynamicHearthgroveRoots.RADIUS, thisRadius ).withProperty(BlockDynamicHearthgroveRoots.GRASSY, true));
-					if (!playerIn.isCreative()) handStack.shrink(1);
-					worldIn.playSound(null, pos, SoundEvents.BLOCK_GRASS_PLACE, SoundCategory.PLAYERS, 1, 0.8f);
-					playerIn.swingArm(EnumHand.MAIN_HAND);
-					return true;
-				}
-				return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-			}
-		};
 
-		undergroundHearthgroveRoot = new BlockDynamicHearthgroveRoots();
-		registry.register(undergroundHearthgroveRoot.setRegistryName(DynamicTreesTBL.MODID, "underground_roots_hearthgrove"));
-		undergroundHearthgroveRootSwamp = new BlockDynamicHearthgroveRoots(){
-			@Override
-			protected ItemStack getSilkTouchDrop(IBlockState state) {
-				if (state.getValue(GRASSY)){
-					return new ItemStack(Item.getItemFromBlock(BlockRegistry.SWAMP_GRASS));
-				} else {
-					return new ItemStack(Item.getItemFromBlock(BlockRegistry.SWAMP_DIRT));
-				}
-			}
-
-			@Override
-			public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-			{
-				NonNullList<ItemStack> ret = NonNullList.create();
-				ret.add(new ItemStack(Item.getItemFromBlock(BlockRegistry.SWAMP_DIRT)));
-				return ret;
-			}
-
-			@Override
-			public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-				if (state.getValue(GRASSY)){
-					return new ItemStack(Item.getItemFromBlock(BlockRegistry.SWAMP_GRASS));
-				} else {
-					return new ItemStack(Item.getItemFromBlock(BlockRegistry.SWAMP_DIRT));
-				}
-			}
-		};
-		registry.register(undergroundHearthgroveRootSwamp.setRegistryName(DynamicTreesTBL.MODID, "underground_roots_hearthgrove_2"));
+		blockRootyWater = new BlockRootyWater(false, "rootywater");
+		blockRootyWaterSwamp = new BlockRootyWaterTBL("rootywaterswamp", BlockRegistry.SWAMP_WATER);
+		blockRootyWaterStagnant = new BlockRootyWaterTBL("rootywaterstagnant", BlockRegistry.STAGNANT_WATER);
+		registry.register(blockRootyWater);
+		registry.register(blockRootyWaterSwamp);
+		registry.register(blockRootyWaterStagnant);
+		blockRootyMud = new BlockRootyMud(false);
+		registry.register(blockRootyMud);
 
 		dynamicWeedwoodRubberTap = new BlockDynamicRubberTap(BlockRegistry.WEEDWOOD_PLANKS.getDefaultState(), 540) {
 			@Override protected ItemStack getBucket(boolean withRubber) {
@@ -155,14 +102,16 @@ public class ModContent {
 		registry.register(dynamicWeedwoodRubberTap.setRegistryName(DynamicTreesTBL.MODID, "dynamic_weedwood_rubber_tap"));
 		registry.register(dynamicSyrmoriteRubberTap.setRegistryName(DynamicTreesTBL.MODID, "dynamic_syrmorite_rubber_tap"));
 
-		rubberLeavesProperties = setUpLeaves(TreeRubber.leavesBlock, 0, "deciduous", 2, 13);
-		sapLeavesProperties = setUpLeaves(TreeSap.leavesBlock, 0, "deciduous");
-		hearthgroveLeavesProperties = setUpLeaves(TreeHearthgrove.leavesBlock, 0, "acacia");
-		nibbletwigLeavesProperties = setUpLeaves(TreeNibbletwig.leavesBlock, 0, "deciduous");
+		hearthgroveSeed = new ItemHearthgroveSeed("hearthgroveseed");
+
+		rubberLeavesProperties = setUpLeaves(TreeRubber.leavesBlock, "deciduous", 2, 13);
+		sapLeavesProperties = setUpLeaves(TreeSap.leavesBlock,  "palm");
+		hearthgroveLeavesProperties = setUpLeaves(TreeHearthgrove.leavesBlock, "acacia");
+		nibbletwigLeavesProperties = setUpLeaves(TreeNibbletwig.leavesBlock, "conifer");
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 0, rubberLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 1, sapLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 4, hearthgroveLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 2, hearthgroveLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 3, nibbletwigLeavesProperties);
 
 		TreeFamily rubberTree = new TreeRubber();
@@ -177,32 +126,51 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTBL.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		//(soilBlockState.getBlock() instanceof BlockCragrock && soilBlockState.getValue(BlockCragrock.VARIANT) != BlockCragrock.EnumCragrockType.DEFAULT)
+		DirtHelper.registerSoil(BlockRegistry.SWAMP_DIRT, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.COARSE_SWAMP_DIRT, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SWAMP_GRASS, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.DEAD_GRASS, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SLUDGY_DIRT, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SPREADING_SLUDGY_DIRT, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SLUDGY_DIRT, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(BlockRegistry.SPREADING_SLUDGY_DIRT, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(BlockRegistry.MUD, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.SANDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.PEAT, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.SLIMY_DIRT, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(BlockRegistry.SLIMY_GRASS, DirtHelper.SLIMELIKE);
+		DirtHelper.registerSoil(BlockRegistry.SWAMP_WATER, DirtHelper.WATERLIKE);
+		DirtHelper.registerSoil(BlockRegistry.STAGNANT_WATER, DirtHelper.WATERLIKE);
+		DirtHelper.registerSoil(blockRootyWater, DirtHelper.WATERLIKE);
+		DirtHelper.registerSoil(blockRootyWaterSwamp, DirtHelper.WATERLIKE);
+		DirtHelper.registerSoil(blockRootyWaterStagnant, DirtHelper.WATERLIKE);
+		DirtHelper.registerSoil(blockRootyMud, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(blockRootyMud, DirtHelper.MUDLIKE);
 	}
 
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit){
+	private static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
 		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
+		leavesProperties = new LeavesProperties(leavesBlock.getDefaultState(), TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock);
 			}
+			@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) { return 0xFFFFFF; }
 		};
 		return leavesProperties;
 	}
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){
+	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, leavesMeta),
-				TreeRegistry.findCellKit(cellKit))
+		leavesProperties = new LeavesProperties(leavesBlock.getDefaultState(), TreeRegistry.findCellKit(cellKit))
 		{
 			@Override public int getSmotherLeavesMax() { return smother; } //Default: 4
 			@Override public int getLightRequirement() { return light; } //Default: 13
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, leavesMeta);
+				return new ItemStack(leavesBlock);
 			}
 		};
 		return leavesProperties;
@@ -243,7 +211,9 @@ public class ModContent {
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesTBL.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
-		ModelLoader.setCustomStateMapper(undergroundHearthgroveRoot, new StateMap.Builder().ignore(BlockDynamicHearthgroveRoots.RADIUS).build());
-		ModelLoader.setCustomStateMapper(undergroundHearthgroveRootSwamp, new StateMap.Builder().ignore(BlockDynamicHearthgroveRoots.RADIUS).build());
+		ModelLoader.setCustomStateMapper(blockRootyWater, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
+		ModelLoader.setCustomStateMapper(blockRootyWaterSwamp, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
+		ModelLoader.setCustomStateMapper(blockRootyWaterStagnant, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
+		ModelLoader.setCustomStateMapper(blockRootyMud, new StateMap.Builder().ignore(BlockRootyWater.LIFE).build());
 	}
 }

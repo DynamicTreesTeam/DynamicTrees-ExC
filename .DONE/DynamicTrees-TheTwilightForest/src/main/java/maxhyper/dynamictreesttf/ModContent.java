@@ -235,6 +235,7 @@ public class ModContent {
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 
 		DirtHelper.registerSoil(undergroundRoot, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(blockRootyWater, DirtHelper.WATERLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, int leavesMeta, String cellKit, int smother, int light){

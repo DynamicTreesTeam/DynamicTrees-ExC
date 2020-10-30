@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "dynamictreestbl:hearthgrovebranch#dynamictree" }
+        "normal": { "model": "dynamictreestbl:hearthgrovebranch#dynamicmangrovetbl" }
     }
 }

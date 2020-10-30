@@ -16,6 +16,7 @@ import maxhyper.dynamictreesttf.blocks.BlockBranchTwilight;
 import maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenLogCritter;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenUndergroundRoots;
+import maxhyper.dynamictreesttf.models.BakedModelBlockBranchMangrove;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -60,9 +61,7 @@ public class TreeMangrove extends TreeFamily {
 		}
 
 		@Override
-		public int maxBranchRadius() {
-			return 6;
-		}
+		public int maxBranchRadius() { return BakedModelBlockBranchMangrove.maxRad; }
 
 		@Override
 		protected EnumFacing newDirectionSelected(EnumFacing newDir, GrowSignal signal) {
@@ -84,10 +83,10 @@ public class TreeMangrove extends TreeFamily {
 			}
 		}
 
-		@Override
-		public LogsAndSticks getLogsAndSticks(float volume) {
-			return super.getLogsAndSticks(volume * 2.5f);
-		}
+//		@Override
+//		public LogsAndSticks getLogsAndSticks(float volume) {
+//			return super.getLogsAndSticks(volume * 1);
+//		}
 
 		@Override
 		public boolean isBiomePerfect(Biome biome) {
@@ -107,7 +106,8 @@ public class TreeMangrove extends TreeFamily {
 
 		@Override
 		public boolean isAcceptableSoil(World world, BlockPos pos, IBlockState soilBlockState) {
-			return super.isAcceptableSoil(world, pos, soilBlockState) && DirtHelper.isSoilAcceptable(world.getBlockState(pos.down()).getBlock(), deepSoilTypeFlags);
+			boolean requiresBottom = DirtHelper.isSoilAcceptable(world.getBlockState(pos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.WATERLIKE));
+			return super.isAcceptableSoil(world, pos, soilBlockState) && (!requiresBottom || DirtHelper.isSoilAcceptable(world.getBlockState(pos.down()).getBlock(), deepSoilTypeFlags));
 		}
 	}
 
@@ -148,7 +148,7 @@ public class TreeMangrove extends TreeFamily {
 		return new BlockBranchTwilight("mangroveBranch") {
 			@Override
 			public int getMaxRadius() {
-				return 8;
+				return BakedModelBlockBranchMangrove.maxRad;
 			}
 
 			@Override

@@ -33,7 +33,7 @@ public class ClientProxy extends CommonProxy {
 
 		ModelLoaderRegistry.registerLoader(
 				new ModelLoaderDelegated(
-						"dynamicmangrove", new ResourceLocation("dynamictrees", "block/smartmodel/branch"),
+						"dynamicmangrovettf", new ResourceLocation("dynamictrees", "block/smartmodel/branch"),
 						(resloc, baseModelBlock) -> new ModelBlockBranchMangrove(baseModelBlock)
 				)
 		);
