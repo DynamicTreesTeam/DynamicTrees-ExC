@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesforbiddenarcanus",
+  "name": "Dynamic Trees for Forbidden And Arcanus",
+  "description": "Adds compatibilities between dynamic trees and Forbidden And Arcanus",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forbidden-arcanus/files",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-ForbiddenArcanus/version_info.json?raw=true",
+  "authorList": ["Max Hyper"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

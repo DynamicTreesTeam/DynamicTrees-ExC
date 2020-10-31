@@ -1,0 +1,26 @@
+[
+  {
+    "select": { "name" : "minecraft:plains" },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesforbiddenarcanus:cherrywood" : 1,
+          "..." : 100
+        }
+      }
+    }
+  },
+  {
+    "select": { "name" : "minecraft:mutated_forest" },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesforbiddenarcanus:mysterywood" : 1,
+          "..." : 40
+        }
+      }
+    }
+  }
+]

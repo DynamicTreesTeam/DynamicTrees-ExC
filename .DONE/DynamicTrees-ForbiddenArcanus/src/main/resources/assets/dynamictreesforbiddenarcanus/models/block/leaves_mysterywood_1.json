@@ -1,0 +1,7 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "forbidden_arcanus:blocks/leaves_mysteriwood",
+    "particle": "forbidden_arcanus:blocks/leaves_mysteriwood"
+  }
+}

@@ -1,0 +1,11 @@
+item.dynamictreesforbiddenarcanus:mysterywoodseed.name=Mysterywood Seed
+item.dynamictreesforbiddenarcanus:cherrywoodseed.name=Cherrywood Stone
+
+species.dynamictreesforbiddenarcanus:mysterywood.name=Mysterywood
+species.dynamictreesforbiddenarcanus:cherrywood.name=Cherrywood
+
+tile.dynamictreesforbiddenarcanus:leaves0.name=Leaves
+tile.dynamictreesforbiddenarcanus:leaves1.name=Leaves
+
+tile.dynamictreesforbiddenarcanus:mysterywoodbranch.name=Mysterywood Tree
+tile.dynamictreesforbiddenarcanus:cherrywoodbranch.name=Cherrywood Tree

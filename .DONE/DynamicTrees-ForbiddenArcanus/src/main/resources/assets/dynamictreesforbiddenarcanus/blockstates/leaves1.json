@@ -1,0 +1,10 @@
+{
+	"multipart": [
+		{
+			"apply": [
+				{ "model": "dynamictreesforbiddenarcanus:leaves_mysterywood_1" },
+				{ "model": "dynamictreesforbiddenarcanus:leaves_mysterywood_2" }
+			]
+		}
+	]
+}
