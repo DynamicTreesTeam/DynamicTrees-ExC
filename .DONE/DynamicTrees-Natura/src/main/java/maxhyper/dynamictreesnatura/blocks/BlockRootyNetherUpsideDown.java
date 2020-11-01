@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -41,6 +42,7 @@ public class BlockRootyNetherUpsideDown extends BlockRootyUpsideDown {
 
 	public BlockRootyNetherUpsideDown(String name, boolean isTileEntity) {
 		super(name, Material.ROCK, isTileEntity);
+		setSoundType(SoundType.STONE);
 	}
 
 	///////////////////////////////////////////

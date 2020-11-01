@@ -66,7 +66,12 @@ public class TreeCrystal extends TreeFamily {
 
         @Override
         public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
-            return ModContent.rootyCrystalDirt;
+            if (DirtHelper.isSoilAcceptable(world.getBlockState(rootPos).getBlock(), DirtHelper.getSoilFlags(ModContent.CRYSTALLIKE))){
+                return ModContent.rootyCrystalDirt;
+            } else {
+                return ModBlocks.blockRootyDirt;
+            }
+
         }
 
         @Override

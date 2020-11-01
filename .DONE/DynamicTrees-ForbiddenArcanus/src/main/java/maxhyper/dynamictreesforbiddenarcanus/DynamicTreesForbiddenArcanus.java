@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class DynamicTreesForbiddenArcanus {
 	
 	public static final String MODID = "dynamictreesforbiddenarcanus";
-	public static final String NAME = "Dynamic Trees for Forbidden And Arcanus";
+	public static final String NAME = "Dynamic Trees for Forbidden & Arcanus";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
 			+ ";required-after:forbidden_arcanus";
 	

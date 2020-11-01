@@ -1,6 +1,8 @@
 package maxhyper.dynamictreesplants.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.blocks.MimicProperty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -26,7 +28,7 @@ public class BlockRootyNether extends BlockRooty {
 	}
 
 	public BlockRootyNether(String name, boolean isTileEntity) {
-		super(name, Material.GROUND, isTileEntity);
+		super(name, Material.ROCK, isTileEntity);
 		setSoundType(SoundType.STONE);
 	}
 
@@ -34,19 +36,10 @@ public class BlockRootyNether extends BlockRooty {
 	// BLOCKSTATES
 	///////////////////////////////////////////
 
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new ExtendedBlockState(this, new IProperty[]{LIFE}, new IUnlistedProperty[] {NetherMimicProperty.MIMIC});
-	}
-
+	public static final Material[] materialOrder = {Material.ROCK, Material.SAND, Material.GROUND, Material.GRASS};
 	@Override
 	public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
-		return NetherMimicProperty.getNetherMimic(access, pos);
-	}
-
-	@Override
-	public IBlockState getExtendedState(IBlockState state, IBlockAccess access, BlockPos pos) {
-		return state instanceof IExtendedBlockState ? ((IExtendedBlockState)state).withProperty(NetherMimicProperty.MIMIC, getMimic(access, pos)) : state;
+		return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE,DirtHelper.DIRTLIKE), Blocks.NETHERRACK.getDefaultState());
 	}
 
 	///////////////////////////////////////////
@@ -59,7 +52,7 @@ public class BlockRootyNether extends BlockRooty {
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(Blocks.NETHERRACK);
+		return Item.getItemFromBlock(Blocks.DIRT);
 	}
 
 	///////////////////////////////////////////
@@ -70,5 +63,5 @@ public class BlockRootyNether extends BlockRooty {
 	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
 		return layer == BlockRenderLayer.CUTOUT_MIPPED || layer == BlockRenderLayer.SOLID;
 	}
-	
+
 }

@@ -2,7 +2,9 @@ package maxhyper.dynamictreesplants.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.blocks.MimicProperty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
+import maxhyper.dynamictreesplants.ModContent;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -17,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
+import shadows.plants2.init.ModRegistry;
 
 import java.util.Random;
 
@@ -33,28 +36,14 @@ public class BlockRootyCrystal extends BlockRooty {
 		setSoundType(SoundType.GLASS);
 	}
 
-	@Override
-	public GrowSignal growSignal(World world, BlockPos pos, GrowSignal signal) {
-		return super.growSignal(world, pos, signal);
-	}
-
 	///////////////////////////////////////////
 	// BLOCKSTATES
 	///////////////////////////////////////////
 
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new ExtendedBlockState(this, new IProperty[]{LIFE}, new IUnlistedProperty[] {MimicProperty.MIMIC});
-	}
-
+	public static final Material[] materialOrder = {Material.GLASS, Material.ROCK, Material.GROUND};
 	@Override
 	public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
-		return MimicProperty.getDirtMimic(access, pos);
-	}
-
-	@Override
-	public IBlockState getExtendedState(IBlockState state, IBlockAccess access, BlockPos pos) {
-		return state instanceof IExtendedBlockState ? ((IExtendedBlockState)state).withProperty(MimicProperty.MIMIC, getMimic(access, pos)) : state;
+		return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(ModContent.CRYSTALLIKE), ModRegistry.GROUNDCOVER.getDefaultState());
 	}
 
 	///////////////////////////////////////////

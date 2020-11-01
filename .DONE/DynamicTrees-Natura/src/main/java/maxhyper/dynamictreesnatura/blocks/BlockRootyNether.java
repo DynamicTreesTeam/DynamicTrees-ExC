@@ -23,7 +23,7 @@ public class BlockRootyNether extends BlockRooty {
 	}
 
 	public BlockRootyNether(String name, boolean isTileEntity) {
-		super(name, Material.GROUND, isTileEntity);
+		super(name, Material.ROCK, isTileEntity);
 		setSoundType(SoundType.STONE);
 	}
 
