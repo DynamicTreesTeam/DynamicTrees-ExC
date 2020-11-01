@@ -12,6 +12,7 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import maxhyper.dynamictreesnatura.blocks.*;
 import maxhyper.dynamictreesnatura.items.ItemDynamicSeedBloodwood;
@@ -60,7 +61,7 @@ public class ModContent {
 	public static BlockBranch bloodwoodBranch, fusewoodBranch;
 	public static BlockDynamicSapling bloodwoodSapling;
 	public static Seed bloodwoodSeed, mapleSeed, hopseedSeed, fusewoodSeed;
-	public static BlockRooty rootyUpsidedownDirt, rootyNetherDirt;
+	public static BlockRooty rootyNetherUpsidedownDirt, rootyNetherDirt, rootyUpsidedownDirt;
 	public static BlockFruit blockPotashApple;
 	public static ILeavesProperties mapleLeavesProperties, silverbellLeavesProperties, amaranthLeavesProperties, tigerwoodLeavesProperties,
 			willowLeavesProperties, eucalyptusLeavesProperties, hopseedLeavesProperties, sakuraLeavesProperties,
@@ -95,7 +96,9 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		rootyUpsidedownDirt = new BlockRootyNetherUpsideDown(false);
+		rootyNetherUpsidedownDirt = new BlockRootyNetherUpsideDown(false);
+		registry.register(rootyNetherUpsidedownDirt);
+		rootyUpsidedownDirt = new BlockRootyUpsideDown(false);
 		registry.register(rootyUpsidedownDirt);
 		rootyNetherDirt = new BlockRootyNether(false);
 		registry.register(rootyNetherDirt);
@@ -199,10 +202,11 @@ public class ModContent {
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
 
-		DirtHelper.registerSoil(rootyUpsidedownDirt, DirtHelper.NETHERLIKE);
+		DirtHelper.registerSoil(NaturaOverworld.coloredGrass, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(NaturaNether.netherTaintedSoil, DirtHelper.NETHERLIKE);
+		DirtHelper.registerSoil(rootyNetherUpsidedownDirt, DirtHelper.NETHERLIKE);
 		DirtHelper.registerSoil(rootyUpsidedownDirt, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(rootyNetherDirt, DirtHelper.NETHERLIKE);
-		DirtHelper.registerSoil(rootyNetherDirt, DirtHelper.DIRTLIKE);
 	}
 
 	private static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, String cellKit){
@@ -312,6 +316,7 @@ public class ModContent {
 		}
 		LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
 
+		ModelLoader.setCustomStateMapper(rootyNetherUpsidedownDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(rootyUpsidedownDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(rootyNetherDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(darkwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());

@@ -1,19 +1,16 @@
 package maxhyper.dynamictreesnatura.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.blocks.MimicProperty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.property.ExtendedBlockState;
-import net.minecraftforge.common.property.IExtendedBlockState;
-import net.minecraftforge.common.property.IUnlistedProperty;
 
 import java.util.Random;
 
@@ -34,19 +31,10 @@ public class BlockRootyNether extends BlockRooty {
 	// BLOCKSTATES
 	///////////////////////////////////////////
 
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new ExtendedBlockState(this, new IProperty[]{LIFE}, new IUnlistedProperty[] {NetherMimicProperty.MIMIC});
-	}
-
+	public static final Material[] materialOrder = {Material.ROCK, Material.SAND, Material.GROUND, Material.GRASS};
 	@Override
 	public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
-		return NetherMimicProperty.getNetherMimic(access, pos);
-	}
-
-	@Override
-	public IBlockState getExtendedState(IBlockState state, IBlockAccess access, BlockPos pos) {
-		return state instanceof IExtendedBlockState ? ((IExtendedBlockState)state).withProperty(NetherMimicProperty.MIMIC, getMimic(access, pos)) : state;
+		return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE,DirtHelper.DIRTLIKE), Blocks.NETHERRACK.getDefaultState());
 	}
 
 	///////////////////////////////////////////

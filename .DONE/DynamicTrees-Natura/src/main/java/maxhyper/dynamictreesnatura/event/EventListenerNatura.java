@@ -16,12 +16,12 @@ public class EventListenerNatura {
     @SubscribeEvent
     public void onModelBakeEvent(ModelBakeEvent event) {
 
-        Block[] rootyBlocks = new Block[] {ModContent.rootyNetherDirt, ModContent.rootyUpsidedownDirt};
+        Block[] rootyBlocks = new Block[] {ModContent.rootyNetherDirt, ModContent.rootyNetherUpsidedownDirt, ModContent.rootyUpsidedownDirt};
 
         for(Block block: rootyBlocks) {
             IBakedModel rootsObject = event.getModelRegistry().getObject(new ModelResourceLocation(block.getRegistryName(), "normal"));
             if (rootsObject != null) {
-                BakedModelBlockRooty rootyModel = new BakedModelBlockRooty((IBakedModel) rootsObject);
+                BakedModelBlockRooty rootyModel = new BakedModelBlockRooty(rootsObject);
                 event.getModelRegistry().putObject(new ModelResourceLocation(block.getRegistryName(), "normal"), rootyModel);
             }
         }

@@ -1,34 +1,36 @@
 package maxhyper.dynamictreesnatura.trees;
 
-import com.ferreusveritas.dynamictrees.ModConfigs;
+import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
-import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves2;
-import com.progwml6.natura.nether.block.logs.BlockNetherLog;
-import maxhyper.dynamictreesnatura.ModContent;
-import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.nether.NaturaNether;
+import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import com.progwml6.natura.shared.NaturaCommons;
+import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.mantle.util.LocUtils;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,10 +49,8 @@ public class TreeDarkwood extends TreeFamily {
 			setBasicGrowingParameters(0.3f, 10.0f, upProbability, lowestBranchHeight, 0.8f);
 
 			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
 
+			ModContent.blockPotashApple.setSpecies(this);
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockPotashApple)).setRayDistance(4.0F));
 
 			generateSeed();
@@ -58,9 +58,25 @@ public class TreeDarkwood extends TreeFamily {
 			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
 
+		public Species generateSeed() {
+			Seed seed = new Seed(getRegistryName().getResourcePath() + "seed"){
+				@Override
+				public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+					tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY.toString() + LocUtils.translateRecursive(LocUtils.translateRecursive("tile.natura.nether_sapling.darkwood.tooltip"))));
+					super.addInformation(stack, worldIn, tooltip, flagIn);
+				}
+			};
+			setSeedStack(new ItemStack(seed));
+			return this;
+		}
+
 		@Override
 		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-			return ModContent.rootyNetherDirt;
+			if (DirtHelper.isSoilAcceptable(world.getBlockState(pos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE))){
+				return ModContent.rootyNetherDirt;
+			} else {
+				return ModBlocks.blockRootyDirt;
+			}
 		}
 
 	}

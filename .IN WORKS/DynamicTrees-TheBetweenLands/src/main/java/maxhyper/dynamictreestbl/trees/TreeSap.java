@@ -38,7 +38,7 @@ public class TreeSap extends TreeFamily {
 		SpeciesSap(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.sapLeavesProperties);
 
-			setBasicGrowingParameters(0.6f, 15, 10, 4, 0.2f);
+			setBasicGrowingParameters(0.6f, 20, 10, 4, 0.2f);
 
 			generateSeed();
 			addAcceptableSoils(DirtHelper.MUDLIKE);
@@ -47,43 +47,21 @@ public class TreeSap extends TreeFamily {
 		@Override
 		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
 			for (EnumFacing dir : EnumFacing.HORIZONTALS){
-				probMap[dir.ordinal()] *= 3;
-			}
-			if (signal.isInTrunk()){
-				probMap[EnumFacing.UP.ordinal()] = 0;
+				probMap[dir.ordinal()] *= 2;
 			}
 			//Branching is prevented all together, only allowing radius 1 branches to expand
-			if ((radius > 1) && !(signal.isInTrunk() && radius <= 2) && (signal.energy > 3)){
+			if ((radius > 1) && !(signal.isInTrunk()) && (signal.energy > 3)){
 				for (EnumFacing dir : EnumFacing.values()){
 					if (!TreeHelper.isBranch(world.getBlockState(pos.offset(dir)))){
-						//minuscule chance that it branches out anyways, but if it does its short lived
-						if (world.rand.nextFloat() < 0.999f){
-							probMap[dir.ordinal()] = 0;
-						} else {
-							signal.energy = 4;
-						}
+						probMap[dir.ordinal()] = 0;
 					}
 				}
 			}
 
-			probMap[signal.dir.getOpposite().ordinal()] = 0;
 			probMap[EnumFacing.DOWN.ordinal()] = 0;
+			probMap[signal.dir.getOpposite().ordinal()] = 0;
 
 			return probMap;
-		}
-
-		private EnumFacing getRelativeFace (BlockPos signalPos, BlockPos rootPos) {
-			if (signalPos.getZ() < rootPos.getZ()) {
-				return EnumFacing.NORTH;
-			} else if (signalPos.getZ() > rootPos.getZ()) {
-				return EnumFacing.SOUTH;
-			} else if (signalPos.getX() > rootPos.getX()) {
-				return EnumFacing.EAST;
-			} else if (signalPos.getX() < rootPos.getX()) {
-				return EnumFacing.WEST;
-			} else {
-				return EnumFacing.UP;
-			}
 		}
 
 		@Override

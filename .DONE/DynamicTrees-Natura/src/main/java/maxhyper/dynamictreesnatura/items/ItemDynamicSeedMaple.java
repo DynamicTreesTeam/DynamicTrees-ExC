@@ -1,28 +1,29 @@
 package maxhyper.dynamictreesnatura.items;
 
-import com.ferreusveritas.dynamictrees.ModConfigs;
-import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.items.Seed;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import slimeknights.mantle.util.LocUtils;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemDynamicSeedMaple extends Seed {
 
     public ItemDynamicSeedMaple() {
         super(new ResourceLocation(DynamicTreesNatura.MODID,"mapleseed").toString());
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY.toString() + LocUtils.translateRecursive(LocUtils.translateRecursive("tile.natura.overworld_sapling.maple.tooltip"))));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override

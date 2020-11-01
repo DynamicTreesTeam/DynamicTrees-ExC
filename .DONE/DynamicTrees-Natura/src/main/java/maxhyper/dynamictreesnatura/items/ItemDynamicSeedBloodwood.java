@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +17,12 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import slimeknights.mantle.util.LocUtils;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemDynamicSeedBloodwood extends Seed {
     public ItemDynamicSeedBloodwood() {
@@ -36,6 +40,12 @@ public class ItemDynamicSeedBloodwood extends Seed {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY.toString() + LocUtils.translateRecursive(LocUtils.translateRecursive("tile.natura.nether_sapling2.bloodwood.tooltip"))));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override public EnumActionResult onItemUsePlantSeed(EntityPlayer player, World world, BlockPos pos, EnumHand hand, ItemStack seedStack, EnumFacing facing, float hitX, float hitY, float hitZ) {

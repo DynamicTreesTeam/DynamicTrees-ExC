@@ -6,7 +6,6 @@ import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.cells.CellMetadata;
@@ -17,20 +16,15 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
-import com.ferreusveritas.dynamictrees.worldgen.JoCode;
-import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
-import com.progwml6.natura.nether.block.logs.BlockNetherLog;
-import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
-import maxhyper.dynamictreesnatura.ModContent;
-import maxhyper.dynamictreesnatura.DynamicTreesNatura;
-import maxhyper.dynamictreesnatura.blocks.BlockDynamicBranchBloodwood;
-import maxhyper.dynamictreesnatura.blocks.BlockDynamicSaplingBloodwood;
 import com.progwml6.natura.nether.NaturaNether;
+import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.shared.NaturaCommons;
+import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import maxhyper.dynamictreesnatura.ModContent;
+import maxhyper.dynamictreesnatura.blocks.BlockDynamicSaplingBloodwood;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -63,10 +57,8 @@ public class TreeBloodwood extends TreeFamily {
 
 			setBasicGrowingParameters(0.2f, 24.0f, 0, 10, 2.8f);
 			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("bloodwood"));
-			envFactor(Type.COLD, 0.25f);
-			envFactor(Type.HOT, 1.10f);
-			envFactor(Type.DRY, 0.90f);
-			envFactor(Type.NETHER, 1.50f);
+
+			envFactor(Type.COLD, 0.75f);
 
 			setSeedStack(new ItemStack(ModContent.bloodwoodSeed));
 			setupStandardSeedDropping();
@@ -84,7 +76,11 @@ public class TreeBloodwood extends TreeFamily {
 
 		@Override
 		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-			return ModContent.rootyUpsidedownDirt;
+			if (DirtHelper.isSoilAcceptable(world.getBlockState(pos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE))){
+				return ModContent.rootyNetherUpsidedownDirt;
+			} else {
+				return ModContent.rootyUpsidedownDirt;
+			}
 		}
 
 		@Override public boolean plantSapling(World world, BlockPos pos) {

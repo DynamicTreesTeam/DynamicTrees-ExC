@@ -3,17 +3,28 @@ package maxhyper.dynamictreesnatura.items;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.EnumDifficulty;
+import net.minecraft.world.World;
+import slimeknights.mantle.util.LocUtils;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemDynamicSeedFusewood extends Seed {
 
     public ItemDynamicSeedFusewood() {
         super(new ResourceLocation(DynamicTreesNatura.MODID,"fusewoodseed").toString());
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY.toString() + LocUtils.translateRecursive(LocUtils.translateRecursive("tile.natura.nether_sapling.fusewood.tooltip"))));
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override

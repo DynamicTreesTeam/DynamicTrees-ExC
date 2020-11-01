@@ -2,18 +2,17 @@ package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
-import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
-import maxhyper.dynamictreesnatura.ModContent;
-import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import com.progwml6.natura.overworld.NaturaOverworld;
+import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import com.progwml6.natura.shared.NaturaCommons;
+import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
@@ -32,11 +31,6 @@ public class TreeMaple extends TreeFamily {
 			super(treeFamily.getName(), treeFamily, ModContent.mapleLeavesProperties);
 
 			setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
-
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
 
 			setSeedStack(new ItemStack(ModContent.mapleSeed));
 			setupStandardSeedDropping();

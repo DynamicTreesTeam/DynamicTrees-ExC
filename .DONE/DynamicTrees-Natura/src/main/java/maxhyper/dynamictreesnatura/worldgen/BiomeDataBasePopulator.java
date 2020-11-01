@@ -92,7 +92,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
                         add(fusewood,  ModContent.generateFusewood  ? 100/Config.fusewoodSpawnRarity  : 0).
                         add(darkwood,  ModContent.generateDarkwood  ? 100/Config.darkwoodSpawnRarity  : 0);
                 dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-                dbase.setDensitySelector(biome, (rand, noiseDensity) -> ((noiseDensity * 0.25) + 0.75) * 0.5, Operation.REPLACE);
+                dbase.setDensitySelector(biome, (rand, noiseDensity) -> noiseDensity * 0.4, Operation.REPLACE);
             }
             else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
 
