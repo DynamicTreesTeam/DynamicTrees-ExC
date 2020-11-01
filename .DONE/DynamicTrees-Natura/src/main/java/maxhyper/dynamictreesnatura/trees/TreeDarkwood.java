@@ -58,6 +58,11 @@ public class TreeDarkwood extends TreeFamily {
 			addAcceptableSoils(DirtHelper.NETHERLIKE);
 		}
 
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
+		}
+
 		public Species generateSeed() {
 			Seed seed = new Seed(getRegistryName().getResourcePath() + "seed"){
 				@Override

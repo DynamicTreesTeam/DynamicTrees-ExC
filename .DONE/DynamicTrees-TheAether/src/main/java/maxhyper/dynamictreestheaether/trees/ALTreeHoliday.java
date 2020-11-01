@@ -48,12 +48,6 @@ public class ALTreeHoliday extends TreeFamily {
 			clearAcceptableSoils();
 			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
-
-//		@Override
-//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-//			return ModContent.rootyDirtAether;
-//		}
-
 	}
 
 	public ALTreeHoliday() {

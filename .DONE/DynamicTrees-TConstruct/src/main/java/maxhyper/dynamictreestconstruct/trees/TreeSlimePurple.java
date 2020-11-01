@@ -36,11 +36,19 @@ public class TreeSlimePurple extends TreeSlimeBlue {
 			this.setupStandardSeedDropping();
 			setStick(ItemStack.EMPTY);
 
+
 			this.addGenFeature(new FeatureGenSlimeVines(TinkerWorld.slimeVinePurple3));
-			if (ModConfigs.purpleSlimeBallsInPurpleTrees)
+			if (ModConfigs.purpleSlimeBallsInPurpleTrees) {
+				ModContent.blockPurpleSlime.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockPurpleSlime)).setRayDistance(4.0F));
+			}
 			this.clearAcceptableSoils();
 			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
+		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
 		}
 
 		@Override

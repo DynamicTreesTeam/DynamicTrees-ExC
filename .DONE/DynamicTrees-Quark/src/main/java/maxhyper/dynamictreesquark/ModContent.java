@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
@@ -21,6 +22,7 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -33,11 +35,11 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import vazkii.quark.base.module.ConfigHelper;
 import vazkii.quark.world.block.BlockVariantLeaves;
 import vazkii.quark.world.feature.TreeVariants;
 
@@ -76,25 +78,28 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		try {
-				swampOakLeavesProperties = setUpLeaves(QTreeSwampOak.leavesBlock, QTreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES), 0, "deciduous", 3, 13);
-				blossomingLeavesProperties = setUpLeaves(QTreeBlossoming.leavesBlock, QTreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES), 1, "deciduous", 4, 13);
+			swampOakLeavesProperties = setUpLeaves(TreeSwampOak.leavesBlock, TreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SWAMP_LEAVES), 0, "deciduous", 3, 13);
+			blossomingLeavesProperties = setUpLeaves(TreeBlossoming.leavesBlock, TreeSwampOak.leavesBlock.getDefaultState().withProperty(BlockVariantLeaves.VARIANT, BlockVariantLeaves.Variant.SAKURA_LEAVES), 1, "deciduous", 4, 13);
 
-				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
-				LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 0, blossomingLeavesProperties);
+			LeavesPaging.getLeavesBlockForSequence(DynamicTreesQuark.MODID, 1, swampOakLeavesProperties);
 
 
-				TreeFamily blossomingTree = new QTreeBlossoming();
-				TreeFamily swampOakTree = new QTreeSwampOak();
-				Collections.addAll(trees, blossomingTree, swampOakTree);
+			TreeFamily blossomingTree = new TreeBlossoming();
+			TreeFamily swampOakTree = new TreeSwampOak();
+			Collections.addAll(trees, blossomingTree, swampOakTree);
 
-				trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
-				ArrayList<Block> treeBlocks = new ArrayList<>();
-				trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
-				treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesQuark.MODID).values());
-				registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
-			}catch (Exception e){
+			trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
+			ArrayList<Block> treeBlocks = new ArrayList<>();
+			trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
+			treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesQuark.MODID).values());
+			registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		}catch (Exception e){
 			failedToLoad = true;
 		}
+			Block glowcelium = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("quark","glowcelium"));
+			if (glowcelium != Blocks.AIR)
+				DirtHelper.registerSoil(glowcelium, DirtHelper.FUNGUSLIKE);
 	}
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
 		ILeavesProperties leavesProperties;
@@ -124,8 +129,8 @@ public class ModContent {
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
 		if (!failedToLoad) {
-			setUpSeedRecipes("blossoming", new ItemStack(QTreeBlossoming.saplingBlock, 1, 1));
-			setUpSeedRecipes("swampOak", new ItemStack(QTreeSwampOak.saplingBlock, 1, 0));
+			setUpSeedRecipes("blossoming", new ItemStack(TreeBlossoming.saplingBlock, 1, 1));
+			setUpSeedRecipes("swampOak", new ItemStack(TreeSwampOak.saplingBlock, 1, 0));
 		}
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){

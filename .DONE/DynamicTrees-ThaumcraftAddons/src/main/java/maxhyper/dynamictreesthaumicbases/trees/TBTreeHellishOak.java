@@ -4,13 +4,17 @@ import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.rumaruka.thaumicbases.init.TBBlocks;
 import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
@@ -18,9 +22,9 @@ import java.util.Objects;
 
 public class TBTreeHellishOak extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("thaumicbases:netherleaves");
-	public static Block logBlock = Block.getBlockFromName("thaumicbases:netherlogs");
-	public static Block saplingBlock = Block.getBlockFromName("thaumicbases:nethersapling");
+	public static Block leavesBlock = TBBlocks.netherleaves;
+	public static Block logBlock = TBBlocks.netherlogs;
+	public static Block saplingBlock = TBBlocks.nethersapling;
 
 	public class SpeciesHellishOak extends Species {
 
@@ -31,7 +35,13 @@ public class TBTreeHellishOak extends TreeFamily {
 			generateSeed();
 			addDropCreator(new DropCreatorSeed(0.5f));
 
+			ModContent.blockMagmaCream.setSpecies(this);
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaCream)).setRayDistance(4.0F));
+		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
 		}
 	}
 

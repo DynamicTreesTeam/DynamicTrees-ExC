@@ -4,6 +4,7 @@ import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.blocks.MimicProperty;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -29,13 +30,20 @@ public class BlockRootyMud extends BlockRooty {
         super(name, Material.GROUND, isTileEntity);
     }
 
-    public IBlockState getDecayBlockState(IBlockAccess access, BlockPos pos) {
-        return getMimic(access, pos);
+    ///////////////////////////////////////////
+    // BLOCKSTATES
+    ///////////////////////////////////////////
+
+    public static final Material[] materialOrder = {BLMaterialRegistry.MUD, Material.GROUND, Material.CLAY, Material.GRASS};
+    @Override
+    public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
+        return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(DirtHelper.MUDLIKE), BlockRegistry.MUD.getDefaultState());
     }
 
-    public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
-        return getMudMimic(access, pos);
-    }
+    ///////////////////////////////////////////
+    // RENDERING
+    ///////////////////////////////////////////
+
     @Override
     public boolean isOpaqueCube(IBlockState s) {
         return false;
@@ -56,47 +64,5 @@ public class BlockRootyMud extends BlockRooty {
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
         return new AxisAlignedBB(0, 0, 0, 1, 1 - 0.125F, 1);
-    }
-
-    public static IBlockState getMudMimic(IBlockAccess access, BlockPos pos) {
-
-        if(!ModConfigs.rootyTextureMimicry) {
-            return BlockRegistry.MUD.getDefaultState();
-        }
-
-        final int[] dMap = {0, -1, 1};//Y-Axis depth map
-
-        IBlockState mimic = BlockRegistry.MUD.getDefaultState();//Default to mud in case no dirt or grass is found
-        IBlockState[] cache = new IBlockState[12];//A cache so we don't need to pull the blocks from the world twice
-        int i = 0;
-
-        //Prioritize Mud by searching for TBL's mud material first
-        for (int depth : dMap) {
-            for (EnumFacing dir : EnumFacing.HORIZONTALS) {
-                IBlockState ground = cache[i++] = access.getBlockState(pos.offset(dir).down(depth));
-                if (ground.getMaterial() == BLMaterialRegistry.MUD && ground.isBlockNormalCube() && (!(ground.getBlock() instanceof MimicProperty.IMimic))) {
-                    return ground;
-                }
-            }
-        }
-
-        //Settle for other kinds of dirt
-        for (i = 0; i < 12; i++) {
-            IBlockState ground = cache[i];
-            if(ground != mimic && ground.getMaterial() == Material.GROUND && ground.isBlockNormalCube() && !(ground.getBlock() instanceof MimicProperty.IMimic)) {
-                return ground;
-            }
-        }
-
-        //Allow grass as well if theres no other options
-        for (i = 0; i < 12; i++) {
-            IBlockState ground = cache[i];
-            if(ground != mimic && ground.getMaterial() == Material.GRASS && ground.isBlockNormalCube() && !(ground.getBlock() instanceof MimicProperty.IMimic)) {
-                return ground;
-            }
-        }
-
-        //If all else fails then just return plain ol' mud
-        return mimic;
     }
 }

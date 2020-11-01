@@ -3,6 +3,7 @@ package maxhyper.dynamictreesforbiddenarcanus.trees;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -16,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -45,6 +47,10 @@ public class TreeMysterywood extends TreeFamily {
 
 			ModContent.blockGoldenApple.setSpecies(this);
 			this.addGenFeature(new FeatureGenFruit(ModContent.blockGoldenApple).setRayDistance(4.0F));
+		}
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
 		}
 	}
 

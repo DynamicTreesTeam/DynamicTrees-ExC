@@ -11,9 +11,11 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import com.rumaruka.thaumicbases.init.TBBlocks;
 import maxhyper.dynamictreesthaumicbases.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -85,6 +87,8 @@ public class ModContent {
 		rainbowCactus.getRegisterableBlocks(treeBlocks);
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesThaumcraftAddons.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(TBBlocks.oldgravel, DirtHelper.GRAVELLIKE);
 	}
 
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){

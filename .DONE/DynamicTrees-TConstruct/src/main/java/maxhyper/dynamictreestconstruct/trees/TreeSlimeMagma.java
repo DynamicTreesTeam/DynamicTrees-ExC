@@ -35,10 +35,18 @@ public class TreeSlimeMagma extends TreeSlimeBlue {
 			this.setupStandardSeedDropping();
 			setStick(ItemStack.EMPTY);
 
-			if (ModConfigs.orangeSlimeBallsInMagmaTrees)
+
+			if (ModConfigs.orangeSlimeBallsInMagmaTrees) {
+				ModContent.blockMagmaSlime.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockMagmaSlime)).setRayDistance(4.0F));
+			}
 			this.clearAcceptableSoils();
 			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
+		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
 		}
 
 		@Override

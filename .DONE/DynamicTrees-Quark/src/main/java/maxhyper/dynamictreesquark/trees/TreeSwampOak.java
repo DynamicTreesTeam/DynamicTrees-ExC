@@ -20,7 +20,7 @@ import vazkii.quark.world.feature.TreeVariants;
 
 import java.util.List;
 
-public class QTreeSwampOak extends TreeFamily {
+public class TreeSwampOak extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
 	public static Block logBlock = Blocks.LOG;
@@ -48,7 +48,7 @@ public class QTreeSwampOak extends TreeFamily {
 		}
 	}
 
-	public QTreeSwampOak() {
+	public TreeSwampOak() {
 		super(new ResourceLocation(DynamicTreesQuark.MODID, "swampOak"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));

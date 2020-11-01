@@ -17,7 +17,7 @@ import vazkii.quark.world.feature.TreeVariants;
 
 import java.util.List;
 
-public class QTreeBlossoming extends TreeFamily {
+public class TreeBlossoming extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("quark:variant_leaves");
 	public static Block logBlock = Blocks.LOG;
@@ -41,7 +41,7 @@ public class QTreeBlossoming extends TreeFamily {
 		}
 	}
 
-	public QTreeBlossoming() {
+	public TreeBlossoming() {
 		super(new ResourceLocation(DynamicTreesQuark.MODID, "blossoming"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 1));

@@ -41,15 +41,17 @@ public class ALTreeCrystal extends TreeFamily {
 			envFactor(Type.COLD, 1.4f);
 			envFactor(Type.HOT, 1.2f);
 
+			ModContent.blockWhiteApple.setSpecies(this);
 			addGenFeature(new FeatureGenFruit(ModContent.blockWhiteApple).setFruitingRadius(3));
 			generateSeed();
 			clearAcceptableSoils();
 			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
-//		@Override
-//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-//			return ModContent.rootyDirtAether;
-//		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
+		}
 	}
 
 	public ALTreeCrystal() {

@@ -50,11 +50,6 @@ public class ALTreeSkyroot extends TreeFamily {
 			addAcceptableSoils(ModContent.AETHERLIKE);
 		}
 
-//		@Override
-//		public BlockRooty getRootyBlock(World world, BlockPos pos) {
-//			return ModContent.rootyDirtAether;
-//		}
-
 		@Override
 		public boolean generate(World world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
 			//Chance for a skyroot tree to be a christmas tree when the config is enabled

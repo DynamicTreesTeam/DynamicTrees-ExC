@@ -9,6 +9,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
@@ -175,13 +176,12 @@ public class TreePapaya extends TreeFamily {
         }
 
         @Override
-        public boolean placeRootyDirtBlock(World world, BlockPos rootPos, int life) {
-            if (world.getBlockState(rootPos).getMaterial() == Material.SAND) {
-                world.setBlockState(rootPos, ModBlocks.blockRootySand.getDefaultState().withProperty(BlockRooty.LIFE, life));
+        public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
+            if (DirtHelper.isSoilAcceptable(world.getBlockState(rootPos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.SANDLIKE))){
+                return ModBlocks.blockRootySand;
             } else {
-                world.setBlockState(rootPos, getRootyBlock().getDefaultState().withProperty(BlockRooty.LIFE, life));
+                return ModBlocks.blockRootyDirt;
             }
-            return true;
         }
     }
 

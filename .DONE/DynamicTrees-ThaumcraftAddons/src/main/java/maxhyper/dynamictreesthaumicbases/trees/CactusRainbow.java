@@ -19,6 +19,7 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.worldgen.JoCode;
+import com.rumaruka.thaumicbases.init.TBBlocks;
 import maxhyper.dynamictreesthaumicbases.DynamicTreesThaumcraftAddons;
 import maxhyper.dynamictreesthaumicbases.ModContent;
 import net.minecraft.block.Block;
@@ -40,6 +41,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
@@ -48,7 +50,7 @@ import java.util.Random;
 
 public class CactusRainbow extends TreeFamily {
 
-    public static Block logBlock = Block.getBlockFromName("thaumicbases:rainbowcactus");
+    public static Block logBlock = TBBlocks.rainbowcactus;
 
     public class SpeciesCactus extends Species {
 
@@ -175,7 +177,7 @@ public class CactusRainbow extends TreeFamily {
     public CactusRainbow() {
         super(new ResourceLocation(DynamicTreesThaumcraftAddons.MODID, "rainbowcactus"));
 
-  //      setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 2));
+        setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock));
 
         setStick(ItemStack.EMPTY);
     }

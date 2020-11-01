@@ -1,6 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-tinkers-construct/files",
 	"1.12.2": {
+		"1.12.2-1.2.5": "- Minor fixes",
 		"1.12.2-1.2.4": "- Minor fixes with Rooty Slimy Dirt.",
 		"1.12.2-1.2.3": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n+ Added config option to disable slime balls growing like fruits under trees",
 		"1.12.2-1.2.2": "+ Updated to work with last Dynamic Trees version\n- Minor text fixes",
@@ -11,7 +12,7 @@
 		"1.12.2-1.1.0": "+ Added slime drops blue slime trees and purple slime trees"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.2.4",
-		"1.12.2-recommended": "1.12.2-1.2.4"
+		"1.12.2-latest": "1.12.2-1.2.5",
+		"1.12.2-recommended": "1.12.2-1.2.5"
 	}
 }

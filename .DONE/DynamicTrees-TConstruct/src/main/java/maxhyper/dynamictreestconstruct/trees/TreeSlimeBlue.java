@@ -53,13 +53,22 @@ public class TreeSlimeBlue extends TreeFamily {
 			setStick(ItemStack.EMPTY);
 
 			this.addGenFeature(new FeatureGenSlimeVines(TinkerWorld.slimeVineBlue3));
-			if (ModConfigs.greenSlimeBallsInBlueTrees)
+			if (ModConfigs.greenSlimeBallsInBlueTrees) {
+				ModContent.blockGreenSlime.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockGreenSlime)).setRayDistance(4.0F));
-			if (ModConfigs.blueSlimeBallsInBlueTrees)
+			}
+			if (ModConfigs.blueSlimeBallsInBlueTrees) {
+				ModContent.blockBlueSlime.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockBlueSlime)).setRayDistance(4.0F));
+			}
 			this.clearAcceptableSoils();
 			this.addAcceptableSoils(DirtHelper.SLIMELIKE);
 
+		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			return 1;
 		}
 
 		@Override

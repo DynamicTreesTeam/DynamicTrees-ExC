@@ -1,6 +1,7 @@
 package maxhyper.dynamictreesintegrateddynamics.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockSurfaceRoot;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
@@ -35,6 +36,8 @@ public class TreeMenril extends TreeFamily {
 	public static Block logBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("integrateddynamics","menril_log"));
 	public static Block saplingBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("integrateddynamics","menril_sapling"));
 
+	public static float fruitingOffset = 2f; //winter
+
 	public class SpeciesMenril extends Species {
 		SpeciesMenril(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.menrilLeavesProperties);
@@ -46,11 +49,17 @@ public class TreeMenril extends TreeFamily {
 			envFactor(Type.DRY, 0.5f);
 			envFactor(Type.FOREST, 1.05f);
 			envFactor(Type.MAGICAL, 1.1f);
-			
+
 			generateSeed();
+
+			setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
+
+
 			addDropCreator(new DropCreatorSeed(1f));
-			if (ModConfigs.menrilBerriesOnMenrilTrees)
+			if (ModConfigs.menrilBerriesOnMenrilTrees) {
+				ModContent.blockMenrilBerries.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockMenrilBerries)));
+			}
 			addGenFeature(new FeatureGenRoots(8).setScaler(getRootScaler()));//Finally Generate Roots
 			addGenFeature(new FeatureGenMound(7));
 		}
@@ -60,6 +69,16 @@ public class TreeMenril extends TreeFamily {
 			return biome.equals(BiomeMeneglin.getInstance());
 		}
 
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			float offset = fruitingOffset;
+			return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+		}
+
+		@Override
+		public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+			return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
+		}
 		@Override
 		protected EnumFacing newDirectionSelected(EnumFacing newDir, GrowSignal signal) {
 			if (signal.isInTrunk() && newDir != EnumFacing.UP) { // Turned out of trunk
