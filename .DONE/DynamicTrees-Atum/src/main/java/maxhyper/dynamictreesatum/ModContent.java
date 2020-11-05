@@ -15,9 +15,9 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.teammetallurgy.atum.init.AtumItems;
 import maxhyper.dynamictreesatum.blocks.BlockDynamicLeavesPalm;
-import maxhyper.dynamictreesatum.trees.A2TreeDeadPalm;
-import maxhyper.dynamictreesatum.trees.A2TreeDeadTree;
-import maxhyper.dynamictreesatum.trees.A2TreePalm;
+import maxhyper.dynamictreesatum.trees.TreeDeadPalm;
+import maxhyper.dynamictreesatum.trees.TreeDeadTree;
+import maxhyper.dynamictreesatum.trees.TreePalm;
 import maxhyper.dynamictreesatum.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -64,14 +64,14 @@ public class ModContent {
 		registry.register(palmFrondLeaves);
 
 		palmLeavesProperties = new LeavesProperties(
-				A2TreePalm.leavesBlock.getDefaultState(),
-				new ItemStack(A2TreePalm.leavesBlock),
+				TreePalm.leavesBlock.getDefaultState(),
+				new ItemStack(TreePalm.leavesBlock),
 				TreeRegistry.findCellKit("palm") ) {
 			@Override public boolean appearanceChangesWithHydro() { return true; }
 		};
 		deadPalmLeavesProperties = new LeavesProperties(
-				A2TreeDeadPalm.leavesBlock.getDefaultState(),
-				new ItemStack(A2TreeDeadPalm.leavesBlock),
+				TreeDeadPalm.leavesBlock.getDefaultState(),
+				new ItemStack(TreeDeadPalm.leavesBlock),
 				TreeRegistry.findCellKit("palm") ) {
 			@Override public boolean appearanceChangesWithHydro() { return true; }
 		};
@@ -84,9 +84,9 @@ public class ModContent {
 		deadPalmLeavesProperties.setDynamicLeavesState(palmFrondLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
 		palmFrondLeaves.setProperties(1, deadPalmLeavesProperties);
 
-		TreeFamily palmTree = new A2TreePalm();
-		TreeFamily palmDeadTree = new A2TreeDeadPalm();
-		TreeFamily deadTree = new A2TreeDeadTree();
+		TreeFamily palmTree = new TreePalm();
+		TreeFamily palmDeadTree = new TreeDeadPalm();
+		TreeFamily deadTree = new TreeDeadTree();
 		Collections.addAll(trees, palmTree, palmDeadTree, deadTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
@@ -110,21 +110,14 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-
-		setUpSeedRecipes("palm", new ItemStack(A2TreePalm.saplingBlock));
-
-		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesAtum.MODID, "palm"));
-		ItemStack treeSeed = treeSpecies.getSeedStack(1);
-		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesAtum.MODID, "dateSeed"), null, treeSeed, Ingredient.fromItem(AtumItems.DATE));
-
-
+		setUpSeedRecipes("palm", new ItemStack(TreePalm.saplingBlock), new ItemStack(AtumItems.DATE));
 	}
-	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
+	public static void setUpSeedRecipes (String name, ItemStack treeSapling, ItemStack treeFruit){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesAtum.MODID, name));
 		ItemStack treeSeed = treeSpecies.getSeedStack(1);
 		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
 		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
-		ModRecipes.createDirtBucketExchangeRecipes(treeSapling, treeSeed, true);
+		ModRecipes.createDirtBucketExchangeRecipesWithFruit(treeSapling, treeSeed, treeFruit, true, false);
 	}
 
 	@SideOnly(Side.CLIENT)

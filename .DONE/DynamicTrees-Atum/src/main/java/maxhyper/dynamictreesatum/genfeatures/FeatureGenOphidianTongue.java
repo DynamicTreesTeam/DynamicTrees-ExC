@@ -17,22 +17,13 @@ import net.minecraft.world.biome.Biome;
 import java.util.List;
 
 
-public class FeatureGenOphidianTongue implements IPostGenFeature, IPostGrowFeature {
+public class FeatureGenOphidianTongue implements IPostGenFeature {
 
     Block vine;
     int maxLength = 5;
 
     public FeatureGenOphidianTongue(){
         this.vine = Block.getBlockFromName("atum:ophidian_tongue");
-    }
-
-    @Override
-    public boolean postGrow(World world, BlockPos rootPos, BlockPos treePos, Species species, int soilLife, boolean natural) {
-        if(natural && world.rand.nextFloat() <= (1/64f)) {
-            addVine(world, rootPos, getLeavesHeight(rootPos, world),1 + world.rand.nextInt(maxLength));
-            return true;
-        }
-        return false;
     }
 
     private BlockPos getLeavesHeight (BlockPos rootPos, World world){
@@ -49,7 +40,7 @@ public class FeatureGenOphidianTongue implements IPostGenFeature, IPostGrowFeatu
     public boolean postGeneration(World world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, IBlockState initialDirtState) {
         boolean placed = false;
         for (int i=0;i<8;i++){
-            if(world.rand.nextFloat() <= 0.05) {
+            if(world.rand.nextFloat() <= 0.4) {
                 addVine(world, rootPos, getLeavesHeight(rootPos, world),1 + world.rand.nextInt(maxLength));
                 placed = true;
             }

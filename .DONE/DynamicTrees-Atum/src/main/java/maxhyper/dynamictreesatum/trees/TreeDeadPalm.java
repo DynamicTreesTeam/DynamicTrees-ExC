@@ -1,12 +1,12 @@
 package maxhyper.dynamictreesatum.trees;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
+import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
+import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
-import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
@@ -18,18 +18,15 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-import com.teammetallurgy.atum.blocks.vegetation.BlockDate;
 import com.teammetallurgy.atum.init.AtumBiomes;
 import com.teammetallurgy.atum.init.AtumBlocks;
-import com.teammetallurgy.atum.init.AtumItems;
 import maxhyper.dynamictreesatum.DynamicTreesAtum;
 import maxhyper.dynamictreesatum.ModContent;
 import maxhyper.dynamictreesatum.blocks.BlockDynamicLeavesPalm;
-import maxhyper.dynamictreesatum.genfeatures.FeatureGenFruitPod;
-import maxhyper.dynamictreesatum.genfeatures.FeatureGenOphidianTongue;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Biomes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -39,73 +36,56 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-public class A2TreePalm extends TreeFamily {
+public class TreeDeadPalm extends TreeFamily {
 
-	public static Block leavesBlock = Block.getBlockFromName("atum:palm_leaves");
-	public static Block logBlock = AtumBlocks.PALM_LOG;
-	public static Block saplingBlock = Block.getBlockFromName("atum:palm_sapling");
+	public static Block leavesBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum","deadwood_leaves"));
+	public static Block logBlock =  AtumBlocks.DEADWOOD_LOG;
 
-	public class SpeciesPalm extends Species {
+	public class SpeciesDeadPalm extends Species {
 
-		SpeciesPalm(TreeFamily treeFamily) {
-			super(treeFamily.getName(), treeFamily, ModContent.palmLeavesProperties);
+		SpeciesDeadPalm(TreeFamily treeFamily) {
+			super(treeFamily.getName(), treeFamily, ModContent.deadPalmLeavesProperties);
 
 			//Dark Oak Trees are tall, slowly growing, thick trees
 			setBasicGrowingParameters(0.5f, 8.0f, 4, 3, 0.8f);
 
 			generateSeed();
 
-			addGenFeature(new FeatureGenFruitPod((BlockDate)AtumBlocks.DATE_BLOCK));
-			addGenFeature(new FeatureGenOphidianTongue());
-
-			addDropCreator(new DropCreatorSeed(3.0f) {
-				@Override
-				public List<ItemStack> getHarvestDrop(World world, Species species, BlockPos leafPos, Random random, List<ItemStack> dropList, int soilLife, int fortune) {
-					if(random.nextInt(16) == 0) { // 1 in 4 chance to drop a seed on destruction..
-						dropList.add(getFruit());
-					}
-					return dropList;
-				}
-
-				private ItemStack getFruit (){
-					return new ItemStack(AtumItems.DATE);
-				}
-
-				@Override
-				public List<ItemStack> getLeavesDrop(IBlockAccess access, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, int fortune) {
-					int chance = 16;
-					if (fortune > 0) {
-						chance -= fortune;
-						if (chance < 3) {
-							chance = 3;
-						}
-					}
-					if (random.nextInt(chance) == 0) {
-						dropList.add(getFruit());
-					}
-					return dropList;
-				}
-			});
 		}
 
 		@Override
 		protected void setStandardSoils() {
-			addAcceptableSoils(DirtHelper.DIRTLIKE);
+			addAcceptableSoils(DirtHelper.DIRTLIKE, DirtHelper.SANDLIKE, DirtHelper.GRAVELLIKE);
 		}
 
 		@Override
 		public boolean isBiomePerfect(Biome biome) {
-			return isOneOfBiomes(biome, AtumBiomes.OASIS);
+			return isOneOfBiomes(biome, AtumBiomes.DEAD_OASIS);
+		}
+
+		@Override
+		public boolean handleRot(World world, List<BlockPos> ends, BlockPos rootPos, BlockPos treePos, int soilLife, SafeChunkBounds safeBounds) {
+			return false;
+		}
+
+		@Override
+		public boolean canBoneMeal() {
+			return ModConfigs.worldGenDebug;
+		}
+
+		@Override
+		public boolean grow(World world, BlockRooty rootyDirt, BlockPos rootPos, int soilLife, ITreePart treeBase, BlockPos treePos, Random random, boolean natural) {
+			if (ModConfigs.worldGenDebug) {
+				return super.grow(world,rootyDirt,rootPos,soilLife,treeBase,treePos,random,natural);
+			} else return false;
 		}
 
 		@Override
@@ -158,38 +138,24 @@ public class A2TreePalm extends TreeFamily {
 			}
 		}
 
-		public boolean transitionToTree(World world, BlockPos pos) {
-			//Ensure planting conditions are right
-			TreeFamily family = getFamily();
-			if(world.isAirBlock(pos.up()) && isAcceptableSoil(world, pos.down(), world.getBlockState(pos.down()))) {
-				family.getDynamicBranch().setRadius(world, pos, (int)family.getPrimaryThickness(), null);//set to a single branch with 1 radius
-				world.setBlockState(pos.up(), getLeavesProperties().getDynamicLeavesState());//Place 2 leaf blocks on top
-				world.setBlockState(pos.up(2), getLeavesProperties().getDynamicLeavesState().withProperty(BlockDynamicLeaves.HYDRO, 3));
-				placeRootyDirtBlock(world, pos.down(), 15);//Set to fully fertilized rooty dirt underneath
-				return true;
-			}
-			return false;
-		}
-
 		@Override
-		public boolean placeRootyDirtBlock(World world, BlockPos rootPos, int life) {
-			if (world.getBlockState(rootPos).getMaterial() == Material.SAND) {
-				world.setBlockState(rootPos, ModBlocks.blockRootySand.getDefaultState().withProperty(BlockRooty.LIFE, life));
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+			if (DirtHelper.isSoilAcceptable(world.getBlockState(pos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.SANDLIKE))){
+				return ModBlocks.blockRootySand;
 			} else {
-				world.setBlockState(rootPos, getRootyBlock().getDefaultState().withProperty(BlockRooty.LIFE, life));
+				return ModBlocks.blockRootyDirt;
 			}
-			return true;
 		}
 	}
 
-	public A2TreePalm() {
-		super(new ResourceLocation(DynamicTreesAtum.MODID, "palm"));
+	public TreeDeadPalm() {
+		super(new ResourceLocation(DynamicTreesAtum.MODID, "deadpalm"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
 
-		ModContent.palmLeavesProperties.setTree(this);
+		ModContent.deadPalmLeavesProperties.setTree(this);
 
-		this.canSupportCocoa = true;
+		//this.canSupportCocoa = true;
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -203,11 +169,11 @@ public class A2TreePalm extends TreeFamily {
 
 	@Override
 	public ItemStack getStick(int qty) {
-		return new ItemStack(Objects.requireNonNull(Item.getByNameOrId("atum:palm_stick")));
+		return new ItemStack(Objects.requireNonNull(Item.getByNameOrId("atum:deadwood_stick")));
 	}
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesPalm(this));
+		setCommonSpecies(new SpeciesDeadPalm(this));
 	}
 
 	@Override
@@ -231,8 +197,8 @@ public class A2TreePalm extends TreeFamily {
 		BlockPos relPos = destructionData.getEndPointRelPos(0).up();//A palm tree is only supposed to have one endpoint at it's top.
 		ILeavesProperties leavesProperties = getCommonSpecies().getLeavesProperties();
 
-		leaves.put(relPos, leavesProperties.getDynamicLeavesState(4));//The barky overlapping part of the palm frond cluster
-		leaves.put(relPos.up(), leavesProperties.getDynamicLeavesState(3));//The leafy top of the palm frond cluster
+		leaves.put(relPos, leavesProperties.getDynamicLeavesState(8));//The barky overlapping part of the palm frond cluster
+		leaves.put(relPos.up(), leavesProperties.getDynamicLeavesState(7));//The leafy top of the palm frond cluster
 
 		//The 4 corners and 4 sides of the palm frond cluster
 		for(int hydro = 1; hydro <= 2; hydro++) {
@@ -244,5 +210,4 @@ public class A2TreePalm extends TreeFamily {
 
 		return leaves;
 	}
-
 }

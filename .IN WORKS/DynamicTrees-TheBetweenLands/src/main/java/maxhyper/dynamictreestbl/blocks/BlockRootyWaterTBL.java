@@ -122,58 +122,7 @@ public class BlockRootyWaterTBL extends BlockRootyWater {
         }
         return oldState;
     }
-
-    private float getFluidHeight(IBlockAccess blockAccess, BlockPos blockPosIn, Material blockMaterial) {
-
-        int i = 0;
-        int w = 0;
-        float f = 0.0F;
-
-        for (int j = 0; j < 4; ++j) {
-            BlockPos blockpos = blockPosIn.add(-(j & 1), 0, -(j >> 1 & 1));
-
-            IBlockState posState = blockAccess.getBlockState(blockpos);
-            IBlockState posUpState = blockAccess.getBlockState(blockpos.up());
-
-            if (blockAccess.getBlockState(blockpos.up()).getMaterial() == blockMaterial) {
-                return 1.0F;
-            }
-
-            if (posState.getBlock() instanceof BlockFluidBase){
-
-                f += ((BlockFluidBase) posState.getBlock()).getFluidHeightForRender(blockAccess, blockpos, posUpState);
-                ++i;
-
-            } else {
-                Material material = posState.getMaterial();
-
-                if (material != blockMaterial) {
-                    if (!material.isSolid()) {
-                        ++f;
-                        ++i;
-                    }
-                } else {
-                    int k = posState.getValue(BlockLiquid.LEVEL);
-
-                    if (k >= 8 || k == 0) {
-                        f += BlockLiquid.getLiquidHeightPercent(k) * 10.0F;
-                        i += 10;
-                    }
-
-                    f += BlockLiquid.getLiquidHeightPercent(k);
-                    ++i;
-
-                }
-                if (posState.isFullCube() || posState.isOpaqueCube() || posState.isFullBlock()) {
-                    w++;
-                }
-            }
-        }
-        if (w == 0 && i == 0) return 0;
-        if (i == 0) return -1;
-        return (1.0F - f / (float) i) + 0.0011f;
-    }
-
+    
     public float getFluidHeightAverage(float... flow) {
         float total = 0;
         int count = 0;

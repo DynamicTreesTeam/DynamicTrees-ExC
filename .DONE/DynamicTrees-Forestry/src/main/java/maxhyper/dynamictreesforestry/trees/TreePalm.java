@@ -165,6 +165,7 @@ public class TreePalm extends TreeFamily {
             for (BlockPos endPoint : endPoints) {
                 TreeHelper.ageVolume(world, endPoint, 1, 2, 3, safeBounds);
             }
+            super.postGeneration(world, rootPos, biome, radius, endPoints, safeBounds, initialDirtState);
         }
 
         public boolean transitionToTree(World world, BlockPos pos) {

@@ -1,36 +1,29 @@
 package maxhyper.dynamictreesforestry.genfeatures;
 
-import java.util.List;
-
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.network.MapSignal;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
-import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFruitCocoa;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-
-import net.minecraft.block.BlockCocoa;
+import maxhyper.dynamictreesforestry.blocks.BlockFruitDate;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
+import java.util.List;
+
 
 public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
 
-    BlockCocoa fruitPod;
+    BlockFruitDate fruitPod;
     int allowedSize;
     protected int fruitingRadius = 6;
     protected int frondHeight = 20;
 
-    public FeatureGenFruitPod (BlockCocoa fruitPod, int size){
+    public FeatureGenFruitPod (BlockFruitDate fruitPod, int size){
         this.fruitPod = fruitPod;
         allowedSize = Math.max(size, 1);
     }
@@ -61,7 +54,7 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
         int qty = 8;
         qty *= species.seasonalFruitProductionFactor(world, rootPos);
         for (int i=0;i<qty;i++){
-            if(world.rand.nextInt() % 4 == 0) {
+            if(world.rand.nextInt(4) == 0) {
                 addFruit(world, rootPos, getLeavesHeight(rootPos, world).down(world.rand.nextInt(allowedSize)),true);
                 placed = true;
             }
@@ -76,7 +69,7 @@ public class FeatureGenFruitPod implements IPostGenFeature, IPostGrowFeature {
         EnumFacing placeDir = EnumFacing.HORIZONTALS[world.rand.nextInt(4)];
         leavesPos = leavesPos.down(); //we move the pos down so the fruit can stick to the trunk
         if (world.isAirBlock(leavesPos.offset(placeDir))){
-            world.setBlockState(leavesPos.offset(placeDir), fruitPod.getDefaultState().withProperty(BlockCocoa.FACING, placeDir.getOpposite()).withProperty(BlockCocoa.AGE, worldGen?(world.rand.nextInt(3)):0));
+            world.setBlockState(leavesPos.offset(placeDir), fruitPod.getDefaultState().withProperty(BlockFruitDate.FACING, placeDir.getOpposite()).withProperty(BlockFruitDate.AGE, worldGen?(1+world.rand.nextInt(2)):0));
         }
     }
 

@@ -1,11 +1,13 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-atum-2/files",
 	"1.12.2": {
+		"1.12.2-1.0.3": "- Fixed fruit not generating during worldgen in palm-like trees.\n- Seed recipe fixes.",
+		"1.12.2-1.0.2": "- Minor Fixes",
 		"1.12.2-1.0.1": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n- Minor fixes",
 		"1.12.2-1.0.0": "Initial release\n+ Includes Palm Tree, Dead Palm Tree and Dead Tree\n+ Includes worldgen"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.0.1",
-		"1.12.2-recommended": "1.12.2-1.0.1"
+		"1.12.2-latest": "1.12.2-1.0.3",
+		"1.12.2-recommended": "1.12.2-1.0.3"
 	}
 }

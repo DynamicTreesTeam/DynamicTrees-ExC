@@ -40,32 +40,26 @@ public class ClientProxy extends CommonProxy {
 
 		BlockDynamicLeaves[] specialLeaves = {ModContent.palmFrondLeaves};
 		for (BlockDynamicLeaves leaves: specialLeaves) {
-			ModelHelper.regColorHandler(leaves, new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					//boolean inWorld = worldIn != null && pos != null;
-					Block block = state.getBlock();
-					if (TreeHelper.isLeaves(block)) {
-						return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-					}
-					return 0x00FF00FF; //Magenta
+			ModelHelper.regColorHandler(leaves, (state, worldIn, pos, tintIndex) -> {
+				//boolean inWorld = worldIn != null && pos != null;
+				Block block = state.getBlock();
+				if (TreeHelper.isLeaves(block)) {
+					return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
 				}
+				return 0x00FF00FF; //Magenta
 			});
 		}
 
 		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesAtum.MODID).values()) {
-			ModelHelper.regColorHandler(leaves, new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					//boolean inWorld = worldIn != null && pos != null;
-					
-					Block block = state.getBlock();
-					
-					if (TreeHelper.isLeaves(block)) {
-						return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-					}
-					return 0x00FF00FF; //Magenta
+			ModelHelper.regColorHandler(leaves, (state, worldIn, pos, tintIndex) -> {
+				//boolean inWorld = worldIn != null && pos != null;
+
+				Block block = state.getBlock();
+
+				if (TreeHelper.isLeaves(block)) {
+					return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
 				}
+				return 0x00FF00FF; //Magenta
 			});
 		}
 	}

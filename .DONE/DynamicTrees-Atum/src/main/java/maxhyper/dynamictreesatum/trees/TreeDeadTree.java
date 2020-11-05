@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-public class A2TreeDeadTree extends TreeFamily {
+public class TreeDeadTree extends TreeFamily {
 
 	public static Block logBlock =  AtumBlocks.DEADWOOD_LOG;
 
@@ -131,13 +131,12 @@ public class A2TreeDeadTree extends TreeFamily {
 		}
 
 		@Override
-		public boolean placeRootyDirtBlock(World world, BlockPos rootPos, int life) {
-			if (world.getBlockState(rootPos).getMaterial() == Material.SAND) {
-				world.setBlockState(rootPos, ModBlocks.blockRootySand.getDefaultState().withProperty(BlockRooty.LIFE, life));
+		public BlockRooty getRootyBlock(World world, BlockPos pos) {
+			if (DirtHelper.isSoilAcceptable(world.getBlockState(pos).getBlock(), DirtHelper.getSoilFlags(DirtHelper.SANDLIKE))){
+				return ModBlocks.blockRootySand;
 			} else {
-				world.setBlockState(rootPos, getRootyBlock().getDefaultState().withProperty(BlockRooty.LIFE, life));
+				return ModBlocks.blockRootyDirt;
 			}
-			return true;
 		}
 
 		//CODE FROM DYNAMICTREES-BOP
@@ -156,7 +155,7 @@ public class A2TreeDeadTree extends TreeFamily {
 		}
 	}
 
-	public A2TreeDeadTree() {
+	public TreeDeadTree() {
 		super(new ResourceLocation(DynamicTreesAtum.MODID, "deadtree"));
 
 		setPrimitiveLog(logBlock.getDefaultState(), new ItemStack(logBlock, 1, 0));
