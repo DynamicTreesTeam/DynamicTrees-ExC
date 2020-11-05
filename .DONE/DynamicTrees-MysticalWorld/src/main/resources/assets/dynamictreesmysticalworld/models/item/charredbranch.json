@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:item/branch",
+    "textures": {
+        "bark": "mysticalworld:blocks/charred_log",
+        "rings": "mysticalworld:blocks/charred_log_top"
+    }
+}

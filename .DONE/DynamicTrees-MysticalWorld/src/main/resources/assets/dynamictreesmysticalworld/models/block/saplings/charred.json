@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/sapling",
+    "textures": {
+        "particle": "mysticalworld:blocks/charred_log",
+        "log": "mysticalworld:blocks/menril_log",
+        "leaves": "mysticalworld:blocks/charred_log"
+    }
+}

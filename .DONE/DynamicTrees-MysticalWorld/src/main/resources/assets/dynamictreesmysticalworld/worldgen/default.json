@@ -1,0 +1,14 @@
+[
+  {
+    "select": { "name" : ".*" },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesmysticalworld:charred" : 1,
+          "..." : 200
+        }
+      }
+    }
+  }
+]
