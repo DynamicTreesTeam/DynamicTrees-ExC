@@ -52,7 +52,7 @@ public class BlockRootyNether extends BlockRooty {
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(Blocks.DIRT);
+		return Item.getItemFromBlock(Blocks.NETHERRACK);
 	}
 
 	///////////////////////////////////////////

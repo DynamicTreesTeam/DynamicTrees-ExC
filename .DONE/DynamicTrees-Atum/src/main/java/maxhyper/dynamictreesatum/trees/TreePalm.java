@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
@@ -22,6 +23,7 @@ import com.teammetallurgy.atum.blocks.vegetation.BlockDate;
 import com.teammetallurgy.atum.init.AtumBiomes;
 import com.teammetallurgy.atum.init.AtumBlocks;
 import com.teammetallurgy.atum.init.AtumItems;
+import com.teammetallurgy.atum.utils.AtumConfig;
 import maxhyper.dynamictreesatum.DynamicTreesAtum;
 import maxhyper.dynamictreesatum.ModContent;
 import maxhyper.dynamictreesatum.blocks.BlockDynamicLeavesPalm;
@@ -55,6 +57,8 @@ public class TreePalm extends TreeFamily {
 	public static Block logBlock = AtumBlocks.PALM_LOG;
 	public static Block saplingBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("atum","palm_sapling"));
 
+	public static float fruitingOffset = 1.5f; //autumn-winter
+
 	public class SpeciesPalm extends Species {
 
 		SpeciesPalm(TreeFamily treeFamily) {
@@ -64,6 +68,8 @@ public class TreePalm extends TreeFamily {
 			setBasicGrowingParameters(0.5f, 8.0f, 4, 3, 0.8f);
 
 			generateSeed();
+
+			setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
 
 			addGenFeature(new FeatureGenFruitPod((BlockDate)AtumBlocks.DATE_BLOCK).setFruitingRadius(6));
 			addGenFeature(new FeatureGenOphidianTongue());
@@ -96,6 +102,20 @@ public class TreePalm extends TreeFamily {
 					return dropList;
 				}
 			});
+		}
+
+		@Override
+		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
+			float offset = fruitingOffset;
+			if (world.provider.getDimension() == AtumConfig.DIMENSION_ID){
+				return 1;
+			}
+			return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+		}
+
+		@Override
+		public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+			return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
 		}
 
 		@Override

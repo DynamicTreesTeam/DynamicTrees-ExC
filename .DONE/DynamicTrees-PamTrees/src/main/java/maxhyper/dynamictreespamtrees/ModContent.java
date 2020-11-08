@@ -94,7 +94,7 @@ public class ModContent {
 				@Override
 				public boolean updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 					if (!worldIn.isRemote){
-						Float season = SeasonHelper.getSeasonValue(worldIn);
+						Float season = SeasonHelper.getSeasonValue(worldIn, pos);
 						if (season == null){
 							if (worldIn.getCurrentMoonPhaseFactor() >= 0.5F) { //If theres no seasons we use the moon phases
 								worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 1));
