@@ -2,6 +2,7 @@ package maxhyper.dynamictreessugiforest.proxy;
 
 
 import maxhyper.dynamictreessugiforest.growth.CustomCellKits;
+import sugiforest.core.Config;
 
 public class CommonProxy {
 	
@@ -10,7 +11,7 @@ public class CommonProxy {
 	}
 	
 	public void init() {
-
+		Config.sugiOnHills = 0;
 	}
 	
 	public void postInit() {

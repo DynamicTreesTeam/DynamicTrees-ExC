@@ -45,8 +45,10 @@ public class TreeAshen extends TreeFamily {
             generateSeed();
 
             setupStandardSeedDropping();
+        }
 
-            clearAcceptableSoils();
+        @Override
+        protected void setStandardSoils() {
             addAcceptableSoils(DirtHelper.NETHERLIKE);
         }
 

@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import sugiforest.block.BlockSugiFallenLeaves;
+import sugiforest.core.Config;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class FeatureGenFallenLeaves implements IPostGenFeature, IPostGrowFeature
         if (blockpos.getY() == 0){ return false; }
         blockpos = blockpos.up();
 
-        if (leafPileBlock.canPlaceBlockAt(world, blockpos)) {
+        if (leafPileBlock.canPlaceBlockAt(world, blockpos) && world.getBlockState(blockpos.down()).getBlock() != leafPileBlock) {
             world.setBlockState(blockpos, leafPileBlock.getDefaultState().withProperty(BlockSugiFallenLeaves.CHANCE, Boolean.TRUE));
             return true;
         } else {
@@ -70,6 +71,8 @@ public class FeatureGenFallenLeaves implements IPostGenFeature, IPostGrowFeature
     }
 
     private void addFallenLeaves(World world, BlockPos rootPos, int amount, boolean worldGen) {
+        if (!Config.fallenSugiLeaves)
+            return;
         int leaveRange = 4;
 
         for (int attempts = amount*10; attempts > 0; attempts--){

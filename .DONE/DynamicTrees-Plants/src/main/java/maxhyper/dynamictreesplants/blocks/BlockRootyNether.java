@@ -39,7 +39,7 @@ public class BlockRootyNether extends BlockRooty {
 	public static final Material[] materialOrder = {Material.ROCK, Material.SAND, Material.GROUND, Material.GRASS};
 	@Override
 	public IBlockState getMimic(IBlockAccess access, BlockPos pos) {
-		return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE,DirtHelper.DIRTLIKE), Blocks.NETHERRACK.getDefaultState());
+		return MimicProperty.getGenericMimic(access, pos, materialOrder, DirtHelper.getSoilFlags(DirtHelper.NETHERLIKE), Blocks.NETHERRACK.getDefaultState());
 	}
 
 	///////////////////////////////////////////

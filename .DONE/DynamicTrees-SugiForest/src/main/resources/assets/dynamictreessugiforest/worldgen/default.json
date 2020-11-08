@@ -15,7 +15,7 @@
     }
   },
   {
-    "select": { "type" : [ "wet" ] },
+    "select": { "type" : [ "hills" ] },
     "apply": {
       "species" : {
         "method" : "before",

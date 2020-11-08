@@ -53,8 +53,10 @@ public class TreeBlazing extends TreeFamily {
             generateSeed();
 
             setupStandardSeedDropping();
+        }
 
-            clearAcceptableSoils();
+        @Override
+        protected void setStandardSoils() {
             addAcceptableSoils(DirtHelper.NETHERLIKE);
         }
 

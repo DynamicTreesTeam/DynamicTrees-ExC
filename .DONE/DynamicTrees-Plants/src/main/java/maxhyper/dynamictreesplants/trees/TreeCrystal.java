@@ -51,8 +51,6 @@ public class TreeCrystal extends TreeFamily {
         SpeciesCrystal(TreeFamily treeFamily, ILeavesProperties leaves) {
             super(treeFamily.getName(), treeFamily, leaves);
             setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, 0.5f);
-
-            addAcceptableSoils(ModContent.CRYSTALLIKE);
         }
 
         SpeciesCrystal(TreeFamily treeFamily) {
@@ -62,6 +60,11 @@ public class TreeCrystal extends TreeFamily {
 
             generateSeed();
             setupStandardSeedDropping();
+        }
+
+        @Override
+        protected void setStandardSoils() {
+            addAcceptableSoils(DirtHelper.NETHERLIKE, ModContent.CRYSTALLIKE);
         }
 
         @Override
