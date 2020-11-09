@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import slimeknights.tconstruct.TConstruct;
 
 import static maxhyper.dynamictreestconstruct.ModContent.rootySlimyDirt;
 
@@ -18,15 +19,14 @@ public class EventListenerTConstruct {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onModelBakeEvent(ModelBakeEvent event) {
-            Block[] rootyBlocks = new Block[] {rootySlimyDirt};
-
-            for(Block block: rootyBlocks) {
-                IBakedModel rootsObject = event.getModelRegistry().getObject(new ModelResourceLocation(block.getRegistryName(), "normal"));
-                if (rootsObject != null) {
-                    BakedModelBlockRooty rootyModel = new BakedModelBlockRooty((IBakedModel) rootsObject);
-                    event.getModelRegistry().putObject(new ModelResourceLocation(block.getRegistryName(), "normal"), rootyModel);
-                }
+        Block[] rootyBlocks = new Block[] {rootySlimyDirt};
+        for(Block block: rootyBlocks) {
+            IBakedModel rootsObject = event.getModelRegistry().getObject(new ModelResourceLocation(block.getRegistryName(), "normal"));
+            if (rootsObject != null) {
+                BakedModelBlockRooty rootyModel = new BakedModelBlockRooty(rootsObject);
+                event.getModelRegistry().putObject(new ModelResourceLocation(block.getRegistryName(), "normal"), rootyModel);
             }
+        }
     }
 
 }

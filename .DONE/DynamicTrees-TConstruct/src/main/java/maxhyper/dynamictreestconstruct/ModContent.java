@@ -20,20 +20,25 @@ import maxhyper.dynamictreestconstruct.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.common.config.Config;
 import slimeknights.tconstruct.world.TinkerWorld;
 import slimeknights.tconstruct.world.block.BlockSlimeGrass;
 
@@ -46,16 +51,26 @@ public class ModContent {
 	public static BlockFruit blockGreenSlime, blockBlueSlime, blockPurpleSlime, blockMagmaSlime;
 	public static ILeavesProperties blueSlimeLeavesProperties, purpleSlimeLeavesProperties, magmaSlimeLeavesProperties;
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
-
+	static boolean messageSent = false;
 	public static boolean genSlimeIslands;
 
 	@SubscribeEvent
-	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
-		//event.register(new BiomeDataBasePopulator());
+	public static void onEvent(EntityJoinWorldEvent event)
+	{
+		if (!messageSent && (event.getEntity() instanceof EntityPlayer))
+		{
+			if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld")){
+				event.getEntity().sendMessage(new TextComponentString("Dynamic Trees for Tinkers' Construct: Failed to load. Tinker World module is disabled in Tinkers' Construct Config."));
+				messageSent = true;
+			}
+		}
+
 	}
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		IForgeRegistry<Block> registry = event.getRegistry();
 
 		blockGreenSlime = (new BlockFruit("fruitgreenslime"));
@@ -148,6 +163,8 @@ public class ModContent {
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		ArrayList<Item> treeItems = new ArrayList<>();
@@ -157,7 +174,8 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		setUpSeedRecipes("slimeBlue", new ItemStack(TreeSlimeBlue.saplingBlock, 1, 0));
 		setUpSeedRecipes("slimePurple", new ItemStack(TreeSlimePurple.saplingBlock, 1, 1));
 		setUpSeedRecipes("slimeMagma", new ItemStack(TreeSlimeMagma.saplingBlock, 1, 2));
@@ -174,6 +192,8 @@ public class ModContent {
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		for (TreeFamily tree : trees) {
 			ModelHelper.regModel(tree.getDynamicBranch());
 			ModelHelper.regModel(tree.getCommonSpecies().getSeed());

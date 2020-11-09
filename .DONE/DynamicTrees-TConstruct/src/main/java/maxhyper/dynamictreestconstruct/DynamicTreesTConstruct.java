@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import slimeknights.tconstruct.TConstruct;
 
 @Mod(modid= DynamicTreesTConstruct.MODID, name= DynamicTreesTConstruct.NAME, dependencies = DynamicTreesTConstruct.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TConstruct/version_info.json?raw=true")
 public class DynamicTreesTConstruct {
@@ -26,16 +27,22 @@ public class DynamicTreesTConstruct {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		proxy.preInit(event);
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		proxy.init();
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		if (!TConstruct.pulseManager.isPulseLoaded("TinkerWorld"))
+			return;
 		proxy.postInit();
 	}
 	
