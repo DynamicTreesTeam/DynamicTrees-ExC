@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import epicsquid.mysticalworld.config.ConfigManager;
 import epicsquid.mysticalworld.init.ModItems;
 import maxhyper.dynamictreesmysticalworld.DynamicTreesMysticalWorld;
+import maxhyper.dynamictreesmysticalworld.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -26,6 +27,7 @@ public final class DropCreatorSilkwormEgg extends DropCreator {
 
     @Override
     public List<ItemStack> getHarvestDrop(World world, Species species, BlockPos leafPos, Random random, List<ItemStack> dropList, int soilLife, int fortune) {
+        if (ModConfig.requireHand) return dropList;
         return this.getDrops(world, species, leafPos, random, dropList, fortune);
     }
 
