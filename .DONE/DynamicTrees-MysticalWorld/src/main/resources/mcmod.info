@@ -7,7 +7,7 @@
   "mcversion": "${mcversion}",
   "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-mystical-world",
   "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-MysticalWorld/version_info.json?raw=true",
-  "authorList": ["Max Hyper"],
+  "authorList": ["Max Hyper, Harley O'Connor"],
   "credits": "",
   "logoFile": "",
   "screenshots": [],
