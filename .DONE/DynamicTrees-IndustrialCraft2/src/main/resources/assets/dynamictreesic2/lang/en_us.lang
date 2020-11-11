@@ -8,6 +8,8 @@ species.dynamictreesic2:rubberic.name=Rubber
 # Blocks
 tile.dynamictreesic2:leaves0.name=Rubber Tree Leaves
 tile.dynamictreesic2:rubbericbranch.name=Rubber Tree
+tile.dynamictreesic2:rubbericbranchempty.name=Rubber Tree
 tile.dynamictreesic2:rubbericbranchfilled.name=Rubber Tree
 tile.dynamictreesic2:rubbericcbranch.name=Rubber Tree
+tile.dynamictreesic2:rubbericcbranchempty.name=Rubber Tree
 tile.dynamictreesic2:rubbericcbranchfilled.name=Rubber Tree
