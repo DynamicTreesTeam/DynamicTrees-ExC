@@ -1,8 +1,8 @@
-package maxhyper.dynamictreesXX;
+package maxhyper.dynamictreesmistyworld;
 
 import com.ferreusveritas.dynamictrees.ModConstants;
 
-import maxhyper.dynamictreesXX.proxy.CommonProxy;
+import maxhyper.dynamictreesmistyworld.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -10,18 +10,18 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesXX.MODID, name= DynamicTreesXX.NAME, dependencies = DynamicTreesXX.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-XX/version_info.json?raw=true")
-public class DynamicTreesXX {
+@Mod(modid= DynamicTreesMistyWorld.MODID, name= DynamicTreesMistyWorld.NAME, dependencies = DynamicTreesMistyWorld.DEPENDENCIES)
+public class DynamicTreesMistyWorld {
 	
-	public static final String MODID = "dynamictreesXX";
-	public static final String NAME = "Dynamic Trees for XX";
+	public static final String MODID = "dynamictreesmistyworld";
+	public static final String NAME = "Dynamic Trees for Misty World";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST
-			+ ";required-after:XX";
+			+ ";required-after:mist";
 	
 	@Mod.Instance
-	public static DynamicTreesXX instance;
+	public static DynamicTreesMistyWorld instance;
 	
-	@SidedProxy(clientSide = "maxhyper.dynamictreesXX.proxy.ClientProxy", serverSide = "maxhyper.dynamictreesXX.proxy.CommonProxy") //com.
+	@SidedProxy(clientSide = "maxhyper.dynamictreesmistyworld.proxy.ClientProxy", serverSide = "maxhyper.dynamictreesmistyworld.proxy.CommonProxy") //com.
 	public static CommonProxy proxy;
 	
 	@EventHandler

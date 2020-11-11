@@ -7,6 +7,7 @@ import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.models.loaders.ModelLoaderDelegated;
 import maxhyper.dynamictreesttf.DynamicTreesTTF;
 import maxhyper.dynamictreesttf.ModContent;
+import maxhyper.dynamictreesttf.blocks.BlockDynamicTwilightRoots;
 import maxhyper.dynamictreesttf.models.ModelBlockBranchMangrove;
 import maxhyper.dynamictreesttf.models.ModelLoaderBlockBranchThickCore;
 import maxhyper.dynamictreesttf.models.ModelLoaderBlockUndergroundRoot;
@@ -17,9 +18,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 
 public class ClientProxy extends CommonProxy {
@@ -27,7 +31,6 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit() {
 		super.preInit();
-		//ModelLoaderRegistry.registerLoader(new CustomModelLoaderWrapped());
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockUndergroundRoot());
 		ModelLoaderRegistry.registerLoader(new ModelLoaderBlockBranchThickCore());
 
@@ -51,39 +54,31 @@ public class ClientProxy extends CommonProxy {
 	
 	public void registerColorHandlers() {
 
-		Block[] grassyBlocks = {ModContent.undergroundRoot, ModContent.undergroundMangroveRoot};
-		for (Block block: grassyBlocks) {
-			ModelHelper.regColorHandler(block, new IBlockColor() {
-				@Override public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					return worldIn.getBiome(pos).getGrassColorAtPos(pos);
-				}
-			});
+		BlockDynamicTwilightRoots[] grassyBlocks = {ModContent.undergroundRoot, ModContent.undergroundMangroveRoot};
+		for (BlockDynamicTwilightRoots block: grassyBlocks) {
+			ModelHelper.regColorHandler(block, (state, worldIn, pos, tintIndex) -> (worldIn != null && pos != null) ?
+					BiomeColorHelper.getGrassColorAtPos(worldIn, pos) :
+					ColorizerGrass.getGrassColor(0.5D, 1.0D));
 		}
 		BlockDynamicLeaves[] specialLeaves = {TreeDarkwood.darkwoodLeaves, TreeMagicTransformation.transformationLeaves};
 		for (BlockDynamicLeaves leaves: specialLeaves) {
-			ModelHelper.regColorHandler(leaves, new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					//boolean inWorld = worldIn != null && pos != null;
-					Block block = state.getBlock();
-					if (TreeHelper.isLeaves(block)) {
-						return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-					}
-					return 0x00FF00FF; //Magenta
+			ModelHelper.regColorHandler(leaves, (state, worldIn, pos, tintIndex) -> {
+				//boolean inWorld = worldIn != null && pos != null;
+				Block block = state.getBlock();
+				if (TreeHelper.isLeaves(block)) {
+					return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
 				}
+				return 0x00FF00FF; //Magenta
 			});
 		}
 		for (BlockDynamicLeaves leaves: LeavesPaging.getLeavesMapForModId(DynamicTreesTTF.MODID).values()) {
-			ModelHelper.regColorHandler(leaves, new IBlockColor() {
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					//boolean inWorld = worldIn != null && pos != null;
-					Block block = state.getBlock();
-					if (TreeHelper.isLeaves(block)) {
-						return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-					}
-					return 0x00FF00FF; //Magenta
+			ModelHelper.regColorHandler(leaves, (state, worldIn, pos, tintIndex) -> {
+				//boolean inWorld = worldIn != null && pos != null;
+				Block block = state.getBlock();
+				if (TreeHelper.isLeaves(block)) {
+					return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
 				}
+				return 0x00FF00FF; //Magenta
 			});
 		} // All other leaves
 

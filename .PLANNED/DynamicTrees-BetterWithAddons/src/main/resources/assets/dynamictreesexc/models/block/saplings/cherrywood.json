@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "forbidden_arcanus:blocks/leaves_cherrywood",
-        "log": "forbidden_arcanus:blocks/log_cherrywood",
-        "leaves": "forbidden_arcanus:blocks/leaves_cherrywood"
-    }
-}
