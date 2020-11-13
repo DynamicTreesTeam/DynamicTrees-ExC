@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesDefiledLands.MODID, name= DynamicTreesDefiledLands.NAME, dependencies = DynamicTreesDefiledLands.DEPENDENCIES)
+@Mod(modid= DynamicTreesDefiledLands.MODID, name= DynamicTreesDefiledLands.NAME, dependencies = DynamicTreesDefiledLands.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-DefiledLands/version_info.json?raw=true")
 public class DynamicTreesDefiledLands {
 	
 	public static final String MODID = "dynamictreesdefiledlands";

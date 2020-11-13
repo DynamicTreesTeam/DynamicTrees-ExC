@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.tconstruct.TConstruct;
 
-@Mod(modid= DynamicTreesTConstruct.MODID, name= DynamicTreesTConstruct.NAME, dependencies = DynamicTreesTConstruct.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TConstruct/version_info.json?raw=true")
+@Mod(modid= DynamicTreesTConstruct.MODID, name= DynamicTreesTConstruct.NAME, dependencies = DynamicTreesTConstruct.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TConstruct/version_info.json?raw=true")
 public class DynamicTreesTConstruct {
 	
 	public static final String MODID = "dynamictreestconstruct";

@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesExtraUtils2.MODID, name= DynamicTreesExtraUtils2.NAME, dependencies = DynamicTreesExtraUtils2.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-ExtraUtils2/version_info.json?raw=true")
+@Mod(modid= DynamicTreesExtraUtils2.MODID, name= DynamicTreesExtraUtils2.NAME, dependencies = DynamicTreesExtraUtils2.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-ExtraUtils2/version_info.json?raw=true")
 public class DynamicTreesExtraUtils2 {
 	
 	public static final String MODID = "dynamictreesextrautils2";

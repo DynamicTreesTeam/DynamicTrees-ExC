@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesNatura.MODID, name=DynamicTreesNatura.NAME, dependencies = DynamicTreesNatura.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-Natura/version_info.json?raw=true")
+@Mod(modid= DynamicTreesNatura.MODID, name=DynamicTreesNatura.NAME, dependencies = DynamicTreesNatura.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-Natura/version_info.json?raw=true")
 public class DynamicTreesNatura {
 	
 	public static final String MODID = "dynamictreesnatura";

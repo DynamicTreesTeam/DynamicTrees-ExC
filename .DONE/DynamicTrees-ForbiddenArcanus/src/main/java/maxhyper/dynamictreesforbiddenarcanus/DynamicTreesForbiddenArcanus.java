@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesForbiddenArcanus.MODID, name= DynamicTreesForbiddenArcanus.NAME, dependencies = DynamicTreesForbiddenArcanus.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-ForbiddenArcanus/version_info.json?raw=true")
+@Mod(modid= DynamicTreesForbiddenArcanus.MODID, name= DynamicTreesForbiddenArcanus.NAME, dependencies = DynamicTreesForbiddenArcanus.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-ForbiddenArcanus/version_info.json?raw=true")
 public class DynamicTreesForbiddenArcanus {
 	
 	public static final String MODID = "dynamictreesforbiddenarcanus";

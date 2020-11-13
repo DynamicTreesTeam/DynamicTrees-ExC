@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesSugiForest.MODID, name= DynamicTreesSugiForest.NAME, dependencies = DynamicTreesSugiForest.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-SugiForest/version_info.json?raw=true")
+@Mod(modid= DynamicTreesSugiForest.MODID, name= DynamicTreesSugiForest.NAME, dependencies = DynamicTreesSugiForest.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-SugiForest/version_info.json?raw=true")
 public class DynamicTreesSugiForest {
 	
 	public static final String MODID = "dynamictreessugiforest";

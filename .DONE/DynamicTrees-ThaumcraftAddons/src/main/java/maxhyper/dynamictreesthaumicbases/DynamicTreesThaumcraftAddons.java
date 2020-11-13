@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesThaumcraftAddons.MODID, name= DynamicTreesThaumcraftAddons.NAME, dependencies = DynamicTreesThaumcraftAddons.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-ThaumcraftAddons/version_info.json?raw=true")
+@Mod(modid= DynamicTreesThaumcraftAddons.MODID, name= DynamicTreesThaumcraftAddons.NAME, dependencies = DynamicTreesThaumcraftAddons.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-ThaumcraftAddons/version_info.json?raw=true")
 public class DynamicTreesThaumcraftAddons {
 	
 	public static final String MODID = "dynamictreesthaumicbases";

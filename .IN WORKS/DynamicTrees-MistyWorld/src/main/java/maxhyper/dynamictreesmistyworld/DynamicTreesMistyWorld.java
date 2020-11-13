@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesMistyWorld.MODID, name= DynamicTreesMistyWorld.NAME, dependencies = DynamicTreesMistyWorld.DEPENDENCIES)
+@Mod(modid= DynamicTreesMistyWorld.MODID, name= DynamicTreesMistyWorld.NAME, dependencies = DynamicTreesMistyWorld.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-MistyWorld/version_info.json?raw=true")
 public class DynamicTreesMistyWorld {
 	
 	public static final String MODID = "dynamictreesmistyworld";

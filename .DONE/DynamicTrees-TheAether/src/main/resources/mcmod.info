@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-aether-legacy",
-  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TheAether/version_info.json?raw=true",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TheAether/version_info.json?raw=true",
   "authorList": ["Max Hyper"],
   "credits": "",
   "logoFile": "",

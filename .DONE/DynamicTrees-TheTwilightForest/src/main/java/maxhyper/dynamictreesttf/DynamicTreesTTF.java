@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesTTF.MODID, name= DynamicTreesTTF.NAME, dependencies = DynamicTreesTTF.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/tree/1.12.2/.DONE/DynamicTrees-TheTwilightForest/version_info.json?raw=true")
+@Mod(modid= DynamicTreesTTF.MODID, name= DynamicTreesTTF.NAME, dependencies = DynamicTreesTTF.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TheTwilightForest/version_info.json?raw=true")
 public class DynamicTreesTTF {
 	
 	public static final String MODID = "dynamictreesttf";
