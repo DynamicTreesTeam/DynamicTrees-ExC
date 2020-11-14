@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "defiledlands:blocks/log_tenebra_side",
+		"rings": "defiledlands:blocks/log_tenebra_top"
+	}
+}

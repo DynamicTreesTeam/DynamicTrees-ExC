@@ -1,6 +1,7 @@
 package maxhyper.dynamictreesdefiledlands;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
@@ -10,9 +11,12 @@ import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
+import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import lykrast.defiledlands.common.init.ModBlocks;
+import maxhyper.dynamictreesdefiledlands.trees.TreeTenebra;
 import maxhyper.dynamictreesdefiledlands.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -36,7 +40,13 @@ import net.minecraftforge.registries.IForgeRegistry;
 @ObjectHolder(DynamicTreesDefiledLands.MODID)
 public class ModContent {
 
+	public static ILeavesProperties dyingLeavesProperties;
+
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
+
+	public static String CORRUPTDIRTLIKE = "corruptdirtlike";
+	public static String CORRUPTSANDLIKE = "corruptsandlike";
+	public static String CORRUPTGRAVELLIKE = "corruptgravellike";
 
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
@@ -45,15 +55,35 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		DirtHelper.createNewAdjective(CORRUPTDIRTLIKE);
+		DirtHelper.createNewAdjective(CORRUPTSANDLIKE);
+		DirtHelper.createNewAdjective(CORRUPTGRAVELLIKE);
+
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		///Collections.addAll(trees);
+		dyingLeavesProperties = new LeavesProperties(ModBlocks.tenebraLeaves.getDefaultState(), TreeRegistry.findCellKit("dynamictreesdefiledlands:sparse") ) {
+			@Override public int getSmotherLeavesMax() { return 1; }
+			@Override public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(ModBlocks.tenebraLeaves);
+			}
+		};
+
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesDefiledLands.MODID, 0, dyingLeavesProperties);
+
+		TreeFamily defiled = new TreeTenebra();
+
+		Collections.addAll(trees, defiled);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesDefiledLands.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+
+		DirtHelper.registerSoil(ModBlocks.dirtDefiled, CORRUPTDIRTLIKE);
+		DirtHelper.registerSoil(ModBlocks.grassDefiled, CORRUPTDIRTLIKE);
+		DirtHelper.registerSoil(ModBlocks.sandDefiled, CORRUPTSANDLIKE);
+		DirtHelper.registerSoil(ModBlocks.gravelDefiled, CORRUPTGRAVELLIKE);
 	}
 
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
