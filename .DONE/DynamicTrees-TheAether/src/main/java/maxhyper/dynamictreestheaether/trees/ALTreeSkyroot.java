@@ -59,7 +59,7 @@ public class ALTreeSkyroot extends TreeFamily {
 			}
 			//When above 100, change trees to golden oak if the grass is dungeon, cancel otherwise.
 			if (rootPos.getY() >= 100){
-				if (world.getBlockState(rootPos).getValue(BlockAetherGrass.dungeon_block)){
+				if (world.getBlockState(rootPos).getBlock() == BlocksAether.aether_grass && world.getBlockState(rootPos).getValue(BlockAetherGrass.dungeon_block)){
 					Species goldenOak = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTheAether.MODID,"goldenoak"));
 					return goldenOak.generate(world, rootPos, biome, random, radius, safeBounds);
 				} else return false;
