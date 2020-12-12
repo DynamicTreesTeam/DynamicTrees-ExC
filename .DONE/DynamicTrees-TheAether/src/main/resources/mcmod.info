@@ -1,7 +1,7 @@
 [
 {
   "modid": "dynamictreestheaether",
-  "name": "Dynamic Trees for The Aether Legacy",
+  "name": "Dynamic Trees for The Aether",
   "description": "Adds compatibilities between dynamic trees and The Aether Legacy",
   "version": "${version}",
   "mcversion": "${mcversion}",

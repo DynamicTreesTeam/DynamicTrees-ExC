@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class DynamicTreesTheAether {
 	
 	public static final String MODID = "dynamictreestheaether";
-	public static final String NAME = "Dynamic Trees for The Aether Legacy";
+	public static final String NAME = "Dynamic Trees for The Aether";
 	public static final String DEPENDENCIES = "required-after:" + "dynamictrees@[1.12.2-0.9.8,)"
 			+ ";required-after:aether_legacy@[1.5.0,)" +";after:lost_aether";
 	

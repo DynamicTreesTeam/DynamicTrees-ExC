@@ -2,6 +2,7 @@ package maxhyper.dynamictreesdefiledlands.trees;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -44,6 +45,14 @@ public class TreeTenebra extends TreeFamily {
         @Override
         protected void setStandardSoils() {
             addAcceptableSoils(DirtHelper.DIRTLIKE, ModContent.CORRUPTDIRTLIKE);
+        }
+
+        @Override
+        public BlockRooty getRootyBlock(World world, BlockPos rootPos) {
+            if (DirtHelper.isSoilAcceptable(world.getBlockState(rootPos).getBlock(), DirtHelper.getSoilFlags(ModContent.CORRUPTDIRTLIKE))){
+                return ModContent.rootyDefiledDirt;
+            } else
+                return super.getRootyBlock(world,rootPos);
         }
 
         @Override
