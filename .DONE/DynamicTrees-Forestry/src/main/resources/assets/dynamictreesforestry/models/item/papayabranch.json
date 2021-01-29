@@ -1,7 +1,0 @@
-{
-    "parent": "dynamictrees:item/branch",
-    "textures": {
-        "bark": "forestry:blocks/wood/bark.papaya",
-        "rings": "forestry:blocks/wood/heart.papaya"
-    }
-}

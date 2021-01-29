@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "thebetweenlands:blocks/leaves_nibbletwig_tree",
-        "log": "thebetweenlands:blocks/log_nibbletwig_1",
-        "leaves": "thebetweenlands:blocks/leaves_nibbletwig_tree"
-    }
-}

@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "defiledlands:blocks/leaves_tenebra",
-        "log": "defiledlands:blocks/log_tenebra_side",
-        "leaves": "defiledlands:blocks/leaves_tenebra"
-    }
-}

@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "aether_legacy:blocks/golden_oak_log_side",
-		"rings": "aether_legacy:blocks/skyroot_log_base"
-	}
-}

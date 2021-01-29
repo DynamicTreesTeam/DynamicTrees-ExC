@@ -1,8 +1,0 @@
-{   "parent": "dynamictreesttf:block/waterysapling",
-    "textures": {
-        "particle": "blocks/leaves_birch",
-        "log": "twilightforest:blocks/mangrove_side",
-        "leaves": "blocks/leaves_birch",
-        "root": "dynamictreesttf:blocks/wateryroots_tiny"
-    }
-}

@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "aether_legacy:blocks/golden_oak_leaves",
-        "log": "aether_legacy:blocks/golden_oak_log_side",
-        "leaves": "aether_legacy:blocks/golden_oak_leaves"
-    }
-}

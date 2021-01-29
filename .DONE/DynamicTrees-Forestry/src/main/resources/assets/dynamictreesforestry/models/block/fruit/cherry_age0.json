@@ -1,7 +1,0 @@
-{
-    "parent": "dynamictreesforestry:block/fruit/generic/flower_age0",
-    "textures": {
-        "particle": "dynamictreesforestry:blocks/cherry",
-        "apple": "dynamictreesforestry:blocks/cherry"
-    }
-}

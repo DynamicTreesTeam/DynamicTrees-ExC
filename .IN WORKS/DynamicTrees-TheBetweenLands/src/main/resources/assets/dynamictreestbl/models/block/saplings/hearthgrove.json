@@ -1,8 +1,0 @@
-{   "parent": "dynamictreestbl:block/waterysapling",
-    "textures": {
-        "particle": "thebetweenlands:blocks/leaves_hearthgrove_tree",
-        "log": "thebetweenlands:blocks/log_hearthgrove",
-        "leaves": "thebetweenlands:blocks/leaves_hearthgrove_tree",
-        "root": "dynamictreestbl:blocks/wateryroots_tiny"
-    }
-}

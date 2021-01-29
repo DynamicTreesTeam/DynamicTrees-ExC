@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "twilightforest:blocks/sort_eye_off",
-		"rings": "twilightforest:blocks/sort_section"
-	}
-}
