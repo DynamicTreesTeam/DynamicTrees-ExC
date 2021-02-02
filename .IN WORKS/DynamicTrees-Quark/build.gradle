@@ -96,7 +96,7 @@ dependencies {
     // At runtime, use JEI mod
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.1.65")
 
-    implementation fg.deobf("blank:DynamicTrees-1.16.5:0.0.1")
+    implementation fg.deobf("blank:DynamicTrees-1.16.5:0.1.0")
     implementation fg.deobf("blank:AutoRegLib-1.6:47")
     implementation fg.deobf("blank:Quark-r2.4:299")
 }
