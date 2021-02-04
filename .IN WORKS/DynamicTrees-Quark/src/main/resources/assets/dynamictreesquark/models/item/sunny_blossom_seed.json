@@ -1,0 +1,6 @@
+{
+    "parent":"dynamictrees:item/standard_seed",
+    "textures": {
+        "layer0":"dynamictreesquark:item/sunny_blossom_seed"
+    }
+}

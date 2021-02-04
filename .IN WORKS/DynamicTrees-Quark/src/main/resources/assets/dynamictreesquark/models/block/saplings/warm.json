@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/smartmodel/sapling",
+    "textures": {
+        "particle": "quark:block/orange_blossom_leaves",
+        "log": "block/spruce_log",
+        "leaves": "quark:block/orange_blossom_leaves"
+    }
+}
