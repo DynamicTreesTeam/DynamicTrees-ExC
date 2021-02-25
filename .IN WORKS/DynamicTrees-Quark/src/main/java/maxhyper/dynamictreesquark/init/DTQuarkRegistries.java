@@ -49,7 +49,6 @@ public class DTQuarkRegistries {
          */
         ArrayList<Block> treeBlocks = new ArrayList<>();
         trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
-        treeBlocks.addAll(LeavesPaging.getLeavesListForModId(DynamicTreesQuark.MOD_ID));
         treeBlocks.addAll(RootyBlockHelper.generateListForRegistry(true, DynamicTreesQuark.MOD_ID));
         registry.registerAll(treeBlocks.toArray(new Block[0]));
     }

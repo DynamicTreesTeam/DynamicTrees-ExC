@@ -1,5 +1,6 @@
 package maxhyper.dynamictreesquark;
 
+import maxhyper.dynamictreesquark.init.DTQuarkRegistries;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -15,6 +16,7 @@ public class DynamicTreesQuark
     public DynamicTreesQuark() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
