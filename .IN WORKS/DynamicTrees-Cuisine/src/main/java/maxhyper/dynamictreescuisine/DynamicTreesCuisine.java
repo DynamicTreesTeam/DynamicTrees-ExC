@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesCuisine.MODID, name= DynamicTreesCuisine.NAME, dependencies = DynamicTreesCuisine.DEPENDENCIES)
+@Mod(modid= DynamicTreesCuisine.MODID, name= DynamicTreesCuisine.NAME, dependencies = DynamicTreesCuisine.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-Forestry/version_info.json?raw=true")
 public class DynamicTreesCuisine {
 	
 	public static final String MODID = "dynamictreescuisine";

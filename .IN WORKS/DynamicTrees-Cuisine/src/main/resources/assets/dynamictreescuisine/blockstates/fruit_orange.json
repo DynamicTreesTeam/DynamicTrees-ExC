@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dynamictreescuisine:fruit/orange_age0" },
+        "age=1": { "model": "dynamictreescuisine:fruit/orange_age1" },
+        "age=2": { "model": "dynamictreescuisine:fruit/orange_age2" },
+        "age=3": { "model": "dynamictreescuisine:fruit/orange_age3" }
+    }
+}

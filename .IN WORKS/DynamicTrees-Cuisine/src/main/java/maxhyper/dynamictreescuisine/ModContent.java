@@ -1,6 +1,7 @@
 package maxhyper.dynamictreescuisine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
@@ -13,6 +14,7 @@ import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
+import maxhyper.dynamictreescuisine.trees.TreeCitrus;
 import maxhyper.dynamictreescuisine.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -47,32 +49,13 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		///Collections.addAll(trees);
+		Collections.addAll(trees, new TreeCitrus());
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesCuisine.MODID).values());
 		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
-	}
-
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-
-			@Override
-			public int getLightRequirement() {
-				return 1;
-			}
-		};
-		return leavesProperties;
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -100,9 +83,13 @@ public class ModContent {
 	public static void registerModels(ModelRegistryEvent event) {
 		for (TreeFamily tree : trees) {
 			ModelHelper.regModel(tree.getDynamicBranch());
-			ModelHelper.regModel(tree.getCommonSpecies().getSeed());
 			ModelHelper.regModel(tree);
 		}
-		LeavesPaging.getLeavesMapForModId(DynamicTreesCuisine.MODID).forEach((key, leaves) -> ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
+		for (Item seed : TreeCitrus.getSeeds()){
+			ModelHelper.regModel(seed);
+		}
+		for (TreeCitrus.citrusType type : TreeCitrus.citrusType.values()){
+			ModelLoader.setCustomStateMapper(type.leavesBlock, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).ignore(BlockDynamicLeaves.HYDRO).build());
+		}
 	}
 }

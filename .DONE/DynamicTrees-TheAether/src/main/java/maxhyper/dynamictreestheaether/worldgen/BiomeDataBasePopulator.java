@@ -1,5 +1,6 @@
 package maxhyper.dynamictreestheaether.worldgen;
 
+import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator;
@@ -25,8 +26,8 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
     }
 
     public void populate(BiomeDataBase dbase) {
+        ModConfigs.dimensionBlacklist.remove(AetherConfig.dimension.aether_dimension_id);
         jsonPopulator.populate(dbase);
-
     }
 }
 

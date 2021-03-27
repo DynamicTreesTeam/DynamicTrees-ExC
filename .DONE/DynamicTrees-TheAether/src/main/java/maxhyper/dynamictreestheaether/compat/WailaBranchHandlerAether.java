@@ -47,7 +47,7 @@ public class WailaBranchHandlerAether extends WailaBranchHandler {
 
         tooltip.clear();
 
-        if(WailaOther.invalidate) {
+        if(WailaOther.invalid) {
             lastPos = BlockPos.ORIGIN;
             lastSpecies = Species.NULLSPECIES;
             lastVolume = 0;
