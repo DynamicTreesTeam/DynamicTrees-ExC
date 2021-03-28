@@ -1,0 +1,25 @@
+item.dynamictreescuisine:citronseed.name=Citron Pips
+item.dynamictreescuisine:grapefruitseed.name=Grapefruit Pips
+item.dynamictreescuisine:lemonseed.name=Lemon Pips
+item.dynamictreescuisine:limeseed.name=Lime Pips
+item.dynamictreescuisine:mandarinseed.name=Mandarin Pips
+item.dynamictreescuisine:orangeseed.name=Orange Pips
+item.dynamictreescuisine:pomeloseed.name=Pomelo Pips
+
+species.dynamictreescuisine:citron.name=Citron
+species.dynamictreescuisine:grapefruit.name=Grapefruit
+species.dynamictreescuisine:lemon.name=Lemon
+species.dynamictreescuisine:lime.name=Lime
+species.dynamictreescuisine:mandarin.name=Mandarin
+species.dynamictreescuisine:orange.name=Orange
+species.dynamictreescuisine:pomelo.name=Pomelo
+
+tile.dynamictreescuisine:citron_leaves.name=Citron Leaves
+tile.dynamictreescuisine:grapefruit_leaves.name=Grapefruit Leaves
+tile.dynamictreescuisine:lemon_leaves.name=Lemon Leaves
+tile.dynamictreescuisine:lime_leaves.name=Lime Leaves
+tile.dynamictreescuisine:mandarin_leaves.name=Mandarin Leaves
+tile.dynamictreescuisine:orange_leaves.name=Orange Leaves
+tile.dynamictreescuisine:pomelo_leaves.name=Pomelo Leaves
+
+tile.dynamictreescuisine:citrusbranch.name=Citrus Tree

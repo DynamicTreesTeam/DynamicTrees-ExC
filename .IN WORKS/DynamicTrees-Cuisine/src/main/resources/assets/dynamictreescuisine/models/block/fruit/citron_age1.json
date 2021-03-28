@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictreescuisine:block/fruit/generic/lemon_age1",
+    "textures": {
+        "particle": "dynamictreescuisine:blocks/citron",
+        "apple": "dynamictreescuisine:blocks/citron"
+    }
+}

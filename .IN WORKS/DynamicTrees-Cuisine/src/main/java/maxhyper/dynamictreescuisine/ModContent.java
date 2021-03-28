@@ -70,6 +70,7 @@ public class ModContent {
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
 	}
+
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesCuisine.MODID, name));
 		ItemStack treeSeed = treeSpecies.getSeedStack(1);

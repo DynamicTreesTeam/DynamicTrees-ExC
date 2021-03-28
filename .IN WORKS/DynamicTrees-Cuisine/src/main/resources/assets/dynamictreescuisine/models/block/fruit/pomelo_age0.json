@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictreescuisine:block/fruit/generic/flower_age0_32",
+	"textures": {
+		"particle": "dynamictreescuisine:blocks/pomelo",
+		"apple": "dynamictreescuisine:blocks/pomelo"
+	}
+}

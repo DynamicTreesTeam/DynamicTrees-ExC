@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dynamictreescuisine:blocks/grapefruit",
+		"apple": "dynamictreescuisine:blocks/grapefruit"
+	},
+	"elements": [
+		{
+			"name": "Element",
+			"from": [7, 14, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [0.5, 3, 2, 4.5], "texture": "#apple"},
+				"east": {"uv": [0.5, 3, 2, 4.5], "texture": "#apple"},
+				"south": {"uv": [0.5, 3, 2, 4.5], "texture": "#apple"},
+				"west": {"uv": [0.5, 3, 2, 4.5], "texture": "#apple"},
+				"up": {"uv": [0.5, 0.5, 2, 2], "texture": "#apple"},
+				"down": {"uv": [0.5, 5.5, 2, 7], "texture": "#apple"}
+			}
+		}
+	]
+}

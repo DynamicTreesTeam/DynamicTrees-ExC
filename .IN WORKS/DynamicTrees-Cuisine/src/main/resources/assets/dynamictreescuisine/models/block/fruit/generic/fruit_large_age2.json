@@ -1,0 +1,23 @@
+{
+	"__comment": "Designed by Xemnes with Cubik Studio - https://cubik.studio",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dynamictreescuisine:blocks/grapefruit",
+		"apple": "dynamictreescuisine:blocks/grapefruit"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Element",
+			"from": [ 6, 12, 6 ],
+			"to": [ 10, 16, 10 ],
+			"faces": {
+				"down": { "uv": [ 2.5, 5, 5, 7.5 ], "texture": "#apple" },
+				"up": { "uv": [ 2.5, 0, 5, 2.5 ], "texture": "#apple" },
+				"north": { "uv": [ 2.5, 2.5, 5, 5 ], "texture": "#apple" },
+				"south": { "uv": [ 2.5, 2.5, 5, 5 ], "texture": "#apple" },
+				"west": { "uv": [ 2.5, 2.5, 5, 5 ], "texture": "#apple" },
+				"east": { "uv": [ 2.5, 2.5, 5, 5 ], "texture": "#apple" }
+			}
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dynamictreescuisine:blocks/mandarin",
+		"apple": "dynamictreescuisine:blocks/mandarin"
+	},
+	"elements": [
+		{
+			"from": [6.4, 12.8, 6.4],
+			"to": [9.6, 16, 9.6],
+			"faces": {
+				"north": {"uv": [5, 4, 9, 8], "texture": "#apple"},
+				"east": {"uv": [5, 4, 9, 8], "texture": "#apple"},
+				"south": {"uv": [5, 4, 9, 8], "texture": "#apple"},
+				"west": {"uv": [5, 4, 9, 8], "texture": "#apple"},
+				"up": {"uv": [5, 0, 9, 4], "texture": "#apple"},
+				"down": {"uv": [5, 8, 9, 12], "texture": "#apple"}
+			}
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"parent": "dynamictrees:block/sapling",
+	"textures": {
+		"particle": "cuisine:block/leaves_mandarin",
+		"log": "cuisine:block/log",
+		"leaves": "cuisine:block/leaves_mandarin"
+	}
+}

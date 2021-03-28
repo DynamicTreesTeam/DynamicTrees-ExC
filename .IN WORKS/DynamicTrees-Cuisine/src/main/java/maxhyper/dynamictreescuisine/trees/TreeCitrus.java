@@ -31,6 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import snownee.cuisine.CuisineRegistry;
 import snownee.cuisine.blocks.BlockModSapling;
+import snownee.cuisine.library.RarityManager;
 
 import java.util.List;
 import java.util.Random;
@@ -39,9 +40,21 @@ public class TreeCitrus extends TreeFamily {
 
     public static Block logBlock = CuisineRegistry.LOG;
 
+    public static ItemStack getFruitWithRarity (ItemStack fruit, Random rand){
+        if (rand.nextInt(10) == 0)
+        {
+            RarityManager.setRarity(fruit, fruit.getRarity().ordinal() + 1);
+        }
+        return fruit;
+    }
+
     public enum citrusType {
         POMELO(
                 2.5f,
+                0.3f,
+                6.0f,
+                2,
+                1.2f,
                 CuisineRegistry.LEAVES_POMELO,
                 new int[]{0,7},
                 11,
@@ -49,6 +62,10 @@ public class TreeCitrus extends TreeFamily {
                 0xF7F67E),
         CITRON(
                 2.5f,
+                1f,
+                7.0f,
+                4,
+                1.2f,
                 CuisineRegistry.LEAVES_CITRON,
                 new int[]{1,8},
                 10,
@@ -56,6 +73,10 @@ public class TreeCitrus extends TreeFamily {
                 0xDDCC58),
         MANDARIN(
                 2.5f,
+                0.3f,
+                7.0f,
+                3,
+                1.2f,
                 CuisineRegistry.LEAVES_MANDARIN,
                 new int[]{2,9},
                 9,
@@ -63,31 +84,55 @@ public class TreeCitrus extends TreeFamily {
                 15763993),
         GRAPEFRUIT(
                 2.5f,
+                0.1f,
+                8.0f,
+                3,
+                1.2f,
                 CuisineRegistry.LEAVES_GRAPEFRUIT,
                 new int[]{3,10},
                 14,
                 3,
                 0xF08A19),
         ORANGE(
-                2.5f, CuisineRegistry.LEAVES_ORANGE,
+                2.5f,
+                0.1f,
+                8.0f,
+                3,
+                1.2f,
+                CuisineRegistry.LEAVES_ORANGE,
                 new int[]{4,11},
                 12,
                 4,
                 0xF08A19),
         LEMON(
-                2.5f, CuisineRegistry.LEAVES_LEMON,
+                2.5f,
+                0.6f,
+                6.0f,
+                3,
+                1.2f,
+                CuisineRegistry.LEAVES_LEMON,
                 new int[]{5,12},
                 13,
                 5,
                 0xEBCA4B),
         LIME(
-                2.5f, CuisineRegistry.LEAVES_LIME,
+                2.5f,
+                0.6f,
+                6.0f,
+                3,
+                1.2f,
+                CuisineRegistry.LEAVES_LIME,
                 new int[]{6,13},
                 15,
                 6,
                 0xCADA76);
 
         public float fruitingOffset;
+        public float tapering;
+        public float energy;
+        public int lowestBranchHeight;
+        public float growthRate;
+
         public Block primitiveLeaves;
         public int fruitItemMeta;
         public int saplingMeta;
@@ -96,8 +141,13 @@ public class TreeCitrus extends TreeFamily {
         public ILeavesProperties[] leavesProperties;
         public BlockDynamicLeaves leavesBlock;
         public BlockFruit fruitBlock;
-        citrusType (float frOff, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTintIndex){
+
+        citrusType (float frOff, float tapering, float energy, int lowestBranch, float growthRate, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTintIndex){
             this.fruitingOffset = frOff;
+            this.tapering = tapering;
+            this.energy = energy;
+            this.lowestBranchHeight = lowestBranch;
+            this.growthRate = growthRate;
             this.primitiveLeaves = primLeaves;
             this.fruitItemMeta = fruitItemMeta;
             this.saplingMeta = saplingMeta;
@@ -115,6 +165,8 @@ public class TreeCitrus extends TreeFamily {
             }
             this.fruitBlock = new BlockFruit("fruit_"+this.name().toLowerCase()){
                 @Override @SideOnly(Side.CLIENT) public BlockRenderLayer getBlockLayer() { return BlockRenderLayer.CUTOUT_MIPPED; }
+
+                @Override public ItemStack getFruitDrop() { return getFruitWithRarity(super.getFruitDrop(), new Random()); }
             };
         }
 
@@ -135,9 +187,6 @@ public class TreeCitrus extends TreeFamily {
         public ResourceLocation getName(TreeFamily family){
             return new ResourceLocation(family.getName().getResourceDomain(), this.name().toLowerCase());
         }
-        public ItemStack getPrimitiveFruitItem (){
-            return new ItemStack(CuisineRegistry.BASIC_FOOD, 1, fruitItemMeta);
-        }
         public IBlockState getPrimitiveSapling (){
             return CuisineRegistry.SAPLING.getStateFromMeta(saplingMeta);
         }
@@ -148,7 +197,7 @@ public class TreeCitrus extends TreeFamily {
         public citrusType type;
 
         public SpeciesCitrus(TreeFamily treeFamily, citrusType type) {
-            super(type.getName(treeFamily), treeFamily, type.leavesProperties[0]);
+            super(type.getName(treeFamily), treeFamily, type.leavesProperties[1]);
 
             this.type = type;
             for (int i=0;i<4;i++) type.leavesProperties[i].setTree(treeFamily);
@@ -158,7 +207,7 @@ public class TreeCitrus extends TreeFamily {
             setSoilLongevity(2);
 
             // Set growing parameters.
-            this.setBasicGrowingParameters(0.3F, 12.0F, this.upProbability, this.lowestBranchHeight, 0.9F);
+            this.setBasicGrowingParameters(0.6f, type.energy, 1, type.lowestBranchHeight, type.growthRate);
 
             // Setup environment factors.
             this.envFactor(BiomeDictionary.Type.HOT, 0.9F);
@@ -179,7 +228,7 @@ public class TreeCitrus extends TreeFamily {
                 }
 
                 private ItemStack getFruit (){
-                    return type.getPrimitiveFruitItem();
+                    return new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta);
                 }
 
                 @Override public List<ItemStack> getLeavesDrop(IBlockAccess access, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, int fortune) {
@@ -201,10 +250,11 @@ public class TreeCitrus extends TreeFamily {
                 }
             });
 
-            addGenFeature(new FeatureGenFruitLeaves(6, 16, type.leavesProperties, 0.5f).setFruitingRadius(6));
+            addGenFeature(new FeatureGenFruitLeaves((int)type.energy, (int)type.energy + 5, type.leavesProperties, 0.5f).setFruitingRadius(3));
 
             type.fruitBlock.setSpecies(this);
-            addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(6));
+            addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(3));
+            type.fruitBlock.setDroppedItem(new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta));
         }
 
         @Override
@@ -223,6 +273,10 @@ public class TreeCitrus extends TreeFamily {
             return isOneOfBiomes(biome, Biomes.PLAINS);
         }
 
+        @Override
+        public boolean showSpeciesOnWaila() {
+            return true;
+        }
     }
 
     static SpeciesCitrus pomelo, citron, mandarin, grapefruit, orange, lemon, lime;
