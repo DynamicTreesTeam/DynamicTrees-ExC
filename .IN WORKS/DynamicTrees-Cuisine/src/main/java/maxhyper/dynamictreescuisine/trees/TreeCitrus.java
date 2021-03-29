@@ -1,5 +1,6 @@
 package maxhyper.dynamictreescuisine.trees;
 
+import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
@@ -20,6 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -47,10 +49,37 @@ public class TreeCitrus extends TreeFamily {
         }
         return fruit;
     }
+    private static AxisAlignedBB createBox (float radius, float height, float stemLength, float fraction){
+        float topHeight = fraction - stemLength;
+        float bottomHeight = topHeight - height;
+        return new AxisAlignedBB(
+                ((fraction/2) - radius)/fraction, topHeight/fraction, ((fraction/2) - radius)/fraction,
+                ((fraction/2) + radius)/fraction, bottomHeight/fraction, ((fraction/2) + radius)/fraction);
+    }
+
+    static final AxisAlignedBB[] LEMON_AABB = new AxisAlignedBB[] {
+            createBox(1,1,0, 16),
+            createBox(1,2,0, 16),
+            createBox(2f,5,0, 20),
+            createBox(2f,5,1.25f, 20)
+    };
+    static final AxisAlignedBB[] MANDARIN_AABB = new AxisAlignedBB[] {
+            createBox(1,1,0, 16),
+            createBox(1,2,0, 16),
+            createBox(2f,4,0, 20),
+            createBox(2f,4,1.25f, 20)
+    };
+    public static final AxisAlignedBB[] GRAPEFRUIT_AABB = new AxisAlignedBB[] {
+            createBox(1,1,0, 16),
+            createBox(1,2,0, 16),
+            createBox(2.5f,5,0, 20),
+            createBox(3f,6,1.25f, 20)
+    };
 
     public enum citrusType {
         POMELO(
-                2.5f,
+                null,
+                4,
                 0.3f,
                 6.0f,
                 2,
@@ -59,10 +88,12 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{0,7},
                 11,
                 0,
-                0xF7F67E),
+                0xF7F67E,
+                GRAPEFRUIT_AABB),
         CITRON(
-                2.5f,
-                1f,
+                1.5f, //autumn-winter
+                2,
+                0.8f,
                 7.0f,
                 4,
                 1.2f,
@@ -70,9 +101,11 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{1,8},
                 10,
                 1,
-                0xDDCC58),
+                0xDDCC58,
+                LEMON_AABB),
         MANDARIN(
-                2.5f,
+                0f, //summer
+                4,
                 0.3f,
                 7.0f,
                 3,
@@ -81,10 +114,12 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{2,9},
                 9,
                 2,
-                15763993),
+                15763993,
+                MANDARIN_AABB),
         GRAPEFRUIT(
-                2.5f,
-                0.1f,
+                3f, //spring
+                4,
+                0.2f,
                 8.0f,
                 3,
                 1.2f,
@@ -92,10 +127,12 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{3,10},
                 14,
                 3,
-                0xF08A19),
+                0xF08A19,
+                GRAPEFRUIT_AABB),
         ORANGE(
-                2.5f,
-                0.1f,
+                2.5f, //winter-spring
+                4,
+                0.2f,
                 8.0f,
                 3,
                 1.2f,
@@ -103,9 +140,11 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{4,11},
                 12,
                 4,
-                0xF08A19),
+                0xF08A19,
+                null),
         LEMON(
-                2.5f,
+                2.5f, //winter-spring
+                2,
                 0.6f,
                 6.0f,
                 3,
@@ -114,9 +153,11 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{5,12},
                 13,
                 5,
-                0xEBCA4B),
+                0xEBCA4B,
+                LEMON_AABB),
         LIME(
-                2.5f,
+                0f, //summer
+                2,
                 0.6f,
                 6.0f,
                 3,
@@ -125,9 +166,11 @@ public class TreeCitrus extends TreeFamily {
                 new int[]{6,13},
                 15,
                 6,
-                0xCADA76);
+                0xCADA76,
+                LEMON_AABB);
 
-        public float fruitingOffset;
+        public Float fruitingOffset;
+        public int soilLongevity;
         public float tapering;
         public float energy;
         public int lowestBranchHeight;
@@ -142,8 +185,9 @@ public class TreeCitrus extends TreeFamily {
         public BlockDynamicLeaves leavesBlock;
         public BlockFruit fruitBlock;
 
-        citrusType (float frOff, float tapering, float energy, int lowestBranch, float growthRate, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTintIndex){
+        citrusType (Float frOff, int soilLongevity, float tapering, float energy, int lowestBranch, float growthRate, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTintIndex, AxisAlignedBB[] fruitBlockBox){
             this.fruitingOffset = frOff;
+            this.soilLongevity = soilLongevity;
             this.tapering = tapering;
             this.energy = energy;
             this.lowestBranchHeight = lowestBranch;
@@ -165,7 +209,12 @@ public class TreeCitrus extends TreeFamily {
             }
             this.fruitBlock = new BlockFruit("fruit_"+this.name().toLowerCase()){
                 @Override @SideOnly(Side.CLIENT) public BlockRenderLayer getBlockLayer() { return BlockRenderLayer.CUTOUT_MIPPED; }
-
+                @Override public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+                    if (fruitBlockBox != null)
+                        return fruitBlockBox[state.getValue(AGE)];
+                    else
+                        return super.getBoundingBox(state, source, pos);
+                }
                 @Override public ItemStack getFruitDrop() { return getFruitWithRarity(super.getFruitDrop(), new Random()); }
             };
         }
@@ -195,19 +244,23 @@ public class TreeCitrus extends TreeFamily {
     public static class SpeciesCitrus extends Species {
 
         public citrusType type;
+        private boolean isSeasonal = true;
 
         public SpeciesCitrus(TreeFamily treeFamily, citrusType type) {
             super(type.getName(treeFamily), treeFamily, type.leavesProperties[1]);
 
             this.type = type;
-            for (int i=0;i<4;i++) type.leavesProperties[i].setTree(treeFamily);
+            for (int i=0;i<4;i++){
+                type.leavesProperties[i].setTree(treeFamily);
+                addValidLeavesBlocks(type.leavesProperties[i]);
+            }
             treeFamily.addConnectableVanillaLeaves((state) -> state.getBlock() == type.leavesBlock);
 
             setRequiresTileEntity(true);
-            setSoilLongevity(2);
+            setSoilLongevity(soilLongevity);
 
             // Set growing parameters.
-            this.setBasicGrowingParameters(0.6f, type.energy, 1, type.lowestBranchHeight, type.growthRate);
+            this.setBasicGrowingParameters(type.tapering, type.energy, 1, type.lowestBranchHeight, type.growthRate);
 
             // Setup environment factors.
             this.envFactor(BiomeDictionary.Type.HOT, 0.9F);
@@ -216,19 +269,23 @@ public class TreeCitrus extends TreeFamily {
             // Setup seed.
             this.generateSeed();
 
-            setFlowerSeasonHold(type.fruitingOffset - 0.5f, type.fruitingOffset + 0.5f);
+            if (type.fruitingOffset == null){
+                isSeasonal = false;
+            } else {
+                setFlowerSeasonHold(type.fruitingOffset - 0.5f, type.fruitingOffset + 0.5f);
+            }
 
             addDropCreator(new DropCreatorSeed() {
                 @Override public List<ItemStack> getHarvestDrop(World world, Species species, BlockPos leafPos, Random random, List<ItemStack> dropList, int soilLife, int fortune) {
                     float rarity = getHarvestRarity();
                     rarity *= (fortune + 1) / 128f; //Extra rare so players are incentivized to get fruits from growing instead of chopping
                     rarity *= Math.min(species.seasonalSeedDropFactor(world, leafPos) + 0.15f, 1.0);
-                    if(rarity > random.nextFloat()) dropList.add(getFruit ()); //1 in 128 chance to drop a fruit on destruction..
+                    if(rarity > random.nextFloat()) dropList.add(getFruit(world.rand)); //1 in 128 chance to drop a fruit on destruction..
                     return dropList;
                 }
 
-                private ItemStack getFruit (){
-                    return new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta);
+                private ItemStack getFruit (Random rand){
+                    return getFruitWithRarity(new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta), rand);
                 }
 
                 @Override public List<ItemStack> getLeavesDrop(IBlockAccess access, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, int fortune) {
@@ -245,27 +302,27 @@ public class TreeCitrus extends TreeFamily {
                     }
                     if(random.nextInt((int) (chance / getLeavesRarity())) == 0)
                         if(seasonFactor > random.nextFloat())
-                            dropList.add(getFruit());
+                            dropList.add(getFruit(random));
                     return dropList;
                 }
             });
 
-            addGenFeature(new FeatureGenFruitLeaves((int)type.energy, (int)type.energy + 5, type.leavesProperties, 0.5f).setFruitingRadius(3));
+            addGenFeature(new FeatureGenFruitLeaves((int)type.energy, (int)type.energy + 5, type.leavesProperties, 0.5f).setFruitingRadius(5));
 
             type.fruitBlock.setSpecies(this);
-            addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(3));
+            addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(5));
             type.fruitBlock.setDroppedItem(new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta));
         }
 
         @Override
         public float seasonalFruitProductionFactor(World world, BlockPos pos) {
-            float offset = type.fruitingOffset;
-            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, offset);
+            if (type.fruitingOffset == null) return 1;
+            return SeasonHelper.globalSeasonalFruitProductionFactor(world, pos, type.fruitingOffset);
         }
 
         @Override
         public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
-            return SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
+            return isSeasonal && SeasonHelper.isSeasonBetween(seasonValue, flowerSeasonHoldMin, flowerSeasonHoldMax);
         }
 
         @Override

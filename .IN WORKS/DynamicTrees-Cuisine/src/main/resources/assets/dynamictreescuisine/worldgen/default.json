@@ -1,0 +1,20 @@
+[
+  {
+    "select": { "type" : [ "forest" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreescuisine:citron" : 1,
+          "dynamictreescuisine:grapefruit" : 1,
+          "dynamictreescuisine:lemon" : 1,
+          "dynamictreescuisine:lime" : 1,
+          "dynamictreescuisine:mandarin" : 1,
+          "dynamictreescuisine:orange" : 1,
+          "dynamictreescuisine:pomelo" : 1,
+          "..." : 300
+        }
+      }
+    }
+  }
+]

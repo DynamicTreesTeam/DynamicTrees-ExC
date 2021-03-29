@@ -1,6 +1,7 @@
 package maxhyper.dynamictreescuisine.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
+import com.ferreusveritas.dynamictrees.blocks.BlockFruit;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import maxhyper.dynamictreescuisine.DynamicTreesCuisine;
 import maxhyper.dynamictreescuisine.ModConfigs;
@@ -49,7 +50,6 @@ public final class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
         this.setRegistryName(DynamicTreesCuisine.MODID, registryName);
         this.setUnlocalizedName(registryName);
         this.type = type;
-        needsRandomTick = ModConfigs.fruityLeaves;
     }
 
     public static void addEntityBiodustFX(World world, double x, double y, double z, int ammount) {
@@ -93,7 +93,7 @@ public final class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
                 return true;
             }
         }
-        return false;
+        return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
 
     private void useBoneMeal (World world, BlockPos pos, IBlockState state, ItemStack handStack, EntityPlayer player) {
@@ -137,14 +137,20 @@ public final class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
             {
                 return;
             }
-            //TODO: make this work with dynamic fruit blocks
 
-            for (BlockPos pos2 : BlockPos.getAllInBoxMutable(pos.getX() - 3, pos.getY() - 3, pos.getZ() - 3, pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3))
+            for (BlockPos pos2 : BlockPos.getAllInBoxMutable(pos.getX() - 6, pos.getY() - 8, pos.getZ() - 6, pos.getX() + 6, pos.getY() + 3, pos.getZ() + 6))
             {
                 IBlockState state2 = worldIn.getBlockState(pos2);
-                if (state2.getBlock() == this && state2.getValue(TREE) == 3)
-                {
+                boolean citronFound = false;
+                if (state2.getBlock() == this && state2.getValue(TREE) == 3){
                     worldIn.setBlockState(pos2, state.withProperty(TREE, 1));
+                    citronFound = true;
+                }
+                if (state2.getBlock() == TreeCitrus.citrusType.CITRON.fruitBlock){
+                    worldIn.setBlockToAir(pos2);
+                    citronFound = true;
+                }
+                if (citronFound) {
                     if (worldIn.getGameRules().getBoolean("doTileDrops") && !worldIn.restoringBlockSnapshots) // do not drop items while restoring blockstates, prevents item dupe
                     {
                         //Empowered Citron
