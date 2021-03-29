@@ -1,6 +1,6 @@
 [
   {
-    "select": { "type" : [ "forest" ] },
+    "select": { "type" : [ "forest", "!cold", "!swamp", "!dry" ] },
     "apply": {
       "species" : {
         "method" : "before",
@@ -12,7 +12,7 @@
           "dynamictreescuisine:mandarin" : 1,
           "dynamictreescuisine:orange" : 1,
           "dynamictreescuisine:pomelo" : 1,
-          "..." : 300
+          "..." : 400
         }
       }
     }

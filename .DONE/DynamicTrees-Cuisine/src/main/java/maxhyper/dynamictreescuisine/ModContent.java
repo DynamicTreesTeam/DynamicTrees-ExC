@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulat
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.*;
+import com.ferreusveritas.dynamictrees.items.DendroPotion;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -68,15 +69,21 @@ public class ModContent {
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-
+		for (TreeCitrus.citrusType type : TreeCitrus.citrusType.values()){
+			setUpSeedRecipes(type.toString(), type.getPrimitiveSapling(), type.getPrimitiveFruit(), false);
+		}
 	}
 
-	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
+	public static void setUpSeedRecipes (String name, ItemStack treeSapling, ItemStack treeFruit, boolean needsBonemeal){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesCuisine.MODID, name));
 		ItemStack treeSeed = treeSpecies.getSeedStack(1);
-		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
-		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
-		ModRecipes.createDirtBucketExchangeRecipes(treeSapling, treeSeed, true);
+		ItemStack treeTransformationPotion = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotion.DendroPotionType.TRANSFORM.getIndex()), treeSpecies.getFamily());
+		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotion.DendroPotionType.TRANSFORM.getIndex()), treeSeed, treeTransformationPotion);
+		if (treeFruit == null){
+			ModRecipes.createDirtBucketExchangeRecipes(treeSapling, treeSeed, true);
+		} else {
+			ModRecipes.createDirtBucketExchangeRecipesWithFruit(treeSapling, treeSeed, treeFruit, true, needsBonemeal);
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

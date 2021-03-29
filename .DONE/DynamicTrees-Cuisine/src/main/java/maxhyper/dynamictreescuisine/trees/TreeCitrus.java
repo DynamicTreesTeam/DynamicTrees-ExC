@@ -78,10 +78,10 @@ public class TreeCitrus extends TreeFamily {
 
     public enum citrusType {
         POMELO(
-                null,
-                4,
+                null, //all year-round
+                3,
                 0.3f,
-                6.0f,
+                7.0f,
                 2,
                 1.2f,
                 CuisineRegistry.LEAVES_POMELO,
@@ -93,7 +93,7 @@ public class TreeCitrus extends TreeFamily {
         CITRON(
                 1.5f, //autumn-winter
                 2,
-                0.8f,
+                0.6f,
                 7.0f,
                 4,
                 1.2f,
@@ -144,7 +144,7 @@ public class TreeCitrus extends TreeFamily {
                 null),
         LEMON(
                 2.5f, //winter-spring
-                2,
+                1,
                 0.6f,
                 6.0f,
                 3,
@@ -157,7 +157,7 @@ public class TreeCitrus extends TreeFamily {
                 LEMON_AABB),
         LIME(
                 0f, //summer
-                2,
+                1,
                 0.6f,
                 6.0f,
                 3,
@@ -202,12 +202,12 @@ public class TreeCitrus extends TreeFamily {
                     setUpLeaves(primLeaves, primLeavesItemMeta[1], "deciduous"),
                     setUpLeaves(primLeaves, primLeavesItemMeta[0], "deciduous")
             };
-            this.leavesBlock = new BlockDynamicLeavesFruit("leaves_"+this.name().toLowerCase(), this);
+            this.leavesBlock = new BlockDynamicLeavesFruit("leaves_" + this, this);
             for(int i=0;i<4;i++){
                 this.leavesProperties[i].setDynamicLeavesState(leavesBlock.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
                 leavesBlock.setProperties(i, leavesProperties[i]);
             }
-            this.fruitBlock = new BlockFruit("fruit_"+this.name().toLowerCase()){
+            this.fruitBlock = new BlockFruit("fruit_" + this){
                 @Override @SideOnly(Side.CLIENT) public BlockRenderLayer getBlockLayer() { return BlockRenderLayer.CUTOUT_MIPPED; }
                 @Override public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
                     if (fruitBlockBox != null)
@@ -234,10 +234,14 @@ public class TreeCitrus extends TreeFamily {
         }
 
         public ResourceLocation getName(TreeFamily family){
-            return new ResourceLocation(family.getName().getResourceDomain(), this.name().toLowerCase());
+            return new ResourceLocation(family.getName().getResourceDomain(), this.toString());
         }
-        public IBlockState getPrimitiveSapling (){
-            return CuisineRegistry.SAPLING.getStateFromMeta(saplingMeta);
+        public ItemStack getPrimitiveSapling (){ return new ItemStack(CuisineRegistry.SAPLING, 1, saplingMeta); }
+        public ItemStack getPrimitiveFruit () { return new ItemStack(CuisineRegistry.BASIC_FOOD, 1, fruitItemMeta); }
+
+        @Override
+        public String toString() {
+            return this.name().toLowerCase();
         }
     }
 
