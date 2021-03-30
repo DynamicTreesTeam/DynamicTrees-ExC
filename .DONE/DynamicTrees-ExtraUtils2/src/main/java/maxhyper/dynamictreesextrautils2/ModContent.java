@@ -46,7 +46,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 @ObjectHolder(DynamicTreesExtraUtils2.MODID)
 public class ModContent {
 
-	public static BlockDynamicLeaves menrilLeaves, fejuniperLeaves;
+	public static BlockDynamicLeaves fejuniperLeaves;
 	public static BlockBranch fejuniperBranchRaw, fejuniperBranchBurnt;
 	public static Seed fejuniperSeedBurnt;
 	public static BlockDynamicSapling fejuniperSaplingBurnt;
@@ -62,9 +62,9 @@ public class ModContent {
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		fejuniperBranchRaw = new BlockDynamicBranchFeJuniper();
-		registry.register(fejuniperBranchRaw);
-		fejuniperBranchBurnt = new BlockDynamicBranchFeJuniper(true);
+		fejuniperBranchRaw = new BlockBranchFeJuniper();
+		//registry.register(fejuniperBranchRaw);
+		fejuniperBranchBurnt = new BlockBranchFeJuniper(true);
 		registry.register(fejuniperBranchBurnt);
 
 		fejuniperLeaves = new BlockDynamicLeavesFeJuniper();
@@ -73,22 +73,22 @@ public class ModContent {
 		fejuniperSaplingBurnt = new BlockDynamicSaplingBurntFeJuniper();
 		registry.register(fejuniperSaplingBurnt);
 
-		fejuniperLeavesRawProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, EU2TreeFeJuniper.leavesStateRaw, 0, "conifer", 4, 13);
-		fejuniperLeavesBurntProperties = setUpLeaves(EU2TreeFeJuniper.leavesBlock, EU2TreeFeJuniper.leavesStateBurnt, 1,"conifer", 4, 13);
+		fejuniperLeavesRawProperties = setUpLeaves(TreeFeJuniper.leavesBlock, TreeFeJuniper.leavesStateRaw, 0, "conifer", 4, 13);
+		fejuniperLeavesBurntProperties = setUpLeaves(TreeFeJuniper.leavesBlock, TreeFeJuniper.leavesStateBurnt, 1,"conifer", 4, 13);
 
 		fejuniperLeavesRawProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
 		fejuniperLeavesBurntProperties.setDynamicLeavesState(fejuniperLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
 		fejuniperLeaves.setProperties(0, fejuniperLeavesRawProperties);
 		fejuniperLeaves.setProperties(1, fejuniperLeavesBurntProperties);
 
-		TreeFamily feJuniperTree = new EU2TreeFeJuniper();
+		TreeFamily feJuniperTree = new TreeFeJuniper();
 		Collections.addAll(trees, feJuniperTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesExtraUtils2.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 	}
 
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, IBlockState leavesState, int leavesMeta, String cellKit, int smother, int light){
@@ -117,13 +117,13 @@ public class ModContent {
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-		setUpSeedRecipes("ferrousJuniper", new ItemStack(EU2TreeFeJuniper.saplingBlock));
-		setUpSeedRecipes("ferrousJuniperBurnt", new ItemStack(EU2TreeFeJuniper.saplingBlock, 1, 1), new ItemStack(fejuniperSeedBurnt));
+		setUpSeedRecipes("ferrousJuniper", new ItemStack(TreeFeJuniper.saplingBlock));
+		setUpSeedRecipes("ferrousJuniperBurnt", new ItemStack(TreeFeJuniper.saplingBlock, 1, 1), new ItemStack(fejuniperSeedBurnt));
 	}
 	public static void setUpSeedRecipes (String name, ItemStack treeSapling){
 		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExtraUtils2.MODID, name));

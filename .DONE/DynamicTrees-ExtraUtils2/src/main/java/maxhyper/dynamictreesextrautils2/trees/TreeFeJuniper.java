@@ -5,16 +5,18 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.rwtema.extrautils2.blocks.TreeIronWoods;
 import maxhyper.dynamictreesextrautils2.DynamicTreesExtraUtils2;
 import maxhyper.dynamictreesextrautils2.ModContent;
+import maxhyper.dynamictreesextrautils2.dropcreators.DropCreatorBurntSeed;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
 
-public class EU2TreeFeJuniper extends TreeFamily {
+public class TreeFeJuniper extends TreeFamily {
 
 	public static Block leavesBlock = Block.getBlockFromName("extrautils2:ironwood_leaves");
 	public static Block logBlock = Block.getBlockFromName("extrautils2:ironwood_log");
@@ -33,20 +35,32 @@ public class EU2TreeFeJuniper extends TreeFamily {
 			envFactor(Type.HOT, 1.10f);
 			envFactor(Type.COLD, 0.90f);
 
+			addValidLeavesBlocks(ModContent.fejuniperLeavesBurntProperties);
+
 			generateSeed();
-			setupStandardSeedDropping();
+			//addDropCreator(new DropCreatorBlazePowder());
+			addDropCreator(new DropCreatorBurntSeed());
 		}
 
+		@Override
+		public boolean useDefaultWailaBody() {
+			return false;
+		}
 	}
 
-	public EU2TreeFeJuniper() {
+	public TreeFeJuniper() {
 		super(new ResourceLocation(DynamicTreesExtraUtils2.MODID, "ferrousJuniper"));
 
 		setDynamicBranch(ModContent.fejuniperBranchRaw);
 		ModContent.fejuniperBranchBurnt.setFamily(this);
 
+		addValidBranches(ModContent.fejuniperBranchBurnt);
+
 		ModContent.fejuniperLeavesRawProperties.setTree(this);
 		ModContent.fejuniperLeavesBurntProperties.setTree(this);
+
+		//stick drops are handled by the branches
+		setStick(ItemStack.EMPTY);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
@@ -65,5 +79,5 @@ public class EU2TreeFeJuniper extends TreeFamily {
 	public List<Item> getRegisterableItems(List<Item> itemList) {
 		return super.getRegisterableItems(itemList);
 	}
-	
+
 }

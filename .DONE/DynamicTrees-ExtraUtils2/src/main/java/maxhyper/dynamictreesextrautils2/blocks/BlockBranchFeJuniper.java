@@ -13,7 +13,7 @@ import maxhyper.dynamictreesextrautils2.DynamicTreesExtraUtils2;
 import maxhyper.dynamictreesextrautils2.ModContent;
 import maxhyper.dynamictreesextrautils2.nodes.BranchDestructionDataExtra;
 import maxhyper.dynamictreesextrautils2.nodes.NodeNetSpecialBranchVolume;
-import maxhyper.dynamictreesextrautils2.trees.EU2TreeFeJuniper;
+import maxhyper.dynamictreesextrautils2.trees.TreeFeJuniper;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -37,13 +37,13 @@ import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
+public class BlockBranchFeJuniper extends BlockBranchBasic {
 
-    public BlockDynamicBranchFeJuniper() {
+    public BlockBranchFeJuniper() {
         super(new ResourceLocation(DynamicTreesExtraUtils2.MODID,"ferrousjuniperbranch").toString());
         setTickRandomly(true);
     }
-    public BlockDynamicBranchFeJuniper(boolean burnt) {
+    public BlockBranchFeJuniper(boolean burnt) {
         super(new ResourceLocation(DynamicTreesExtraUtils2.MODID,"ferrousjuniperbranchburnt").toString());
         setTickRandomly(false);
     }
@@ -142,9 +142,7 @@ public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
             woodItems = getLogDrops(world, cutPos, destroyData.species, woodVolume * fortuneFactor, burntWoodVolume, false);
         }
 
-        if(entity.getActiveHand() == null) {//What the hell man? I trusted you!
-            entity.setActiveHand(EnumHand.MAIN_HAND);//Players do things with hands.
-        }
+        entity.getActiveHand();
 
         float chance = 1.0f;
         //Fire the block harvesting event.  For An-Sar's PrimalCore mod :)
@@ -174,19 +172,26 @@ public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
         //This will drop the EntityFallingTree into the world
         EntityFallingTree.dropTree(world, destroyData, woodDropList, destroyType);
     }
-    public List<ItemStack> getLogDrops(World world, BlockPos pos, Species species, float volume, float burntVolume, boolean silkTouch) {
-        List<ItemStack> ret = new java.util.ArrayList<ItemStack>();//A list for storing all the dead tree guts
+    public static List<ItemStack> logDrops (float volume, float burntVolume, boolean silkTouch){
+        List<ItemStack> ret = new java.util.ArrayList<>();//A list for storing all the dead tree guts
+
+        ret.add(new ItemStack(TreeFeJuniper.logBlock, (int) burntVolume, 1)); //drops burnt logs if there some parts of the tree are burnt
+        burntVolume = (int) burntVolume;
         float rawVolume = volume - burntVolume;
         if (silkTouch){
-            ret.add(new ItemStack(EU2TreeFeJuniper.logBlock, (int) rawVolume, 0)); //drops logs with silktouch
+            ret.add(new ItemStack(TreeFeJuniper.logBlock, (int) rawVolume, 0)); //drops logs with silktouch
         } else {
-            ret.add(new ItemStack(EU2TreeFeJuniper.planksBlock, (int) rawVolume, 1)); //drops planks without silktouch
+            ret.add(new ItemStack(TreeFeJuniper.planksBlock, (int) rawVolume, 1)); //drops planks without silktouch
         }
-        ret.add(new ItemStack(EU2TreeFeJuniper.logBlock, (int) burntVolume, 1)); //drops burnt logs if there some parts of the tree are burnt
 
         ret.add(new ItemStack(Items.STICK, (int) ((volume - ((int) rawVolume + (int) burntVolume)) * 8)));
+        return ret;
+    }
+
+    public List<ItemStack> getLogDrops(World world, BlockPos pos, Species species, float volume, float burntVolume, boolean silkTouch) {
+        List<ItemStack> drops = logDrops(volume, burntVolume, silkTouch);
         volume *= ModConfigs.treeHarvestMultiplier;// For cheaters.. you know who you are.
-        return species.getLogsDrops(world, pos, ret, volume);
+        return species.getLogsDrops(world, pos, drops, volume);
     }
 
     @Override public BranchDestructionDataExtra destroyBranchFromNode(World world, BlockPos cutPos, EnumFacing toolDir, boolean wholeTree) {
@@ -206,9 +211,7 @@ public class BlockDynamicBranchFeJuniper extends BlockBranchBasic {
         NodeNetSpecialBranchVolume volumeBurntSum = new NodeNetSpecialBranchVolume();
         NodeDestroyer destroyer = new NodeDestroyer(species);
         destroyMode = EnumDestroyMode.HARVEST;
-        System.out.println("1: RAW: "+volumeSum.getVolume() + " / BURNT: "+volumeBurntSum.getVolume());
         analyse(blockState, world, cutPos, wholeTree ? null : signal.localRootDir, new MapSignal(volumeSum, volumeBurntSum, destroyer));
-        System.out.println("2: RAW: "+volumeSum.getVolume() + " / BURNT: "+volumeBurntSum.getVolume());
         destroyMode = EnumDestroyMode.SLOPPY;
 
         //Destroy all the leaves on the branch, store them in a map and convert endpoint coordinates from absolute to relative

@@ -1,12 +1,13 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-extra-utilities-2/files",
 	"1.12.2": {
+		"1.12.2-1.1.0": "+ Updated to Dynamic Trees 0.9.23. This allows the tree felling animation to show burnt blocks.\n+ Updated waila display to correctly show all the drops.\n- Fixed bugs related to ferrous juniper drops.",
 		"1.12.2-1.0.2": "+ Added update checker",
 		"1.12.2-1.0.1": "- Minor fixes",
 		"1.12.2-1.0.0": "Initial Release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.0.2",
-		"1.12.2-recommended": "1.12.2-1.0.2"
+		"1.12.2-latest": "1.12.2-1.1.0",
+		"1.12.2-recommended": "1.12.2-1.1.0"
 	}
 }

@@ -45,18 +45,6 @@ public class BlockDynamicLeavesFeJuniper extends BlockDynamicLeaves {
 		return true;
 	}
 
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess access, BlockPos pos, IBlockState state, int fortune) {
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		if (access.getBlockState(pos).getValue(BlockDynamicLeaves.TREE) == 0){
-			ret.add(TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesExtraUtils2.MODID, "ferrousJuniper")).getSeedStack(1));
-		} else if (access.getBlockState(pos).getValue(BlockDynamicLeaves.TREE) == 1){
-			ret.add(new ItemStack(ModContent.fejuniperSeedBurnt));
-			ret.add(new ItemStack(Items.BLAZE_POWDER));
-		}
-		return ret;
-	}
-
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		IBlockState blockState = worldIn.getBlockState(pos);
 		if (blockState.getBlock() == ModContent.fejuniperLeaves && blockState.getValue(BlockDynamicLeaves.TREE) == 1)

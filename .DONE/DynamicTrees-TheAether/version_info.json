@@ -1,6 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-aether-legacy/files",
 	"1.12.2": {
+		"1.12.2-1.0.13": "- Fixed trees not generating sometimes\n- Fixed crystal leaves not generating with fruity leaves\n+ Crystal Fruit now only grows when the Lost Aether is installed, unless config is set otherwise",
 		"1.12.2-1.0.12": "- Fixed crash related to golden island worldgen",
 		"1.12.2-1.0.11": "- Fixed crash with some forge versions",
 		"1.12.2-1.0.10": "+ Updated to latest Dynamic Trees version\n+ Added update checker\n+ Added sapling<->seed<->fruit recipes for Crystal tree when Aether Lost Content is installed\n- Fixed golden oak trees on golden dungeon islands.\n- Many other bug fixes",
@@ -16,7 +17,7 @@
 		"1.12.2-1.0.0": "Initial Release\n+ Skyroot tree, Golden Oak Tree, Crystal Tree, Holiday Tree\n+ Includes full world gen"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.0.12",
-		"1.12.2-recommended": "1.12.2-1.0.12"
+		"1.12.2-latest": "1.12.2-1.0.13",
+		"1.12.2-recommended": "1.12.2-1.0.13"
 	}
 }
