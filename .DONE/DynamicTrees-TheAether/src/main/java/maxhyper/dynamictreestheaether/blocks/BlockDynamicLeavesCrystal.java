@@ -6,18 +6,23 @@ import com.gildedgames.the_aether.entities.particles.ParticleGoldenOakLeaves;
 import com.gildedgames.the_aether.entities.particles.ParticleHolidayLeaves;
 import com.gildedgames.the_aether.items.ItemsAether;
 import maxhyper.dynamictreestheaether.DynamicTreesTheAether;
+import maxhyper.dynamictreestheaether.ModConfigs;
 import maxhyper.dynamictreestheaether.ModContent;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticlePortal;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.Random;
 
@@ -67,24 +72,14 @@ public class BlockDynamicLeavesCrystal extends BlockDynamicLeaves {
         }
     }
 
-    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
-        if (rand.nextInt(100) == 0){
-            boolean isNextToFlower = false;
-            for(EnumFacing dir: EnumFacing.VALUES) {
-                if (worldIn.getBlockState(pos.offset(dir)).getBlock() == ModContent.crystalLeavesProperties.getDynamicLeavesState().getBlock() && worldIn.getBlockState(pos.offset(dir)).getValue(BlockDynamicLeaves.TREE) != 0){
-                    isNextToFlower = true;
-                }
-            }
-            if (state.getValue(BlockDynamicLeaves.TREE ) == 0 && state.getValue(BlockDynamicLeaves.HYDRO)== 1 && !isNextToFlower){
-                worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE,1));
-            }
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (ModConfigs.pickFruitFromLeaves && state.getValue(TREE) == 1) {
+            ItemHandlerHelper.giveItemToPlayer(player, new ItemStack(ItemsAether.white_apple));
+            world.setBlockState(pos, state.withProperty(TREE, 0));
+            return true;
         }
-        if (rand.nextInt(50) == 0){
-            if (!worldIn.isRemote && state.getValue(BlockDynamicLeaves.TREE) == 1){
-                worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE,0));
-                //worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemsAether.white_apple)));
-            }
-        }
+        return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
     }
+
 }

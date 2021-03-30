@@ -66,6 +66,8 @@ public class ModContent {
 
 	public static String AETHERLIKE = "aetherlike";
 
+	public static boolean lostAetherLoaded;
+
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
 		event.register(new BiomeDataBasePopulator());
@@ -74,6 +76,8 @@ public class ModContent {
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 		DirtHelper.createNewAdjective(AETHERLIKE);
+
+		lostAetherLoaded = Loader.isModLoaded(DynamicTreesTheAether.LOSTAETHER);
 
 		IForgeRegistry<Block> registry = event.getRegistry();
 
@@ -152,7 +156,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTheAether.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 
 		DirtHelper.registerSoil(BlocksAether.aether_grass, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlocksAether.enchanted_aether_grass, DirtHelper.DIRTLIKE);
@@ -186,15 +190,15 @@ public class ModContent {
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 		setUpSeedRecipes("skyroot", new ItemStack(ALTreeSkyroot.saplingBlock));
 		setUpSeedRecipes("goldenoak", new ItemStack(ALTreeGoldenOak.saplingBlock));
-		if (Loader.isModLoaded("lost_aether")){
-			Block crystalSapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("lost_aether","crystal_sapling"));
+		if (lostAetherLoaded){
+			Block crystalSapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(DynamicTreesTheAether.LOSTAETHER,"crystal_sapling"));
 			assert crystalSapling != null;
 			setUpSeedRecipes("crystal", new ItemStack(crystalSapling), new ItemStack(ItemsAether.white_apple));
 		}

@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase;
 
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBasePopulatorJson;
+import com.ferreusveritas.dynamictrees.worldgen.WorldGeneratorTrees;
 import com.gildedgames.the_aether.Aether;
 import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.world.AetherWorld;
@@ -27,6 +28,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     public void populate(BiomeDataBase dbase) {
         ModConfigs.dimensionBlacklist.remove(AetherConfig.dimension.aether_dimension_id);
+        WorldGeneratorTrees.dimensionForceGeneration.add(AetherConfig.dimension.aether_dimension_id);
         jsonPopulator.populate(dbase);
     }
 }

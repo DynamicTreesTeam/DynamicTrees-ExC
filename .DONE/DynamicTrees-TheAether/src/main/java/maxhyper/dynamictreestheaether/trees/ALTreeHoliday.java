@@ -39,10 +39,12 @@ public class ALTreeHoliday extends TreeFamily {
 			setBasicGrowingParameters(0.25f, 16.0f, 3, 3, 0.9f);
 			setGrowthLogicKit(TreeRegistry.findGrowthLogicKit(ModTrees.CONIFER));
 
+			addValidLeavesBlocks(ModContent.holidayDecorLeavesProperties);
+
 			envFactor(Type.COLD, 1.8f);
 			envFactor(Type.HOT, 0.5f);
 
-			addGenFeature(new FeatureGenRandomLeaves(8, 16, ModContent.holidayLeavesProperties.getDynamicLeavesState().withProperty(BlockDynamicLeaves.HYDRO, 1), ModContent.holidayDecorLeavesProperties.getDynamicLeavesState().withProperty(BlockDynamicLeaves.HYDRO, 1), 0.1f));
+			addGenFeature(new FeatureGenRandomLeaves(8, 16, ModContent.aetherLeaves, 2, 3, 0.1f, false).setFruitingRadius(0));
 			addGenFeature(new FeatureGenSnowArea(15, BlocksAether.present.getDefaultState(), 80));
 			generateSeed();
 			clearAcceptableSoils();

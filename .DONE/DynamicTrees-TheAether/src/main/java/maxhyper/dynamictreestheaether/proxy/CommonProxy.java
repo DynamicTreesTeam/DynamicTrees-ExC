@@ -34,7 +34,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
-		ModConfigs.preInit(event);
 		CustomCellKits.preInit();
 		if(WorldGenRegistry.isWorldGenEnabled()) {
 			

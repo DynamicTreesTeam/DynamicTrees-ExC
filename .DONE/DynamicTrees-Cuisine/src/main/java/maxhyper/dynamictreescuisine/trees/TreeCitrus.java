@@ -12,6 +12,7 @@ import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreescuisine.DynamicTreesCuisine;
+import maxhyper.dynamictreescuisine.ModConfigs;
 import maxhyper.dynamictreescuisine.blocks.BlockDynamicLeavesFruit;
 import maxhyper.dynamictreescuisine.genfeatures.FeatureGenFruitLeaves;
 import net.minecraft.block.Block;
@@ -311,7 +312,8 @@ public class TreeCitrus extends TreeFamily {
                 }
             });
 
-            addGenFeature(new FeatureGenFruitLeaves((int)type.energy, (int)type.energy + 5, type.leavesProperties, 0.5f).setFruitingRadius(5));
+            if (ModConfigs.fruityLeaves)
+                addGenFeature(new FeatureGenFruitLeaves((int)type.energy, (int)type.energy + 5, type.leavesProperties, 0.5f).setFruitingRadius(5));
 
             type.fruitBlock.setSpecies(this);
             addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(5));
