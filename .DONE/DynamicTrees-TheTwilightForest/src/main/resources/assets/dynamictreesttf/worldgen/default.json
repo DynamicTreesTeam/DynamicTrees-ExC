@@ -15,7 +15,7 @@
           "dynamictrees:birch" : 1
         }
       },
-      "density" : [ 1 ],
+      "density" : [ 1, 0.5 ],
       "chance" : 1
     }
   },
@@ -29,7 +29,7 @@
           "dynamictrees:birch" : 1
         }
       },
-      "density" : [ 1 ],
+      "density" : [ 1, 0.5 ],
       "chance" : 1
     }
   },

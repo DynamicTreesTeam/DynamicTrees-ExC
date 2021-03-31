@@ -17,6 +17,8 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesttf.blocks.*;
 import maxhyper.dynamictreesttf.items.ItemMangroveSeed;
 import maxhyper.dynamictreesttf.trees.*;
+import maxhyper.dynamictreesttf.trees.species.SpeciesBirchShadow;
+import maxhyper.dynamictreesttf.trees.species.SpeciesOakShadow;
 import maxhyper.dynamictreesttf.trees.species.SpeciesOakSpooky;
 import maxhyper.dynamictreesttf.trees.species.SpeciesSpruceHuge;
 import maxhyper.dynamictreesttf.worldgen.BiomeDataBasePopulator;
@@ -59,19 +61,21 @@ public class ModContent {
 
 	public static ILeavesProperties sicklyTwilightOakLeavesProperties, canopyLeavesProperties, spookyCanopyLeavesProperties, mangroveLeavesProperties,
 			darkwoodLeavesProperties, rainbowOakLeavesProperties, robustTwilightOakLeavesProperties,
-	timeLeavesProperties,transformationLeavesProperties, minersLeavesProperties, sortingLeavesProperties;
+	timeLeavesProperties, transformationLeavesProperties, minersLeavesProperties, sortingLeavesProperties;
+
+	public static ILeavesProperties shadowOakLeavesProperties, shadowBirchLeavesProperties;
 
 	public static BlockTFCritter dynamicCicada, dynamicFirefly;
 	public static BlockDynamicTwilightRoots undergroundRoot, undergroundRootExposed;
 	@Deprecated
 	public static BlockDynamicTwilightRoots undergroundMangroveRoot;
 
-	public static BlockBranch mangroveBranch, minerCoreBranch, minerCoreBranchOff,
+	public static BlockBranch minerCoreBranch, minerCoreBranchOff,
 			sortingCoreBranch, sortingCoreBranchOff, transformCoreBranch, transformCoreBranchOff, timeCoreBranch, timeCoreBranchOff;
 
 	public static BlockRootyWater blockRootyWater;
 
-	public static Species hugeSpruce, spookyOak;
+	public static Species hugeSpruce, spookyOak, shadowOak, shadowBirch;
 
 	public static Seed mangroveSeed;
 
@@ -184,30 +188,36 @@ public class ModContent {
 		minersLeavesProperties = setUpLeaves(TreeMagicMiners.leavesBlock, 2,"deciduous", 4, 5);
 		sortingLeavesProperties = setUpLeaves(TreeMagicSorting.leavesBlock, 3, "deciduous", 8, 13);
 
+		shadowOakLeavesProperties = setUpLeaves(Blocks.LEAVES.getStateFromMeta(0), "deciduous", 4, 0);
+		shadowBirchLeavesProperties = setUpLeaves(Blocks.LEAVES.getStateFromMeta(1), "deciduous", 4, 0);
+
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 0, sicklyTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 1, robustTwilightOakLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 2, rainbowOakLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 3, shadowOakLeavesProperties);
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 4, canopyLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 5, mangroveLeavesProperties);
-		//LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 6, darkwoodLeavesProperties);
+		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 6, shadowBirchLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 7, spookyCanopyLeavesProperties);
 
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 8, timeLeavesProperties);
-		//LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 9, transformationLeavesProperties);
+		//LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 9, );
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 10, minersLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTTF.MODID, 11, sortingLeavesProperties);
 
 		TreeFamily oakTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "oak")).getFamily();
+		TreeFamily birchTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "birch")).getFamily();
 		TreeFamily spruceTree = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "spruce")).getFamily();
 
 		mangroveSeed = new ItemMangroveSeed("mangroveseed");
 
-		hugeSpruce = new SpeciesSpruceHuge(spruceTree);
-		spookyOak = new SpeciesOakSpooky(oakTree);
+		Species hugeSpruce = new SpeciesSpruceHuge(spruceTree);
+		Species spookyOak = new SpeciesOakSpooky(oakTree);
+		Species shadowOak = new SpeciesOakShadow(oakTree);
+		Species shadowBirch = new SpeciesBirchShadow(birchTree);
 
-		Species.REGISTRY.register(spookyOak);
-		Species.REGISTRY.register(hugeSpruce);
+		Species.REGISTRY.registerAll(hugeSpruce, spookyOak, shadowOak, shadowBirch);
 
 		TreeFamily twilightOakTree = new TreeTwilightOak();
 		TreeFamily canopyTree = new TreeCanopy();

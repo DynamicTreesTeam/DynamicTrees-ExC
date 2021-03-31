@@ -38,7 +38,6 @@ public class TreeFeJuniper extends TreeFamily {
 			addValidLeavesBlocks(ModContent.fejuniperLeavesBurntProperties);
 
 			generateSeed();
-			//addDropCreator(new DropCreatorBlazePowder());
 			addDropCreator(new DropCreatorBurntSeed());
 		}
 

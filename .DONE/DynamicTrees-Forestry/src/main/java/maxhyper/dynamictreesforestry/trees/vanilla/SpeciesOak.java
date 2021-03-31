@@ -31,6 +31,7 @@ public class SpeciesOak extends Species {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.OAK), treeFamily, ModContent.oakLeavesProperties);
 
         ModContent.oakLeavesProperties.setTree(treeFamily);
+        addValidLeavesBlocks(ModContent.oakLeavesProperties);
 
         //Oak trees are about as average as you can get
         setBasicGrowingParameters(0.4f, 10.0f, 1, 4, 0.7f);

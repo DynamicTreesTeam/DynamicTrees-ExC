@@ -12,7 +12,6 @@ public class ModConfigs {
 
 	@Config.Comment("Allows bone meal to be used on citrus tree leaves, similar to non-dynamic Cuisine's leaves. requires Fruity Leaves to be true.")
 	@Config.Name("Bone Meal fruity leaves")
-	@Config.RequiresMcRestart()
 	public static boolean boneMealLeaves = true;
 
 }

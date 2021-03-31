@@ -43,6 +43,8 @@ public class TreeChestnut extends TreeFamily {
             //Dark Oak Trees are tall, slowly growing, thick trees
             setBasicGrowingParameters(0.6f, 12.0f, 1, 4, 0.9f);
 
+            addValidLeavesBlocks(ModContent.fruitChestnutLeavesProperties);
+
             generateSeed();
             //setupStandardSeedDropping();
 

@@ -42,6 +42,8 @@ public class TreeLemon extends TreeFamily {
             //Dark Oak Trees are tall, slowly growing, thick trees
             setBasicGrowingParameters(0.6f, 6.0f, 1, 3, 1.2f);
 
+            addValidLeavesBlocks(ModContent.fruitLemonLeavesProperties);
+
             generateSeed();
             //setupStandardSeedDropping();
 

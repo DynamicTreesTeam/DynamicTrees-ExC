@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import forestry.core.network.packets.PacketFXSignal;
 import forestry.core.utils.NetworkUtil;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
+import maxhyper.dynamictreesforestry.ModConfigs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -106,26 +107,24 @@ public class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote){
+        if (ModConfigs.fruityLeaves){
             ItemStack mainHand = player.getHeldItem(EnumHand.MAIN_HAND);
             ItemStack offHand = player.getHeldItem(EnumHand.OFF_HAND);
             if (state.getValue(TREE) == 3){
-                if (mainHand.isEmpty() && offHand.isEmpty()) {
-                    PacketFXSignal packet = new PacketFXSignal(PacketFXSignal.VisualFXType.BLOCK_BREAK, PacketFXSignal.SoundFXType.BLOCK_BREAK, pos, state);
-                    NetworkUtil.sendNetworkPacket(packet, pos, world);
-                    ItemStack fruit = fruitDrops.get(leafFruitType);
-                    ItemHandlerHelper.giveItemToPlayer(player, fruit);
-                    world.setBlockState(pos, state.withProperty(TREE, 0));
+                PacketFXSignal packet = new PacketFXSignal(PacketFXSignal.VisualFXType.BLOCK_BREAK, PacketFXSignal.SoundFXType.BLOCK_BREAK, pos, state);
+                NetworkUtil.sendNetworkPacket(packet, pos, world);
+                ItemStack fruit = fruitDrops.get(leafFruitType);
+                ItemHandlerHelper.giveItemToPlayer(player, fruit);
+                world.setBlockState(pos, state.withProperty(TREE, 0));
+                return true;
+            } else if (ModConfigs.boneMealLeaves){
+                if (mainHand.getItem() == Items.DYE && mainHand.getMetadata() == 15 && hand == EnumHand.MAIN_HAND) {
+                    useBoneMeal(world, pos, state, mainHand, player);
                     return true;
-                } else {
-                    return false;
+                } else if (offHand.getItem() == Items.DYE && offHand.getMetadata() == 15 && hand == EnumHand.OFF_HAND){
+                    useBoneMeal(world, pos, state, offHand, player);
+                    return true;
                 }
-            } else if (mainHand.getItem() == Items.DYE && mainHand.getMetadata() == 15 && hand == EnumHand.MAIN_HAND) {
-                useBoneMeal(world, pos, state, mainHand, player);
-                return true;
-            } else if (offHand.getItem() == Items.DYE && offHand.getMetadata() == 15 && hand == EnumHand.OFF_HAND){
-                useBoneMeal(world, pos, state, offHand, player);
-                return true;
             }
         }
         return false;

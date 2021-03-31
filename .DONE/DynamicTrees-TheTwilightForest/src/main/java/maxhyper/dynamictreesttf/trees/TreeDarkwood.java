@@ -81,9 +81,7 @@ public class TreeDarkwood extends TreeFamily {
 		}
 
 		@Override
-		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
-			EnumFacing originDir = signal.dir.getOpposite();
-
+		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
 			if (pos.getY()-signal.rootPos.getY() > darkForestHeight){
 				signal.energy = 2;
 			}
@@ -101,7 +99,7 @@ public class TreeDarkwood extends TreeFamily {
 				}
 				boolean isBranchUp = world.getBlockState(pos.offset(relativePosToRoot)).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS);
 				boolean isBranchSide = world.getBlockState(pos.up()).getProperties().containsKey(BlockDynamicTwilightRoots.RADIUS);
-				probMap[EnumFacing.UP.getIndex()] = isBranchUp && !isBranchSide? 0:3;
+				probMap[EnumFacing.UP.getIndex()] = isBranchUp && !isBranchSide? 0:2;
 				probMap[relativePosToRoot.getIndex()] = isBranchSide && !isBranchUp? 0:1;
 			}
 

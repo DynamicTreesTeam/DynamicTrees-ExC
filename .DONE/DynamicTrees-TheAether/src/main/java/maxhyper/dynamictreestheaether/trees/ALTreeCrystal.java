@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenConiferTopper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -91,6 +92,8 @@ public class ALTreeCrystal extends TreeFamily {
 			generateSeed();
 			clearAcceptableSoils();
 			addAcceptableSoils(ModContent.AETHERLIKE);
+
+			addGenFeature(new FeatureGenConiferTopper(getLeavesProperties()));
 		}
 
 		@Override

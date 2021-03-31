@@ -1,6 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-twilight-forest/files",
 	"1.12.2": {
+		"1.12.2-1.2.3": "+ Huge Mega Spruce is now a Mega variant of the Mega spruce, making it plantable outside of its biome.\n+ Updated water roots to use new model.\n+ Increased tree density in Dark Forest biomes.\n- Fixed Oak and Birch trees dying in the dark in Dark Forest biomes.\n- Fixed roots not having a Waila display.",
 		"1.12.2-1.2.2": "- Fixed Error with Mangrove branches when DT-BoP is installed.",
 		"1.12.2-1.2.1": "+ Updated Mangrove root textures\n- Minor fixes",
 		"1.12.2-1.2.0": "+ Updated Mangrove Trees with a new and more realistic model.\n- Fixed empty spooky forests",
@@ -14,7 +15,7 @@
 		"1.12.2-1.0.0": "Initial Upload\naDoes NOT have worldgen enabled yet"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.2.2",
-		"1.12.2-recommended": "1.12.2-1.2.2"
+		"1.12.2-latest": "1.12.2-1.2.3",
+		"1.12.2-recommended": "1.12.2-1.2.3"
 	}
 }

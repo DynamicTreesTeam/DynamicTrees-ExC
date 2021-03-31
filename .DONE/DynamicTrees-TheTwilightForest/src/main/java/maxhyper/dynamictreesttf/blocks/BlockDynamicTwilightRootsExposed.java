@@ -1,21 +1,15 @@
 package maxhyper.dynamictreesttf.blocks;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import maxhyper.dynamictreesttf.ModContent;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,12 +36,12 @@ import java.util.Random;
 public class BlockDynamicTwilightRootsExposed extends BlockDynamicTwilightRoots {
 
     public static final IUnlistedProperty[] CONNECTIONS = {
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiusd", 0, 8)),
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiusu", 0, 8)),
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiusn", 0, 8)),
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiuss", 0, 8)),
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiusw", 0, 8)),
-            new Properties.PropertyAdapter<Integer>(PropertyInteger.create("radiuse", 0, 8))
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiusd", 0, 8)),
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiusu", 0, 8)),
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiusn", 0, 8)),
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiuss", 0, 8)),
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiusw", 0, 8)),
+            new Properties.PropertyAdapter<>(PropertyInteger.create("radiuse", 0, 8))
     };
 
     public BlockDynamicTwilightRootsExposed() {
@@ -95,7 +89,9 @@ public class BlockDynamicTwilightRootsExposed extends BlockDynamicTwilightRoots 
     }
 
     @Override
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) { return ItemStack.EMPTY; }
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+        return new ItemStack(TFBlocks.root, 1, state.getValue(GRASSY)?1:0);
+    }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {

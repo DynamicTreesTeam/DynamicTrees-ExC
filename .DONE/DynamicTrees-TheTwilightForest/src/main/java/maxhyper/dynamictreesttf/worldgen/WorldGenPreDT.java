@@ -28,8 +28,6 @@ public class WorldGenPreDT implements IWorldGenerator {
         if (world.provider.getDimension() == TFConfig.dimension.dimensionID){
             float canopyPerChunk = TFConfig.performance.canopyCoverage;
 
-            //TODO: is there a better place for this? We want to load this value once the config file is loaded.
-
             WorldGenerator alternateCanopyGen = new TFGenCanopyMushroom();
             // add canopy trees
             int nc = (int) canopyPerChunk + ((random.nextFloat() < (canopyPerChunk - (int) canopyPerChunk)) ? 1 : 0);

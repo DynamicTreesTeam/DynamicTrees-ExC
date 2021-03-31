@@ -10,7 +10,7 @@
 			"0": {"textures": { "all": "blocks/leaves_oak"}},
 			"1": {"textures": { "all": "blocks/leaves_oak"}},
 			"2": {"textures": { "all": "blocks/leaves_oak"}},
-			"3": {}
+			"3": {"textures": { "all": "blocks/leaves_oak"}}
 		},
 		"hydro": {
 			"1": {},

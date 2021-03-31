@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenClearVolume;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenConiferTopper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenMound;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
@@ -20,27 +21,41 @@ public class SpeciesSpruceHuge extends Species {
 
     public SpeciesSpruceHuge(TreeFamily treeFamily) {
         super(new ResourceLocation(DynamicTreesTTF.MODID, "hugemegaspruce"), treeFamily);
-        setBasicGrowingParameters(0.3f, 30.0f, 6, 9, 1.2f);
+        setBasicGrowingParameters(0.4f, 30.0f, 6, 9, 2f);
         setGrowthLogicKit(new ConiferLogic(7.0f));
-
-        setRequiresTileEntity(true);
 
         setSoilLongevity(32);//Grows for a while so it can actually get tall
 
         addGenFeature(new FeatureGenClearVolume(25));//Clear a spot for the thick tree trunk
         addGenFeature(new FeatureGenMound(999));//Place a 3x3 of dirt under thick trees
 
-        getFamily().addSpeciesLocationOverride(new TreeFamily.ISpeciesLocationOverride() {
-            @Override
-            public Species getSpeciesForLocation(World access, BlockPos trunkPos) {
-                if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.snowy_forest)) {
-                    return ModContent.hugeSpruce;
-                } else if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.highlands, TFBiomes.highlandsCenter)) {
-                    return TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "megaspruce"));
-                }
-                return Species.NULLSPECIES;
+        Species megaspruce = TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "megaspruce"));
+        megaspruce.setMegaSpecies(this);
+
+        getFamily().addSpeciesLocationOverride((access, trunkPos) -> {
+            if(isTwilightHugeMegaBiome(access, trunkPos)) {
+                return this;
+            } else if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.highlands, TFBiomes.highlandsCenter)) {
+                return TreeRegistry.findSpecies(new ResourceLocation(ModConstants.MODID, "megaspruce"));
             }
+            return Species.NULLSPECIES;
         });
+
+        addGenFeature(new FeatureGenConiferTopper(getLeavesProperties()));
+    }
+
+    private boolean isTwilightHugeMegaBiome (World access, BlockPos trunkPos) {
+        return Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.snowy_forest);
+    }
+
+    @Override
+    public boolean getRequiresTileEntity(World world, BlockPos pos) {
+        return !isTwilightHugeMegaBiome(world, pos);
+    }
+
+    @Override
+    public boolean isMega() {
+        return true;
     }
 
     @Override

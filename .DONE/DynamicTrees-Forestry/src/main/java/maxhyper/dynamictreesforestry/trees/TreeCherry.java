@@ -42,6 +42,8 @@ public class TreeCherry extends TreeFamily {
             //Dark Oak Trees are tall, slowly growing, thick trees
             setBasicGrowingParameters(0.4f, 10.0f, 1, 4, 1f);
 
+            addValidLeavesBlocks(ModContent.fruitCherryLeavesProperties);
+
             generateSeed();
             //setupStandardSeedDropping();
 

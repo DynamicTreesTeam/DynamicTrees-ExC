@@ -15,10 +15,12 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import twilightforest.biomes.TFBiomes;
 
-public class SpeciesOakSpooky extends Species {
+public class SpeciesOakShadow extends Species {
 
-    public SpeciesOakSpooky(TreeFamily treeFamily) {
-        super(new ResourceLocation(DynamicTreesTTF.MODID, treeFamily.getName().getResourcePath() + "spooky"), treeFamily);
+    public SpeciesOakShadow(TreeFamily treeFamily) {
+        super(new ResourceLocation(DynamicTreesTTF.MODID, treeFamily.getName().getResourcePath() + "darkforest"), treeFamily, ModContent.shadowOakLeavesProperties);
+
+        ModContent.shadowOakLeavesProperties.setTree(treeFamily);
 
         setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
 
@@ -29,14 +31,17 @@ public class SpeciesOakSpooky extends Species {
 
         setupStandardSeedDropping();
 
-        addGenFeature(new FeatureGenWeb(this, 0.75f));
-
         getFamily().addSpeciesLocationOverride((access, trunkPos) -> {
-            if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.spookyForest)) {
+            if(access.getLight(trunkPos) < 8 && Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.darkForest, TFBiomes.darkForestCenter)) {
                 return this;
             }
             return Species.NULLSPECIES;
         });
+    }
+
+    @Override
+    public boolean showSpeciesOnWaila() {
+        return false;
     }
 
     @Override
@@ -46,7 +51,7 @@ public class SpeciesOakSpooky extends Species {
 
     @Override
     public boolean isBiomePerfect(Biome biome) {
-        return biome == TFBiomes.spookyForest;
+        return biome == TFBiomes.darkForest || biome == TFBiomes.darkForestCenter;
     }
 
     @Override

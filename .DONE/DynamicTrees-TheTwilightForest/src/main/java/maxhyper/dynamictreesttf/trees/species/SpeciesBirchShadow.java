@@ -9,30 +9,28 @@ import maxhyper.dynamictreesttf.ModContent;
 import maxhyper.dynamictreesttf.genfeatures.FeatureGenWeb;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import twilightforest.biomes.TFBiomes;
 
-public class SpeciesOakSpooky extends Species {
+public class SpeciesBirchShadow extends Species {
 
-    public SpeciesOakSpooky(TreeFamily treeFamily) {
-        super(new ResourceLocation(DynamicTreesTTF.MODID, treeFamily.getName().getResourcePath() + "spooky"), treeFamily);
+    public SpeciesBirchShadow(TreeFamily treeFamily) {
+        super(new ResourceLocation(DynamicTreesTTF.MODID, treeFamily.getName().getResourcePath() + "darkforest"), treeFamily, ModContent.shadowBirchLeavesProperties);
 
-        setBasicGrowingParameters(tapering, signalEnergy, upProbability, lowestBranchHeight, growthRate);
+        ModContent.shadowBirchLeavesProperties.setTree(treeFamily);
 
-        envFactor(BiomeDictionary.Type.COLD, 0.75f);
-        envFactor(BiomeDictionary.Type.HOT, 0.50f);
-        envFactor(BiomeDictionary.Type.DRY, 0.50f);
-        envFactor(BiomeDictionary.Type.FOREST, 1.05f);
+        this.setBasicGrowingParameters(0.1F, 14.0F, 4, 4, 1.25F);
+
+        this.envFactor(BiomeDictionary.Type.COLD, 0.75F);
+        this.envFactor(BiomeDictionary.Type.HOT, 0.5F);
+        this.envFactor(BiomeDictionary.Type.DRY, 0.5F);
+        this.envFactor(BiomeDictionary.Type.FOREST, 1.05F);
 
         setupStandardSeedDropping();
 
-        addGenFeature(new FeatureGenWeb(this, 0.75f));
-
         getFamily().addSpeciesLocationOverride((access, trunkPos) -> {
-            if(Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.spookyForest)) {
+            if(access.getLight(trunkPos) < 8 && Species.isOneOfBiomes(access.getBiome(trunkPos), TFBiomes.darkForest, TFBiomes.darkForestCenter)) {
                 return this;
             }
             return Species.NULLSPECIES;
@@ -40,13 +38,18 @@ public class SpeciesOakSpooky extends Species {
     }
 
     @Override
+    public boolean showSpeciesOnWaila() {
+        return false;
+    }
+
+    @Override
     public ResourceLocation getSaplingName() {
-        return new ResourceLocation(ModConstants.MODID, "oak");
+        return new ResourceLocation(ModConstants.MODID, "birch");
     }
 
     @Override
     public boolean isBiomePerfect(Biome biome) {
-        return biome == TFBiomes.spookyForest;
+        return biome == TFBiomes.darkForest || biome == TFBiomes.darkForestCenter;
     }
 
     @Override
