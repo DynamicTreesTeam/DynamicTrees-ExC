@@ -28,7 +28,7 @@ public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
     public void populate(BiomeDataBase dbase) {
         ModConfigs.dimensionBlacklist.remove(AetherConfig.dimension.aether_dimension_id);
-        WorldGeneratorTrees.dimensionForceGeneration.add(AetherConfig.dimension.aether_dimension_id);
+        WorldGeneratorTrees.dimensionForceGeneration.add(world -> world.provider.getDimension() == AetherConfig.dimension.aether_dimension_id);
         jsonPopulator.populate(dbase);
     }
 }
