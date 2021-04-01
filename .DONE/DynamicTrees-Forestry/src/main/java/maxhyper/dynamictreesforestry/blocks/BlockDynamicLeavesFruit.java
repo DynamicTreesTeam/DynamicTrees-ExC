@@ -75,16 +75,6 @@ public class BlockDynamicLeavesFruit extends BlockDynamicLeaves {
         this.setProperties(3, properties);
     }
 
-    @Override
-    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(world, pos, state, rand);
-        int age = state.getValue(TREE);
-        // check leaves tile because they might have decayed
-        if (age < 3 && rand.nextFloat() <= 0.01 * species.seasonalFruitProductionFactor(world, pos)) {
-            world.setBlockState(pos, state.withProperty(TREE, age+1));
-        }
-    }
-
     public static void addEntityBiodustFX(World world, double x, double y, double z, int ammount) {
         for (int i=0; i<ammount;i++) {
             ParticleManager effectRenderer = Minecraft.getMinecraft().effectRenderer;

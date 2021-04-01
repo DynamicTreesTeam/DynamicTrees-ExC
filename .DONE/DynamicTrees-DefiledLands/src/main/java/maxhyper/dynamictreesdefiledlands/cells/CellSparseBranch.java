@@ -10,7 +10,7 @@ public class CellSparseBranch implements ICell {
 		return 2;
 	}
 
-	static final int map[] = {0, 2, 2, 2, 2, 2};
+	static final int[] map = {0, 2, 2, 2, 2, 2};
 	
 	@Override
 	public int getValueFromSide(EnumFacing side) {

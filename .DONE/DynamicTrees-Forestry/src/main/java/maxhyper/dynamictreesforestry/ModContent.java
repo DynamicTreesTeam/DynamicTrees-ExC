@@ -70,7 +70,7 @@ public class ModContent {
 			baobabLeavesProperties, mahoeLeavesProperties, willowLeavesProperties, sipiriLeavesProperties,
 			papayaLeavesProperties, palmLeavesProperties, poplarLeavesProperties;
 
-	public static ILeavesProperties fruitAppleLeavesProperties, fruitWalnutLeavesProperties, fruitChestnutLeavesProperties,
+	public static ILeavesProperties[] fruitAppleLeavesProperties, fruitWalnutLeavesProperties, fruitChestnutLeavesProperties,
 			fruitCherryLeavesProperties, fruitLemonLeavesProperties, fruitPlumLeavesProperties;
 
 	public static BlockDynamicLeavesFruit appleLeaves, walnutLeaves, chestnutLeaves, cherryLeaves, lemonLeaves, plumLeaves;
@@ -180,7 +180,12 @@ public class ModContent {
 		registry.register(plumLeaves);
 
         oakLeavesProperties = setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous");
-			fruitAppleLeavesProperties = setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous");
+			fruitAppleLeavesProperties = new ILeavesProperties[] {
+					setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous"),
+					setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous"),
+					setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous"),
+					setUpLeaves(SpeciesOak.leavesBlock, SpeciesOak.leavesMeta, "deciduous")
+			};
         spruceLeavesProperties = setUpLeaves(SpeciesSpruce.leavesBlock, SpeciesSpruce.leavesMeta, "conifer");
 		birchLeavesProperties = setUpLeaves(SpeciesBirch.leavesBlock, SpeciesBirch.leavesMeta, "deciduous");
         jungleLeavesProperties = setUpLeaves(SpeciesJungle.leavesBlock, SpeciesJungle.leavesMeta, "acacia");
@@ -189,15 +194,40 @@ public class ModContent {
 
 		silverLimeLeavesProperties = setUpLeaves(TreeSilverLime.leavesBlock, TreeSilverLime.leavesMeta, "deciduous");
 		walnutLeavesProperties = setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous");
-			fruitWalnutLeavesProperties = setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous");
+			fruitWalnutLeavesProperties = new ILeavesProperties[]{
+					setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeWalnut.leavesBlock, TreeWalnut.leavesMeta, "deciduous")
+			};
 		chestnutLeavesProperties = setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous");
-			fruitChestnutLeavesProperties = setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous");
+			fruitChestnutLeavesProperties = new ILeavesProperties[]{
+					setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous"),
+					setUpLeaves(TreeChestnut.leavesBlock, TreeChestnut.leavesMeta, "deciduous")
+			};
 		cherryLeavesProperties = setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia");
-			fruitCherryLeavesProperties = setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia");
+			fruitCherryLeavesProperties = new ILeavesProperties[]{
+					setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia"),
+					setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia"),
+					setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia"),
+					setUpLeaves(TreeCherry.leavesBlock, TreeCherry.leavesMeta, "acacia")
+			};
 		lemonLeavesProperties = setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous");
-			fruitLemonLeavesProperties = setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous");
+			fruitLemonLeavesProperties = new ILeavesProperties[]{
+					setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous"),
+					setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous"),
+					setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous"),
+					setUpLeaves(TreeLemon.leavesBlock, TreeLemon.leavesMeta, "deciduous")
+			};
 		plumLeavesProperties = setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous");
-			fruitPlumLeavesProperties = setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous");
+			fruitPlumLeavesProperties = new ILeavesProperties[]{
+					setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous"),
+					setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous"),
+					setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous"),
+					setUpLeaves(TreePlum.leavesBlock, TreePlum.leavesMeta, "deciduous")
+			};
 		mapleLeavesProperties = setUpLeaves(TreeMaple.leavesBlock, TreeMaple.leavesMeta, "deciduous", 6, 13);
 		larchLeavesProperties = setUpLeaves(TreeLarch.leavesBlock, TreeLarch.leavesMeta, "conifer", 6, 10);
 		bullPineLeavesProperties = setUpLeaves(TreeBullPine.leavesBlock, TreeBullPine.leavesMeta, "conifer");
@@ -288,18 +318,20 @@ public class ModContent {
 		papayaLeavesProperties.setDynamicLeavesState(papayaFrondLeaves.getDefaultState());
 		papayaFrondLeaves.setProperties(0, papayaLeavesProperties);
 
-		fruitAppleLeavesProperties.setDynamicLeavesState(appleLeaves.getDefaultState());
-		appleLeaves.setProperties(fruitAppleLeavesProperties);
-		fruitWalnutLeavesProperties.setDynamicLeavesState(walnutLeaves.getDefaultState());
-		walnutLeaves.setProperties(fruitWalnutLeavesProperties);
-		fruitChestnutLeavesProperties.setDynamicLeavesState(chestnutLeaves.getDefaultState());
-		chestnutLeaves.setProperties(fruitChestnutLeavesProperties);
-		fruitCherryLeavesProperties.setDynamicLeavesState(cherryLeaves.getDefaultState());
-		cherryLeaves.setProperties(fruitCherryLeavesProperties);
-		fruitLemonLeavesProperties.setDynamicLeavesState(lemonLeaves.getDefaultState());
-		lemonLeaves.setProperties(fruitLemonLeavesProperties);
-		fruitPlumLeavesProperties.setDynamicLeavesState(plumLeaves.getDefaultState());
-		plumLeaves.setProperties(fruitPlumLeavesProperties);
+		for (int i=0;i<4;i++) {
+			fruitAppleLeavesProperties[i].setDynamicLeavesState(appleLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			appleLeaves.setProperties(i, fruitAppleLeavesProperties[i]);
+			fruitWalnutLeavesProperties[i].setDynamicLeavesState(walnutLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			walnutLeaves.setProperties(i, fruitWalnutLeavesProperties[i]);
+			fruitChestnutLeavesProperties[i].setDynamicLeavesState(chestnutLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			chestnutLeaves.setProperties(i, fruitChestnutLeavesProperties[i]);
+			fruitCherryLeavesProperties[i].setDynamicLeavesState(cherryLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			cherryLeaves.setProperties(i, fruitCherryLeavesProperties[i]);
+			fruitLemonLeavesProperties[i].setDynamicLeavesState(lemonLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			lemonLeaves.setProperties(i, fruitLemonLeavesProperties[i]);
+			fruitPlumLeavesProperties[i].setDynamicLeavesState(plumLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, i));
+			plumLeaves.setProperties(i, fruitPlumLeavesProperties[i]);
+		}
 
 		TreeFamily vanillaOak = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "oak")).getFamily();
 		TreeFamily vanillaBirch = TreeRegistry.findSpecies(new ResourceLocation(com.ferreusveritas.dynamictrees.ModConstants.MODID, "birch")).getFamily();

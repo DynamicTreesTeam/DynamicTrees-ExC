@@ -79,16 +79,8 @@ public class TreeTenebra extends TreeFamily {
 
             return probMap;
         }
-
-//        @Override
-//        public float getEnergy(World world, BlockPos rootPos) {
-//            long day = world.getTotalWorldTime() / 24000L;
-//            int month = (int)day / 30;//Change the hashs every in-game month
-//
-//            return signalEnergy * biomeSuitability(world, rootPos) + (CoordUtils.coordHashCode(rootPos.up(month), 2) % 8);//Vary the height energy by a psuedorandom hash function
-//        }
-
     }
+
     public TreeTenebra() {
         super(new ResourceLocation(DynamicTreesDefiledLands.MODID, "tenebra"));
 

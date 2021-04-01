@@ -1,11 +1,12 @@
 package maxhyper.dynamictreescuisine.trees;
 
-import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockFruit;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
+import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
+import com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.DropCreatorSeed;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
@@ -33,9 +34,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import snownee.cuisine.CuisineRegistry;
-import snownee.cuisine.blocks.BlockModSapling;
 import snownee.cuisine.library.RarityManager;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
@@ -180,13 +181,13 @@ public class TreeCitrus extends TreeFamily {
         public Block primitiveLeaves;
         public int fruitItemMeta;
         public int saplingMeta;
-        public int fruitTintIndex;
+        public int fruitTint;
 
         public ILeavesProperties[] leavesProperties;
         public BlockDynamicLeaves leavesBlock;
         public BlockFruit fruitBlock;
 
-        citrusType (Float frOff, int soilLongevity, float tapering, float energy, int lowestBranch, float growthRate, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTintIndex, AxisAlignedBB[] fruitBlockBox){
+        citrusType (Float frOff, int soilLongevity, float tapering, float energy, int lowestBranch, float growthRate, Block primLeaves, int[] primLeavesItemMeta, int fruitItemMeta, int saplingMeta, int fruitTint, AxisAlignedBB[] fruitBlockBox){
             this.fruitingOffset = frOff;
             this.soilLongevity = soilLongevity;
             this.tapering = tapering;
@@ -196,7 +197,7 @@ public class TreeCitrus extends TreeFamily {
             this.primitiveLeaves = primLeaves;
             this.fruitItemMeta = fruitItemMeta;
             this.saplingMeta = saplingMeta;
-            this.fruitTintIndex = fruitTintIndex;
+            this.fruitTint = fruitTint;
             this.leavesProperties = new ILeavesProperties[]{
                     setUpLeaves(primLeaves, primLeavesItemMeta[0], "deciduous"),
                     setUpLeaves(primLeaves, primLeavesItemMeta[0], "deciduous"),
@@ -318,6 +319,14 @@ public class TreeCitrus extends TreeFamily {
             type.fruitBlock.setSpecies(this);
             addGenFeature(new FeatureGenFruit(type.fruitBlock).setFruitingRadius(5));
             type.fruitBlock.setDroppedItem(new ItemStack(CuisineRegistry.BASIC_FOOD, 1, type.fruitItemMeta));
+        }
+
+        @Override
+        public int colorTreeQuads(int defaultColor, ModelEntityFallingTree.TreeQuadData treeQuad, @Nullable EntityFallingTree entity) {
+            if (treeQuad.bakedQuad.getTintIndex() == 1)
+                return type.fruitTint;
+             else
+                return defaultColor;
         }
 
         @Override

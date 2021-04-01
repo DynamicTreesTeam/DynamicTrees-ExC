@@ -17,8 +17,9 @@ import java.util.Objects;
 public class EventListenerForestry {
 
     private static class LeavesFruitBundle {
-        public ILeavesProperties leaves, fruityLeaves;
-        public LeavesFruitBundle(ILeavesProperties leaves, ILeavesProperties fruityLeaves){
+        public ILeavesProperties leaves;
+        public ILeavesProperties[] fruityLeaves;
+        public LeavesFruitBundle(ILeavesProperties leaves, ILeavesProperties[] fruityLeaves){
             this.leaves = leaves;
             this. fruityLeaves = fruityLeaves;
         }
@@ -38,7 +39,7 @@ public class EventListenerForestry {
         };
 
         for(LeavesFruitBundle leaves: fruitLeaves) {
-            ResourceLocation registryName = Objects.requireNonNull(leaves.fruityLeaves.getDynamicLeavesState().getBlock().getRegistryName());
+            ResourceLocation registryName = Objects.requireNonNull(leaves.fruityLeaves[0].getDynamicLeavesState().getBlock().getRegistryName());
             IBakedModel leavesObject = event.getModelRegistry().getObject(new ModelResourceLocation(registryName, "normal"));
             if (leavesObject != null) {
                 BakedModelBlockFruitLeaves leavesModel = new BakedModelBlockFruitLeaves(leavesObject, leaves.leaves.getDynamicLeavesState());

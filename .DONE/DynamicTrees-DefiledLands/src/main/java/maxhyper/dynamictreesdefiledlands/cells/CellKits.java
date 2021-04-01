@@ -20,39 +20,39 @@ public class CellKits {
 	public CellKits() {
 		TreeRegistry.registerCellKit(new ResourceLocation(DynamicTreesDefiledLands.MODID, "sparse"), sparse);
 	}
-	
+
 	private final ICellKit sparse = new ICellKit() {
 
 		private final ICell sparseBranch = new CellSparseBranch();
 		private final ICell sparseLeaves = new CellNormal(1);
-		
+
 		private final ICellSolver solver = new com.ferreusveritas.dynamictrees.cells.CellKits.BasicSolver(new short[] {0x0211});
-		
+
 		@Override
 		public ICell getCellForLeaves(int hydro) {
 			return hydro > 0 ? sparseLeaves : CellNull.NULLCELL;
 		}
-		
+
 		@Override
 		public ICell getCellForBranch(int radius, int meta) {
 			return radius == 1 ? sparseBranch : CellNull.NULLCELL;
 		}
-		
+
 		@Override
 		public SimpleVoxmap getLeafCluster() {
 			return sparseCluster;
 		}
-		
+
 		@Override
 		public ICellSolver getCellSolver() {
 			return solver;
 		}
-		
+
 		@Override
 		public int getDefaultHydration() {
 			return 1;
 		}
-		
+
 	};
 
 	public static final SimpleVoxmap sparseCluster = new SimpleVoxmap(3, 2, 3, new byte[] {

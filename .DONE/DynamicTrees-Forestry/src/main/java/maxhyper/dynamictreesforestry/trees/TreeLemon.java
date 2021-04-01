@@ -2,6 +2,8 @@ package maxhyper.dynamictreesforestry.trees;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
+import com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -10,6 +12,7 @@ import forestry.api.arboriculture.EnumForestryWoodType;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
+import maxhyper.dynamictreesforestry.blocks.BlockDynamicLeavesFruit;
 import maxhyper.dynamictreesforestry.genfeatures.FeatureGenFruitLeaves;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -21,6 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.Objects;
 
 public class TreeLemon extends TreeFamily {
@@ -50,10 +54,20 @@ public class TreeLemon extends TreeFamily {
             setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
 
             ModContent.lemonLeaves.setSpecies(this);
-            addGenFeature(new FeatureGenFruitLeaves(6, 8, ModContent.lemonLeavesProperties.getDynamicLeavesState(), ModContent.fruitLemonLeavesProperties.getDynamicLeavesState(), 0.5f));
+            addGenFeature(new FeatureGenFruitLeaves(6, 8, ModContent.lemonLeavesProperties.getDynamicLeavesState(), ModContent.fruitLemonLeavesProperties[0].getDynamicLeavesState(), 0.5f).setFruitingRadius(3));
 
             ModContent.lemonFruit.setSpecies(this);
             addGenFeature(new FeatureGenFruit(ModContent.lemonFruit).setRayDistance(2).setFruitingRadius(3));
+        }
+
+        @Override
+        public int colorTreeQuads(int defaultColor, ModelEntityFallingTree.TreeQuadData treeQuad, @Nullable EntityFallingTree entity) {
+            if (treeQuad.bakedQuad.getTintIndex() == 1){
+                IBlockState state = treeQuad.state;
+                if (state.getBlock() instanceof BlockDynamicLeavesFruit)
+                    return ((BlockDynamicLeavesFruit) state.getBlock()).fruitColor(state);
+            }
+            return defaultColor;
         }
 
         @Override
@@ -74,7 +88,7 @@ public class TreeLemon extends TreeFamily {
         //setPrimitiveLog(logBlock.getStateFromMeta(logMeta), new ItemStack(logBlock, 1, logMeta));
 
         ModContent.lemonLeavesProperties.setTree(this);
-        ModContent.fruitLemonLeavesProperties.setTree(this);
+        for (int i=0;i<4;i++) ModContent.fruitLemonLeavesProperties[i].setTree(this);
 
         addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
     }

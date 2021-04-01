@@ -39,16 +39,11 @@ public class BakedModelBlockFruitLeaves implements IBakedModel  {
         List<BakedQuad> quads = new ArrayList<>(16);
 
         if (state != null && state.getBlock() instanceof BlockDynamicLeavesFruit) {
-            int fruitAge = state.getValue(BlockDynamicLeaves.TREE);
-
             BlockModelShapes blockModelShapes = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes();
             IBakedModel leafModel = blockModelShapes.getModelForState(nonFruityLeaves);
 
             quads.addAll(leafModel.getQuads(nonFruityLeaves, side, rand));
-
-            if(MinecraftForgeClient.getRenderLayer() == BlockRenderLayer.CUTOUT_MIPPED) {
-                quads.addAll(fruitModel.getQuads(state, side, rand));
-            }
+            quads.addAll(fruitModel.getQuads(state, side, rand));
         }
 
         return quads;

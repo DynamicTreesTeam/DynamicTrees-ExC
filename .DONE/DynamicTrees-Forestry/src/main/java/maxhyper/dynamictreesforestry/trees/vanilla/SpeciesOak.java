@@ -2,6 +2,8 @@ package maxhyper.dynamictreesforestry.trees.vanilla;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
+import com.ferreusveritas.dynamictrees.models.ModelEntityFallingTree;
 import com.ferreusveritas.dynamictrees.seasons.SeasonHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -9,8 +11,10 @@ import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import maxhyper.dynamictreesforestry.DynamicTreesForestry;
 import maxhyper.dynamictreesforestry.ModConstants;
 import maxhyper.dynamictreesforestry.ModContent;
+import maxhyper.dynamictreesforestry.blocks.BlockDynamicLeavesFruit;
 import maxhyper.dynamictreesforestry.genfeatures.FeatureGenFruitLeaves;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -20,6 +24,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class SpeciesOak extends Species {
@@ -31,7 +36,8 @@ public class SpeciesOak extends Species {
         super(new ResourceLocation(DynamicTreesForestry.MODID, ModConstants.OAK), treeFamily, ModContent.oakLeavesProperties);
 
         ModContent.oakLeavesProperties.setTree(treeFamily);
-        addValidLeavesBlocks(ModContent.oakLeavesProperties);
+        for (int i=0;i<4;i++) ModContent.fruitAppleLeavesProperties[i].setTree(treeFamily);
+        addValidLeavesBlocks(ModContent.fruitAppleLeavesProperties);
 
         //Oak trees are about as average as you can get
         setBasicGrowingParameters(0.4f, 10.0f, 1, 4, 0.7f);
@@ -46,9 +52,19 @@ public class SpeciesOak extends Species {
         //setupStandardSeedDropping();
 
         ModContent.appleLeaves.setSpecies(getFamily().getCommonSpecies());
-        addGenFeature(new FeatureGenFruitLeaves(8, 10, ModContent.oakLeavesProperties.getDynamicLeavesState(), ModContent.fruitAppleLeavesProperties.getDynamicLeavesState(), 0.5f));
+        addGenFeature(new FeatureGenFruitLeaves(8, 10, ModContent.oakLeavesProperties.getDynamicLeavesState(), ModContent.fruitAppleLeavesProperties[0].getDynamicLeavesState(), 0.5f));
 
         addGenFeature(new FeatureGenFruit(ModBlocks.blockApple).setRayDistance(4));
+    }
+
+    @Override
+    public int colorTreeQuads(int defaultColor, ModelEntityFallingTree.TreeQuadData treeQuad, @Nullable EntityFallingTree entity) {
+        if (treeQuad.bakedQuad.getTintIndex() == 1){
+            IBlockState state = treeQuad.state;
+            if (state.getBlock() instanceof BlockDynamicLeavesFruit)
+                return ((BlockDynamicLeavesFruit) state.getBlock()).fruitColor(state);
+        }
+        return defaultColor;
     }
 
     @Override

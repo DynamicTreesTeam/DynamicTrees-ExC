@@ -84,7 +84,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesDefiledLands.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 
 		DirtHelper.registerSoil(rootyDefiledDirt, CORRUPTDIRTLIKE);
 		DirtHelper.registerSoil(ModBlocks.dirtDefiled, CORRUPTDIRTLIKE);
@@ -93,31 +93,12 @@ public class ModContent {
 		DirtHelper.registerSoil(ModBlocks.gravelDefiled, CORRUPTGRAVELLIKE);
 	}
 
-	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(
-				leavesBlock.getDefaultState(),
-				new ItemStack(leavesBlock, 1, 0),
-				TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock, 1, 0);
-			}
-
-			@Override
-			public int getLightRequirement() {
-				return 1;
-			}
-		};
-		return leavesProperties;
-	}
-
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
