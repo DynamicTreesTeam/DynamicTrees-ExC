@@ -1,6 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forestry/files",
 	"1.12.2": {
+		"1.12.2-1.0.10": "+ Added config to disable fruity leaves.\n+ Updated to Dynamic Trees 0.9.23. This allows the tree felling animation to show fruity leaves.\n- Minor fixes",
 		"1.12.2-1.0.9": "- Fixed fruit not generating during worldgen in palm-like trees.",
 		"1.12.2-1.0.8": "- Minor fixes",
 		"1.12.2-1.0.7": "+ Updated to latest Dynamic Trees build\n+ Added seasonal offsets for fruit (when serene seasons is installed)\n+ Added update checker\n- Minor fixes",
@@ -13,7 +14,7 @@
 		"1.12.2-1.0.0": "Initial release. Includes worldgen"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.0.9",
-		"1.12.2-recommended": "1.12.2-1.0.9"
+		"1.12.2-latest": "1.12.2-1.0.10",
+		"1.12.2-recommended": "1.12.2-1.0.10"
 	}
 }
