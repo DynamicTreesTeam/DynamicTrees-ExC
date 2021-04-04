@@ -11,9 +11,12 @@ import net.minecraft.util.ResourceLocation;
 public class SpeciesRedbud extends Species {
 
     public SpeciesRedbud(TreeFamily treeFamily) {
-        super(new ResourceLocation(DynamicTreesPamTrees.MODID, "redbud"), treeFamily, ModContent.redbudLeavesProperties);
+        super(new ResourceLocation(DynamicTreesPamTrees.MODID, "redbud"), treeFamily, ModContent.redbudLeavesProperties[0]);
 
         this.setBasicGrowingParameters(0.4F, 10.0F, 1, 4, 0.7F);
+
+        addValidLeavesBlocks(ModContent.redbudLeavesProperties);
+        ModContent.redbudLeavesProperties[1].setTree(treeFamily);
 
         setRequiresTileEntity(true);
 

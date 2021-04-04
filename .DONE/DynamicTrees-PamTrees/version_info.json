@@ -1,14 +1,15 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-pams-trees/files",
 	"1.12.2": {
-		"1.12.2-2.0.4": "- Fixed crash in latest DT version",
-		"1.12.2-2.0.3": "+ Added update checker",
-		"1.12.2-2.0.2": "- Fixed crash when Redbud Tree mod is missing",
-		"1.12.2-2.0.1": "- Fixed startup crash",
-		"1.12.2-2.0.0": "Initial Release\n+ Adds Redbud Tree from Pam's Redbud Tree\n+ Adds Spooky Tree from Pam's Spooky Tree\nboth with worldgen"
+		"1.12.2-1.0.5": "+ Updated to Dynamic Trees 0.9.23. This allows the tree felling animation to show pink redbud leaves.",
+		"1.12.2-1.0.4": "- Fixed crash in latest DT version",
+		"1.12.2-1.0.3": "+ Added update checker",
+		"1.12.2-1.0.2": "- Fixed crash when Redbud Tree mod is missing",
+		"1.12.2-1.0.1": "- Fixed startup crash",
+		"1.12.2-1.0.0": "Initial Release\n+ Adds Redbud Tree from Pam's Redbud Tree\n+ Adds Spooky Tree from Pam's Spooky Tree\nboth with worldgen"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-2.0.4",
-		"1.12.2-recommended": "1.12.2-2.0.4"
+		"1.12.2-latest": "1.12.2-1.0.5",
+		"1.12.2-recommended": "1.12.2-1.0.5"
 	}
 }

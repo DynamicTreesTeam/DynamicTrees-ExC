@@ -6,6 +6,7 @@ import com.ferreusveritas.dynamictrees.ModRecipes;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
+import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
@@ -56,7 +57,8 @@ public class ModContent {
 
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 
-	public static LeavesProperties redbudLeavesProperties, spookyLeavesProperties;
+	public static ILeavesProperties spookyLeavesProperties;
+	public static ILeavesProperties[] redbudLeavesProperties;
 	public static BlockDynamicLeaves leavesRedbud, leavesSpooky;
 	public static TreeFamily treeSpooky;
 	public static Species speciesRedbud;
@@ -90,42 +92,13 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 
 		if (Loader.isModLoaded(REDBUDTREE_MOD)){
-			redbudLeavesProperties = new LeavesProperties(ModBlocks.blockStates.air){
-				@Override
-				public boolean updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-					if (!worldIn.isRemote){
-						Float season = SeasonHelper.getSeasonValue(worldIn, pos);
-						if (season == null){
-							if (worldIn.getCurrentMoonPhaseFactor() >= 0.5F) { //If theres no seasons we use the moon phases
-								worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 1));
-							} else {
-								worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 0));
-							}
-						} else {
-							if (SeasonHelper.isSeasonBetween(season, SeasonHelper.SPRING, SeasonHelper.SUMMER)) {
-								worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 1));
-							} else {
-								worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 0));
-							}
-						}
-					}
-					return super.updateTick(worldIn, pos, state, rand);
-				}
-
-				@Override
-				public IBlockState getPrimitiveLeaves() {
-					return Objects.requireNonNull(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(REDBUDTREE_MOD, "redbudtree_leaves"))).getDefaultState();
-				}
-				@Override
-				public ItemStack getPrimitiveLeavesItemStack() {
-					return new ItemStack(Objects.requireNonNull(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(REDBUDTREE_MOD, "redbudtree_leaves"))));
-				}
-			};
+			redbudLeavesProperties = new ILeavesProperties[]{getRedbudLeaves(), getRedbudLeaves()};
 			leavesRedbud = new BlockDynamicLeaves();
 			leavesRedbud.setDefaultNaming(DynamicTreesPamTrees.MODID, "leaves_redbud");
-			redbudLeavesProperties.setDynamicLeavesState(leavesRedbud.getDefaultState());
-			leavesRedbud.setProperties(0, redbudLeavesProperties);
-			leavesRedbud.setProperties(1, redbudLeavesProperties);
+			redbudLeavesProperties[0].setDynamicLeavesState(leavesRedbud.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+			redbudLeavesProperties[1].setDynamicLeavesState(leavesRedbud.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
+			leavesRedbud.setProperties(0, redbudLeavesProperties[0]);
+			leavesRedbud.setProperties(1, redbudLeavesProperties[1]);
 		}
 		if (Loader.isModLoaded(SPOOKYTREE_MOD)){
 			spookyLeavesProperties = new LeavesProperties(Blocks.AIR.getDefaultState(), TreeRegistry.findCellKit("darkoak")){
@@ -169,7 +142,41 @@ public class ModContent {
 
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesPamTrees.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
+	}
+
+	private static ILeavesProperties getRedbudLeaves(){
+		return new LeavesProperties(ModBlocks.blockStates.air){
+			@Override
+			public boolean updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+				if (!worldIn.isRemote){
+					Float season = SeasonHelper.getSeasonValue(worldIn, pos);
+					if (season == null){
+						if (worldIn.getCurrentMoonPhaseFactor() >= 0.5F) { //If theres no seasons we use the moon phases
+							worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 1));
+						} else {
+							worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 0));
+						}
+					} else {
+						if (SeasonHelper.isSeasonBetween(season, SeasonHelper.SPRING, SeasonHelper.SUMMER)) {
+							worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 1));
+						} else {
+							worldIn.setBlockState(pos, state.withProperty(BlockDynamicLeaves.TREE, 0));
+						}
+					}
+				}
+				return super.updateTick(worldIn, pos, state, rand);
+			}
+
+			@Override
+			public IBlockState getPrimitiveLeaves() {
+				return Objects.requireNonNull(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(REDBUDTREE_MOD, "redbudtree_leaves"))).getDefaultState();
+			}
+			@Override
+			public ItemStack getPrimitiveLeavesItemStack() {
+				return new ItemStack(Objects.requireNonNull(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(REDBUDTREE_MOD, "redbudtree_leaves"))));
+			}
+		};
 	}
 
 	@SubscribeEvent public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -181,17 +188,19 @@ public class ModContent {
 		}
 
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 		if (Loader.isModLoaded(REDBUDTREE_MOD)){
 			Block redbudSapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(REDBUDTREE_MOD, "redbudtree_sapling"));
+			assert redbudSapling != null;
 			setUpSeedRecipes("redbud", new ItemStack(redbudSapling));
 		}
 		if (Loader.isModLoaded(SPOOKYTREE_MOD)){
 			Block spookySapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(SPOOKYTREE_MOD, "spookytree_sapling"));
+			assert spookySapling != null;
 			setUpSeedRecipes("spooky", new ItemStack(spookySapling));
 		}
 	}
