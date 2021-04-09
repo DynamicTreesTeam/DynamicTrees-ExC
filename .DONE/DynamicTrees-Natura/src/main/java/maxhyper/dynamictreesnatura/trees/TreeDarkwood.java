@@ -1,6 +1,7 @@
 package maxhyper.dynamictreesnatura.trees;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
+import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
@@ -13,7 +14,9 @@ import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import com.progwml6.natura.shared.NaturaCommons;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
+import maxhyper.dynamictreesnatura.ModConfigs;
 import maxhyper.dynamictreesnatura.ModContent;
+import maxhyper.dynamictreesnatura.genfeatures.FeatureGenFruitLeaves;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -38,7 +41,7 @@ public class TreeDarkwood extends TreeFamily {
 
 	public static Block leavesBlock = NaturaNether.netherLeaves2;
     public static Block logBlock = NaturaNether.netherLog;
-    public static Block saplingBlock = NaturaNether.netherSapling2;
+    public static Block saplingBlock = NaturaNether.netherSapling;
 	public static IBlockState leavesState = leavesBlock.getDefaultState();
 
 	public class SpeciesDarkwood extends Species {
@@ -50,8 +53,14 @@ public class TreeDarkwood extends TreeFamily {
 
 			envFactor(Type.COLD, 0.75f);
 
+			addValidLeavesBlocks(ModContent.darkwoodFloweringLeavesProperties, ModContent.darkwoodFruitLeavesProperties);
+
 			ModContent.blockPotashApple.setSpecies(this);
 			this.addGenFeature((new FeatureGenFruit(ModContent.blockPotashApple)).setRayDistance(4.0F));
+			if (ModConfigs.fruityLeaves)
+				addGenFeature(new FeatureGenFruitLeaves(4, 12,
+						new ILeavesProperties[]{ModContent.darkwoodLeavesProperties, ModContent.darkwoodFloweringLeavesProperties, ModContent.darkwoodFruitLeavesProperties},
+						0.5f));
 
 			generateSeed();
 
@@ -61,6 +70,11 @@ public class TreeDarkwood extends TreeFamily {
 		@Override
 		public float seasonalFruitProductionFactor(World world, BlockPos pos) {
 			return 1;
+		}
+
+		@Override
+		public boolean testFlowerSeasonHold(World world, BlockPos pos, float seasonValue) {
+			return false;
 		}
 
 		public Species generateSeed() {

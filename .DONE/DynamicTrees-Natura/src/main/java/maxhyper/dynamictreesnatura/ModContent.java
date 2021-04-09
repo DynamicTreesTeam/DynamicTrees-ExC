@@ -77,20 +77,7 @@ public class ModContent {
 		event.register(new BiomeDataBasePopulator());
 	}
 
-	public static boolean generateRedwood = false;
-	public static boolean generateMaple;
-	public static boolean generateSilverbell;
-	public static boolean generateAmaranth;
-	public static boolean generateTiger;
-	public static boolean generateWillow;
-	public static boolean generateEucalyptus;
-	public static boolean generateHopseed;
-	public static boolean generateSakura;
-	public static boolean generateBloodwood;
-	public static boolean generateDarkwood;
-	public static boolean generateFusewood;
-	public static boolean generateGhostwood;
-	public static boolean generateSaguaro;
+	//public static boolean generateBloodwood;
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
@@ -200,7 +187,7 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		saguaroCactus.getRegisterableBlocks(treeBlocks);
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesNatura.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 
 		DirtHelper.registerSoil(NaturaOverworld.coloredGrass, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(NaturaNether.netherTaintedSoil, DirtHelper.NETHERLIKE);
@@ -263,7 +250,7 @@ public class ModContent {
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
 		saguaroCactus.getRegisterableItems(treeItems);
 
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
@@ -285,17 +272,16 @@ public class ModContent {
 		setUpSeedRecipes("hopseed", new ItemStack(TreeHopseed.saplingBlock, 1, 2));
 		setUpSeedRecipes("sakura", new ItemStack(TreeSakura.saplingBlock, 1, 3));
 		setUpSeedRecipes("ghostwood", new ItemStack(TreeGhostwood.saplingBlock, 1, 0));
-		setUpSeedRecipes("bloodwood", new ItemStack(TreeBloodwood.saplingBlock, 1, 1));
-		setUpSeedRecipes("fusewood", new ItemStack(TreeFusewood.saplingBlock, 1, 2));
-		setUpSeedRecipes("darkwood", new ItemStack(TreeDarkwood.saplingBlock, 1, 0));
+		setUpSeedRecipes("bloodwood", new ItemStack(TreeBloodwood.saplingBlock, 1, 0));
+		setUpSeedRecipes("fusewood", new ItemStack(TreeFusewood.saplingBlock, 1, 1));
+		//setUpSeedRecipes("darkwood", new ItemStack(TreeDarkwood.saplingBlock, 1, 2));
 
-		Species treeSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood"));
-		ItemStack treeSeed = treeSpecies.getSeedStack(1);
-		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "potashAppleSeed"), null, treeSeed, Ingredient.fromStacks(NaturaCommons.potashApple));
+		ItemStack darkwoodSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "darkwood")).getSeedStack(1);
+		ModRecipes.createDirtBucketExchangeRecipesWithFruit(new ItemStack(TreeDarkwood.saplingBlock, 1, 2), darkwoodSeed, NaturaCommons.potashApple, true, false);
 
-		Species cactusSpecies = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro"));
-		ItemStack cactusSeed = cactusSpecies.getSeedStack(1);
-		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "SaguaroFruitSeed"), null, cactusSeed, Ingredient.fromItem(NaturaOverworld.saguaroFruitItem));
+		ItemStack saguaroSeed = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesNatura.MODID, "saguaro")).getSeedStack(1);
+		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "SaguaroFruitSeed"), null, saguaroSeed, Ingredient.fromItem(NaturaOverworld.saguaroFruitItem));
+		GameRegistry.addShapelessRecipe(new ResourceLocation(DynamicTreesNatura.MODID, "SaguaroFruitSeedBucket"), null, saguaroSeed, Ingredient.fromItem(NaturaOverworld.saguaroFruitItem), Ingredient.fromItem(ModItems.dirtBucket));
 
 	}
 	private static void setUpSeedRecipes(String name, ItemStack treeSapling){

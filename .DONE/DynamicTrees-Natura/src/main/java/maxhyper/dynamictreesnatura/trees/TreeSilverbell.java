@@ -41,6 +41,8 @@ public class TreeSilverbell extends TreeFamily {
 
 			setBasicGrowingParameters(0.3f, 8.0f, upProbability, lowestBranchHeight, 0.8f);
 
+			setSoilLongevity(2);
+
 			generateSeed();
 			setupStandardSeedDropping();
 		}

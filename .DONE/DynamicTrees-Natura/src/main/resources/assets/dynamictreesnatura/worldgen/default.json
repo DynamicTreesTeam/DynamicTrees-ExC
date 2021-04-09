@@ -1,15 +1,108 @@
 [
   {
-    "select": { "type" : [ "forest" ] },
+    "select": { "type" : [ "forest", "!cold", "!coniferous", "!swamp" ] },
     "apply": {
       "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:sakura" : 3,
+          "dynamictreesnatura:eucalyptus" : 4,
+          "dynamictreesnatura:maple" : 10,
+          "dynamictreesnatura:silverbell" : 1,
+          "dynamictreesnatura:tigerwood" : 3,
+          "..." : 1000
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "plains" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:eucalyptus" : 1,
+          "..." : 20
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "mountain", "hills", "!dense", "!dry", "!coniferous" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:hopseed" : 1,
+          "dynamictreesnatura:eucalyptus" : 4,
+          "..." : 50
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "river" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
         "random" : {
           "dynamictreesnatura:sakura" : 1,
-          "dynamictreesnatura:eucalyptus" : 5
+          "dynamictreesnatura:willow" : 1,
+          "..." : 50
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "jungle" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:amaranth" : 1,
+          "..." : 10
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "swamp" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:willow" : 1,
+          "..." : 20
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : [ "nether" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:ghostwood" : 5,
+          "dynamictreesnatura:fusewood" : 1,
+          "dynamictreesnatura:darkwood" : 5,
+          "dynamictreesnatura:bloodwood" : 3,
+          "..." : 50
         }
       },
-      "density" : [ 0.25, 0.75 ],
-      "chance": 0.02
+      "density": [ 0.2 ]
+    }
+  },
+  {
+    "select": { "type" : [ "sandy" ] },
+    "apply": {
+      "species" : {
+        "method" : "before",
+        "random" : {
+          "dynamictreesnatura:saguaro" : 1,
+          "..." : 10
+        }
+      }
     }
   }
 ]

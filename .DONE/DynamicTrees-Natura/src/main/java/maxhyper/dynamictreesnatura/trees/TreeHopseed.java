@@ -36,6 +36,8 @@ public class TreeHopseed extends TreeFamily {
 			setBasicGrowingParameters(1.8f, 7.0f, 0, 2, 0.8f);
 			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("hopseed"));
 
+			setSoilLongevity(2);
+
 			setSeedStack(new ItemStack(ModContent.hopseedSeed));
 			setupStandardSeedDropping();
 		}

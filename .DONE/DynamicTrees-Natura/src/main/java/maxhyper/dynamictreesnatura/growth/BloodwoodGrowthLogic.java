@@ -23,7 +23,7 @@ public class BloodwoodGrowthLogic implements IGrowthLogicKit {
         //Amplify cardinal directions to encourage spread the higher we get
         float energyRatio = -signal.delta.getY() / species.getEnergy(world, pos);
         float spreadPush = energyRatio * 2;
-        spreadPush = spreadPush < 1.0f ? 1.0f : spreadPush;
+        spreadPush = Math.max(spreadPush, 1.0f);
         for(EnumFacing dir: EnumFacing.HORIZONTALS) {
             probMap[dir.ordinal()] *= spreadPush;
         }

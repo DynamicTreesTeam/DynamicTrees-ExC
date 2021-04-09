@@ -1,21 +1,28 @@
 package maxhyper.dynamictreesnatura.trees;
 
+import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
+import com.ferreusveritas.dynamictrees.api.network.INodeInspector;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
+import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.cells.CellMetadata;
+import com.ferreusveritas.dynamictrees.event.SpeciesPostGenerationEvent;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeCoder;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeDisease;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeFindEnds;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
+import com.ferreusveritas.dynamictrees.worldgen.JoCode;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.shared.NaturaCommons;
@@ -25,6 +32,7 @@ import maxhyper.dynamictreesnatura.blocks.BlockDynamicSaplingBloodwood;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -36,18 +44,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class TreeBloodwood extends TreeFamily {
 
 	public static Block leavesBlock = NaturaNether.netherLeaves;
     public static Block logBlock = NaturaNether.netherLog2;
-    public static Block saplingBlock = NaturaNether.netherSapling;
+    public static Block saplingBlock = NaturaNether.netherSapling2;
 	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockNetherLeaves.TYPE, BlockNetherLeaves.LeavesType.BLOODWOOD);
 
 	public class SpeciesBloodwood extends Species {
@@ -68,6 +74,10 @@ public class TreeBloodwood extends TreeFamily {
 
 		public boolean isBiomePerfect(Biome biome) {
 			return isOneOfBiomes(biome, Biomes.HELL);
+		}
+
+		public boolean isAcceptableSoilForWorldgen(World world, BlockPos pos, IBlockState soilBlockState) {
+			return true; //This method checks the block on the ground, but since bloodwood generates on the ceiling we don't care about this
 		}
 
 		@Override public boolean isThick() {
@@ -169,7 +179,7 @@ public class TreeBloodwood extends TreeFamily {
 				return EnumFacing.DOWN;
 			}
 
-			int probMap[] = new int[6];//6 directions possible DUNSWE
+			int[] probMap = new int[6];//6 directions possible DUNSWE
 
 			//Probability taking direction into account
 			probMap[EnumFacing.DOWN.ordinal()] = signal.dir != EnumFacing.UP ? getUpProbability(): 0;//Favor down
@@ -193,6 +203,202 @@ public class TreeBloodwood extends TreeFamily {
 			int choice = com.ferreusveritas.dynamictrees.util.MathHelper.selectRandomFromDistribution(signal.rand, probMap);//Select a direction from the probability map
 			return newDirectionSelected(EnumFacing.getFront(choice != -1 ? choice : 0), signal);//Default to down if things are screwy
 		}
+
+		BlockPos findCeiling(World world, BlockPos pos) {
+			BlockPos.MutableBlockPos testPos = new BlockPos.MutableBlockPos(pos);
+			do {
+				if (isAcceptableSoil(world.getBlockState(testPos)) && !world.getBlockState(testPos.down()).isFullBlock()) {
+					BlockPos returnPos = testPos.toImmutable().down();
+					if (returnPos.getY() - pos.getY() >= getEnergy(world, returnPos)/1.5f)
+						return returnPos;
+					return null;
+				}
+				testPos.move(EnumFacing.UP);
+			}
+			while (!world.isOutsideBuildHeight(testPos));
+			return null;
+		}
+
+		@Override
+		public boolean generate(World world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+			BlockPos ceiling = findCeiling(world, rootPos.up());
+			if (ceiling != null && world.isBlockLoaded(ceiling)){
+				//generate sapling for now until i figure out how to do the goddamned jocodes
+				plantSapling(world, ceiling);
+				return true;
+			}
+			return false;
+		}
+
+//		@Override
+//		public JoCode getJoCode(String joCodeString) {
+//			return new JoCodeBloodwood(joCodeString);
+//		}
+//
+//		@Override
+//		public JoCode getJoCode(World world, BlockPos rootPos, EnumFacing facing) {
+//			return new JoCodeBloodwood(world, rootPos, facing);
+//		}
+//
+//		protected class JoCodeBloodwood extends JoCode {
+//
+//			public JoCodeBloodwood(String code) {
+//				super(code);
+//			}
+//
+//			public JoCodeBloodwood(World world, BlockPos rootPos, EnumFacing facing) {
+//				super(world, rootPos, facing);
+//				Optional<BlockBranch> branch = TreeHelper.getBranchOpt(world.getBlockState(rootPos.down()));
+//
+//				if(branch.isPresent()) {
+//					NodeCoder coder = new NodeCoder();
+//					//Warning!  This sends a RootyBlock BlockState into a branch for the kickstart of the analysis.
+//					branch.get().analyse(world.getBlockState(rootPos), world, rootPos, EnumFacing.UP, new MapSignal(coder));
+//					instructions = coder.compile(this);
+//					rotate(facing);
+//				}
+//			}
+//
+//			public void generate(World world, Species species, BlockPos rootPosIn, Biome biome, EnumFacing facing, int radius, SafeChunkBounds safeBounds) {
+//
+//				boolean worldGen = safeBounds != SafeChunkBounds.ANY;
+//
+//				//A Tree generation boundary radius is at least 2 and at most 8
+//				radius = MathHelper.clamp(radius, 2, 8);
+//
+//				setFacing(facing);
+//				BlockPos rootPos = species.preGeneration(world, rootPosIn, radius, facing, safeBounds, this);
+//
+//				if(rootPos != BlockPos.ORIGIN) {
+//					IBlockState initialDirtState = world.getBlockState(rootPos);//Save the initial state of the dirt in case this fails
+//					species.placeRootyDirtBlock(world, rootPos, 0);//Set to unfertilized rooty dirt
+//
+//					//Make the tree branch structure
+//					generateFork(world, species, 0, rootPos, false);
+//
+//					// Establish a position for the bottom block of the trunk
+//					BlockPos treePos = rootPos.down();
+//
+//					// Fix branch thicknesses and map out leaf locations
+//					IBlockState treeState = world.getBlockState(treePos);
+//					BlockBranch branch = TreeHelper.getBranch(treeState);
+//					if(branch != null) {// If a branch exists then the growth was successful
+//						ILeavesProperties leavesProperties = species.getLeavesProperties();
+//						SimpleVoxmap leafMap = new SimpleVoxmap(radius * 2 + 1, species.getWorldGenLeafMapHeight(), radius * 2 + 1).setMapAndCenter(treePos, new BlockPos(radius, -species.getWorldGenLeafMapHeight(), radius));
+//						INodeInspector inflator = species.getNodeInflator(leafMap);// This is responsible for thickening the branches
+//						NodeFindEnds endFinder = new NodeFindEnds();// This is responsible for gathering a list of branch end points
+//						MapSignal signal = new MapSignal(inflator, endFinder);// The inflator signal will "paint" a temporary voxmap of all of the leaves and branches.
+//						signal.destroyLoopedNodes = careful;// During worldgen we will not destroy looped nodes
+//						branch.analyse(treeState, world, treePos, EnumFacing.UP, signal);
+//						if(signal.found || signal.overflow) {// Something went terribly wrong.
+//							DynamicTrees.log.debug("Non-viable branch network detected during world generation @ " + treePos);
+//							DynamicTrees.log.debug("Species: " + species);
+//							DynamicTrees.log.debug("Radius: " + radius);
+//							DynamicTrees.log.debug("JoCode: " + this);
+//
+//							// Completely blow away any improperly defined network nodes
+//							cleanupFrankentree(world, treePos, treeState, endFinder.getEnds(), safeBounds);
+//							// Now that everything is clear we may as well regenerate the tree that screwed everything up.
+//							if(!secondChanceRegen) {
+//								secondChanceRegen = true;
+//								generate(world, species, rootPosIn, biome, facing, radius, safeBounds);
+//							}
+//							secondChanceRegen = false;
+//							return;
+//						}
+//						List<BlockPos> endPoints = endFinder.getEnds();
+//
+//						smother(leafMap, leavesProperties);//Use the voxmap to precompute leaf smothering so we don't have to age it as many times.
+//
+//						//Place Growing Leaves Blocks from voxmap
+//						for(SimpleVoxmap.Cell cell: leafMap.getAllNonZeroCells((byte) 0x0F)) {//Iterate through all of the cells that are leaves(not air or branches)
+//							BlockPos.MutableBlockPos cellPos = cell.getPos();
+//							if(safeBounds.inBounds(cellPos, false)) {
+//								IBlockState testBlockState = world.getBlockState(cellPos);
+//								Block testBlock = testBlockState.getBlock();
+//								if(testBlock.isReplaceable(world, cellPos)) {
+//									world.setBlockState(cellPos, leavesProperties.getDynamicLeavesState(cell.getValue()), worldGen ? 16 : 2);//Flag 16 to prevent observers from causing cascading lag
+//								}
+//							} else {
+//								leafMap.setVoxel(cellPos, (byte) 0);
+//							}
+//						}
+//
+//						//Shrink the leafMap down by the safeBounds object so that the aging process won't look for neighbors outside of the bounds.
+//						for(SimpleVoxmap.Cell cell: leafMap.getAllNonZeroCells()) {
+//							BlockPos.MutableBlockPos cellPos = cell.getPos();
+//							if(!safeBounds.inBounds(cellPos, true)) {
+//								leafMap.setVoxel(cellPos, (byte) 0);
+//							}
+//						}
+//
+//						//Age volume for 3 cycles using a leafmap
+//						TreeHelper.ageVolume(world, leafMap, species.getWorldGenAgeIterations(), safeBounds);
+//
+//						//Rot the unsupported branches
+//						if(species.handleRot(world, endPoints, rootPos, treePos, 0, safeBounds)) {
+//							return;//The entire tree rotted away before it had a chance
+//						}
+//
+//						//Allow for special decorations by the tree itself
+//						species.postGeneration(world, rootPos, biome, radius, endPoints, safeBounds, initialDirtState);
+//						MinecraftForge.EVENT_BUS.post(new SpeciesPostGenerationEvent(world, species, rootPos, endPoints, safeBounds, initialDirtState));
+//
+//						//Add snow to parts of the tree in chunks where snow was already placed
+//						addSnow(leafMap, world, rootPos, biome);
+//
+//					} else { //The growth failed.. turn the soil back to what it was
+//						world.setBlockState(rootPos, initialDirtState, careful ? 3 : 2);
+//					}
+//				}
+//			}
+//
+//			protected void smother(SimpleVoxmap leafMap, ILeavesProperties leavesProperties) {
+//
+//				int smotherMax = leavesProperties.getSmotherLeavesMax();
+//
+//				if(smotherMax != 0) { //Smothering is disabled if set to 0
+//
+//					BlockPos saveCenter = leafMap.getCenter();
+//					leafMap.setCenter(new BlockPos(0, -leafMap.getLenY(), 0));
+//
+//					int startY;
+//
+//					//Find topmost block in build volume
+//					for(startY = leafMap.getLenY() - 1; startY >= 0; startY--) {
+//						if(leafMap.isYTouched(startY)) {
+//							break;
+//						}
+//					}
+//
+//					//Precompute smothering
+//					for(int iz = 0; iz < leafMap.getLenZ(); iz++) {
+//						for(int ix = 0; ix < leafMap.getLenX(); ix++) {
+//							int count = 0;
+//							for(int iy = startY; iy >= 0; iy--) {
+//								int v = leafMap.getVoxel(new BlockPos(ix, iy, iz));
+//								if(v == 0) {//Air
+//									count = 0;//Reset the count
+//								} else
+//								if((v & 0x0F) != 0) {//Leaves
+//									count++;
+//									if(count > smotherMax){//Smother value
+//										leafMap.setVoxel(new BlockPos(ix, iy, iz), (byte)0);
+//									}
+//								} else
+//								if((v & 0x10) != 0) {//Twig
+//									count++;
+//									leafMap.setVoxel(new BlockPos(ix, iy + 1, iz), (byte)4);
+//								}
+//							}
+//						}
+//					}
+//
+//					leafMap.setCenter(saveCenter);
+//				}
+//
+//			}
+//		}
 
 	}
 
