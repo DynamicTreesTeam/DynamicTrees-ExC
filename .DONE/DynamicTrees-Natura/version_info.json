@@ -1,7 +1,7 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-natura/files",
 	"1.12.2": {
-		"1.12.2-1.1.7": "+ Tree worldgen now uses JSON system\n+ Updated darkwood to display different leaves in the falling animation\n+ Added config file to customize darkwood fruiting leaves behaviour\n- Tweaked jocodes\n- Tweaked seed textures\n- Fixed upside down rooty dirt not actually being upside down\n",
+		"1.12.2-1.1.7": "+ Tree worldgen now uses JSON system\n+ Updated darkwood to display different leaves in the falling animation\n+ Added config file to customize darkwood fruiting leaves behaviour\n- Tweaked jocodes\n- Tweaked seed textures\n- Fixed upside down rooty dirt not actually being upside down",
 		"1.12.2-1.1.6": "+ Added tooltips to seeds\n- Allowed nether trees to be planted in tained soil and colored grass\n- Minor fixes",
 		"1.12.2-1.1.5": "+ Minor improvements to root colors\n - Fixed growing Bloodwood with bonemeal",
 		"1.12.2-1.1.4": "+ Updated to latest Dynamic Trees version\n+ Added update checker",
