@@ -2,6 +2,7 @@ package maxhyper.dynamictreesic2.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import maxhyper.dynamictreesic2.DynamicTreesIC2;
+import maxhyper.dynamictreesic2.ModConfigs;
 import maxhyper.dynamictreesic2.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,9 +20,6 @@ import java.util.Random;
 import static maxhyper.dynamictreesic2.DynamicTreesIC2.proxyIC2;
 
 public class BlockDynamicBranchRubber extends BlockBranchBasic {
-
-    private static final int nothingToEmptyChance = 200;
-    private static final int emptyToFilledChance = 50;
 
     public BlockDynamicBranchRubber(boolean tick, String name) {
         super(new ResourceLocation(DynamicTreesIC2.MODID,proxyIC2.IC2GetTreeID() + name).toString());
@@ -69,14 +67,14 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
     private static void performUpdate(World worldIn, BlockPos pos){
         if (worldIn.getBlockState(pos).getValue(RADIUS) > 6){
             if (ageFromState(worldIn.getBlockState(pos)) == 0 &&
-                    RANDOM.nextInt(nothingToEmptyChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
+                    RANDOM.nextInt(ModConfigs.nothingToEmptyChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
                     ageFromState(worldIn.getBlockState(pos.up())) <= 0 &&
                     ageFromState(worldIn.getBlockState(pos.down())) <= 0){
 
                 worldIn.setBlockState(pos, stateFromAge(1).withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
 
             } else if (ageFromState(worldIn.getBlockState(pos)) == 1 &&
-                    RANDOM.nextInt(emptyToFilledChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0){
+                    RANDOM.nextInt(ModConfigs.emptyToFilledChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0){
 
                 worldIn.setBlockState(pos, stateFromAge(2).withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
 

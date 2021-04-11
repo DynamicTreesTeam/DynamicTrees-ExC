@@ -38,6 +38,7 @@ public class TreeRubber extends TreeFamily {
 		SpeciesRubberIC(TreeFamily treeFamily) {
 			super(new ResourceLocation(DynamicTreesIC2.MODID, "rubber"), treeFamily, ModContent.rubberLeavesProperties);
 			setSoilLongevity(2);
+
 			if (ModConfigs.classicLookingRubberTree) {
 				setBasicGrowingParameters(0.9f, 10.0f, 6, 4, 0.8f);
 				this.setGrowthLogicKit(new ConiferLogic(4f).setHeightVariation(2));
@@ -80,6 +81,8 @@ public class TreeRubber extends TreeFamily {
 		hasConiferVariants = true;
 
 		//setPrimitiveLog(proxyIC2.IC2GetTreeBlocks(IC2Proxy.TreeBlock.LOG));
+
+		addValidBranches(ModContent.rubberBranchEmpty, ModContent.rubberBranchFilled);
 
 		setDynamicBranch(ModContent.rubberBranch);
 		ModContent.rubberBranchEmpty.setFamily(this);
