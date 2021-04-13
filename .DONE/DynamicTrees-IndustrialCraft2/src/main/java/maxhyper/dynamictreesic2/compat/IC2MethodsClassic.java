@@ -1,5 +1,5 @@
-package maxhyper.dynamictreesic2.compat;
-
+//package maxhyper.dynamictreesic2.compat;
+//
 //import ic2.api.classic.audio.PositionSpec;
 //import ic2.api.item.ElectricItem;
 //import ic2.core.IC2;
@@ -68,52 +68,5 @@ package maxhyper.dynamictreesic2.compat;
 //        @Override
 //    public String IC2GetTreeID() {
 //        return "rubberICC";
-//    }
-//}
-
-//import net.minecraft.block.Block;
-//import net.minecraft.entity.EntityLivingBase;
-//import net.minecraft.entity.player.EntityPlayer;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
-//
-//public class IC2MethodsClassic implements IC2Proxy {
-//
-//    @Override
-//    public void IC2disableWorldGen() {
-//    }
-//
-//    @Override
-//    public ItemStack getIC2ResinStack() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Item getIC2TreeTap(boolean electric) {
-//        return null;
-//    }
-//
-//    @Override
-//    public boolean IC2CanUseElectricItem(ItemStack handStack, double operationEnergyCost) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean IC2UseElectricItem(ItemStack handStack, double operationEnergyCost, EntityLivingBase entity) {
-//        return false;
-//    }
-//
-//    @Override
-//    public void IC2TapPlaySound(EntityPlayer player) {
-//    }
-//
-//    @Override
-//    public Block IC2GetTreeBlocks(TreeBlock block) {
-//        return null;
-//    }
-//    @Override
-//    public String IC2GetTreeID() {
-//        return null;
-//
 //    }
 //}

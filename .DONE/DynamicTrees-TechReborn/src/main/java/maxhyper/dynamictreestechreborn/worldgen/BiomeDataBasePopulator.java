@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.api.worldgen.IBiomeDataBasePopulator;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase;
 import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBase.Operation;
+import com.ferreusveritas.dynamictrees.worldgen.BiomeDataBasePopulatorJson;
 import maxhyper.dynamictreestechreborn.DynamicTreesTechReborn;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
@@ -18,25 +19,17 @@ import java.util.Arrays;
 
 public class BiomeDataBasePopulator implements IBiomeDataBasePopulator {
 
-    private static Species rubber;
+    public static final String RESOURCEPATH = "worldgen/default.json";
+
+    private final BiomeDataBasePopulatorJson jsonPopulator;
+
+    public BiomeDataBasePopulator (){
+        jsonPopulator = new BiomeDataBasePopulatorJson(new ResourceLocation(DynamicTreesTechReborn.MODID, RESOURCEPATH));
+    }
 
     public void populate(BiomeDataBase dbase) {
-        rubber = TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesTechReborn.MODID, "rubber"));
-
-        int chance = Core.worldGen.config.rubberTreeConfig.chance;
-
-        Biome.REGISTRY.forEach(biome -> {
-            if (biome.getRegistryName() != null && Arrays.asList(Core.worldGen.config.rubberTreeConfig.rubberTreeBiomeBlacklist).contains(biome.getRegistryName().toString())) {
-                return;
-            }
-            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(chance - 20).add(rubber, 1);
-                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-            } else if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.FOREST) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
-                BiomePropertySelectors.RandomSpeciesSelector selector = new BiomePropertySelectors.RandomSpeciesSelector().add(chance - 8).add(rubber, 1);
-                dbase.setSpeciesSelector(biome, selector, Operation.SPLICE_BEFORE);
-            }
-        });
+        jsonPopulator.populate(dbase);
     }
+
 }
 

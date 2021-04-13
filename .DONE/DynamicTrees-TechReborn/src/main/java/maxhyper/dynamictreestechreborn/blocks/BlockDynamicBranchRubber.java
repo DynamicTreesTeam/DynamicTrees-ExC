@@ -2,8 +2,8 @@ package maxhyper.dynamictreestechreborn.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import maxhyper.dynamictreestechreborn.DynamicTreesTechReborn;
+import maxhyper.dynamictreestechreborn.ModConfigs;
 import maxhyper.dynamictreestechreborn.ModContent;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.powerSystem.ExternalPowerSystems;
 import reborncore.common.powerSystem.forge.ForgePowerItemManager;
-import reborncore.common.util.WorldUtils;
 import techreborn.init.ModItems;
 import techreborn.init.ModSounds;
 
@@ -24,13 +23,9 @@ import java.util.Random;
 
 public class BlockDynamicBranchRubber extends BlockBranchBasic {
 
-    public BlockDynamicBranchRubber() {
-        super(new ResourceLocation(DynamicTreesTechReborn.MODID,"rubberbranch").toString());
-        setTickRandomly(true);
-    }
-    public BlockDynamicBranchRubber(boolean filled) {
-        super(new ResourceLocation(DynamicTreesTechReborn.MODID,"rubberbranchfilled").toString());
-        setTickRandomly(false);
+    public BlockDynamicBranchRubber(boolean tick, String name) {
+        super(new ResourceLocation(DynamicTreesTechReborn.MODID,"rubber" + name).toString());
+        setTickRandomly(tick);
     }
 
     @Override
@@ -39,74 +34,55 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
         return 2f * (radius * radius) / 64.0f * 8.0f;
     };
 
-    @Override
-    public int getMaxRadius() {
-        return 7;
+    private static IBlockState stateFromAge(int age){
+        switch (age){
+            case 0:
+                return ModContent.rubberBranch.getDefaultState();
+            case 1:
+                return ModContent.rubberBranchFilled.getDefaultState();
+        }
+        throw new IllegalArgumentException();
     }
 
-    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
-        performUpdate(worldIn, pos, state, rand);
-    }
-    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
-        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
-                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
-                worldIn.getBlockState(pos.up()).getBlock() != ModContent.rubberBranchFilled &&
-                worldIn.getBlockState(pos.down()).getBlock() != ModContent.rubberBranchFilled){
-            worldIn.setBlockState(pos, ModContent.rubberBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-        }
+    private static int ageFromState(IBlockState state){
+        if (state.getBlock() == ModContent.rubberBranchFilled){
+            return 1;
+        } else if (state.getBlock() == ModContent.rubberBranch){
+            return 0;
+        } else return -1;
     }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack handStack = playerIn.getHeldItemMainhand();
-        Block branch = ModContent.rubberBranch;
-        Block filledBranch = ModContent.rubberBranchFilled;
         ItemStack resin = new ItemStack(ModItems.PARTS, 1, 31);
-
-        if (state.getBlock() == filledBranch) {
-            ForgePowerItemManager capEnergy = null;
+        int age = ageFromState(state);
+        if (age > 0) {
+            boolean doTap = false;
             if (handStack.getItem() == ModItems.ELECTRIC_TREE_TAP) {
-                capEnergy = new ForgePowerItemManager(handStack);
+                ForgePowerItemManager capEnergy = new ForgePowerItemManager(handStack);
+                if (capEnergy.getEnergyStored() > 20){
+                    capEnergy.extractEnergy(20, false);
+                    ExternalPowerSystems.requestEnergyFromArmor(capEnergy, playerIn);
+                    doTap = true;
+                }
+            } else if (handStack.getItem() == ModItems.TREE_TAP) {
+                handStack.damageItem(1, playerIn);
+                doTap = true;
             }
-            if ((capEnergy != null && capEnergy.getEnergyStored() > 20) || handStack.getItem() == ModItems.TREE_TAP) {
-                worldIn.setBlockState(pos, branch.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
+            if (doTap) {
                 worldIn.playSound(playerIn, pos, ModSounds.SAP_EXTRACT, SoundCategory.BLOCKS, 0.6F, 1F);
-                resin.setCount( 1 + RANDOM.nextInt(3));
-                if (!worldIn.isRemote) {
-                    worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, resin));
-                    if (capEnergy != null) {
-                        capEnergy.extractEnergy(20, false);
-                        ExternalPowerSystems.requestEnergyFromArmor(capEnergy, playerIn);
-                    } else {
-                        handStack.damageItem(1, playerIn);
+                if (!worldIn.isRemote){
+                    if (age == 1){
+                        worldIn.setBlockState(pos, stateFromAge(age - 1).withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)), 3);
+                        resin.setCount(1 + worldIn.rand.nextInt(3));
+                        worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, resin));
                     }
                 }
             }
+            if (doTap) return true;
         }
-
-//            if (Loader.isModLoaded("ic2")) {
-//                if (state.getBlock() == filledBranch) {
-//                    ForgePowerItemManager capEnergy = null;
-//                    if (handStack.getItem() == ItemName.electric_treetap.getInstance()) {
-//                        capEnergy = new ForgePowerItemManager(handStack);
-//                    }
-//                    if ((capEnergy != null && capEnergy.getEnergyStored() > 20) || handStack.getItem() == ItemName.treetap.getInstance()) {
-//                        worldIn.setBlockState(pos, branch.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-//                        IC2.audioManager.playOnce(playerIn, PositionSpec.Hand, "Tools/Treetap.ogg", true, IC2.audioManager.getDefaultVolume());
-//                        resin.setCount(1 + RANDOM.nextInt(3));
-//                        WorldUtils.dropItem(resin, worldIn, pos);
-//                        if (!worldIn.isRemote) {
-//                            if (capEnergy != null) {
-//                                capEnergy.extractEnergy(20, false);
-//                                ExternalPowerSystems.requestEnergyFromArmor(capEnergy, playerIn);
-//                            } else {
-//                                handStack.damageItem(1, playerIn);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
+
 }

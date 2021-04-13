@@ -1,4 +1,4 @@
-package maxhyper.dynamictreesic2;
+package maxhyper.dynamictreestechreborn;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -11,7 +11,6 @@ public class ModConfigs {
 
     public static boolean classicLookingRubberTree;
     public static float rubberDropMultiplier;
-    public static float holeChance;
     public static float sapChance;
 
     public static void preInit(FMLPreInitializationEvent event) {
@@ -24,8 +23,7 @@ public class ModConfigs {
         //Trees
         classicLookingRubberTree = config.getBoolean("classicLookingRubberTree", "trees", false, "Makes rubber trees shorter and pointier, similar to the non-dynamic version.");
         rubberDropMultiplier = config.getFloat("rubberDropMultiplier", "trees", 0.8f, 0.0f, 128.0f, "The multiplier for rubber dropped when chopping a Rubber tree down.");
-        holeChance = config.getFloat("holeChance", "trees", 0.01f, 0, 1, "The chance on each tree growth signal that a rubber tree attempts to generate an empty tapping spot.");
-        sapChance = config.getFloat("sapChance", "trees", 0.02f, 0, 1, "The chance on each tree growth signal that a rubber tree attempts to fill a tapping spot.");
+        sapChance = config.getFloat("sapChance", "trees", 0.02f, 0, 1, "The chance on each tree growth signal that a rubber tree attempts to generate a filled tapping spot.");
 
         config.save();
     }

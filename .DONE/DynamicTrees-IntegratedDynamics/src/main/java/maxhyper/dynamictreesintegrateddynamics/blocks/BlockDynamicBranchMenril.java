@@ -32,13 +32,9 @@ import java.util.Random;
 
 public class BlockDynamicBranchMenril extends BlockBranchBasic {
 
-    public BlockDynamicBranchMenril() {
-        super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID,"menrilbranch").toString());
-        setTickRandomly(true);
-    }
-    public BlockDynamicBranchMenril(boolean filled) {
-        super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID,"menrilbranchfilled").toString());
-        setTickRandomly(false);
+    public BlockDynamicBranchMenril(boolean tick, String name) {
+        super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID,"menril" + name).toString());
+        setTickRandomly(tick);
     }
 
     @Override
@@ -47,32 +43,30 @@ public class BlockDynamicBranchMenril extends BlockBranchBasic {
         return 2f * (radius * radius) / 64.0f * 8.0f;
     }
 
-    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
-        performUpdate(worldIn, pos, state, rand);
-    }
-    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
-        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
-                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
-                worldIn.getBlockState(pos.up()).getBlock() != ModContent.menrilBranchFilled &&
-                worldIn.getBlockState(pos.down()).getBlock() != ModContent.menrilBranchFilled){
-            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-        }
-    }
+//    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+//        super.updateTick(worldIn, pos, state, rand);
+//        performUpdate(worldIn, pos, state, rand);
+//    }
+//    private void performUpdate(World worldIn, BlockPos pos, IBlockState state, Random rand){
+//        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6 &&
+//                RANDOM.nextInt(50 * 8/worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
+//                worldIn.getBlockState(pos.up()).getBlock() != ModContent.menrilBranchFilled &&
+//                worldIn.getBlockState(pos.down()).getBlock() != ModContent.menrilBranchFilled){
+//            worldIn.setBlockState(pos, ModContent.menrilBranchFilled.getDefaultState().withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
+//        }
+//    }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack handStack = playerIn.getHeldItemMainhand();
-        Block branch = ModContent.menrilBranch;
-        Block filledBranch = ModContent.menrilBranchFilled;
         ItemStack resin = new ItemStack(ItemCrystalizedMenrilChunkConfig._instance.getItemInstance());
 
-        if (handStack.isEmpty() && state.getBlock() == filledBranch){
+        if (handStack.isEmpty() && state.getBlock() == ModContent.menrilBranchFilled){
             if (worldIn.isRemote){
                 worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 1f, worldIn.rand.nextFloat() + 0.5f, false);
             } else {
                 worldIn.spawnEntity(new EntityItem(worldIn, pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, resin));
-                worldIn.setBlockState(pos, branch.getDefaultState().withProperty(RADIUS, TreeHelper.getRadius(worldIn, pos)));
+                worldIn.setBlockState(pos, ModContent.menrilBranch.getDefaultState().withProperty(RADIUS, TreeHelper.getRadius(worldIn, pos)));
             }
             return true;
         }

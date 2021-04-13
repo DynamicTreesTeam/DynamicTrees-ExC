@@ -26,7 +26,7 @@ public class DynamicTreesTechReborn {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		proxy.preInit();
+		proxy.preInit(event);
 	}
 	
 	@EventHandler

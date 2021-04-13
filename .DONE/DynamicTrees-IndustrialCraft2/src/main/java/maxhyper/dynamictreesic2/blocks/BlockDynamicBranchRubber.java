@@ -4,7 +4,6 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import maxhyper.dynamictreesic2.DynamicTreesIC2;
 import maxhyper.dynamictreesic2.ModConfigs;
 import maxhyper.dynamictreesic2.ModContent;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,11 +36,6 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
         return 7;
     }
 
-    @Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
-        performUpdate(worldIn, pos);
-    }
-
     private static IBlockState stateFromAge(int age){
         switch (age){
             case 0:
@@ -62,24 +56,6 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
         } else if (state.getBlock() == ModContent.rubberBranch){
             return 0;
         } else return -1;
-    }
-
-    private static void performUpdate(World worldIn, BlockPos pos){
-        if (worldIn.getBlockState(pos).getValue(RADIUS) > 6){
-            if (ageFromState(worldIn.getBlockState(pos)) == 0 &&
-                    RANDOM.nextInt(ModConfigs.nothingToEmptyChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0 &&
-                    ageFromState(worldIn.getBlockState(pos.up())) <= 0 &&
-                    ageFromState(worldIn.getBlockState(pos.down())) <= 0){
-
-                worldIn.setBlockState(pos, stateFromAge(1).withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-
-            } else if (ageFromState(worldIn.getBlockState(pos)) == 1 &&
-                    RANDOM.nextInt(ModConfigs.emptyToFilledChance * 8 / worldIn.getBlockState(pos).getValue(RADIUS)) == 0){
-
-                worldIn.setBlockState(pos, stateFromAge(2).withProperty(RADIUS, worldIn.getBlockState(pos).getValue(RADIUS)));
-
-            }
-       }
     }
 
     @Override
@@ -107,7 +83,7 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
                         }
                     }
                 }
-                return doTap;
+                if (doTap) return true;
             }
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }

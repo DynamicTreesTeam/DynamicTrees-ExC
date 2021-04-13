@@ -1,6 +1,5 @@
 package maxhyper.dynamictreesic2.trees;
 
-import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.items.Seed;
@@ -15,16 +14,13 @@ import maxhyper.dynamictreesic2.ModContent;
 import maxhyper.dynamictreesic2.compat.IC2Proxy;
 import maxhyper.dynamictreesic2.genfeatures.FeatureGenSapLog;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockGrass;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +33,7 @@ public class TreeRubber extends TreeFamily {
 
 		SpeciesRubberIC(TreeFamily treeFamily) {
 			super(new ResourceLocation(DynamicTreesIC2.MODID, "rubber"), treeFamily, ModContent.rubberLeavesProperties);
+
 			setSoilLongevity(2);
 
 			if (ModConfigs.classicLookingRubberTree) {
@@ -47,10 +44,21 @@ public class TreeRubber extends TreeFamily {
 				setBasicGrowingParameters(0.2f, 14.0f, 10, 8, 1.25f);
 				this.addGenFeature(new FeatureGenClearVolume(12));
 			}
-			this.addGenFeature(new FeatureGenSapLog(10, ModContent.rubberBranchEmpty, ModContent.rubberBranchFilled));
+			this.addGenFeature(new FeatureGenSapLog(10, ModContent.rubberBranch, ModContent.rubberBranchEmpty, ModContent.rubberBranchFilled)
+					.setFruitingRadius(5).setEmptyToHoleChance(ModConfigs.holeChance).setHoleToFilledChance(ModConfigs.sapChance));
+
+			envFactor(BiomeDictionary.Type.COLD, 0.75f);
+			envFactor(BiomeDictionary.Type.WET, 1.5f);
+			envFactor(BiomeDictionary.Type.DRY, 0.5f);
+			envFactor(BiomeDictionary.Type.FOREST, 1.1f);
 
 			generateSeed();
-			addDropCreator(new DropCreatorSeed(2f));
+			setupStandardSeedDropping();
+		}
+
+		@Override
+		public boolean useDefaultWailaBody() {
+			return false;
 		}
 
 		@Override

@@ -15,8 +15,8 @@
     }
   },
   {
-    "__comment" : "Adds menril trees sparsely in forest biomes",
-    "select": { "type" : [ "forest" ] },
+    "__comment" : "Adds menril trees sparsely in non conifer forest biomes",
+    "select": { "type" : [ "forest", "!coniferous" ] },
     "apply": {
       "species" : {
         "method" : "before",

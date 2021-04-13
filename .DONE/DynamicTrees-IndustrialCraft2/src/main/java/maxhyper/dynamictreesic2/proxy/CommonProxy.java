@@ -25,7 +25,7 @@ public class CommonProxy {
 	public void init() {
 		ItemStack resin = proxyIC2.getIC2ResinStack();
 		TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesIC2.MODID, "rubber")).
-				addDropCreator(new DropCreatorResin(resin));
+				addDropCreator(new DropCreatorResin(resin, ModConfigs.rubberDropMultiplier));
 
 		// Register sapling replacements.
 		registerSaplingReplacement(proxyIC2.IC2GetTreeBlocks(IC2Proxy.TreeBlock.SAPLING), "rubber");

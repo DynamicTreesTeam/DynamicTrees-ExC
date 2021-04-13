@@ -1,6 +1,8 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-industrial-craft-2/files",
 	"1.12.2": {
+		"1.12.2-1.2.3": "- Minor fixes\n- Modified configs to use a fraction instead of weights",
+		"1.12.2-1.2.2": "+ Updated to Dynamic Trees 0.9.23. This allows the tree felling animation to render branches with holes.\n+ Added config to modify the time it takes for tapping holes to appear",
 		"1.12.2-1.2.1": "- Fixed client crash when tapping rubber",
 		"1.12.2-1.2.0": "+ Implemented compatibility with Industrial Craft 2 Classic (You can now either use IC2 or IC2Classic interchangeably)\n+ Added config setting to make trees look more like the non-dynamic versions (short and pointy)\n- Moved worldgen to be json controlled",
 		"1.12.2-1.1.2": "+ Added update checker",
@@ -11,7 +13,7 @@
 		"1.12.2-1.0.0": "Initial Release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.2.0",
-		"1.12.2-recommended": "1.12.2-1.2.0"
+		"1.12.2-latest": "1.12.2-1.2.3",
+		"1.12.2-recommended": "1.12.2-1.2.3"
 	}
 }

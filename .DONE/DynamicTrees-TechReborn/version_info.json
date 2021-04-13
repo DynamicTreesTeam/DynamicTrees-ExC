@@ -1,13 +1,14 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-tech-reborn/files",
 	"1.12.2": {
+		"1.12.2-1.2.0": "+ Updated to Dynamic Trees 0.9.23. This allows the tree felling animation to render branches with holes.\n+ Added config setting to make trees look more like the non-dynamic versions (short and pointy)\n+ Added config to modify the time it takes for tapping holes to appear\n+ Added custom waila display to show sap drops\n- Moved worldgen to be json controlled",
 		"1.12.2-1.1.0": "+ Added worldgen of rubber trees\n- Minor fixes",
 		"1.12.2-1.0.2": "- Fixed TR trees not spawning",
 		"1.12.2-1.0.1": "- Minor fixes",
 		"1.12.2-1.0.0": "Initial release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.1.0",
-		"1.12.2-recommended": "1.12.2-1.1.0"
+		"1.12.2-latest": "1.12.2-1.2.0",
+		"1.12.2-recommended": "1.12.2-1.2.0"
 	}
 }

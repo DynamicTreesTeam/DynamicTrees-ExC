@@ -1,4 +1,4 @@
-package maxhyper.dynamictreesintegrateddynamics.compat;
+package maxhyper.dynamictreesic2.compat;
 
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
@@ -10,7 +10,6 @@ import com.ferreusveritas.dynamictrees.compat.WailaBranchHandler;
 import com.ferreusveritas.dynamictrees.compat.WailaOther;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeNetVolume;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import maxhyper.dynamictreesintegrateddynamics.trees.TreeMenril;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.SpecialChars;
@@ -23,11 +22,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import org.cyclops.integrateddynamics.item.ItemCrystalizedMenrilChunkConfig;
 
 import java.util.List;
 
-public class WailaBranchHandlerMenril extends WailaBranchHandler {
+import static maxhyper.dynamictreesic2.DynamicTreesIC2.proxyIC2;
+
+public class WailaBranchHandlerRubber extends WailaBranchHandler {
 
     private BlockPos lastPos = BlockPos.ORIGIN;
     private Species lastSpecies = Species.NULLSPECIES;
@@ -89,13 +89,13 @@ public class WailaBranchHandlerMenril extends WailaBranchHandler {
                 Species.LogsAndSticks las = species.getLogsAndSticks(lastVolume);
 
                 if(las.logs > 0) {
-                    ItemStack logStack = new ItemStack(TreeMenril.logBlock);
+                    ItemStack logStack = new ItemStack(proxyIC2.IC2GetTreeBlocks(IC2Proxy.TreeBlock.LOG));
                     String logName = logStack.getItem().getRegistryName().toString();
                     renderString += SpecialChars.getRenderString("waila.stack", "1", logName, String.valueOf(las.logs), String.valueOf(logStack.getItemDamage()));
 
-                    ItemStack resin = new ItemStack(ItemCrystalizedMenrilChunkConfig._instance.getItemInstance());
+                    ItemStack resin = proxyIC2.getIC2ResinStack();
                     String amberName = resin.getItem().getRegistryName().toString();
-                    renderString += SpecialChars.getRenderString("waila.stack", "1", amberName, String.valueOf((int)(lastVolume * maxhyper.dynamictreesintegrateddynamics.ModConfigs.menrilResinMultiplier)), String.valueOf(resin.getItemDamage()));
+                    renderString += SpecialChars.getRenderString("waila.stack", "1", amberName, String.valueOf((int)(lastVolume * maxhyper.dynamictreesic2.ModConfigs.rubberDropMultiplier)), String.valueOf(resin.getItemDamage()));
                 }
 
                 if(las.sticks > 0) {

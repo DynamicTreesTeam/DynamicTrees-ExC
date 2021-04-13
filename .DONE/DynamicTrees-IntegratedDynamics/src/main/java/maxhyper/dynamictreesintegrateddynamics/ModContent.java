@@ -91,9 +91,9 @@ public class ModContent {
 		registry.register(blockMenrilBerries);
 
 		//Branches
-		menrilBranch = new BlockDynamicBranchMenril();
+		menrilBranch = new BlockDynamicBranchMenril(false, "branch");
 		registry.register(menrilBranch);
-		menrilBranchFilled = new BlockDynamicBranchMenril(true);
+		menrilBranchFilled = new BlockDynamicBranchMenril(true, "branchfilled");
 		registry.register(menrilBranchFilled);
 
 		//Leaves

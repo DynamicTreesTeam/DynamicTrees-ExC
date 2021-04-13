@@ -13,6 +13,7 @@ import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreesintegrateddynamics.DynamicTreesIntegratedDynamics;
 import maxhyper.dynamictreesintegrateddynamics.ModConfigs;
 import maxhyper.dynamictreesintegrateddynamics.ModContent;
+import maxhyper.dynamictreesintegrateddynamics.genfeatures.FeatureGenSapLog;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
@@ -54,12 +55,13 @@ public class TreeMenril extends TreeFamily {
 
 			setFlowerSeasonHold(fruitingOffset - 0.5f, fruitingOffset + 0.5f);
 
-
 			addDropCreator(new DropCreatorSeed(1f));
 			if (ModConfigs.menrilBerriesOnMenrilTrees) {
 				ModContent.blockMenrilBerries.setSpecies(this);
 				this.addGenFeature((new FeatureGenFruit(ModContent.blockMenrilBerries)));
 			}
+			addGenFeature(new FeatureGenSapLog(10, ModContent.menrilBranch, ModContent.menrilBranchFilled)
+					.setFruitingRadius(7).setSapChance(ModConfigs.sapChance));
 			addGenFeature(new FeatureGenRoots(8).setScaler(getRootScaler()));//Finally Generate Roots
 			addGenFeature(new FeatureGenMound(7));
 		}
@@ -113,6 +115,8 @@ public class TreeMenril extends TreeFamily {
 		super(new ResourceLocation(DynamicTreesIntegratedDynamics.MODID, "menril"));
 
 		setPrimitiveLog(logBlock.getDefaultState());
+
+		addValidBranches(ModContent.menrilBranchFilled);
 
 		setDynamicBranch(ModContent.menrilBranch);
 		ModContent.menrilBranchFilled.setFamily(this);

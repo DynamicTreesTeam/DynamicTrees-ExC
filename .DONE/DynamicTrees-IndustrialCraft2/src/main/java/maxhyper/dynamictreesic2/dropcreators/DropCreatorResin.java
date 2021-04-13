@@ -16,13 +16,13 @@ public class DropCreatorResin extends DropCreator {
 
 	private final Item resin;
 	private final int resinMeta;
-	private final int dropCount;
+	private float dropCount;
 
-	public DropCreatorResin(ItemStack resinStack) {
+	public DropCreatorResin(ItemStack resinStack, float dropCount) {
 		super(new ResourceLocation(DynamicTreesIC2.MODID, resinStack.getItem().getRegistryName().getResourcePath()));
 		this.resin = resinStack.getItem();
 		this.resinMeta = resinStack.getMetadata();
-		this.dropCount = resinStack.getCount();
+		this.dropCount = dropCount;
 	}
 
 	@Override
@@ -31,8 +31,8 @@ public class DropCreatorResin extends DropCreator {
 	}
 
 	protected List<ItemStack> getLogDrops(World world, Species species, BlockPos breakPos, Random random, List<ItemStack> dropList, float volume) {
-			dropList.add(new ItemStack(resin, (random.nextInt(1 + (int) volume * dropCount*2)), resinMeta));
-			return dropList;
+		dropList.add(new ItemStack(resin, (int) (volume * dropCount), resinMeta));
+		return dropList;
 	}
 
 }
