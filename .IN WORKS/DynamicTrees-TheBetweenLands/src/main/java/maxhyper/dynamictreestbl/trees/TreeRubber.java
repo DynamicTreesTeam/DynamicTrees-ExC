@@ -41,7 +41,7 @@ public class TreeRubber extends TreeFamily {
 		SpeciesRubber(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.rubberLeavesProperties);
 
-			setBasicGrowingParameters(0f, 18.0f, 10, 12, 1.25f);
+			setBasicGrowingParameters(0.2f, 18.0f, 10, 12, 1.2f); //
 			this.setGrowthLogicKit(TreeRegistry.findGrowthLogicKit("darkoak"));
 			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.WET, 1.5f);
@@ -49,10 +49,20 @@ public class TreeRubber extends TreeFamily {
 			envFactor(Type.FOREST, 1.1f);
 
 			generateSeed();
-			addDropCreator(new DropCreatorSeed(2f));
+			setupStandardSeedDropping();
 
 			this.addGenFeature(new FeatureGenClearVolume(12));
 			addAcceptableSoils(DirtHelper.MUDLIKE);
+		}
+
+		@Override
+		public boolean useDefaultWailaBody() {
+			return false;
+		}
+
+		@Override
+		public LogsAndSticks getLogsAndSticks(float volume) {
+			return super.getLogsAndSticks(volume*4);
 		}
 
 		@Override
@@ -80,7 +90,7 @@ public class TreeRubber extends TreeFamily {
 
 	@Override
 	public ItemStack getPrimitiveLogItemStack(int qty) {
-		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 4, 0);
+		ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock));
 		stack.setCount(MathHelper.clamp(qty, 0, 64));
 		return stack;
 	}

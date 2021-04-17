@@ -62,7 +62,10 @@ public class TreeMenril extends TreeFamily {
 			}
 			addGenFeature(new FeatureGenSapLog(10, ModContent.menrilBranch, ModContent.menrilBranchFilled)
 					.setFruitingRadius(7).setSapChance(ModConfigs.sapChance));
-			addGenFeature(new FeatureGenRoots(8).setScaler(getRootScaler()));//Finally Generate Roots
+			addGenFeature(new FeatureGenRoots(8).setScaler((inRadius, trunkRadius) -> {
+				float scale = MathHelper.clamp(trunkRadius >= 8 ? (trunkRadius / 10f) : 0, 0, 1);
+				return (int) (inRadius * scale);
+			}));
 			addGenFeature(new FeatureGenMound(7));
 		}
 
@@ -88,13 +91,6 @@ public class TreeMenril extends TreeFamily {
 				if (signal.energy > 3) signal.energy = 3;
 			}
 			return newDir;
-		}
-		
-		protected BiFunction<Integer, Integer, Integer> getRootScaler() {
-			return (inRadius, trunkRadius) -> {
-				float scale = MathHelper.clamp(trunkRadius >= 8 ? (trunkRadius / 10f) : 0, 0, 1);
-				return (int) (inRadius * scale);
-			};
 		}
 
 		@Override

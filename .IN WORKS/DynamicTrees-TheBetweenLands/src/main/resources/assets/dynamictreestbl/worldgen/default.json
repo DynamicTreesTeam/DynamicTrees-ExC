@@ -1,0 +1,38 @@
+[
+  {
+    "select" : { "name": "thebetweenlands:swamplands" },
+    "apply" : {
+      "species" : {
+        "random" : {
+          "dynamictreestbl:sap" : 1,
+          "dynamictreestbl:nibbletwig" : 2,
+          "dynamictreestbl:rubber" : 1
+        }
+      },
+      "chance" : 0.3
+    }
+  },
+  {
+    "select" : { "name": "thebetweenlands:coarse_islands" },
+    "apply" : {
+      "species" : {
+        "random" : {
+          "dynamictreestbl:sap" : 1
+        }
+      },
+      "chance" : 0.2
+    }
+  },
+  {
+    "select" : { "name": "thebetweenlands:patchy_islands" },
+    "apply" : {
+      "species" : {
+        "random" : {
+          "dynamictreestbl:sap" : 1,
+          "dynamictreestbl:hearthgrove" : 2
+        }
+      },
+      "chance" : 0.3
+    }
+  }
+]

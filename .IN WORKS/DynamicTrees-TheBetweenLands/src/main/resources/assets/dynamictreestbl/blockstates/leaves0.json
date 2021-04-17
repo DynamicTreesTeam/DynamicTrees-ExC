@@ -7,8 +7,28 @@
 	},
 	"variants": {
 		"tree": {
-			"0": {"textures": { "all": "thebetweenlands:blocks/leaves_rubber_tree"}},
-			"1": {"textures": { "all": "thebetweenlands:blocks/leaves_sap_tree"}},
+			"0": {
+				"model": "thebetweenlands:internal/winter_event",
+				"custom": {
+					"model_base": "thebetweenlands:block/internal/spook_event",
+					"model_base_data": {
+						"model_base": "thebetweenlands:block/leaves_rubber_tree",
+						"model_active": "thebetweenlands:block/leaves_rubber_tree_spook"
+					},
+					"model_active": "thebetweenlands:block/leaves_rubber_tree_frosty"
+				}
+			},
+			"1": {
+				"model": "thebetweenlands:internal/winter_event",
+				"custom": {
+					"model_base": "thebetweenlands:block/internal/spook_event",
+					"model_base_data": {
+						"model_base": "thebetweenlands:block/leaves_sap_tree",
+						"model_active": "thebetweenlands:block/leaves_sap_tree_spook"
+					},
+					"model_active": "thebetweenlands:block/leaves_sap_tree_frosty"
+				}
+			},
 			"2": {"textures": { "all": "thebetweenlands:blocks/leaves_hearthgrove_tree"}},
 			"3": {"textures": { "all": "thebetweenlands:blocks/leaves_nibbletwig_tree"}}
 		},

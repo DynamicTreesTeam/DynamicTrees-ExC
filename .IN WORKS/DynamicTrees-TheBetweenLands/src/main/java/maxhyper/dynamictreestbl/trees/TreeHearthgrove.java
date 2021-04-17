@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
+import com.ferreusveritas.dynamictrees.blocks.BlockRootyWater;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -14,11 +15,13 @@ import maxhyper.dynamictreestbl.DynamicTreesTBL;
 import maxhyper.dynamictreestbl.ModContent;
 import maxhyper.dynamictreestbl.models.BakedModelBlockBranchHearthgrove;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -26,11 +29,13 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.registries.IForgeRegistry;
+import thebetweenlands.client.render.particle.BLParticles;
 import thebetweenlands.common.block.terrain.*;
 import thebetweenlands.common.registries.BlockRegistry;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class TreeHearthgrove extends TreeFamily {
 
@@ -45,7 +50,7 @@ public class TreeHearthgrove extends TreeFamily {
 		SpeciesHearthgrove(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.hearthgroveLeavesProperties);
 
-			setBasicGrowingParameters(0.2f, 12, 6, 5, 0.6f);
+			setBasicGrowingParameters(0.2f, 12, 6, 5, 0.7f); //
 
 			setSeedStack(new ItemStack(ModContent.hearthgroveSeed));
 			setupStandardSeedDropping();
@@ -97,7 +102,7 @@ public class TreeHearthgrove extends TreeFamily {
 //		};
 
 		@Override
-		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
+		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
 			return super.customDirectionManipulation(world, pos, radius, signal, probMap);
 		}
 
@@ -157,6 +162,68 @@ public class TreeHearthgrove extends TreeFamily {
 			@Override
 			public BlockRenderLayer getBlockLayer() {
 				return BlockRenderLayer.CUTOUT_MIPPED;
+			}
+
+			@Override
+			public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+				BlockPos.PooledMutableBlockPos checkPos = BlockPos.PooledMutableBlockPos.retain();
+
+				boolean hasWater = false;
+
+				IBlockState downState = worldIn.getBlockState(pos.down());
+
+				if(downState.getBlock() instanceof BlockRootyWater) {
+					if(rand.nextInt(4) == 0)
+					{
+						for(int i = 0; i < 5; i++) {
+							float x = pos.getX() + rand.nextFloat();
+							float y = pos.getY() - 0.1F;
+							float z = pos.getZ() + rand.nextFloat();
+
+							BLParticles.PURIFIER_STEAM.spawn(worldIn, x, y, z);
+						}
+					}
+					if(rand.nextInt(2) == 0)
+					{
+						for(int i = 0; i < 5; i++) {
+							float x = pos.getX() - 1 + rand.nextFloat()*2;
+							float y = pos.getY() - 2 + rand.nextFloat()*3;
+							float z = pos.getZ() - 1 + rand.nextFloat()*2;
+
+							worldIn.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, y, z, 0, 0, 0);
+						}
+					}
+					hasWater = true;
+				}
+
+				if(!hasWater) {
+					for(EnumFacing offset : EnumFacing.HORIZONTALS) {
+						if(rand.nextFloat() < 0.04F) {
+							checkPos.setPos(pos.getX() + offset.getFrontOffsetX(), pos.getY(), pos.getZ() + offset.getFrontOffsetZ());
+							IBlockState offsetState = worldIn.getBlockState(checkPos);
+							if(!offsetState.isSideSolid(worldIn, checkPos, offset.getOpposite())) {
+								float x = pos.getX() + (offset.getFrontOffsetX() > 0 ? 1.05F : offset.getFrontOffsetX() == 0 ? rand.nextFloat() : -0.05F);
+								float y = pos.getY() + rand.nextFloat();
+								float z = pos.getZ() + (offset.getFrontOffsetZ() > 0 ? 1.05F : offset.getFrontOffsetZ() == 0 ? rand.nextFloat() : -0.05F);
+
+								switch(rand.nextInt(3)) {
+									default:
+									case 0:
+										BLParticles.EMBER_1.spawn(worldIn, x, y, z);
+										break;
+									case 1:
+										BLParticles.EMBER_2.spawn(worldIn, x, y, z);
+										break;
+									case 2:
+										BLParticles.EMBER_3.spawn(worldIn, x, y, z);
+										break;
+								}
+							}
+						}
+					}
+				}
+
+				checkPos.release();
 			}
 		};
 	}

@@ -1,7 +1,11 @@
 {
-	"parent": "dynamictrees:block/smartmodel/branch",
+	"parent": "dynamictreestbl:block/smartmodel/branch",
 	"textures": {
 		"bark": "thebetweenlands:blocks/log_rubber_stump",
-		"rings": "thebetweenlands:blocks/log_rubber_top"
+		"rings": "thebetweenlands:blocks/log_rubber_top",
+		"bark_frosty": "thebetweenlands:blocks/log_rubber_stump_frosty",
+		"rings_frosty": "thebetweenlands:blocks/log_rubber_top_frosty",
+		"bark_spook": "thebetweenlands:blocks/log_rubber_stump_spook",
+		"rings_spook": "thebetweenlands:blocks/log_rubber_top_spook"
 	}
 }

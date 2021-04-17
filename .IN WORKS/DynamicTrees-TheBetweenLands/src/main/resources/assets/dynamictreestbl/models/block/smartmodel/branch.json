@@ -1,0 +1,10 @@
+{
+    "textures": {
+        "bark": "blocks/stone",
+        "rings": "blocks/stone",
+        "bark_frosty": "blocks/stone",
+        "rings_frosty": "blocks/stone",
+        "bark_spook": "blocks/stone",
+        "rings_spook": "blocks/stone"
+    }
+}

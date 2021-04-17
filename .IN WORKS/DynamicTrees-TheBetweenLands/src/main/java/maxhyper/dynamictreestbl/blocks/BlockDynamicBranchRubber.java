@@ -1,6 +1,7 @@
 package maxhyper.dynamictreestbl.blocks;
 
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
+import com.ferreusveritas.dynamictrees.trees.Species;
 import maxhyper.dynamictreestbl.DynamicTreesTBL;
 import maxhyper.dynamictreestbl.ModContent;
 import net.minecraft.block.state.IBlockState;
@@ -15,6 +16,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thebetweenlands.common.block.misc.BlockRubberTap;
 import thebetweenlands.common.registries.ItemRegistry;
+
+import java.util.List;
 
 public class BlockDynamicBranchRubber extends BlockBranchBasic {
 
@@ -38,7 +41,6 @@ public class BlockDynamicBranchRubber extends BlockBranchBasic {
         ItemStack handStack = playerIn.getHeldItemMainhand();
         if (handStack.getItem() == ItemRegistry.BL_BUCKET && worldIn.getBlockState(pos).getValue(RADIUS) == 4 && worldIn.getBlockState(pos.offset(facing)).getBlock().isReplaceable(worldIn, pos.offset(facing))){
             if (handStack.getItem().getMetadata(handStack) == 0){
-                //System.out.println("X: "+hitX + " | Y: "+ hitY+" | Z: "+ hitZ);
                 worldIn.setBlockState(pos.offset(facing), ModContent.dynamicWeedwoodRubberTap.getDefaultState().withProperty(BlockRubberTap.FACING, facing));
                 if (!playerIn.isCreative()) handStack.shrink(1);
                 worldIn.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.PLAYERS, 1, 1);

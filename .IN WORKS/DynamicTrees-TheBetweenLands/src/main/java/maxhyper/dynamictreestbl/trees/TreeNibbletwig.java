@@ -5,21 +5,19 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenConiferTopper;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenVine;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import maxhyper.dynamictreestbl.DynamicTreesTBL;
 import maxhyper.dynamictreestbl.ModContent;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import thebetweenlands.common.block.terrain.*;
 import thebetweenlands.common.registries.BlockRegistry;
 import thebetweenlands.common.registries.ItemRegistry;
 
@@ -32,15 +30,19 @@ public class TreeNibbletwig extends TreeFamily {
 	public static Block logBlock = BlockRegistry.LOG_NIBBLETWIG;
 	public static Block saplingBlock = BlockRegistry.SAPLING_NIBBLETWIG;
 
-	public class SpeciesSap extends Species {
+	public class SpeciesNibbletwig extends Species {
 
-		SpeciesSap(TreeFamily treeFamily) {
+		SpeciesNibbletwig(TreeFamily treeFamily) {
 			super(treeFamily.getName(), treeFamily, ModContent.nibbletwigLeavesProperties);
 
-			setBasicGrowingParameters(0.6f, 20, 10, 4, 0.2f);
+			setSoilLongevity(3);
+
+			setBasicGrowingParameters(0.2f, 20, 10, 4, 0.8f); //
 
 			generateSeed();
 			addAcceptableSoils(DirtHelper.MUDLIKE);
+
+			addGenFeature(new FeatureGenVine().setVineBlock(BlockRegistry.POISON_IVY).setQuantity(12));
 		}
 
 		@Override
@@ -141,7 +143,7 @@ public class TreeNibbletwig extends TreeFamily {
 
 	@Override
 	public void createSpecies() {
-		setCommonSpecies(new SpeciesSap(this));
+		setCommonSpecies(new SpeciesNibbletwig(this));
 	}
 
 	@Override

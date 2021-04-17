@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "dynamictreestbl:rubberbranch#dynamictree" }
+        "normal": { "model": "dynamictreestbl:rubberbranch#dynamictreeblevent" }
     }
 }

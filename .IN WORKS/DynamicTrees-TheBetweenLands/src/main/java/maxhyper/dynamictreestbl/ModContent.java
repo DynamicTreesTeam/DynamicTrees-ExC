@@ -6,10 +6,7 @@ import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
-import com.ferreusveritas.dynamictrees.blocks.BlockRootyWater;
-import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
-import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.*;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
@@ -21,6 +18,7 @@ import maxhyper.dynamictreestbl.trees.TreeHearthgrove;
 import maxhyper.dynamictreestbl.trees.TreeNibbletwig;
 import maxhyper.dynamictreestbl.trees.TreeRubber;
 import maxhyper.dynamictreestbl.trees.TreeSap;
+import maxhyper.dynamictreestbl.worldgen.BiomeDataBasePopulator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLiquid;
@@ -58,6 +56,7 @@ import java.util.Collections;
 @ObjectHolder(DynamicTreesTBL.MODID)
 public class ModContent {
 
+	public static BlockDynamicLeaves betweenlandsLeaves;
 	public static BlockBranch rubberBranch;
 	public static ILeavesProperties rubberLeavesProperties, sapLeavesProperties, hearthgroveLeavesProperties, nibbletwigLeavesProperties;
 
@@ -72,6 +71,7 @@ public class ModContent {
 	public static ArrayList<TreeFamily> trees = new ArrayList<TreeFamily>();
 	@SubscribeEvent
 	public static void registerDataBasePopulators(final BiomeDataBasePopulatorRegistryEvent event) {
+		event.register(new BiomeDataBasePopulator());
 	}
 
 	@SubscribeEvent
@@ -88,6 +88,8 @@ public class ModContent {
 		registry.register(blockRootyWaterStagnant);
 		blockRootyMud = new BlockRootyMud(false);
 		registry.register(blockRootyMud);
+		betweenlandsLeaves = new BlockDynamicLeavesBetweenlands();
+		registry.register(betweenlandsLeaves);
 
 		dynamicWeedwoodRubberTap = new BlockDynamicRubberTap(BlockRegistry.WEEDWOOD_PLANKS.getDefaultState(), 540) {
 			@Override protected ItemStack getBucket(boolean withRubber) {
@@ -104,15 +106,19 @@ public class ModContent {
 
 		hearthgroveSeed = new ItemHearthgroveSeed("hearthgroveseed");
 
-		rubberLeavesProperties = setUpLeaves(TreeRubber.leavesBlock, "deciduous", 2, 13);
-		sapLeavesProperties = setUpLeaves(TreeSap.leavesBlock,  "palm");
-		hearthgroveLeavesProperties = setUpLeaves(TreeHearthgrove.leavesBlock, "acacia");
-		nibbletwigLeavesProperties = setUpLeaves(TreeNibbletwig.leavesBlock, "conifer");
+		rubberLeavesProperties = setUpLeaves(TreeRubber.leavesBlock, "deciduous", 3, 13, true);
+		sapLeavesProperties = setUpLeaves(TreeSap.leavesBlock,  new ResourceLocation(DynamicTreesTBL.MODID, "sapTree").toString(), 1, 13);
+		hearthgroveLeavesProperties = setUpLeaves(TreeHearthgrove.leavesBlock, "acacia", 4, 13);
+		nibbletwigLeavesProperties = setUpLeaves(TreeNibbletwig.leavesBlock, "conifer", 4, 13);
 
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 0, rubberLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 1, sapLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 2, hearthgroveLeavesProperties);
-		LeavesPaging.getLeavesBlockForSequence(DynamicTreesTBL.MODID, 3, nibbletwigLeavesProperties);
+		rubberLeavesProperties.setDynamicLeavesState(betweenlandsLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+		sapLeavesProperties.setDynamicLeavesState(betweenlandsLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
+		hearthgroveLeavesProperties.setDynamicLeavesState(betweenlandsLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 2));
+		nibbletwigLeavesProperties.setDynamicLeavesState(betweenlandsLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 3));
+		betweenlandsLeaves.setProperties(0, rubberLeavesProperties);
+		betweenlandsLeaves.setProperties(1, sapLeavesProperties);
+		betweenlandsLeaves.setProperties(2, hearthgroveLeavesProperties);
+		betweenlandsLeaves.setProperties(3, nibbletwigLeavesProperties);
 
 		TreeFamily rubberTree = new TreeRubber();
 		TreeFamily sapTree = new TreeSap();
@@ -125,7 +131,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTBL.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 
 		//(soilBlockState.getBlock() instanceof BlockCragrock && soilBlockState.getValue(BlockCragrock.VARIANT) != BlockCragrock.EnumCragrockType.DEFAULT)
 		DirtHelper.registerSoil(BlockRegistry.SWAMP_DIRT, DirtHelper.DIRTLIKE);
@@ -152,18 +158,10 @@ public class ModContent {
 		DirtHelper.registerSoil(blockRootyMud, DirtHelper.MUDLIKE);
 	}
 
-	private static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit){
-		ILeavesProperties leavesProperties;
-		leavesProperties = new LeavesProperties(leavesBlock.getDefaultState(), TreeRegistry.findCellKit(cellKit))
-		{
-			@Override public ItemStack getPrimitiveLeavesItemStack() {
-				return new ItemStack(leavesBlock);
-			}
-			@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) { return 0xFFFFFF; }
-		};
-		return leavesProperties;
-	}
 	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light){
+		return setUpLeaves (leavesBlock, cellKit, smother, light,false);
+	}
+	public static ILeavesProperties setUpLeaves (Block leavesBlock, String cellKit, int smother, int light, boolean foliageColors){
 		ILeavesProperties leavesProperties;
 		leavesProperties = new LeavesProperties(leavesBlock.getDefaultState(), TreeRegistry.findCellKit(cellKit))
 		{
@@ -171,6 +169,10 @@ public class ModContent {
 			@Override public int getLightRequirement() { return light; } //Default: 13
 			@Override public ItemStack getPrimitiveLeavesItemStack() {
 				return new ItemStack(leavesBlock);
+			}
+			@Override public int foliageColorMultiplier(IBlockState state, IBlockAccess world, BlockPos pos) {
+				if (foliageColors) return super.foliageColorMultiplier(state, world, pos);
+				return 0xFFFFFF;
 			}
 		};
 		return leavesProperties;
@@ -181,7 +183,7 @@ public class ModContent {
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent
@@ -215,5 +217,6 @@ public class ModContent {
 		ModelLoader.setCustomStateMapper(blockRootyWaterSwamp, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
 		ModelLoader.setCustomStateMapper(blockRootyWaterStagnant, new StateMap.Builder().ignore(BlockRootyWater.LIFE, BlockLiquid.LEVEL).build());
 		ModelLoader.setCustomStateMapper(blockRootyMud, new StateMap.Builder().ignore(BlockRootyWater.LIFE).build());
+		ModelLoader.setCustomStateMapper(betweenlandsLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 	}
 }

@@ -19,6 +19,6 @@ public class BlockSludgyDirtOverride extends BlockSludgyDirt {
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess iblockaccess, BlockPos pos, EnumFacing side) {
         Block block = iblockaccess.getBlockState(pos.offset(side)).getBlock();
-        return !(block instanceof BlockSludgyDirt) && !(block instanceof BlockSpreadingSludgyDirt) && !(block instanceof BlockRootyMud) && !(block.isOpaqueCube(blockState));
+        return !(block instanceof BlockSludgyDirt) && !(block instanceof BlockSpreadingSludgyDirt) && !(block instanceof BlockRootyMud);
     }
 }
