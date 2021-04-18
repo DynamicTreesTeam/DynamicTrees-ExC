@@ -1,5 +1,6 @@
 package maxhyper.dynamictreestbl.blocks;
 
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import maxhyper.dynamictreestbl.DynamicTreesTBL;
@@ -46,7 +47,9 @@ public class BlockBranchRubber extends BlockBranchBasic {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack handStack = playerIn.getHeldItemMainhand();
-        if (handStack.getItem() == ItemRegistry.BL_BUCKET && worldIn.getBlockState(pos).getValue(RADIUS) == 4 && worldIn.getBlockState(pos.offset(facing)).getBlock().isReplaceable(worldIn, pos.offset(facing))){
+        if (facing.getAxis() != EnumFacing.Axis.Y && handStack.getItem() == ItemRegistry.BL_BUCKET
+                && state.getValue(RADIUS) == 4 && getSideConnectionRadius(worldIn, pos, 4, EnumFacing.UP) >= 4
+                && worldIn.getBlockState(pos.offset(facing)).getBlock().isReplaceable(worldIn, pos.offset(facing))){
             if (handStack.getItem().getMetadata(handStack) == 0){
                 worldIn.setBlockState(pos.offset(facing), ModContent.dynamicWeedwoodRubberTap.getDefaultState().withProperty(BlockRubberTap.FACING, facing));
                 if (!playerIn.isCreative()) handStack.shrink(1);
