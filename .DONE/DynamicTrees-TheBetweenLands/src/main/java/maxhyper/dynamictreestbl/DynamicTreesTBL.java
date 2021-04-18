@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid= DynamicTreesTBL.MODID, name= DynamicTreesTBL.NAME, dependencies = DynamicTreesTBL.DEPENDENCIES)
+@Mod(modid= DynamicTreesTBL.MODID, name= DynamicTreesTBL.NAME, dependencies = DynamicTreesTBL.DEPENDENCIES, updateJSON = "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TheBetweenLands/version_info.json?raw=true")
 public class DynamicTreesTBL {
 	
 	public static final String MODID = "dynamictreestbl";
