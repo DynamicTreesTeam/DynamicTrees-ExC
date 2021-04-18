@@ -1,11 +1,11 @@
 [
 {
   "modid": "dynamictreestbl",
-  "name": "Dynamic Trees for The Between Lands",
-  "description": "Adds compatibilities between Dynamic Trees and The Between Lands",
+  "name": "Dynamic Trees for The Betweenlands",
+  "description": "Adds compatibilities between Dynamic Trees and The Betweenlands",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-between-lands",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-betweenlands",
   "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-TheBetweenLands/version_info.json?raw=true",
   "authorList": ["Max Hyper"],
   "credits": "Ferreusveritas for Dynamic Trees and Angry Pixel for The Between Lands",

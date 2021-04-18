@@ -137,6 +137,7 @@ public class ModContent {
 		DirtHelper.registerSoil(BlockRegistry.SLUDGY_DIRT, DirtHelper.SLIMELIKE);
 		DirtHelper.registerSoil(BlockRegistry.SPREADING_SLUDGY_DIRT, DirtHelper.SLIMELIKE);
 		DirtHelper.registerSoil(BlockRegistry.MUD, DirtHelper.MUDLIKE);
+		DirtHelper.registerSoil(BlockRegistry.COMPACTED_MUD, DirtHelper.MUDLIKE);
 		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.MUDLIKE);
 		DirtHelper.registerSoil(BlockRegistry.SILT, DirtHelper.SANDLIKE);

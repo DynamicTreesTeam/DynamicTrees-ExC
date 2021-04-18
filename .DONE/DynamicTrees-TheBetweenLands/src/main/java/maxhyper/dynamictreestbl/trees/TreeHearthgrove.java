@@ -153,81 +153,83 @@ public class TreeHearthgrove extends TreeFamily {
 		return super.getRegisterableItems(itemList);
 	}
 
-	@Override
-	public BlockBranch createBranch() {
-		return new BlockBranchBasic(getName()+"branch") {
-			@Override
-			public int getMaxRadius() {
-				return BakedModelBlockBranchHearthgrove.maxRad;
-			}
+	public static BlockBranch hearthgroveBranch = new BlockBranchBasic("hearthgrovebranch") {
+		@Override
+		public int getMaxRadius() {
+			return BakedModelBlockBranchHearthgrove.maxRad;
+		}
 
-			@Override
-			public BlockRenderLayer getBlockLayer() {
-				return BlockRenderLayer.CUTOUT_MIPPED;
-			}
+		@Override
+		public BlockRenderLayer getBlockLayer() {
+			return BlockRenderLayer.CUTOUT_MIPPED;
+		}
 
-			@Override
-			public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-				BlockPos.PooledMutableBlockPos checkPos = BlockPos.PooledMutableBlockPos.retain();
+		@Override
+		public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+			BlockPos.PooledMutableBlockPos checkPos = BlockPos.PooledMutableBlockPos.retain();
 
-				boolean hasWater = false;
+			boolean hasWater = false;
 
-				IBlockState downState = worldIn.getBlockState(pos.down());
+			IBlockState downState = worldIn.getBlockState(pos.down());
 
-				if(downState.getBlock() instanceof BlockRootyWater) {
-					if(rand.nextInt(4) == 0)
-					{
-						for(int i = 0; i < 5; i++) {
-							float x = pos.getX() + rand.nextFloat();
-							float y = pos.getY() - 0.1F;
-							float z = pos.getZ() + rand.nextFloat();
+			if(downState.getBlock() instanceof BlockRootyWater) {
+				if(rand.nextInt(4) == 0)
+				{
+					for(int i = 0; i < 5; i++) {
+						float x = pos.getX() + rand.nextFloat();
+						float y = pos.getY() - 0.1F;
+						float z = pos.getZ() + rand.nextFloat();
 
-							BLParticles.PURIFIER_STEAM.spawn(worldIn, x, y, z);
-						}
+						BLParticles.PURIFIER_STEAM.spawn(worldIn, x, y, z);
 					}
-					if(rand.nextInt(2) == 0)
-					{
-						for(int i = 0; i < 5; i++) {
-							float x = pos.getX() - 1 + rand.nextFloat()*2;
-							float y = pos.getY() - 2 + rand.nextFloat()*3;
-							float z = pos.getZ() - 1 + rand.nextFloat()*2;
-
-							worldIn.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, y, z, 0, 0, 0);
-						}
-					}
-					hasWater = true;
 				}
+				if(rand.nextInt(2) == 0)
+				{
+					for(int i = 0; i < 5; i++) {
+						float x = pos.getX() - 1 + rand.nextFloat()*2;
+						float y = pos.getY() - 2 + rand.nextFloat()*3;
+						float z = pos.getZ() - 1 + rand.nextFloat()*2;
 
-				if(!hasWater) {
-					for(EnumFacing offset : EnumFacing.HORIZONTALS) {
-						if(rand.nextFloat() < 0.04F) {
-							checkPos.setPos(pos.getX() + offset.getFrontOffsetX(), pos.getY(), pos.getZ() + offset.getFrontOffsetZ());
-							IBlockState offsetState = worldIn.getBlockState(checkPos);
-							if(!offsetState.isSideSolid(worldIn, checkPos, offset.getOpposite())) {
-								float x = pos.getX() + (offset.getFrontOffsetX() > 0 ? 1.05F : offset.getFrontOffsetX() == 0 ? rand.nextFloat() : -0.05F);
-								float y = pos.getY() + rand.nextFloat();
-								float z = pos.getZ() + (offset.getFrontOffsetZ() > 0 ? 1.05F : offset.getFrontOffsetZ() == 0 ? rand.nextFloat() : -0.05F);
+						worldIn.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, y, z, 0, 0, 0);
+					}
+				}
+				hasWater = true;
+			}
 
-								switch(rand.nextInt(3)) {
-									default:
-									case 0:
-										BLParticles.EMBER_1.spawn(worldIn, x, y, z);
-										break;
-									case 1:
-										BLParticles.EMBER_2.spawn(worldIn, x, y, z);
-										break;
-									case 2:
-										BLParticles.EMBER_3.spawn(worldIn, x, y, z);
-										break;
-								}
+			if(!hasWater) {
+				for(EnumFacing offset : EnumFacing.HORIZONTALS) {
+					if(rand.nextFloat() < 0.04F) {
+						checkPos.setPos(pos.getX() + offset.getFrontOffsetX(), pos.getY(), pos.getZ() + offset.getFrontOffsetZ());
+						IBlockState offsetState = worldIn.getBlockState(checkPos);
+						if(!offsetState.isSideSolid(worldIn, checkPos, offset.getOpposite())) {
+							float x = pos.getX() + (offset.getFrontOffsetX() > 0 ? 1.05F : offset.getFrontOffsetX() == 0 ? rand.nextFloat() : -0.05F);
+							float y = pos.getY() + rand.nextFloat();
+							float z = pos.getZ() + (offset.getFrontOffsetZ() > 0 ? 1.05F : offset.getFrontOffsetZ() == 0 ? rand.nextFloat() : -0.05F);
+
+							switch(rand.nextInt(3)) {
+								default:
+								case 0:
+									BLParticles.EMBER_1.spawn(worldIn, x, y, z);
+									break;
+								case 1:
+									BLParticles.EMBER_2.spawn(worldIn, x, y, z);
+									break;
+								case 2:
+									BLParticles.EMBER_3.spawn(worldIn, x, y, z);
+									break;
 							}
 						}
 					}
 				}
-
-				checkPos.release();
 			}
-		};
+
+			checkPos.release();
+		}
+	};
+
+	@Override
+	public BlockBranch createBranch() {
+		return hearthgroveBranch;
 	}
 
 	public static class FeatureGenMangrovelings implements IPostGenFeature {

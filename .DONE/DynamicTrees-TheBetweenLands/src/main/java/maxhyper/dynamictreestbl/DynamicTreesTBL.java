@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class DynamicTreesTBL {
 	
 	public static final String MODID = "dynamictreestbl";
-	public static final String NAME = "Dynamic Trees for The Between Lands";
+	public static final String NAME = "Dynamic Trees for The Betweenlands";
 	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST + ";required-after:thebetweenlands";
 	
 	@Mod.Instance
