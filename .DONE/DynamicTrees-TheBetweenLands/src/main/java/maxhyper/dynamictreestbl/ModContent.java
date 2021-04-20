@@ -129,6 +129,7 @@ public class ModContent {
 
 		//(soilBlockState.getBlock() instanceof BlockCragrock && soilBlockState.getValue(BlockCragrock.VARIANT) != BlockCragrock.EnumCragrockType.DEFAULT)
 		DirtHelper.registerSoil(BlockRegistry.SWAMP_DIRT, DirtHelper.DIRTLIKE);
+		DirtHelper.registerSoil(BlockRegistry.PURIFIED_SWAMP_DIRT, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlockRegistry.COARSE_SWAMP_DIRT, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlockRegistry.SWAMP_GRASS, DirtHelper.DIRTLIKE);
 		DirtHelper.registerSoil(BlockRegistry.DEAD_GRASS, DirtHelper.DIRTLIKE);

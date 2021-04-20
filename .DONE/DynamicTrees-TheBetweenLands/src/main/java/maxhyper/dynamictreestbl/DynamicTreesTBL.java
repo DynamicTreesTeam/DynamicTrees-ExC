@@ -14,7 +14,7 @@ public class DynamicTreesTBL {
 	
 	public static final String MODID = "dynamictreestbl";
 	public static final String NAME = "Dynamic Trees for The Betweenlands";
-	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST + ";required-after:thebetweenlands";
+	public static final String DEPENDENCIES = "required-after:" + ModConstants.DYNAMICTREES_LATEST + ";required-after:thebetweenlands@[3.7.3,)";
 	
 	@Mod.Instance
 	public static DynamicTreesTBL instance;
