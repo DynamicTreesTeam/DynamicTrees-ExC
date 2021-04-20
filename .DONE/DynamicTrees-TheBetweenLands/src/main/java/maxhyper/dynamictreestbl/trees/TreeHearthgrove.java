@@ -153,7 +153,7 @@ public class TreeHearthgrove extends TreeFamily {
 		return super.getRegisterableItems(itemList);
 	}
 
-	public static BlockBranch hearthgroveBranch = new BlockBranchBasic("hearthgrovebranch") {
+	public static BlockBranch hearthgroveBranch = new BlockBranchBasic(new ResourceLocation(DynamicTreesTBL.MODID,"hearthgrovebranch").toString()) {
 		@Override
 		public int getMaxRadius() {
 			return BakedModelBlockBranchHearthgrove.maxRad;

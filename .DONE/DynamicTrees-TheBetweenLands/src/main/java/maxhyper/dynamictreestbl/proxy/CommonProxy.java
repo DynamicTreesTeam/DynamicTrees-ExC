@@ -30,7 +30,7 @@ public class CommonProxy {
 		System.out.println("The following warnings are intentional overrides made by Dynamic Trees for The Between Lands. Please do not report this as a bug.");
 		System.out.println("########");
 		RegistryReplacements.replaceWaters();
-		RegistryReplacements.replaceSludgyDirt();
+		//RegistryReplacements.replaceSludgyDirt();
 		System.out.println("########");
 		System.out.println("End of intentional override warnings");
 	}

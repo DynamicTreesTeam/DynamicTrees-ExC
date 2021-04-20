@@ -1,11 +1,11 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-the-betweenlands/files",
 	"1.12.2": {
-		"1.12.2-1.0.1": "Fixed crash when placing a bucket on a rubber tree in some situations",
+		"1.12.2-1.0.1": "- Fixed crash when placing a bucket on a rubber tree in some situations\n- Fixed broken sludgy dirt block\n- Fixed Hearthgrove name",
 		"1.12.2-1.0.0": "Initial release"
 	},
 	"promos": {
-		"1.12.2-latest": "1.12.2-1.0.0",
-		"1.12.2-recommended": "1.12.2-1.0.0"
+		"1.12.2-latest": "1.12.2-1.0.1",
+		"1.12.2-recommended": "1.12.2-1.0.1"
 	}
 }
