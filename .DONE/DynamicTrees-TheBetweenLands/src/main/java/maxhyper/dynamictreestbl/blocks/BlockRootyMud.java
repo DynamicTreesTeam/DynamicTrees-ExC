@@ -49,7 +49,7 @@ public class BlockRootyMud extends BlockRooty {
         return false;
     }
     public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
-        return layer == BlockRenderLayer.TRANSLUCENT;
+        return layer == BlockRenderLayer.TRANSLUCENT || layer == BlockRenderLayer.CUTOUT_MIPPED;
     }
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess access, BlockPos pos, EnumFacing side) {

@@ -21,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -152,7 +153,7 @@ public class ModContent {
 		ArrayList<Block> treeBlocks = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableBlocks(treeBlocks));
 		treeBlocks.addAll(LeavesPaging.getLeavesMapForModId(DynamicTreesTConstruct.MODID).values());
-		registry.registerAll(treeBlocks.toArray(new Block[treeBlocks.size()]));
+		registry.registerAll(treeBlocks.toArray(new Block[0]));
 
 		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.SLIMELIKE);
 		DirtHelper.registerSoil(TinkerWorld.slimeGrass, DirtHelper.DIRTLIKE);
@@ -169,7 +170,7 @@ public class ModContent {
 
 		ArrayList<Item> treeItems = new ArrayList<>();
 		trees.forEach(tree -> tree.getRegisterableItems(treeItems));
-		registry.registerAll(treeItems.toArray(new Item[treeItems.size()]));
+		registry.registerAll(treeItems.toArray(new Item[0]));
 	}
 
 	@SubscribeEvent

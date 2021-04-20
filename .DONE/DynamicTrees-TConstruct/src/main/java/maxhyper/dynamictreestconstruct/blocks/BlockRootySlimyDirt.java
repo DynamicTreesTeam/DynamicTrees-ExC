@@ -61,8 +61,11 @@ public class BlockRootySlimyDirt extends BlockRooty {
 	///////////////////////////////////////////
 
 	@Override
+	public boolean isOpaqueCube(IBlockState s) {
+		return false;
+	}
 	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
-		return layer == BlockRenderLayer.CUTOUT_MIPPED || layer == BlockRenderLayer.SOLID;
+		return layer == BlockRenderLayer.TRANSLUCENT || layer == BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
 }
