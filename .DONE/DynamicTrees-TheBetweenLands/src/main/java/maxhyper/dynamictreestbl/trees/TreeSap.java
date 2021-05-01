@@ -85,39 +85,40 @@ public class TreeSap extends TreeFamily {
 		@Override
 		protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
 
-			if (!signal.isInTrunk()){
-				signal.tapering = 0.6f;
-				EnumFacing relativePosToRoot = getRelativeFace(pos, signal.rootPos);
+			if (signal.energy > 1){
+				if (!signal.isInTrunk()){
+					signal.tapering = 0.6f;
+					EnumFacing relativePosToRoot = getRelativeFace(pos, signal.rootPos);
 
-				for (EnumFacing dir: EnumFacing.values()){
-					if (dir != EnumFacing.DOWN){
-						probMap[dir.getIndex()] = TreeHelper.isBranch(world.getBlockState(pos.offset(dir)))?2:0;
+					for (EnumFacing dir: EnumFacing.values()){
+						if (dir != EnumFacing.DOWN){
+							probMap[dir.getIndex()] = TreeHelper.isBranch(world.getBlockState(pos.offset(dir)))?2:0;
+						}
 					}
-				}
 
-				boolean isBranchSide = TreeHelper.isBranch(world.getBlockState(pos.offset(relativePosToRoot)));
-				boolean isBranchUp = TreeHelper.isBranch(world.getBlockState(pos.up()));
-				probMap[EnumFacing.UP.getIndex()] = isBranchSide && !isBranchUp? 0:2;
-				probMap[relativePosToRoot.getIndex()] = isBranchUp && !isBranchSide? 0:2;
+					boolean isBranchSide = TreeHelper.isBranch(world.getBlockState(pos.offset(relativePosToRoot)));
+					boolean isBranchUp = TreeHelper.isBranch(world.getBlockState(pos.up()));
+					probMap[EnumFacing.UP.getIndex()] = isBranchSide && !isBranchUp? 0:2;
+					probMap[relativePosToRoot.getIndex()] = isBranchUp && !isBranchSide? 0:2;
 
-				if (isNextToTrunk(pos, signal)){
-					signal.energy = 5;
-					probMap[EnumFacing.UP.getIndex()] = 0;
-				}
-
-				probMap[EnumFacing.DOWN.getIndex()] = 0;
-
-			} else {
-				signal.tapering = 0.2f;
-
-				for (EnumFacing dir: EnumFacing.HORIZONTALS){
-					if ( TreeHelper.isBranch(world.getBlockState(pos.offset(dir).up(2))) || TreeHelper.isBranch(world.getBlockState(pos.offset(dir).down(2))) ){
-						probMap[dir.getIndex()] = 0;
+					if (isNextToTrunk(pos, signal)){
+						signal.energy = 5;
+						probMap[EnumFacing.UP.getIndex()] = 0;
 					}
+
+					probMap[EnumFacing.DOWN.getIndex()] = 0;
+
+				} else {
+					signal.tapering = 0.2f;
+
+					for (EnumFacing dir: EnumFacing.HORIZONTALS){
+						if ( TreeHelper.isBranch(world.getBlockState(pos.offset(dir).up(2))) || TreeHelper.isBranch(world.getBlockState(pos.offset(dir).down(2))) ){
+							probMap[dir.getIndex()] = 0;
+						}
+					}
+					probMap[EnumFacing.UP.getIndex()] += 5;
 				}
-				probMap[EnumFacing.UP.getIndex()] += 5;
 			}
-
 			probMap[signal.dir.getOpposite().ordinal()] = 0;
 
 			return probMap;
