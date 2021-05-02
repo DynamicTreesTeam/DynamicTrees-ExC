@@ -5,7 +5,6 @@ import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,11 +18,6 @@ public class DTQuarkRegistries {
     @SubscribeEvent
     public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
         event.registerType(new ResourceLocation(DynamicTreesQuark.MOD_ID, "blossom"), BlossomLeavesProperties.TYPE);
-    }
-
-    @SubscribeEvent
-    public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
-        event.registerType(new ResourceLocation(DynamicTreesQuark.MOD_ID, "blossom"), BlossomSpecies.TYPE);
     }
 
     @SubscribeEvent
