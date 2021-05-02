@@ -1,8 +1,0 @@
-{
-  "sweet_blossom": { "leaves": "quark:pink_blossom_leaves" },
-  "frosty_blossom": { "leaves": "quark:blue_blossom_leaves" },
-  "serene_blossom": { "leaves": "quark:lavender_blossom_leaves" },
-  "warm_blossom": { "leaves": "quark:orange_blossom_leaves" },
-  "sunny_blossom": { "leaves": "quark:yellow_blossom_leaves" },
-  "fiery_blossom": { "leaves": "quark:red_blossom_leaves" }
-}

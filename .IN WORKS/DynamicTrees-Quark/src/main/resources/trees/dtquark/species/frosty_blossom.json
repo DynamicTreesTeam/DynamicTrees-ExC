@@ -1,0 +1,23 @@
+{
+  "type": "dtquark:blossom",
+  "family": "dtquark:blossom",
+  "tapering": 0.3,
+  "signal_energy": 14.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtquark:frosty_blossom",
+  "generate_seed": true,
+  "generate_sapling": true,
+  "environment_factors" : {
+    "cold": 1,
+    "hot": 1,
+    "dry": 1,
+    "forest": 1
+  },
+  "seed_drop_rarity": 1.0,
+  "stick_drop_rarity": 1.0,
+  "perfect_biomes": { "types": [ "forest", "overworld" ] },
+  "primitive_sapling": "quark:blue_blossom_sapling",
+  "features" : [
+    "bee_nest"
+  ]
+}

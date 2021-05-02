@@ -1,0 +1,74 @@
+[
+  {
+    "select": { "type" : "cold" },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:frosty_blossom" : 1,
+          "..." : 300
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : "swamp" },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:serene_blossom" : 1,
+          "..." : 300
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : "savanna" },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:warm_blossom" : 1,
+          "..." : 100
+        }
+      }
+    }
+  },
+  {
+    "select": { "type" : "mountain" },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:sweet_blossom" : 1,
+          "..." : 200
+        }
+      }
+    }
+  },
+  {
+    "select": { "types" : ["plains", "!savanna"] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:sunny_blossom" : 1,
+          "..." : 50
+        }
+      }
+    }
+  },
+  {
+    "select": { "types" : [ "mesa", "sparse" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtquark:fiery_blossom" : 1,
+          "..." : 40
+        }
+      }
+    }
+  }
+]
