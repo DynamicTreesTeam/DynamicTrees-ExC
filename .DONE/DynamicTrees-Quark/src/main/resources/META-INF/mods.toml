@@ -23,7 +23,7 @@ version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Dynamic Trees for Quark" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+#updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-Quark/version_info.json?raw=true" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
@@ -64,6 +64,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     modId="dynamictrees"
     mandatory=true
     versionRange="[0.10.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.dtquark]]
+    modId="dynamictreesplus"
+    mandatory=false
+    versionRange="[0.1.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.dtquark]]
