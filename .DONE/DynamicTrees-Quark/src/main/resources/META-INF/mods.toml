@@ -65,7 +65,7 @@ Compatibility Mod between Dynamic trees and Quark
 [[dependencies.dtquark]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.16.4,1.17)"
     ordering="NONE"
     side="BOTH"
 

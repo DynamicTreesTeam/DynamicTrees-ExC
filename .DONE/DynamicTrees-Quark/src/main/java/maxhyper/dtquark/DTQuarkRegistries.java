@@ -26,7 +26,7 @@ public class DTQuarkRegistries {
         DirtHelper.registerSoil(glowcelium, DirtHelper.DIRT_LIKE);
         DirtHelper.registerSoil(glowcelium, DirtHelper.FUNGUS_LIKE);
 
-        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(false, DynamicTreesQuark.MOD_ID))
+        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesQuark.MOD_ID))
             event.getRegistry().register(rooty);
     }
 
