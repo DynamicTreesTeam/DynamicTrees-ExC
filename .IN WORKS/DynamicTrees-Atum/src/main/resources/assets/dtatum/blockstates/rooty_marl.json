@@ -1,0 +1,6 @@
+{
+  "multipart": [
+    {   "apply": { "model": "atum:block/marl" }},
+    {	"apply": { "model": "dynamictrees:block/roots" }}
+  ]
+}

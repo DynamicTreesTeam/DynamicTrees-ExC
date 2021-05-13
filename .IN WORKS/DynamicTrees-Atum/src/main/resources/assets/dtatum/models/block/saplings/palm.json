@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/smartmodel/sapling",
+  "textures": {
+    "particle": "atum:block/palm_leaves",
+    "log": "atum:block/palm_log",
+    "leaves": "atum:block/palm_leaves"
+  }
+}

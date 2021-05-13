@@ -1,0 +1,6 @@
+{
+  "multipart": [
+    {   "apply": { "model": "atum:block/fertile_soil" }},
+    {	"apply": { "model": "dynamictrees:block/roots" }}
+  ]
+}

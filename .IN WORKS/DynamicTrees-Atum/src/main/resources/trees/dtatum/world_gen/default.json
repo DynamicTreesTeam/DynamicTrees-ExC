@@ -1,0 +1,10 @@
+[
+  {
+    "__comment": "Cancel standard tree features from atum biomes.",
+    "select": { "name": "atum.*" },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "atum"
+    }
+  }
+]
