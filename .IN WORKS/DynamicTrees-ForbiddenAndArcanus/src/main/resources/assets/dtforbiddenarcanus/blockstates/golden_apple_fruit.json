@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dtforbiddenarcanus:block/fruit/golden_apple_age0" },
+        "age=1": { "model": "dtforbiddenarcanus:block/fruit/golden_apple_age1" },
+        "age=2": { "model": "dtforbiddenarcanus:block/fruit/golden_apple_age2" },
+        "age=3": { "model": "dtforbiddenarcanus:block/fruit/golden_apple_age3" }
+    }
+}

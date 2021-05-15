@@ -48,7 +48,7 @@ archivesBaseName = config.mod_name
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 minecraft {
-    //forge mappings cause quark doesn't seem to like the mojmaps...
+    //forge mappings cause forbbiden and arcanus doesn't seem to like the mojmaps...
     mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     runs {
@@ -61,7 +61,7 @@ minecraft {
             properties 'mixin.env.disableRefMap' : 'true'
 
             mods {
-                dttwilightforest {
+                dtforbiddenarcanus {
                     source sourceSets.main
                 }
             }
@@ -76,7 +76,7 @@ minecraft {
             properties 'mixin.env.disableRefMap' : 'true'
 
             mods {
-                dttwilightforest {
+                dtforbiddenarcanus {
                     source sourceSets.main
                 }
             }

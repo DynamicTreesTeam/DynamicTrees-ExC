@@ -19,6 +19,7 @@ repositories {
         url "https://maven.tehnut.info"
     }
     maven {
+        url "https://www.cursemaven.com"
     }
     maven {
         url "http://harleyoconnor.com/maven"
