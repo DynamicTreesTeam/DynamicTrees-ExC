@@ -1,3 +1,10 @@
 {
+  "block.dtforbiddenarcanus.cherrywood_branch": "Cherrywood Tree",
+  "block.dtforbiddenarcanus.mysterywood_branch": "Mysterywood Tree",
 
+  "species.dtforbiddenarcanus.cherrywood": "Cherrywood",
+  "species.dtforbiddenarcanus.mysterywood": "Mysterywood",
+
+  "item.dtforbiddenarcanus.cherrywood_seed": "Cherry Peach Pit",
+  "item.dtforbiddenarcanus.mysterywood_seed": "Mysterywood Seed"
 }

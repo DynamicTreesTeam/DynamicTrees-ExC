@@ -88,6 +88,8 @@ dependencies {
     // Not sure if we need this one, what is a "forge" anyway?
     minecraft "net.minecraftforge:forge:${config.mc_version}-${config.forge_version}"
 
+
+
     // Compile Hwyla API, but don't include in runtime.
     compileOnly fg.deobf("mcp.mobius.waila:Hwyla:${config.hwyla_version}:api")
     // At runtime, use the full Hwyla mod.
@@ -99,7 +101,8 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${config.jei_version}")
 
     // Compile Dynamic Trees, of course.
-    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${config.mc_version}:${config.dynamic_trees_version}")
+    //implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${config.mc_version}:${config.dynamic_trees_version}")
+    implementation fg.deobf("blank:DynamicTrees:1.16.5-0.10.0-Beta10.8")
     // Compile Dynamic Trees Plus
     runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${config.mc_version}:${config.dynamic_trees_plus_version}")
 

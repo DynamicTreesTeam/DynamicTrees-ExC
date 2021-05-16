@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "forbidden_arcanus:block/soulless_sand" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

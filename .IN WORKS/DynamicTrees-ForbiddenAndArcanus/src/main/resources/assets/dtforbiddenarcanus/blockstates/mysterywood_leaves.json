@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": { "model": "forbidden_arcanus:block/mysterywood_leaves" }
+    "": [
+      { "model": "forbidden_arcanus:block/mysterywood_leaves" },
+      { "model": "forbidden_arcanus:block/mysterywood_leaves_2" }
+    ]
   }
 }
