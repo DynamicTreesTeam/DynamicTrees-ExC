@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:block/smartmodel/branch",
+	"textures": {
+		"bark": "jurassicraft:blocks/psaronius_log",
+		"rings": "jurassicraft:blocks/psaronius_log_top"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "jurassicraft:blocks/ginkgo_log",
+		"rings": "jurassicraft:blocks/ginkgo_log_top"
+	}
+}

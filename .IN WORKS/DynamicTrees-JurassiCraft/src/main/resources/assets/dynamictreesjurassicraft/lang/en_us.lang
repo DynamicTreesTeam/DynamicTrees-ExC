@@ -1,0 +1,15 @@
+item.dynamictreesjurassicraft:calamitesseed.name=Calamites Spore
+item.dynamictreesjurassicraft:araucariaseed.name=Araucaria Cone
+item.dynamictreesjurassicraft:ginkgoseed.name=Ginkgo Seed
+item.dynamictreesjurassicraft:phoenixseed.name=Phoenix Seed
+item.dynamictreesjurassicraft:psaroniusseed.name=Psaronius Seed
+
+tile.dynamictreesjurassicraft:leaves0.name=Leaves
+tile.dynamictreesjurassicraft:leaves_phoenix.name=Palm Leaves
+tile.dynamictreesjurassicraft:leaves_psaronius.name=Palm Leaves
+
+tile.dynamictreesjurassicraft:calamitesbranch.name=Calamites Tree
+tile.dynamictreesjurassicraft:araucariabranch.name=Araucaria Tree
+tile.dynamictreesjurassicraft:ginkgobranch.name=Ginkgo Tree
+tile.dynamictreesjurassicraft:phoenixbranch.name=Phoenix Tree
+tile.dynamictreesjurassicraft:psaroniusbranch.name=Psaronius Tree
