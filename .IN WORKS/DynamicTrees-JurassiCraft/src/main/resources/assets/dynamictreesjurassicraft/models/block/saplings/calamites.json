@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "jurassicraft:blocks/calamites_leaves",
-        "log": "jurassicraft:blocks/calamites_log",
-        "leaves": "jurassicraft:blocks/calamites_leaves"
-    }
-}

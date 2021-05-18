@@ -1,7 +1,0 @@
-{   "parent": "dynamictrees:block/sapling",
-    "textures": {
-        "particle": "jurassicraft:blocks/araucaria_leaves",
-        "log": "jurassicraft:blocks/araucaria_log",
-        "leaves": "jurassicraft:blocks/araucaria_leaves"
-    }
-}

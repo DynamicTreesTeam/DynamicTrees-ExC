@@ -1,7 +1,0 @@
-{
-	"parent": "dynamictrees:block/smartmodel/branch",
-	"textures": {
-		"bark": "jurassicraft:blocks/calamites_log",
-		"rings": "jurassicraft:blocks/calamites_log_top"
-	}
-}

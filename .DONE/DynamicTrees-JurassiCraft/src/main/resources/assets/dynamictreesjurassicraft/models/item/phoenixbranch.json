@@ -1,0 +1,7 @@
+{
+	"parent": "dynamictrees:item/branch",
+	"textures": {
+		"bark": "jurassicraft:blocks/log_phoenix",
+		"rings": "jurassicraft:blocks/log_phoenix_top"
+	}
+}

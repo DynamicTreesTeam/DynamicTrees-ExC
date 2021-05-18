@@ -1,0 +1,22 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"transform": "forge:default-block",
+    	"model": "leaves",
+		"textures": { "all": "blocks/leaves" }
+	},
+	"variants": {
+		"tree": {
+			"0": {"textures": { "all": "jurassicraft:blocks/leaves_calamites" }},
+			"1": {"textures": { "all": "jurassicraft:blocks/leaves_araucaria" }},
+			"2": {"textures": { "all": "jurassicraft:blocks/leaves_ginkgo" }},
+			"3": {}
+		},
+		"hydro": {
+			"1": {},
+			"2": {},
+			"3": {},
+			"4": {}
+		}
+	}
+}

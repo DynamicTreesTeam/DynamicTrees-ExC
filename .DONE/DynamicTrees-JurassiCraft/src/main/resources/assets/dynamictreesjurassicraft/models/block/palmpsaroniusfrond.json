@@ -1,0 +1,6 @@
+{
+  "parent": "dynamictreesjurassicraft:block/smartmodel/dynamicpalmfronds",
+  "textures": {
+    "frond": "dynamictreesjurassicraft:blocks/palmpsaroniusfrond"
+  }
+}

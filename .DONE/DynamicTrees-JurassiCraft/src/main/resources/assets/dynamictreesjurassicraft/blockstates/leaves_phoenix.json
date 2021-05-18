@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "hydro": {
+      "1": {"model": "dynamictreesjurassicraft:palmphoenixfrond#dynamicpalmfrondsjcphoenix"},
+      "2": {"model": "dynamictreesjurassicraft:palmphoenixfrond#dynamicpalmfrondsjcphoenix"},
+      "3": {"model": "dynamictreesjurassicraft:palmphoenixcoretop"},
+      "4": {"model": "dynamictreesjurassicraft:palmphoenixcorebottom"}
+    },
+    "tree": {
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {}
+    }
+  }
+}

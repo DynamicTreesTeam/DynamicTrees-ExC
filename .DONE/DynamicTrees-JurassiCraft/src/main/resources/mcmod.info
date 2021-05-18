@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dynamictreesjurassicraft",
+  "name": "Dynamic Trees for JurassiCraft",
+  "description": "Adds compatibilities between dynamic trees and JurassiCraft",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-jurassicraft",
+  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-JurassiCraft/version_info.json?raw=true",
+  "authorList": ["Max Hyper"],
+  "credits": "Ferreusveritas for Dynamic Trees",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
