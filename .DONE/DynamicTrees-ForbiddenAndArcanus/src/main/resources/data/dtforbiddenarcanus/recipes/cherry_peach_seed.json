@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "forbidden_arcanus:cherry_peach"
+    },
+    {
+      "item": "dynamictrees:dirt_bucket"
+    }
+  ],
+  "result": {
+    "item": "dtforbiddenarcanus:cherrywood_seed"
+  }
+}
