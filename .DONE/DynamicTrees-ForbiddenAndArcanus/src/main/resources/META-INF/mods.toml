@@ -30,10 +30,10 @@ version="${file.jarVersion}" #mandatory
 displayName="Dynamic Trees for Forbidden and Arcanus" #mandatory
 
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-#updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-Quark/version_info.json?raw=true" #optional
+updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-ForbiddenArcanus/version_info.json?raw=true" #optional
 
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-quark" #optional
+displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-forbidden-arcanus" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="" #optional
