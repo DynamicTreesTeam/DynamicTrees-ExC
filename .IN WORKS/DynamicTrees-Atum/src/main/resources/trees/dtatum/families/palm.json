@@ -1,5 +1,6 @@
 {
-  "common_leaves": "dtatum:palm_leaves",
+  "type": "dtatum:palm",
+  "common_leaves": "dtatum:palm",
   "common_species": "dtatum:palm",
   "primitive_log": "atum:palm_log",
   "primitive_stripped_log": "atum:stripped_palm_log",

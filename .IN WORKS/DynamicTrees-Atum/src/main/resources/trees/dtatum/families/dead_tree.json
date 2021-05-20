@@ -1,5 +1,5 @@
 {
-  "common_leaves": "dtatum:dry_leaves",
+  "common_leaves": "dtatum:dry",
   "common_species": "dtatum:dead_tree",
   "primitive_log": "atum:deadwood_log",
   "primitive_stripped_log": "atum:stripped_deadwood_log",

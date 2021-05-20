@@ -1,3 +1,5 @@
 {
-  "primitive_leaves": "atum:dry_leaves"
+  "type": "dtatum:palm",
+  "primitive_leaves": "atum:dry_leaves",
+  "cell_kit": "dynamictrees:palm"
 }

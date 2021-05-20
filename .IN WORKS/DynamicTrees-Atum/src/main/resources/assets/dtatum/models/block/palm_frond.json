@@ -1,0 +1,6 @@
+{
+  "loader": "dtatum:palm_fronds",
+  "textures": {
+    "frond": "dtatum:block/palm_frond"
+  }
+}
