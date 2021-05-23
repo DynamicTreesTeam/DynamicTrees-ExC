@@ -1,5 +1,5 @@
 {
-  "loader": "dynamictrees:item/branch",
+  "parent": "dynamictrees:item/branch",
   "textures": {
     "bark": "atum:block/deadwood_log",
     "rings": "atum:block/deadwood_log_top"
