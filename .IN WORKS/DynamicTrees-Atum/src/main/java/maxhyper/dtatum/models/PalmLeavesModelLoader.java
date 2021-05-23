@@ -16,6 +16,7 @@ public class PalmLeavesModelLoader implements IModelLoader<PalmLeavesModelGeomet
     public static final Logger LOGGER = LogManager.getLogger();
 
     private static final String FROND = "frond";
+    private static final String TEXTURES = "textures";
 
     @Override
     public void onResourceManagerReload(IResourceManager resourceManager) { }
@@ -24,7 +25,6 @@ public class PalmLeavesModelLoader implements IModelLoader<PalmLeavesModelGeomet
     public PalmLeavesModelGeometry read(JsonDeserializationContext deserializationContext, JsonObject modelObject) {
         final JsonObject textures = this.getTexturesObject(modelObject);
         return new PalmLeavesModelGeometry(getTextureLocation(textures, FROND));
-
     }
 
     protected ResourceLocation getTextureLocation (final JsonObject textureObject, final String textureElement) {
@@ -38,10 +38,10 @@ public class PalmLeavesModelLoader implements IModelLoader<PalmLeavesModelGeomet
     }
 
     protected JsonObject getTexturesObject (final JsonObject modelContents) {
-        if (!modelContents.has(FROND) || !modelContents.get(FROND).isJsonObject())
-            this.throwRequiresElement(FROND, "Json Object");
+        if (!modelContents.has(TEXTURES) || !modelContents.get(TEXTURES).isJsonObject())
+            this.throwRequiresElement(TEXTURES, "Json Object");
 
-        return modelContents.getAsJsonObject(FROND);
+        return modelContents.getAsJsonObject(TEXTURES);
     }
 
     protected ResourceLocation getResLocOrThrow(final String resLocStr) {

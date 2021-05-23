@@ -6,8 +6,15 @@ import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
+import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.EnumProperty;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -15,6 +22,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class PalmLeavesProperties extends LeavesProperties {
 
@@ -31,6 +42,8 @@ public class PalmLeavesProperties extends LeavesProperties {
 
     public static class DynamicPalmLeavesBlock extends DynamicLeavesBlock {
 
+        public static final IntegerProperty DIRECTION = IntegerProperty.create("direction", 0, 8);
+
         public static final CoordUtils.Surround[][] hydroSurroundMap = new CoordUtils.Surround[][] {
                 {}, //distance 0
                 {CoordUtils.Surround.NE, CoordUtils.Surround.SE, CoordUtils.Surround.SW, CoordUtils.Surround.NW}, //distance 1
@@ -44,19 +57,18 @@ public class PalmLeavesProperties extends LeavesProperties {
 
         public DynamicPalmLeavesBlock(LeavesProperties leavesProperties, Properties properties) {
             super(leavesProperties, properties);
+            registerDefaultState(defaultBlockState().setValue(DIRECTION, 0));
         }
 
-        public boolean[] getHydroSurround (BlockState state, IBlockReader access, BlockPos pos){
-            boolean[] hydroSurround = new boolean[8];
-            for(CoordUtils.Surround surr : hydroSurroundMap[state.getValue(DynamicLeavesBlock.DISTANCE)]) {
-                BlockState scanState = access.getBlockState(pos.offset(surr.getOffset()));
-                if(scanState.getBlock() == this) {
-                    if( scanState.getValue(DynamicLeavesBlock.DISTANCE) == 3 ) {
-                        hydroSurround[surr.ordinal()] = true;
-                    }
-                }
-            }
-            return hydroSurround;
+        @Override
+        protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+            super.createBlockStateDefinition(builder);
+            builder.add(DIRECTION);
+        }
+
+        public static BlockState getDirectionState (BlockState state, CoordUtils.Surround surround){
+            if (state == null) return null;
+            return state.setValue(DIRECTION, surround == null ? 0 : surround.ordinal() + 1);
         }
 
         @Override
@@ -69,13 +81,29 @@ public class PalmLeavesProperties extends LeavesProperties {
             return branch.getFamily() == getFamily(blockState, blockAccess, pos) ? BranchBlock.setSupport(0, 1) : 0;
         }
 
-//        @Override
-//        public VoxelShape getOcclusionShape(BlockState state, IBlockReader world, BlockPos pos) {
-//            AxisAlignedBB base = super.getOcclusionShape(state, world, pos).bounds();
-//            base.inflate(1, 0, 1);
-//            base.inflate(-1,-0,-1);
-//            return VoxelShapes.create(base);
-//        }
+        @Override
+        public boolean appearanceChangesWithHydro(int oldHydro, int newHydro) {
+            return true;
+        }
+
+        @Override
+        protected BlockState getLeavesBlockStateForPlacement(IWorld world, BlockPos pos, BlockState leavesStateWithHydro, int oldHydro, boolean worldGen) {
+            if (oldHydro == 0)
+                for (CoordUtils.Surround surround : CoordUtils.Surround.values()){
+                    BlockState offstate = world.getBlockState(pos.offset(surround.getOffset()));
+                    if (offstate.getBlock() == this && offstate.getValue(DISTANCE) == 3)
+                        return getDirectionState(leavesStateWithHydro, surround);
+                }
+            return leavesStateWithHydro;
+        }
+
+        @Override
+        public VoxelShape getOcclusionShape(BlockState state, IBlockReader world, BlockPos pos) {
+            AxisAlignedBB base = super.getOcclusionShape(state, world, pos).bounds();
+            base.inflate(1, 0, 1);
+            base.inflate(-1,-0,-1);
+            return VoxelShapes.create(base);
+        }
 
     }
 

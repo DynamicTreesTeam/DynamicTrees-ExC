@@ -1,25 +1,16 @@
 package maxhyper.dtatum.models;
 
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.client.ModelUtils;
-import com.ferreusveritas.dynamictrees.models.modeldata.ModelConnections;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.util.Connections;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.google.common.primitives.Ints;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockDisplayReader;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -27,21 +18,27 @@ import java.util.*;
 
 public class PalmLeavesBakedModel implements IDynamicBakedModel {
 
+    public static List<PalmLeavesBakedModel> INSTANCES = new ArrayList<>();
+
     protected final BlockModel blockModel;
 
-    TextureAtlasSprite leavesParticles;
+    ResourceLocation frondsResLoc;
+    TextureAtlasSprite frondsTexture;
 
     private final IBakedModel[] bakedFronds = new IBakedModel[8]; // 8 = Number of surrounding blocks
 
     public PalmLeavesBakedModel (ResourceLocation modelResLoc, ResourceLocation frondsResLoc){
         this.blockModel = new BlockModel(null, new ArrayList<>(), new HashMap<>(), false, BlockModel.GuiLight.FRONT, ItemCameraTransforms.NO_TRANSFORMS, ItemOverrideList.EMPTY.getOverrides());
+        this.frondsResLoc = frondsResLoc;
+        INSTANCES.add(this);
+    }
 
-        TextureAtlasSprite frondsIcon = ModelUtils.getTexture(frondsResLoc);
-        leavesParticles = frondsIcon;
+    public void setupModels (){
+        frondsTexture = ModelUtils.getTexture(frondsResLoc);
 
         for (CoordUtils.Surround surr : CoordUtils.Surround.values()) {
 
-            SimpleBakedModel.Builder builder = new SimpleBakedModel.Builder(blockModel.customData, ItemOverrideList.EMPTY).particle(frondsIcon);
+            SimpleBakedModel.Builder builder = new SimpleBakedModel.Builder(blockModel.customData, ItemOverrideList.EMPTY).particle(frondsTexture);
 
             BlockVertexData[] quadData = {
                     new BlockVertexData(0, 0, 3, 15, 4),
@@ -154,25 +151,24 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         outData[v] = new BlockVertexData(x, y, z, quadData[v].u, quadData[v].v);
                     }
 
-                    builder.addUnculledFace(new BakedQuad(
-                            Ints.concat(
-                                    outData[0].toInts(frondsIcon),
-                                    outData[1].toInts(frondsIcon),
-                                    outData[2].toInts(frondsIcon),
-                                    outData[3].toInts(frondsIcon)
-                            ),
-                            0, null, frondsIcon, false)
+                    int[] vertices = Ints.concat(
+                            outData[0].toInts(frondsTexture),
+                            outData[1].toInts(frondsTexture),
+                            outData[2].toInts(frondsTexture),
+                            outData[3].toInts(frondsTexture)
+                    );
+                    builder.addUnculledFace(new BakedQuad(vertices,
+                                    0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
                     );
 
-                    builder.addUnculledFace(
-                            new BakedQuad(
-                                    Ints.concat(
-                                            outData[4].toInts(frondsIcon),
-                                            outData[5].toInts(frondsIcon),
-                                            outData[6].toInts(frondsIcon),
-                                            outData[7].toInts(frondsIcon)
-                                    ),
-                                    0, null, frondsIcon, false)
+                    vertices = Ints.concat(
+                            outData[4].toInts(frondsTexture),
+                            outData[5].toInts(frondsTexture),
+                            outData[6].toInts(frondsTexture),
+                            outData[7].toInts(frondsTexture)
+                    );
+                    builder.addUnculledFace(new BakedQuad(vertices,
+                                    0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
                     );
 
 
@@ -186,35 +182,34 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
     @Nonnull
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+        if (state == null || side != null)
+            return Collections.emptyList();
+
         LinkedList<BakedQuad> quads = new LinkedList<>();
 
-        boolean[] hydroConnections = new boolean[8];
-        if (extraData instanceof ModelPalmSurround) {
-            hydroConnections = ((ModelPalmSurround) extraData).getSurround();
-        }
+        int direction = state.getValue(PalmLeavesProperties.DynamicPalmLeavesBlock.DIRECTION);
 
-        if (side == null && state != null)
-            for (int i = 0; i < 8; i++)
-                if(hydroConnections[i])
-                    quads.addAll(bakedFronds[i].getQuads(state, null, rand, extraData));
+        if (direction != 0)
+            quads.addAll(bakedFronds[direction-1].getQuads(state, null, rand, extraData));
+
 
         return quads;
     }
 
-    @Nonnull
-    @Override
-    public IModelData getModelData(@Nonnull IBlockDisplayReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData) {
-        final Block block = state.getBlock();
-
-        if (!(block instanceof PalmLeavesProperties.DynamicPalmLeavesBlock))
-            return new ModelPalmSurround();
-
-        return new ModelPalmSurround(((PalmLeavesProperties.DynamicPalmLeavesBlock) block).getHydroSurround(state, world, pos), state.getValue(DynamicLeavesBlock.DISTANCE));
-    }
+//    @Nonnull
+//    @Override
+//    public IModelData getModelData(@Nonnull IBlockDisplayReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData) {
+//        final Block block = state.getBlock();
+//
+//        if (!(block instanceof PalmLeavesProperties.DynamicPalmLeavesBlock))
+//            return new ModelPalmSurround();
+//
+//        return new ModelPalmSurround(((PalmLeavesProperties.DynamicPalmLeavesBlock) block).getHydroSurround(state, world, pos), state.getValue(DynamicLeavesBlock.DISTANCE));
+//    }
 
     @Override
     public boolean useAmbientOcclusion() {
-        return true;
+        return false;
     }
 
     @Override
@@ -234,7 +229,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
 
     @Override
     public TextureAtlasSprite getParticleIcon() {
-        return leavesParticles;
+        return frondsTexture;
     }
 
     @Override
@@ -247,45 +242,45 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
         return false;
     }
 
-    public static class ModelPalmSurround implements IModelData {
-
-        private final int hydro;
-        private final boolean[] surround;
-
-        public ModelPalmSurround() {
-            this(new boolean[8], 0);
-        }
-
-        public ModelPalmSurround(boolean[] surround, int hydro) {
-            this.surround = surround;
-            this.hydro = hydro;
-        }
-
-        public boolean[] getSurround (){
-            return surround;
-        }
-
-        public int getHydro (){
-            return hydro;
-        }
-
-        @Override
-        public boolean hasProperty(ModelProperty<?> prop) {
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getData(ModelProperty<T> prop) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public <T> T setData(ModelProperty<T> prop, T data) {
-            return null;
-        }
-    }
+//    public static class ModelPalmSurround implements IModelData {
+//
+//        private final int hydro;
+//        private final boolean[] surround;
+//
+//        public ModelPalmSurround() {
+//            this(new boolean[8], 0);
+//        }
+//
+//        public ModelPalmSurround(boolean[] surround, int hydro) {
+//            this.surround = surround;
+//            this.hydro = hydro;
+//        }
+//
+//        public boolean[] getSurround (){
+//            return surround;
+//        }
+//
+//        public int getHydro (){
+//            return hydro;
+//        }
+//
+//        @Override
+//        public boolean hasProperty(ModelProperty<?> prop) {
+//            return false;
+//        }
+//
+//        @Nullable
+//        @Override
+//        public <T> T getData(ModelProperty<T> prop) {
+//            return null;
+//        }
+//
+//        @Nullable
+//        @Override
+//        public <T> T setData(ModelProperty<T> prop, T data) {
+//            return null;
+//        }
+//    }
 
     public static class BlockVertexData {
 
@@ -310,7 +305,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
         }
 
         public BlockVertexData(int[] data, int vIndex) {
-            vIndex *= 7;
+            vIndex *= 8;
             x = Float.intBitsToFloat(data[vIndex++]);
             y = Float.intBitsToFloat(data[vIndex++]);
             z = Float.intBitsToFloat(data[vIndex++]);
@@ -321,7 +316,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
 
         public int[] toInts() {
             return new int[] { Float.floatToRawIntBits(x), Float.floatToRawIntBits(y), Float.floatToRawIntBits(z),
-                    color, Float.floatToRawIntBits(u), Float.floatToRawIntBits(v), 0, };
+                    color, Float.floatToRawIntBits(u), Float.floatToRawIntBits(v), 0, 0 };
         }
 
         protected int[] toInts(TextureAtlasSprite texture) {
@@ -329,7 +324,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                     Float.floatToRawIntBits(x), Float.floatToRawIntBits(y), Float.floatToRawIntBits(z),
                     color,
                     Float.floatToRawIntBits(texture.getU(u)), Float.floatToRawIntBits(texture.getV(v)),
-                    0,
+                    0, 0
             };
         }
 

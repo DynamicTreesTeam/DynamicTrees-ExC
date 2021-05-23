@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.models.bakedmodels.BranchBlockBakedModel;
 import com.ferreusveritas.dynamictrees.models.loaders.BranchBlockModelLoader;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
@@ -13,11 +14,13 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.teammetallurgy.atum.init.AtumBlocks;
 import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
+import maxhyper.dtatum.models.PalmLeavesBakedModel;
 import maxhyper.dtatum.models.PalmLeavesModelLoader;
 import maxhyper.dtatum.trees.PalmFamily;
 import maxhyper.dtatum.trees.PalmSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.event.RegistryEvent;
@@ -59,11 +62,6 @@ public class DTAtumRegistries {
 
         for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesAtum.MOD_ID))
             event.getRegistry().register(rooty);
-    }
-
-    @SubscribeEvent
-    public static void onModelRegistryEvent(final ModelRegistryEvent event) {
-        ModelLoaderRegistry.registerLoader(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm_fronds"), new PalmLeavesModelLoader());
     }
 
 }

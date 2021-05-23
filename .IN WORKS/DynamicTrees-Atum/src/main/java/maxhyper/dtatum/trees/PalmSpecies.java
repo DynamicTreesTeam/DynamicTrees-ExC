@@ -9,7 +9,6 @@ import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.systems.nodemappers.FindEndsNode;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.trees.species.NetherFungusSpecies;
 import com.ferreusveritas.dynamictrees.util.BranchDestructionData;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
@@ -25,7 +24,9 @@ import net.minecraft.world.biome.Biome;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PalmSpecies extends Species {
     public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(PalmSpecies::new);
@@ -64,8 +65,8 @@ public class PalmSpecies extends Species {
         if(world.isEmptyBlock(pos.above()) && isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below()))) {
             BranchBlock branch = family.getBranch();
             if (branch == null) return false;
-            branch.setRadius(world, pos, (int)family.getPrimaryThickness(), null);//set to a single branch with 1 radius
-            world.setBlockAndUpdate(pos.above(), getLeavesProperties().getDynamicLeavesState());//Place 2 leaf blocks on top
+            branch.setRadius(world, pos, family.getPrimaryThickness(), null);//set to a single branch with 1 radius
+            world.setBlockAndUpdate(pos.above(), getLeavesProperties().getDynamicLeavesState().setValue(DynamicLeavesBlock.DISTANCE, 4));//Place 2 leaf blocks on top
             world.setBlockAndUpdate(pos.above(2), getLeavesProperties().getDynamicLeavesState().setValue(DynamicLeavesBlock.DISTANCE, 3));
             placeRootyDirtBlock(world, pos.below(), 15);//Set to fully fertilized rooty dirt underneath
             return true;
@@ -90,17 +91,27 @@ public class PalmSpecies extends Species {
         }
 
         HashMap<BlockPos, BlockState> leaves = new HashMap<>();
-        BlockPos relPos = destructionData.getEndPointRelPos(0).above();//A palm tree is only supposed to have one endpoint at it's top.
-        LeavesProperties leavesProperties = getCommonSpecies().getLeavesProperties();
+        BlockPos relPos = destructionData.getEndPointRelPos(0).above(2);//A palm tree is only supposed to have one endpoint at it's top.
+        if (destructionData.trunkHeight == 1) relPos = relPos.below();
+        LeavesProperties leavesProperties = destructionData.species.getLeavesProperties();
 
-        leaves.put(relPos, leavesProperties.getDynamicLeavesState(4));//The barky overlapping part of the palm frond cluster
-        leaves.put(relPos.above(), leavesProperties.getDynamicLeavesState(3));//The leafy top of the palm frond cluster
+        Set<BlockPos> existingLeaves = new HashSet<>();
+        for (int i = 0; i<destructionData.getNumLeaves(); i++){
+            existingLeaves.add(destructionData.getLeavesRelPos(i));
+        }
+
+        if (existingLeaves.contains(relPos))
+            leaves.put(relPos, leavesProperties.getDynamicLeavesState(4));//The barky overlapping part of the palm frond cluster
+        if (existingLeaves.contains(relPos.above()))
+            leaves.put(relPos.above(), leavesProperties.getDynamicLeavesState(3));//The leafy top of the palm frond cluster
 
         //The 4 corners and 4 sides of the palm frond cluster
         for(int hydro = 1; hydro <= 2; hydro++) {
-            BlockState extState = leavesProperties.getDynamicLeavesState(hydro);
+            BlockState state = leavesProperties.getDynamicLeavesState(hydro);
             for(CoordUtils.Surround surr : PalmLeavesProperties.DynamicPalmLeavesBlock.hydroSurroundMap[hydro]) {
-                leaves.put(relPos.offset(surr.getOpposite().getOffset()), extState);
+                BlockPos leafPos = relPos.above().offset(surr.getOpposite().getOffset());
+                if (existingLeaves.contains(leafPos))
+                    leaves.put(leafPos, PalmLeavesProperties.DynamicPalmLeavesBlock.getDirectionState(state, surr));
             }
         }
 
