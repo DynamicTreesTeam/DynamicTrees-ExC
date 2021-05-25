@@ -1,0 +1,13 @@
+{
+  "family": "dtatum:deadwood",
+  "tapering": 0.0,
+  "signal_energy": 10.0,
+  "growth_rate": 0.0,
+  "leaves_properties": "dtatum:bare",
+  "generate_seed": false,
+  "generate_sapling": false,
+  "can_bone_meal_tree": false,
+  "seed_drop_rarity": 0.0,
+  "stick_drop_rarity": 1.0,
+  "acceptable_soils": ["sand_like"]
+}

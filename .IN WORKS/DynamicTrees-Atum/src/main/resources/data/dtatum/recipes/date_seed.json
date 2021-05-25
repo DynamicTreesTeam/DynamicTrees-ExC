@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "atum:date"
+    },
+    {
+      "item": "dynamictrees:dirt_bucket"
+    }
+  ],
+  "result": {
+    "item": "dtatum:palm_seed"
+  }
+}

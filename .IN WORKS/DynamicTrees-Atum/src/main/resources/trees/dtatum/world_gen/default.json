@@ -3,6 +3,14 @@
     "__comment": "Cancel standard tree features from atum biomes.",
     "select": { "name": "atum.*" },
     "cancellers": {
+      "type": "dtatum:deadwood",
+      "namespace": "atum"
+    }
+  },
+  {
+    "__comment": "Cancel standard tree features from atum biomes.",
+    "select": { "name": "atum.*oasis" },
+    "cancellers": {
       "type": "tree",
       "namespace": "atum"
     }

@@ -1,8 +1,9 @@
 {
-  "type": "dtatum:palm",
   "common_leaves": "dtatum:palm",
   "common_species": "dtatum:palm",
   "primitive_log": "atum:palm_log",
   "primitive_stripped_log": "atum:stripped_palm_log",
-  "max_branch_radius": 8
+  "max_branch_radius": 8,
+  "primary_thickness": 3,
+  "secondary_thickness": 3
 }

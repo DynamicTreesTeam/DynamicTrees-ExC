@@ -1,13 +1,11 @@
 {
-  "item.dtatum.palm_seed":"Palm Seed",
-  "item.dtatum.dead_palm_seed":"Dead Palm Seed",
-  "item.dtatum.dead_tree_seed":"Dead Tree Seed",
+  "item.dtatum.palm_seed":"Date Seed",
 
   "species.dtatum.palm":"Palm",
   "species.dtatum.dead_palm":"Dead Palm",
-  "species.dtatum.dead_tree":"Dead Tree",
+  "species.dtatum.deadwood":"Deadwood",
 
   "block.dtatum.palm_branch":"Palm",
   "block.dtatum.dead_palm_branch":"Dead Palm",
-  "block.dtatum.dead_tree_branch":"Dead Tree"
+  "block.dtatum.deadwood_branch":"Deadwood Tree"
 }

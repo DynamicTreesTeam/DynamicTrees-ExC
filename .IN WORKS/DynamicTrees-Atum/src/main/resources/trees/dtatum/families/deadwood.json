@@ -1,0 +1,10 @@
+{
+  "common_leaves": "dtatum:bare",
+  "common_species": "dtatum:deadwood",
+  "primitive_log": "atum:deadwood_log",
+  "primitive_stripped_log": "atum:stripped_deadwood_log",
+  "max_branch_radius": 8,
+  "primary_thickness": 1,
+  "secondary_thickness": 3,
+  "branch_is_ladder": false
+}
