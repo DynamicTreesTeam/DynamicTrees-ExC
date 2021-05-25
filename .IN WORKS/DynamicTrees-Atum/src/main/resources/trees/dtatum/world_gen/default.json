@@ -14,5 +14,58 @@
       "type": "tree",
       "namespace": "atum"
     }
+  },
+  {
+    "select": { "name": "atum:oasis" },
+    "apply": {
+      "species" : {
+        "random" : {
+          "dtatum:palm" : 3,
+          "acacia" : 1
+        }
+      },
+      "density": 0.5 ,
+      "chance": 0.8
+    }
+  },
+  {
+    "select": { "name": "atum:dead_oasis" },
+    "apply": {
+      "species" : "dtatum:dead_palm",
+      "density": 0.5 ,
+      "chance": 0.6
+    }
+  },
+  {
+    "select": { "name": "atum:dense_woods" },
+    "apply": {
+      "species" : "dtatum:deadwood",
+      "density": 1.0 ,
+      "chance": 1.0
+    }
+  },
+  {
+    "select": { "name": "atum:sparse_woods" },
+    "apply": {
+      "species" : "dtatum:deadwood",
+      "density": 0.15 ,
+      "chance": 0.4
+    }
+  },
+  {
+    "select": { "name": "atum:limestone.*" },
+    "apply": {
+      "species" : "dtatum:deadwood",
+      "density": 0.1 ,
+      "chance": 0.1
+    }
+  },
+  {
+    "select": { "name": "atum:sand.*" },
+    "apply": {
+      "species" : "dtatum:deadwood",
+      "density": 0.05 ,
+      "chance": 0.05
+    }
   }
 ]

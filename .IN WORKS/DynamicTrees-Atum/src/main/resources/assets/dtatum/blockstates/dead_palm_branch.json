@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "dtatum:block/dead_tree_branch" }
+    "": { "model": "dtatum:block/deadwood_branch" }
   }
 }
