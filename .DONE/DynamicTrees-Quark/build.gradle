@@ -99,9 +99,9 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${config.jei_version}")
 
     // Compile Dynamic Trees, of course.
-    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${config.mc_version}:${config.dynamic_trees_version}")
+    implementation fg.deobf("curse.maven:dynamictrees-252818:3313858")
     // Compile Dynamic Trees Plus
-    runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${config.mc_version}:${config.dynamic_trees_plus_version}")
+    implementation fg.deobf("curse.maven:dynamictreesplus-478155:3302606")
 
     implementation fg.deobf("blank:AutoRegLib-1.6:47")
     implementation fg.deobf("blank:Quark-r2.4:311")

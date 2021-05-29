@@ -15,6 +15,8 @@ import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -63,9 +65,7 @@ public class PalmSpecies extends Species {
         //Ensure planting conditions are right
         Family family = getFamily();
         if(world.isEmptyBlock(pos.above()) && isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below()))) {
-            BranchBlock branch = family.getBranch();
-            if (branch == null) return false;
-            branch.setRadius(world, pos, family.getPrimaryThickness(), null);//set to a single branch with 1 radius
+            family.getBranch().setRadius(world, pos, family.getPrimaryThickness(), null);//set to a single branch with 1 radius
             world.setBlockAndUpdate(pos.above(), getLeavesProperties().getDynamicLeavesState().setValue(DynamicLeavesBlock.DISTANCE, 4));//Place 2 leaf blocks on top
             world.setBlockAndUpdate(pos.above(2), getLeavesProperties().getDynamicLeavesState().setValue(DynamicLeavesBlock.DISTANCE, 3));
             placeRootyDirtBlock(world, pos.below(), 15);//Set to fully fertilized rooty dirt underneath
@@ -76,8 +76,18 @@ public class PalmSpecies extends Species {
 
     @Override
     public void postGeneration(World worldObj, IWorld world, BlockPos rootPos, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, BlockState initialDirtState) {
-        for (BlockPos endPoint : endPoints) {
-            TreeHelper.ageVolume(world, endPoint, 1, 2, 3, safeBounds);
+        if (!endPoints.isEmpty()){
+            BlockPos tip = endPoints.get(0).above(2);
+            if (safeBounds.inBounds(tip, true))
+                if (world.getBlockState(tip).getBlock() instanceof DynamicLeavesBlock)
+                    for (CoordUtils.Surround surr : CoordUtils.Surround.values()){
+                        BlockPos leafPos = tip.offset(surr.getOffset());
+                        BlockState leafState = world.getBlockState(leafPos);
+                        if (leafState.getBlock() instanceof DynamicLeavesBlock){
+                            DynamicLeavesBlock block = (DynamicLeavesBlock) leafState.getBlock();
+                            world.setBlock(leafPos, block.getLeavesBlockStateForPlacement(world, leafPos, leafState, leafState.getValue(LeavesBlock.DISTANCE), true), 2);
+                        }
+                    }
         }
         super.postGeneration(worldObj, world, rootPos, biome, radius, endPoints, safeBounds, initialDirtState);
     }

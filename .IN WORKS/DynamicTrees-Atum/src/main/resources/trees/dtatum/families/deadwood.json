@@ -6,5 +6,6 @@
   "max_branch_radius": 8,
   "primary_thickness": 1,
   "secondary_thickness": 3,
-  "branch_is_ladder": false
+  "branch_is_ladder": false,
+  "stick": "atum:deadwood_stick"
 }

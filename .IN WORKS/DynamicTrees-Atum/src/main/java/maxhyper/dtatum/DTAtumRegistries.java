@@ -1,27 +1,33 @@
 package maxhyper.dtatum;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
+import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
+import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.FruitDropCreator;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.worldgen.cancellers.MushroomFeatureCanceller;
 import com.teammetallurgy.atum.init.AtumBlocks;
 import com.teammetallurgy.atum.init.AtumItems;
 import com.teammetallurgy.atum.world.gen.feature.DeadwoodFeature;
+import maxhyper.dtatum.blocks.PalmFruitBlock;
+import maxhyper.dtatum.genfeatures.BrokenLeavesGenFeature;
+import maxhyper.dtatum.genfeatures.PalmFruitGenFeature;
+import maxhyper.dtatum.genfeatures.PalmVinesGenFeature;
 import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
 import maxhyper.dtatum.trees.PalmSpecies;
 import maxhyper.dtatum.worldgen.DeadwoodFeatureCanceller;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.BigMushroomFeatureConfig;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,13 +35,19 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTAtumRegistries {
 
-    @SubscribeEvent
-    public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
-        event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"), PalmLeavesProperties.TYPE);
+    public static GenFeature PALM_FRUIT_FEATURE;
+    public static GenFeature PALM_VINES_FEATURE;
+    public static GenFeature BROKEN_LEAVES_FEATURE;
+
+    public static final FruitBlock DATE_FRUIT = new PalmFruitBlock().setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
+
+    public static void setup(){
+        RegistryHandler.addBlock(new ResourceLocation(DynamicTreesAtum.MOD_ID,"date_fruit"), DATE_FRUIT);
     }
 
     @SubscribeEvent
-    public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
+    public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
+        event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"), PalmLeavesProperties.TYPE);
     }
 
     @SubscribeEvent
@@ -49,6 +61,15 @@ public class DTAtumRegistries {
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
         event.getRegistry().registerAll(DEADWOOD_CANCELLER);
+    }
+
+    @SubscribeEvent
+    public static void onGenFeatureRegistry (final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GenFeature> event) {
+        PALM_FRUIT_FEATURE = new PalmFruitGenFeature(new ResourceLocation(DynamicTreesAtum.MOD_ID,"palm_fruit"));
+        PALM_VINES_FEATURE = new PalmVinesGenFeature(new ResourceLocation(DynamicTreesAtum.MOD_ID,"palm_vines"));
+        BROKEN_LEAVES_FEATURE = new BrokenLeavesGenFeature(new ResourceLocation(DynamicTreesAtum.MOD_ID,"broken_leaves"));
+
+        event.getRegistry().registerAll(PALM_FRUIT_FEATURE, PALM_VINES_FEATURE, BROKEN_LEAVES_FEATURE);
     }
 
     @SubscribeEvent
@@ -70,6 +91,8 @@ public class DTAtumRegistries {
 
         if (palm.isValid()){
             palm.addDropCreator(new FruitDropCreator().setFruitItem(AtumItems.DATE));
+            DATE_FRUIT.setSpecies(palm);
+            DATE_FRUIT.setDroppedItem(new ItemStack(AtumItems.DATE));
         }
 
         for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesAtum.MOD_ID))

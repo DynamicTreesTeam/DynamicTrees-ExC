@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.IntegerProperty;
@@ -24,6 +25,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -54,6 +56,18 @@ public class PalmLeavesProperties extends LeavesProperties {
                 {}, //distance 6
                 {}  //distance 7
         };
+
+        @Override
+        public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+            if (state.getBlock() == this){
+                int dist = state.getValue(DISTANCE);
+                if ((dist == 1 || dist == 2) && state.getValue(DIRECTION) == 0){
+                    world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                    return;
+                }
+            }
+            super.randomTick(state, world, pos, rand);
+        }
 
         public DynamicPalmLeavesBlock(LeavesProperties leavesProperties, Properties properties) {
             super(leavesProperties, properties);
@@ -87,13 +101,12 @@ public class PalmLeavesProperties extends LeavesProperties {
         }
 
         @Override
-        protected BlockState getLeavesBlockStateForPlacement(IWorld world, BlockPos pos, BlockState leavesStateWithHydro, int oldHydro, boolean worldGen) {
-            if (oldHydro == 0)
-                for (CoordUtils.Surround surround : CoordUtils.Surround.values()){
-                    BlockState offstate = world.getBlockState(pos.offset(surround.getOffset()));
-                    if (offstate.getBlock() == this && offstate.getValue(DISTANCE) == 3)
-                        return getDirectionState(leavesStateWithHydro, surround);
-                }
+        public BlockState getLeavesBlockStateForPlacement(IWorld world, BlockPos pos, BlockState leavesStateWithHydro, int oldHydro, boolean worldGen) {
+            for (CoordUtils.Surround surround : CoordUtils.Surround.values()){
+                BlockState offstate = world.getBlockState(pos.offset(surround.getOffset()));
+                if (offstate.getBlock() == this && offstate.getValue(DISTANCE) == 3)
+                    return getDirectionState(leavesStateWithHydro, surround);
+            }
             return leavesStateWithHydro;
         }
 

@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "age=0,facing=north": { "model": "dtatum:block/fruit/date_age0" },
+        "age=0,facing=east": { "model": "dtatum:block/fruit/date_age0", "y": 90 },
+        "age=0,facing=south": { "model": "dtatum:block/fruit/date_age0", "y": 180 },
+        "age=0,facing=west": { "model": "dtatum:block/fruit/date_age0", "y": 270 },
+        "age=1,facing=north": { "model": "dtatum:block/fruit/date_age1" },
+        "age=1,facing=east": { "model": "dtatum:block/fruit/date_age1", "y": 90 },
+        "age=1,facing=south": { "model": "dtatum:block/fruit/date_age1", "y": 180 },
+        "age=1,facing=west": { "model": "dtatum:block/fruit/date_age1", "y": 270 },
+        "age=2,facing=north": { "model": "dtatum:block/fruit/date_age2" },
+        "age=2,facing=east": { "model": "dtatum:block/fruit/date_age2", "y": 90 },
+        "age=2,facing=south": { "model": "dtatum:block/fruit/date_age2", "y": 180 },
+        "age=2,facing=west": { "model": "dtatum:block/fruit/date_age2", "y": 270 },
+        "age=3,facing=north": { "model": "dtatum:block/fruit/date_age3" },
+        "age=3,facing=east": { "model": "dtatum:block/fruit/date_age3", "y": 90 },
+        "age=3,facing=south": { "model": "dtatum:block/fruit/date_age3", "y": 180 },
+        "age=3,facing=west": { "model": "dtatum:block/fruit/date_age3", "y": 270 }
+    }
+}

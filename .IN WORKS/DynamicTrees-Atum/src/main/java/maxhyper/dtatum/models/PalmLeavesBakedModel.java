@@ -109,18 +109,17 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         len = Math.sqrt(x * x + z * z);
                         angle = Math.atan2(x, z);
                         switch (pass){
+                            default:
                             case 3:
                             case 0:
-                                mult = 0.005;
+                                mult = 0;
                                 break;
                             case 1:
-                                mult = 0.185;
+                                mult = 0.185 - 0.25;
                                 break;
                             case 2:
                                 mult = 0.08;
                                 break;
-                            default:
-                                mult = 0;
                         }
                         angle += Math.PI * 0.25 * surr.ordinal() + (Math.PI * mult);
                         x = (float) (Math.sin(angle) * len);

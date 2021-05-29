@@ -20,6 +20,8 @@ public class DynamicTreesAtum
         MinecraftForge.EVENT_BUS.register(this);
 
         RegistryHandler.setup(MOD_ID);
+
+        DTAtumRegistries.setup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

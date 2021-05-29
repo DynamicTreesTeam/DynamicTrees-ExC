@@ -1,5 +1,6 @@
 {
   "type": "dtatum:palm",
   "primitive_leaves": "atum:dry_leaves",
-  "cell_kit": "dynamictrees:palm"
+  "cell_kit": "dynamictrees:palm",
+  "does_age": "worldgen_only"
 }
