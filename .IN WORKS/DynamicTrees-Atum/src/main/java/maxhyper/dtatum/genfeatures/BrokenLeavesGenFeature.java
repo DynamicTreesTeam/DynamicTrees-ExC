@@ -1,6 +1,7 @@
 package maxhyper.dtatum.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
+import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
@@ -8,6 +9,7 @@ import com.ferreusveritas.dynamictrees.systems.genfeatures.config.GenFeatureProp
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import com.teammetallurgy.atum.init.AtumBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -19,8 +21,15 @@ import java.util.List;
 
 public class BrokenLeavesGenFeature extends GenFeature implements IPostGenFeature {
 
-    public BrokenLeavesGenFeature(ResourceLocation registryName, GenFeatureProperty<?>... properties) {
-        super(registryName, properties);
+    public static final GenFeatureProperty<Float> PERCENTAGE = GenFeatureProperty.createProperty("percentage", Float.class);
+
+    public BrokenLeavesGenFeature(ResourceLocation registryName) {
+        super(registryName, PERCENTAGE);
+    }
+
+    @Override
+    public ConfiguredGenFeature<GenFeature> createDefaultConfiguration() {
+        return super.createDefaultConfiguration().with(PERCENTAGE, 0.3f);
     }
 
     @Override
@@ -32,7 +41,7 @@ public class BrokenLeavesGenFeature extends GenFeature implements IPostGenFeatur
                 for (CoordUtils.Surround surr : CoordUtils.Surround.values()){
                     BlockPos leafPos = tip.offset(surr.getOffset());
                     if (world.getBlockState(leafPos).getBlock() instanceof DynamicLeavesBlock)
-                        if (world.getRandom().nextFloat() > 0.5f)
+                        if (world.getRandom().nextFloat() > configuredGenFeature.get(PERCENTAGE))
                             world.setBlock(leafPos, Blocks.AIR.defaultBlockState(), 2);
                 }
                 return true;

@@ -1,12 +1,10 @@
 package maxhyper.dtatum.blocks;
 
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -49,9 +47,9 @@ public class PalmFruitBlock extends FruitBlock {
 
     protected AxisAlignedBB[] DATE_AABB = new AxisAlignedBB[] {
             createFruitShape(1,1,1, 16),
-            createFruitShape(4,8,7, 16),
-            createFruitShape(5,10,6, 16),
-            createFruitShape(5,10,6, 16)
+            createFruitShape(3,8,7, 16),
+            createFruitShape(3.5f,10,6, 16),
+            createFruitShape(3.5f,10,6, 16)
     };
 
     @Override

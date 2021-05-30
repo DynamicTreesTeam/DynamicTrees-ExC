@@ -23,6 +23,7 @@ import maxhyper.dtatum.genfeatures.PalmFruitGenFeature;
 import maxhyper.dtatum.genfeatures.PalmVinesGenFeature;
 import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
+import maxhyper.dtatum.trees.DeadwoodSpecies;
 import maxhyper.dtatum.trees.PalmSpecies;
 import maxhyper.dtatum.worldgen.DeadwoodFeatureCanceller;
 import net.minecraft.block.Block;
@@ -53,6 +54,7 @@ public class DTAtumRegistries {
     @SubscribeEvent
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
         event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"), PalmSpecies.TYPE);
+        event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "deadwood"), DeadwoodSpecies.TYPE);
     }
 
     /** canceller for Atum's deadwood trees. Cancells all features of type {@link DeadwoodFeature}. */

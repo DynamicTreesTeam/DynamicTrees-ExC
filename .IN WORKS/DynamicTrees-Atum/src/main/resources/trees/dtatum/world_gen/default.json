@@ -24,7 +24,7 @@
           "acacia" : 1
         }
       },
-      "density": 0.5 ,
+      "density": [ 2.0, 0.3 ],
       "chance": 0.8
     }
   },
@@ -32,7 +32,7 @@
     "select": { "name": "atum:dead_oasis" },
     "apply": {
       "species" : "dtatum:dead_palm",
-      "density": 0.5 ,
+      "density": [ 2.0, 0.3 ],
       "chance": 0.6
     }
   },
