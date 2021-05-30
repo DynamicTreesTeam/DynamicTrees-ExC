@@ -1,10 +1,7 @@
 package maxhyper.dtatum.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.api.treedata.ITreePart;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
-import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -16,7 +13,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
 public class DeadwoodSpecies extends Species {
     public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(DeadwoodSpecies::new);

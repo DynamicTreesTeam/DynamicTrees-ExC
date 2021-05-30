@@ -4,7 +4,9 @@ import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.teammetallurgy.atum.world.gen.feature.DeadwoodFeature;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 
 public class DeadwoodFeatureCanceller<T extends IFeatureConfig> extends FeatureCanceller {
 

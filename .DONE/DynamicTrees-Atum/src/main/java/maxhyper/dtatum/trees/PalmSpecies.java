@@ -15,7 +15,6 @@ import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
 import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;

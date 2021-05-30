@@ -1,6 +1,5 @@
 package maxhyper.dtatum.models;
 
-import com.ferreusveritas.dynamictrees.models.geometry.BranchBlockModelGeometry;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import net.minecraft.client.renderer.texture.MissingTextureSprite;
