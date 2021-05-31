@@ -2,11 +2,13 @@ package maxhyper.dtquark;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import vazkii.quark.base.world.config.BiomeConfig;
 import vazkii.quark.base.world.config.BiomeTypeConfig;
 import vazkii.quark.content.world.config.BlossomTreeConfig;
 import vazkii.quark.content.world.module.BlossomTreesModule;
@@ -28,7 +30,7 @@ public class DynamicTreesQuark
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         for (BlossomTreeConfig config : BlossomTreesModule.trees.values()){
-            config.biomeTypes = new BiomeTypeConfig(false, Biome.Category.NONE);
+            config.biomeConfig = BiomeConfig.fromBiomeTypes(false);
         }
     }
 

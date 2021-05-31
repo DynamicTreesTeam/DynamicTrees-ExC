@@ -6,7 +6,7 @@
         "method" : "splice_before",
         "random" : {
           "dtquark:frosty_blossom" : 1,
-          "..." : 300
+          "..." : 500
         }
       }
     }
@@ -42,7 +42,7 @@
         "method" : "splice_before",
         "random" : {
           "dtquark:sweet_blossom" : 1,
-          "..." : 200
+          "..." : 100
         }
       }
     }

@@ -99,12 +99,12 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${config.jei_version}")
 
     // Compile Dynamic Trees, of course.
-    implementation fg.deobf("curse.maven:dynamictrees-252818:3313858")
+    implementation fg.deobf("curse.maven:dynamictrees-252818:3330510")
     // Compile Dynamic Trees Plus
     implementation fg.deobf("curse.maven:dynamictreesplus-478155:3302606")
 
-    implementation fg.deobf("blank:AutoRegLib-1.6:47")
-    implementation fg.deobf("blank:Quark-r2.4:311")
+    implementation fg.deobf("curse.maven:autoreglib-250363:3326041")
+    implementation fg.deobf("curse.maven:quark-243121:3326040")
 
     runtimeOnly fg.deobf("curse.maven:cc-tweaked-282001:3236650")
 
