@@ -33,11 +33,6 @@ public class TreePsaronius extends Palm {
 
 			setBasicGrowingParameters(0.5f, 6.0f, upProbability, lowestBranchHeight, 0.8f);
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
-
 			addGenFeature(new FeatureGenFlareBottom(){
 				public void flareBottom(World world, BlockPos rootPos, Species species) {
 					TreeFamily family = species.getFamily();

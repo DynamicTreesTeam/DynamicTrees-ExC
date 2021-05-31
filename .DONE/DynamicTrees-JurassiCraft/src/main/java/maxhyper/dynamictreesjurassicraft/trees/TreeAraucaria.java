@@ -36,11 +36,6 @@ public class TreeAraucaria extends TreeFamily {
 			setBasicGrowingParameters(0.2f, 19.0f, 6, 10, 1f);
 			setGrowthLogicKit(new DarkOakLogic());
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
-
 			generateSeed();
 
 			setupStandardSeedDropping();

@@ -28,11 +28,6 @@ public class TreePhoenix extends Palm {
 
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 0.9f);
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
-
 		}
 	}
 

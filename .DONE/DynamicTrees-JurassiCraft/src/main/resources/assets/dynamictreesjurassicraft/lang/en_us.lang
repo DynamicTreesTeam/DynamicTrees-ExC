@@ -4,6 +4,12 @@ item.dynamictreesjurassicraft:ginkgoseed.name=Ginkgo Seed
 item.dynamictreesjurassicraft:phoenixseed.name=Phoenix Seed
 item.dynamictreesjurassicraft:psaroniusseed.name=Psaronius Frond
 
+species.dynamictreesjurassicraft:calamites.name=Calamites
+species.dynamictreesjurassicraft:araucaria.name=Araucaria
+species.dynamictreesjurassicraft:ginkgo.name=Ginkgo
+species.dynamictreesjurassicraft:phoenix.name=Phoenix
+species.dynamictreesjurassicraft:psaronius.name=Psaronius
+
 tile.dynamictreesjurassicraft:leaves0.name=Leaves
 tile.dynamictreesjurassicraft:leaves_phoenix.name=Palm Leaves
 tile.dynamictreesjurassicraft:leaves_psaronius.name=Palm Leaves
@@ -11,5 +17,5 @@ tile.dynamictreesjurassicraft:leaves_psaronius.name=Palm Leaves
 tile.dynamictreesjurassicraft:calamitesbranch.name=Calamites Tree
 tile.dynamictreesjurassicraft:araucariabranch.name=Araucaria Tree
 tile.dynamictreesjurassicraft:ginkgobranch.name=Ginkgo Tree
-tile.dynamictreesjurassicraft:phoenixbranch.name=Phoenix Tree
+tile.dynamictreesjurassicraft:phoenixbranch.name=Phoenix Palm
 tile.dynamictreesjurassicraft:psaroniusbranch.name=Psaronius Tree

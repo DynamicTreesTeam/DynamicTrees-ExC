@@ -33,10 +33,7 @@ public class TreeGinkgo extends TreeFamily {
 			this.setBasicGrowingParameters(0.25F, 16.0F, 3, 3, 0.9F);
 			this.setGrowthLogicKit(new ConiferLogic().setHorizontalLimiter(4));
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
+			setSoilLongevity(6);
 
 			generateSeed();
 			setupStandardSeedDropping();

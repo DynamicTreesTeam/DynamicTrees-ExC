@@ -33,10 +33,7 @@ public class TreeCalamites extends TreeFamily {
 
 			setBasicGrowingParameters(0.1f, 18, 6, 3, 1.2f);
 
-			envFactor(Type.COLD, 0.75f);
-			envFactor(Type.HOT, 0.50f);
-			envFactor(Type.DRY, 0.50f);
-			envFactor(Type.FOREST, 1.05f);
+			setSoilLongevity(12);
 
 			generateSeed();
 
@@ -77,7 +74,6 @@ public class TreeCalamites extends TreeFamily {
 
 			if (signal.energy > 1){
 				if (!signal.isInTrunk()){
-					signal.tapering = 0.6f;
 					EnumFacing relativePosToRoot = getRelativeFace(pos, signal.rootPos);
 
 					for (EnumFacing dir: EnumFacing.values()){
@@ -99,7 +95,6 @@ public class TreeCalamites extends TreeFamily {
 					probMap[EnumFacing.DOWN.getIndex()] = 0;
 
 				} else {
-					signal.tapering = 0.2f;
 
 					for (EnumFacing dir: EnumFacing.HORIZONTALS){
 						if ( TreeHelper.isBranch(world.getBlockState(pos.offset(dir).up(2))) || TreeHelper.isBranch(world.getBlockState(pos.offset(dir).down(2))) ){
