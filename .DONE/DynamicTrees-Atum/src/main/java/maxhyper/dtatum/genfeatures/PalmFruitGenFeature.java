@@ -40,9 +40,8 @@ public class PalmFruitGenFeature extends GenFeature implements IPostGrowFeature,
     private BlockPos getLeavesHeight (BlockPos rootPos, IWorld world){
         for (int y= 1; y < 20; y++){
             BlockPos testPos = rootPos.above(y);
-            if ((world.getBlockState(testPos).getBlock() instanceof LeavesBlock)){
+            if ((world.getBlockState(testPos).getBlock() instanceof LeavesBlock))
                 return testPos;
-            }
         }
         return rootPos;
     }
@@ -73,9 +72,8 @@ public class PalmFruitGenFeature extends GenFeature implements IPostGrowFeature,
     }
 
     private void addFruit(ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos, BlockPos leavesPos, boolean worldGen) {
-        if (rootPos.getY() == leavesPos.getY()){
+        if (rootPos.getY() == leavesPos.getY())
             return;
-        }
         Direction placeDir = CoordUtils.HORIZONTALS[world.getRandom().nextInt(4)];
         FruitBlock fruit = configuredGenFeature.get(FRUIT_BLOCK);
         if (world.isEmptyBlock(leavesPos.offset(placeDir.getNormal())) && fruit instanceof PalmFruitBlock){

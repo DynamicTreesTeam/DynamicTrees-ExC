@@ -47,15 +47,13 @@ public class PalmSpecies extends Species {
         branch.analyse(trunkBlockState, world, treePos, Direction.DOWN, signal);
         List<BlockPos> endPoints = endFinder.getEnds();
 
-        for (BlockPos endPoint: endPoints) {
+        for (BlockPos endPoint: endPoints)
             TreeHelper.ageVolume(world, endPoint, 2, 3, 3, SafeChunkBounds.ANY);
-        }
 
         // Make sure the bottom block is always just a little thicker that the block above it.
         int radius = branch.getRadius(world.getBlockState(treePos.above()));
-        if (radius != 0) {
+        if (radius != 0)
             branch.setRadius(world, treePos, radius + 1, null);
-        }
 
         return super.postGrow(world, rootPos, treePos, soilLife, natural);
     }
@@ -95,9 +93,8 @@ public class PalmSpecies extends Species {
     @Override
     public HashMap<BlockPos, BlockState> getFellingLeavesClusters(BranchDestructionData destructionData) {
 
-        if(destructionData.getNumEndpoints() < 1) {
+        if(destructionData.getNumEndpoints() < 1)
             return null;
-        }
 
         HashMap<BlockPos, BlockState> leaves = new HashMap<>();
         BlockPos relPos = destructionData.getEndPointRelPos(0).above(2);//A palm tree is only supposed to have one endpoint at it's top.
@@ -105,9 +102,8 @@ public class PalmSpecies extends Species {
         LeavesProperties leavesProperties = destructionData.species.getLeavesProperties();
 
         Set<BlockPos> existingLeaves = new HashSet<>();
-        for (int i = 0; i<destructionData.getNumLeaves(); i++){
+        for (int i = 0; i<destructionData.getNumLeaves(); i++)
             existingLeaves.add(destructionData.getLeavesRelPos(i));
-        }
 
         if (existingLeaves.contains(relPos))
             leaves.put(relPos, leavesProperties.getDynamicLeavesState(4));//The barky overlapping part of the palm frond cluster

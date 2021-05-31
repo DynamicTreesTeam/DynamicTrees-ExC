@@ -49,9 +49,8 @@ public class PalmVinesGenFeature extends GenFeature implements IPostGenFeature {
     }
 
     private void addVine(ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos, BlockPos leavesPos, int length) {
-        if (rootPos.getY() == leavesPos.getY()){
+        if (rootPos.getY() == leavesPos.getY())
             return;
-        }
         Direction placeDir = CoordUtils.HORIZONTALS[world.getRandom().nextInt(4)];
         BooleanProperty property = VineBlock.SOUTH;
         switch (placeDir){
