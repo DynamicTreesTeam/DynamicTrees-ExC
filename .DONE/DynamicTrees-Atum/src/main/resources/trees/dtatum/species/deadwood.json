@@ -1,8 +1,10 @@
 {
+  "type": "dtatum:deadwood",
   "family": "dtatum:deadwood",
   "tapering": 0.0,
   "signal_energy": 10.0,
-  "growth_rate": 1.0,
+  "growth_rate": 0.0,
+  "soil_longevity": 8,
   "leaves_properties": "dtatum:bare",
   "generate_seed": false,
   "generate_sapling": false,

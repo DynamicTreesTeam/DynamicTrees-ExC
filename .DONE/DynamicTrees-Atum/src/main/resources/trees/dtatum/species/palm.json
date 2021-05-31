@@ -12,6 +12,7 @@
   },
   "seed_drop_rarity": 0.0,
   "stick_drop_rarity": 1.0,
+  "transformable": false,
   "perfect_biomes": { "name": "atum:oasis" },
   "primitive_sapling": "atum:palm_sapling",
   "features": [

@@ -27,7 +27,7 @@ public class DeadwoodSpecies extends Species {
     }
 
     @Override
-    protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int probMap[]) {
+    protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
         Direction originDir = signal.dir.getOpposite();
 
         // Alter probability map for direction change
