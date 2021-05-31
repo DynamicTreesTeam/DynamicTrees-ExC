@@ -1,7 +1,10 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-quark/files",
 	"1.16.5": {
-		"1.16.5-2.0.1": "- Updated to work with Dynamic Trees 1.10.0-Beta7"
+		"1.16.5-2.0.4": "- Fixed crash with quark r2.4-312",
+		"1.16.5-2.0.3": "- Fixed 1.16.4 not being accepted (for real this time)",
+		"1.16.5-2.0.2": "- Fixed Glowcelium breaking when a tree is planted on it\n- Fixed dependencies only accepting 1.16.5 and not 1.16.4",
+		"1.16.5-2.0.1": "- Updated to work with Dynamic Trees 1.10.0-Beta7",
 		"1.16.5-2.0.0": "- Updated to 1.16.5\n- Now supports trees from the 1.16.5 version of Quark"
 	},
 	"1.12.2": {
@@ -12,8 +15,8 @@
 		"1.12.2-1.0.1": "- Minor Fixes"
 	},
 	"promos": {
-		"1.16.5-latest": "1.16.5-2.0.1",
-		"1.16.5-recommended": "1.16.5-2.0.1",
+		"1.16.5-latest": "1.16.5-2.0.4",
+		"1.16.5-recommended": "1.16.5-2.0.4",
 		"1.12.2-latest": "1.12.2-1.0.6",
 		"1.12.2-recommended": "1.12.2-1.0.6"
 	}
