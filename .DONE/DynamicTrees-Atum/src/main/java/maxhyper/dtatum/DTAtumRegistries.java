@@ -4,9 +4,7 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
@@ -20,10 +18,7 @@ import maxhyper.dtatum.blocks.PalmFruitBlock;
 import maxhyper.dtatum.genfeatures.BrokenLeavesGenFeature;
 import maxhyper.dtatum.genfeatures.PalmFruitGenFeature;
 import maxhyper.dtatum.genfeatures.PalmVinesGenFeature;
-import maxhyper.dtatum.growthlogic.DTAtumGrowthLogicKits;
-import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
 import maxhyper.dtatum.trees.DeadwoodSpecies;
-import maxhyper.dtatum.trees.PalmSpecies;
 import maxhyper.dtatum.worldgen.DeadwoodFeatureCanceller;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -46,13 +41,7 @@ public class DTAtumRegistries {
     }
 
     @SubscribeEvent
-    public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
-        event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"), PalmLeavesProperties.TYPE);
-    }
-
-    @SubscribeEvent
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
-        event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"), PalmSpecies.TYPE);
         event.registerType(new ResourceLocation(DynamicTreesAtum.MOD_ID, "deadwood"), DeadwoodSpecies.TYPE);
     }
 
@@ -71,11 +60,6 @@ public class DTAtumRegistries {
         BROKEN_LEAVES_FEATURE = new BrokenLeavesGenFeature(new ResourceLocation(DynamicTreesAtum.MOD_ID,"broken_leaves"));
 
         event.getRegistry().registerAll(PALM_FRUIT_FEATURE, PALM_VINES_FEATURE, BROKEN_LEAVES_FEATURE);
-    }
-
-    @SubscribeEvent
-    public static void onGrowthLogicKitRegistry (final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GrowthLogicKit> event) {
-        DTAtumGrowthLogicKits.register(event.getRegistry());
     }
 
     @SubscribeEvent

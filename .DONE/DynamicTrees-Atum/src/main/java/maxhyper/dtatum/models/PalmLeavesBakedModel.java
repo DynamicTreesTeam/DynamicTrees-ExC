@@ -1,9 +1,9 @@
 package maxhyper.dtatum.models;
 
+import com.ferreusveritas.dynamictrees.blocks.leaves.PalmLeavesProperties;
 import com.ferreusveritas.dynamictrees.client.ModelUtils;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.google.common.primitives.Ints;
-import maxhyper.dtatum.leavesProperties.PalmLeavesProperties;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;

@@ -31,7 +31,7 @@ Compatibility Mod between Dynamic trees and Atum 2
 [[dependencies.dtatum]]
     modId="dynamictrees"
     mandatory=true
-    versionRange="[0.10.0,)"
+    versionRange="[0.10.0-Beta14,)"
     ordering="AFTER"
     side="BOTH"
 
