@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "atum:block/stripped_deadwood_log",
+    "rings": "atum:block/stripped_deadwood_log_top"
+  }
+}
