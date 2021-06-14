@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "dtquark:fiery_blossom_sapling",
+    "dtquark:frosty_blossom_sapling",
+    "dtquark:serene_blossom_sapling",
+    "dtquark:sunny_blossom_sapling",
+    "dtquark:sweet_blossom_sapling"
+  ]
+}

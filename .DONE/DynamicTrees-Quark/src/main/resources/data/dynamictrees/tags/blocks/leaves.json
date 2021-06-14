@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "dtquark:fiery_blossom_leaves",
+    "dtquark:frosty_blossom_leaves",
+    "dtquark:serene_blossom_leaves",
+    "dtquark:sunny_blossom_leaves",
+    "dtquark:sweet_blossom_leaves"
+  ]
+}
