@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "tconstruct:block/wood/bloodshroom/log",
+    "rings": "tconstruct:block/wood/bloodshroom/log_top"
+  }
+}

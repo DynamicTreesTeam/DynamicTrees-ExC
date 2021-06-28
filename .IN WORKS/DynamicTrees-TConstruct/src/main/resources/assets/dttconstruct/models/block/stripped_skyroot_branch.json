@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "tconstruct:block/wood/skyroot/stripped_log",
+    "rings": "tconstruct:block/wood/skyroot/stripped_log_top"
+  }
+}

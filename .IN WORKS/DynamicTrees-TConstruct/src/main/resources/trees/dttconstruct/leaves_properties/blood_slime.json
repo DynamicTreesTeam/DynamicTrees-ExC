@@ -1,0 +1,7 @@
+{
+  "type": "dynamictrees:wart",
+  "primitive_leaves": "tconstruct:blood_slime_leaves",
+  "light_requirement": 0,
+  "fire_spread": 0,
+  "flammability": 0
+}

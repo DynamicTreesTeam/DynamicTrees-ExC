@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dttconstruct:earth_slime",
+  "common_species": "dttconstruct:greenheart",
+  "primitive_log": "tconstruct:greenheart_log",
+  "primitive_stripped_log": "tconstruct:stripped_greenheart_log",
+  "max_branch_radius": 8
+}

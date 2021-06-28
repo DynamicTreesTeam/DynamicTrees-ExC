@@ -103,8 +103,8 @@ dependencies {
     // Compile Dynamic Trees Plus
     runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${config.mc_version}:${config.dynamic_trees_plus_version}")
 
-    implementation fg.deobf("curse.maven:tinkers-construct-74072:3301247")
-    implementation fg.deobf("curse.maven:mantle-74924:3273201")
+    implementation fg.deobf("curse.maven:tinkers-construct-74072:3352983")
+    implementation fg.deobf("curse.maven:mantle-74924:3352484")
 
     runtimeOnly fg.deobf("curse.maven:cc-tweaked-282001:3236650")
 

@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "tconstruct:block/wood/bloodshroom/stripped_log",
+    "rings": "tconstruct:block/wood/bloodshroom/stripped_log_top"
+  }
+}

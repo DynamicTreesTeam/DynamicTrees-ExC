@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dttconstruct:sky_slime",
+  "common_species": "dttconstruct:skyroot",
+  "primitive_log": "tconstruct:skyroot_log",
+  "primitive_stripped_log": "tconstruct:stripped_skyroot_log",
+  "max_branch_radius": 8
+}

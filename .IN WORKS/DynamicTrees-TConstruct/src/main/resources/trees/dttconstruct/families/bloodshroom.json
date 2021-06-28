@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dttconstruct:blood_slime",
+  "common_species": "dttconstruct:bloodshroom",
+  "primitive_log": "tconstruct:bloodshroom_log",
+  "primitive_stripped_log": "tconstruct:stripped_bloodshroom_log",
+  "max_branch_radius": 8
+}
