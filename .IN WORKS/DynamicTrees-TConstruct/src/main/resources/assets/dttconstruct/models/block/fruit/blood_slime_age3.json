@@ -1,0 +1,7 @@
+{
+    "parent": "dttconstruct:block/fruit/common/slime_age3",
+    "textures": {
+        "particle": "dttconstruct:block/blood_slime",
+        "apple": "dttconstruct:block/blood_slime"
+    }
+}

@@ -11,17 +11,15 @@
     "forest": 1.05
   },
   "seed_drop_rarity": 1.0,
-  "stick_drop_rarity": 1.0,
+  "stick_drop_rarity": 0.0,
   "primitive_sapling": "tconstruct:blood_slime_sapling",
   "acceptable_soils": [ "slime_like" ],
   "features" : [
     {
-      "name": "rot_soil",
+      "name": "fruit",
       "properties": {
-        "rotten_soil": "podzol"
+        "fruit_block": "dttconstruct:blood_slime_fruit"
       }
-    },
-    "mushroom_rot",
-    "bee_nest"
+    }
   ]
 }

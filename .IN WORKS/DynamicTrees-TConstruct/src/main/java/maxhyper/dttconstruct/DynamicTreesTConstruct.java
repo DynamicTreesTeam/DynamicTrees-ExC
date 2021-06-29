@@ -20,6 +20,8 @@ public class DynamicTreesTConstruct
         MinecraftForge.EVENT_BUS.register(this);
 
         RegistryHandler.setup(MOD_ID);
+
+        DTTConstructRegistries.setup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

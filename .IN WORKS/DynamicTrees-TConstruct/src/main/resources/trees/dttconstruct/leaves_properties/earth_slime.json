@@ -1,3 +1,5 @@
 {
-  "primitive_leaves": "tconstruct:earth_slime_leaves"
+  "primitive_leaves": "tconstruct:earth_slime_leaves",
+  "fire_spread": 0,
+  "flammability": 0
 }

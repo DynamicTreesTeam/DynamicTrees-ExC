@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dttconstruct:block/fruit/blood_slime_age0" },
+        "age=1": { "model": "dttconstruct:block/fruit/blood_slime_age1" },
+        "age=2": { "model": "dttconstruct:block/fruit/blood_slime_age2" },
+        "age=3": { "model": "dttconstruct:block/fruit/blood_slime_age3" }
+    }
+}
