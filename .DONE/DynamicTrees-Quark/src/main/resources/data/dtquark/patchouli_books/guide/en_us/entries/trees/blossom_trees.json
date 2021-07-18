@@ -1,0 +1,19 @@
+{
+  "name": "Blossom Trees",
+  "icon": "dtquark:sweet_blossom_seed",
+  "category": "trees",
+  "sortnum": "6",
+  "pages": [
+	{
+      "type": "text",
+      "title": "Blossom Trees",
+      "text": "Blossom trees are an elusive tree species that can be found in many variants across the world. By default, you will find blossom trees in the following locations:$(br)- Frosty in cold biomes$(br)- Serene in swamp biomes$(br)- Warm in savanna biomes$(br)- Sweet in mountain biomes$(br)- Sunny in plains biomes$(br)- Fiery in mesa biomes"
+    },
+    {
+      "type": "image",
+      "images": ["dtquark:textures/patchouli/images/blossom_1.png","dtquark:textures/patchouli/images/blossom_2.png", "dtquark:textures/patchouli/images/blossom_3.png"],
+      "text": "Examples of blossom trees",
+      "border": true
+    }
+  ]
+} 

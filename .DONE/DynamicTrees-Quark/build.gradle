@@ -134,16 +134,16 @@ dependencies {
     // At runtime, use the full JEI mod.
     runtimeOnly fg.deobf("mezz.jei:jei-${mcVersion}:${property("jeiVersion")}")
 
-    // Compile Dynamic Trees, of course.
-    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${property("dynamicTreesVersion")}")
-    // Compile Dynamic Trees Plus
-//    runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${mcVersion}:${property("dynamicTreesPlusVersion")}")
-
     // At runtime, use Patchouli mod (for the guide book, which is Json so we don't need the API).
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${property("patchouliVersion")}")
 
+    // Compile Dynamic Trees, of course.
+    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${property("dynamicTreesVersion")}")
+    // Compile Dynamic Trees Plus
+    runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${mcVersion}:${property("dynamicTreesPlusVersion")}")
+
     implementation fg.deobf("curse.maven:autoreglib-250363:3326041")
-    implementation fg.deobf("curse.maven:quark-243121:3366626")
+    implementation fg.deobf("curse.maven:quark-243121:3393195")
 
     runtimeOnly fg.deobf("curse.maven:cc-tweaked-282001:3236650")
 
@@ -174,6 +174,10 @@ jar.finalizedBy('reobfJar')
 
 java {
     withSourcesJar()
+}
+
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
 }
 
 publishing {
