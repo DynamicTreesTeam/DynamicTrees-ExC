@@ -29,7 +29,7 @@ public class BlossomLeavesProperties extends LeavesProperties {
             @Override
             @OnlyIn(Dist.CLIENT)
             public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-                if (worldIn.isAirBlock(pos.down()) && rand.nextInt(5) == 0) {
+                if (worldIn.isEmptyBlock(pos.below()) && rand.nextInt(5) == 0) {
                     double windStrength = 5.0D + Math.cos((double)worldIn.getGameTime() / 2000.0D) * 2.0D;
                     double windX = Math.cos((double)worldIn.getGameTime() / 1200.0D) * windStrength;
                     double windZ = Math.sin((double)worldIn.getGameTime() / 1000.0D) * windStrength;

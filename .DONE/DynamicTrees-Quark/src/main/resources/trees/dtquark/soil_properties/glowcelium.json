@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "quark:glowcelium",
+  "acceptable_soils": [ "dirt_like", "fungus_like" ]
+}
