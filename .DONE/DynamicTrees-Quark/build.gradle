@@ -138,8 +138,7 @@ dependencies {
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${property("patchouliVersion")}")
 
     // Compile Dynamic Trees, of course.
-    //implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${property("dynamicTreesVersion")}")
-    implementation fg.deobf("blank:DynamicTrees-1.16.5:0.10.0-Beta17.3")
+    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${property("dynamicTreesVersion")}")
     // Compile Dynamic Trees Plus
     runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${mcVersion}:${property("dynamicTreesPlusVersion")}")
 

@@ -13,8 +13,6 @@
     "dry": 1,
     "forest": 1
   },
-  "seed_drop_rarity": 1.0,
-  "stick_drop_rarity": 1.0,
   "perfect_biomes": { "types": [ "forest", "overworld" ] },
   "primitive_sapling": "quark:lavender_blossom_sapling",
   "features" : [
