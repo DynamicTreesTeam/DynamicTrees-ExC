@@ -1,9 +1,9 @@
 package maxhyper.dtatum.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.config.GenFeatureProperty;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
@@ -23,11 +23,16 @@ import java.util.List;
 public class PalmVinesGenFeature extends GenFeature implements IPostGenFeature {
 
 
-    public static final GenFeatureProperty<Integer> MAX_LENGTH = GenFeatureProperty.createIntegerProperty("max_length");
-    public static final GenFeatureProperty<Block> BLOCK = GenFeatureProperty.createBlockProperty("block");
+    public static final ConfigurationProperty<Integer> MAX_LENGTH = ConfigurationProperty.integer("max_length");
+    public static final ConfigurationProperty<Block> BLOCK = ConfigurationProperty.block("block");
 
     public PalmVinesGenFeature(ResourceLocation registryName) {
-        super(registryName, BLOCK, MAX_LENGTH, QUANTITY, PLACE_CHANCE);
+        super(registryName);
+    }
+
+    @Override
+    protected void registerProperties() {
+        this.register(BLOCK, MAX_LENGTH, QUANTITY, PLACE_CHANCE);
     }
 
     @Override

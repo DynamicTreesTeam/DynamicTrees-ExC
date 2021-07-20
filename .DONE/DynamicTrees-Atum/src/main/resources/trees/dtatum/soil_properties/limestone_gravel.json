@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "atum:limestone_gravel",
+  "acceptable_soils": [ "gravel_like" ]
+}

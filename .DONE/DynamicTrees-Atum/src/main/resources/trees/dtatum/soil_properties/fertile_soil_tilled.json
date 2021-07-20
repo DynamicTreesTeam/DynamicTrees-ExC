@@ -1,0 +1,5 @@
+{
+  "primitive_soil": "atum:fertile_soil_tilled",
+  "acceptable_soils": [ "dirt_like" ],
+  "substitute_soil" : "dtatum:fertile_soil"
+}

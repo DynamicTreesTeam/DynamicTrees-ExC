@@ -3,10 +3,10 @@ package maxhyper.dtatum.genfeatures;
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.config.GenFeatureProperty;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
@@ -25,10 +25,15 @@ import java.util.List;
 
 public class PalmFruitGenFeature extends GenFeature implements IPostGrowFeature, IPostGenFeature {
 
-    public static final GenFeatureProperty<FruitBlock> FRUIT_BLOCK = GenFeatureProperty.createProperty("fruit_block", FruitBlock.class);
+    public static final ConfigurationProperty<FruitBlock> FRUIT_BLOCK = ConfigurationProperty.property("fruit_block", FruitBlock.class);
 
     public PalmFruitGenFeature(ResourceLocation registryName) {
-        super(registryName, FRUIT_BLOCK, QUANTITY, FRUITING_RADIUS, PLACE_CHANCE);
+        super(registryName);
+    }
+
+    @Override
+    protected void registerProperties() {
+        this.register(FRUIT_BLOCK, QUANTITY, FRUITING_RADIUS, PLACE_CHANCE);
     }
 
     @Override

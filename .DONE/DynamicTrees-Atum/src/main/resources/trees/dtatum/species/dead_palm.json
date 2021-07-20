@@ -8,8 +8,9 @@
   "generate_seed": false,
   "generate_sapling": false,
   "can_bone_meal_tree": false,
-  "seed_drop_rarity": 0.0,
-  "stick_drop_rarity": 1.0,
+  "drop_creators": [
+    "log"
+  ],
   "transformable": false,
   "acceptable_soils": ["dirt_like", "sand_like", "gravel_like"],
   "features": [

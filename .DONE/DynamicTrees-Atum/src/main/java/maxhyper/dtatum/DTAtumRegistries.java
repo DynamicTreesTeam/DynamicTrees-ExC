@@ -4,14 +4,9 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
-import com.ferreusveritas.dynamictrees.systems.DirtHelper;
-import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
-import com.ferreusveritas.dynamictrees.systems.dropcreators.FruitDropCreator;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.teammetallurgy.atum.init.AtumBlocks;
 import com.teammetallurgy.atum.init.AtumItems;
 import com.teammetallurgy.atum.world.gen.feature.DeadwoodFeature;
 import maxhyper.dtatum.blocks.PalmFruitBlock;
@@ -65,23 +60,13 @@ public class DTAtumRegistries {
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
 
-        DirtHelper.registerSoil(AtumBlocks.SAND, DirtHelper.SAND_LIKE);
-        DirtHelper.registerSoil(AtumBlocks.FERTILE_SOIL, DirtHelper.SAND_LIKE);
-        DirtHelper.registerSoil(AtumBlocks.FERTILE_SOIL, DirtHelper.DIRT_LIKE);
-        DirtHelper.registerSoil(AtumBlocks.FERTILE_SOIL_TILLED, DirtHelper.DIRT_LIKE, AtumBlocks.FERTILE_SOIL);
-        DirtHelper.registerSoil(AtumBlocks.LIMESTONE_GRAVEL, DirtHelper.GRAVEL_LIKE);
-        DirtHelper.registerSoil(AtumBlocks.MARL, DirtHelper.MUD_LIKE);
-
         final Species palm = Species.REGISTRY.get(new ResourceLocation(DynamicTreesAtum.MOD_ID, "palm"));
 
         if (palm.isValid()){
-            palm.addDropCreator(new FruitDropCreator().setFruitItem(AtumItems.DATE));
             DATE_FRUIT.setSpecies(palm);
             DATE_FRUIT.setDroppedItem(new ItemStack(AtumItems.DATE));
         }
 
-        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesAtum.MOD_ID))
-            event.getRegistry().register(rooty);
     }
 
 }

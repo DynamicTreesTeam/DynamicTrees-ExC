@@ -1,10 +1,10 @@
 package maxhyper.dtatum.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.config.GenFeatureProperty;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
@@ -19,10 +19,15 @@ import java.util.List;
 
 public class BrokenLeavesGenFeature extends GenFeature implements IPostGenFeature {
 
-    public static final GenFeatureProperty<Float> PERCENTAGE = GenFeatureProperty.createProperty("percentage", Float.class);
+    public static final ConfigurationProperty<Float> PERCENTAGE = ConfigurationProperty.property("percentage", Float.class);
 
     public BrokenLeavesGenFeature(ResourceLocation registryName) {
-        super(registryName, PERCENTAGE);
+        super(registryName);
+    }
+
+    @Override
+    protected void registerProperties() {
+        this.register(PERCENTAGE);
     }
 
     @Override

@@ -4,7 +4,6 @@
   "signal_energy": 8.0,
   "growth_rate": 0.8,
   "leaves_properties": "dtforbiddenarcanus:cherrywood",
-  "seed_drop_rarity": 0.0,
   "perfect_biomes": { "types": [ "plains", "overworld" ] },
   "primitive_sapling": "forbidden_arcanus:cherrywood_sapling",
   "features" : [
@@ -12,6 +11,16 @@
       "name": "fruit",
       "properties": {
         "fruit_block": "dtforbiddenarcanus:cherry_fruit"
+      }
+    }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_item": "forbidden_arcanus:cherry_peach"
       }
     }
   ]

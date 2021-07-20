@@ -10,8 +10,15 @@
     "hot": 1.1,
     "dry": 1.1
   },
-  "seed_drop_rarity": 0.0,
-  "stick_drop_rarity": 1.0,
+  "drop_creators": [
+    "log",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_item": "atum:date"
+      }
+    }
+  ],
   "transformable": false,
   "perfect_biomes": { "name": "atum:oasis" },
   "primitive_sapling": "atum:palm_sapling",
