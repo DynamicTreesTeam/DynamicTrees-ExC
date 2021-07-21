@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "integrateddynamics:block/menril_log",
+    "rings": "integrateddynamics:block/menril_log_top"
+  }
+}

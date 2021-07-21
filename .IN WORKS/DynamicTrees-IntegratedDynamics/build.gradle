@@ -1,0 +1,229 @@
+import org.w3c.dom.Element
+
+String property(String name) {
+    return project.getProperty(name)
+}
+
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.+', changing: true
+    }
+}
+
+plugins {
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+}
+
+repositories {
+    maven {
+        name 'LDTTeam - Modding'
+        url 'https://ldtteam.jfrog.io/ldtteam/modding/'
+    }
+    maven {
+        url "https://maven.tehnut.info"
+    }
+    maven {
+        url "https://www.cursemaven.com"
+    }
+    maven {
+        url "https://harleyoconnor.com/maven"
+    }
+    flatDir {
+        dirs("libs")
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+
+String modName = property("modName")
+String modVersion = property("modVersion")
+String mcVersion = property("mcVersion")
+
+version = "${mcVersion}-${modVersion}"
+group = property("group")
+archivesBaseName = modName
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+minecraft {
+    mappings channel: 'official', version: mcVersion
+
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            if (project.hasProperty('mcUuid')) {
+                args '--uuid', property('mcUuid')
+            }
+            if (project.hasProperty('mcUsername')) {
+                args '--username', property('mcUsername')
+            }
+            if (project.hasProperty('mcAccessToken')) {
+                args '--accessToken', property('mcAccessToken')
+            }
+
+            mods {
+                dtintegrateddynamics {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            mods {
+                dtintegrateddynamics {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            args '--mod', 'dtintegrateddynamics', '--all', '--output', file('src/generated/resources/')
+
+            mods {
+                dtintegrateddynamics {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    // Not sure if we need this one, what is a "forge" anyway?
+    minecraft "net.minecraftforge:forge:${mcVersion}-${property("forgeVersion")}"
+
+    // Compile Hwyla API, but don't include in runtime.
+    compileOnly fg.deobf("mcp.mobius.waila:Hwyla:${property("hwylaVersion")}:api")
+    // At runtime, use the full Hwyla mod.
+    runtimeOnly fg.deobf("mcp.mobius.waila:Hwyla:${property("hwylaVersion")}")
+
+    // Compile JEI API, but don't include in runtime.
+    compileOnly fg.deobf("mezz.jei:jei-${mcVersion}:${property("jeiVersion")}:api")
+    // At runtime, use the full JEI mod.
+    runtimeOnly fg.deobf("mezz.jei:jei-${mcVersion}:${property("jeiVersion")}")
+
+    // At runtime, use Patchouli mod (for the guide book, which is Json so we don't need the API).
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${property("patchouliVersion")}")
+
+    // Compile Dynamic Trees, of course.
+    implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${mcVersion}:${property("dynamicTreesVersion")}")
+    // Compile Dynamic Trees Plus
+    runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${mcVersion}:${property("dynamicTreesPlusVersion")}")
+
+    implementation fg.deobf("curse.maven:cyclops-core-232758:3336467")
+    implementation fg.deobf("curse.maven:common-capabilities-247007:3292062")
+    implementation fg.deobf("curse.maven:integrated-dynamics-236307:3376007")
+
+    runtimeOnly fg.deobf("curse.maven:cc-tweaked-282001:3236650")
+
+    // At runtime, use suggestion provider fix mod.
+    runtimeOnly fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix:${mcVersion}-${property("suggestionProviderFixVersion")}")
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": project.name,
+                "Specification-Vendor": "Max Hyper",
+                "Specification-Version": "1",
+                "Implementation-Title": project.name,
+                "Implementation-Version": version,
+                "Implementation-Vendor" : "Max Hyper",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set("sources")
+    from sourceSets.main.allJava
+}
+
+jar.finalizedBy('reobfJar')
+
+java {
+    withSourcesJar()
+}
+
+tasks.withType(GenerateModuleMetadata) {
+    enabled = false
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            setArtifactId("${modName}-${mcVersion}")
+            setVersion(modVersion)
+
+            from components.java
+
+            pom {
+                url = "https://github.com/supermassimo/${modName}"
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://mit-license.org'
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/supermassimo/${modName}.git"
+                    developerConnection = "scm:git:ssh://github.com/supermassimo/${modName}.git"
+                    url = "https://github.com/supermassimo/${modName}"
+                }
+            }
+
+            pom.withXml { xmlProvider ->
+                final Element element = xmlProvider.asElement();
+
+                // Clear dependencies.
+                element.getChildNodes().each { node ->
+                    if (node.getNodeName() == "dependencies")
+                        element.removeChild(node)
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+    }
+}

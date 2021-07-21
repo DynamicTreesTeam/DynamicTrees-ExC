@@ -1,0 +1,51 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+issueTrackerURL="https://github.com/supermassimo/DynamicTrees-ExC/issues"
+
+[[mods]]
+modId="dtintegrateddynamics"
+version="${file.jarVersion}"
+displayName="Dynamic Trees for Integrated Dynamics"
+
+updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-IntegratedDynamics/version_info.json?raw=true"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-integrateddynamics"
+
+authors="Max Hyper" #optional
+description='''
+Compatibility Mod between Dynamic trees and Integrated Dynamics
+'''
+[[dependencies.dtintegrateddynamics]]
+    modId="forge"
+    mandatory=true
+    versionRange="[35,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dtintegrateddynamics]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dtintegrateddynamics]]
+    modId="dynamictrees"
+    mandatory=true
+    versionRange="[0.10.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.dtintegrateddynamics]]
+    modId="dynamictreesplus"
+    mandatory=false
+    versionRange="[0.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.dtintegrateddynamics]]
+    modId="integrateddynamics"
+    mandatory=true
+    versionRange="[1.9.0,)"
+    ordering="AFTER"
+    side="BOTH"

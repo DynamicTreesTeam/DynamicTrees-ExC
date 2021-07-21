@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dtintegrateddynamics:menril",
+  "common_species": "dtintegrateddynamics:menril",
+  "primitive_log": "integrateddynamics:menril_log",
+  "primitive_stripped_log": "dtintegrateddynamics:stripped_menril_log",
+  "max_branch_radius": 16
+}

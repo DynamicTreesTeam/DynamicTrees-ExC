@@ -1,0 +1,24 @@
+{
+  "family": "dtintegrateddynamics:menril",
+  "tapering": 0.3,
+  "signal_energy": 12.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtintegrateddynamics:menril",
+  "environment_factors" : {
+    "cold": 0.75,
+    "hot": 0.5,
+    "dry": 0.5,
+    "forest": 1.05
+  },
+  "seed_drop_rarity": 1.0,
+  "stick_drop_rarity": 0.0,
+  "primitive_sapling": "integrateddynamics:menril_sapling",
+  "features" : [
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtintegrateddynamics:menril_berry_fruit"
+      }
+    }
+  ]
+}
