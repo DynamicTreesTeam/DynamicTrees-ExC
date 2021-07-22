@@ -1,0 +1,27 @@
+{
+  "type": "dtneapolitan:banana",
+  "family": "dtneapolitan:banana",
+  "tapering": 0.3,
+  "signal_energy": 12.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtneapolitan:banana",
+  "environment_factors" : {
+    "cold": 0.75,
+    "hot": 0.5,
+    "dry": 0.5,
+    "forest": 1.05
+  },
+  "primitive_sapling_item": "neapolitan:banana_frond",
+  "acceptable_soils": ["dirt_like", "sand_like", "gravel_like"],
+  "features" : [
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "neapolitan:banana_bunch"
+      }
+    }
+  ],
+  "drop_creators": [
+    "log"
+  ]
+}

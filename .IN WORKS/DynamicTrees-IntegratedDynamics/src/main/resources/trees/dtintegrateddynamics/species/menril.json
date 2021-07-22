@@ -1,23 +1,42 @@
 {
   "family": "dtintegrateddynamics:menril",
-  "tapering": 0.3,
-  "signal_energy": 12.0,
-  "growth_rate": 0.8,
+  "tapering": 0.35,
+  "signal_energy": 16.0,
+  "growth_rate": 1.0,
+  "growth_logic_kit": "dtintegrateddynamics:menril",
   "leaves_properties": "dtintegrateddynamics:menril",
   "environment_factors" : {
-    "cold": 0.75,
-    "hot": 0.5,
-    "dry": 0.5,
-    "forest": 1.05
+    "hot": 0.75,
+    "dry": 0.5
   },
-  "seed_drop_rarity": 1.0,
-  "stick_drop_rarity": 0.0,
+  "perfect_biomes": { "name": "integrateddynamics:meneglin" },
   "primitive_sapling": "integrateddynamics:menril_sapling",
   "features" : [
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtintegrateddynamics:menril_berry_fruit"
+        "fruit_block": "dtintegrateddynamics:menril_berry_fruit",
+        "quantity": 24
+      }
+    },
+    {
+      "name": "clear_volume",
+      "properties": {
+        "height": 12
+      }
+    },
+    "bottom_flare",
+    "mound",
+    "roots"
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "integrateddynamics:menril_berries",
+        "rarity": 40
       }
     }
   ]

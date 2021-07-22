@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dtneapolitan:banana",
+  "common_species": "dtneapolitan:banana",
+  "primitive_log": "neapolitan:banana_stalk",
+  "generate_stripped_branch": false,
+  "max_branch_radius": 8
+}

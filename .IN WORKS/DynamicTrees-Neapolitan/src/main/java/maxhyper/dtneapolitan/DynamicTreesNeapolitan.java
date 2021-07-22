@@ -1,4 +1,4 @@
-package maxhyper.dtintegrateddynamics;
+package maxhyper.dtneapolitan;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -8,12 +8,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(DynamicTreesIntegratedDynamics.MOD_ID)
-public class DynamicTreesIntegratedDynamics
+@Mod(DynamicTreesNeapolitan.MOD_ID)
+public class DynamicTreesNeapolitan
 {
-    public static final String MOD_ID = "dtintegrateddynamics";
+    public static final String MOD_ID = "dtneapolitan";
 
-    public DynamicTreesIntegratedDynamics() {
+    public DynamicTreesNeapolitan() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
@@ -21,7 +21,7 @@ public class DynamicTreesIntegratedDynamics
 
         RegistryHandler.setup(MOD_ID);
 
-        DTIDRegistries.setup();
+        DTNeapolitanRegistries.setup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

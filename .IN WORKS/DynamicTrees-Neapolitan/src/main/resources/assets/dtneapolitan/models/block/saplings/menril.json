@@ -1,8 +1,8 @@
 {
   "parent": "dynamictrees:block/smartmodel/sapling",
   "textures": {
-    "particle": "integrateddynamics:block/menril_leaves_fancy",
+    "particle": "integrateddynamics:block/menril_leaves",
     "log": "integrateddynamics:block/menril_log",
-    "leaves": "integrateddynamics:block/menril_leaves_fancy"
+    "leaves": "integrateddynamics:block/menril_leaves"
   }
 }
