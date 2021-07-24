@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "neapolitan:block/banana_stalk",
+    "rings": "neapolitan:block/banana_stalk_top"
+  }
+}

@@ -5,18 +5,18 @@ import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.species.PalmSpecies;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BananaSpecies extends Species {
+public class BananaSpecies extends PalmSpecies {
 
     public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(BananaSpecies::new);
 
     public BananaSpecies(ResourceLocation resourceLocation, Family family, LeavesProperties leavesProperties) {
         super(resourceLocation, family, leavesProperties);
     }
-
 
     @Override
     public boolean canSaplingGrowNaturally(World world, BlockPos pos) {

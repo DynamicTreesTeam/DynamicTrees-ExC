@@ -1,0 +1,28 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dtneapolitan:block/banana",
+		"apple": "dtneapolitan:block/banana"
+	},
+	"elements": [
+		{
+			"from": [8, 13.6, 7.2],
+			"to": [8, 20, 8.8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"east": {"uv": [3.5, 0, 4.5, 4], "texture": "#apple"},
+				"west": {"uv": [3.5, 0, 4.5, 4], "texture": "#apple"}
+			}
+		},
+		{
+			"from": [7.2, 13.6, 8],
+			"to": [8.8, 20, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [3.5, 0, 4.5, 4], "texture": "#apple"},
+				"south": {"uv": [3.5, 0, 4.5, 4], "texture": "#apple"}
+			}
+		}
+	]
+}

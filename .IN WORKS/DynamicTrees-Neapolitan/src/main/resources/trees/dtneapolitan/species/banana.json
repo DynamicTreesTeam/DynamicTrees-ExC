@@ -1,25 +1,22 @@
 {
   "type": "dtneapolitan:banana",
   "family": "dtneapolitan:banana",
-  "tapering": 0.3,
-  "signal_energy": 12.0,
-  "growth_rate": 0.8,
+  "tapering": 0.8,
+  "signal_energy": 5.0,
+  "growth_rate": 0.6,
   "leaves_properties": "dtneapolitan:banana",
   "environment_factors" : {
     "cold": 0.75,
-    "hot": 0.5,
-    "dry": 0.5,
-    "forest": 1.05
+    "dry": 0.75,
+    "hot": 1.1
   },
-  "primitive_sapling_item": "neapolitan:banana_frond",
+  "transformable": false,
+  "perfect_biomes": { "type": "jungle" },
+  "primitive_sapling_items": [ "neapolitan:large_banana_frond", "neapolitan:banana_frond", "neapolitan:small_banana_frond" ],
+  "can_craft_seed_to_sapling": false,
   "acceptable_soils": ["dirt_like", "sand_like", "gravel_like"],
   "features" : [
-    {
-      "name": "fruit",
-      "properties": {
-        "fruit_block": "neapolitan:banana_bunch"
-      }
-    }
+    "dtneapolitan:banana_fruit"
   ],
   "drop_creators": [
     "log"

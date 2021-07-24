@@ -1,7 +1,0 @@
-{
-  "loader": "dynamictrees:branch",
-  "textures": {
-    "bark": "integrateddynamics:block/stripped_menril_log",
-    "rings": "integrateddynamics:block/stripped_menril_log_top"
-  }
-}

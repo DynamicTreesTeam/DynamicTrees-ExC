@@ -1,3 +1,5 @@
 {
-  "primitive_leaves": "neapolitan:banana_frond"
+  "type": "palm",
+  "primitive_leaves": "neapolitan:banana_frond",
+  "cell_kit": "dynamictrees:palm"
 }

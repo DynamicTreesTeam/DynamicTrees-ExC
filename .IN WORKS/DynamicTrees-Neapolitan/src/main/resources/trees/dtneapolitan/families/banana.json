@@ -3,5 +3,7 @@
   "common_species": "dtneapolitan:banana",
   "primitive_log": "neapolitan:banana_stalk",
   "generate_stripped_branch": false,
-  "max_branch_radius": 8
+  "max_branch_radius": 8,
+  "primary_thickness": 3,
+  "secondary_thickness": 3
 }

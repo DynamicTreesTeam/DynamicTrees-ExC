@@ -4,7 +4,10 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import maxhyper.dtneapolitan.blocks.BananaFruitBlock;
+import maxhyper.dtneapolitan.genfeatures.DTNeapolitanGenFeatures;
 import maxhyper.dtneapolitan.trees.BananaSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -18,7 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTNeapolitanRegistries {
 
-    public static FruitBlock BANANA_FRUIT = new FruitBlock()
+    public static FruitBlock BANANA_FRUIT = new BananaFruitBlock()
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
 
     public static void setup() {
@@ -28,6 +31,11 @@ public class DTNeapolitanRegistries {
     @SubscribeEvent
     public static void registerSpeciesType(final TypeRegistryEvent<Species> event) {
         event.registerType(new ResourceLocation(DynamicTreesNeapolitan.MOD_ID, "banana"), BananaSpecies.TYPE);
+    }
+
+    @SubscribeEvent
+    public static void onGenFeatureRegistry (final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GenFeature> event) {
+        DTNeapolitanGenFeatures.register(event.getRegistry());
     }
 
     @SubscribeEvent

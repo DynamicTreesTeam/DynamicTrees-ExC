@@ -1,0 +1,16 @@
+{
+  "multipart": [
+    {   "when": { "distance": "1|2" },
+      "apply": { "model": "dtneapolitan:block/palm_frond" }
+    },
+    {   "when": { "distance": "3" },
+      "apply": { "model": "dtneapolitan:block/palm_core_top" }
+    },
+    {   "when": { "distance": "4" },
+      "apply": { "model": "dtneapolitan:block/palm_core_bottom" }
+    },
+    {   "when": {"OR":[ { "direction": "0", "distance": "1|2" }, { "distance": "5|6|7" } ]},
+      "apply": { "model": "neapolitan:block/banana_frond_up" }
+    }
+  ]
+}

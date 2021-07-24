@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "dtneapolitan:block/fruit/banana_age0" },
+        "age=1": { "model": "dtneapolitan:block/fruit/banana_age1" },
+        "age=2": { "model": "dtneapolitan:block/fruit/banana_age2" },
+        "age=3": { "model": "dtneapolitan:block/fruit/banana_age3" }
+    }
+}
