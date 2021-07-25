@@ -1,6 +1,7 @@
 package maxhyper.dtneapolitan;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import com.minecraftabnormals.neapolitan.core.NeapolitanConfig;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -25,6 +26,8 @@ public class DynamicTreesNeapolitan
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        NeapolitanConfig.COMMON.bananaPlantJungleGeneration.set(false);
+        NeapolitanConfig.COMMON.bananaPlantBeachGeneration.set(false);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

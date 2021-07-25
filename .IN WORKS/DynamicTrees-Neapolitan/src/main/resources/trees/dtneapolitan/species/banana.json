@@ -19,6 +19,24 @@
     "dtneapolitan:banana_fruit"
   ],
   "drop_creators": [
-    "log"
+    "log",
+    {
+      "name": "normal",
+      "properties": {
+        "drops": {
+          "leaves": {
+            "id": "weighted",
+            "properties": {
+              "items": {
+                "neapolitan:large_banana_frond": 1,
+                "neapolitan:banana_frond": 1,
+                "neapolitan:small_banana_frond": 1
+              },
+              "chance": 1
+            }
+          }
+        }
+      }
+    }
   ]
 }

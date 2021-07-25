@@ -1,8 +1,50 @@
 {
-    "variants": {
-        "age=0": { "model": "dtneapolitan:block/fruit/banana_age0" },
-        "age=1": { "model": "dtneapolitan:block/fruit/banana_age1" },
-        "age=2": { "model": "dtneapolitan:block/fruit/banana_age2" },
-        "age=3": { "model": "dtneapolitan:block/fruit/banana_age3" }
-    }
+    "multipart": [
+        {   "when": { "age": "0" },
+            "apply": { "model": "dtneapolitan:block/fruit/banana_age0" }
+        },
+        {   "when": { "age": "1" },
+            "apply": { "model": "dtneapolitan:block/fruit/banana_age1" }
+        },
+        {   "when": { "age": "1" },
+            "apply": [
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals1" },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals2" },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals3" },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals1", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals2", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals3", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals1", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals2", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals3", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals1", "y": 270 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals2", "y": 270 },
+                { "model": "dtneapolitan:block/fruit/banana_age1_petals3", "y": 270 },
+                { "model": "dynamictrees:block/empty" }
+            ]
+        },
+        {   "when": { "age": "2" },
+            "apply": { "model": "dtneapolitan:block/fruit/banana_age2" }
+        },
+        {   "when": { "age": "2" },
+            "apply": [
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals1" },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals2" },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals3" },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals1", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals2", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals3", "y": 90 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals1", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals2", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals3", "y": 180 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals1", "y": 270 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals2", "y": 270 },
+                { "model": "dtneapolitan:block/fruit/banana_age2_petals3", "y": 270 },
+                { "model": "dynamictrees:block/empty" }
+            ]
+        },
+        {   "when": { "age": "3" },
+            "apply": { "model": "dtneapolitan:block/fruit/banana_age3" }
+        }
+    ]
 }

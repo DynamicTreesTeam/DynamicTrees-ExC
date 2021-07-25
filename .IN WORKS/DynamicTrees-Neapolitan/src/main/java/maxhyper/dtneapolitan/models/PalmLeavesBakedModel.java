@@ -54,6 +54,10 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
             for (int pass = 0; pass < 3; pass++) {
                 for (int half = 0; half < 2; half++) {
 
+                    //we skip some of the leaves to create a more sparse look
+                    if (pass == 0 && surr.ordinal()%2 != 0) continue;
+                    if (pass == 2 && surr.ordinal()%2 == 0) continue;
+
                     BlockVertexData[] outData = new BlockVertexData[8];
 
                     for (int v = 0; v < 8; v++) {
@@ -93,7 +97,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         // Rotate on y axis
                         len = Math.sqrt(x * x + z * z);
                         angle = Math.atan2(x, z);
-                        angle += Math.PI * 0.25 * surr.ordinal() + (Math.PI * (pass == 1 ? 0.185 : pass == 2 ? 0.08 : 0.005));
+                        angle += Math.PI * 0.25 * surr.ordinal() + (Math.PI * (pass == 1 ? (0.185 - 0.25) : pass == 2 ? 0.08 : 0.005));
                         x = (float) (Math.sin(angle) * len);
                         z = (float) (Math.cos(angle) * len);
 
