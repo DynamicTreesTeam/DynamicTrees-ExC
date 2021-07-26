@@ -1,0 +1,64 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dtneapolitan:block/palm_frond",
+		"leaves": "dtneapolitan:block/palm_frond",
+		"log": "neapolitan:block/banana_stalk"
+	},
+	"elements": [
+		{
+			"from": [8, 8, 5],
+			"to": [8, 32, 21],
+			"shade": true,
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 7]},
+			"faces": {
+				"east": {"uv": [12, 4, 8, 10], "texture": "#leaves", "tintindex": 0},
+				"west": {"uv": [8, 4, 12, 10], "texture": "#leaves", "tintindex": 0}
+			}
+		},
+		{
+			"from": [5, 5, 8],
+			"to": [21, 29, 8],
+			"shade": true,
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8]},
+			"faces": {
+				"north": {"uv": [12, 4, 8, 10], "texture": "#leaves", "tintindex": 0},
+				"south": {"uv": [8, 4, 12, 10], "texture": "#leaves", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 3, 5],
+			"to": [8, 27, 21],
+			"shade": true,
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 5, 8]},
+			"faces": {
+				"east": {"uv": [12, 4, 8, 10], "texture": "#leaves", "tintindex": 0},
+				"west": {"uv": [8, 4, 12, 10], "texture": "#leaves", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 0, -5],
+			"to": [8, 24, 11],
+			"shade": true,
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 5, 8]},
+			"faces": {
+				"east": {"uv": [8, 4, 12, 10], "texture": "#leaves", "tintindex": 0},
+				"west": {"uv": [12, 4, 8, 10], "texture": "#leaves", "tintindex": 0}
+			}
+		},
+		{
+			"from": [7, 0, 7],
+			"to": [9, 8, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 2, 8], "texture": "#log"},
+				"east": {"uv": [0, 0, 2, 8], "texture": "#log"},
+				"south": {"uv": [0, 0, 2, 8], "texture": "#log"},
+				"west": {"uv": [0, 0, 2, 8], "texture": "#log"},
+				"up": {"uv": [7, 7, 9, 9], "texture": "#log"},
+				"down": {"uv": [7, 7, 9, 9], "texture": "#log", "cullface": "down"}
+			}
+		}
+	]
+}

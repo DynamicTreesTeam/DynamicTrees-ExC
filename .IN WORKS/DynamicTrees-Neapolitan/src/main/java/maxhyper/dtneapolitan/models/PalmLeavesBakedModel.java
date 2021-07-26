@@ -124,7 +124,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                             outData[3].toInts(frondsTexture)
                     );
                     builder.addUnculledFace(new BakedQuad(vertices,
-                            0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
+                            0, FaceBakery.calculateFacing(vertices), frondsTexture, true)
                     );
 
                     vertices = Ints.concat(
@@ -134,7 +134,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                             outData[7].toInts(frondsTexture)
                     );
                     builder.addUnculledFace(new BakedQuad(vertices,
-                            0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
+                            0, FaceBakery.calculateFacing(vertices), frondsTexture, true)
                     );
 
 

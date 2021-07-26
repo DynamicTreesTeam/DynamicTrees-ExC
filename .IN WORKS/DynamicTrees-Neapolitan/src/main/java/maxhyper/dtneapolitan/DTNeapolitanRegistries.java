@@ -1,14 +1,23 @@
 package maxhyper.dtneapolitan;
 
+import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
+import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.leaves.PalmLeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.leaves.SolidLeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.leaves.WartProperties;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
+import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.families.NetherFungusFamily;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
 import maxhyper.dtneapolitan.blocks.BananaFruitBlock;
+import maxhyper.dtneapolitan.blocks.BananaLeavesProperties;
 import maxhyper.dtneapolitan.genfeatures.DTNeapolitanGenFeatures;
+import maxhyper.dtneapolitan.trees.BananaFamily;
 import maxhyper.dtneapolitan.trees.BananaSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -36,9 +45,21 @@ public class DTNeapolitanRegistries {
         RegistryHandler.addBlock(new ResourceLocation(DynamicTreesNeapolitan.MOD_ID, "banana_fruit"), BANANA_FRUIT);
     }
 
+    public static final ResourceLocation BANANA = new ResourceLocation(DynamicTreesNeapolitan.MOD_ID, "banana");
+
+    @SubscribeEvent
+    public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
+        event.registerType(BANANA, BananaFamily.TYPE);
+    }
+
     @SubscribeEvent
     public static void registerSpeciesType(final TypeRegistryEvent<Species> event) {
-        event.registerType(new ResourceLocation(DynamicTreesNeapolitan.MOD_ID, "banana"), BananaSpecies.TYPE);
+        event.registerType(BANANA, BananaSpecies.TYPE);
+    }
+
+    @SubscribeEvent
+    public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
+        event.registerType(BANANA, BananaLeavesProperties.TYPE);
     }
 
     @SubscribeEvent

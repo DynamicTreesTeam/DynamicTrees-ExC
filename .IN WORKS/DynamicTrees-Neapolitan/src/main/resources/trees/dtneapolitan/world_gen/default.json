@@ -1,0 +1,68 @@
+[
+  {
+    "_comment": "Generation for beaches. Has extremely rare spawn of banana plants",
+    "select": { "types" : [ "beach", "!snowy" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtneapolitan:banana" : 1,
+          "..." : 10
+        }
+      },
+      "chance": 0.1
+    }
+  },
+  {
+    "_comment": "Generation specific to sparse jungle-edge-like biomes. Has rare spawns of banana plants",
+    "select": { "types" : [ "jungle", "!dense", "!dry", "!snowy" ], "names": [ "!.*bamboo.*" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtneapolitan:banana" : 1,
+          "..." : 90
+        }
+      }
+    }
+  },
+  {
+    "_comment": "Generation specific to the dense center of jungle biomes. Has common spawns of banana plants",
+    "select": { "types" : [ "jungle", "dense", "!dry", "!snowy" ], "names": [ "!.*edge.*", "!.*bamboo.*" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtneapolitan:banana" : 1,
+          "..." : 30
+        }
+      }
+    }
+  },
+  {
+    "_comment": "Generation specific to rainforest biomes, if any mod adds them. Has rare spawns of banana plants",
+    "select": { "types" : [ "forest" ], "names": [ ".*rainforest.*" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtneapolitan:banana" : 1,
+          "..." : 90
+        }
+      }
+    }
+  },
+  {
+    "_comment": "Generation specific to sparse rainforest biomes, if any mod adds them. Has very rare spawns of banana plants",
+    "select": { "types" : [ "!forest" ], "names": [ ".*rainforest.*" ] },
+    "apply": {
+      "species" : {
+        "method" : "splice_before",
+        "random" : {
+          "dtneapolitan:banana" : 1,
+          "..." : 150
+        }
+      }
+    }
+  }
+]

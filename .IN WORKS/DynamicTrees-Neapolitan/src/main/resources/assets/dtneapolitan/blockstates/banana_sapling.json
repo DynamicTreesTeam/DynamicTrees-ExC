@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": { "model": "dtneapolitan:block/saplings/banana" }
+    "": [
+      { "model": "dtneapolitan:block/saplings/banana" },
+      { "model": "dtneapolitan:block/saplings/banana", "y": 90 },
+      { "model": "dtneapolitan:block/saplings/banana", "y": 180 },
+      { "model": "dtneapolitan:block/saplings/banana", "y": 270 }
+    ]
   }
 }

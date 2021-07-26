@@ -25,6 +25,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -77,6 +78,14 @@ public class BananaFruitBlock extends FruitBlock {
     public void playerWillDestroy(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         spawnSpiderEntity(world, pos, player);
         super.playerWillDestroy(world, pos, state, player);
+    }
+
+    @Override
+    public void onNeighborChange(BlockState state, IWorldReader world, BlockPos pos, BlockPos neighbor) {
+        if (this.shouldBlockDrop(world, pos, state)) {
+            spawnSpiderEntity((World)world, pos, null);
+        }
+        super.onNeighborChange(state, world, pos, neighbor);
     }
 
     private void spawnSpiderEntity(World world, BlockPos pos, PlayerEntity player) {
