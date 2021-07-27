@@ -76,7 +76,7 @@ public class DTNeapolitanRegistries {
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         Item fruitItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation("neapolitan","banana_bunch"));
         BANANA_FRUIT.setDroppedItem(new ItemStack(fruitItem));
-        final Species treeSpecies = Species.REGISTRY.get(new ResourceLocation(DynamicTreesNeapolitan.MOD_ID, "banana_palm"));
+        final Species treeSpecies = Species.REGISTRY.get(BANANA);
         if (treeSpecies.isValid())
             BANANA_FRUIT.setSpecies(treeSpecies);
     }

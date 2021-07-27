@@ -10,6 +10,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -33,7 +34,9 @@ public class BananaLeavesProperties extends PalmLeavesProperties {
 
     @Override
     public AbstractBlock.Properties getDefaultBlockProperties(Material material, MaterialColor materialColor) {
-        return AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_LIGHT_GREEN).strength(0.2F).sound(SoundType.WEEPING_VINES).harvestTool(ToolType.HOE).randomTicks();
+        return AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_LIGHT_GREEN).strength(0.2F).sound(SoundType.WEEPING_VINES)
+                .harvestTool(ToolType.HOE).noOcclusion().isSuffocating((s, r, p) -> false).isViewBlocking((s, r, p) -> false).randomTicks()
+                .isValidSpawn((s, r, p, e) -> e == EntityType.OCELOT || e == EntityType.PARROT);
     }
 
     @Override
