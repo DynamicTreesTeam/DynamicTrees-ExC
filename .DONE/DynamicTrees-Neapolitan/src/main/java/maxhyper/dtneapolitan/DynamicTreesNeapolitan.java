@@ -1,7 +1,13 @@
 package maxhyper.dtneapolitan;
 
 import com.ferreusveritas.dynamictrees.DynamicTrees;
+import com.ferreusveritas.dynamictrees.api.GatherDataHelper;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilProperties;
+import com.ferreusveritas.dynamictrees.resources.DTResourceRegistries;
+import com.ferreusveritas.dynamictrees.trees.Family;
+import com.ferreusveritas.dynamictrees.trees.Species;
 import com.minecraftabnormals.neapolitan.common.world.gen.feature.BananaPlantFeature;
 import com.minecraftabnormals.neapolitan.core.NeapolitanConfig;
 import com.minecraftabnormals.neapolitan.core.registry.NeapolitanFeatures;
@@ -70,7 +76,15 @@ public class DynamicTreesNeapolitan
     }
 
     public void gatherData(final GatherDataEvent event) {
-        DynamicTrees.gatherTagGenerators(MOD_ID, event);
+        DTResourceRegistries.TREES_RESOURCE_MANAGER.gatherData();
+        GatherDataHelper.gatherAllData(
+                MOD_ID,
+                event,
+                SoilProperties.REGISTRY,
+                Family.REGISTRY,
+                Species.REGISTRY,
+                LeavesProperties.REGISTRY
+        );;
     }
 
 }

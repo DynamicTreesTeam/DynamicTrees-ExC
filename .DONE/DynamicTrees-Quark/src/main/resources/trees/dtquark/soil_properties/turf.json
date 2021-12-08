@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "quark:turf",
+  "acceptable_soils": [ "dirt_like" ]
+}

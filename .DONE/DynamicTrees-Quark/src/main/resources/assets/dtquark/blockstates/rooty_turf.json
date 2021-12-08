@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "quark:block/turf" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}
