@@ -13,5 +13,6 @@
     "log",
     "stick"
   ],
+  "growth_logic_kit": "dtatum:dead",
   "acceptable_soils": ["sand_like"]
 }

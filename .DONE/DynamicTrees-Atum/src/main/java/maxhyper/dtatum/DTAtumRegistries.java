@@ -4,6 +4,7 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -13,6 +14,7 @@ import maxhyper.dtatum.blocks.PalmFruitBlock;
 import maxhyper.dtatum.genfeatures.BrokenLeavesGenFeature;
 import maxhyper.dtatum.genfeatures.PalmFruitGenFeature;
 import maxhyper.dtatum.genfeatures.PalmVinesGenFeature;
+import maxhyper.dtatum.growthlogic.DeadGrowthLogicKit;
 import maxhyper.dtatum.trees.DeadwoodSpecies;
 import maxhyper.dtatum.worldgen.DeadwoodFeatureCanceller;
 import net.minecraft.block.Block;
@@ -28,6 +30,8 @@ public class DTAtumRegistries {
     public static GenFeature PALM_FRUIT_FEATURE;
     public static GenFeature PALM_VINES_FEATURE;
     public static GenFeature BROKEN_LEAVES_FEATURE;
+
+    public static GrowthLogicKit DEAD_GROWTH_LOGIC_KIT = new DeadGrowthLogicKit(new ResourceLocation(DynamicTreesAtum.MOD_ID,"dead"));
 
     public static final FruitBlock DATE_FRUIT = new PalmFruitBlock().setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
 
@@ -55,6 +59,11 @@ public class DTAtumRegistries {
         BROKEN_LEAVES_FEATURE = new BrokenLeavesGenFeature(new ResourceLocation(DynamicTreesAtum.MOD_ID,"broken_leaves"));
 
         event.getRegistry().registerAll(PALM_FRUIT_FEATURE, PALM_VINES_FEATURE, BROKEN_LEAVES_FEATURE);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterGrowthLogicKits(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GrowthLogicKit> event) {
+        event.getRegistry().registerAll(DEAD_GROWTH_LOGIC_KIT);
     }
 
     @SubscribeEvent

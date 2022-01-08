@@ -26,18 +26,4 @@ public class DeadwoodSpecies extends Species {
         return false;
     }
 
-    @Override
-    protected int[] customDirectionManipulation(World world, BlockPos pos, int radius, GrowSignal signal, int[] probMap) {
-        Direction originDir = signal.dir.getOpposite();
-
-        // Alter probability map for direction change
-        probMap[0] = probMap[2] = probMap[3] = probMap[4] = probMap[5] = probMap[1] = 10;
-        probMap[originDir.ordinal()] = 0; // Disable the direction we came from and front
-        if (!signal.isInTrunk()){
-            probMap[originDir.getOpposite().ordinal()] = 0;
-        }
-
-        return probMap;
-    }
-
 }

@@ -57,7 +57,8 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
-            properties 'mixin.env.disableRefMap' : 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
 
             mods {
                 dtatum {
@@ -72,7 +73,30 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
-            properties 'mixin.env.disableRefMap' : 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            mods {
+                dtatum {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+
+            args "--mod", "dtatum",
+                    "--all",
+                    "--output", project.file("src/generated/resources/"),
+                    "--existing", project.file("src/main/resources"),
+                    "--existing-mod", "dynamictrees"
 
             mods {
                 dtatum {
@@ -93,9 +117,9 @@ dependencies {
     runtimeOnly fg.deobf("mcp.mobius.waila:Hwyla:${config.hwyla_version}")
 
     // Compile JEI API, but don't include in runtime.
-    compileOnly fg.deobf("mezz.jei:jei-1.16.4:${config.jei_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-1.16.5:${config.jei_version}:api")
     // At runtime, use the full JEI mod.
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${config.jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:${config.jei_version}")
 
     // Compile Dynamic Trees, of course.
     implementation fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-${config.mc_version}:${config.dynamic_trees_version}")
@@ -115,12 +139,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title": project.name,
-                "Specification-Vendor": "Max Hyper",
-                "Specification-Version": "1",
-                "Implementation-Title": project.name,
-                "Implementation-Version": version,
-                "Implementation-Vendor" : "Max Hyper",
+                "Specification-Title"     : project.name,
+                "Specification-Vendor"    : "Max Hyper",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : version,
+                "Implementation-Vendor"   : "Max Hyper",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

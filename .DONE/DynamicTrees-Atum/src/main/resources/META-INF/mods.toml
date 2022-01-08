@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[36,37)"
 license="MIT"
 
 [[mods]]
@@ -17,14 +17,14 @@ Compatibility Mod between Dynamic trees and Atum 2
 [[dependencies.dtatum]]
     modId="forge"
     mandatory=true
-    versionRange="[35,)"
+    versionRange="[36.2.20,37)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.dtatum]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,1.17)"
+    versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
 
