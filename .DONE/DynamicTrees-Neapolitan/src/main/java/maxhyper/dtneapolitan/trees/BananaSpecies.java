@@ -1,25 +1,14 @@
 package maxhyper.dtneapolitan.trees;
 
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
-import com.ferreusveritas.dynamictrees.systems.nodemappers.FindEndsNode;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.species.PalmSpecies;
-import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class BananaSpecies extends PalmSpecies {
 
@@ -31,8 +20,8 @@ public class BananaSpecies extends PalmSpecies {
 
     @Override
     public boolean canSaplingGrowNaturally(World world, BlockPos pos) {
-        return SoilHelper.isSoilAcceptable(
-                world.getBlockState(pos.below()).getBlock(), SoilHelper.getSoilFlags("sand_like", "gravel_like"))
+        return SoilHelper.isSoilAcceptable(world.getBlockState(pos.below()),
+                SoilHelper.getSoilFlags("sand_like", "gravel_like"))
                 && super.canSaplingGrowNaturally(world, pos);
     }
 

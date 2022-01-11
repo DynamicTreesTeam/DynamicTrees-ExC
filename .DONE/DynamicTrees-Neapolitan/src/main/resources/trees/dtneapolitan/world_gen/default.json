@@ -41,6 +41,7 @@
   },
   {
     "_comment": "Generation specific to rainforest biomes, if any mod adds them. Has rare spawns of banana plants",
+    "suppress_none_selected": true,
     "select": { "types" : [ "forest" ], "names": [ ".*rainforest.*" ] },
     "apply": {
       "species" : {
@@ -54,6 +55,7 @@
   },
   {
     "_comment": "Generation specific to sparse rainforest biomes, if any mod adds them. Has very rare spawns of banana plants",
+    "suppress_none_selected": true,
     "select": { "types" : [ "!forest" ], "names": [ ".*rainforest.*" ] },
     "apply": {
       "species" : {

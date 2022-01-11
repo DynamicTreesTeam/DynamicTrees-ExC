@@ -1,14 +1,11 @@
 package maxhyper.dtneapolitan;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.GatherDataHelper;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilProperties;
-import com.ferreusveritas.dynamictrees.resources.DTResourceRegistries;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.minecraftabnormals.neapolitan.common.world.gen.feature.BananaPlantFeature;
 import com.minecraftabnormals.neapolitan.core.NeapolitanConfig;
 import com.minecraftabnormals.neapolitan.core.registry.NeapolitanFeatures;
 import net.minecraft.util.math.BlockPos;
@@ -16,7 +13,6 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -76,7 +72,6 @@ public class DynamicTreesNeapolitan
     }
 
     public void gatherData(final GatherDataEvent event) {
-        DTResourceRegistries.TREES_RESOURCE_MANAGER.gatherData();
         GatherDataHelper.gatherAllData(
                 MOD_ID,
                 event,
