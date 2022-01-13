@@ -1,6 +1,7 @@
 package maxhyper.dtforbiddenarcanus;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import com.stal111.forbidden_arcanus.config.WorldGenConfig;
 import com.stal111.forbidden_arcanus.init.world.ModConfiguredFeatures;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -28,7 +29,10 @@ public class DynamicTreesForbiddenArcanus {
         DTForbiddenArcanusRegistries.setup();
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) { }
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        WorldGenConfig.CHERRYWOOD_TREE_GENERATE.set(false);
+        WorldGenConfig.MYSTERYWOOD_TREE_GENERATE.set(false);
+    }
 
     private void clientSetup(final FMLClientSetupEvent event) { }
 

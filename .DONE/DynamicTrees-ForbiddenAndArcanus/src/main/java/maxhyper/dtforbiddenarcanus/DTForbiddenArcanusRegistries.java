@@ -7,6 +7,8 @@ import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
+import com.stal111.forbidden_arcanus.config.WorldGenConfig;
+import com.stal111.forbidden_arcanus.init.world.ModConfiguredFeatures;
 import maxhyper.dtforbiddenarcanus.trees.MysterywoodFamily;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,15 +39,6 @@ public class DTForbiddenArcanusRegistries {
     @SubscribeEvent
     public static void registerFamilyTypes(TypeRegistryEvent<Family> event) {
         event.registerType(new ResourceLocation(DynamicTreesForbiddenArcanus.MOD_ID, "mysterywood"), MysterywoodFamily.TYPE);
-    }
-
-    @SubscribeEvent
-    public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-
-//        DirtHelper.registerSoil(ModBlocks.SOULLESS_SAND.getBlock(), DirtHelper.END_LIKE);
-//
-//        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesForbiddenArcanus.MOD_ID))
-//            event.getRegistry().register(rooty);
     }
 
     @SubscribeEvent

@@ -6,7 +6,7 @@
         "method" : "splice_before",
         "random" : {
           "dtforbiddenarcanus:cherrywood" : 1,
-          "..." : 100
+          "..." : 50
         }
       }
     }
