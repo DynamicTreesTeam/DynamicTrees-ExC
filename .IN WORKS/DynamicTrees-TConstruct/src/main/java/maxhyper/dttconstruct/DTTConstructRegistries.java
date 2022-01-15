@@ -4,13 +4,9 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
-import com.ferreusveritas.dynamictrees.systems.DirtHelper;
-import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.FruitDropCreator;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.ShapeUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,15 +15,9 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-import slimeknights.mantle.registration.object.EnumObject;
-import slimeknights.tconstruct.shared.block.SlimeType;
-import slimeknights.tconstruct.world.TinkerWorld;
-import slimeknights.tconstruct.world.block.SlimeGrassBlock;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTTConstructRegistries {
-
-    public static final String SLIME_LIKE = "slime_like";
 
     public static FruitBlock GREEN_SLIME_FRUIT = new FruitBlock()
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
@@ -52,18 +42,18 @@ public class DTTConstructRegistries {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        DirtHelper.createNewAdjective(SLIME_LIKE);
-
-        for (Block slimeDirt : TinkerWorld.slimeDirt.values()){
-            DirtHelper.registerSoil(slimeDirt, DirtHelper.DIRT_LIKE);
-            DirtHelper.registerSoil(slimeDirt, SLIME_LIKE);
-        }
-        for (EnumObject<SlimeType, SlimeGrassBlock> grassTypes : TinkerWorld.slimeGrass.values())
-            for (SlimeGrassBlock slimeGrass : grassTypes.values())
-                DirtHelper.registerSoil(slimeGrass, SLIME_LIKE);
-
-        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesTConstruct.MOD_ID))
-            event.getRegistry().register(rooty);
+//        DirtHelper.createNewAdjective(SLIME_LIKE);
+//
+//        for (Block slimeDirt : TinkerWorld.slimeDirt.values()){
+//            DirtHelper.registerSoil(slimeDirt, DirtHelper.DIRT_LIKE);
+//            DirtHelper.registerSoil(slimeDirt, SLIME_LIKE);
+//        }
+//        for (EnumObject<SlimeType, SlimeGrassBlock> grassTypes : TinkerWorld.slimeGrass.values())
+//            for (SlimeGrassBlock slimeGrass : grassTypes.values())
+//                DirtHelper.registerSoil(slimeGrass, SLIME_LIKE);
+//
+//        for (RootyBlock rooty : RootyBlockHelper.generateListForRegistry(true, DynamicTreesTConstruct.MOD_ID))
+//            event.getRegistry().register(rooty);
     }
 
     @SubscribeEvent
@@ -81,13 +71,13 @@ public class DTTConstructRegistries {
     }
 
     private static void setUpFruitSpecies (ResourceLocation tree, ResourceLocation fruit, FruitBlock fruitBlock) {
-        Item fruitItem = ForgeRegistries.ITEMS.getValue(fruit);
-        fruitBlock.setDroppedItem(new ItemStack(fruitItem));
-        final Species treeSpecies = Species.REGISTRY.get(tree);
-        if (treeSpecies.isValid()){
-            treeSpecies.addDropCreator(new FruitDropCreator().setFruitItem(fruitItem));
-            fruitBlock.setSpecies(treeSpecies);
-        }
+//        Item fruitItem = ForgeRegistries.ITEMS.getValue(fruit);
+//        fruitBlock.setDroppedItem(new ItemStack(fruitItem));
+//        final Species treeSpecies = Species.REGISTRY.get(tree);
+//        if (treeSpecies.isValid()){
+//            treeSpecies.addDropCreator(new FruitDropCreator().setFruitItem(fruitItem));
+//            fruitBlock.setSpecies(treeSpecies);
+//        }
     }
 
 }

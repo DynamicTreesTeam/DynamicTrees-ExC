@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "tconstruct:ichor_ender_slime_grass",
+  "acceptable_soils": [ "slime_like" ]
+}

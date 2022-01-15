@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "tconstruct:sky_slime_dirt",
+  "acceptable_soils": [ "slime_like" ]
+}
